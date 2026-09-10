@@ -1,10 +1,10 @@
 export default async function handler(req, res) {
   const SOURCES = {
-    gold:
-      "https://servatmandi.com/Entity/Summary/10000000001901",
-
-    silver:
+    silverOunce:
       "https://servatmandi.com/Entity/Summary/10000000001903",
+
+    silver999:
+      "https://servatmandi.com/Entity/Summary/50000000001301",
 
     usd:
       "https://servatmandi.com/Entity/Summary/100000000001"
@@ -23,24 +23,16 @@ export default async function handler(req, res) {
 
   try {
     async function getPage(url, name) {
-      let response;
-
-      try {
-        response = await fetch(url, {
-          method: "GET",
-          headers,
-          redirect: "follow",
-          cache: "no-store"
-        });
-      } catch (error) {
-        throw new Error(
-          `اتصال به ${name} شکست خورد: ${error.message}`
-        );
-      }
+      const response = await fetch(url, {
+        method: "GET",
+        headers,
+        redirect: "follow",
+        cache: "no-store"
+      });
 
       if (!response.ok) {
         throw new Error(
-          `${name}: HTTP ${response.status} ${response.statusText}`
+          `${name}: HTTP ${response.status}`
         );
       }
 
@@ -57,12 +49,12 @@ export default async function handler(req, res) {
 
     function normalizeDigits(text) {
       return text
-        .replace(/[۰-۹]/g, function (d) {
-          return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
-        })
-        .replace(/[٠-٩]/g, function (d) {
-          return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
-        });
+        .replace(/[۰-۹]/g, d =>
+          "۰۱۲۳۴۵۶۷۸۹".indexOf(d)
+        )
+        .replace(/[٠-٩]/g, d =>
+          "٠١٢٣٤٥٦٧٨٩".indexOf(d)
+        );
     }
 
     function htmlToText(html) {
@@ -114,99 +106,63 @@ export default async function handler(req, res) {
         );
       }
 
-      const raw = match[1].replace(/,/g, "");
-      const price = Number(raw);
+      const price = Number(
+        match[1].replace(/,/g, "")
+      );
 
-      if (!Number.isFinite(price)) {
+      if (!Number.isFinite(price) || price <= 0) {
         throw new Error(
-          `قیمت ${type} عدد معتبر نیست`
+          `قیمت ${type} معتبر نیست`
         );
       }
 
       return price;
     }
 
-    const results =
-      await Promise.allSettled([
-        getPage(SOURCES.gold, "طلا"),
-        getPage(SOURCES.silver, "نقره"),
-        getPage(SOURCES.usd, "دلار")
-      ]);
+    const [
+      silverOunceHTML,
+      silver999HTML,
+      usdHTML
+    ] = await Promise.all([
+      getPage(
+        SOURCES.silverOunce,
+        "انس نقره"
+      ),
 
-    const goldResult = results[0];
-    const silverResult = results[1];
-    const usdResult = results[2];
+      getPage(
+        SOURCES.silver999,
+        "نقره 999"
+      ),
 
-    const errors = [];
-
-    if (goldResult.status === "rejected") {
-      errors.push(
-        `gold: ${goldResult.reason.message}`
-      );
-    }
-
-    if (silverResult.status === "rejected") {
-      errors.push(
-        `silver: ${silverResult.reason.message}`
-      );
-    }
-
-    if (usdResult.status === "rejected") {
-      errors.push(
-        `usd: ${usdResult.reason.message}`
-      );
-    }
-
-    if (errors.length > 0) {
-      throw new Error(
-        errors.join(" | ")
-      );
-    }
-
-    const goldOunce =
-      extractPrice(
-        goldResult.value,
-        "gold"
-      );
+      getPage(
+        SOURCES.usd,
+        "دلار"
+      )
+    ]);
 
     const silverOunce =
       extractPrice(
-        silverResult.value,
-        "silver"
+        silverOunceHTML,
+        "انس نقره"
+      );
+
+    const silver999Rial =
+      extractPrice(
+        silver999HTML,
+        "نقره 999"
       );
 
     const usdRial =
       extractPrice(
-        usdResult.value,
-        "usd"
+        usdHTML,
+        "دلار"
       );
 
-    if (
-      !Number.isFinite(goldOunce) ||
-      goldOunce <= 0
-    ) {
-      throw new Error(
-        "قیمت طلا معتبر نیست"
-      );
-    }
+    const silver999Toman =
+      silver999Rial / 10;
 
-    if (
-      !Number.isFinite(silverOunce) ||
-      silverOunce <= 0
-    ) {
-      throw new Error(
-        "قیمت نقره معتبر نیست"
-      );
-    }
-
-    if (
-      !Number.isFinite(usdRial) ||
-      usdRial <= 0
-    ) {
-      throw new Error(
-        "قیمت دلار معتبر نیست"
-      );
-    }
+    const usdToman =
+      usdRial / 10;
 
     res.setHeader(
       "Content-Type",
@@ -220,16 +176,24 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      goldOunce: goldOunce,
-      silverOunce: silverOunce,
-      usdRial: usdRial,
+
+      silverOunce,
+
+      silver999Rial,
+
+      silver999Toman,
+
+      usdRial,
+
+      usdToman,
+
       updatedAt:
         new Date().toISOString(),
+
       source: "Servatmandi"
     });
 
   } catch (error) {
-
     console.error(
       "PRICE API ERROR:",
       error
@@ -247,12 +211,15 @@ export default async function handler(req, res) {
 
     return res.status(500).json({
       success: false,
+
       error:
         "دریافت اطلاعات بازار با خطا مواجه شد",
+
       message:
         error.message,
+
       updatedAt:
         new Date().toISOString()
     });
   }
-      }
+}
