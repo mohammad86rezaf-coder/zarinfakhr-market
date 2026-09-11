@@ -1,12 +1,21 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"><head>  <meta charset="UTF-8"><meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
-«»
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>
     SILVER ZARIN FAKHR | تابلو قیمت نقره
-  </title>  <style>
+  </title>
+
+
+  <style>
 
     /* =========================================================
        RESET
@@ -35,11 +44,10 @@ content="width=device-width, initial-scale=1.0"
       color: #2e0803;
 
       background:
-
         radial-gradient(
-          circle at 50% -10%,
-          #fffdf9 0%,
-          #f8ecdf 42%,
+          circle at 50% -15%,
+          #fffefa 0%,
+          #f9eee2 42%,
           #ead8c7 100%
         );
 
@@ -48,20 +56,22 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       MAIN
+       MAIN FRAME
     ========================================================= */
 
     .container {
 
       width:
-        min(1550px, 94%);
+        min(1600px, 94%);
 
-      min-height: 100vh;
+      min-height:
+        100vh;
 
-      margin: auto;
+      margin:
+        auto;
 
       padding:
-        30px 0 22px;
+        28px 0 22px;
 
       display:
         flex;
@@ -72,10 +82,122 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       TOP BRAND AREA
+       LUXURY FRAME
+    ========================================================= */
+
+    .board-frame {
+
+      position:
+        relative;
+
+      flex:
+        1;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      padding:
+        28px 30px 20px;
+
+      border:
+        1px solid
+        rgba(168, 115, 75, .30);
+
+      border-radius:
+        30px;
+
+      background:
+        rgba(255, 253, 249, .36);
+
+      box-shadow:
+        0 25px 70px
+        rgba(112, 83, 59, .10);
+
+      overflow:
+        hidden;
+    }
+
+
+    .board-frame::before {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      top:
+        0;
+
+      right:
+        12%;
+
+      left:
+        12%;
+
+      height:
+        2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #a8734b,
+          #c39871,
+          #a8734b,
+          transparent
+        );
+    }
+
+
+    .board-frame::after {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        260px;
+
+      height:
+        260px;
+
+      top:
+        -170px;
+
+      left:
+        50%;
+
+      transform:
+        translateX(-50%);
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(195, 152, 113, .08);
+
+      pointer-events:
+        none;
+    }
+
+
+    /* =========================================================
+       HEADER
     ========================================================= */
 
     header {
+
+      position:
+        relative;
+
+      z-index:
+        2;
 
       display:
         flex;
@@ -86,17 +208,15 @@ content="width=device-width, initial-scale=1.0"
       justify-content:
         space-between;
 
-      gap: 30px;
+      gap:
+        25px;
 
       padding-bottom:
-        25px;
+        23px;
 
       border-bottom:
         1px solid
-        rgba(112, 83, 59, .20);
-
-      margin-bottom:
-        35px;
+        rgba(112, 83, 59, .18);
     }
 
 
@@ -108,19 +228,23 @@ content="width=device-width, initial-scale=1.0"
       align-items:
         center;
 
-      gap: 18px;
+      gap:
+        17px;
     }
 
 
-    /* Placeholder for real logo */
+    /* Temporary logo */
 
     .logo {
 
-      width: 72px;
+      width:
+        70px;
 
-      height: 72px;
+      height:
+        70px;
 
-      flex-shrink: 0;
+      flex-shrink:
+        0;
 
       display:
         grid;
@@ -134,8 +258,8 @@ content="width=device-width, initial-scale=1.0"
       background:
         linear-gradient(
           145deg,
-          #fffdf9,
-          #f1e1d0
+          #fffefa,
+          #f1e0cf
         );
 
       border:
@@ -143,14 +267,17 @@ content="width=device-width, initial-scale=1.0"
         #c39871;
 
       box-shadow:
+        inset 0 0 0 1px
+        rgba(255,255,255,.8),
+
         0 8px 25px
-        rgba(112, 83, 59, .12);
+        rgba(112,83,59,.13);
 
       color:
-        #70533b;
+        #632a16;
 
       font-size:
-        21px;
+        20px;
 
       font-weight:
         950;
@@ -162,13 +289,17 @@ content="width=device-width, initial-scale=1.0"
 
     .brand-title {
 
-      margin: 0;
+      margin:
+        0;
+
+      color:
+        #2e0803;
 
       font-size:
         clamp(
           22px,
-          2.4vw,
-          35px
+          2.5vw,
+          36px
         );
 
       font-weight:
@@ -190,7 +321,7 @@ content="width=device-width, initial-scale=1.0"
       font-size:
         clamp(
           12px,
-          1.15vw,
+          1.1vw,
           15px
         );
 
@@ -214,28 +345,29 @@ content="width=device-width, initial-scale=1.0"
       align-items:
         center;
 
-      gap: 10px;
+      gap:
+        10px;
 
       padding:
-        10px 15px;
+        10px 16px;
 
       border:
         1px solid
-        rgba(32, 163, 90, .20);
+        rgba(32,163,90,.20);
 
       border-radius:
         999px;
 
       background:
-        rgba(255,255,255,.48);
+        rgba(255,255,255,.50);
 
       color:
-        #53745f;
+        #52735d;
 
       font-size:
         clamp(
           12px,
-          1.1vw,
+          1vw,
           15px
         );
 
@@ -249,11 +381,11 @@ content="width=device-width, initial-scale=1.0"
 
     .status-dot {
 
-      width: 11px;
+      width:
+        11px;
 
-      height: 11px;
-
-      flex-shrink: 0;
+      height:
+        11px;
 
       border-radius:
         50%;
@@ -301,6 +433,7 @@ content="width=device-width, initial-scale=1.0"
     @keyframes pulse {
 
       0% {
+
         transform:
           scale(1);
 
@@ -329,73 +462,105 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       MAIN TITLE
+       HERO
     ========================================================= */
 
     .hero {
 
+      position:
+        relative;
+
+      z-index:
+        2;
+
       text-align:
         center;
 
-      margin-bottom:
-        30px;
+      padding:
+        28px 0 27px;
     }
 
 
-    .hero-label {
+    .hero-small {
 
       display:
-        inline-flex;
+        flex;
 
       align-items:
         center;
 
-      gap: 9px;
+      justify-content:
+        center;
+
+      gap:
+        12px;
 
       margin-bottom:
-        12px;
+        10px;
 
       color:
         #a8734b;
 
       font-size:
         clamp(
-          11px,
-          1vw,
-          14px
+          10px,
+          .9vw,
+          13px
         );
 
       font-weight:
         900;
 
       letter-spacing:
-        2px;
+        3px;
     }
 
 
-    .hero-label::before,
-    .hero-label::after {
+    .hero-small::before,
+    .hero-small::after {
 
-      content: "";
+      content:
+        "";
 
-      width: 28px;
+      width:
+        38px;
 
-      height: 1px;
+      height:
+        1px;
 
       background:
-        #c39871;
+        linear-gradient(
+          90deg,
+          transparent,
+          #c39871
+        );
+    }
+
+
+    .hero-small::after {
+
+      background:
+        linear-gradient(
+          90deg,
+          #c39871,
+          transparent
+        );
     }
 
 
     .hero h2 {
 
-      margin: 0;
+      margin:
+        0;
+
+      color:
+        #2e0803;
 
       font-size:
         clamp(
-          31px,
+          34px,
           4vw,
-          56px
+          58px
         );
 
       line-height:
@@ -403,9 +568,6 @@ content="width=device-width, initial-scale=1.0"
 
       font-weight:
         950;
-
-      letter-spacing:
-        -.5px;
     }
 
 
@@ -415,12 +577,12 @@ content="width=device-width, initial-scale=1.0"
         12px 0 0;
 
       color:
-        #70533b;
+        #806b58;
 
       font-size:
         clamp(
           12px,
-          1.2vw,
+          1.1vw,
           16px
         );
 
@@ -430,10 +592,16 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       PRICE BOARD
+       PRICE GRID
     ========================================================= */
 
     .prices {
+
+      position:
+        relative;
+
+      z-index:
+        2;
 
       display:
         grid;
@@ -442,7 +610,7 @@ content="width=device-width, initial-scale=1.0"
         repeat(5, minmax(0, 1fr));
 
       gap:
-        16px;
+        15px;
 
       width:
         100%;
@@ -477,57 +645,100 @@ content="width=device-width, initial-scale=1.0"
         center;
 
       padding:
-        28px 12px;
+        28px 10px;
 
       background:
-        rgba(255,253,249,.78);
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.94),
+          rgba(252,244,235,.82)
+        );
 
       border:
         1px solid
-        rgba(163,125,92,.30);
+        rgba(163,125,92,.35);
 
       border-radius:
-        24px;
+        22px;
 
       box-shadow:
-        0 12px 35px
-        rgba(112,83,59,.08);
+        0 15px 38px
+        rgba(112,83,59,.09),
+
+        inset 0 1px 0
+        rgba(255,255,255,.9);
 
       overflow:
         hidden;
 
       transition:
         transform .2s ease,
-        box-shadow .2s ease,
-        border-color .2s ease;
+        box-shadow .2s ease;
     }
 
 
+    /* Gold top line */
+
     .price-card::before {
 
-      content: "";
+      content:
+        "";
 
       position:
         absolute;
 
-      top: 0;
+      top:
+        0;
 
-      right: 18%;
+      right:
+        22%;
 
-      left: 18%;
+      left:
+        22%;
 
-      height: 2px;
+      height:
+        2px;
 
       background:
         linear-gradient(
           90deg,
           transparent,
           #c39871,
+          #a8734b,
+          #c39871,
           transparent
         );
+    }
 
-      opacity:
-        .75;
+
+    /* Decorative corner */
+
+    .price-card::after {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        70px;
+
+      height:
+        70px;
+
+      left:
+        -38px;
+
+      bottom:
+        -38px;
+
+      border-radius:
+        50%;
+
+      border:
+        1px solid
+        rgba(195,152,113,.18);
     }
 
 
@@ -536,12 +747,9 @@ content="width=device-width, initial-scale=1.0"
       transform:
         translateY(-4px);
 
-      border-color:
-        rgba(163,125,92,.50);
-
       box-shadow:
-        0 20px 42px
-        rgba(112,83,59,.13);
+        0 22px 45px
+        rgba(112,83,59,.14);
     }
 
 
@@ -583,11 +791,14 @@ content="width=device-width, initial-scale=1.0"
 
     .live-dot {
 
-      width: 10px;
+      width:
+        10px;
 
-      height: 10px;
+      height:
+        10px;
 
-      flex-shrink: 0;
+      flex-shrink:
+        0;
 
       border-radius:
         50%;
@@ -605,7 +816,7 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       PRICE VALUE
+       PRICE
     ========================================================= */
 
     .price-value {
@@ -618,19 +829,19 @@ content="width=device-width, initial-scale=1.0"
 
       font-size:
         clamp(
-          26px,
+          27px,
           3vw,
-          43px
+          44px
         );
 
       line-height:
-        1.12;
+        1.1;
 
       font-weight:
         950;
 
       letter-spacing:
-        -.5px;
+        -.7px;
 
       direction:
         rtl;
@@ -661,25 +872,31 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       UPDATE TIME
+       UPDATE
     ========================================================= */
 
     .update {
 
+      position:
+        relative;
+
+      z-index:
+        2;
+
       display:
         flex;
 
-      align-items:
+      justify-content:
         center;
 
-      justify-content:
+      align-items:
         center;
 
       gap:
         6px;
 
       margin:
-        24px 0 16px;
+        23px 0 14px;
 
       color:
         #806b58;
@@ -687,7 +904,7 @@ content="width=device-width, initial-scale=1.0"
       font-size:
         clamp(
           11px,
-          .95vw,
+          .9vw,
           14px
         );
 
@@ -712,18 +929,36 @@ content="width=device-width, initial-scale=1.0"
 
     footer {
 
-      margin-top:
-        auto;
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        9px;
 
       padding-top:
         16px;
 
-      text-align:
-        center;
-
       border-top:
         1px solid
         rgba(112,83,59,.15);
+
+      text-align:
+        center;
 
       color:
         #806b58;
@@ -739,12 +974,6 @@ content="width=device-width, initial-scale=1.0"
 
     footer strong {
 
-      display:
-        inline-block;
-
-      margin-left:
-        8px;
-
       color:
         #2e0803;
 
@@ -757,13 +986,14 @@ content="width=device-width, initial-scale=1.0"
     }
 
 
+    .footer-separator {
+
+      color:
+        #c39871;
+    }
+
+
     .instagram {
-
-      display:
-        inline-block;
-
-      margin-right:
-        8px;
 
       direction:
         ltr;
@@ -809,7 +1039,17 @@ content="width=device-width, initial-scale=1.0"
           92%;
 
         padding:
-          20px 0;
+          16px 0;
+      }
+
+
+      .board-frame {
+
+        padding:
+          20px 15px 18px;
+
+        border-radius:
+          23px;
       }
 
 
@@ -821,8 +1061,8 @@ content="width=device-width, initial-scale=1.0"
         text-align:
           center;
 
-        margin-bottom:
-          28px;
+        padding-bottom:
+          20px;
       }
 
 
@@ -837,6 +1077,13 @@ content="width=device-width, initial-scale=1.0"
 
         font-size:
           11px;
+      }
+
+
+      .hero {
+
+        padding:
+          24px 0;
       }
 
 
@@ -859,7 +1106,7 @@ content="width=device-width, initial-scale=1.0"
           20px 7px;
 
         border-radius:
-          19px;
+          18px;
       }
 
 
@@ -928,284 +1175,317 @@ content="width=device-width, initial-scale=1.0"
       }
     }
 
-  </style></head><body>  <main class="container"><!-- =======================================================
-     HEADER
-======================================================== -->
+  </style>
 
-<header>
+</head>
 
 
-  <div class="brand">
+<body>
 
 
-    <!--
-      فعلاً SZF است.
-      بعداً با لوگوی واقعی جایگزین می‌شود.
-    -->
+  <main class="container">
 
-    <div class="logo">
-      SZF
-    </div>
 
+    <section class="board-frame">
 
-    <div>
 
-      <h1 class="brand-title">
-        SILVER ZARIN FAKHR
-      </h1>
+      <!-- =====================================================
+           HEADER
+      ====================================================== -->
 
-      <p class="brand-subtitle">
-        نقره زرین فخر
-      </p>
+      <header>
 
-    </div>
 
+        <div class="brand">
 
-  </div>
 
+          <!--
+            فعلاً لوگوی متنی.
+            بعداً با لوگوی واقعی جایگزین می‌شود.
+          -->
 
-  <div
-    class="status"
-    id="status"
-  >
+          <div class="logo">
+            SZF
+          </div>
 
-    <span class="status-dot"></span>
 
-    <span id="statusText">
-      در حال دریافت قیمت‌ها...
-    </span>
+          <div>
 
-  </div>
+            <h1 class="brand-title">
+              SILVER ZARIN FAKHR
+            </h1>
 
 
-</header>
+            <p class="brand-subtitle">
+              نقره زرین فخر
+            </p>
 
+          </div>
 
-<!-- =======================================================
-     HERO
-======================================================== -->
 
-<section class="hero">
+        </div>
 
 
-  <div class="hero-label">
-    MARKET BOARD
-  </div>
+        <!-- ONLINE -->
 
+        <div
+          class="status"
+          id="status"
+        >
 
-  <h2>
-    تابلو قیمت نقره
-  </h2>
+          <span class="status-dot"></span>
 
+          <span id="statusText">
+            در حال دریافت قیمت‌ها...
+          </span>
 
-  <p>
-    قیمت لحظه‌ای بازار نقره
-  </p>
+        </div>
 
 
-</section>
+      </header>
 
 
-<!-- =======================================================
-     PRICE CARDS
-======================================================== -->
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
 
-<section class="prices">
+      <section class="hero">
 
 
-  <!-- MITHQAL -->
+        <div class="hero-small">
+          MARKET BOARD
+        </div>
 
-  <div class="price-card">
 
-    <div class="price-title">
+        <h2>
+          تابلو قیمت نقره
+        </h2>
 
-      <span class="live-dot"></span>
 
-      <span>
-        مثقال ۱۷ عیار
-      </span>
+        <p>
+          قیمت لحظه‌ای بازار نقره
+        </p>
 
-    </div>
 
+      </section>
 
-    <div
-      class="price-value"
-      id="mithqal17"
-    >
-      —
-    </div>
 
+      <!-- =====================================================
+           PRICE BOARD
+      ====================================================== -->
 
-    <div class="price-unit">
-      تومان / مثقال
-    </div>
+      <section class="prices">
 
-  </div>
 
+        <!-- MITHQAL -->
 
-  <!-- OUNCE -->
+        <div class="price-card">
 
-  <div class="price-card">
+          <div class="price-title">
 
-    <div class="price-title">
+            <span class="live-dot"></span>
 
-      <span class="live-dot"></span>
+            <span>
+              مثقال ۱۷ عیار
+            </span>
 
-      <span>
-        انس نقره
-      </span>
+          </div>
 
-    </div>
 
+          <div
+            class="price-value"
+            id="mithqal17"
+          >
+            —
+          </div>
 
-    <div
-      class="price-value"
-      id="silverOunce"
-    >
-      —
-    </div>
 
+          <div class="price-unit">
+            تومان / مثقال
+          </div>
 
-    <div class="price-unit">
-      دلار / انس
-    </div>
+        </div>
 
-  </div>
 
+        <!-- OUNCE -->
 
-  <!-- USD -->
+        <div class="price-card">
 
-  <div class="price-card">
+          <div class="price-title">
 
-    <div class="price-title">
+            <span class="live-dot"></span>
 
-      <span class="live-dot"></span>
+            <span>
+              انس نقره
+            </span>
 
-      <span>
-        دلار
-      </span>
+          </div>
 
-    </div>
 
+          <div
+            class="price-value"
+            id="silverOunce"
+          >
+            —
+          </div>
 
-    <div
-      class="price-value"
-      id="usd"
-    >
-      —
-    </div>
 
+          <div class="price-unit">
+            دلار / انس
+          </div>
 
-    <div class="price-unit">
-      تومان / دلار
-    </div>
+        </div>
 
-  </div>
 
+        <!-- USD -->
 
-  <!-- SILVER 999 -->
+        <div class="price-card">
 
-  <div class="price-card">
+          <div class="price-title">
 
-    <div class="price-title">
+            <span class="live-dot"></span>
 
-      <span class="live-dot"></span>
+            <span>
+              دلار
+            </span>
 
-      <span>
-        نقره ۹۹۹
-      </span>
+          </div>
 
-    </div>
 
+          <div
+            class="price-value"
+            id="usd"
+          >
+            —
+          </div>
 
-    <div
-      class="price-value"
-      id="silver999"
-    >
-      —
-    </div>
 
+          <div class="price-unit">
+            تومان / دلار
+          </div>
 
-    <div class="price-unit">
-      تومان / گرم
-    </div>
+        </div>
 
-  </div>
 
+        <!-- SILVER 999 -->
 
-  <!-- SILVER 925 -->
+        <div class="price-card">
 
-  <div class="price-card">
+          <div class="price-title">
 
-    <div class="price-title">
+            <span class="live-dot"></span>
 
-      <span class="live-dot"></span>
+            <span>
+              نقره ۹۹۹
+            </span>
 
-      <span>
-        نقره ۹۲۵
-      </span>
+          </div>
 
-    </div>
 
+          <div
+            class="price-value"
+            id="silver999"
+          >
+            —
+          </div>
 
-    <div
-      class="price-value"
-      id="silver925"
-    >
-      —
-    </div>
 
+          <div class="price-unit">
+            تومان / گرم
+          </div>
 
-    <div class="price-unit">
-      تومان / گرم
-    </div>
+        </div>
 
-  </div>
 
+        <!-- SILVER 925 -->
 
-</section>
+        <div class="price-card">
 
+          <div class="price-title">
 
-<!-- =======================================================
-     UPDATE
-======================================================== -->
+            <span class="live-dot"></span>
 
-<div class="update">
+            <span>
+              نقره ۹۲۵
+            </span>
 
-  <span>
-    آخرین بروزرسانی:
-  </span>
+          </div>
 
-  <span
-    class="update-time"
-    id="updatedAt"
-  >
-    —
-  </span>
 
-</div>
+          <div
+            class="price-value"
+            id="silver925"
+          >
+            —
+          </div>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================== -->
+          <div class="price-unit">
+            تومان / گرم
+          </div>
 
-<footer>
+        </div>
 
-  <strong>
-    SILVER ZARIN FAKHR
-  </strong>
 
-  زیبایی در درخشندگی،
-  اصالت در ماندگاری
+      </section>
 
-  <span class="instagram">
-    @zarinfakhrSZF
-  </span>
 
-</footer>
+      <!-- =====================================================
+           UPDATE
+      ====================================================== -->
 
-  </main>  <script>
+      <div class="update">
+
+        <span>
+          آخرین بروزرسانی:
+        </span>
+
+        <span
+          class="update-time"
+          id="updatedAt"
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+
+        <strong>
+          SILVER ZARIN FAKHR
+        </strong>
+
+        <span class="footer-separator">
+          •
+        </span>
+
+        <span>
+          زیبایی در درخشندگی، اصالت در ماندگاری
+        </span>
+
+        <span class="footer-separator">
+          •
+        </span>
+
+        <span class="instagram">
+          @zarinfakhrSZF
+        </span>
+
+      </footer>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script>
 
 
     /* =========================================================
@@ -1217,7 +1497,7 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       MITHQAL CONSTANTS
+       MITHQAL
     ========================================================= */
 
     const MITHQAL_GRAM =
@@ -1229,7 +1509,7 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       NUMBER FORMAT
+       FORMAT NUMBER
     ========================================================= */
 
     function formatNumber(value) {
@@ -1337,7 +1617,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* 925 = 999 × 0.925 */
+      /* 925 */
 
       const silver925 =
         silver999 *
@@ -1352,9 +1632,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         MITHQAL
-      ======================================================== */
+      /* MITHQAL */
 
       document.getElementById(
         "mithqal17"
@@ -1364,9 +1642,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         SILVER OUNCE
-      ======================================================== */
+      /* OUNCE */
 
       document.getElementById(
         "silverOunce"
@@ -1383,9 +1659,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         USD
-      ======================================================== */
+      /* USD */
 
       document.getElementById(
         "usd"
@@ -1395,9 +1669,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         SILVER 999
-      ======================================================== */
+      /* 999 */
 
       document.getElementById(
         "silver999"
@@ -1407,9 +1679,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         SILVER 925
-      ======================================================== */
+      /* 925 */
 
       document.getElementById(
         "silver925"
@@ -1419,9 +1689,7 @@ content="width=device-width, initial-scale=1.0"
         );
 
 
-      /* =======================================================
-         UPDATE TIME
-      ======================================================== */
+      /* UPDATE TIME */
 
       if (data.updatedAt) {
 
@@ -1441,9 +1709,7 @@ content="width=device-width, initial-scale=1.0"
       }
 
 
-      /* =======================================================
-         ONLINE
-      ======================================================== */
+      /* ONLINE */
 
       setStatus(
         true,
@@ -1530,14 +1796,14 @@ content="width=device-width, initial-scale=1.0"
 
 
     /* =========================================================
-       INITIAL LOAD
+       FIRST LOAD
     ========================================================= */
 
     loadPrices();
 
 
     /* =========================================================
-       AUTO UPDATE
+       AUTO UPDATE — EVERY 1 SECOND
     ========================================================= */
 
     setInterval(
@@ -1546,4 +1812,9 @@ content="width=device-width, initial-scale=1.0"
     );
 
 
-  </script></body></html>
+  </script>
+
+
+</body>
+
+  </html>
