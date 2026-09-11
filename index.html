@@ -12,6 +12,7 @@
 
 <title>SILVER ZARIN FAKHR</title>
 
+
 <style>
 
 /* =========================================================
@@ -86,7 +87,7 @@ body {
 
 /* =========================================================
    LOGIN
-   ========================================================= */
+========================================================= */
 
 #loginPage {
 
@@ -229,13 +230,6 @@ body {
 }
 
 
-.password-wrap {
-
-  position: relative;
-
-}
-
-
 .password-input {
 
   width: 100%;
@@ -261,7 +255,7 @@ body {
 
   font-size: 21px;
 
-  letter-spacing: 6px;
+  letter-spacing: 3px;
 
   font-weight: 900;
 
@@ -314,13 +308,6 @@ body {
 }
 
 
-.login-button:active {
-
-  transform: translateY(1px);
-
-}
-
-
 .login-error {
 
   min-height: 22px;
@@ -338,7 +325,7 @@ body {
 
 /* =========================================================
    APP
-   ========================================================= */
+========================================================= */
 
 #app {
 
@@ -359,10 +346,6 @@ body {
 
 }
 
-
-/* =========================================================
-   APP FRAME
-   ========================================================= */
 
 .app-frame {
 
@@ -433,7 +416,7 @@ body {
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 .app-header {
 
@@ -525,10 +508,6 @@ body {
 }
 
 
-/* =========================================================
-   HEADER ACTIONS
-   ========================================================= */
-
 .header-actions {
 
   display: flex;
@@ -540,13 +519,17 @@ body {
 }
 
 
+/* =========================================================
+   ONLINE STATUS — PULSE
+========================================================= */
+
 .live-status {
 
   display: flex;
 
   align-items: center;
 
-  gap: 8px;
+  gap: 9px;
 
   padding: 10px 14px;
 
@@ -579,14 +562,69 @@ body {
   background: var(--green);
 
   box-shadow:
-    0 0 8px
-    rgba(21,148,71,.7);
+    0 0 7px
+    rgba(21,148,71,.8);
 
   animation:
-    blink 1.6s steps(1,end) infinite;
+    onlinePulse 1.35s ease-in-out infinite;
 
 }
 
+
+/* =========================================================
+   ONLINE PULSE
+========================================================= */
+
+@keyframes onlinePulse {
+
+  0% {
+
+    transform:
+      scale(.85);
+
+    opacity:
+      .55;
+
+    box-shadow:
+      0 0 3px
+      rgba(21,148,71,.35);
+
+  }
+
+  50% {
+
+    transform:
+      scale(1.35);
+
+    opacity:
+      1;
+
+    box-shadow:
+      0 0 13px
+      rgba(21,148,71,.95);
+
+  }
+
+  100% {
+
+    transform:
+      scale(.85);
+
+    opacity:
+      .55;
+
+    box-shadow:
+      0 0 3px
+      rgba(21,148,71,.35);
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 .logout {
 
@@ -614,7 +652,7 @@ body {
 
 /* =========================================================
    NAV
-   ========================================================= */
+========================================================= */
 
 .nav {
 
@@ -677,7 +715,7 @@ body {
 
 /* =========================================================
    CONTENT
-   ========================================================= */
+========================================================= */
 
 .content {
 
@@ -727,8 +765,8 @@ body {
 
 
 /* =========================================================
-   MARKET PRICES
-   ========================================================= */
+   MARKET
+========================================================= */
 
 .market-grid {
 
@@ -821,7 +859,7 @@ body {
 
   align-items: center;
 
-  gap: 8px;
+  gap: 9px;
 
   color: var(--brown2);
 
@@ -832,7 +870,40 @@ body {
 }
 
 
+/* =========================================================
+   RADAR LIGHT
+========================================================= */
+
 .market-dot {
+
+  position: relative;
+
+  width: 9px;
+
+  height: 9px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow:
+    0 0 7px
+    rgba(21,148,71,.95);
+
+}
+
+
+.market-dot::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  left: 50%;
 
   width: 9px;
 
@@ -840,41 +911,110 @@ body {
 
   border-radius: 50%;
 
-  background: var(--green);
-
-  box-shadow:
-    0 0 8px
+  border:
+    1px solid
     rgba(21,148,71,.75);
 
+  transform:
+    translate(-50%,-50%)
+    scale(.8);
+
+  opacity: 0;
+
   animation:
-    blink 1.6s steps(1,end) infinite;
+    radarWave 2.1s ease-out infinite;
+
+}
+
+
+@keyframes radarWave {
+
+  0% {
+
+    transform:
+      translate(-50%,-50%)
+      scale(.8);
+
+    opacity:
+      .9;
+
+  }
+
+  70% {
+
+    transform:
+      translate(-50%,-50%)
+      scale(2.8);
+
+    opacity:
+      .18;
+
+  }
+
+  100% {
+
+    transform:
+      translate(-50%,-50%)
+      scale(3.5);
+
+    opacity:
+      0;
+
+  }
+
+}
+
+
+/* Different radar timing */
+
+.market-card:nth-child(1)
+.market-dot::after {
+
+  animation-delay:
+    0s;
 
 }
 
 
 .market-card:nth-child(2)
-.market-dot {
-  animation-delay: .25s;
+.market-dot::after {
+
+  animation-delay:
+    .42s;
+
 }
 
 
 .market-card:nth-child(3)
-.market-dot {
-  animation-delay: .50s;
+.market-dot::after {
+
+  animation-delay:
+    .84s;
+
 }
 
 
 .market-card:nth-child(4)
-.market-dot {
-  animation-delay: .75s;
+.market-dot::after {
+
+  animation-delay:
+    1.26s;
+
 }
 
 
 .market-card:nth-child(5)
-.market-dot {
-  animation-delay: 1s;
+.market-dot::after {
+
+  animation-delay:
+    1.68s;
+
 }
 
+
+/* =========================================================
+   MARKET VALUE
+========================================================= */
 
 .market-value {
 
@@ -907,7 +1047,7 @@ body {
 
 /* =========================================================
    CALCULATOR
-   ========================================================= */
+========================================================= */
 
 .calculator-layout {
 
@@ -979,7 +1119,8 @@ body {
 
 .field.full {
 
-  grid-column: 1 / -1;
+  grid-column:
+    1 / -1;
 
 }
 
@@ -1069,8 +1210,8 @@ body {
 
 
 /* =========================================================
-   CALCULATION RESULT
-   ========================================================= */
+   RESULT
+========================================================= */
 
 .result-box {
 
@@ -1180,7 +1321,7 @@ body {
 
 /* =========================================================
    SETTINGS
-   ========================================================= */
+========================================================= */
 
 .settings-grid {
 
@@ -1261,7 +1402,7 @@ body {
 
 /* =========================================================
    UPDATE
-   ========================================================= */
+========================================================= */
 
 .update-bar {
 
@@ -1316,7 +1457,7 @@ body {
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 .footer {
 
@@ -1360,41 +1501,8 @@ body {
 
 
 /* =========================================================
-   BLINK
-   ========================================================= */
-
-@keyframes blink {
-
-  0% {
-    opacity: 1;
-  }
-
-  34% {
-    opacity: 1;
-  }
-
-  35% {
-    opacity: .15;
-  }
-
-  67% {
-    opacity: .15;
-  }
-
-  68% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 1;
-  }
-
-}
-
-
-/* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width:1100px) {
 
@@ -1418,7 +1526,7 @@ body {
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width:700px) {
 
@@ -1540,7 +1648,7 @@ body {
 
 /* =========================================================
    SMALL
-   ========================================================= */
+========================================================= */
 
 @media (max-width:380px) {
 
@@ -1585,8 +1693,6 @@ SILVER ZARIN FAKHR
 </p>
 
 
-<div class="password-wrap">
-
 <input
   id="passwordInput"
   class="password-input"
@@ -1596,9 +1702,6 @@ SILVER ZARIN FAKHR
   placeholder="رمز ورود"
   onkeydown="if(event.key==='Enter') login()"
 >
-
-
-</div>
 
 
 <button
@@ -1633,10 +1736,6 @@ SILVER ZARIN FAKHR
 
 <div class="app-frame">
 
-
-<!-- =====================================================
-     HEADER
-====================================================== -->
 
 <header class="app-header">
 
@@ -1944,6 +2043,7 @@ SILVER ZARIN FAKHR
   id="calcWeight"
   type="number"
   step="0.01"
+  min="0"
   value="1"
 >
 
@@ -1990,6 +2090,7 @@ SILVER ZARIN FAKHR
 <input
   id="calcLabor"
   type="number"
+  min="0"
   value="0"
 >
 
@@ -2008,6 +2109,7 @@ SILVER ZARIN FAKHR
 <input
   id="calcProfit"
   type="number"
+  min="0"
   step="0.1"
   value="0"
 >
@@ -2027,6 +2129,7 @@ SILVER ZARIN FAKHR
 <input
   id="calcExtra"
   type="number"
+  min="0"
   value="0"
 >
 
@@ -2180,6 +2283,7 @@ SILVER ZARIN FAKHR
 <input
   id="setting999"
   type="number"
+  min="0"
   placeholder="مثلاً 505000"
 >
 
@@ -2201,6 +2305,7 @@ SILVER ZARIN FAKHR
 <input
   id="settingLabor"
   type="number"
+  min="0"
   placeholder="0"
 >
 
@@ -2347,11 +2452,11 @@ SILVER ZARIN FAKHR
 
 /* =========================================================
    CONFIGURATION
-   ========================================================= */
+========================================================= */
 
 
 /*
-   رمز اختصاصی ورود زرین فخر
+   رمز اختصاصی
 */
 
 const DEFAULT_PASSWORD =
@@ -2370,16 +2475,29 @@ const PURITY_17K =
   700;
 
 
+/*
+   مهم:
+   آخرین قیمت 999 مستقیماً از API
+   در این متغیر نگهداری می‌شود.
+   دیگر قیمت از متن کارت خوانده نمی‌شود.
+*/
+
+let currentSilver999 =
+  0;
+
+
 /* =========================================================
-   HELPERS
+   FORMAT NUMBER
 ========================================================= */
 
 function formatNumber(value) {
 
+  const number =
+    Number(value);
+
+
   if (
-    value === null ||
-    value === undefined ||
-    !Number.isFinite(Number(value))
+    !Number.isFinite(number)
   ) {
 
     return "—";
@@ -2387,10 +2505,11 @@ function formatNumber(value) {
   }
 
 
-  return Number(value).toLocaleString(
+  return number.toLocaleString(
     "fa-IR",
     {
-      maximumFractionDigits: 0
+      maximumFractionDigits:
+        0
     }
   );
 
@@ -2457,7 +2576,6 @@ function login() {
 
     loadPrices();
 
-
     return;
 
   }
@@ -2508,7 +2626,7 @@ function logout() {
 
 
 /* =========================================================
-   AUTO LOGIN CURRENT SESSION
+   SESSION
 ========================================================= */
 
 if (
@@ -2577,11 +2695,25 @@ function showSection(
     "active"
   );
 
+
+  /*
+     وقتی وارد محاسبه قیمت می‌شویم،
+     محاسبه دوباره انجام می‌شود.
+  */
+
+  if (
+    id === "calculator"
+  ) {
+
+    calculatePrice();
+
+  }
+
 }
 
 
 /* =========================================================
-   MITHQAL
+   MITHQAL 17
 ========================================================= */
 
 function calculateMithqal17(
@@ -2632,6 +2764,10 @@ function updateDateTime(
       )
     );
 
+
+  /*
+     یک ساعت عقب‌تر
+  */
 
   iran.setHours(
     iran.getHours() - 1
@@ -2701,7 +2837,9 @@ async function loadPrices() {
       );
 
 
-    if (!response.ok) {
+    if (
+      !response.ok
+    ) {
 
       throw new Error(
         "API Error"
@@ -2714,7 +2852,9 @@ async function loadPrices() {
       await response.json();
 
 
-    if (!data.success) {
+    if (
+      !data.success
+    ) {
 
       throw new Error(
         data.error ||
@@ -2724,22 +2864,55 @@ async function loadPrices() {
     }
 
 
-    const silver999 =
+    /*
+      ======================================================
+      اصلاح اصلی محاسبه:
+      قیمت 999 مستقیماً از API ذخیره می‌شود.
+      ======================================================
+    */
+
+    currentSilver999 =
       Number(
         data.silver999Toman
       );
 
 
+    if (
+      !Number.isFinite(
+        currentSilver999
+      ) ||
+      currentSilver999 <= 0
+    ) {
+
+      throw new Error(
+        "قیمت نقره 999 معتبر نیست"
+      );
+
+    }
+
+
+    /*
+       925
+    */
+
     const silver925 =
-      silver999 *
+      currentSilver999 *
       0.925;
 
 
+    /*
+       مثقال 17 عیار
+    */
+
     const mithqal17 =
       calculateMithqal17(
-        silver999
+        currentSilver999
       );
 
+
+    /*
+       نمایش بازار
+    */
 
     document.getElementById(
       "mithqal17"
@@ -2776,7 +2949,7 @@ async function loadPrices() {
       "silver999"
     ).textContent =
       formatNumber(
-        silver999
+        currentSilver999
       );
 
 
@@ -2799,21 +2972,22 @@ async function loadPrices() {
       "آنلاین • اطلاعات به‌روز";
 
 
-    if (
-      !document.getElementById(
-        "setting999"
-      ).value
-    ) {
+    /*
+       اگر قیمت دستی تنظیم نشده باشد،
+       محاسبه‌گر از قیمت آنلاین استفاده می‌کند.
+    */
 
-      calculatePrice();
-
-    }
+    calculatePrice();
 
   }
 
+
   catch (error) {
 
-    console.error(error);
+    console.error(
+      "PRICE ERROR:",
+      error
+    );
 
 
     document.getElementById(
@@ -2832,7 +3006,12 @@ async function loadPrices() {
 
 function calculatePrice() {
 
-  let silver999 =
+  /*
+    اول قیمت دستی تنظیمات را بررسی می‌کنیم.
+    اگر خالی باشد، قیمت آنلاین API استفاده می‌شود.
+  */
+
+  const manualValue =
     Number(
       document.getElementById(
         "setting999"
@@ -2840,30 +3019,61 @@ function calculatePrice() {
     );
 
 
-  if (!silver999) {
+  let silver999;
 
-    const market =
-      document.getElementById(
-        "silver999"
-      ).textContent
-      .replace(
-        /[^\d]/g,
-        ""
-      );
 
+  if (
+    Number.isFinite(
+      manualValue
+    ) &&
+    manualValue > 0
+  ) {
 
     silver999 =
-      Number(market);
+      manualValue;
+
+  }
+
+  else {
+
+    silver999 =
+      currentSilver999;
 
   }
 
 
-  if (!silver999) {
+  /*
+    اگر هنوز قیمت نداریم،
+    محاسبه انجام نمی‌شود.
+  */
+
+  if (
+    !Number.isFinite(
+      silver999
+    ) ||
+    silver999 <= 0
+  ) {
+
+    document.getElementById(
+      "resultBase"
+    ).textContent =
+      "قیمت موجود نیست";
+
+
+    document.getElementById(
+      "resultFinal"
+    ).textContent =
+      "—";
+
 
     return;
 
   }
 
+
+  /*
+    ورودی‌ها
+  */
 
   const weight =
     Number(
@@ -2905,20 +3115,38 @@ function calculatePrice() {
     ) || 0;
 
 
+  /*
+    ======================================================
+    قیمت هر گرم بر اساس عیار
+    ======================================================
+  */
+
   const gramPrice =
     silver999 *
     (purity / 999);
 
+
+  /*
+    قیمت پایه
+  */
 
   const base =
     gramPrice *
     weight;
 
 
+  /*
+    اجرت
+  */
+
   const laborTotal =
     labor *
     weight;
 
+
+  /*
+    قبل از سود
+  */
 
   const beforeProfit =
     base +
@@ -2926,49 +3154,71 @@ function calculatePrice() {
     extra;
 
 
+  /*
+    سود
+  */
+
   const profit =
     beforeProfit *
     profitPercent /
     100;
 
 
+  /*
+    قیمت نهایی
+  */
+
   const finalPrice =
     beforeProfit +
     profit;
 
 
+  /*
+    نمایش
+  */
+
   document.getElementById(
     "resultBase"
   ).textContent =
-    formatNumber(base) +
+    formatNumber(
+      base
+    ) +
     " تومان";
 
 
   document.getElementById(
     "resultLabor"
   ).textContent =
-    formatNumber(laborTotal) +
+    formatNumber(
+      laborTotal
+    ) +
     " تومان";
 
 
   document.getElementById(
     "resultProfit"
   ).textContent =
-    formatNumber(profit) +
+    formatNumber(
+      profit
+    ) +
     " تومان";
 
 
   document.getElementById(
     "resultExtra"
   ).textContent =
-    formatNumber(extra) +
+    formatNumber(
+      extra
+    ) +
     " تومان";
 
 
   document.getElementById(
     "resultFinal"
   ).textContent =
-    formatNumber(finalPrice) +
+    formatNumber(
+      finalPrice
+    ) +
     " تومان";
 
 }
@@ -3038,7 +3288,9 @@ function loadSettings() {
     );
 
 
-  if (silver999) {
+  if (
+    silver999
+  ) {
 
     document.getElementById(
       "setting999"
@@ -3048,7 +3300,9 @@ function loadSettings() {
   }
 
 
-  if (labor) {
+  if (
+    labor
+  ) {
 
     document.getElementById(
       "settingLabor"
@@ -3111,11 +3365,15 @@ function changePassword() {
 
 
 /* =========================================================
-   START
+   LOAD SAVED SETTINGS
 ========================================================= */
 
 loadSettings();
 
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
 
 if (
   sessionStorage.getItem(
@@ -3127,6 +3385,10 @@ if (
 
 }
 
+
+/* =========================================================
+   AUTO UPDATE
+========================================================= */
 
 setInterval(
   () => {
@@ -3155,7 +3417,8 @@ setInterval(
   "calcPurity",
   "calcLabor",
   "calcProfit",
-  "calcExtra"
+  "calcExtra",
+  "setting999"
 ].forEach(
   id => {
 
