@@ -18,6 +18,63 @@
   <style>
 
     /* =========================================================
+       COLOR SYSTEM
+    ========================================================= */
+
+    :root {
+
+      --cream:
+        #FAF1E4;
+
+      --cream-2:
+        #F2E1CF;
+
+      --stone:
+        #D2C6BE;
+
+      --stone-2:
+        #CABCB2;
+
+      --beige:
+        #E0D3CA;
+
+      --taupe:
+        #B3A59A;
+
+      --gold:
+        #C0936C;
+
+      --gold-2:
+        #A3744D;
+
+      --brown:
+        #835935;
+
+      --brown-dark:
+        #5C3D24;
+
+      --red:
+        #9E1E19;
+
+      --red-dark:
+        #521107;
+
+      --deep:
+        #240603;
+
+      --white:
+        #FFFFFF;
+
+      --green:
+        #159447;
+
+      --green-light:
+        #29B765;
+
+    }
+
+
+    /* =========================================================
        RESET
     ========================================================= */
 
@@ -28,9 +85,15 @@
 
     html,
     body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
+
+      width:
+        100%;
+
+      min-height:
+        100%;
+
+      margin:
+        0;
     }
 
 
@@ -41,22 +104,26 @@
         Arial,
         sans-serif;
 
-      color: #2e0803;
+      color:
+        var(--deep);
 
       background:
+
         radial-gradient(
-          circle at 50% -15%,
-          #fffefa 0%,
-          #f9eee2 42%,
-          #ead8c7 100%
+          circle at 50% -20%,
+          var(--white) 0%,
+          var(--cream) 34%,
+          var(--cream-2) 68%,
+          var(--beige) 100%
         );
 
-      overflow-x: hidden;
+      overflow-x:
+        hidden;
     }
 
 
     /* =========================================================
-       MAIN FRAME
+       MAIN
     ========================================================= */
 
     .container {
@@ -71,7 +138,7 @@
         auto;
 
       padding:
-        28px 0 22px;
+        24px 0;
 
       display:
         flex;
@@ -82,7 +149,7 @@
 
 
     /* =========================================================
-       LUXURY FRAME
+       LUXURY BOARD
     ========================================================= */
 
     .board-frame {
@@ -100,26 +167,39 @@
         column;
 
       padding:
-        28px 30px 20px;
+        26px 30px 20px;
 
       border:
         1px solid
-        rgba(168, 115, 75, .30);
+        rgba(131, 89, 53, .32);
 
       border-radius:
         30px;
 
       background:
-        rgba(255, 253, 249, .36);
+
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.86),
+          rgba(250,241,228,.72)
+        );
 
       box-shadow:
-        0 25px 70px
-        rgba(112, 83, 59, .10);
+
+        0 28px 80px
+        rgba(92,61,36,.14),
+
+        inset 0 1px 0
+        rgba(255,255,255,.95);
 
       overflow:
         hidden;
     }
 
+
+    /* =========================================================
+       GLOWING TOP BAR
+    ========================================================= */
 
     .board-frame::before {
 
@@ -133,25 +213,63 @@
         0;
 
       right:
-        12%;
+        7%;
 
       left:
-        12%;
+        7%;
 
       height:
-        2px;
+        3px;
 
       background:
+
         linear-gradient(
           90deg,
           transparent,
-          #a8734b,
-          #c39871,
-          #a8734b,
+          var(--gold),
+          #E5C49D,
+          var(--red),
+          #E5C49D,
+          var(--gold),
           transparent
         );
+
+      box-shadow:
+
+        0 0 6px
+        rgba(192,147,108,.70),
+
+        0 0 18px
+        rgba(192,147,108,.45),
+
+        0 0 30px
+        rgba(158,30,25,.18);
+
+      animation:
+        lightFlow 3s linear infinite;
     }
 
+
+    @keyframes lightFlow {
+
+      0% {
+        opacity: .65;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: .65;
+      }
+
+    }
+
+
+    /* =========================================================
+       DECORATIVE LIGHT
+    ========================================================= */
 
     .board-frame::after {
 
@@ -162,13 +280,13 @@
         absolute;
 
       width:
-        260px;
+        420px;
 
       height:
-        260px;
+        420px;
 
       top:
-        -170px;
+        -280px;
 
       left:
         50%;
@@ -180,7 +298,10 @@
         50%;
 
       background:
-        rgba(195, 152, 113, .08);
+        rgba(192,147,108,.10);
+
+      filter:
+        blur(5px);
 
       pointer-events:
         none;
@@ -211,12 +332,12 @@
       gap:
         25px;
 
-      padding-bottom:
-        23px;
+      padding:
+        4px 0 22px;
 
       border-bottom:
         1px solid
-        rgba(112, 83, 59, .18);
+        rgba(131,89,53,.20);
     }
 
 
@@ -229,11 +350,13 @@
         center;
 
       gap:
-        17px;
+        16px;
     }
 
 
-    /* Temporary logo */
+    /* =========================================================
+       LOGO
+    ========================================================= */
 
     .logo {
 
@@ -256,25 +379,30 @@
         20px;
 
       background:
+
         linear-gradient(
           145deg,
-          #fffefa,
-          #f1e0cf
+          var(--white),
+          var(--cream-2)
         );
 
       border:
         1px solid
-        #c39871;
+        var(--gold);
 
       box-shadow:
-        inset 0 0 0 1px
-        rgba(255,255,255,.8),
 
-        0 8px 25px
-        rgba(112,83,59,.13);
+        inset 0 0 0 1px
+        rgba(255,255,255,.95),
+
+        0 7px 22px
+        rgba(92,61,36,.14),
+
+        0 0 15px
+        rgba(192,147,108,.18);
 
       color:
-        #632a16;
+        var(--red-dark);
 
       font-size:
         20px;
@@ -293,7 +421,7 @@
         0;
 
       color:
-        #2e0803;
+        var(--deep);
 
       font-size:
         clamp(
@@ -306,7 +434,7 @@
         950;
 
       letter-spacing:
-        1.5px;
+        1.4px;
     }
 
 
@@ -316,7 +444,7 @@
         7px 0 0;
 
       color:
-        #70533b;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -326,7 +454,7 @@
         );
 
       font-weight:
-        700;
+        800;
 
       letter-spacing:
         2px;
@@ -334,7 +462,7 @@
 
 
     /* =========================================================
-       LIVE STATUS
+       ONLINE STATUS
     ========================================================= */
 
     .status {
@@ -349,20 +477,20 @@
         10px;
 
       padding:
-        10px 16px;
+        10px 17px;
 
       border:
         1px solid
-        rgba(32,163,90,.20);
+        rgba(21,148,71,.25);
 
       border-radius:
         999px;
 
       background:
-        rgba(255,255,255,.50);
+        rgba(255,255,255,.68);
 
       color:
-        #52735d;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -376,88 +504,81 @@
 
       white-space:
         nowrap;
+
+      box-shadow:
+        0 5px 18px
+        rgba(92,61,36,.07);
     }
 
 
-    .status-dot {
+    /* =========================================================
+       GREEN BLINK
+       فقط چشمک می‌زند — بدون pulse
+    ========================================================= */
+
+    .status-dot,
+    .live-dot {
 
       width:
-        11px;
+        10px;
 
       height:
-        11px;
+        10px;
+
+      flex-shrink:
+        0;
 
       border-radius:
         50%;
 
       background:
-        #20a35a;
+        var(--green);
 
       box-shadow:
-        0 0 0 5px
-        rgba(32,163,90,.10);
+        0 0 7px
+        rgba(21,148,71,.75);
 
       animation:
-        pulse 1.4s infinite;
+        greenBlink 1s steps(1, end) infinite;
+    }
+
+
+    @keyframes greenBlink {
+
+      0%,
+      45% {
+        opacity: 1;
+      }
+
+      46%,
+      100% {
+        opacity: .25;
+      }
+
     }
 
 
     .status.error {
 
       color:
-        #9d3939;
+        var(--red);
 
       border-color:
-        rgba(198,40,40,.20);
+        rgba(158,30,25,.25);
     }
 
 
     .status.error .status-dot {
 
       background:
-        #c62828;
+        var(--red);
 
       box-shadow:
-        0 0 0 5px
-        rgba(198,40,40,.10);
+        0 0 8px
+        rgba(158,30,25,.45);
 
       animation:
         none;
-    }
-
-
-    /* =========================================================
-       ANIMATION
-    ========================================================= */
-
-    @keyframes pulse {
-
-      0% {
-
-        transform:
-          scale(1);
-
-        opacity:
-          1;
-      }
-
-      50% {
-
-        transform:
-          scale(1.35);
-
-        opacity:
-          .55;
-      }
-
-      100% {
-
-        transform:
-          scale(1);
-
-        opacity:
-          1;
-      }
     }
 
 
@@ -477,7 +598,7 @@
         center;
 
       padding:
-        28px 0 27px;
+        27px 0 25px;
     }
 
 
@@ -499,7 +620,7 @@
         10px;
 
       color:
-        #a8734b;
+        var(--gold-2);
 
       font-size:
         clamp(
@@ -523,26 +644,32 @@
         "";
 
       width:
-        38px;
+        45px;
 
       height:
         1px;
 
       background:
+
         linear-gradient(
           90deg,
           transparent,
-          #c39871
+          var(--gold)
         );
+
+      box-shadow:
+        0 0 7px
+        rgba(192,147,108,.55);
     }
 
 
     .hero-small::after {
 
       background:
+
         linear-gradient(
           90deg,
-          #c39871,
+          var(--gold),
           transparent
         );
     }
@@ -554,7 +681,7 @@
         0;
 
       color:
-        #2e0803;
+        var(--deep);
 
       font-size:
         clamp(
@@ -568,6 +695,10 @@
 
       font-weight:
         950;
+
+      text-shadow:
+        0 2px 10px
+        rgba(131,89,53,.10);
     }
 
 
@@ -577,7 +708,7 @@
         12px 0 0;
 
       color:
-        #806b58;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -587,12 +718,13 @@
         );
 
       font-weight:
-        600;
+        650;
     }
 
 
     /* =========================================================
        PRICE GRID
+       جای قیمت‌ها بدون تغییر
     ========================================================= */
 
     .prices {
@@ -648,25 +780,27 @@
         28px 10px;
 
       background:
+
         linear-gradient(
           145deg,
-          rgba(255,255,255,.94),
-          rgba(252,244,235,.82)
+          rgba(255,255,255,.96),
+          rgba(242,225,207,.72)
         );
 
       border:
         1px solid
-        rgba(163,125,92,.35);
+        rgba(131,89,53,.30);
 
       border-radius:
         22px;
 
       box-shadow:
-        0 15px 38px
-        rgba(112,83,59,.09),
+
+        0 16px 40px
+        rgba(92,61,36,.10),
 
         inset 0 1px 0
-        rgba(255,255,255,.9);
+        rgba(255,255,255,.95);
 
       overflow:
         hidden;
@@ -677,7 +811,9 @@
     }
 
 
-    /* Gold top line */
+    /* =========================================================
+       GLOWING CARD TOP LINE
+    ========================================================= */
 
     .price-card::before {
 
@@ -691,27 +827,40 @@
         0;
 
       right:
-        22%;
+        15%;
 
       left:
-        22%;
+        15%;
 
       height:
-        2px;
+        3px;
 
       background:
+
         linear-gradient(
           90deg,
           transparent,
-          #c39871,
-          #a8734b,
-          #c39871,
+          var(--gold-2),
+          #E4C098,
+          var(--red),
+          #E4C098,
+          var(--gold-2),
           transparent
         );
+
+      box-shadow:
+
+        0 0 5px
+        rgba(192,147,108,.75),
+
+        0 0 15px
+        rgba(192,147,108,.35);
     }
 
 
-    /* Decorative corner */
+    /* =========================================================
+       CARD LIGHT STRIPE
+    ========================================================= */
 
     .price-card::after {
 
@@ -721,24 +870,35 @@
       position:
         absolute;
 
+      top:
+        30%;
+
+      right:
+        -45%;
+
       width:
-        70px;
+        190%;
 
       height:
-        70px;
+        1px;
 
-      left:
-        -38px;
+      transform:
+        rotate(-18deg);
 
-      bottom:
-        -38px;
+      background:
 
-      border-radius:
-        50%;
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.85),
+          transparent
+        );
 
-      border:
-        1px solid
-        rgba(195,152,113,.18);
+      opacity:
+        .65;
+
+      pointer-events:
+        none;
     }
 
 
@@ -748,8 +908,12 @@
         translateY(-4px);
 
       box-shadow:
-        0 22px 45px
-        rgba(112,83,59,.14);
+
+        0 24px 50px
+        rgba(92,61,36,.16),
+
+        0 0 20px
+        rgba(192,147,108,.12);
     }
 
 
@@ -772,7 +936,7 @@
         10px;
 
       color:
-        #70533b;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -789,32 +953,6 @@
     }
 
 
-    .live-dot {
-
-      width:
-        10px;
-
-      height:
-        10px;
-
-      flex-shrink:
-        0;
-
-      border-radius:
-        50%;
-
-      background:
-        #20a35a;
-
-      box-shadow:
-        0 0 0 5px
-        rgba(32,163,90,.09);
-
-      animation:
-        pulse 1.4s infinite;
-    }
-
-
     /* =========================================================
        PRICE
     ========================================================= */
@@ -825,7 +963,7 @@
         25px;
 
       color:
-        #2e0803;
+        var(--deep);
 
       font-size:
         clamp(
@@ -848,6 +986,10 @@
 
       white-space:
         nowrap;
+
+      text-shadow:
+        0 2px 8px
+        rgba(92,61,36,.10);
     }
 
 
@@ -857,7 +999,7 @@
         12px;
 
       color:
-        #a8734b;
+        var(--gold-2);
 
       font-size:
         clamp(
@@ -872,7 +1014,7 @@
 
 
     /* =========================================================
-       UPDATE
+       UPDATE BAR
     ========================================================= */
 
     .update {
@@ -893,13 +1035,16 @@
         center;
 
       gap:
-        6px;
+        7px;
 
       margin:
-        23px 0 14px;
+        23px 0 15px;
+
+      padding:
+        9px 20px;
 
       color:
-        #806b58;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -913,13 +1058,59 @@
     }
 
 
+    /* glowing lines around update */
+
+    .update::before,
+    .update::after {
+
+      content:
+        "";
+
+      width:
+        70px;
+
+      height:
+        1px;
+
+      background:
+
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--gold)
+        );
+
+      box-shadow:
+        0 0 6px
+        rgba(192,147,108,.55);
+    }
+
+
+    .update::after {
+
+      background:
+
+        linear-gradient(
+          90deg,
+          var(--gold),
+          transparent
+        );
+    }
+
+
     .update-time {
 
       color:
-        #632a16;
+        var(--red-dark);
 
       font-weight:
-        900;
+        950;
+
+      direction:
+        ltr;
+
+      white-space:
+        nowrap;
     }
 
 
@@ -955,13 +1146,13 @@
 
       border-top:
         1px solid
-        rgba(112,83,59,.15);
+        rgba(131,89,53,.18);
 
       text-align:
         center;
 
       color:
-        #806b58;
+        var(--brown-dark);
 
       font-size:
         clamp(
@@ -975,7 +1166,7 @@
     footer strong {
 
       color:
-        #2e0803;
+        var(--deep);
 
       font-size:
         clamp(
@@ -989,7 +1180,7 @@
     .footer-separator {
 
       color:
-        #c39871;
+        var(--gold);
     }
 
 
@@ -999,7 +1190,7 @@
         ltr;
 
       color:
-        #632a16;
+        var(--red-dark);
 
       font-weight:
         900;
@@ -1147,6 +1338,14 @@
       }
 
 
+      .update::before,
+      .update::after {
+
+        width:
+          25px;
+      }
+
+
       footer {
 
         line-height:
@@ -1156,7 +1355,7 @@
 
 
     /* =========================================================
-       VERY SMALL SCREEN
+       VERY SMALL
     ========================================================= */
 
     @media (max-width: 380px) {
@@ -1174,6 +1373,7 @@
           145px;
       }
     }
+
 
   </style>
 
@@ -1199,11 +1399,6 @@
         <div class="brand">
 
 
-          <!--
-            فعلاً لوگوی متنی.
-            بعداً با لوگوی واقعی جایگزین می‌شود.
-          -->
-
           <div class="logo">
             SZF
           </div>
@@ -1225,8 +1420,6 @@
 
         </div>
 
-
-        <!-- ONLINE -->
 
         <div
           class="status"
@@ -1272,6 +1465,7 @@
 
       <!-- =====================================================
            PRICE BOARD
+           جای قیمت‌ها ثابت است
       ====================================================== -->
 
       <section class="prices">
@@ -1431,7 +1625,7 @@
 
 
       <!-- =====================================================
-           UPDATE
+           UPDATE TIME
       ====================================================== -->
 
       <div class="update">
@@ -1497,7 +1691,7 @@
 
 
     /* =========================================================
-       MITHQAL
+       MITHQAL CONSTANTS
     ========================================================= */
 
     const MITHQAL_GRAM =
@@ -1509,7 +1703,7 @@
 
 
     /* =========================================================
-       FORMAT NUMBER
+       NUMBER FORMAT
     ========================================================= */
 
     function formatNumber(value) {
@@ -1573,6 +1767,62 @@
 
 
     /* =========================================================
+       IRAN LOCAL TIME
+       زمان ایران — Asia/Tehran
+    ========================================================= */
+
+    function formatIranDateTime(
+      isoDate
+    ) {
+
+      const date =
+        new Date(
+          isoDate
+        );
+
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+
+        return "—";
+      }
+
+
+      return new Intl.DateTimeFormat(
+        "fa-IR",
+        {
+          timeZone:
+            "Asia/Tehran",
+
+          year:
+            "numeric",
+
+          month:
+            "2-digit",
+
+          day:
+            "2-digit",
+
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit",
+
+          second:
+            "2-digit",
+
+          hour12:
+            false
+        }
+      ).format(date);
+    }
+
+
+    /* =========================================================
        STATUS
     ========================================================= */
 
@@ -1608,8 +1858,12 @@
        UPDATE UI
     ========================================================= */
 
-    function updateUI(data) {
+    function updateUI(
+      data
+    ) {
 
+
+      /* 999 */
 
       const silver999 =
         Number(
@@ -1624,7 +1878,7 @@
         0.925;
 
 
-      /* 17K Mithqal */
+      /* 17K MITHQAL */
 
       const mithqal17 =
         calculateMithqal17(
@@ -1632,7 +1886,9 @@
         );
 
 
-      /* MITHQAL */
+      /* =====================================================
+         MITHQAL
+      ===================================================== */
 
       document.getElementById(
         "mithqal17"
@@ -1642,7 +1898,9 @@
         );
 
 
-      /* OUNCE */
+      /* =====================================================
+         SILVER OUNCE
+      ===================================================== */
 
       document.getElementById(
         "silverOunce"
@@ -1659,7 +1917,9 @@
         );
 
 
-      /* USD */
+      /* =====================================================
+         USD
+      ===================================================== */
 
       document.getElementById(
         "usd"
@@ -1669,7 +1929,9 @@
         );
 
 
-      /* 999 */
+      /* =====================================================
+         SILVER 999
+      ===================================================== */
 
       document.getElementById(
         "silver999"
@@ -1679,7 +1941,9 @@
         );
 
 
-      /* 925 */
+      /* =====================================================
+         SILVER 925
+      ===================================================== */
 
       document.getElementById(
         "silver925"
@@ -1689,27 +1953,27 @@
         );
 
 
-      /* UPDATE TIME */
+      /* =====================================================
+         DATE + TIME
+      ===================================================== */
 
-      if (data.updatedAt) {
-
-        const date =
-          new Date(
-            data.updatedAt
-          );
-
+      if (
+        data.updatedAt
+      ) {
 
         document.getElementById(
           "updatedAt"
         ).textContent =
 
-          date.toLocaleTimeString(
-            "fa-IR"
+          formatIranDateTime(
+            data.updatedAt
           );
       }
 
 
-      /* ONLINE */
+      /* =====================================================
+         ONLINE
+      ===================================================== */
 
       setStatus(
         true,
@@ -1803,7 +2067,8 @@
 
 
     /* =========================================================
-       AUTO UPDATE — EVERY 1 SECOND
+       AUTO UPDATE
+       هر ۱ ثانیه
     ========================================================= */
 
     setInterval(
