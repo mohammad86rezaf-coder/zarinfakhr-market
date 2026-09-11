@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+«»
 
 <meta
-  name="theme-color"
-  content="#FAF1E4"
->
+name="theme-color"
+content="#FAF1E4"
 
-<title>SILVER ZARIN FAKHR</title>
+«»
 
-<style>
+<title>SILVER ZARIN FAKHR</title><style>
 
 /* =========================================================
    SILVER ZARIN FAKHR
@@ -60,22 +53,14 @@
    ========================================================= */
 
 *{
-
   box-sizing:border-box;
-
   margin:0;
-
   padding:0;
-
 }
-
 
 html{
-
   scroll-behavior:smooth;
-
 }
-
 
 body{
 
@@ -131,7 +116,7 @@ body{
   max-width:430px;
 
   background:
-    rgba(255,255,255,.90);
+    rgba(255,255,255,.92);
 
   border:1px solid var(--border);
 
@@ -351,8 +336,6 @@ body{
 }
 
 
-/* حرکت نور بسیار ظریف */
-
 .header-card::after{
 
   content:"";
@@ -473,8 +456,8 @@ body{
 
 
 /* =========================================================
-   ONLINE INDICATOR
-   فقط همین چراغ چشمک/تپش دارد
+   ONLINE LIGHT
+   فقط همین چراغ تپش دارد
    ========================================================= */
 
 .connection{
@@ -779,7 +762,7 @@ body.status-loading .live-light{
 
 
 /* =========================================================
-   PRICE AREA
+   MARKET AREA
    ========================================================= */
 
 .market-area{
@@ -795,7 +778,7 @@ body.status-loading .live-light{
 }
 
 
-/* نوار نورانی چرخان دور کادر قیمت */
+/* نوار نورانی چرخان */
 
 .market-area::before{
 
@@ -842,7 +825,7 @@ body.status-loading .live-light{
 }
 
 
-/* حالت آنلاین */
+/* آنلاین = سبز */
 
 body.status-online .market-area::before{
 
@@ -856,11 +839,11 @@ body.status-online .market-area::before{
 
       transparent 275deg,
 
-      rgba(24,169,87,.15) 292deg,
+      rgba(24,169,87,.10) 292deg,
 
       var(--green) 315deg,
 
-      rgba(24,169,87,.15) 340deg,
+      rgba(24,169,87,.10) 340deg,
 
       transparent 355deg
 
@@ -874,7 +857,7 @@ body.status-online .market-area::before{
 }
 
 
-/* حالت خطا */
+/* قطع ارتباط = قرمز */
 
 body.status-error .market-area::before{
 
@@ -888,11 +871,11 @@ body.status-error .market-area::before{
 
       transparent 275deg,
 
-      rgba(214,47,47,.15) 292deg,
+      rgba(214,47,47,.10) 292deg,
 
       var(--error) 315deg,
 
-      rgba(214,47,47,.15) 340deg,
+      rgba(214,47,47,.10) 340deg,
 
       transparent 355deg
 
@@ -906,7 +889,7 @@ body.status-error .market-area::before{
 }
 
 
-/* حالت دریافت */
+/* در حال دریافت = طلایی */
 
 body.status-loading .market-area::before{
 
@@ -920,11 +903,11 @@ body.status-loading .market-area::before{
 
       transparent 275deg,
 
-      rgba(192,147,108,.15) 292deg,
+      rgba(192,147,108,.10) 292deg,
 
       var(--gold2) 315deg,
 
-      rgba(192,147,108,.15) 340deg,
+      rgba(192,147,108,.10) 340deg,
 
       transparent 355deg
 
@@ -933,7 +916,9 @@ body.status-loading .market-area::before{
 }
 
 
-/* خود کارت */
+/* =========================================================
+   MARKET CARD
+   ========================================================= */
 
 .market-card{
 
@@ -951,6 +936,8 @@ body.status-loading .market-area::before{
   padding:17px 14px;
 
   min-height:154px;
+
+  height:154px;
 
   box-shadow:var(--shadow);
 
@@ -1024,7 +1011,7 @@ body.status-loading .market-area::before{
 
 
 /* =========================================================
-   SERVER UPDATE
+   SERVER HOUR
    ========================================================= */
 
 .server-info{
@@ -1350,7 +1337,9 @@ body.status-loading .market-area::before{
 }
 
 
-/* آیکن واقعی‌تر اینستاگرام */
+/* =========================================================
+   INSTAGRAM ICON
+   ========================================================= */
 
 .instagram-icon{
 
@@ -1522,771 +1511,707 @@ body.status-loading .market-area::before{
 
 }
 
-</style>
-
-</head>
-
-
-<body class="status-loading">
-
-
-<!-- =====================================================
+</style></head><body class="status-loading"><!-- =====================================================
      LOGIN
-     ===================================================== -->
-
-<div
+     ===================================================== --><div
   id="loginPage"
   class="login-page"
->
-
-  <div class="login-box">
-
-    <div class="logo">
-      SZF
-    </div>
-
-    <div class="login-title">
-      SILVER ZARIN FAKHR
-    </div>
-
-    <div class="login-subtitle">
-      پنل مدیریت و محاسبه قیمت
-    </div>
-
-    <input
-      id="passwordInput"
-      class="input"
-      type="password"
-      placeholder="رمز ورود"
-      autocomplete="current-password"
-    >
-
-    <button
-      id="loginButton"
-      class="btn"
-    >
-      ورود به برنامه
-    </button>
-
-    <div
-      id="loginError"
-      class="error"
-    ></div>
-
-  </div>
-
+>  <div class="login-box"><div class="logo">
+  SZF
 </div>
 
+<div class="login-title">
+  SILVER ZARIN FAKHR
+</div>
 
-<!-- =====================================================
-     APP
-     ===================================================== -->
+<div class="login-subtitle">
+  پنل مدیریت و محاسبه قیمت
+</div>
 
-<div
-  id="app"
-  class="app"
+<input
+  id="passwordInput"
+  class="input"
+  type="password"
+  placeholder="رمز ورود"
+  autocomplete="current-password"
 >
 
-  <div class="container">
+<button
+  id="loginButton"
+  class="btn"
+>
+  ورود به برنامه
+</button>
 
+<div
+  id="loginError"
+  class="error"
+></div>
 
-    <!-- HEADER -->
+  </div></div><!-- =====================================================
+     APP
+     ===================================================== --><div
+  id="app"
+  class="app"
+>  <div class="container"><!-- HEADER -->
 
-    <header class="header">
+<header class="header">
 
-      <div class="header-card">
+  <div class="header-card">
 
-        <div class="header-top">
+    <div class="header-top">
 
-          <div class="brand">
+      <div class="brand">
 
-            <div class="brand-logo">
-              SZF
-            </div>
-
-            <div class="brand-text">
-
-              <h1>
-                SILVER ZARIN FAKHR
-              </h1>
-
-              <p>
-                زیبایی در درخشندگی، اصالت در ماندگاری
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="connection">
-
-            <span
-              id="liveLight"
-              class="live-light"
-            ></span>
-
-            <span id="connectionText">
-              در حال اتصال...
-            </span>
-
-          </div>
-
+        <div class="brand-logo">
+          SZF
         </div>
 
+        <div class="brand-text">
 
-        <!-- ساعت و تاریخ دستگاه -->
+          <h1>
+            SILVER ZARIN FAKHR
+          </h1>
 
-        <div class="time-panel">
-
-          <div class="time-box">
-
-            <span class="time-label">
-              تاریخ دستگاه
-            </span>
-
-            <span
-              id="deviceDate"
-              class="time-value"
-            >
-              ----/--/--
-            </span>
-
-          </div>
-
-
-          <div class="time-box">
-
-            <span class="time-label">
-              ساعت دستگاه
-            </span>
-
-            <span
-              id="deviceTime"
-              class="time-value"
-            >
-              --:--:--
-            </span>
-
-          </div>
-
-
-          <div class="time-box">
-
-            <span class="time-label">
-              آخرین دریافت قیمت
-            </span>
-
-            <span
-              id="lastServerUpdate"
-              class="time-value"
-            >
-              --:--:--
-            </span>
-
-          </div>
+          <p>
+            زیبایی در درخشندگی، اصالت در ماندگاری
+          </p>
 
         </div>
 
       </div>
 
-    </header>
+
+      <div class="connection">
+
+        <span
+          id="liveLight"
+          class="live-light"
+        ></span>
+
+        <span id="connectionText">
+          در حال اتصال...
+        </span>
+
+      </div>
+
+    </div>
 
 
-    <!-- NAV -->
+    <!-- DEVICE CLOCK -->
 
-    <nav class="nav">
+    <div class="time-panel">
 
-      <button
-        class="active"
-        onclick="showSection('market',this)"
-      >
-        بازار
-      </button>
+      <div class="time-box">
 
-      <button
-        onclick="showSection('calculator',this)"
-      >
-        محاسبه قیمت
-      </button>
+        <span class="time-label">
+          تاریخ دستگاه
+        </span>
 
-      <button
-        onclick="showSection('settings',this)"
-      >
-        تنظیمات
-      </button>
-
-    </nav>
-
-
-    <!-- =================================================
-         MARKET
-         ================================================= -->
-
-    <section
-      id="marketSection"
-      class="section"
-    >
-
-      <div class="section-title">
-
-        <h2>
-          قیمت لحظه‌ای بازار
-        </h2>
-
-        <span>
-          اطلاعات زنده
+        <span
+          id="deviceDate"
+          class="time-value"
+        >
+          ----/--/--
         </span>
 
       </div>
 
 
-      <div class="market-grid">
+      <div class="time-box">
 
+        <span class="time-label">
+          ساعت دستگاه
+        </span>
 
-        <!-- MITHQAL -->
-
-        <div class="market-area">
-
-          <div class="market-card">
-
-            <div class="market-head">
-
-              <span class="market-name">
-                مثقال ۱۷ عیار
-              </span>
-
-              <span class="market-dot"></span>
-
-            </div>
-
-            <div
-              id="mithqal17"
-              class="market-price"
-            >
-              —
-            </div>
-
-            <div class="market-unit">
-              تومان
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- SILVER OUNCE -->
-
-        <div class="market-area">
-
-          <div class="market-card">
-
-            <div class="market-head">
-
-              <span class="market-name">
-                انس نقره
-              </span>
-
-              <span class="market-dot"></span>
-
-            </div>
-
-            <div
-              id="silverOunce"
-              class="market-price"
-            >
-              —
-            </div>
-
-            <div class="market-unit">
-              دلار
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- USD -->
-
-        <div class="market-area">
-
-          <div class="market-card">
-
-            <div class="market-head">
-
-              <span class="market-name">
-                دلار
-              </span>
-
-              <span class="market-dot"></span>
-
-            </div>
-
-            <div
-              id="usd"
-              class="market-price"
-            >
-              —
-            </div>
-
-            <div class="market-unit">
-              تومان
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- SILVER 999 -->
-
-        <div class="market-area">
-
-          <div class="market-card">
-
-            <div class="market-head">
-
-              <span class="market-name">
-                نقره ۹۹۹
-              </span>
-
-              <span class="market-dot"></span>
-
-            </div>
-
-            <div
-              id="silver999"
-              class="market-price"
-            >
-              —
-            </div>
-
-            <div class="market-unit">
-              تومان / گرم
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- SILVER 925 -->
-
-        <div class="market-area">
-
-          <div class="market-card">
-
-            <div class="market-head">
-
-              <span class="market-name">
-                نقره ۹۲۵
-              </span>
-
-              <span class="market-dot"></span>
-
-            </div>
-
-            <div
-              id="silver925"
-              class="market-price"
-            >
-              —
-            </div>
-
-            <div class="market-unit">
-              تومان / گرم
-            </div>
-
-          </div>
-
-        </div>
+        <span
+          id="deviceTime"
+          class="time-value"
+        >
+          --:--:--
+        </span>
 
       </div>
 
 
-      <!-- فقط ساعت ۱۸ -->
+      <div class="time-box">
 
-      <div class="server-info">
+        <span class="time-label">
+          آخرین دریافت قیمت
+        </span>
 
-        <strong id="serverHour">
-          ۱۸
+        <span
+          id="lastServerUpdate"
+          class="time-value"
+        >
+          --:--:--
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- NAV -->
+
+<nav class="nav">
+
+  <button
+    class="active"
+    onclick="showSection('market',this)"
+  >
+    بازار
+  </button>
+
+  <button
+    onclick="showSection('calculator',this)"
+  >
+    محاسبه قیمت
+  </button>
+
+  <button
+    onclick="showSection('settings',this)"
+  >
+    تنظیمات
+  </button>
+
+</nav>
+
+
+<!-- MARKET -->
+
+<section
+  id="marketSection"
+  class="section"
+>
+
+  <div class="section-title">
+
+    <h2>
+      قیمت لحظه‌ای بازار
+    </h2>
+
+    <span>
+      اطلاعات زنده
+    </span>
+
+  </div>
+
+
+  <div class="market-grid">
+
+
+    <div class="market-area">
+
+      <div class="market-card">
+
+        <div class="market-head">
+
+          <span class="market-name">
+            مثقال ۱۷ عیار
+          </span>
+
+        </div>
+
+        <div
+          id="mithqal17"
+          class="market-price"
+        >
+          —
+        </div>
+
+        <div class="market-unit">
+          تومان
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="market-area">
+
+      <div class="market-card">
+
+        <div class="market-head">
+
+          <span class="market-name">
+            انس نقره
+          </span>
+
+        </div>
+
+        <div
+          id="silverOunce"
+          class="market-price"
+        >
+          —
+        </div>
+
+        <div class="market-unit">
+          دلار
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="market-area">
+
+      <div class="market-card">
+
+        <div class="market-head">
+
+          <span class="market-name">
+            دلار
+          </span>
+
+        </div>
+
+        <div
+          id="usd"
+          class="market-price"
+        >
+          —
+        </div>
+
+        <div class="market-unit">
+          تومان
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="market-area">
+
+      <div class="market-card">
+
+        <div class="market-head">
+
+          <span class="market-name">
+            نقره ۹۹۹
+          </span>
+
+        </div>
+
+        <div
+          id="silver999"
+          class="market-price"
+        >
+          —
+        </div>
+
+        <div class="market-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="market-area">
+
+      <div class="market-card">
+
+        <div class="market-head">
+
+          <span class="market-name">
+            نقره ۹۲۵
+          </span>
+
+        </div>
+
+        <div
+          id="silver925"
+          class="market-price"
+        >
+          —
+        </div>
+
+        <div class="market-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="server-info">
+
+    <strong id="serverHour">
+      ۱۸
+    </strong>
+
+  </div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+
+<section
+  id="calculatorSection"
+  class="section"
+  style="display:none"
+>
+
+  <div class="section-title">
+
+    <h2>
+      محاسبه قیمت نهایی
+    </h2>
+
+    <span>
+      بر اساس قیمت نقره ۹۹۹
+    </span>
+
+  </div>
+
+
+  <div class="calculator">
+
+    <div class="form-grid">
+
+      <div class="field">
+
+        <label>
+          وزن (گرم)
+        </label>
+
+        <input
+          id="calcWeight"
+          type="number"
+          step="0.01"
+          value="1"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          عیار
+        </label>
+
+        <select id="calcPurity">
+
+          <option value="925">
+            925
+          </option>
+
+          <option value="999">
+            999
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          اجرت هر گرم
+        </label>
+
+        <input
+          id="calcLabor"
+          type="number"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          سود (%)
+        </label>
+
+        <input
+          id="calcProfit"
+          type="number"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          هزینه اضافه
+        </label>
+
+        <input
+          id="calcExtra"
+          type="number"
+          value="0"
+        >
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="calculate-btn"
+      onclick="calculatePrice()"
+    >
+      محاسبه قیمت
+    </button>
+
+
+    <div class="results">
+
+      <div class="result">
+
+        <small>
+          قیمت پایه
+        </small>
+
+        <strong id="resultBase">
+          ۰
         </strong>
 
       </div>
 
-    </section>
 
+      <div class="result">
 
-    <!-- =================================================
-         CALCULATOR
-         ================================================= -->
+        <small>
+          اجرت
+        </small>
 
-    <section
-      id="calculatorSection"
-      class="section"
-      style="display:none"
-    >
-
-      <div class="section-title">
-
-        <h2>
-          محاسبه قیمت نهایی
-        </h2>
-
-        <span>
-          بر اساس قیمت نقره ۹۹۹
-        </span>
+        <strong id="resultLabor">
+          ۰
+        </strong>
 
       </div>
 
 
-      <div class="calculator">
+      <div class="result">
 
-        <div class="form-grid">
+        <small>
+          هزینه اضافه
+        </small>
 
-
-          <div class="field">
-
-            <label>
-              وزن (گرم)
-            </label>
-
-            <input
-              id="calcWeight"
-              type="number"
-              step="0.01"
-              value="1"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              عیار
-            </label>
-
-            <select id="calcPurity">
-
-              <option value="925">
-                925
-              </option>
-
-              <option value="999">
-                999
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              اجرت هر گرم
-            </label>
-
-            <input
-              id="calcLabor"
-              type="number"
-              value="0"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              سود (%)
-            </label>
-
-            <input
-              id="calcProfit"
-              type="number"
-              value="0"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              هزینه اضافه
-            </label>
-
-            <input
-              id="calcExtra"
-              type="number"
-              value="0"
-            >
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="calculate-btn"
-          onclick="calculatePrice()"
-        >
-          محاسبه قیمت
-        </button>
-
-
-        <div class="results">
-
-
-          <div class="result">
-
-            <small>
-              قیمت پایه
-            </small>
-
-            <strong id="resultBase">
-              ۰
-            </strong>
-
-          </div>
-
-
-          <div class="result">
-
-            <small>
-              اجرت
-            </small>
-
-            <strong id="resultLabor">
-              ۰
-            </strong>
-
-          </div>
-
-
-          <div class="result">
-
-            <small>
-              هزینه اضافه
-            </small>
-
-            <strong id="resultExtra">
-              ۰
-            </strong>
-
-          </div>
-
-
-          <div class="result">
-
-            <small>
-              سود
-            </small>
-
-            <strong id="resultProfit">
-              ۰
-            </strong>
-
-          </div>
-
-
-          <div class="result final-result">
-
-            <small>
-              قیمت نهایی
-            </small>
-
-            <strong id="resultFinal">
-              ۰ تومان
-            </strong>
-
-          </div>
-
-
-        </div>
+        <strong id="resultExtra">
+          ۰
+        </strong>
 
       </div>
 
-    </section>
 
+      <div class="result">
 
-    <!-- =================================================
-         SETTINGS
-         ================================================= -->
+        <small>
+          سود
+        </small>
 
-    <section
-      id="settingsSection"
-      class="section"
-      style="display:none"
-    >
-
-      <div class="section-title">
-
-        <h2>
-          تنظیمات
-        </h2>
-
-        <span>
-          مدیریت شخصی زرین فخر
-        </span>
+        <strong id="resultProfit">
+          ۰
+        </strong>
 
       </div>
 
 
-      <div class="settings">
+      <div class="result final-result">
 
+        <small>
+          قیمت نهایی
+        </small>
 
-        <div class="setting-card">
-
-          <h3>
-            تنظیمات قیمت
-          </h3>
-
-
-          <input
-            id="setting999"
-            class="input"
-            type="number"
-            placeholder="قیمت دستی نقره ۹۹۹"
-          >
-
-
-          <input
-            id="settingLabor"
-            class="input"
-            type="number"
-            placeholder="اجرت پیش‌فرض هر گرم"
-          >
-
-
-          <button
-            class="btn"
-            onclick="saveMarketSettings()"
-          >
-            ذخیره تنظیمات
-          </button>
-
-
-          <div
-            id="priceSettingStatus"
-            class="status-text"
-          ></div>
-
-        </div>
-
-
-        <div class="setting-card">
-
-          <h3>
-            امنیت
-          </h3>
-
-
-          <input
-            id="currentPassword"
-            class="input"
-            type="password"
-            placeholder="رمز فعلی"
-          >
-
-
-          <button
-            id="verifyPasswordButton"
-            class="btn"
-            onclick="verifyCurrentPassword()"
-          >
-            تأیید رمز فعلی
-          </button>
-
-
-          <div
-            id="securityStatus"
-            class="status-text"
-          ></div>
-
-
-          <div
-            id="newPasswordArea"
-            style="display:none"
-          >
-
-            <input
-              id="newPassword"
-              class="input"
-              type="password"
-              placeholder="رمز جدید"
-            >
-
-
-            <input
-              id="newPasswordConfirm"
-              class="input"
-              type="password"
-              placeholder="تکرار رمز جدید"
-            >
-
-
-            <button
-              class="btn"
-              onclick="changePassword()"
-            >
-              تغییر رمز
-            </button>
-
-          </div>
-
-        </div>
+        <strong id="resultFinal">
+          ۰ تومان
+        </strong>
 
       </div>
 
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-      <div>
-        SILVER ZARIN FAKHR
-      </div>
-
-      <div style="margin-top:6px">
-        زیبایی در درخشندگی، اصالت در ماندگاری
-      </div>
-
-
-      <a
-        class="instagram-link"
-        href="https://instagram.com/zarinfakhrSZF"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-      >
-
-        <span
-          class="instagram-icon"
-          aria-hidden="true"
-        ></span>
-
-        <span>
-          @zarinfakhrSZF
-        </span>
-
-      </a>
-
-    </footer>
-
+    </div>
 
   </div>
 
-</div>
+</section>
 
 
-<script>
+<!-- SETTINGS -->
+
+<section
+  id="settingsSection"
+  class="section"
+  style="display:none"
+>
+
+  <div class="section-title">
+
+    <h2>
+      تنظیمات
+    </h2>
+
+    <span>
+      مدیریت شخصی زرین فخر
+    </span>
+
+  </div>
+
+
+  <div class="settings">
+
+
+    <div class="setting-card">
+
+      <h3>
+        تنظیمات قیمت
+      </h3>
+
+
+      <input
+        id="setting999"
+        class="input"
+        type="number"
+        placeholder="قیمت دستی نقره ۹۹۹"
+      >
+
+
+      <input
+        id="settingLabor"
+        class="input"
+        type="number"
+        placeholder="اجرت پیش‌فرض هر گرم"
+      >
+
+
+      <button
+        class="btn"
+        onclick="saveMarketSettings()"
+      >
+        ذخیره تنظیمات
+      </button>
+
+
+      <div
+        id="priceSettingStatus"
+        class="status-text"
+      ></div>
+
+    </div>
+
+
+    <div class="setting-card">
+
+      <h3>
+        امنیت
+      </h3>
+
+
+      <input
+        id="currentPassword"
+        class="input"
+        type="password"
+        placeholder="رمز فعلی"
+      >
+
+
+      <button
+        class="btn"
+        onclick="verifyCurrentPassword()"
+      >
+        تأیید رمز فعلی
+      </button>
+
+
+      <div
+        id="securityStatus"
+        class="status-text"
+      ></div>
+
+
+      <div
+        id="newPasswordArea"
+        style="display:none"
+      >
+
+        <input
+          id="newPassword"
+          class="input"
+          type="password"
+          placeholder="رمز جدید"
+        >
+
+
+        <input
+          id="newPasswordConfirm"
+          class="input"
+          type="password"
+          placeholder="تکرار رمز جدید"
+        >
+
+
+        <button
+          class="btn"
+          onclick="changePassword()"
+        >
+          تغییر رمز
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div>
+    SILVER ZARIN FAKHR
+  </div>
+
+  <div style="margin-top:6px">
+    زیبایی در درخشندگی، اصالت در ماندگاری
+  </div>
+
+
+  <a
+    class="instagram-link"
+    href="https://instagram.com/zarinfakhrSZF"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+
+    <span
+      class="instagram-icon"
+      aria-hidden="true"
+    ></span>
+
+    <span>
+      @zarinfakhrSZF
+    </span>
+
+  </a>
+
+</footer>
+
+  </div></div><script>
 
 /* =========================================================
    CONFIG
@@ -2326,11 +2251,17 @@ const PURITY_17K =
    STATE
    ========================================================= */
 
-let currentSilver999 = 0;
+let currentSilver999 =
+  0;
 
-let passwordVerified = false;
+let passwordVerified =
+  false;
 
-let priceInterval = null;
+let priceInterval =
+  null;
+
+let requestInProgress =
+  false;
 
 
 /* =========================================================
@@ -2469,11 +2400,6 @@ function updateDeviceClock(){
     timeText;
 
 
-  /*
-    طبق درخواست:
-    ساعت پایین صفحه فقط ۱۸
-  */
-
   document.getElementById(
     "serverHour"
   ).textContent =
@@ -2481,10 +2407,6 @@ function updateDeviceClock(){
 
 }
 
-
-/* =========================================================
-   DEVICE CLOCK
-   ========================================================= */
 
 setInterval(
 
@@ -2538,6 +2460,17 @@ function updateLastServerTime(){
 
 async function loadPrices(){
 
+  if(requestInProgress){
+
+    return;
+
+  }
+
+
+  requestInProgress =
+    true;
+
+
   setConnectionState(
     "loading"
   );
@@ -2549,27 +2482,26 @@ async function loadPrices(){
     "در حال دریافت...";
 
 
+  const controller =
+    new AbortController();
+
+
+  const timeout =
+
+    setTimeout(
+
+      function(){
+
+        controller.abort();
+
+      },
+
+      900
+
+    );
+
+
   try{
-
-
-    const controller =
-      new AbortController();
-
-
-    const timeout =
-
-      setTimeout(
-
-        function(){
-
-          controller.abort();
-
-        },
-
-        900
-
-      );
-
 
     const response =
 
@@ -2606,16 +2538,16 @@ async function loadPrices(){
       );
 
 
-    clearTimeout(timeout);
+    clearTimeout(
+      timeout
+    );
 
 
     if(!response.ok){
 
       throw new Error(
-
         "HTTP " +
         response.status
-
       );
 
     }
@@ -2643,10 +2575,6 @@ async function loadPrices(){
 
     }
 
-
-    /* ===============================================
-       SERVER VALUES
-       =============================================== */
 
     const silver999 =
 
@@ -2693,7 +2621,7 @@ async function loadPrices(){
 
 
     /* ===============================================
-       CALCULATED VALUES
+       CALCULATIONS
        =============================================== */
 
     const mithqal17 =
@@ -2701,7 +2629,6 @@ async function loadPrices(){
       (
 
         silver999 /
-
         1000
 
       )
@@ -2807,7 +2734,7 @@ async function loadPrices(){
 
 
     /* ===============================================
-       SAVED LABOR
+       LABOR
        =============================================== */
 
     const savedLabor =
@@ -2859,7 +2786,6 @@ async function loadPrices(){
 
   }catch(error){
 
-
     console.error(
       "PRICE LOAD ERROR:",
       error
@@ -2876,6 +2802,15 @@ async function loadPrices(){
     ).textContent =
       "قطع ارتباط";
 
+
+  }finally{
+
+    clearTimeout(
+      timeout
+    );
+
+    requestInProgress =
+      false;
 
   }
 
@@ -2919,6 +2854,8 @@ function startPriceUpdates(){
 
 /* =========================================================
    LOGIN
+   مهم:
+   ورود خودکار حذف شده است.
    ========================================================= */
 
 function login(){
@@ -2936,15 +2873,6 @@ function login(){
     getPassword()
 
   ){
-
-    sessionStorage.setItem(
-
-      "zarinFakhrLoggedIn",
-
-      "true"
-
-    );
-
 
     document.getElementById(
       "loginPage"
@@ -2969,16 +2897,29 @@ function login(){
 
   }else{
 
-
     document.getElementById(
       "loginError"
     ).textContent =
       "رمز ورود اشتباه است.";
 
+
+    document.getElementById(
+      "passwordInput"
+    ).value = "";
+
+
+    document.getElementById(
+      "passwordInput"
+    ).focus();
+
   }
 
 }
 
+
+/* =========================================================
+   LOGIN EVENTS
+   ========================================================= */
 
 document.getElementById(
   "loginButton"
@@ -3010,35 +2951,6 @@ document.getElementById(
   }
 
 );
-
-
-/* =========================================================
-   AUTO LOGIN
-   ========================================================= */
-
-if(
-
-  sessionStorage.getItem(
-    "zarinFakhrLoggedIn"
-  ) === "true"
-
-){
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "block";
-
-
-  startPriceUpdates();
-
-}
 
 
 /* =========================================================
@@ -3463,4 +3375,169 @@ function verifyCurrentPassword(){
       true;
 
 
-    document
+    document.getElementById(
+      "securityStatus"
+    ).textContent =
+      "رمز فعلی تأیید شد.";
+
+
+    document.getElementById(
+      "securityStatus"
+    ).style.color =
+      "var(--green)";
+
+
+    document.getElementById(
+      "newPasswordArea"
+    ).style.display =
+      "block";
+
+
+  }else{
+
+    passwordVerified =
+      false;
+
+
+    document.getElementById(
+      "securityStatus"
+    ).textContent =
+      "رمز فعلی اشتباه است.";
+
+
+    document.getElementById(
+      "securityStatus"
+    ).style.color =
+      "var(--error)";
+
+
+    document.getElementById(
+      "newPasswordArea"
+    ).style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+   ========================================================= */
+
+function changePassword(){
+
+  if(!passwordVerified){
+
+    return;
+
+  }
+
+
+  const newPassword =
+
+    document.getElementById(
+      "newPassword"
+    ).value;
+
+
+  const confirmPassword =
+
+    document.getElementById(
+      "newPasswordConfirm"
+    ).value;
+
+
+  if(
+
+    !newPassword ||
+
+    newPassword.length < 6
+
+  ){
+
+    document.getElementById(
+      "securityStatus"
+    ).textContent =
+      "رمز جدید باید حداقل ۶ کاراکتر باشد.";
+
+    document.getElementById(
+      "securityStatus"
+    ).style.color =
+      "var(--error)";
+
+    return;
+
+  }
+
+
+  if(
+
+    newPassword !==
+    confirmPassword
+
+  ){
+
+    document.getElementById(
+      "securityStatus"
+    ).textContent =
+      "تکرار رمز با رمز جدید یکسان نیست.";
+
+    document.getElementById(
+      "securityStatus"
+    ).style.color =
+      "var(--error)";
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+
+    "zarinFakhrPassword",
+
+    newPassword
+
+  );
+
+
+  document.getElementById(
+    "securityStatus"
+  ).textContent =
+    "رمز با موفقیت تغییر کرد.";
+
+
+  document.getElementById(
+    "securityStatus"
+  ).style.color =
+    "var(--green)";
+
+
+  document.getElementById(
+    "newPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "newPasswordConfirm"
+  ).value = "";
+
+
+  document.getElementById(
+    "currentPassword"
+  ).value = "";
+
+
+  document.getElementById(
+    "newPasswordArea"
+  ).style.display =
+    "none";
+
+
+  passwordVerified =
+    false;
+
+}
+
+</script></body></html>
