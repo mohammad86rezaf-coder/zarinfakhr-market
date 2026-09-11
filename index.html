@@ -20,8 +20,9 @@ html,body{
 
 body{
   font-family:Tahoma,Arial,"Segoe UI",sans-serif;
-  background:radial-gradient(circle at top right,#fffaf4 0%,#f8eee2 38%,#f1e2d2 100%);
-  color:#2e0803;
+  background:
+    radial-gradient(circle at top right,#FFFFFF 0%,#FAF1E4 40%,#F2E1CF 100%);
+  color:#240603;
 }
 
 /* ================= LOGIN ================= */
@@ -33,7 +34,8 @@ body{
   align-items:center;
   justify-content:center;
   padding:24px;
-  background:radial-gradient(circle at 50% 20%,#fffdf9 0%,#f8eee2 45%,#ead8c6 100%);
+  background:
+    radial-gradient(circle at 50% 20%,#FFFFFF 0%,#FAF1E4 45%,#F2E1CF 100%);
 }
 
 .login-box{
@@ -41,10 +43,12 @@ body{
   max-width:420px;
   padding:34px 26px 30px;
   text-align:center;
-  background:rgba(255,255,255,.9);
-  border:1px solid rgba(192,147,108,.45);
+  background:#FFFFFF;
+  border:1px solid #D2C6BE;
   border-radius:28px;
-  box-shadow:0 25px 70px rgba(92,61,36,.15);
+  box-shadow:
+    0 25px 70px rgba(92,61,36,.15),
+    inset 0 1px 0 #FFFFFF;
 }
 
 .logo-cover{
@@ -55,9 +59,10 @@ body{
   align-items:center;
   justify-content:center;
   border-radius:50%;
-  background:linear-gradient(145deg,#d9a96f,#9b6c3d,#d9a96f);
+  background:
+    linear-gradient(145deg,#C0936C,#A3744D,#C0936C);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,.8),
+    0 0 0 1px #FFFFFF,
     0 10px 30px rgba(131,89,53,.22),
     inset 0 0 20px rgba(255,255,255,.35);
 }
@@ -66,17 +71,17 @@ body{
   font-size:32px;
   font-weight:900;
   letter-spacing:3px;
-  color:#a7aaad;
+  color:#B3A59A;
   text-shadow:
-    0 0 5px rgba(255,255,255,.9),
-    0 0 12px rgba(166,172,177,.75);
+    0 0 5px #FFFFFF,
+    0 0 12px #B3A59A;
 }
 
 .login-title{
   font-size:20px;
   font-weight:900;
   letter-spacing:1px;
-  color:#5c3d24;
+  color:#5C3D24;
 }
 
 .login-subtitle{
@@ -90,17 +95,17 @@ body{
   height:52px;
   margin-top:22px;
   padding:0 16px;
-  border:1px solid #d2c6be;
+  border:1px solid #D2C6BE;
   border-radius:15px;
   outline:none;
-  background:#fffdf9;
-  color:#2e0803;
+  background:#FFFFFF;
+  color:#240603;
   font-size:16px;
   text-align:center;
 }
 
 .input:focus{
-  border-color:#b38358;
+  border-color:#C0936C;
   box-shadow:0 0 0 3px rgba(192,147,108,.13);
 }
 
@@ -110,8 +115,9 @@ body{
   margin-top:14px;
   border:0;
   border-radius:15px;
-  background:linear-gradient(135deg,#835935,#a3744d,#c0936c);
-  color:white;
+  background:
+    linear-gradient(135deg,#835935,#A3744D,#C0936C);
+  color:#FFFFFF;
   font-size:15px;
   font-weight:800;
   cursor:pointer;
@@ -125,7 +131,7 @@ body{
 .error{
   min-height:22px;
   margin-top:10px;
-  color:#9e1e19;
+  color:#9E1E19;
   font-size:13px;
 }
 
@@ -145,13 +151,13 @@ body{
 .header-card{
   position:relative;
   overflow:hidden;
-  background:rgba(255,255,255,.82);
-  border:1px solid rgba(192,147,108,.38);
+  background:#FFFFFF;
+  border:1px solid #D2C6BE;
   border-radius:24px;
   padding:18px;
   box-shadow:
     0 18px 50px rgba(92,61,36,.10),
-    inset 0 1px 0 rgba(255,255,255,.9);
+    inset 0 1px 0 #FFFFFF;
 }
 
 .header-card::after{
@@ -161,12 +167,13 @@ body{
   left:-30%;
   width:40%;
   height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.65),
-    transparent
-  );
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.65),
+      transparent
+    );
   transform:skewX(-20deg);
   animation:headerLight 7s linear infinite;
   pointer-events:none;
@@ -200,25 +207,26 @@ body{
   align-items:center;
   justify-content:center;
   border-radius:17px;
-  background:linear-gradient(145deg,#d6a66b,#95673b,#d6a66b);
+  background:
+    linear-gradient(145deg,#C0936C,#A3744D,#C0936C);
   box-shadow:
     0 8px 20px rgba(92,61,36,.18),
     inset 0 0 15px rgba(255,255,255,.35);
 }
 
 .brand-szf{
-  color:#a7aaad;
+  color:#B3A59A;
   font-weight:900;
   font-size:19px;
   letter-spacing:2px;
   text-shadow:
-    0 0 4px rgba(255,255,255,.9),
-    0 0 10px rgba(167,170,173,.85);
+    0 0 4px #FFFFFF,
+    0 0 10px #B3A59A;
 }
 
 .brand-name{
   font-weight:900;
-  color:#5c3d24;
+  color:#5C3D24;
   font-size:16px;
 }
 
@@ -228,14 +236,16 @@ body{
   font-size:11px;
 }
 
+/* ================= ONLINE INDICATOR ================= */
+
 .status-box{
   display:flex;
   align-items:center;
   gap:7px;
   padding:9px 12px;
   border-radius:13px;
-  background:#fffdf9;
-  border:1px solid #e0d3ca;
+  background:#FAF1E4;
+  border:1px solid #E0D3CA;
   white-space:nowrap;
 }
 
@@ -243,46 +253,52 @@ body{
   width:9px;
   height:9px;
   border-radius:50%;
-  background:#b3a59a;
-  box-shadow:0 0 6px rgba(179,165,154,.7);
-}
-
-.status-online .live-light{
-  background:#258a4b;
-  box-shadow:0 0 8px rgba(37,138,75,.8);
+  background:#9E1E19;
+  box-shadow:0 0 7px #9E1E19;
   animation:livePulse 1.5s ease-in-out infinite;
 }
 
+.status-online .live-light{
+  background:#258A4B;
+  box-shadow:0 0 8px #258A4B;
+}
+
 .status-error .live-light{
-  background:#9e1e19;
-  box-shadow:0 0 8px rgba(158,30,25,.6);
-  animation:none;
+  background:#9E1E19;
+  box-shadow:0 0 8px #9E1E19;
 }
 
 .status-loading .live-light{
-  background:#c0936c;
-  box-shadow:0 0 8px rgba(192,147,108,.6);
-  animation:none;
+  background:#C0936C;
+  box-shadow:0 0 8px #C0936C;
 }
 
 @keyframes livePulse{
-  0%,100%{opacity:.55;transform:scale(.9)}
-  50%{opacity:1;transform:scale(1.15)}
+  0%,100%{
+    opacity:.55;
+    transform:scale(.9);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.15);
+  }
 }
 
 .connection-text{
   font-size:12px;
   font-weight:800;
-  color:#258a4b;
+  color:#258A4B;
 }
 
 .status-error .connection-text{
-  color:#9e1e19;
+  color:#9E1E19;
 }
 
 .status-loading .connection-text{
-  color:#258a4b;
+  color:#258A4B;
 }
+
+/* ================= DATE / TIME ================= */
 
 .status-date-time{
   position:relative;
@@ -297,9 +313,9 @@ body{
 .date-time-chip{
   padding:8px 12px;
   border-radius:11px;
-  background:#fffdf9;
-  border:1px solid #e0d3ca;
-  color:#5c3d24;
+  background:#FAF1E4;
+  border:1px solid #E0D3CA;
+  color:#5C3D24;
   font-size:12px;
   font-weight:700;
 }
@@ -315,18 +331,20 @@ body{
 
 .nav button{
   min-height:44px;
-  border:1px solid #dfd0c4;
+  border:1px solid #D2C6BE;
   border-radius:13px;
-  background:rgba(255,255,255,.72);
-  color:#70533b;
+  background:#FFFFFF;
+  color:#70533B;
   font-weight:800;
   cursor:pointer;
 }
 
 .nav button.active{
-  background:linear-gradient(135deg,#835935,#a3744d);
-  color:white;
+  background:
+    linear-gradient(135deg,#835935,#A3744D);
+  color:#FFFFFF;
   border-color:#835935;
+  box-shadow:0 8px 20px rgba(92,61,36,.15);
 }
 
 /* ================= SECTIONS ================= */
@@ -341,7 +359,7 @@ body{
 
 .section-title{
   margin:16px 4px 12px;
-  color:#5c3d24;
+  color:#5C3D24;
   font-size:18px;
   font-weight:900;
 }
@@ -354,10 +372,16 @@ body{
   gap:13px;
 }
 
+/*
+  نوار دور کادر قیمت:
+  همیشه در حال حرکت است و فقط وظیفه آن
+  نمایش روند به‌روزرسانی قیمت‌هاست.
+*/
+
 .market-area{
   position:relative;
   min-height:158px;
-  padding:1px;
+  padding:2px;
   overflow:hidden;
   border-radius:22px;
 }
@@ -365,42 +389,53 @@ body{
 .market-area::before{
   content:"";
   position:absolute;
-  inset:-70%;
-  background:conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 285deg,
-    #258a4b 320deg,
-    #8ee0aa 345deg,
-    #258a4b 360deg
-  );
-  animation:rotateBorder 3.8s linear infinite;
+  inset:-80%;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      #C0936C 320deg,
+      #FFFFFF 338deg,
+      #A3744D 350deg,
+      transparent 360deg
+    );
+  animation:priceBorderMove 2.2s linear infinite;
+}
+
+.status-online .market-area::before{
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      #A3744D 320deg,
+      #C0936C 337deg,
+      #FFFFFF 347deg,
+      transparent 360deg
+    );
 }
 
 .status-error .market-area::before{
-  background:conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 285deg,
-    #9e1e19 320deg,
-    #ed8b87 345deg,
-    #9e1e19 360deg
-  );
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      #9E1E19 320deg,
+      #521107 337deg,
+      #FFFFFF 347deg,
+      transparent 360deg
+    );
 }
 
-.status-loading .market-area::before{
-  background:conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 285deg,
-    #c0936c 320deg,
-    #f0d2ad 345deg,
-    #c0936c 360deg
-  );
-}
-
-@keyframes rotateBorder{
-  to{transform:rotate(360deg)}
+@keyframes priceBorderMove{
+  0%{
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
 }
 
 .market-card{
@@ -408,32 +443,33 @@ body{
   z-index:1;
   width:100%;
   height:100%;
-  min-height:156px;
+  min-height:154px;
   padding:20px 16px;
-  border-radius:21px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.98),
-    rgba(250,241,228,.98)
-  );
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      #FFFFFF,
+      #FAF1E4
+    );
   display:flex;
   flex-direction:column;
   justify-content:center;
   text-align:center;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 1px 0 #FFFFFF,
     0 10px 25px rgba(92,61,36,.08);
 }
 
 .market-title{
-  color:#70533b;
+  color:#70533B;
   font-size:13px;
   font-weight:800;
 }
 
 .market-value{
   margin-top:13px;
-  color:#2e0803;
+  color:#240603;
   font-size:25px;
   font-weight:900;
   letter-spacing:.5px;
@@ -442,7 +478,7 @@ body{
 
 .market-unit{
   margin-top:6px;
-  color:#a3744d;
+  color:#A3744D;
   font-size:11px;
   font-weight:700;
 }
@@ -451,8 +487,8 @@ body{
 
 .calculator-card,
 .settings-card{
-  background:rgba(255,255,255,.86);
-  border:1px solid rgba(192,147,108,.35);
+  background:#FFFFFF;
+  border:1px solid #D2C6BE;
   border-radius:22px;
   padding:18px;
   box-shadow:0 15px 35px rgba(92,61,36,.08);
@@ -465,7 +501,7 @@ body{
 .field label{
   display:block;
   margin-bottom:7px;
-  color:#70533b;
+  color:#70533B;
   font-size:12px;
   font-weight:800;
 }
@@ -475,20 +511,26 @@ body{
   width:100%;
   height:48px;
   padding:0 13px;
-  border:1px solid #d2c6be;
+  border:1px solid #D2C6BE;
   border-radius:13px;
-  background:#fffdf9;
-  color:#2e0803;
+  background:#FFFFFF;
+  color:#240603;
   outline:none;
   font-size:15px;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:#C0936C;
+  box-shadow:0 0 0 3px rgba(192,147,108,.12);
 }
 
 .result-box{
   margin-top:16px;
   padding:18px;
   border-radius:17px;
-  background:linear-gradient(135deg,#fffdf9,#f5e8da);
-  border:1px solid #dfd0c4;
+  background:#FAF1E4;
+  border:1px solid #E0D3CA;
 }
 
 .result-row{
@@ -496,7 +538,7 @@ body{
   justify-content:space-between;
   gap:10px;
   padding:8px 0;
-  border-bottom:1px solid rgba(192,147,108,.15);
+  border-bottom:1px solid #E0D3CA;
 }
 
 .result-row:last-child{
@@ -504,28 +546,28 @@ body{
 }
 
 .result-label{
-  color:#70533b;
+  color:#70533B;
   font-size:12px;
   font-weight:700;
 }
 
 .result-value{
   direction:ltr;
-  color:#2e0803;
+  color:#240603;
   font-weight:900;
 }
 
 .final-result{
   margin-top:10px;
   padding-top:14px;
-  border-top:1px solid #c9bbb0;
+  border-top:1px solid #CABCB2;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
 .final-result span:first-child{
-  color:#5c3d24;
+  color:#5C3D24;
   font-weight:900;
 }
 
@@ -540,7 +582,7 @@ body{
 
 .settings-title{
   margin:4px 0 14px;
-  color:#5c3d24;
+  color:#5C3D24;
   font-size:16px;
   font-weight:900;
 }
@@ -548,8 +590,8 @@ body{
 .settings-note{
   padding:12px;
   border-radius:13px;
-  background:#faf1e4;
-  color:#70533b;
+  background:#FAF1E4;
+  color:#70533B;
   font-size:11px;
   line-height:1.8;
   margin-bottom:16px;
@@ -558,7 +600,7 @@ body{
 .save-message{
   min-height:20px;
   margin-top:10px;
-  color:#258a4b;
+  color:#258A4B;
   text-align:center;
   font-size:12px;
   font-weight:800;
@@ -581,9 +623,15 @@ body{
   gap:8px;
   padding:9px 13px;
   border-radius:13px;
-  color:white;
+  color:#FFFFFF;
   text-decoration:none;
-  background:linear-gradient(135deg,#5c3d24,#9e1e19,#c0936c);
+  background:
+    linear-gradient(
+      135deg,
+      #5C3D24,
+      #9E1E19,
+      #C0936C
+    );
 }
 
 .instagram-icon{
@@ -602,15 +650,21 @@ body{
   min-width:74px;
   height:43px;
   padding:0 14px;
-  border:1px solid rgba(158,30,25,.25);
+  border:1px solid #E0D3CA;
   border-radius:13px;
-  background:rgba(255,255,255,.94);
-  color:#9e1e19;
+  background:#FFFFFF;
+  color:#9E1E19;
   font-size:12px;
   font-weight:900;
   cursor:pointer;
   box-shadow:0 8px 25px rgba(92,61,36,.15);
 }
+
+.exit-button:active{
+  transform:scale(.96);
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:600px){
 
@@ -624,6 +678,10 @@ body{
 
   .brand-name{
     font-size:14px;
+  }
+
+  .status-box{
+    padding:8px 9px;
   }
 
   .market-grid{
@@ -667,7 +725,6 @@ body{
 
 <!-- =====================================================
      LOGIN
-     ورود ساده و بدون مشکل
 ====================================================== -->
 
 <div id="loginPage" class="login-page">
@@ -758,6 +815,8 @@ body{
       </div>
 
 
+      <!-- تاریخ و ساعت -->
+
       <div class="status-date-time">
 
         <div class="date-time-chip">
@@ -815,7 +874,9 @@ body{
       <div class="market-grid">
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               مثقال ۱۷ عیار
             </div>
@@ -830,12 +891,16 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
+
         </div>
 
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               انس نقره
             </div>
@@ -850,12 +915,16 @@ body{
             <div class="market-unit">
               دلار
             </div>
+
           </div>
+
         </div>
 
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               دلار
             </div>
@@ -870,12 +939,16 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
+
         </div>
 
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               نقره 999
             </div>
@@ -890,12 +963,16 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
+
         </div>
 
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               نقره 925
             </div>
@@ -910,7 +987,9 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
+
         </div>
 
       </div>
@@ -1037,6 +1116,7 @@ body{
         <div class="result-box">
 
           <div class="result-row">
+
             <span class="result-label">
               قیمت نقره بر اساس عیار
             </span>
@@ -1047,10 +1127,12 @@ body{
             >
               0
             </span>
+
           </div>
 
 
           <div class="result-row">
+
             <span class="result-label">
               ارزش نقره
             </span>
@@ -1061,10 +1143,12 @@ body{
             >
               0
             </span>
+
           </div>
 
 
           <div class="result-row">
+
             <span class="result-label">
               اجرت
             </span>
@@ -1075,10 +1159,12 @@ body{
             >
               0
             </span>
+
           </div>
 
 
           <div class="result-row">
+
             <span class="result-label">
               هزینه اضافه
             </span>
@@ -1089,10 +1175,12 @@ body{
             >
               0
             </span>
+
           </div>
 
 
           <div class="result-row">
+
             <span class="result-label">
               سود
             </span>
@@ -1103,6 +1191,7 @@ body{
             >
               0
             </span>
+
           </div>
 
 
@@ -1297,7 +1386,7 @@ body{
             height="18"
             rx="5"
             fill="none"
-            stroke="white"
+            stroke="#FFFFFF"
             stroke-width="2"
           />
 
@@ -1306,7 +1395,7 @@ body{
             cy="12"
             r="4.2"
             fill="none"
-            stroke="white"
+            stroke="#FFFFFF"
             stroke-width="2"
           />
 
@@ -1314,7 +1403,7 @@ body{
             cx="17.5"
             cy="6.5"
             r="1.3"
-            fill="white"
+            fill="#FFFFFF"
           />
 
         </svg>
@@ -1327,6 +1416,8 @@ body{
 
   </main>
 
+
+  <!-- خروج -->
 
   <button
     id="exitButton"
@@ -1357,38 +1448,34 @@ const API =
    SETTINGS
 ===================================================== */
 
-const DEFAULT_PASSWORD = "@Mohammad1386";
+const DEFAULT_PASSWORD =
+  "@Mohammad1386";
 
-const MITHQAL_GRAM = 4.608;
-const PURITY_17K = 700;
+const MITHQAL_GRAM =
+  4.608;
 
-let currentSilver999 = 0;
-let priceInterval = null;
+const PURITY_17K =
+  700;
+
+let currentSilver999 =
+  0;
+
+let priceInterval =
+  null;
 
 
 /* =====================================================
    PASSWORD
-   نسخه اصلاح‌شده ورود:
-   رمز پیش‌فرض مستقیماً با رمز اصلی مقایسه می‌شود.
-   بعد از آن، اگر رمز جدید ذخیره شده باشد، همان استفاده می‌شود.
 ===================================================== */
-
-function getSavedPassword(){
-
-  return localStorage.getItem(
-    "zarinFakhrPassword"
-  );
-}
-
 
 function getCurrentPassword(){
 
-  const saved =
-    getSavedPassword();
-
-  return saved
-    ? saved
-    : DEFAULT_PASSWORD;
+  return (
+    localStorage.getItem(
+      "zarinFakhrPassword"
+    ) ||
+    DEFAULT_PASSWORD
+  );
 }
 
 
@@ -1396,7 +1483,10 @@ function getCurrentPassword(){
    NUMBER FORMAT
 ===================================================== */
 
-function formatNumber(value,decimals=0){
+function formatNumber(
+  value,
+  decimals=0
+){
 
   const number =
     Number(value);
@@ -1416,10 +1506,12 @@ function formatNumber(value,decimals=0){
 
 
 /* =====================================================
-   CONNECTION
+   CONNECTION STATE
 ===================================================== */
 
-function setConnectionState(state){
+function setConnectionState(
+  state
+){
 
   document.body.classList.remove(
     "status-loading",
@@ -1434,7 +1526,7 @@ function setConnectionState(state){
 
 
 /* =====================================================
-   CLOCK
+   DATE / TIME — IRAN
 ===================================================== */
 
 function updateDeviceClock(){
@@ -1442,22 +1534,32 @@ function updateDeviceClock(){
   const now =
     new Date();
 
+
+  /*
+    منطقه زمانی ایران:
+    Asia/Tehran
+
+    این قسمت مستقل از ساعت گوشی
+    عمل می‌کند و زمان ایران را نشان می‌دهد.
+  */
+
   const dateText =
     new Intl.DateTimeFormat(
-      "en-GB",
+      "fa-IR-u-ca-persian",
       {
-        timeZone:"Asia/Baku",
+        timeZone:"Asia/Tehran",
         year:"numeric",
         month:"2-digit",
         day:"2-digit"
       }
     ).format(now);
 
+
   const timeText =
     new Intl.DateTimeFormat(
       "en-GB",
       {
-        timeZone:"Asia/Baku",
+        timeZone:"Asia/Tehran",
         hour:"2-digit",
         minute:"2-digit",
         second:"2-digit",
@@ -1465,16 +1567,45 @@ function updateDeviceClock(){
       }
     ).format(now);
 
+
   document.getElementById(
     "currentDate"
   ).textContent =
-    dateText;
+    convertDigitsToEnglish(
+      dateText
+    );
+
 
   document.getElementById(
     "currentTime"
   ).textContent =
-    timeText;
+    convertDigitsToEnglish(
+      timeText
+    );
 }
+
+
+function convertDigitsToEnglish(
+  value
+){
+
+  return String(value)
+    .replace(
+      /[۰-۹]/g,
+      function(d){
+        return "۰۱۲۳۴۵۶۷۸۹"
+          .indexOf(d);
+      }
+    )
+    .replace(
+      /[٠-٩]/g,
+      function(d){
+        return "٠١٢٣٤٥٦٧٨٩"
+          .indexOf(d);
+      }
+    );
+}
+
 
 updateDeviceClock();
 
@@ -1490,7 +1621,10 @@ setInterval(
 
 async function loadPrices(){
 
-  setConnectionState("loading");
+  /*
+    متن آنلاین • به‌روز هنگام دریافت
+    ثابت باقی می‌ماند.
+  */
 
   document.getElementById(
     "connectionText"
@@ -1500,6 +1634,7 @@ async function loadPrices(){
 
   const controller =
     new AbortController();
+
 
   const timeout =
     setTimeout(
@@ -1514,14 +1649,18 @@ async function loadPrices(){
 
     const response =
       await fetch(
-        API + "?t=" + Date.now(),
+        API +
+        "?t=" +
+        Date.now(),
         {
           method:"GET",
           cache:"no-store",
           signal:controller.signal,
           headers:{
-            "Cache-Control":"no-cache",
-            "Pragma":"no-cache"
+            "Cache-Control":
+              "no-cache",
+            "Pragma":
+              "no-cache"
           }
         }
       );
@@ -1531,8 +1670,10 @@ async function loadPrices(){
 
 
     if(!response.ok){
+
       throw new Error(
-        "HTTP " + response.status
+        "HTTP " +
+        response.status
       );
     }
 
@@ -1542,19 +1683,30 @@ async function loadPrices(){
 
 
     const silver999 =
-      Number(data.silver999Toman);
+      Number(
+        data.silver999Toman
+      );
+
 
     const silverOunce =
-      Number(data.silverOunce);
+      Number(
+        data.silverOunce
+      );
+
 
     const usd =
-      Number(data.usdToman);
+      Number(
+        data.usdToman
+      );
 
 
     if(
-      !Number.isFinite(silver999) ||
+      !Number.isFinite(
+        silver999
+      ) ||
       silver999 <= 0
     ){
+
       throw new Error(
         "Invalid silver999"
       );
@@ -1566,7 +1718,10 @@ async function loadPrices(){
 
 
     const mithqal17 =
-      (silver999 / 1000) *
+      (
+        silver999 /
+        1000
+      ) *
       PURITY_17K *
       MITHQAL_GRAM;
 
@@ -1579,38 +1734,55 @@ async function loadPrices(){
     document.getElementById(
       "mithqal17"
     ).textContent =
-      formatNumber(mithqal17);
+      formatNumber(
+        mithqal17
+      );
 
 
     document.getElementById(
       "silverOunce"
     ).textContent =
-      Number.isFinite(silverOunce)
-        ? formatNumber(silverOunce,2)
+      Number.isFinite(
+        silverOunce
+      )
+        ? formatNumber(
+            silverOunce,
+            2
+          )
         : "—";
 
 
     document.getElementById(
       "usd"
     ).textContent =
-      Number.isFinite(usd)
-        ? formatNumber(usd)
+      Number.isFinite(
+        usd
+      )
+        ? formatNumber(
+            usd
+          )
         : "—";
 
 
     document.getElementById(
       "silver999"
     ).textContent =
-      formatNumber(silver999);
+      formatNumber(
+        silver999
+      );
 
 
     document.getElementById(
       "silver925"
     ).textContent =
-      formatNumber(silver925);
+      formatNumber(
+        silver925
+      );
 
 
-    setConnectionState("online");
+    setConnectionState(
+      "online"
+    );
 
 
     document.getElementById(
@@ -1626,7 +1798,11 @@ async function loadPrices(){
 
     clearTimeout(timeout);
 
-    setConnectionState("error");
+
+    setConnectionState(
+      "error"
+    );
+
 
     document.getElementById(
       "connectionText"
@@ -1643,10 +1819,15 @@ async function loadPrices(){
 function startPriceUpdates(){
 
   if(priceInterval){
-    clearInterval(priceInterval);
+
+    clearInterval(
+      priceInterval
+    );
   }
 
+
   loadPrices();
+
 
   priceInterval =
     setInterval(
@@ -1660,12 +1841,18 @@ function startPriceUpdates(){
    NAVIGATION
 ===================================================== */
 
-function showSection(sectionId,button){
+function showSection(
+  sectionId,
+  button
+){
 
   document
-    .querySelectorAll(".section")
+    .querySelectorAll(
+      ".section"
+    )
     .forEach(
       function(section){
+
         section.classList.remove(
           "active"
         );
@@ -1674,9 +1861,12 @@ function showSection(sectionId,button){
 
 
   document
-    .querySelectorAll(".nav button")
+    .querySelectorAll(
+      ".nav button"
+    )
     .forEach(
       function(btn){
+
         btn.classList.remove(
           "active"
         );
@@ -1685,12 +1875,19 @@ function showSection(sectionId,button){
 
 
   document
-    .getElementById(sectionId)
-    .classList.add("active");
+    .getElementById(
+      sectionId
+    )
+    .classList.add(
+      "active"
+    );
 
 
   if(button){
-    button.classList.add("active");
+
+    button.classList.add(
+      "active"
+    );
   }
 }
 
@@ -1710,9 +1907,12 @@ function getCalculationSilver999(){
 
 
   if(
-    Number.isFinite(manual) &&
+    Number.isFinite(
+      manual
+    ) &&
     manual > 0
   ){
+
     return manual;
   }
 
@@ -1768,7 +1968,9 @@ function calculatePrice(){
       savedLabor;
 
     laborInput.value =
-      String(savedLabor);
+      String(
+        savedLabor
+      );
   }
 
 
@@ -1793,16 +1995,33 @@ function calculatePrice(){
 
 
   if(
-    !Number.isFinite(silver999) ||
+    !Number.isFinite(
+      silver999
+    ) ||
     silver999 <= 0
   ){
+
+    document.getElementById(
+      "calcGramPrice"
+    ).textContent =
+      "0";
+
     return;
   }
 
 
+  /*
+    999 = 999 / 999
+    925 = 925 / 999
+    700 = 700 / 999
+  */
+
   const gramPrice =
     silver999 *
-    (purity / 999);
+    (
+      purity /
+      999
+    );
 
 
   const base =
@@ -1823,7 +2042,10 @@ function calculatePrice(){
 
   const profit =
     subtotal *
-    (profitPercent / 100);
+    (
+      profitPercent /
+      100
+    );
 
 
   const finalPrice =
@@ -1834,500 +2056,42 @@ function calculatePrice(){
   document.getElementById(
     "calcGramPrice"
   ).textContent =
-    formatNumber(gramPrice);
+    formatNumber(
+      gramPrice
+    );
 
 
   document.getElementById(
     "calcBase"
   ).textContent =
-    formatNumber(base);
+    formatNumber(
+      base
+    );
 
 
   document.getElementById(
     "calcLaborResult"
   ).textContent =
-    formatNumber(laborTotal);
+    formatNumber(
+      laborTotal
+    );
 
 
   document.getElementById(
     "calcExtraResult"
   ).textContent =
-    formatNumber(extra);
+    formatNumber(
+      extra
+    );
 
 
   document.getElementById(
     "calcProfitResult"
   ).textContent =
-    formatNumber(profit);
-
-
-  document.getElementById(
-    "calcFinal"
-  ).textContent =
-    formatNumber(finalPrice) +
-    " تومان";
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-function loadSettings(){
-
-  const manual =
-    localStorage.getItem(
-      "zarinFakhrManual999"
-    );
-
-  const labor =
-    localStorage.getItem(
-      "zarinFakhrDefaultLabor"
+    formatNumber(
+      profit
     );
 
 
-  if(manual){
-    document.getElementById(
-      "manual999"
-    ).value =
-      manual;
-  }
-
-
-  if(labor){
-
-    document.getElementById(
-      "defaultLabor"
-    ).value =
-      labor;
-
-    document.getElementById(
-      "calcLabor"
-    ).value =
-      labor;
-  }
-}
-
-
-function saveSettings(){
-
-  const manual =
-    document.getElementById(
-      "manual999"
-    ).value.trim();
-
-
-  const labor =
-    document.getElementById(
-      "defaultLabor"
-    ).value.trim();
-
-
-  if(manual){
-
-    const number =
-      Number(manual);
-
-
-    if(
-      !Number.isFinite(number) ||
-      number <= 0
-    ){
-
-      document.getElementById(
-        "settingsMessage"
-      ).textContent =
-        "قیمت 999 معتبر نیست.";
-
-      return;
-    }
-
-
-    localStorage.setItem(
-      "zarinFakhrManual999",
-      String(number)
-    );
-
-  }else{
-
-    localStorage.removeItem(
-      "zarinFakhrManual999"
-    );
-  }
-
-
-  localStorage.setItem(
-    "zarinFakhrDefaultLabor",
-    String(Number(labor) || 0)
-  );
-
-
   document.getElementById(
-    "settingsMessage"
-  ).textContent =
-    "تنظیمات ذخیره شد.";
-
-  calculatePrice();
-}
-
-
-/* =====================================================
-   CHANGE PASSWORD
-===================================================== */
-
-async function changePassword(){
-
-  const current =
-    document.getElementById(
-      "currentPassword"
-    ).value;
-
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    ).value;
-
-
-  const confirmPassword =
-    document.getElementById(
-      "confirmPassword"
-    ).value;
-
-
-  const message =
-    document.getElementById(
-      "passwordMessage"
-    );
-
-
-  if(!current || !newPassword || !confirmPassword){
-
-    message.style.color =
-      "#9e1e19";
-
-    message.textContent =
-      "تمام فیلدهای رمز را تکمیل کنید.";
-
-    return;
-  }
-
-
-  if(newPassword.length < 8){
-
-    message.style.color =
-      "#9e1e19";
-
-    message.textContent =
-      "رمز جدید باید حداقل 8 کاراکتر باشد.";
-
-    return;
-  }
-
-
-  if(newPassword !== confirmPassword){
-
-    message.style.color =
-      "#9e1e19";
-
-    message.textContent =
-      "تکرار رمز جدید صحیح نیست.";
-
-    return;
-  }
-
-
-  if(current !== getCurrentPassword()){
-
-    message.style.color =
-      "#9e1e19";
-
-    message.textContent =
-      "رمز فعلی اشتباه است.";
-
-    return;
-  }
-
-
-  localStorage.setItem(
-    "zarinFakhrPassword",
-    newPassword
-  );
-
-
-  document.getElementById(
-    "currentPassword"
-  ).value = "";
-
-
-  document.getElementById(
-    "newPassword"
-  ).value = "";
-
-
-  document.getElementById(
-    "confirmPassword"
-  ).value = "";
-
-
-  message.style.color =
-    "#258a4b";
-
-  message.textContent =
-    "رمز ورود با موفقیت تغییر کرد.";
-}
-
-
-/* =====================================================
-   LOGIN
-   اصلاح اصلی این قسمت:
-   رمز @Mohammad1386 مستقیماً قبول می‌شود.
-===================================================== */
-
-let loginAttempts = 0;
-let lockUntil = 0;
-
-
-async function login(){
-
-  const now =
-    Date.now();
-
-
-  const input =
-    document.getElementById(
-      "passwordInput"
-    );
-
-
-  const error =
-    document.getElementById(
-      "loginError"
-    );
-
-
-  if(now < lockUntil){
-
-    const seconds =
-      Math.ceil(
-        (lockUntil - now) / 1000
-      );
-
-
-    error.textContent =
-      "ورود موقتاً قفل است. " +
-      seconds +
-      " ثانیه دیگر تلاش کنید.";
-
-    return;
-  }
-
-
-  const password =
-    input.value;
-
-
-  if(!password){
-
-    error.textContent =
-      "رمز ورود را وارد کنید.";
-
-    return;
-  }
-
-
-  /*
-    مقایسه مستقیم.
-    اینجا دیگر Hash/PBKDF2 وجود ندارد
-    که باعث مشکل ورود نسخه قبلی شده بود.
-  */
-
-  const correct =
-    password === getCurrentPassword();
-
-
-  if(correct){
-
-    loginAttempts = 0;
-
-    lockUntil = 0;
-
-    document.getElementById(
-      "loginPage"
-    ).style.display =
-      "none";
-
-
-    document.getElementById(
-      "app"
-    ).style.display =
-      "block";
-
-
-    input.value = "";
-
-    error.textContent = "";
-
-    loadSettings();
-
-    updateDeviceClock();
-
-    startPriceUpdates();
-
-    return;
-  }
-
-
-  loginAttempts++;
-
-  input.value = "";
-
-  error.textContent =
-    "رمز ورود اشتباه است.";
-
-
-  if(loginAttempts >= 5){
-
-    lockUntil =
-      Date.now() + 30000;
-
-    loginAttempts = 0;
-
-    error.textContent =
-      "تلاش‌های ناموفق زیاد بود. 30 ثانیه بعد دوباره امتحان کنید.";
-  }
-}
-
-
-/* =====================================================
-   EXIT
-===================================================== */
-
-function exitApp(){
-
-  if(priceInterval){
-
-    clearInterval(
-      priceInterval
-    );
-
-    priceInterval = null;
-  }
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "flex";
-
-
-  document.getElementById(
-    "passwordInput"
-  ).value =
-    "";
-
-
-  document.getElementById(
-    "loginError"
-  ).textContent =
-    "";
-
-
-  setConnectionState(
-    "loading"
-  );
-}
-
-
-/* =====================================================
-   EVENTS
-===================================================== */
-
-document
-  .getElementById("loginButton")
-  .addEventListener(
-    "click",
-    login
-  );
-
-
-document
-  .getElementById("passwordInput")
-  .addEventListener(
-    "keydown",
-    function(event){
-
-      if(event.key === "Enter"){
-        login();
-      }
-
-    }
-  );
-
-
-document
-  .getElementById("exitButton")
-  .addEventListener(
-    "click",
-    exitApp
-  );
-
-
-document
-  .getElementById("calcWeight")
-  .addEventListener(
-    "input",
-    calculatePrice
-  );
-
-
-document
-  .getElementById("calcPurity")
-  .addEventListener(
-    "change",
-    calculatePrice
-  );
-
-
-document
-  .getElementById("calcLabor")
-  .addEventListener(
-    "input",
-    calculatePrice
-  );
-
-
-document
-  .getElementById("calcExtra")
-  .addEventListener(
-    "input",
-    calculatePrice
-  );
-
-
-document
-  .getElementById("calcProfit")
-  .addEventListener(
-    "input",
-    calculatePrice
-  );
-
-
-/* =====================================================
-   INITIAL STATE
-===================================================== */
-
-setConnectionState(
-  "loading"
-);
-
-</script>
-
-</body>
-  </html>
+    "calcFinal
