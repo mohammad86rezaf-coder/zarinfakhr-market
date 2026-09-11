@@ -1,1268 +1,631 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SILVER ZARIN FAKHR</title>
+  <title>SILVER ZARIN FAKHR | تابلو قیمت نقره</title>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Tahoma,Arial,sans-serif;
-    background:
-        radial-gradient(circle at top right,#392816 0%,#171412 35%,#0d0c0b 100%);
-    color:#f3e9dc;
-    min-height:100vh;
-}
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:10;
-    background:rgba(23,20,18,.94);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(212,175,106,.2);
-    padding:15px;
-}
-
-.header-box{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.logo{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    border:1px solid #d4af6a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#d4af6a;
-    font-size:13px;
-    font-weight:bold;
-    background:#171412;
-}
-
-.brand h1{
-    font-size:15px;
-    color:white;
-}
-
-.brand p{
-    font-size:9px;
-    color:#d4af6a;
-    margin-top:5px;
-    letter-spacing:1px;
-}
-
-.status{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    border:1px solid rgba(53,212,122,.3);
-    background:rgba(53,212,122,.05);
-    padding:8px 11px;
-    border-radius:30px;
-    font-size:10px;
-}
-
-.dot{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:#35d47a;
-    animation:pulse 1.4s infinite;
-}
-
-@keyframes pulse{
-    0%{
-        box-shadow:0 0 0 0 rgba(53,212,122,.8);
-    }
-    70%{
-        box-shadow:0 0 0 9px rgba(53,212,122,0);
-    }
-    100%{
-        box-shadow:0 0 0 0 rgba(53,212,122,0);
-    }
-}
-
-.offline .dot{
-    background:#ff4444;
-    animation:none;
-    box-shadow:none;
-}
-
-.offline{
-    border-color:rgba(255,68,68,.3);
-}
-
-.container{
-    width:94%;
-    max-width:1100px;
-    margin:25px auto 50px;
-}
-
-.hero{
-    padding:24px 20px;
-    border:1px solid rgba(212,175,106,.18);
-    border-radius:22px;
-    background:linear-gradient(135deg,rgba(184,138,74,.1),rgba(255,255,255,.025));
-    margin-bottom:18px;
-}
-
-.hero small{
-    color:#d4af6a;
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-.hero h2{
-    margin-top:9px;
-    font-size:27px;
-    line-height:1.6;
-    color:white;
-}
-
-.hero h2 span{
-    color:#d4af6a;
-}
-
-.hero p{
-    margin-top:8px;
-    color:#aaa29b;
-    font-size:11px;
-    line-height:2;
-}
-
-.update{
-    margin-top:15px;
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    flex-wrap:wrap;
-    color:#858078;
-    font-size:9px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.card{
-    border:1px solid rgba(212,175,106,.16);
-    border-radius:17px;
-    padding:18px 14px;
-    background:rgba(255,255,255,.035);
-}
-
-.card.gold{
-    border-top:2px solid #d4af6a;
-}
-
-.card.silver{
-    border-top:2px solid #c7c4be;
-}
-
-.card.usd{
-    border-top:2px solid #35d47a;
-}
-
-.label{
-    color:#99918a;
-    font-size:10px;
-    margin-bottom:12px;
-}
-
-.value{
-    color:white;
-    font-size:22px;
-    font-weight:bold;
-    direction:ltr;
-    text-align:right;
-    word-break:break-word;
-}
-
-.unit{
-    color:#d4af6a;
-    font-size:9px;
-    margin-top:6px;
-}
-
-.source{
-    color:#666;
-    font-size:8px;
-    margin-top:12px;
-}
-
-.section{
-    margin-top:22px;
-}
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:10px;
-}
-
-.section-title h3{
-    color:white;
-    font-size:14px;
-}
-
-.section-title span{
-    color:#d4af6a;
-    font-size:9px;
-}
-
-.calculator{
-    border:1px solid rgba(212,175,106,.18);
-    border-radius:20px;
-    padding:15px;
-    background:rgba(255,255,255,.025);
-}
-
-.calc-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.calc{
-    background:rgba(0,0,0,.2);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:14px;
-    padding:15px;
-}
-
-.calc-name{
-    color:#99918a;
-    font-size:9px;
-    margin-bottom:8px;
-}
-
-.calc-value{
-    color:#d4af6a;
-    font-size:18px;
-    font-weight:bold;
-    direction:ltr;
-    text-align:right;
-}
-
-.chart-box{
-    border:1px solid rgba(212,175,106,.16);
-    border-radius:20px;
-    padding:15px;
-    background:rgba(255,255,255,.025);
-}
-
-.chart-area{
-    height:280px;
-    position:relative;
-}
-
-.actions{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
-button{
-    font-family:Tahoma;
-    border-radius:12px;
-    padding:12px 18px;
-    cursor:pointer;
-    font-size:10px;
-}
-
-.refresh{
-    border:0;
-    color:#171412;
-    background:linear-gradient(135deg,#d4af6a,#b88a4a);
-}
-
-.clear{
-    color:#f3e9dc;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(212,175,106,.18);
-}
-
-.message{
-    margin-top:12px;
-    padding:12px;
-    border-radius:12px;
-    background:rgba(255,255,255,.035);
-    color:#99918a;
-    font-size:9px;
-    line-height:2;
-}
-
-.footer{
-    margin-top:35px;
-    padding-top:20px;
-    border-top:1px solid rgba(212,175,106,.15);
-    text-align:center;
-    color:#666;
-    font-size:9px;
-    line-height:2;
-}
-
-.footer strong{
-    color:#d4af6a;
-}
-
-@media(max-width:850px){
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:550px){
-    .brand h1{
-        font-size:12px;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .brand p{
-        font-size:7px;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #fffdf9 0%, #f7e9d9 45%, #ead8c7 100%);
+      color: #2e0803;
     }
 
-    .status{
-        font-size:8px;
-        padding:7px 8px;
+    .container {
+      width: min(1100px, 94%);
+      margin: auto;
+      padding: 30px 0;
     }
 
-    .hero h2{
-        font-size:22px;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 30px;
     }
 
-    .cards{
-        gap:9px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .card{
-        padding:14px 10px;
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #fffaf3;
+      border: 1px solid #c39871;
+      box-shadow: 0 8px 25px rgba(112, 83, 59, .12);
+      font-size: 20px;
+      font-weight: 900;
+      color: #70533b;
     }
 
-    .value{
-        font-size:18px;
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(18px, 3vw, 28px);
+      letter-spacing: 1px;
     }
 
-    .calc-grid{
-        grid-template-columns:1fr;
+    .brand p {
+      margin: 5px 0 0;
+      color: #70533b;
+      font-size: 12px;
+      letter-spacing: 1.5px;
     }
 
-    .chart-area{
-        height:240px;
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #70533b;
+      font-size: 13px;
+      font-weight: 700;
     }
-}
-</style>
+
+    .status-dot,
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #20a35a;
+      box-shadow: 0 0 0 5px rgba(32, 163, 90, .10);
+      flex: 0 0 auto;
+    }
+
+    .status.error .status-dot {
+      background: #c62828;
+      box-shadow: 0 0 0 5px rgba(198, 40, 40, .10);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(26px, 5vw, 48px);
+      font-weight: 900;
+    }
+
+    .hero p {
+      margin: 10px auto 0;
+      max-width: 650px;
+      color: #70533b;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .main-price {
+      background: rgba(255, 253, 249, .88);
+      border: 1px solid #c39871;
+      border-radius: 28px;
+      padding: 35px 20px;
+      text-align: center;
+      box-shadow: 0 20px 55px rgba(112, 83, 59, .14);
+      margin-bottom: 20px;
+    }
+
+    .main-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #70533b;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .main-value {
+      margin-top: 18px;
+      font-size: clamp(40px, 9vw, 76px);
+      line-height: 1;
+      font-weight: 950;
+      color: #2e0803;
+      direction: ltr;
+    }
+
+    .main-unit {
+      margin-top: 12px;
+      color: #a8734b;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .prices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(255, 253, 249, .82);
+      border: 1px solid #e0cbb8;
+      border-radius: 22px;
+      padding: 22px 16px;
+      box-shadow: 0 12px 35px rgba(112, 83, 59, .09);
+      transition: transform .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #70533b;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .card-value {
+      margin-top: 18px;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 950;
+      direction: ltr;
+      color: #2e0803;
+      word-break: break-word;
+    }
+
+    .card-unit {
+      margin-top: 7px;
+      color: #a8734b;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .update {
+      text-align: center;
+      margin: 25px 0;
+      color: #70533b;
+      font-size: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px 10px;
+      color: #70533b;
+    }
+
+    footer strong {
+      display: block;
+      color: #2e0803;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    footer .instagram {
+      margin-top: 10px;
+      direction: ltr;
+      font-weight: 900;
+      color: #632a16;
+    }
+
+    @media (max-width: 800px) {
+      .prices {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      header {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding-top: 20px;
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      .prices {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .card {
+        padding: 18px 12px;
+      }
+
+      .main-price {
+        padding: 30px 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
+  <main class="container">
+
+    <header>
+      <div class="brand">
+
+        <div class="logo">
+          SZF
+        </div>
+
+        <div>
+          <h1>SILVER ZARIN FAKHR</h1>
+          <p>نقره زرین فخر</p>
+        </div>
+      </div>
+
+      <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span id="statusText">در حال دریافت قیمت‌ها...</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h2>تابلو قیمت نقره</h2>
+
+      <p>
+        قیمت لحظه‌ای نقره و دلار برای نمایش در مجموعه
+        <strong>نقره زرین فخر</strong>
+      </p>
+    </section>
+
+    <!-- قیمت اصلی -->
+    <section class="main-price">
+
+      <div class="main-title">
+        <span class="live-dot"></span>
+        <span>قیمت یک مثقال نقره ۱۷ عیار</span>
+      </div>
+
+      <div
+        class="main-value"
+        id="mithqal17"
+      >
+        —
+      </div>
+
+      <div class="main-unit">
+        تومان / مثقال
+      </div>
+
+    </section>
+
+    <!-- قیمت‌ها -->
+    <section class="prices">
+
+      <div class="card">
+        <div class="card-title">
+          <span class="live-dot"></span>
+          <span>انس نقره</span>
+        </div>
+
+        <div
+          class="card-value"
+          id="silverOunce"
+        >
+          —
+        </div>
 
-<div class="header-box">
+        <div class="card-unit">
+          دلار / انس
+        </div>
+      </div>
 
-<div class="brand">
 
-<div class="logo">SZF</div>
+      <div class="card">
+        <div class="card-title">
+          <span class="live-dot"></span>
+          <span>دلار</span>
+        </div>
 
-<div>
-<h1>SILVER ZARIN FAKHR</h1>
-<p>PRECIOUS METALS MARKET</p>
-</div>
+        <div
+          class="card-value"
+          id="usd"
+        >
+          —
+        </div>
 
-</div>
+        <div class="card-unit">
+          تومان / دلار
+        </div>
+      </div>
 
-<div id="status" class="status offline">
 
-<span class="dot"></span>
+      <div class="card">
+        <div class="card-title">
+          <span class="live-dot"></span>
+          <span>نقره 999</span>
+        </div>
 
-<span id="statusText">
-در حال اتصال...
-</span>
+        <div
+          class="card-value"
+          id="silver999"
+        >
+          —
+        </div>
 
-</div>
+        <div class="card-unit">
+          تومان / گرم
+        </div>
+      </div>
 
-</div>
 
-</header>
+      <div class="card">
+        <div class="card-title">
+          <span class="live-dot"></span>
+          <span>نقره 925</span>
+        </div>
 
+        <div
+          class="card-value"
+          id="silver925"
+        >
+          —
+        </div>
 
-<main class="container">
+        <div class="card-unit">
+          تومان / گرم
+        </div>
+      </div>
 
-<section class="hero">
+    </section>
 
-<small>ZARIN FAKHR MARKET DASHBOARD</small>
+    <div class="update">
+      آخرین بروزرسانی:
+      <span id="updatedAt">—</span>
+    </div>
 
-<h2>
-قیمت هوشمند
-<span>طلا، نقره و دلار</span>
-</h2>
+    <footer>
 
-<p>
-سامانه حرفه‌ای محاسبه ارزش خام فلزات گران‌بها
-بر اساس انس جهانی و دلار آزاد.
-</p>
+      <strong>
+        SILVER ZARIN FAKHR
+      </strong>
 
-<div class="update">
+      زیبایی در درخشندگی، اصالت در ماندگاری
 
-<span>
-آخرین بروزرسانی:
-<strong id="lastUpdate">—</strong>
-</span>
+      <div class="instagram">
+        @zarinfakhrSZF
+      </div>
 
-<span>
-منبع:
-<strong>ثروتمندی</strong>
-</span>
+    </footer>
 
-</div>
+  </main>
 
-</section>
 
+  <script>
 
-<section class="cards">
+    const API = "/api/prices";
 
-<div class="card gold">
+    const MITHQAL = 4.608;
+    const PURITY_17K = 700;
 
-<div class="label">
-انس جهانی طلا
-</div>
 
-<div id="goldOunce" class="value">
-—
-</div>
+    function formatNumber(value) {
 
-<div class="unit">
-USD / OUNCE
-</div>
-
-<div class="source">
-SERVATMANDI
-</div>
-
-</div>
-
-
-<div class="card silver">
-
-<div class="label">
-انس جهانی نقره
-</div>
-
-<div id="silverOunce" class="value">
-—
-</div>
-
-<div class="unit">
-USD / OUNCE
-</div>
-
-<div class="source">
-SERVATMANDI
-</div>
-
-</div>
-
-
-<div class="card usd">
-
-<div class="label">
-دلار آزاد
-</div>
-
-<div id="usdPrice" class="value">
-—
-</div>
-
-<div class="unit">
-تومان
-</div>
-
-<div class="source">
-SERVATMANDI
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="label">
-اونس تروا
-</div>
-
-<div class="value">
-31.1034768
-</div>
-
-<div class="unit">
-GRAM
-</div>
-
-<div class="source">
-STANDARD
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-title">
-
-<h3>
-محاسبه قیمت هر گرم
-</h3>
-
-<span>
-RAW METAL VALUE
-</span>
-
-</div>
-
-
-<div class="calculator">
-
-<div class="calc-grid">
-
-<div class="calc">
-
-<div class="calc-name">
-طلای 24 عیار
-</div>
-
-<div id="gold24" class="calc-value">
-—
-</div>
-
-</div>
-
-
-<div class="calc">
-
-<div class="calc-name">
-طلای 18 عیار
-</div>
-
-<div id="gold18" class="calc-value">
-—
-</div>
-
-</div>
-
-
-<div class="calc">
-
-<div class="calc-name">
-نقره 999
-</div>
-
-<div id="silver999" class="calc-value">
-—
-</div>
-
-</div>
-
-
-<div class="calc">
-
-<div class="calc-name">
-نقره 925
-</div>
-
-<div id="silver925" class="calc-value">
-—
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-title">
-
-<h3>
-نمودار قیمت طلا 24 عیار
-</h3>
-
-<span>
-LIVE HISTORY
-</span>
-
-</div>
-
-<div class="chart-box">
-
-<div class="chart-area">
-
-<canvas id="goldChart"></canvas>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-title">
-
-<h3>
-نمودار قیمت نقره 999
-</h3>
-
-<span>
-LIVE HISTORY
-</span>
-
-</div>
-
-<div class="chart-box">
-
-<div class="chart-area">
-
-<canvas id="silverChart"></canvas>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-title">
-
-<h3>
-نمودار دلار آزاد
-</h3>
-
-<span>
-LIVE HISTORY
-</span>
-
-</div>
-
-<div class="chart-box">
-
-<div class="chart-area">
-
-<canvas id="usdChart"></canvas>
-
-</div>
-
-</div>
-
-</section>
-
-
-<div class="actions">
-
-<button
-class="refresh"
-onclick="loadPrices()">
-
-↻ بروزرسانی قیمت‌ها
-
-</button>
-
-<button
-class="clear"
-onclick="clearHistory()">
-
-پاک کردن نمودارها
-
-</button>
-
-</div>
-
-
-<div id="message" class="message">
-
-در انتظار اتصال به سامانه قیمت...
-
-</div>
-
-
-<footer class="footer">
-
-<strong>SILVER ZARIN FAKHR</strong>
-
-<br>
-
-زیبایی در درخشندگی، اصالت در ماندگاری
-
-<br>
-
-قیمت‌ها ارزش خام فلز را نمایش می‌دهند.
-
-</footer>
-
-</main>
-
-
-<script>
-
-/*
-====================================================
-SILVER ZARIN FAKHR
-MARKET DASHBOARD
-====================================================
-*/
-
-const OUNCE = 31.1034768;
-
-
-/*
-این آدرس بعداً به API واسط Vercel
-متصل می‌شود.
-*/
-
-const API = "/api/prices";
-
-
-let goldChart = null;
-let silverChart = null;
-let usdChart = null;
-
-
-/* =========================
-   NUMBER FORMAT
-========================= */
-
-function number(value, decimals = 0){
-
-    if(
+      if (
         value === null ||
         value === undefined ||
         !Number.isFinite(Number(value))
-    ){
-
+      ) {
         return "—";
+      }
+
+      return Number(value).toLocaleString(
+        "fa-IR",
+        {
+          maximumFractionDigits: 0
+        }
+      );
     }
 
-    return Number(value).toLocaleString(
+
+    function formatDecimal(value) {
+
+      if (
+        value === null ||
+        value === undefined ||
+        !Number.isFinite(Number(value))
+      ) {
+        return "—";
+      }
+
+      return Number(value).toLocaleString(
         "en-US",
         {
-            minimumFractionDigits:decimals,
-            maximumFractionDigits:decimals
+          maximumFractionDigits: 3
         }
-    );
-}
-
-
-function toman(value){
-
-    if(
-        value === null ||
-        value === undefined ||
-        !Number.isFinite(Number(value))
-    ){
-
-        return "—";
+      );
     }
 
-    return number(
-        Math.round(value)
-    ) + " تومان";
-}
 
+    function calculateMithqal17(
+      silverOunce,
+      dollarToman
+    ) {
 
-/* =========================
-   STATUS
-========================= */
+      if (
+        !Number.isFinite(Number(silverOunce)) ||
+        !Number.isFinite(Number(dollarToman))
+      ) {
+        return null;
+      }
 
-function online(){
-
-    const status =
-        document.getElementById("status");
-
-    status.classList.remove("offline");
-
-    document.getElementById(
-        "statusText"
-    ).textContent =
-        "ONLINE • متصل";
-}
-
-
-function offline(){
-
-    const status =
-        document.getElementById("status");
-
-    status.classList.add("offline");
-
-    document.getElementById(
-        "statusText"
-    ).textContent =
-        "OFFLINE • قطع ارتباط";
-}
-
-
-/* =========================
-   HISTORY
-========================= */
-
-function getHistory(){
-
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                "SZF_HISTORY"
-            )
-        ) || [];
-
-    }catch(error){
-
-        return [];
+      return (
+        Number(silverOunce) *
+        Number(dollarToman) /
+        1000 *
+        PURITY_17K *
+        MITHQAL
+      );
     }
-}
 
 
-function saveHistory(item){
+    function setStatus(
+      online,
+      message
+    ) {
 
-    const history =
-        getHistory();
+      const status =
+        document.getElementById("status");
 
-    history.push(item);
+      const statusText =
+        document.getElementById("statusText");
 
-    localStorage.setItem(
-        "SZF_HISTORY",
-        JSON.stringify(
-            history.slice(-50)
-        )
-    );
-}
+      statusText.textContent = message;
 
-
-/* =========================
-   CHART
-========================= */
-
-function makeChart(
-    canvas,
-    label,
-    dataKey
-){
-
-    const history =
-        getHistory();
-
-    const labels =
-        history.map(
-            x => x.time
-        );
-
-    const values =
-        history.map(
-            x => x[dataKey]
-        );
+      status.classList.toggle(
+        "error",
+        !online
+      );
+    }
 
 
-    return new Chart(
-        document.getElementById(canvas),
-        {
+    function updateUI(data) {
 
-            type:"line",
+      const silverOunce =
+        Number(data.silverOunce);
 
-            data:{
+      const usdToman =
+        Number(data.usdToman);
 
-                labels:labels,
-
-                datasets:[{
-
-                    label:label,
-
-                    data:values,
-
-                    borderColor:"#d4af6a",
-
-                    backgroundColor:
-                        "rgba(212,175,106,.08)",
-
-                    borderWidth:2,
-
-                    pointRadius:2,
-
-                    pointHoverRadius:5,
-
-                    fill:true,
-
-                    tension:.35
-
-                }]
-
-            },
-
-            options:{
-
-                responsive:true,
-
-                maintainAspectRatio:false,
-
-                interaction:{
-                    mode:"index",
-                    intersect:false
-                },
-
-                plugins:{
-
-                    legend:{
-                        labels:{
-                            color:"#f3e9dc",
-                            font:{
-                                family:"Tahoma",
-                                size:9
-                            }
-                        }
-                    }
-
-                },
-
-                scales:{
-
-                    x:{
-                        ticks:{
-                            color:"#777",
-                            maxTicksLimit:7
-                        },
-                        grid:{
-                            color:"rgba(255,255,255,.05)"
-                        }
-                    },
-
-                    y:{
-                        ticks:{
-                            color:"#777",
-                            callback:function(value){
-                                return Number(value)
-                                    .toLocaleString("en-US");
-                            }
-                        },
-                        grid:{
-                            color:"rgba(255,255,255,.05)"
-                        }
-                    }
-
-                }
-
-            }
-
-        }
-    );
-}
+      const silver999Toman =
+        Number(data.silver999Toman);
 
 
-function updateCharts(){
-
-    if(goldChart)
-        goldChart.destroy();
-
-    if(silverChart)
-        silverChart.destroy();
-
-    if(usdChart)
-        usdChart.destroy();
+      document.getElementById(
+        "silverOunce"
+      ).textContent =
+        formatDecimal(silverOunce);
 
 
-    goldChart =
-        makeChart(
-            "goldChart",
-            "طلای 24 عیار",
-            "gold24"
+      document.getElementById(
+        "usd"
+      ).textContent =
+        formatNumber(usdToman);
+
+
+      document.getElementById(
+        "silver999"
+      ).textContent =
+        formatNumber(silver999Toman);
+
+
+      const silver925 =
+        silver999Toman * 0.925;
+
+
+      document.getElementById(
+        "silver925"
+      ).textContent =
+        formatNumber(silver925);
+
+
+      const mithqal17 =
+        calculateMithqal17(
+          silverOunce,
+          usdToman
         );
 
 
-    silverChart =
-        makeChart(
-            "silverChart",
-            "نقره 999",
-            "silver999"
-        );
+      document.getElementById(
+        "mithqal17"
+      ).textContent =
+        formatNumber(mithqal17);
 
 
-    usdChart =
-        makeChart(
-            "usdChart",
-            "دلار آزاد",
-            "usdToman"
-        );
-}
+      if (data.updatedAt) {
 
+        const date =
+          new Date(data.updatedAt);
 
-/* =========================
-   LOAD DATA
-========================= */
-
-async function loadPrices(){
-
-    const message =
         document.getElementById(
-            "message"
-        );
+          "updatedAt"
+        ).textContent =
+          date.toLocaleTimeString(
+            "fa-IR"
+          );
+      }
 
-    message.textContent =
-        "در حال دریافت اطلاعات بازار...";
+      setStatus(
+        true,
+        "آنلاین • قیمت‌ها به‌روز هستند"
+      );
+    }
 
 
-    try{
+    async function loadPrices() {
+
+      try {
 
         const response =
-            await fetch(
-                API + "?t=" + Date.now(),
-                {
-                    cache:"no-store"
-                }
-            );
+          await fetch(
+            API + "?t=" + Date.now(),
+            {
+              method: "GET",
+              cache: "no-store"
+            }
+          );
 
 
-        if(!response.ok){
-
-            throw new Error(
-                "API ERROR " +
-                response.status
-            );
+        if (!response.ok) {
+          throw new Error(
+            "API Error"
+          );
         }
 
 
         const data =
-            await response.json();
+          await response.json();
 
 
-        const goldOunce =
-            Number(data.goldOunce);
-
-        const silverOunce =
-            Number(data.silverOunce);
-
-        const usdRial =
-            Number(data.usdRial);
-
-
-        if(
-            !Number.isFinite(goldOunce) ||
-            !Number.isFinite(silverOunce) ||
-            !Number.isFinite(usdRial)
-        ){
-
-            throw new Error(
-                "Invalid market data"
-            );
+        if (!data.success) {
+          throw new Error(
+            data.error || "خطای API"
+          );
         }
 
 
-        /* دلار ریال → تومان */
+        updateUI(data);
 
-        const usdToman =
-            usdRial / 10;
 
+      } catch (error) {
 
-        /* طلا */
-
-        const goldUSDGram =
-            goldOunce / OUNCE;
-
-
-        const gold24 =
-            goldUSDGram *
-            usdToman;
-
-
-        const gold18 =
-            gold24 * 0.750;
-
-
-        /* نقره */
-
-        const silverUSDGram =
-            silverOunce / OUNCE;
-
-
-        const silver999 =
-            silverUSDGram *
-            usdToman;
-
-
-        const silver925 =
-            silver999 * 0.925;
-
-
-        /* نمایش */
-
-        document.getElementById(
-            "goldOunce"
-        ).textContent =
-            number(goldOunce,2);
-
-
-        document.getElementById(
-            "silverOunce"
-        ).textContent =
-            number(silverOunce,2);
-
-
-        document.getElementById(
-            "usdPrice"
-        ).textContent =
-            number(usdToman);
-
-
-        document.getElementById(
-            "gold24"
-        ).textContent =
-            toman(gold24);
-
-
-        document.getElementById(
-            "gold18"
-        ).textContent =
-            toman(gold18);
-
-
-        document.getElementById(
-            "silver999"
-        ).textContent =
-            toman(silver999);
-
-
-        document.getElementById(
-            "silver925"
-        ).textContent =
-            toman(silver925);
-
-
-        /* تاریخچه */
-
-        const now =
-            new Date();
-
-
-        const time =
-            now.toLocaleTimeString(
-                "fa-IR",
-                {
-                    hour:"2-digit",
-                    minute:"2-digit",
-                    second:"2-digit"
-                }
-            );
-
-
-        saveHistory({
-
-            time:time,
-
-            gold24:
-                Math.round(gold24),
-
-            silver999:
-                Math.round(silver999),
-
-            usdToman:
-                Math.round(usdToman)
-
-        });
-
-
-        updateCharts();
-
-
-        document.getElementById(
-            "lastUpdate"
-        ).textContent =
-            time;
-
-
-        online();
-
-
-        message.textContent =
-            "✓ اطلاعات بازار با موفقیت دریافت شد.";
-
-
-    }catch(error){
-
-        console.error(error);
-
-        offline();
-
-        message.textContent =
-            "⚠ هنوز API قیمت‌ها متصل نشده است. این مرحله طبیعی است؛ در مرحله بعد اتصال ثروتمندی را فعال می‌کنیم.";
-    }
-
-}
-
-
-/* =========================
-   CLEAR
-========================= */
-
-function clearHistory(){
-
-    localStorage.removeItem(
-        "SZF_HISTORY"
-    );
-
-    location.reload();
-}
-
-
-/* =========================
-   START
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        loadPrices();
-
-        setInterval(
-            loadPrices,
-            60000
+        console.error(
+          "PRICE LOAD ERROR:",
+          error
         );
 
+        setStatus(
+          false,
+          "خطا در دریافت اطلاعات"
+        );
+      }
     }
-);
 
-</script>
+
+    loadPrices();
+
+    setInterval(
+      loadPrices,
+      1000
+    );
+
+  </script>
 
 </body>
-</html>
+    </html>
