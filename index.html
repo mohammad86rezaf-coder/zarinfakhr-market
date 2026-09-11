@@ -55,20 +55,14 @@
    ========================================================= */
 
 *{
-
   box-sizing:border-box;
   margin:0;
   padding:0;
-
 }
-
 
 html{
-
   scroll-behavior:smooth;
-
 }
-
 
 body{
 
@@ -123,7 +117,7 @@ body{
 
   max-width:430px;
 
-  background:rgba(255,255,255,.90);
+  background:rgba(255,255,255,.92);
 
   border:1px solid var(--border);
 
@@ -271,6 +265,13 @@ body{
 .btn:hover{
 
   transform:translateY(-2px);
+
+}
+
+
+.btn:active{
+
+  transform:scale(.98);
 
 }
 
@@ -463,7 +464,6 @@ body{
 
 /* =========================================================
    CONNECTION
-   فقط چراغ بالا تپش دارد
    ========================================================= */
 
 .connection{
@@ -557,7 +557,6 @@ body.status-loading .live-light{
 
 /* =========================================================
    TIME
-   ساعت یک ساعت عقب‌تر از گوشی
    ========================================================= */
 
 .time-panel{
@@ -752,7 +751,6 @@ body.status-loading .live-light{
 
 /* =========================================================
    MARKET CARD
-   تمام کادرها یکسان
    ========================================================= */
 
 .market-card{
@@ -779,7 +777,7 @@ body.status-loading .live-light{
 }
 
 
-/* نوار نورانی دور کادر */
+/* نور متحرک دور کادر */
 
 .market-card::after{
 
@@ -821,8 +819,6 @@ body.status-loading .live-light{
 }
 
 
-/* آنلاین = سبز */
-
 body.status-online .market-card::after{
 
   opacity:1;
@@ -832,8 +828,6 @@ body.status-online .market-card::after{
 
 }
 
-
-/* قطع ارتباط = قرمز */
 
 body.status-error .market-card::after{
 
@@ -861,15 +855,11 @@ body.status-error .market-card::after{
 @keyframes borderLightRotate{
 
   from{
-
     transform:rotate(0deg);
-
   }
 
   to{
-
     transform:rotate(360deg);
-
   }
 
 }
@@ -964,7 +954,7 @@ body.status-error .market-card::after{
 
 
 /* =========================================================
-   LAST UPDATE
+   SERVER INFO
    ========================================================= */
 
 .server-info{
@@ -1289,8 +1279,6 @@ body.status-error .market-card::after{
 }
 
 
-/* Instagram icon */
-
 .instagram-icon{
 
   width:23px;
@@ -1457,52 +1445,6 @@ body.status-error .market-card::after{
 
 }
 
-
-/* =========================================================
-   DISPLAY MODE
-   ========================================================= */
-
-.store-mode .nav button:nth-child(2),
-.store-mode .nav button:nth-child(3){
-
-  display:none;
-
-}
-
-
-.store-mode .market-grid{
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-}
-
-
-.store-mode .market-card{
-
-  padding:24px 16px;
-
-}
-
-
-.store-mode .market-price{
-
-  font-size:28px;
-
-}
-
-
-@media(max-width:900px){
-
-  .store-mode .market-grid{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
-}
-
 </style>
 
 </head>
@@ -1534,20 +1476,28 @@ body.status-error .market-card::after{
       پنل مدیریت و محاسبه قیمت
     </div>
 
+
     <input
       id="passwordInput"
       class="input"
       type="password"
       placeholder="رمز ورود"
-      autocomplete="current-password"
+      autocomplete="off"
+      inputmode="text"
+      autocapitalize="off"
+      autocorrect="off"
+      spellcheck="false"
     >
+
 
     <button
       id="loginButton"
       class="btn"
+      type="button"
     >
       ورود به برنامه
     </button>
+
 
     <div
       id="loginError"
@@ -1680,18 +1630,21 @@ body.status-error .market-card::after{
 
       <button
         class="active"
+        type="button"
         onclick="showSection('market',this)"
       >
         بازار
       </button>
 
       <button
+        type="button"
         onclick="showSection('calculator',this)"
       >
         محاسبه قیمت
       </button>
 
       <button
+        type="button"
         onclick="showSection('settings',this)"
       >
         تنظیمات
@@ -1700,9 +1653,7 @@ body.status-error .market-card::after{
     </nav>
 
 
-    <!-- =================================================
-         MARKET
-         ================================================= -->
+    <!-- MARKET -->
 
     <section
       id="marketSection"
@@ -1724,8 +1675,6 @@ body.status-error .market-card::after{
 
       <div class="market-grid">
 
-
-        <!-- MITHQAL -->
 
         <div class="market-card">
 
@@ -1753,8 +1702,6 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- SILVER OUNCE -->
-
         <div class="market-card">
 
           <div class="market-head">
@@ -1780,8 +1727,6 @@ body.status-error .market-card::after{
 
         </div>
 
-
-        <!-- USD -->
 
         <div class="market-card">
 
@@ -1809,8 +1754,6 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- SILVER 999 -->
-
         <div class="market-card">
 
           <div class="market-head">
@@ -1836,8 +1779,6 @@ body.status-error .market-card::after{
 
         </div>
 
-
-        <!-- SILVER 925 -->
 
         <div class="market-card">
 
@@ -1867,14 +1808,14 @@ body.status-error .market-card::after{
       </div>
 
 
-      <!-- فقط آخرین زمان دریافت -->
-
       <div class="server-info">
 
         <span>
+
           <strong id="lastServerUpdateBottom">
             --:--:--
           </strong>
+
         </span>
 
       </div>
@@ -1882,9 +1823,7 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- =================================================
-         CALCULATOR
-         ================================================= -->
+    <!-- CALCULATOR -->
 
     <section
       id="calculatorSection"
@@ -1996,6 +1935,7 @@ body.status-error .market-card::after{
 
         <button
           class="calculate-btn"
+          type="button"
           onclick="calculatePrice()"
         >
           محاسبه قیمت
@@ -2076,9 +2016,7 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- =================================================
-         SETTINGS
-         ================================================= -->
+    <!-- SETTINGS -->
 
     <section
       id="settingsSection"
@@ -2127,6 +2065,7 @@ body.status-error .market-card::after{
 
           <button
             class="btn"
+            type="button"
             onclick="saveMarketSettings()"
           >
             ذخیره تنظیمات
@@ -2153,11 +2092,13 @@ body.status-error .market-card::after{
             class="input"
             type="password"
             placeholder="رمز فعلی"
+            autocomplete="off"
           >
 
 
           <button
             class="btn"
+            type="button"
             onclick="verifyCurrentPassword()"
           >
             تأیید رمز فعلی
@@ -2193,6 +2134,7 @@ body.status-error .market-card::after{
 
             <button
               class="btn"
+              type="button"
               onclick="changePassword()"
             >
               تغییر رمز
@@ -2207,9 +2149,7 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- =================================================
-         FOOTER
-         ================================================= -->
+    <!-- FOOTER -->
 
     <footer class="footer">
 
@@ -2251,13 +2191,15 @@ body.status-error .market-card::after{
    CONFIG
    ========================================================= */
 
+
 /*
-   رمز ورود ثابت:
+   رمز اصلی برنامه
+
+   دقیقاً:
    @Mohammad1386
 */
 
-const DEFAULT_PASSWORD =
-  "@Mohammad1386";
+const LOGIN_PASSWORD = "@Mohammad1386";
 
 
 /*
@@ -2279,17 +2221,6 @@ const API =
 
 
 /* =========================================================
-   MARKET CONSTANTS
-   ========================================================= */
-
-const MITHQAL_GRAM =
-  4.608;
-
-const PURITY_17K =
-  700;
-
-
-/* =========================================================
    STATE
    ========================================================= */
 
@@ -2301,17 +2232,79 @@ let priceInterval = null;
 
 
 /* =========================================================
-   PASSWORD
+   IMPORTANT LOGIN CLEANUP
    ========================================================= */
 
 /*
-   رمز ورود همیشه همین است.
-   localStorage دیگر روی ورود تأثیر ندارد.
+   ورود قبلی را پاک می‌کنیم تا هر بار
+   سیستم رمز را از ابتدا بررسی کند.
+
+   این کار فقط برای session ورود است
+   و تنظیمات قیمت را پاک نمی‌کند.
 */
+
+try{
+
+  sessionStorage.removeItem(
+    "zarinFakhrLoggedIn"
+  );
+
+}catch(e){
+
+  console.log(e);
+
+}
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
 
 function getPassword(){
 
-  return "@Mohammad1386";
+  return LOGIN_PASSWORD;
+
+}
+
+
+/* =========================================================
+   NORMALIZE PASSWORD
+   ========================================================= */
+
+function normalizePassword(value){
+
+  if(
+    value === null ||
+    value === undefined
+  ){
+
+    return "";
+
+  }
+
+
+  return String(value)
+
+    /*
+      حذف فاصله ابتدا و انتها
+    */
+
+    .trim()
+
+    /*
+      تبدیل اعداد فارسی به انگلیسی
+    */
+
+    .replace(/۰/g,"0")
+    .replace(/۱/g,"1")
+    .replace(/۲/g,"2")
+    .replace(/۳/g,"3")
+    .replace(/۴/g,"4")
+    .replace(/۵/g,"5")
+    .replace(/۶/g,"6")
+    .replace(/۷/g,"7")
+    .replace(/۸/g,"8")
+    .replace(/۹/g,"9");
 
 }
 
@@ -2381,7 +2374,7 @@ function faNumber(value){
 
 /* =========================================================
    DEVICE CLOCK
-   یک ساعت عقب‌تر از ساعت گوشی
+   یک ساعت عقب‌تر
    ========================================================= */
 
 function updateDeviceClock(){
@@ -2389,12 +2382,6 @@ function updateDeviceClock(){
   const now =
     new Date();
 
-
-  /*
-    مثال:
-    ساعت گوشی 18:00
-    نمایش برنامه 17:00
-  */
 
   const adjusted =
     new Date(
@@ -2462,10 +2449,6 @@ function updateDeviceClock(){
 }
 
 
-/* =========================================================
-   CLOCK EVERY SECOND
-   ========================================================= */
-
 setInterval(
 
   updateDeviceClock,
@@ -2479,8 +2462,7 @@ updateDeviceClock();
 
 
 /* =========================================================
-   SERVER LAST UPDATE
-   یک ساعت عقب‌تر
+   LAST SERVER TIME
    ========================================================= */
 
 function updateLastServerTime(){
@@ -2550,7 +2532,6 @@ async function loadPrices(){
 
   try{
 
-
     const controller =
       new AbortController();
 
@@ -2606,10 +2587,8 @@ async function loadPrices(){
     if(!response.ok){
 
       throw new Error(
-
         "HTTP " +
         response.status
-
       );
 
     }
@@ -2628,19 +2607,11 @@ async function loadPrices(){
     ){
 
       throw new Error(
-
-        data?.message ||
-
         "اطلاعات معتبر نیست"
-
       );
 
     }
 
-
-    /* =====================================================
-       SERVER VALUES
-       ===================================================== */
 
     const silver999 =
       Number(
@@ -2671,9 +2642,7 @@ async function loadPrices(){
     ){
 
       throw new Error(
-
         "قیمت نقره ۹۹۹ معتبر نیست"
-
       );
 
     }
@@ -2684,25 +2653,23 @@ async function loadPrices(){
 
 
     /* =====================================================
-       CALCULATED VALUES
+       CALCULATED
        ===================================================== */
 
     const mithqal17 =
 
       (
-
         silver999 /
         1000
-
       )
 
       *
 
-      PURITY_17K
+      700
 
       *
 
-      MITHQAL_GRAM;
+      4.608;
 
 
     const silver925 =
@@ -2843,13 +2810,9 @@ async function loadPrices(){
 
   }catch(error){
 
-
     console.error(
-
       "PRICE LOAD ERROR:",
-
       error
-
     );
 
 
@@ -2883,16 +2846,8 @@ function startPriceUpdates(){
   }
 
 
-  /*
-    دریافت فوری
-  */
-
   loadPrices();
 
-
-  /*
-    دریافت هر یک ثانیه
-  */
 
   priceInterval =
     setInterval(
@@ -2907,38 +2862,83 @@ function startPriceUpdates(){
 
 
 /* =========================================================
-   LOGIN
+   LOGIN - FIXED
    ========================================================= */
 
 function login(){
 
-  const input =
+  const inputElement =
     document.getElementById(
       "passwordInput"
-    ).value;
+    );
+
+
+  const errorElement =
+    document.getElementById(
+      "loginError"
+    );
 
 
   /*
-    رمز ورود قطعی:
-    @Mohammad1386
+    گرفتن مقدار دقیق
   */
 
-  const correctPassword =
-    "@Mohammad1386";
+  const rawInput =
+    inputElement.value;
 
+
+  /*
+    نرمال‌سازی
+  */
+
+  const input =
+    normalizePassword(
+      rawInput
+    );
+
+
+  const correctPassword =
+    LOGIN_PASSWORD;
+
+
+  console.log(
+    "Login input length:",
+    input.length
+  );
+
+
+  /*
+    مقایسه رمز
+  */
 
   if(
     input === correctPassword
   ){
 
-    sessionStorage.setItem(
+    /*
+      ثبت ورود
+    */
 
-      "zarinFakhrLoggedIn",
+    try{
 
-      "true"
+      sessionStorage.setItem(
 
-    );
+        "zarinFakhrLoggedIn",
 
+        "true"
+
+      );
+
+    }catch(e){
+
+      console.log(e);
+
+    }
+
+
+    /*
+      حذف صفحه ورود
+    */
 
     document.getElementById(
       "loginPage"
@@ -2946,28 +2946,48 @@ function login(){
       "none";
 
 
+    /*
+      نمایش برنامه
+    */
+
     document.getElementById(
       "app"
     ).style.display =
       "block";
 
 
-    document.getElementById(
-      "loginError"
-    ).textContent =
+    /*
+      پاک کردن خطا
+    */
+
+    errorElement.textContent =
       "";
 
+
+    /*
+      پاک کردن فیلد رمز
+    */
+
+    inputElement.value =
+      "";
+
+
+    /*
+      شروع قیمت‌ها
+    */
 
     startPriceUpdates();
 
 
   }else{
 
-
-    document.getElementById(
-      "loginError"
-    ).textContent =
+    errorElement.textContent =
       "رمز ورود اشتباه است.";
+
+    inputElement.value =
+      "";
+
+    inputElement.focus();
 
   }
 
@@ -2984,7 +3004,13 @@ document.getElementById(
 
   "click",
 
-  login
+  function(event){
+
+    event.preventDefault();
+
+    login();
+
+  }
 
 );
 
@@ -3005,6 +3031,8 @@ document.getElementById(
       event.key === "Enter"
     ){
 
+      event.preventDefault();
+
       login();
 
     }
@@ -3012,99 +3040,6 @@ document.getElementById(
   }
 
 );
-
-
-/* =========================================================
-   AUTO LOGIN
-   ========================================================= */
-
-if(
-
-  sessionStorage.getItem(
-    "zarinFakhrLoggedIn"
-  ) === "true"
-
-){
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "block";
-
-
-  startPriceUpdates();
-
-}
-
-
-/* =========================================================
-   SECTION NAVIGATION
-   ========================================================= */
-
-function showSection(
-  section,
-  button
-){
-
-  document.getElementById(
-    "marketSection"
-  ).style.display =
-
-    section === "market"
-
-      ? "block"
-
-      : "none";
-
-
-  document.getElementById(
-    "calculatorSection"
-  ).style.display =
-
-    section === "calculator"
-
-      ? "block"
-
-      : "none";
-
-
-  document.getElementById(
-    "settingsSection"
-  ).style.display =
-
-    section === "settings"
-
-      ? "block"
-
-      : "none";
-
-
-  document.querySelectorAll(
-    ".nav button"
-  ).forEach(
-
-    btn => {
-
-      btn.classList.remove(
-        "active"
-      );
-
-    }
-
-  );
-
-
-  button.classList.add(
-    "active"
-  );
-
-}
 
 
 /* =========================================================
@@ -3195,10 +3130,6 @@ function calculatePrice(){
     extra = 0;
 
 
-  /* =====================================================
-     MANUAL PRICE
-     ===================================================== */
-
   let manual999 =
     Number(
 
@@ -3245,10 +3176,6 @@ function calculatePrice(){
 
   }
 
-
-  /* =====================================================
-     PRICE CALCULATION
-     ===================================================== */
 
   const gramPrice =
 
@@ -3335,4 +3262,22 @@ function calculatePrice(){
 
 
 /* =========================================================
-   SAVE
+   SAVE MARKET SETTINGS
+   ========================================================= */
+
+function saveMarketSettings(){
+
+  const manual999 =
+    Number(
+
+      document.getElementById(
+        "setting999"
+      ).value
+
+    );
+
+
+  const labor =
+    Number(
+
+      document.get
