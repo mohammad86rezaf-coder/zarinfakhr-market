@@ -28,7 +28,17 @@
   --burgundy:#521107;
   --wine:#240603;
   --white:#FFFFFF;
+
+  /* وضعیت اتصال */
+  --onlineGreen:#20D66B;
+  --onlineGreenBright:#7CFFAE;
+  --offlineRed:#FF2929;
+  --offlineRedBright:#FF7777;
 }
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body{
   font-family:
@@ -79,6 +89,10 @@ body{
     0 20px 55px rgba(92,61,36,.16);
 }
 
+/* =========================================================
+   LOGIN LOGO + SILVER ROTATING RING
+========================================================= */
+
 .logo{
   width:100px;
   height:100px;
@@ -90,6 +104,8 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+
+  position:relative;
 
   background:
     radial-gradient(
@@ -105,7 +121,77 @@ body{
     0 12px 30px rgba(92,61,36,.2);
 }
 
+/* حلقه نقره‌ای متحرک دور SZF */
+
+.logo::before{
+  content:"";
+
+  position:absolute;
+
+  width:114px;
+  height:114px;
+
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 250deg,
+      #8F8F8F 275deg,
+      #E8E8E8 300deg,
+      #FFFFFF 315deg,
+      #AFAFAF 330deg,
+      #666666 345deg,
+      transparent 360deg
+    );
+
+  animation:
+    silverLogoRing 2.2s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px rgba(190,190,190,.75))
+    drop-shadow(0 0 10px rgba(255,255,255,.35));
+
+  z-index:0;
+}
+
+/* پوشش داخلی تا حلقه به شکل نوار باریک دیده شود */
+
+.logo::after{
+  content:"";
+
+  position:absolute;
+
+  width:106px;
+  height:106px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--champagne),
+      var(--darkGold)
+    );
+
+  z-index:1;
+}
+
+@keyframes silverLogoRing{
+  0%{
+    transform:rotate(0deg);
+  }
+
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
 .logo span{
+  position:relative;
+  z-index:2;
+
   font-family:Georgia,serif;
   font-size:31px;
   font-weight:bold;
@@ -308,17 +394,21 @@ body{
 
   border-radius:50%;
 
-  background:#258A4B;
+  background:var(--onlineGreen);
 
   box-shadow:
-    0 0 8px #258A4B;
+    0 0 8px var(--onlineGreen),
+    0 0 15px rgba(32,214,107,.6);
 
   animation:livePulse 1.5s ease-in-out infinite;
 }
 
 .status-error .live-light{
-  background:var(--ruby);
-  box-shadow:0 0 8px var(--ruby);
+  background:var(--offlineRed);
+
+  box-shadow:
+    0 0 8px var(--offlineRed),
+    0 0 15px rgba(255,41,41,.65);
 }
 
 @keyframes livePulse{
@@ -459,6 +549,10 @@ body{
   border-radius:22px;
 }
 
+/* =========================================================
+   PRICE BORDER - ONLINE GREEN
+========================================================= */
+
 .market-area::before{
   content:"";
 
@@ -470,28 +564,42 @@ body{
     conic-gradient(
       from 0deg,
       transparent 0deg,
-      transparent 300deg,
-      var(--champagne) 320deg,
-      var(--white) 338deg,
-      var(--darkGold) 350deg,
+      transparent 285deg,
+      var(--onlineGreen) 315deg,
+      var(--onlineGreenBright) 330deg,
+      #FFFFFF 340deg,
+      var(--onlineGreen) 350deg,
       transparent 360deg
     );
 
   animation:
-    priceBorderMove 2.2s linear infinite;
+    priceBorderMove 2s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px var(--onlineGreen))
+    drop-shadow(0 0 10px rgba(32,214,107,.65));
 }
+
+/* =========================================================
+   PRICE BORDER - OFFLINE RED
+========================================================= */
 
 .status-error .market-area::before{
   background:
     conic-gradient(
       from 0deg,
       transparent 0deg,
-      transparent 300deg,
-      var(--ruby) 320deg,
-      var(--burgundy) 337deg,
-      var(--white) 347deg,
+      transparent 285deg,
+      var(--offlineRed) 315deg,
+      var(--offlineRedBright) 330deg,
+      #FFFFFF 340deg,
+      var(--offlineRed) 350deg,
       transparent 360deg
     );
+
+  filter:
+    drop-shadow(0 0 4px var(--offlineRed))
+    drop-shadow(0 0 10px rgba(255,41,41,.65));
 }
 
 @keyframes priceBorderMove{
@@ -1419,7 +1527,6 @@ body{
 
         <div class="settings-list">
 
-
           <div class="settings-item">
 
             <label>
@@ -1581,10 +1688,13 @@ let priceInterval = null;
 
 /* =========================================================
    LOGIN
-   فقط این بخش برای رفع مشکل ورود ساده شده است.
+   اصلاح شده:
+   رمز اصلی همیشه معتبر است.
+   رمز ذخیره شده نیز در صورت وجود معتبر می‌ماند.
 ========================================================= */
 
 const DEFAULT_PASSWORD = "@Mohammad1386";
+
 
 function getCurrentPassword(){
 
@@ -1613,13 +1723,29 @@ function login(){
   const password =
     String(input.value);
 
+
   /*
-    مقایسه مستقیم رمز.
-    رمز پیش‌فرض:
-    @Mohammad1386
+    نکته مهم:
+    رمز اصلی @Mohammad1386 همیشه قابل استفاده است.
+
+    اگر رمز جدیدی قبلاً در تنظیمات ذخیره شده باشد،
+    آن رمز هم قابل استفاده خواهد بود.
   */
 
-  if(password === getCurrentPassword()){
+  const savedPassword =
+    localStorage.getItem("zarinFakhrPassword");
+
+
+  const validLogin =
+    password === DEFAULT_PASSWORD ||
+    (
+      typeof savedPassword === "string" &&
+      savedPassword.length > 0 &&
+      password === savedPassword
+    );
+
+
+  if(validLogin){
 
     document.getElementById("loginPage")
       .style.display = "none";
@@ -2361,7 +2487,6 @@ function showPage(
 
 /* =========================================================
    INITIAL LOGIN STATE
-   عمداً هیچ auto-login وجود ندارد.
 ========================================================= */
 
 document.getElementById(
