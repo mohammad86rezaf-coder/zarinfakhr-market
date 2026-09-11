@@ -1,1773 +1,837 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>SILVER ZARIN FAKHR</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SILVER ZARIN FAKHR | پنل اختصاصی</title>
 
 <style>
-
-/* =========================================================
-   SILVER ZARIN FAKHR
-   PRIVATE MANAGEMENT APP
-   ========================================================= */
-
-:root {
-
-  --cream: #FAF1E4;
-  --cream2: #F2E1CF;
-  --stone: #D2C6BE;
-  --stone2: #CABCB2;
-  --beige: #E0D3CA;
-  --taupe: #B3A59A;
-
-  --gold: #C0936C;
-  --gold2: #A3744D;
-
-  --brown: #835935;
-  --brown2: #5C3D24;
-
-  --red: #9E1E19;
-  --red2: #521107;
-  --deep: #240603;
-
-  --white: #FFFFFF;
-
-  --green: #159447;
-  --green2: #28B765;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-
-* {
-  box-sizing: border-box;
+:root{
+    --bg:#FAF1E4;
+    --card:#F2E1CF;
+    --card2:#E0D3CA;
+    --border:#C9BBB0;
+    --gold:#A3744D;
+    --gold2:#C0936C;
+    --brown:#5C3D24;
+    --burgundy:#9E1E19;
+    --burgundyDark:#521107;
+    --deep:#240603;
+    --white:#FFFFFF;
+    --text:#3E2B20;
+    --muted:#806F62;
+    --green:#237A45;
 }
 
-
-html,
-body {
-
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-
+body{
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+    background:
+        radial-gradient(circle at top right,#fff 0%,transparent 35%),
+        linear-gradient(135deg,#FAF1E4,#F2E1CF);
+    color:var(--text);
+    min-height:100vh;
 }
 
-
-body {
-
-  font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
-
-  color: var(--deep);
-
-  background:
-
-    radial-gradient(
-      circle at 50% -20%,
-      #FFFFFF 0%,
-      var(--cream) 30%,
-      var(--cream2) 62%,
-      var(--stone) 100%
-    );
-
-  min-height: 100vh;
-
-}
-
-
-/* =========================================================
+/* =========================
    LOGIN
-========================================================= */
+========================= */
 
-#loginPage {
-
-  min-height: 100vh;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 25px;
-
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-
-.login-box {
-
-  width: min(440px, 100%);
-
-  padding: 42px 34px;
-
-  text-align: center;
-
-  background:
-
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.94),
-      rgba(242,225,207,.88)
-    );
-
-  border:
-    1px solid
-    rgba(131,89,53,.28);
-
-  border-radius: 24px;
-
-  box-shadow:
-
-    0 30px 80px
-    rgba(92,61,36,.18),
-
-    inset 0 1px 0
-    rgba(255,255,255,.95);
-
-  position: relative;
-
-  overflow: hidden;
-
+.login-box{
+    width:100%;
+    max-width:430px;
+    padding:42px 30px;
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--border);
+    border-radius:28px;
+    box-shadow:
+        0 20px 60px rgba(82,17,7,.12),
+        inset 0 1px 0 rgba(255,255,255,.8);
+    text-align:center;
+    backdrop-filter:blur(14px);
 }
 
-
-.login-box::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-
-  right: 0;
-
-  left: 0;
-
-  height: 3px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold),
-      var(--red),
-      var(--gold),
-      transparent
-    );
-
-  box-shadow:
-    0 0 18px
-    rgba(192,147,108,.55);
-
+.login-logo{
+    width:82px;
+    height:82px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:27px;
+    font-weight:bold;
+    letter-spacing:2px;
+    color:var(--white);
+    background:
+        linear-gradient(135deg,var(--burgundyDark),var(--gold));
+    box-shadow:
+        0 0 0 6px rgba(163,116,77,.10),
+        0 10px 30px rgba(82,17,7,.18);
 }
 
-
-.login-logo {
-
-  width: 78px;
-
-  height: 78px;
-
-  margin: 0 auto 20px;
-
-  display: grid;
-
-  place-items: center;
-
-  border-radius: 50%;
-
-  border: 1px solid var(--gold);
-
-  background: var(--white);
-
-  color: var(--red2);
-
-  font-size: 22px;
-
-  font-weight: 950;
-
-  box-shadow:
-    0 0 25px
-    rgba(192,147,108,.22);
-
+.login-title{
+    font-size:22px;
+    color:var(--deep);
+    margin-bottom:8px;
+    letter-spacing:.5px;
 }
 
-
-.login-title {
-
-  margin: 0;
-
-  font-size: 27px;
-
-  font-weight: 950;
-
-  color: var(--deep);
-
+.login-subtitle{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:28px;
 }
 
-
-.login-subtitle {
-
-  margin: 9px 0 30px;
-
-  color: var(--brown);
-
-  font-size: 13px;
-
-  font-weight: 700;
-
+.password-input{
+    width:100%;
+    height:54px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#fff;
+    padding:0 17px;
+    font-size:16px;
+    outline:none;
+    text-align:center;
+    color:var(--text);
+    transition:.25s;
 }
 
-
-.password-input {
-
-  width: 100%;
-
-  height: 58px;
-
-  padding: 0 18px;
-
-  border:
-    1px solid
-    var(--taupe);
-
-  border-radius: 12px;
-
-  background:
-    rgba(255,255,255,.75);
-
-  color: var(--deep);
-
-  outline: none;
-
-  text-align: center;
-
-  font-size: 21px;
-
-  letter-spacing: 3px;
-
-  font-weight: 900;
-
+.password-input:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(192,147,108,.14);
 }
 
-
-.password-input:focus {
-
-  border-color: var(--gold);
-
-  box-shadow:
-    0 0 0 4px
-    rgba(192,147,108,.12);
-
+.login-button{
+    width:100%;
+    height:54px;
+    border:0;
+    border-radius:15px;
+    margin-top:14px;
+    background:linear-gradient(135deg,var(--burgundyDark),var(--burgundy));
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(82,17,7,.20);
 }
 
-
-.login-button {
-
-  width: 100%;
-
-  height: 56px;
-
-  margin-top: 15px;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background:
-
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--red2)
-    );
-
-  color: var(--white);
-
-  font-size: 16px;
-
-  font-weight: 900;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 10px 25px
-    rgba(82,17,7,.20);
-
+.login-button:active{
+    transform:scale(.98);
 }
 
-
-.login-error {
-
-  min-height: 22px;
-
-  margin-top: 13px;
-
-  color: var(--red);
-
-  font-size: 12px;
-
-  font-weight: 800;
-
+.login-error{
+    min-height:22px;
+    margin-top:13px;
+    color:#B3261E;
+    font-size:13px;
 }
 
-
-/* =========================================================
+/* =========================
    APP
-========================================================= */
+========================= */
 
-#app {
-
-  display: none;
-
-  min-height: 100vh;
-
+#app{
+    display:none;
+    min-height:100vh;
 }
 
-
-.app-container {
-
-  width: min(1550px, 94%);
-
-  margin: auto;
-
-  padding: 22px 0 30px;
-
+.container{
+    width:min(1180px,94%);
+    margin:auto;
 }
 
-
-.app-frame {
-
-  position: relative;
-
-  background:
-
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.86),
-      rgba(242,225,207,.76)
-    );
-
-  border:
-    1px solid
-    rgba(92,61,36,.25);
-
-  border-radius: 28px;
-
-  box-shadow:
-
-    0 30px 90px
-    rgba(92,61,36,.14),
-
-    inset 0 1px 0
-    rgba(255,255,255,.95);
-
-  overflow: hidden;
-
+header{
+    padding:24px 0 15px;
 }
 
-
-.app-frame::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-
-  right: 5%;
-
-  left: 5%;
-
-  height: 3px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold),
-      var(--red),
-      var(--gold),
-      transparent
-    );
-
-  box-shadow:
-
-    0 0 8px
-    rgba(192,147,108,.8),
-
-    0 0 25px
-    rgba(158,30,25,.18);
-
+.header-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:20px 24px;
+    background:rgba(255,255,255,.70);
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:0 12px 35px rgba(82,17,7,.08);
+    backdrop-filter:blur(10px);
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.app-header {
-
-  padding: 25px 30px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  border-bottom:
-    1px solid
-    rgba(92,61,36,.18);
-
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
 }
 
-
-.brand {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 15px;
-
+.brand-logo{
+    width:54px;
+    height:54px;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    background:linear-gradient(135deg,var(--burgundyDark),var(--gold));
 }
 
-
-.logo {
-
-  width: 65px;
-
-  height: 65px;
-
-  display: grid;
-
-  place-items: center;
-
-  border-radius: 50%;
-
-  border:
-    1px solid
-    var(--gold);
-
-  background:
-    var(--white);
-
-  color:
-    var(--red2);
-
-  font-weight: 950;
-
-  font-size: 18px;
-
-  box-shadow:
-    0 0 20px
-    rgba(192,147,108,.20);
-
+.brand-title{
+    font-size:18px;
+    font-weight:bold;
+    color:var(--deep);
 }
 
-
-.brand h1 {
-
-  margin: 0;
-
-  color: var(--deep);
-
-  font-size:
-    clamp(20px,2.5vw,32px);
-
-  font-weight: 950;
-
+.brand-subtitle{
+    margin-top:4px;
+    font-size:12px;
+    color:var(--muted);
 }
 
-
-.brand p {
-
-  margin: 6px 0 0;
-
-  color: var(--brown);
-
-  font-size: 13px;
-
-  font-weight: 800;
-
+.live-status{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:var(--green);
+    font-size:12px;
+    white-space:nowrap;
 }
 
-
-.header-actions {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
+.live-light{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#35A85B;
+    position:relative;
+    box-shadow:0 0 8px rgba(35,122,69,.8);
+    animation:onlinePulse 1.25s infinite ease-in-out;
 }
 
-
-/* =========================================================
-   ONLINE STATUS — PULSE
-========================================================= */
-
-.live-status {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-
-  padding: 10px 14px;
-
-  border:
-    1px solid
-    rgba(21,148,71,.25);
-
-  border-radius: 10px;
-
-  background:
-    rgba(255,255,255,.65);
-
-  color: var(--brown2);
-
-  font-size: 12px;
-
-  font-weight: 800;
-
+.live-light::before,
+.live-light::after{
+    content:"";
+    position:absolute;
+    inset:-5px;
+    border:1px solid rgba(35,122,69,.45);
+    border-radius:50%;
+    animation:onlineRing 1.8s infinite ease-out;
 }
 
-
-.live-light {
-
-  width: 9px;
-
-  height: 9px;
-
-  border-radius: 50%;
-
-  background: var(--green);
-
-  box-shadow:
-    0 0 7px
-    rgba(21,148,71,.8);
-
-  animation:
-    onlinePulse 1.35s ease-in-out infinite;
-
+.live-light::after{
+    animation-delay:.9s;
 }
 
-
-/* =========================================================
-   ONLINE PULSE
-========================================================= */
-
-@keyframes onlinePulse {
-
-  0% {
-
-    transform:
-      scale(.85);
-
-    opacity:
-      .55;
-
-    box-shadow:
-      0 0 3px
-      rgba(21,148,71,.35);
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.35);
-
-    opacity:
-      1;
-
-    box-shadow:
-      0 0 13px
-      rgba(21,148,71,.95);
-
-  }
-
-  100% {
-
-    transform:
-      scale(.85);
-
-    opacity:
-      .55;
-
-    box-shadow:
-      0 0 3px
-      rgba(21,148,71,.35);
-
-  }
-
+@keyframes onlinePulse{
+    0%,100%{
+        transform:scale(.85);
+        opacity:.65;
+    }
+    50%{
+        transform:scale(1.3);
+        opacity:1;
+    }
 }
 
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-.logout {
-
-  height: 42px;
-
-  padding: 0 16px;
-
-  border:
-    1px solid
-    rgba(158,30,25,.25);
-
-  border-radius: 10px;
-
-  background:
-    rgba(255,255,255,.55);
-
-  color: var(--red2);
-
-  font-weight: 900;
-
-  cursor: pointer;
-
+@keyframes onlineRing{
+    0%{
+        transform:scale(.5);
+        opacity:.8;
+    }
+    100%{
+        transform:scale(2.7);
+        opacity:0;
+    }
 }
 
-
-/* =========================================================
+/* =========================
    NAV
-========================================================= */
+========================= */
 
-.nav {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 10px;
-
-  padding: 20px 30px 0;
-
+.nav{
+    display:flex;
+    gap:10px;
+    margin:15px 0 20px;
+    padding:7px;
+    background:rgba(255,255,255,.55);
+    border:1px solid var(--border);
+    border-radius:17px;
 }
 
-
-.nav-button {
-
-  height: 55px;
-
-  border:
-    1px solid
-    rgba(131,89,53,.22);
-
-  border-radius: 12px;
-
-  background:
-    rgba(255,255,255,.52);
-
-  color: var(--brown2);
-
-  font-size: 14px;
-
-  font-weight: 900;
-
-  cursor: pointer;
-
+.nav button{
+    flex:1;
+    height:45px;
+    border:0;
+    border-radius:12px;
+    background:transparent;
+    color:var(--brown);
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
 }
 
-
-.nav-button.active {
-
-  color: var(--white);
-
-  border-color: var(--red);
-
-  background:
-
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--red2)
-    );
-
-  box-shadow:
-    0 8px 22px
-    rgba(82,17,7,.16);
-
+.nav button.active{
+    color:#fff;
+    background:linear-gradient(135deg,var(--burgundyDark),var(--gold));
+    box-shadow:0 7px 18px rgba(82,17,7,.15);
 }
 
+/* =========================
+   SECTIONS
+========================= */
 
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.content {
-
-  padding: 25px 30px 30px;
-
+.section{
+    display:none;
 }
 
-
-.section {
-
-  display: none;
-
+.section.active{
+    display:block;
 }
 
-
-.section.active {
-
-  display: block;
-
+.section-title{
+    font-size:21px;
+    color:var(--deep);
+    margin:8px 0 18px;
 }
 
-
-.section-title {
-
-  margin: 0 0 7px;
-
-  color: var(--deep);
-
-  font-size: 25px;
-
-  font-weight: 950;
-
+.section-description{
+    color:var(--muted);
+    font-size:13px;
+    margin:-8px 0 18px;
 }
 
-
-.section-description {
-
-  margin: 0 0 22px;
-
-  color: var(--brown);
-
-  font-size: 13px;
-
-  font-weight: 650;
-
-}
-
-
-/* =========================================================
+/* =========================
    MARKET
-========================================================= */
+========================= */
 
-.market-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-  gap: 13px;
-
+.market-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:13px;
 }
 
+.market-card{
+    position:relative;
+    overflow:hidden;
+    min-height:145px;
+    padding:18px 15px;
+    border-radius:21px;
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--border);
+    box-shadow:0 12px 30px rgba(82,17,7,.07);
+}
 
-.market-card {
-
-  position: relative;
-
-  min-height: 205px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  text-align: center;
-
-  padding: 20px 10px;
-
-  border:
-    1px solid
-    rgba(92,61,36,.22);
-
-  border-radius: 14px;
-
-  background:
-
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.92),
-      rgba(224,211,202,.62)
+.market-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:13%;
+    right:13%;
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        var(--burgundy),
+        var(--gold),
+        transparent
     );
-
-  box-shadow:
-    0 15px 35px
-    rgba(92,61,36,.08);
-
-  overflow: hidden;
-
+    box-shadow:0 0 13px rgba(163,116,77,.7);
+    animation:lightBar 2.4s infinite ease-in-out;
 }
 
-
-.market-card::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-
-  right: 8%;
-
-  left: 8%;
-
-  height: 2px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold),
-      var(--red),
-      var(--gold),
-      transparent
-    );
-
-  box-shadow:
-    0 0 8px
-    rgba(192,147,108,.7);
-
+@keyframes lightBar{
+    0%,100%{
+        opacity:.35;
+        transform:scaleX(.65);
+    }
+    50%{
+        opacity:1;
+        transform:scaleX(1);
+    }
 }
 
-
-.market-title {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-
-  color: var(--brown2);
-
-  font-size: 14px;
-
-  font-weight: 900;
-
+.market-name{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:14px;
 }
 
-
-/* =========================================================
-   RADAR LIGHT
-========================================================= */
-
-.market-dot {
-
-  position: relative;
-
-  width: 9px;
-
-  height: 9px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: var(--green);
-
-  box-shadow:
-    0 0 7px
-    rgba(21,148,71,.95);
-
+.price-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-
-.market-dot::after {
-
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-
-  left: 50%;
-
-  width: 9px;
-
-  height: 9px;
-
-  border-radius: 50%;
-
-  border:
-    1px solid
-    rgba(21,148,71,.75);
-
-  transform:
-    translate(-50%,-50%)
-    scale(.8);
-
-  opacity: 0;
-
-  animation:
-    radarWave 2.1s ease-out infinite;
-
+.market-price{
+    font-size:22px;
+    font-weight:bold;
+    color:var(--deep);
+    direction:ltr;
+    text-align:right;
+    flex:1;
 }
 
-
-@keyframes radarWave {
-
-  0% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(.8);
-
-    opacity:
-      .9;
-
-  }
-
-  70% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(2.8);
-
-    opacity:
-      .18;
-
-  }
-
-  100% {
-
-    transform:
-      translate(-50%,-50%)
-      scale(3.5);
-
-    opacity:
-      0;
-
-  }
-
+.market-unit{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:7px;
 }
 
+/* =========================
+   ADVANCED RADAR + PULSE
+========================= */
 
-/* Different radar timing */
-
-.market-card:nth-child(1)
-.market-dot::after {
-
-  animation-delay:
-    0s;
-
+.market-dot{
+    width:12px;
+    height:12px;
+    flex:none;
+    position:relative;
+    border-radius:50%;
+    background:#38A85D;
+    box-shadow:
+        0 0 7px rgba(56,168,93,.95),
+        0 0 15px rgba(56,168,93,.65);
+    animation:dotPulse 1.15s infinite ease-in-out;
 }
 
-
-.market-card:nth-child(2)
-.market-dot::after {
-
-  animation-delay:
-    .42s;
-
+/* موج رادار اول */
+.market-dot::before{
+    content:"";
+    position:absolute;
+    inset:-5px;
+    border:1.5px solid rgba(56,168,93,.65);
+    border-radius:50%;
+    animation:radarWave 1.8s infinite ease-out;
 }
 
-
-.market-card:nth-child(3)
-.market-dot::after {
-
-  animation-delay:
-    .84s;
-
+/* موج رادار دوم */
+.market-dot::after{
+    content:"";
+    position:absolute;
+    inset:-5px;
+    border:1px solid rgba(56,168,93,.45);
+    border-radius:50%;
+    animation:radarWave 1.8s infinite ease-out;
+    animation-delay:.9s;
 }
 
+@keyframes dotPulse{
+    0%,100%{
+        transform:scale(.72);
+        opacity:.55;
+        box-shadow:
+            0 0 4px rgba(56,168,93,.5),
+            0 0 8px rgba(56,168,93,.3);
+    }
 
-.market-card:nth-child(4)
-.market-dot::after {
+    20%{
+        transform:scale(1);
+        opacity:.9;
+    }
 
-  animation-delay:
-    1.26s;
+    45%{
+        transform:scale(1.28);
+        opacity:1;
+        box-shadow:
+            0 0 9px rgba(56,168,93,1),
+            0 0 22px rgba(56,168,93,.8),
+            0 0 34px rgba(56,168,93,.35);
+    }
 
+    70%{
+        transform:scale(.92);
+        opacity:.85;
+    }
 }
 
+@keyframes radarWave{
+    0%{
+        transform:scale(.55);
+        opacity:.9;
+    }
 
-.market-card:nth-child(5)
-.market-dot::after {
+    35%{
+        opacity:.65;
+    }
 
-  animation-delay:
-    1.68s;
-
+    100%{
+        transform:scale(3.5);
+        opacity:0;
+    }
 }
 
-
-/* =========================================================
-   MARKET VALUE
-========================================================= */
-
-.market-value {
-
-  margin-top: 21px;
-
-  color: var(--deep);
-
-  font-size:
-    clamp(22px,2.4vw,36px);
-
-  font-weight: 950;
-
-  white-space: nowrap;
-
-}
-
-
-.market-unit {
-
-  margin-top: 8px;
-
-  color: var(--gold2);
-
-  font-size: 10px;
-
-  font-weight: 800;
-
-}
-
-
-/* =========================================================
+/* =========================
    CALCULATOR
-========================================================= */
+========================= */
 
-.calculator-layout {
-
-  display: grid;
-
-  grid-template-columns:
-    1.1fr .9fr;
-
-  gap: 18px;
-
+.calculator-box{
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:22px;
+    box-shadow:0 12px 35px rgba(82,17,7,.07);
 }
 
-
-.panel {
-
-  padding: 24px;
-
-  border:
-    1px solid
-    rgba(92,61,36,.22);
-
-  border-radius: 16px;
-
-  background:
-    rgba(255,255,255,.62);
-
-  box-shadow:
-    0 15px 35px
-    rgba(92,61,36,.07);
-
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-
-.panel-title {
-
-  margin: 0 0 20px;
-
-  color: var(--deep);
-
-  font-size: 18px;
-
-  font-weight: 950;
-
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
 }
 
-
-.form-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap: 14px;
-
+.form-group.full{
+    grid-column:1/-1;
 }
 
-
-.field {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 7px;
-
+.form-group label{
+    font-size:12px;
+    color:var(--muted);
 }
 
-
-.field.full {
-
-  grid-column:
-    1 / -1;
-
+.form-group input,
+.form-group select{
+    height:50px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:0 13px;
+    background:#fff;
+    color:var(--text);
+    font-size:15px;
+    outline:none;
 }
 
-
-.field label {
-
-  color: var(--brown2);
-
-  font-size: 12px;
-
-  font-weight: 850;
-
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(192,147,108,.12);
 }
 
-
-.field input,
-.field select {
-
-  width: 100%;
-
-  height: 50px;
-
-  padding: 0 13px;
-
-  border:
-    1px solid
-    var(--stone2);
-
-  border-radius: 10px;
-
-  background: var(--white);
-
-  color: var(--deep);
-
-  outline: none;
-
-  font-family: inherit;
-
-  font-size: 14px;
-
-  font-weight: 800;
-
+.result-box{
+    margin-top:22px;
+    padding:20px;
+    border-radius:20px;
+    background:
+        linear-gradient(135deg,
+        rgba(82,17,7,.96),
+        rgba(163,116,77,.96));
+    color:#fff;
 }
 
-
-.field input:focus,
-.field select:focus {
-
-  border-color: var(--gold);
-
-  box-shadow:
-    0 0 0 4px
-    rgba(192,147,108,.12);
-
+.result-title{
+    font-size:14px;
+    margin-bottom:14px;
+    opacity:.9;
 }
 
-
-.calculate-button {
-
-  width: 100%;
-
-  height: 54px;
-
-  margin-top: 18px;
-
-  border: none;
-
-  border-radius: 11px;
-
-  background:
-
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--red2)
-    );
-
-  color: var(--white);
-
-  font-size: 15px;
-
-  font-weight: 950;
-
-  cursor: pointer;
-
+.result-list{
+    display:grid;
+    gap:9px;
 }
 
-
-/* =========================================================
-   RESULT
-========================================================= */
-
-.result-box {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 11px;
-
+.result-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding-bottom:9px;
+    border-bottom:1px solid rgba(255,255,255,.16);
+    font-size:13px;
 }
 
-
-.result-row {
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  min-height: 48px;
-
-  padding: 0 13px;
-
-  border:
-    1px solid
-    rgba(131,89,53,.14);
-
-  border-radius: 9px;
-
-  background:
-    rgba(250,241,228,.72);
-
+.result-row:last-child{
+    border-bottom:0;
 }
 
-
-.result-row span:first-child {
-
-  color: var(--brown2);
-
-  font-size: 12px;
-
-  font-weight: 800;
-
+.result-value{
+    direction:ltr;
+    font-weight:bold;
 }
 
-
-.result-row strong {
-
-  color: var(--deep);
-
-  font-size: 14px;
-
-  font-weight: 950;
-
+.result-final{
+    margin-top:8px;
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,.28);
+    font-size:18px;
+    font-weight:bold;
 }
 
-
-.result-final {
-
-  margin-top: 8px;
-
-  padding: 20px;
-
-  border-radius: 13px;
-
-  background:
-
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--red2)
-    );
-
-  color: var(--white);
-
-  text-align: center;
-
-  box-shadow:
-    0 12px 28px
-    rgba(82,17,7,.18);
-
-}
-
-
-.result-final small {
-
-  display: block;
-
-  opacity: .8;
-
-  font-size: 11px;
-
-}
-
-
-.result-final strong {
-
-  display: block;
-
-  margin-top: 8px;
-
-  font-size: 28px;
-
-}
-
-
-/* =========================================================
+/* =========================
    SETTINGS
-========================================================= */
+========================= */
 
-.settings-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap: 16px;
-
+.settings-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
-
-.setting-card {
-
-  padding: 22px;
-
-  border:
-    1px solid
-    rgba(92,61,36,.20);
-
-  border-radius: 15px;
-
-  background:
-    rgba(255,255,255,.62);
-
+.settings-card{
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 12px 30px rgba(82,17,7,.06);
 }
 
-
-.setting-card h3 {
-
-  margin: 0 0 15px;
-
-  color: var(--deep);
-
-  font-size: 16px;
-
-  font-weight: 950;
-
+.settings-card.full{
+    grid-column:1/-1;
 }
 
-
-.save-button {
-
-  height: 50px;
-
-  margin-top: 15px;
-
-  padding: 0 22px;
-
-  border: none;
-
-  border-radius: 10px;
-
-  background: var(--brown2);
-
-  color: var(--white);
-
-  font-weight: 900;
-
-  cursor: pointer;
-
+.settings-card h3{
+    font-size:16px;
+    color:var(--deep);
+    margin-bottom:7px;
 }
 
-
-.setting-note {
-
-  margin-top: 10px;
-
-  color: var(--brown);
-
-  font-size: 11px;
-
-  line-height: 1.8;
-
+.settings-card p{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:18px;
+    line-height:1.8;
 }
 
-
-/* =========================================================
-   UPDATE
-========================================================= */
-
-.update-bar {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 18px;
-
-  margin-top: 25px;
-
-  padding: 12px;
-
-  border-top:
-    1px solid
-    rgba(92,61,36,.15);
-
-  color: var(--brown);
-
-  font-size: 12px;
-
-  font-weight: 800;
-
+.setting-input{
+    width:100%;
+    height:48px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fff;
+    padding:0 13px;
+    font-size:14px;
+    outline:none;
+    margin-bottom:10px;
 }
 
-
-.update-date {
-
-  direction: rtl;
-
+.setting-input:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(192,147,108,.12);
 }
 
-
-.update-time {
-
-  direction: ltr;
-
-  padding-right: 18px;
-
-  border-right:
-    1px solid
-    var(--gold);
-
-  color: var(--red2);
-
-  font-weight: 950;
-
+.setting-button{
+    width:100%;
+    height:48px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--burgundyDark),var(--gold));
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
 }
 
+.security-status{
+    min-height:22px;
+    font-size:12px;
+    margin-top:9px;
+}
 
-/* =========================================================
+.security-status.success{
+    color:#237A45;
+}
+
+.security-status.error{
+    color:#B3261E;
+}
+
+.new-password-area{
+    display:none;
+    margin-top:14px;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+}
+
+.logout-button{
+    background:#fff;
+    color:var(--burgundyDark);
+    border:1px solid rgba(82,17,7,.18);
+}
+
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
-.footer {
-
-  padding: 18px 30px 23px;
-
-  border-top:
-    1px solid
-    rgba(92,61,36,.15);
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  flex-wrap: wrap;
-
-  color: var(--brown);
-
-  font-size: 11px;
-
-  font-weight: 700;
-
+footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:11px;
+    padding:30px 0 25px;
 }
 
-
-.footer strong {
-
-  color: var(--deep);
-
+.footer-brand{
+    color:var(--brown);
+    font-weight:bold;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-.instagram {
-
-  color: var(--red2);
-
-  direction: ltr;
-
+@media(max-width:1050px){
+    .market-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 
+@media(max-width:720px){
+    .container{
+        width:94%;
+    }
 
-/* =========================================================
-   TABLET
-========================================================= */
+    .header-box{
+        padding:17px;
+    }
 
-@media (max-width:1100px) {
+    .brand-title{
+        font-size:15px;
+    }
 
-  .market-grid {
+    .market-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-    grid-template-columns:
-      repeat(3,1fr);
+    .settings-grid{
+        grid-template-columns:1fr;
+    }
 
-  }
+    .settings-card.full{
+        grid-column:auto;
+    }
 
+    .form-grid{
+        grid-template-columns:1fr;
+    }
 
-  .calculator-layout {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
+    .form-group.full{
+        grid-column:auto;
+    }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width:700px) {
-
-  .app-container {
-
-    width: 94%;
-
-    padding: 12px 0;
-
-  }
-
-
-  .app-header {
-
-    padding: 20px 16px;
-
-    flex-direction: column;
-
-    text-align: center;
-
-  }
-
-
-  .brand {
-
-    flex-direction: column;
-
-  }
-
-
-  .header-actions {
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-  }
-
-
-  .nav {
-
-    padding: 15px 15px 0;
-
-  }
-
-
-  .nav-button {
-
-    font-size: 12px;
-
-  }
-
-
-  .content {
-
-    padding: 20px 15px;
-
-  }
-
-
-  .market-grid {
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-    gap: 9px;
-
-  }
-
-
-  .market-card {
-
-    min-height: 165px;
-
-  }
-
-
-  .market-value {
-
-    font-size: 20px;
-
-  }
-
-
-  .form-grid,
-  .settings-grid {
-
-    grid-template-columns: 1fr;
-
-  }
-
-
-  .field.full {
-
-    grid-column: auto;
-
-  }
-
-
-  .update-bar {
-
-    flex-direction: column;
-
-    gap: 7px;
-
-  }
-
-
-  .update-time {
-
-    padding: 0;
-
-    border: none;
-
-  }
-
+@media(max-width:450px){
+    .market-grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav{
+        gap:5px;
+    }
+
+    .nav button{
+        font-size:11px;
+        padding:0 4px;
+    }
+
+    .brand-subtitle{
+        display:none;
+    }
+
+    .login-box{
+        padding:32px 22px;
+    }
 }
-
-
-/* =========================================================
-   SMALL
-========================================================= */
-
-@media (max-width:380px) {
-
-  .market-grid {
-
-    grid-template-columns: 1fr;
-
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================================================
+<!-- =========================
      LOGIN
-========================================================= -->
+========================= -->
 
 <section id="loginPage">
 
+    <div class="login-box">
 
-<div class="login-box">
+        <div class="login-logo">
+            SZF
+        </div>
 
+        <h1 class="login-title">
+            SILVER ZARIN FAKHR
+        </h1>
 
-<div class="login-logo">
-SZF
-</div>
+        <p class="login-subtitle">
+            ورود به پنل اختصاصی مدیریت
+        </p>
 
+        <input
+            id="passwordInput"
+            class="password-input"
+            type="password"
+            inputmode="text"
+            autocomplete="off"
+            placeholder="رمز ورود"
+            onkeydown="if(event.key==='Enter') login()"
+        >
 
-<h1 class="login-title">
-SILVER ZARIN FAKHR
-</h1>
+        <button
+            class="login-button"
+            onclick="login()"
+        >
+            ورود به پنل
+        </button>
 
+        <div
+            class="login-error"
+            id="loginError"
+        ></div>
 
-<p class="login-subtitle">
-ورود به پنل اختصاصی مدیریت
-</p>
-
-
-<input
-  id="passwordInput"
-  class="password-input"
-  type="password"
-  inputmode="text"
-  autocomplete="off"
-  placeholder="رمز ورود"
-  onkeydown="if(event.key==='Enter') login()"
->
-
-
-<button
-  class="login-button"
-  onclick="login()"
->
-ورود به پنل
-</button>
-
-
-<div
-  class="login-error"
-  id="loginError"
-></div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- =========================================================
+<!-- =========================
      APP
-========================================================= -->
+========================= -->
 
-<section id="app">
+<div id="app">
 
+<div class="container">
 
-<div class="app-container">
+<header>
 
-
-<div class="app-frame">
-
-
-<header class="app-header">
-
+<div class="header-box">
 
 <div class="brand">
 
-
-<div class="logo">
+<div class="brand-logo">
 SZF
 </div>
 
-
 <div>
 
-<h1>
+<div class="brand-title">
 SILVER ZARIN FAKHR
-</h1>
+</div>
 
-
-<p>
+<div class="brand-subtitle">
 پنل اختصاصی مدیریت و محاسبه قیمت
-</p>
-
+</div>
 
 </div>
 
-
 </div>
-
-
-<div class="header-actions">
-
 
 <div class="live-status">
 
@@ -1779,209 +843,163 @@ SILVER ZARIN FAKHR
 
 </div>
 
-
-<button
-  class="logout"
-  onclick="logout()"
->
-خروج
-</button>
-
-
 </div>
-
 
 </header>
 
 
-
-<!-- =====================================================
-     NAV
-====================================================== -->
+<!-- NAV -->
 
 <nav class="nav">
 
-
 <button
-  class="nav-button active"
-  onclick="showSection('market',this)"
+    id="navMarket"
+    class="active"
+    onclick="showSection('market')"
 >
 قیمت بازار
 </button>
 
-
 <button
-  class="nav-button"
-  onclick="showSection('calculator',this)"
+    id="navCalculator"
+    onclick="showSection('calculator')"
 >
 محاسبه قیمت
 </button>
 
-
 <button
-  class="nav-button"
-  onclick="showSection('settings',this)"
+    id="navSettings"
+    onclick="showSection('settings')"
 >
 تنظیمات
 </button>
 
-
 </nav>
 
 
-
-<div class="content">
-
-
-<!-- =====================================================
+<!-- =========================
      MARKET
-====================================================== -->
+========================= -->
 
 <section
-  id="market"
-  class="section active"
+    id="market"
+    class="section active"
 >
 
-
 <h2 class="section-title">
-قیمت بازار
+قیمت‌های بازار
 </h2>
 
-
 <p class="section-description">
-قیمت‌های لحظه‌ای مورد استفاده در محاسبات زرین فخر
+آخرین اطلاعات دریافت‌شده از منبع بازار
 </p>
-
 
 <div class="market-grid">
 
+<!-- 1 -->
 
 <div class="market-card">
 
-<div class="market-title">
-
-<span class="market-dot"></span>
-
+<div class="market-name">
 مثقال ۱۷ عیار
-
 </div>
 
-
-<div
-  class="market-value"
-  id="mithqal17"
->
-—
-</div>
-
-
-<div class="market-unit">
-تومان / مثقال
-</div>
-
-</div>
-
-
-
-<div class="market-card">
-
-<div class="market-title">
+<div class="price-row">
 
 <span class="market-dot"></span>
 
+<div
+    class="market-price"
+    id="mithqal17"
+>
+۰
+</div>
+
+</div>
+
+<div class="market-unit">
+تومان
+</div>
+
+</div>
+
+
+<!-- 2 -->
+
+<div class="market-card">
+
+<div class="market-name">
 انس نقره
-
 </div>
 
-
-<div
-  class="market-value"
-  id="silverOunce"
->
-—
-</div>
-
-
-<div class="market-unit">
-دلار / انس
-</div>
-
-</div>
-
-
-
-<div class="market-card">
-
-<div class="market-title">
+<div class="price-row">
 
 <span class="market-dot"></span>
 
+<div
+    class="market-price"
+    id="silverOunce"
+>
+۰
+</div>
+
+</div>
+
+<div class="market-unit">
+دلار / اونس
+</div>
+
+</div>
+
+
+<!-- 3 -->
+
+<div class="market-card">
+
+<div class="market-name">
 دلار
-
 </div>
 
-
-<div
-  class="market-value"
-  id="usd"
->
-—
-</div>
-
-
-<div class="market-unit">
-تومان / دلار
-</div>
-
-</div>
-
-
-
-<div class="market-card">
-
-<div class="market-title">
+<div class="price-row">
 
 <span class="market-dot"></span>
 
+<div
+    class="market-price"
+    id="usd"
+>
+۰
+</div>
+
+</div>
+
+<div class="market-unit">
+تومان
+</div>
+
+</div>
+
+
+<!-- 4 -->
+
+<div class="market-card">
+
+<div class="market-name">
 نقره ۹۹۹
-
 </div>
 
-
-<div
-  class="market-value"
-  id="silver999"
->
-—
-</div>
-
-
-<div class="market-unit">
-تومان / گرم
-</div>
-
-</div>
-
-
-
-<div class="market-card">
-
-<div class="market-title">
+<div class="price-row">
 
 <span class="market-dot"></span>
 
-نقره ۹۲۵
-
-</div>
-
-
 <div
-  class="market-value"
-  id="silver925"
+    class="market-price"
+    id="silver999"
 >
-—
+۰
 </div>
 
+</div>
 
 <div class="market-unit">
 تومان / گرم
@@ -1990,82 +1008,96 @@ SILVER ZARIN FAKHR
 </div>
 
 
+<!-- 5 -->
+
+<div class="market-card">
+
+<div class="market-name">
+نقره ۹۲۵
 </div>
 
+<div class="price-row">
+
+<span class="market-dot"></span>
+
+<div
+    class="market-price"
+    id="silver925"
+>
+۰
+</div>
+
+</div>
+
+<div class="market-unit">
+تومان / گرم
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================
      CALCULATOR
-====================================================== -->
+========================= -->
 
 <section
-  id="calculator"
-  class="section"
+    id="calculator"
+    class="section"
 >
-
 
 <h2 class="section-title">
 محاسبه قیمت
 </h2>
 
-
 <p class="section-description">
-محاسبه سریع قیمت نقره برای استفاده شخصی و فروشگاه
+محاسبه قیمت نهایی بر اساس وزن، عیار، اجرت، سود و هزینه‌های اضافی
 </p>
 
-
-<div class="calculator-layout">
-
-
-<div class="panel">
-
-
-<h3 class="panel-title">
-اطلاعات محاسبه
-</h3>
-
+<div class="calculator-box">
 
 <div class="form-grid">
 
-
-<div class="field">
-
+<div class="form-group">
 
 <label>
-وزن نقره — گرم
+وزن نقره / گرم
 </label>
 
-
 <input
-  id="calcWeight"
-  type="number"
-  step="0.01"
-  min="0"
-  value="1"
+    id="calcWeight"
+    type="number"
+    step="0.01"
+    min="0"
+    value="1"
+    oninput="calculatePrice()"
 >
-
 
 </div>
 
 
-<div class="field">
-
+<div class="form-group">
 
 <label>
 عیار
 </label>
 
-
-<select id="calcPurity">
+<select
+    id="calcPurity"
+    onchange="calculatePrice()"
+>
 
 <option value="999">
 ۹۹۹
 </option>
 
-<option value="925" selected>
+<option
+    value="925"
+    selected
+>
 ۹۲۵
 </option>
 
@@ -2075,103 +1107,83 @@ SILVER ZARIN FAKHR
 
 </select>
 
-
 </div>
 
 
-<div class="field">
-
+<div class="form-group">
 
 <label>
-اجرت — تومان / گرم
+اجرت هر گرم — تومان
 </label>
 
-
 <input
-  id="calcLabor"
-  type="number"
-  min="0"
-  value="0"
+    id="calcLabor"
+    type="number"
+    min="0"
+    value="0"
+    oninput="calculatePrice()"
 >
-
 
 </div>
 
 
-<div class="field">
-
+<div class="form-group">
 
 <label>
 درصد سود
 </label>
 
-
 <input
-  id="calcProfit"
-  type="number"
-  min="0"
-  step="0.1"
-  value="0"
+    id="calcProfit"
+    type="number"
+    min="0"
+    step="0.1"
+    value="0"
+    oninput="calculatePrice()"
 >
-
 
 </div>
 
 
-<div class="field full">
-
+<div class="form-group full">
 
 <label>
-هزینه‌های اضافه — تومان
+هزینه اضافی — تومان
 </label>
 
-
 <input
-  id="calcExtra"
-  type="number"
-  min="0"
-  value="0"
+    id="calcExtra"
+    type="number"
+    min="0"
+    value="0"
+    oninput="calculatePrice()"
 >
 
-
 </div>
 
-
 </div>
-
-
-<button
-  class="calculate-button"
-  onclick="calculatePrice()"
->
-محاسبه قیمت
-</button>
-
-
-</div>
-
-
-
-<div class="panel">
-
-
-<h3 class="panel-title">
-نتیجه محاسبه
-</h3>
 
 
 <div class="result-box">
 
+<div class="result-title">
+نتیجه محاسبه
+</div>
+
+<div class="result-list">
 
 <div class="result-row">
 
 <span>
-قیمت پایه نقره
+ارزش نقره
 </span>
 
-<strong id="resultBase">
-—
-</strong>
+<span
+    class="result-value"
+    id="resultBase"
+>
+۰ تومان
+</span>
 
 </div>
 
@@ -2179,12 +1191,31 @@ SILVER ZARIN FAKHR
 <div class="result-row">
 
 <span>
-اجرت
+مجموع اجرت
 </span>
 
-<strong id="resultLabor">
-—
-</strong>
+<span
+    class="result-value"
+    id="resultLabor"
+>
+۰ تومان
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<span>
+هزینه اضافی
+</span>
+
+<span
+    class="result-value"
+    id="resultExtra"
+>
+۰ تومان
+</span>
 
 </div>
 
@@ -2195,1253 +1226,1190 @@ SILVER ZARIN FAKHR
 سود
 </span>
 
-<strong id="resultProfit">
-—
-</strong>
-
-</div>
-
-
-<div class="result-row">
-
-<span>
-هزینه اضافه
+<span
+    class="result-value"
+    id="resultProfit"
+>
+۰ تومان
 </span>
 
-<strong id="resultExtra">
-—
-</strong>
-
 </div>
 
 
-<div class="result-final">
+<div class="result-row result-final">
 
-<small>
+<span>
 قیمت نهایی
-</small>
+</span>
 
-<strong id="resultFinal">
-—
-</strong>
-
-</div>
-
-
-</div>
-
+<span
+    class="result-value"
+    id="resultFinal"
+>
+۰ تومان
+</span>
 
 </div>
 
+</div>
 
 </div>
 
+</div>
 
 </section>
 
 
-
-<!-- =====================================================
+<!-- =========================
      SETTINGS
-====================================================== -->
+========================= -->
 
 <section
-  id="settings"
-  class="section"
+    id="settings"
+    class="section"
 >
 
-
 <h2 class="section-title">
-تنظیمات
+تنظیمات پنل
 </h2>
 
-
 <p class="section-description">
-تنظیمات شخصی پنل زرین فخر
+مدیریت قیمت پایه، اجرت و امنیت پنل
 </p>
 
 
 <div class="settings-grid">
 
 
-<div class="setting-card">
+<!-- PRICE SETTINGS -->
 
+<div class="settings-card">
 
 <h3>
-تنظیمات محاسبه
+قیمت پایه نقره ۹۹۹
 </h3>
 
-
-<div class="field">
-
-
-<label>
-قیمت دستی نقره ۹۹۹ — تومان / گرم
-</label>
-
+<p>
+در صورت وارد کردن مقدار دستی، محاسبات با این قیمت انجام می‌شود.
+برای استفاده از قیمت آنلاین، مقدار را خالی بگذارید.
+</p>
 
 <input
-  id="setting999"
-  type="number"
-  min="0"
-  placeholder="مثلاً 505000"
+    id="setting999"
+    class="setting-input"
+    type="number"
+    min="0"
+    placeholder="قیمت ۹۹۹ به تومان"
 >
-
-
-</div>
-
-
-<div
-  class="field"
-  style="margin-top:14px"
->
-
-
-<label>
-اجرت پیش‌فرض — تومان / گرم
-</label>
-
-
-<input
-  id="settingLabor"
-  type="number"
-  min="0"
-  placeholder="0"
->
-
-
-</div>
-
 
 <button
-  class="save-button"
-  onclick="saveSettings()"
+    class="setting-button"
+    onclick="saveSettings()"
+>
+ذخیره قیمت پایه
+</button>
+
+<div
+    id="priceSettingStatus"
+    class="security-status"
+></div>
+
+</div>
+
+
+<!-- LABOR -->
+
+<div class="settings-card">
+
+<h3>
+اجرت پیش‌فرض
+</h3>
+
+<p>
+اجرت پیش‌فرض مورد استفاده در محاسبه قیمت.
+</p>
+
+<input
+    id="settingLabor"
+    class="setting-input"
+    type="number"
+    min="0"
+    placeholder="اجرت هر گرم"
+>
+
+<button
+    class="setting-button"
+    onclick="saveSettings()"
 >
 ذخیره تنظیمات
 </button>
 
+<div
+    id="laborSettingStatus"
+    class="security-status"
+></div>
 
-<div class="setting-note">
-اگر قیمت دستی ۹۹۹ وارد شود، در محاسبه قیمت استفاده می‌شود.
 </div>
 
 
-</div>
+<!-- SECURITY -->
 
-
-
-<div class="setting-card">
-
+<div class="settings-card full">
 
 <h3>
 امنیت پنل
 </h3>
 
+<p>
+برای تغییر رمز عبور ابتدا رمز فعلی را وارد کنید. پس از تأیید رمز فعلی، امکان ثبت رمز جدید فعال می‌شود.
+</p>
 
-<div class="field">
 
-
-<label>
-رمز جدید
-</label>
-
+<!-- CURRENT PASSWORD -->
 
 <input
-  id="newPassword"
-  type="password"
-  autocomplete="new-password"
-  placeholder="رمز جدید"
+    id="currentPassword"
+    class="setting-input"
+    type="password"
+    autocomplete="off"
+    placeholder="رمز عبور فعلی"
 >
-
-
-</div>
 
 
 <button
-  class="save-button"
-  onclick="changePassword()"
+    id="verifyPasswordButton"
+    class="setting-button"
+    onclick="verifyCurrentPassword()"
 >
-تغییر رمز
+تأیید رمز فعلی
 </button>
 
 
-<div class="setting-note">
-رمز فقط در همین مرورگر ذخیره می‌شود.
+<div
+    id="securityStatus"
+    class="security-status"
+></div>
+
+
+<!-- NEW PASSWORD -->
+
+<div
+    id="newPasswordArea"
+    class="new-password-area"
+>
+
+<input
+    id="newPassword"
+    class="setting-input"
+    type="password"
+    autocomplete="new-password"
+    placeholder="رمز عبور جدید"
+>
+
+<input
+    id="newPasswordConfirm"
+    class="setting-input"
+    type="password"
+    autocomplete="new-password"
+    placeholder="تکرار رمز عبور جدید"
+>
+
+<button
+    class="setting-button"
+    onclick="changePassword()"
+>
+ثبت رمز جدید
+</button>
+
+</div>
+
 </div>
 
 
+<!-- LOGOUT -->
+
+<div class="settings-card full">
+
+<h3>
+خروج از پنل
+</h3>
+
+<p>
+برای پایان دادن به نشست فعلی، از دکمه زیر استفاده کنید.
+</p>
+
+<button
+    class="setting-button logout-button"
+    onclick="logout()"
+>
+خروج امن از پنل
+</button>
+
 </div>
 
-
 </div>
-
 
 </section>
 
 
-</div>
+<footer>
 
-
-
-<div class="update-bar">
-
-
-<span>
-آخرین دریافت اطلاعات:
-</span>
-
-
-<span
-  class="update-date"
-  id="updatedDate"
->
-—
-</span>
-
-
-<span
-  class="update-time"
-  id="updatedTime"
->
-—
-</span>
-
-
-</div>
-
-
-
-<footer class="footer">
-
-
-<strong>
+<div class="footer-brand">
 SILVER ZARIN FAKHR
-</strong>
+</div>
 
-
-<span>•</span>
-
-
-<span>
+<div>
 زیبایی در درخشندگی، اصالت در ماندگاری
-</span>
-
-
-<span>•</span>
-
-
-<span class="instagram">
-@zarinfakhrSZF
-</span>
-
+</div>
 
 </footer>
 
-
 </div>
-
-
 </div>
-
-
-</section>
-
 
 
 <script>
 
-/* =========================================================
-   CONFIGURATION
-========================================================= */
+/* ============================================================
+   CONFIG
+============================================================ */
+
+const DEFAULT_PASSWORD = "@Mohammad1386";
+
+const API = "/api/prices";
+
+const MITHQAL_GRAM = 4.608;
+
+const PURITY_17K = 700;
+
+let currentSilver999 = 0;
+
+let passwordVerified = false;
 
 
-/*
-   رمز اختصاصی
-*/
+/* ============================================================
+   NUMBER FORMAT
+============================================================ */
 
-const DEFAULT_PASSWORD =
-  "@Mohammad1386";
+function formatNumber(value){
 
-
-const API =
-  "/api/prices";
-
-
-const MITHQAL_GRAM =
-  4.608;
-
-
-const PURITY_17K =
-  700;
-
-
-/*
-   مهم:
-   آخرین قیمت 999 مستقیماً از API
-   در این متغیر نگهداری می‌شود.
-   دیگر قیمت از متن کارت خوانده نمی‌شود.
-*/
-
-let currentSilver999 =
-  0;
-
-
-/* =========================================================
-   FORMAT NUMBER
-========================================================= */
-
-function formatNumber(value) {
-
-  const number =
-    Number(value);
-
-
-  if (
-    !Number.isFinite(number)
-  ) {
-
-    return "—";
-
-  }
-
-
-  return number.toLocaleString(
-    "fa-IR",
-    {
-      maximumFractionDigits:
-        0
+    if(
+        value === null ||
+        value === undefined ||
+        !Number.isFinite(Number(value))
+    ){
+        return "۰";
     }
-  );
+
+    return Number(value).toLocaleString("fa-IR",{
+        maximumFractionDigits:0
+    });
 
 }
 
 
-/* =========================================================
+/* ============================================================
    PASSWORD
-========================================================= */
+============================================================ */
 
-function getPassword() {
+function getPassword(){
 
-  return localStorage.getItem(
-    "szf_admin_password"
-  ) || DEFAULT_PASSWORD;
+    return localStorage.getItem("zarinFakhrPassword")
+        || DEFAULT_PASSWORD;
 
 }
 
 
-/* =========================================================
+/* ============================================================
    LOGIN
-========================================================= */
+============================================================ */
 
-function login() {
+function login(){
 
-  const input =
-    document.getElementById(
-      "passwordInput"
-    );
+    const input =
+        document.getElementById("passwordInput").value;
 
+    const error =
+        document.getElementById("loginError");
 
-  const error =
-    document.getElementById(
-      "loginError"
-    );
+    if(input === getPassword()){
 
+        sessionStorage.setItem(
+            "zarinFakhrLoggedIn",
+            "true"
+        );
 
-  if (
-    input.value ===
-    getPassword()
-  ) {
+        error.textContent = "";
 
-    sessionStorage.setItem(
-      "szf_logged_in",
-      "true"
-    );
+        document.getElementById("loginPage").style.display =
+            "none";
 
+        document.getElementById("app").style.display =
+            "block";
 
-    document.getElementById(
-      "loginPage"
-    ).style.display =
-      "none";
+        loadSettings();
 
+        calculatePrice();
 
-    document.getElementById(
-      "app"
-    ).style.display =
-      "block";
+        loadPrices();
 
+    }else{
 
-    error.textContent =
-      "";
+        error.textContent =
+            "رمز عبور صحیح نیست.";
 
-
-    loadPrices();
-
-    return;
-
-  }
-
-
-  error.textContent =
-    "رمز ورود صحیح نیست";
-
-
-  input.value =
-    "";
-
-
-  input.focus();
+    }
 
 }
 
 
-/* =========================================================
+/* ============================================================
    LOGOUT
-========================================================= */
+============================================================ */
 
-function logout() {
+function logout(){
 
-  sessionStorage.removeItem(
-    "szf_logged_in"
-  );
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "flex";
-
-
-  document.getElementById(
-    "passwordInput"
-  ).value =
-    "";
-
-}
-
-
-/* =========================================================
-   SESSION
-========================================================= */
-
-if (
-  sessionStorage.getItem(
-    "szf_logged_in"
-  ) === "true"
-) {
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "block";
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showSection(
-  id,
-  button
-) {
-
-  document
-    .querySelectorAll(".section")
-    .forEach(
-      section => {
-
-        section.classList.remove(
-          "active"
-        );
-
-      }
+    sessionStorage.removeItem(
+        "zarinFakhrLoggedIn"
     );
 
+    passwordVerified = false;
 
-  document
-    .querySelectorAll(".nav-button")
-    .forEach(
-      item => {
+    document.getElementById("app").style.display =
+        "none";
 
-        item.classList.remove(
-          "active"
-        );
+    document.getElementById("loginPage").style.display =
+        "flex";
 
-      }
-    );
-
-
-  document
-    .getElementById(id)
-    .classList.add(
-      "active"
-    );
-
-
-  button.classList.add(
-    "active"
-  );
-
-
-  /*
-     وقتی وارد محاسبه قیمت می‌شویم،
-     محاسبه دوباره انجام می‌شود.
-  */
-
-  if (
-    id === "calculator"
-  ) {
-
-    calculatePrice();
-
-  }
+    document.getElementById("passwordInput").value =
+        "";
 
 }
 
 
-/* =========================================================
-   MITHQAL 17
-========================================================= */
+/* ============================================================
+   SECTION
+============================================================ */
 
-function calculateMithqal17(
-  silver999
-) {
+function showSection(sectionName){
 
-  return (
-    Number(silver999)
-    / 1000
-    * PURITY_17K
-    * MITHQAL_GRAM
-  );
+    document.querySelectorAll(".section")
+        .forEach(section => {
+            section.classList.remove("active");
+        });
+
+    document
+        .getElementById(sectionName)
+        .classList.add("active");
+
+
+    document.querySelectorAll(".nav button")
+        .forEach(button => {
+            button.classList.remove("active");
+        });
+
+
+    if(sectionName === "market"){
+
+        document
+            .getElementById("navMarket")
+            .classList.add("active");
+
+    }
+
+    if(sectionName === "calculator"){
+
+        document
+            .getElementById("navCalculator")
+            .classList.add("active");
+
+        calculatePrice();
+
+    }
+
+    if(sectionName === "settings"){
+
+        document
+            .getElementById("navSettings")
+            .classList.add("active");
+
+    }
 
 }
 
 
-/* =========================================================
+/* ============================================================
+   MITHQAL
+============================================================ */
+
+function calculateMithqal17(silver999){
+
+    const pricePerGram =
+        Number(silver999) / 1000;
+
+    return (
+        pricePerGram *
+        PURITY_17K *
+        MITHQAL_GRAM
+    );
+
+}
+
+
+/* ============================================================
    DATE / TIME
-========================================================= */
+============================================================ */
 
-function updateDateTime(
-  isoDate
-) {
+function updateDateTime(){
 
-  const date =
-    new Date(isoDate);
-
-
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
-
-    return;
-
-  }
-
-
-  const iran =
-    new Date(
-      date.toLocaleString(
-        "en-US",
-        {
-          timeZone:
-            "Asia/Tehran"
-        }
-      )
-    );
-
-
-  /*
-     یک ساعت عقب‌تر
-  */
-
-  iran.setHours(
-    iran.getHours() - 1
-  );
-
-
-  document.getElementById(
-    "updatedDate"
-  ).textContent =
-
-    iran.toLocaleDateString(
-      "fa-IR",
-      {
-        year:
-          "numeric",
-
-        month:
-          "2-digit",
-
-        day:
-          "2-digit"
-      }
-    );
-
-
-  document.getElementById(
-    "updatedTime"
-  ).textContent =
-
-    iran.toLocaleTimeString(
-      "fa-IR",
-      {
-        hour:
-          "2-digit",
-
-        minute:
-          "2-digit",
-
-        second:
-          "2-digit",
-
-        hour12:
-          false
-      }
-    );
+    const now =
+        new Date();
 
 }
 
 
-/* =========================================================
+/* ============================================================
    LOAD MARKET PRICES
-========================================================= */
+============================================================ */
 
-async function loadPrices() {
+async function loadPrices(){
 
-  try {
+    try{
 
-    const response =
-      await fetch(
-        API +
-        "?t=" +
-        Date.now(),
-        {
-          cache:
-            "no-store"
+        const response =
+            await fetch(
+                API + "?t=" + Date.now(),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
         }
-      );
 
 
-    if (
-      !response.ok
-    ) {
-
-      throw new Error(
-        "API Error"
-      );
-
-    }
+        const data =
+            await response.json();
 
 
-    const data =
-      await response.json();
+        if(!data.success){
 
+            throw new Error(
+                data.message ||
+                "خطا در دریافت اطلاعات"
+            );
 
-    if (
-      !data.success
-    ) {
-
-      throw new Error(
-        data.error ||
-        "API Error"
-      );
-
-    }
-
-
-    /*
-      ======================================================
-      اصلاح اصلی محاسبه:
-      قیمت 999 مستقیماً از API ذخیره می‌شود.
-      ======================================================
-    */
-
-    currentSilver999 =
-      Number(
-        data.silver999Toman
-      );
-
-
-    if (
-      !Number.isFinite(
-        currentSilver999
-      ) ||
-      currentSilver999 <= 0
-    ) {
-
-      throw new Error(
-        "قیمت نقره 999 معتبر نیست"
-      );
-
-    }
-
-
-    /*
-       925
-    */
-
-    const silver925 =
-      currentSilver999 *
-      0.925;
-
-
-    /*
-       مثقال 17 عیار
-    */
-
-    const mithqal17 =
-      calculateMithqal17(
-        currentSilver999
-      );
-
-
-    /*
-       نمایش بازار
-    */
-
-    document.getElementById(
-      "mithqal17"
-    ).textContent =
-      formatNumber(
-        mithqal17
-      );
-
-
-    document.getElementById(
-      "silverOunce"
-    ).textContent =
-
-      Number(
-        data.silverOunce
-      ).toLocaleString(
-        "en-US",
-        {
-          maximumFractionDigits:
-            3
         }
-      );
+
+
+        /*
+         * قیمت 999 مستقیماً از API گرفته می‌شود.
+         * هیچ مبلغ اضافه‌ای به آن اضافه نمی‌شود.
+         */
+
+        currentSilver999 =
+            Number(data.silver999Toman);
+
+
+        /*
+         * اگر قیمت دستی در تنظیمات وجود داشته باشد،
+         * همان قیمت برای محاسبات استفاده می‌شود.
+         */
+
+        const manual999 =
+            Number(
+                localStorage.getItem(
+                    "zarinFakhrSilver999"
+                )
+            );
+
+
+        if(
+            Number.isFinite(manual999) &&
+            manual999 > 0
+        ){
+
+            currentSilver999 =
+                manual999;
+
+        }
+
+
+        const silver925 =
+            currentSilver999 * 0.925;
+
+
+        const mithqal17 =
+            calculateMithqal17(
+                currentSilver999
+            );
+
+
+        document.getElementById(
+            "mithqal17"
+        ).textContent =
+            formatNumber(mithqal17);
+
+
+        document.getElementById(
+            "silverOunce"
+        ).textContent =
+            Number(data.silverOunce)
+                .toLocaleString("fa-IR",{
+                    maximumFractionDigits:4
+                });
+
+
+        document.getElementById(
+            "usd"
+        ).textContent =
+            formatNumber(data.usdToman);
+
+
+        document.getElementById(
+            "silver999"
+        ).textContent =
+            formatNumber(currentSilver999);
+
+
+        document.getElementById(
+            "silver925"
+        ).textContent =
+            formatNumber(silver925);
+
+
+        document.getElementById(
+            "connectionText"
+        ).textContent =
+            "آنلاین • اطلاعات به‌روز";
+
+
+        /*
+         * محاسبه را بلافاصله با قیمت جدید انجام بده
+         */
+
+        calculatePrice();
+
+
+    }catch(error){
+
+        console.error(
+            "PRICE LOAD ERROR:",
+            error
+        );
+
+
+        document.getElementById(
+            "connectionText"
+        ).textContent =
+            "خطا در دریافت اطلاعات";
+
+    }
+
+}
+
+
+/* ============================================================
+   CALCULATOR
+============================================================ */
+
+function calculatePrice(){
+
+    const weight =
+        Number(
+            document.getElementById(
+                "calcWeight"
+            ).value
+        ) || 0;
+
+
+    const purity =
+        Number(
+            document.getElementById(
+                "calcPurity"
+            ).value
+        ) || 0;
+
+
+    let labor =
+        Number(
+            document.getElementById(
+                "calcLabor"
+            ).value
+        ) || 0;
+
+
+    const profitPercent =
+        Number(
+            document.getElementById(
+                "calcProfit"
+            ).value
+        ) || 0;
+
+
+    const extra =
+        Number(
+            document.getElementById(
+                "calcExtra"
+            ).value
+        ) || 0;
+
+
+    /*
+     * اگر اجرت داخل تنظیمات ذخیره شده باشد
+     * و کاربر مقدار ورودی را تغییر نداده باشد،
+     * همان مقدار در محاسبه استفاده می‌شود.
+     */
+
+    const silver999 =
+        Number(currentSilver999) || 0;
+
+
+    /*
+     * قیمت هر گرم بر اساس عیار
+     */
+
+    const gramPrice =
+        silver999 *
+        (purity / 999);
+
+
+    /*
+     * ارزش خود نقره
+     */
+
+    const base =
+        gramPrice *
+        weight;
+
+
+    /*
+     * مجموع اجرت
+     */
+
+    const laborTotal =
+        labor *
+        weight;
+
+
+    /*
+     * قبل از سود
+     */
+
+    const beforeProfit =
+        base +
+        laborTotal +
+        extra;
+
+
+    /*
+     * سود
+     */
+
+    const profit =
+        beforeProfit *
+        (profitPercent / 100);
+
+
+    /*
+     * قیمت نهایی
+     */
+
+    const finalPrice =
+        beforeProfit +
+        profit;
 
 
     document.getElementById(
-      "usd"
+        "resultBase"
     ).textContent =
-      formatNumber(
-        data.usdToman
-      );
+        formatNumber(base) +
+        " تومان";
 
 
     document.getElementById(
-      "silver999"
+        "resultLabor"
     ).textContent =
-      formatNumber(
-        currentSilver999
-      );
+        formatNumber(laborTotal) +
+        " تومان";
 
 
     document.getElementById(
-      "silver925"
+        "resultExtra"
     ).textContent =
-      formatNumber(
-        silver925
-      );
+        formatNumber(extra) +
+        " تومان";
 
 
-    updateDateTime(
-      data.updatedAt
+    document.getElementById(
+        "resultProfit"
+    ).textContent =
+        formatNumber(profit) +
+        " تومان";
+
+
+    document.getElementById(
+        "resultFinal"
+    ).textContent =
+        formatNumber(finalPrice) +
+        " تومان";
+
+}
+
+
+/* ============================================================
+   SAVE SETTINGS
+============================================================ */
+
+function saveSettings(){
+
+    const setting999 =
+        Number(
+            document.getElementById(
+                "setting999"
+            ).value
+        ) || 0;
+
+
+    const settingLabor =
+        Number(
+            document.getElementById(
+                "settingLabor"
+            ).value
+        ) || 0;
+
+
+    if(setting999 > 0){
+
+        localStorage.setItem(
+            "zarinFakhrSilver999",
+            setting999
+        );
+
+        currentSilver999 =
+            setting999;
+
+    }else{
+
+        localStorage.removeItem(
+            "zarinFakhrSilver999"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "zarinFakhrLabor",
+        settingLabor
     );
 
 
     document.getElementById(
-      "connectionText"
+        "priceSettingStatus"
     ).textContent =
-      "آنلاین • اطلاعات به‌روز";
+        "تنظیمات با موفقیت ذخیره شد.";
+
+    document.getElementById(
+        "priceSettingStatus"
+    ).className =
+        "security-status success";
+
+
+    document.getElementById(
+        "laborSettingStatus"
+    ).textContent =
+        "تنظیمات با موفقیت ذخیره شد.";
+
+    document.getElementById(
+        "laborSettingStatus"
+    ).className =
+        "security-status success";
 
 
     /*
-       اگر قیمت دستی تنظیم نشده باشد،
-       محاسبه‌گر از قیمت آنلاین استفاده می‌کند.
-    */
+     * اگر اجرت پیش‌فرض ثبت شده باشد،
+     * داخل ماشین حساب هم قرار می‌گیرد.
+     */
+
+    document.getElementById(
+        "calcLabor"
+    ).value =
+        settingLabor;
+
 
     calculatePrice();
 
-  }
-
-
-  catch (error) {
-
-    console.error(
-      "PRICE ERROR:",
-      error
-    );
-
-
-    document.getElementById(
-      "connectionText"
-    ).textContent =
-      "خطا در دریافت اطلاعات";
-
-  }
-
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function calculatePrice() {
-
-  /*
-    اول قیمت دستی تنظیمات را بررسی می‌کنیم.
-    اگر خالی باشد، قیمت آنلاین API استفاده می‌شود.
-  */
-
-  const manualValue =
-    Number(
-      document.getElementById(
-        "setting999"
-      ).value
-    );
-
-
-  let silver999;
-
-
-  if (
-    Number.isFinite(
-      manualValue
-    ) &&
-    manualValue > 0
-  ) {
-
-    silver999 =
-      manualValue;
-
-  }
-
-  else {
-
-    silver999 =
-      currentSilver999;
-
-  }
-
-
-  /*
-    اگر هنوز قیمت نداریم،
-    محاسبه انجام نمی‌شود.
-  */
-
-  if (
-    !Number.isFinite(
-      silver999
-    ) ||
-    silver999 <= 0
-  ) {
-
-    document.getElementById(
-      "resultBase"
-    ).textContent =
-      "قیمت موجود نیست";
-
-
-    document.getElementById(
-      "resultFinal"
-    ).textContent =
-      "—";
-
-
-    return;
-
-  }
-
-
-  /*
-    ورودی‌ها
-  */
-
-  const weight =
-    Number(
-      document.getElementById(
-        "calcWeight"
-      ).value
-    ) || 0;
-
-
-  const purity =
-    Number(
-      document.getElementById(
-        "calcPurity"
-      ).value
-    );
-
-
-  const labor =
-    Number(
-      document.getElementById(
-        "calcLabor"
-      ).value
-    ) || 0;
-
-
-  const profitPercent =
-    Number(
-      document.getElementById(
-        "calcProfit"
-      ).value
-    ) || 0;
-
-
-  const extra =
-    Number(
-      document.getElementById(
-        "calcExtra"
-      ).value
-    ) || 0;
-
-
-  /*
-    ======================================================
-    قیمت هر گرم بر اساس عیار
-    ======================================================
-  */
-
-  const gramPrice =
-    silver999 *
-    (purity / 999);
-
-
-  /*
-    قیمت پایه
-  */
-
-  const base =
-    gramPrice *
-    weight;
-
-
-  /*
-    اجرت
-  */
-
-  const laborTotal =
-    labor *
-    weight;
-
-
-  /*
-    قبل از سود
-  */
-
-  const beforeProfit =
-    base +
-    laborTotal +
-    extra;
-
-
-  /*
-    سود
-  */
-
-  const profit =
-    beforeProfit *
-    profitPercent /
-    100;
-
-
-  /*
-    قیمت نهایی
-  */
-
-  const finalPrice =
-    beforeProfit +
-    profit;
-
-
-  /*
-    نمایش
-  */
-
-  document.getElementById(
-    "resultBase"
-  ).textContent =
-    formatNumber(
-      base
-    ) +
-    " تومان";
-
-
-  document.getElementById(
-    "resultLabor"
-  ).textContent =
-    formatNumber(
-      laborTotal
-    ) +
-    " تومان";
-
-
-  document.getElementById(
-    "resultProfit"
-  ).textContent =
-    formatNumber(
-      profit
-    ) +
-    " تومان";
-
-
-  document.getElementById(
-    "resultExtra"
-  ).textContent =
-    formatNumber(
-      extra
-    ) +
-    " تومان";
-
-
-  document.getElementById(
-    "resultFinal"
-  ).textContent =
-    formatNumber(
-      finalPrice
-    ) +
-    " تومان";
-
-}
-
-
-/* =========================================================
-   SAVE SETTINGS
-========================================================= */
-
-function saveSettings() {
-
-  const silver999 =
-    document.getElementById(
-      "setting999"
-    ).value;
-
-
-  const labor =
-    document.getElementById(
-      "settingLabor"
-    ).value;
-
-
-  localStorage.setItem(
-    "szf_silver999",
-    silver999
-  );
-
-
-  localStorage.setItem(
-    "szf_labor",
-    labor
-  );
-
-
-  document.getElementById(
-    "calcLabor"
-  ).value =
-    labor || 0;
-
-
-  calculatePrice();
-
-
-  alert(
-    "تنظیمات با موفقیت ذخیره شد."
-  );
-
-}
-
-
-/* =========================================================
-   LOAD SETTINGS
-========================================================= */
-
-function loadSettings() {
-
-  const silver999 =
-    localStorage.getItem(
-      "szf_silver999"
-    );
-
-
-  const labor =
-    localStorage.getItem(
-      "szf_labor"
-    );
-
-
-  if (
-    silver999
-  ) {
-
-    document.getElementById(
-      "setting999"
-    ).value =
-      silver999;
-
-  }
-
-
-  if (
-    labor
-  ) {
-
-    document.getElementById(
-      "settingLabor"
-    ).value =
-      labor;
-
-
-    document.getElementById(
-      "calcLabor"
-    ).value =
-      labor;
-
-  }
-
-}
-
-
-/* =========================================================
-   CHANGE PASSWORD
-========================================================= */
-
-function changePassword() {
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    ).value.trim();
-
-
-  if (
-    newPassword.length < 4
-  ) {
-
-    alert(
-      "رمز باید حداقل ۴ کاراکتر باشد."
-    );
-
-    return;
-
-  }
-
-
-  localStorage.setItem(
-    "szf_admin_password",
-    newPassword
-  );
-
-
-  document.getElementById(
-    "newPassword"
-  ).value =
-    "";
-
-
-  alert(
-    "رمز ورود با موفقیت تغییر کرد."
-  );
-
-}
-
-
-/* =========================================================
-   LOAD SAVED SETTINGS
-========================================================= */
-
-loadSettings();
-
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
-
-if (
-  sessionStorage.getItem(
-    "szf_logged_in"
-  ) === "true"
-) {
-
-  loadPrices();
-
-}
-
-
-/* =========================================================
-   AUTO UPDATE
-========================================================= */
-
-setInterval(
-  () => {
-
-    if (
-      sessionStorage.getItem(
-        "szf_logged_in"
-      ) === "true"
-    ) {
-
-      loadPrices();
+    /*
+     * نمایش فوری قیمت‌ها
+     */
+
+    if(currentSilver999 > 0){
+
+        document.getElementById(
+            "silver999"
+        ).textContent =
+            formatNumber(currentSilver999);
+
+
+        document.getElementById(
+            "silver925"
+        ).textContent =
+            formatNumber(
+                currentSilver999 * 0.925
+            );
+
+
+        document.getElementById(
+            "mithqal17"
+        ).textContent =
+            formatNumber(
+                calculateMithqal17(
+                    currentSilver999
+                )
+            );
 
     }
 
-  },
-  1000
+}
+
+
+/* ============================================================
+   LOAD SETTINGS
+============================================================ */
+
+function loadSettings(){
+
+    const saved999 =
+        localStorage.getItem(
+            "zarinFakhrSilver999"
+        );
+
+
+    const savedLabor =
+        localStorage.getItem(
+            "zarinFakhrLabor"
+        );
+
+
+    if(saved999){
+
+        document.getElementById(
+            "setting999"
+        ).value =
+            saved999;
+
+        currentSilver999 =
+            Number(saved999);
+
+    }
+
+
+    if(savedLabor){
+
+        document.getElementById(
+            "settingLabor"
+        ).value =
+            savedLabor;
+
+
+        document.getElementById(
+            "calcLabor"
+        ).value =
+            savedLabor;
+
+    }
+
+}
+
+
+/* ============================================================
+   VERIFY CURRENT PASSWORD
+============================================================ */
+
+function verifyCurrentPassword(){
+
+    const current =
+        document.getElementById(
+            "currentPassword"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "securityStatus"
+        );
+
+
+    const newArea =
+        document.getElementById(
+            "newPasswordArea"
+        );
+
+
+    if(!current){
+
+        status.textContent =
+            "ابتدا رمز فعلی را وارد کنید.";
+
+        status.className =
+            "security-status error";
+
+        newArea.style.display =
+            "none";
+
+        passwordVerified =
+            false;
+
+        return;
+
+    }
+
+
+    if(current !== getPassword()){
+
+        status.textContent =
+            "رمز فعلی صحیح نیست.";
+
+        status.className =
+            "security-status error";
+
+        newArea.style.display =
+            "none";
+
+        passwordVerified =
+            false;
+
+        return;
+
+    }
+
+
+    passwordVerified =
+        true;
+
+
+    status.textContent =
+        "رمز فعلی صحیح است. اکنون رمز جدید را وارد کنید.";
+
+    status.className =
+        "security-status success";
+
+
+    newArea.style.display =
+        "block";
+
+
+    document.getElementById(
+        "newPassword"
+    ).focus();
+
+}
+
+
+/* ============================================================
+   CHANGE PASSWORD
+============================================================ */
+
+function changePassword(){
+
+    const status =
+        document.getElementById(
+            "securityStatus"
+        );
+
+
+    if(!passwordVerified){
+
+        status.textContent =
+            "ابتدا باید رمز فعلی را تأیید کنید.";
+
+        status.className =
+            "security-status error";
+
+        return;
+
+    }
+
+
+    const newPassword =
+        document.getElementById(
+            "newPassword"
+        ).value;
+
+
+    const confirmPassword =
+        document.getElementById(
+            "newPasswordConfirm"
+        ).value;
+
+
+    if(!newPassword){
+
+        status.textContent =
+            "رمز جدید را وارد کنید.";
+
+        status.className =
+            "security-status error";
+
+        return;
+
+    }
+
+
+    if(newPassword.length < 6){
+
+        status.textContent =
+            "رمز جدید باید حداقل ۶ کاراکتر باشد.";
+
+        status.className =
+            "security-status error";
+
+        return;
+
+    }
+
+
+    if(newPassword !== confirmPassword){
+
+        status.textContent =
+            "تکرار رمز جدید با رمز جدید یکسان نیست.";
+
+        status.className =
+            "security-status error";
+
+        return;
+
+    }
+
+
+    /*
+     * ذخیره رمز جدید
+     */
+
+    localStorage.setItem(
+        "zarinFakhrPassword",
+        newPassword
+    );
+
+
+    passwordVerified =
+        false;
+
+
+    document.getElementById(
+        "currentPassword"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "newPassword"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "newPasswordConfirm"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "newPasswordArea"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "verifyPasswordButton"
+    ).style.display =
+        "block";
+
+
+    status.textContent =
+        "رمز عبور با موفقیت تغییر کرد.";
+
+    status.className =
+        "security-status success";
+
+}
+
+
+/* ============================================================
+   AUTO START
+============================================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateDateTime();
+
+
+        /*
+         * اگر قبلاً در همین نشست وارد شده باشد،
+         * مستقیماً پنل باز می‌شود.
+         */
+
+        if(
+            sessionStorage.getItem(
+                "zarinFakhrLoggedIn"
+            ) === "true"
+        ){
+
+            document.getElementById(
+                "loginPage"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "app"
+            ).style.display =
+                "block";
+
+
+            loadSettings();
+
+            calculatePrice();
+
+            loadPrices();
+
+        }
+
+    }
 );
 
 
-/* =========================================================
-   AUTO CALCULATE
-========================================================= */
+/* ============================================================
+   AUTO REFRESH
+============================================================ */
 
-[
-  "calcWeight",
-  "calcPurity",
-  "calcLabor",
-  "calcProfit",
-  "calcExtra",
-  "setting999"
-].forEach(
-  id => {
+setInterval(
+    function(){
 
-    document.getElementById(
-      id
-    ).addEventListener(
-      "input",
-      calculatePrice
-    );
+        if(
+            sessionStorage.getItem(
+                "zarinFakhrLoggedIn"
+            ) === "true"
+        ){
 
+            loadPrices();
 
-    document.getElementById(
-      id
-    ).addEventListener(
-      "change",
-      calculatePrice
-    );
+        }
 
-  }
+    },
+    1000
 );
 
 </script>
 
 </body>
-
   </html>
