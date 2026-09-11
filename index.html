@@ -5,15 +5,9 @@
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-  name="theme-color"
-  content="#FAF1E4"
->
+<meta name="theme-color" content="#FAF1E4">
 
 <title>SILVER ZARIN FAKHR</title>
 
@@ -21,6 +15,7 @@
 
 /* =========================================================
    SILVER ZARIN FAKHR
+   LIGHT LUXURY MARKET DASHBOARD
    ========================================================= */
 
 :root{
@@ -29,6 +24,7 @@
   --bg2:#F2E1CF;
 
   --card:#FFFDFC;
+  --card2:#FFF9F2;
 
   --border:#D2C6BE;
 
@@ -61,9 +57,7 @@
 *{
 
   box-sizing:border-box;
-
   margin:0;
-
   padding:0;
 
 }
@@ -469,7 +463,7 @@ body{
 
 /* =========================================================
    CONNECTION
-   فقط همین چراغ تپشی باقی می‌ماند
+   فقط چراغ بالا تپش دارد
    ========================================================= */
 
 .connection{
@@ -563,6 +557,7 @@ body.status-loading .live-light{
 
 /* =========================================================
    TIME
+   ساعت یک ساعت عقب‌تر از گوشی
    ========================================================= */
 
 .time-panel{
@@ -784,7 +779,7 @@ body.status-loading .live-light{
 }
 
 
-/* نوار نورانی متحرک */
+/* نوار نورانی دور کادر */
 
 .market-card::after{
 
@@ -826,7 +821,7 @@ body.status-loading .live-light{
 }
 
 
-/* آنلاین: نوار سبز دور تمام کادرها */
+/* آنلاین = سبز */
 
 body.status-online .market-card::after{
 
@@ -838,7 +833,7 @@ body.status-online .market-card::after{
 }
 
 
-/* قطع ارتباط: نوار قرمز */
+/* قطع ارتباط = قرمز */
 
 body.status-error .market-card::after{
 
@@ -867,15 +862,13 @@ body.status-error .market-card::after{
 
   from{
 
-    transform:
-      rotate(0deg);
+    transform:rotate(0deg);
 
   }
 
   to{
 
-    transform:
-      rotate(360deg);
+    transform:rotate(360deg);
 
   }
 
@@ -971,8 +964,7 @@ body.status-error .market-card::after{
 
 
 /* =========================================================
-   SERVER LAST UPDATE
-   فقط زمان باقی می‌ماند
+   LAST UPDATE
    ========================================================= */
 
 .server-info{
@@ -992,7 +984,7 @@ body.status-error .market-card::after{
 }
 
 
-#lastServerUpdate{
+#lastServerUpdateBottom{
 
   direction:ltr;
 
@@ -1297,7 +1289,7 @@ body.status-error .market-card::after{
 }
 
 
-/* آیکن واقعی‌مانند Instagram */
+/* Instagram icon */
 
 .instagram-icon{
 
@@ -1511,7 +1503,6 @@ body.status-error .market-card::after{
 
 }
 
-
 </style>
 
 </head>
@@ -1625,7 +1616,7 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- ساعت و تاریخ دستگاه -->
+        <!-- TIME -->
 
         <div class="time-panel">
 
@@ -1709,7 +1700,9 @@ body.status-error .market-card::after{
     </nav>
 
 
-    <!-- MARKET -->
+    <!-- =================================================
+         MARKET
+         ================================================= -->
 
     <section
       id="marketSection"
@@ -1732,7 +1725,7 @@ body.status-error .market-card::after{
       <div class="market-grid">
 
 
-        <!-- مثقال -->
+        <!-- MITHQAL -->
 
         <div class="market-card">
 
@@ -1760,7 +1753,7 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- انس نقره -->
+        <!-- SILVER OUNCE -->
 
         <div class="market-card">
 
@@ -1788,7 +1781,7 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- دلار -->
+        <!-- USD -->
 
         <div class="market-card">
 
@@ -1816,7 +1809,7 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- نقره 999 -->
+        <!-- SILVER 999 -->
 
         <div class="market-card">
 
@@ -1844,7 +1837,7 @@ body.status-error .market-card::after{
         </div>
 
 
-        <!-- نقره 925 -->
+        <!-- SILVER 925 -->
 
         <div class="market-card">
 
@@ -1889,7 +1882,9 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- CALCULATOR -->
+    <!-- =================================================
+         CALCULATOR
+         ================================================= -->
 
     <section
       id="calculatorSection"
@@ -2081,7 +2076,9 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- SETTINGS -->
+    <!-- =================================================
+         SETTINGS
+         ================================================= -->
 
     <section
       id="settingsSection"
@@ -2210,7 +2207,9 @@ body.status-error .market-card::after{
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
 
     <footer class="footer">
 
@@ -2252,9 +2251,18 @@ body.status-error .market-card::after{
    CONFIG
    ========================================================= */
 
+/*
+   رمز ورود ثابت:
+   @Mohammad1386
+*/
+
 const DEFAULT_PASSWORD =
   "@Mohammad1386";
 
+
+/*
+   API
+*/
 
 const API =
 
@@ -2296,25 +2304,20 @@ let priceInterval = null;
    PASSWORD
    ========================================================= */
 
+/*
+   رمز ورود همیشه همین است.
+   localStorage دیگر روی ورود تأثیر ندارد.
+*/
+
 function getPassword(){
 
-  return (
-
-    localStorage.getItem(
-      "zarinFakhrPassword"
-    )
-
-    ||
-
-    DEFAULT_PASSWORD
-
-  );
+  return "@Mohammad1386";
 
 }
 
 
 /* =========================================================
-   CONNECTION
+   CONNECTION STATE
    ========================================================= */
 
 function setConnectionState(state){
@@ -2362,10 +2365,15 @@ function faNumber(value){
 
   return Number(value)
     .toLocaleString(
+
       "fa-IR",
+
       {
+
         maximumFractionDigits:0
+
       }
+
     );
 
 }
@@ -2383,15 +2391,22 @@ function updateDeviceClock(){
 
 
   /*
-    طبق درخواست:
-    اگر گوشی 18:00 باشد
-    برنامه 17:00 نمایش می‌دهد.
+    مثال:
+    ساعت گوشی 18:00
+    نمایش برنامه 17:00
   */
 
   const adjusted =
     new Date(
+
       now.getTime() -
-      (60 * 60 * 1000)
+
+      (
+        60 *
+        60 *
+        1000
+      )
+
     );
 
 
@@ -2452,8 +2467,11 @@ function updateDeviceClock(){
    ========================================================= */
 
 setInterval(
+
   updateDeviceClock,
+
   1000
+
 );
 
 
@@ -2461,7 +2479,7 @@ updateDeviceClock();
 
 
 /* =========================================================
-   SERVER UPDATE TIME
+   SERVER LAST UPDATE
    یک ساعت عقب‌تر
    ========================================================= */
 
@@ -2473,8 +2491,15 @@ function updateLastServerTime(){
 
   const adjusted =
     new Date(
+
       now.getTime() -
-      (60 * 60 * 1000)
+
+      (
+        60 *
+        60 *
+        1000
+      )
+
     );
 
 
@@ -2524,6 +2549,7 @@ async function loadPrices(){
 
 
   try{
+
 
     const controller =
       new AbortController();
@@ -2580,8 +2606,10 @@ async function loadPrices(){
     if(!response.ok){
 
       throw new Error(
+
         "HTTP " +
         response.status
+
       );
 
     }
@@ -2610,9 +2638,9 @@ async function loadPrices(){
     }
 
 
-    /* ===============================================
+    /* =====================================================
        SERVER VALUES
-       =============================================== */
+       ===================================================== */
 
     const silver999 =
       Number(
@@ -2643,7 +2671,9 @@ async function loadPrices(){
     ){
 
       throw new Error(
+
         "قیمت نقره ۹۹۹ معتبر نیست"
+
       );
 
     }
@@ -2653,15 +2683,17 @@ async function loadPrices(){
       silver999;
 
 
-    /* ===============================================
+    /* =====================================================
        CALCULATED VALUES
-       =============================================== */
+       ===================================================== */
 
     const mithqal17 =
 
       (
+
         silver999 /
         1000
+
       )
 
       *
@@ -2679,9 +2711,9 @@ async function loadPrices(){
       0.925;
 
 
-    /* ===============================================
+    /* =====================================================
        DISPLAY
-       =============================================== */
+       ===================================================== */
 
     document.getElementById(
       "mithqal17"
@@ -2708,7 +2740,9 @@ async function loadPrices(){
         "fa-IR",
 
         {
+
           maximumFractionDigits:4
+
         }
 
       )
@@ -2740,9 +2774,9 @@ async function loadPrices(){
       );
 
 
-    /* ===============================================
+    /* =====================================================
        ONLINE
-       =============================================== */
+       ===================================================== */
 
     setConnectionState(
       "online"
@@ -2758,9 +2792,9 @@ async function loadPrices(){
     updateLastServerTime();
 
 
-    /* ===============================================
+    /* =====================================================
        SAVED LABOR
-       =============================================== */
+       ===================================================== */
 
     const savedLabor =
       localStorage.getItem(
@@ -2784,9 +2818,9 @@ async function loadPrices(){
     }
 
 
-    /* ===============================================
+    /* =====================================================
        MANUAL 999
-       =============================================== */
+       ===================================================== */
 
     const savedManual999 =
       localStorage.getItem(
@@ -2809,9 +2843,13 @@ async function loadPrices(){
 
   }catch(error){
 
+
     console.error(
+
       "PRICE LOAD ERROR:",
+
       error
+
     );
 
 
@@ -2824,7 +2862,6 @@ async function loadPrices(){
       "connectionText"
     ).textContent =
       "قطع ارتباط";
-
 
   }
 
@@ -2846,8 +2883,16 @@ function startPriceUpdates(){
   }
 
 
+  /*
+    دریافت فوری
+  */
+
   loadPrices();
 
+
+  /*
+    دریافت هر یک ثانیه
+  */
 
   priceInterval =
     setInterval(
@@ -2864,3 +2909,430 @@ function startPriceUpdates(){
 /* =========================================================
    LOGIN
    ========================================================= */
+
+function login(){
+
+  const input =
+    document.getElementById(
+      "passwordInput"
+    ).value;
+
+
+  /*
+    رمز ورود قطعی:
+    @Mohammad1386
+  */
+
+  const correctPassword =
+    "@Mohammad1386";
+
+
+  if(
+    input === correctPassword
+  ){
+
+    sessionStorage.setItem(
+
+      "zarinFakhrLoggedIn",
+
+      "true"
+
+    );
+
+
+    document.getElementById(
+      "loginPage"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "app"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "loginError"
+    ).textContent =
+      "";
+
+
+    startPriceUpdates();
+
+
+  }else{
+
+
+    document.getElementById(
+      "loginError"
+    ).textContent =
+      "رمز ورود اشتباه است.";
+
+  }
+
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+document.getElementById(
+  "loginButton"
+).addEventListener(
+
+  "click",
+
+  login
+
+);
+
+
+/* =========================================================
+   ENTER KEY
+   ========================================================= */
+
+document.getElementById(
+  "passwordInput"
+).addEventListener(
+
+  "keydown",
+
+  function(event){
+
+    if(
+      event.key === "Enter"
+    ){
+
+      login();
+
+    }
+
+  }
+
+);
+
+
+/* =========================================================
+   AUTO LOGIN
+   ========================================================= */
+
+if(
+
+  sessionStorage.getItem(
+    "zarinFakhrLoggedIn"
+  ) === "true"
+
+){
+
+  document.getElementById(
+    "loginPage"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "app"
+  ).style.display =
+    "block";
+
+
+  startPriceUpdates();
+
+}
+
+
+/* =========================================================
+   SECTION NAVIGATION
+   ========================================================= */
+
+function showSection(
+  section,
+  button
+){
+
+  document.getElementById(
+    "marketSection"
+  ).style.display =
+
+    section === "market"
+
+      ? "block"
+
+      : "none";
+
+
+  document.getElementById(
+    "calculatorSection"
+  ).style.display =
+
+    section === "calculator"
+
+      ? "block"
+
+      : "none";
+
+
+  document.getElementById(
+    "settingsSection"
+  ).style.display =
+
+    section === "settings"
+
+      ? "block"
+
+      : "none";
+
+
+  document.querySelectorAll(
+    ".nav button"
+  ).forEach(
+
+    btn => {
+
+      btn.classList.remove(
+        "active"
+      );
+
+    }
+
+  );
+
+
+  button.classList.add(
+    "active"
+  );
+
+}
+
+
+/* =========================================================
+   CALCULATOR
+   ========================================================= */
+
+function calculatePrice(){
+
+  let weight =
+    Number(
+
+      document.getElementById(
+        "calcWeight"
+      ).value
+
+    );
+
+
+  let purity =
+    Number(
+
+      document.getElementById(
+        "calcPurity"
+      ).value
+
+    );
+
+
+  let labor =
+    Number(
+
+      document.getElementById(
+        "calcLabor"
+      ).value
+
+    );
+
+
+  let profitPercent =
+    Number(
+
+      document.getElementById(
+        "calcProfit"
+      ).value
+
+    );
+
+
+  let extra =
+    Number(
+
+      document.getElementById(
+        "calcExtra"
+      ).value
+
+    );
+
+
+  if(
+    !Number.isFinite(weight)
+  )
+    weight = 0;
+
+
+  if(
+    !Number.isFinite(purity)
+  )
+    purity = 925;
+
+
+  if(
+    !Number.isFinite(labor)
+  )
+    labor = 0;
+
+
+  if(
+    !Number.isFinite(
+      profitPercent
+    )
+  )
+    profitPercent = 0;
+
+
+  if(
+    !Number.isFinite(extra)
+  )
+    extra = 0;
+
+
+  /* =====================================================
+     MANUAL PRICE
+     ===================================================== */
+
+  let manual999 =
+    Number(
+
+      localStorage.getItem(
+        "zarinFakhrManual999"
+      )
+
+    );
+
+
+  let silver999 =
+
+    Number.isFinite(
+      manual999
+    ) &&
+
+    manual999 > 0
+
+      ?
+
+      manual999
+
+      :
+
+      currentSilver999;
+
+
+  if(
+
+    !Number.isFinite(
+      silver999
+    ) ||
+
+    silver999 <= 0
+
+  ){
+
+    document.getElementById(
+      "resultFinal"
+    ).textContent =
+      "ابتدا قیمت بازار را دریافت کنید";
+
+    return;
+
+  }
+
+
+  /* =====================================================
+     PRICE CALCULATION
+     ===================================================== */
+
+  const gramPrice =
+
+    silver999 *
+
+    (
+      purity /
+      999
+    );
+
+
+  const base =
+
+    gramPrice *
+    weight;
+
+
+  const laborTotal =
+
+    labor *
+    weight;
+
+
+  const beforeProfit =
+
+    base +
+    laborTotal +
+    extra;
+
+
+  const profit =
+
+    beforeProfit *
+
+    (
+      profitPercent /
+      100
+    );
+
+
+  const finalPrice =
+
+    beforeProfit +
+    profit;
+
+
+  document.getElementById(
+    "resultBase"
+  ).textContent =
+    faNumber(base);
+
+
+  document.getElementById(
+    "resultLabor"
+  ).textContent =
+    faNumber(laborTotal);
+
+
+  document.getElementById(
+    "resultExtra"
+  ).textContent =
+    faNumber(extra);
+
+
+  document.getElementById(
+    "resultProfit"
+  ).textContent =
+    faNumber(profit);
+
+
+  document.getElementById(
+    "resultFinal"
+  ).textContent =
+
+    faNumber(
+      finalPrice
+    )
+
+    +
+
+    " تومان";
+
+}
+
+
+/* =========================================================
+   SAVE
