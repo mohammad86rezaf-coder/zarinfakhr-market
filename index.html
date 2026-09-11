@@ -1,694 +1,1224 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="fa" dir="rtl"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-  <title>SILVER ZARIN FAKHR | تابلو قیمت نقره</title>
+«»
 
-  <style>
+  <title>
+    SILVER ZARIN FAKHR | تابلو قیمت نقره
+  </title>  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
     * {
       box-sizing: border-box;
     }
 
+
     html,
     body {
-      margin: 0;
       width: 100%;
       min-height: 100%;
+      margin: 0;
     }
+
 
     body {
-      font-family: Tahoma, Arial, sans-serif;
+
+      font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+      color: #2e0803;
+
       background:
+
         radial-gradient(
-          circle at 50% 0%,
-          #fffefa 0%,
-          #f7e9d9 48%,
+          circle at 50% -10%,
+          #fffdf9 0%,
+          #f8ecdf 42%,
           #ead8c7 100%
         );
-      color: #2e0803;
+
+      overflow-x: hidden;
     }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
 
     .container {
-      width: min(1500px, 94%);
+
+      width:
+        min(1550px, 94%);
+
       min-height: 100vh;
+
       margin: auto;
-      padding: 30px 0;
-      display: flex;
-      flex-direction: column;
+
+      padding:
+        30px 0 22px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+
+    /* =========================================================
+       TOP BRAND AREA
+    ========================================================= */
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      margin-bottom: 45px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap: 30px;
+
+      padding-bottom:
+        25px;
+
+      border-bottom:
+        1px solid
+        rgba(112, 83, 59, .20);
+
+      margin-bottom:
+        35px;
     }
+
 
     .brand {
-      display: flex;
-      align-items: center;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
       gap: 18px;
     }
+
+
+    /* Placeholder for real logo */
 
     .logo {
-      width: 76px;
-      height: 76px;
-      display: grid;
-      place-items: center;
 
-      border-radius: 22px;
+      width: 72px;
 
-      background: #fffaf3;
-      border: 1px solid #c39871;
+      height: 72px;
 
-      box-shadow:
-        0 10px 30px rgba(112, 83, 59, .13);
+      flex-shrink: 0;
 
-      color: #70533b;
-      font-size: 24px;
-      font-weight: 900;
-    }
+      display:
+        grid;
 
-    .brand h1 {
-      margin: 0;
+      place-items:
+        center;
 
-      font-size:
-        clamp(22px, 2.6vw, 34px);
-
-      letter-spacing: 1px;
-    }
-
-    .brand p {
-      margin: 7px 0 0;
-
-      color: #70533b;
-
-      font-size:
-        clamp(12px, 1.2vw, 15px);
-
-      letter-spacing: 2px;
-    }
-
-    /* =========================
-       ONLINE STATUS
-    ========================= */
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      color: #70533b;
-
-      font-size:
-        clamp(13px, 1.3vw, 17px);
-
-      font-weight: 800;
-
-      white-space: nowrap;
-    }
-
-    .status-dot {
-      width: 13px;
-      height: 13px;
-
-      border-radius: 50%;
-
-      background: #20a35a;
-
-      box-shadow:
-        0 0 0 6px rgba(32, 163, 90, .10);
-
-      animation:
-        pulse 1.4s infinite;
-    }
-
-    .status.error .status-dot {
-      background: #c62828;
-
-      box-shadow:
-        0 0 0 6px rgba(198, 40, 40, .10);
-
-      animation: none;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      50% {
-        transform: scale(1.35);
-        opacity: .55;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    /* =========================
-       TITLE
-    ========================= */
-
-    .hero {
-      text-align: center;
-      margin-bottom: 38px;
-    }
-
-    .hero h2 {
-      margin: 0;
-
-      font-size:
-        clamp(32px, 4vw, 58px);
-
-      font-weight: 950;
-    }
-
-    .hero p {
-      margin: 12px 0 0;
-
-      color: #70533b;
-
-      font-size:
-        clamp(13px, 1.3vw, 17px);
-    }
-
-    /* =========================
-       PRICE GRID
-    ========================= */
-
-    .prices {
-      display: grid;
-
-      grid-template-columns:
-        repeat(5, 1fr);
-
-      gap: 18px;
-
-      width: 100%;
-    }
-
-    .price-card {
-      min-height: 245px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 30px 15px;
+      border-radius:
+        20px;
 
       background:
-        rgba(255, 253, 249, .92);
+        linear-gradient(
+          145deg,
+          #fffdf9,
+          #f1e1d0
+        );
 
       border:
-        1px solid #d6bda7;
-
-      border-radius: 26px;
-
-      box-shadow:
-        0 15px 40px
-        rgba(112, 83, 59, .10);
-
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .price-card:hover {
-      transform: translateY(-5px);
+        1px solid
+        #c39871;
 
       box-shadow:
-        0 22px 48px
-        rgba(112, 83, 59, .15);
-    }
+        0 8px 25px
+        rgba(112, 83, 59, .12);
 
-    /* =========================
-       PRICE TITLE
-    ========================= */
-
-    .price-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 11px;
-
-      color: #70533b;
+      color:
+        #70533b;
 
       font-size:
-        clamp(14px, 1.4vw, 19px);
+        21px;
 
-      font-weight: 900;
+      font-weight:
+        950;
 
-      white-space: nowrap;
+      letter-spacing:
+        1px;
     }
 
-    .live-dot {
-      width: 12px;
-      height: 12px;
 
-      border-radius: 50%;
+    .brand-title {
 
-      background: #20a35a;
+      margin: 0;
+
+      font-size:
+        clamp(
+          22px,
+          2.4vw,
+          35px
+        );
+
+      font-weight:
+        950;
+
+      letter-spacing:
+        1.5px;
+    }
+
+
+    .brand-subtitle {
+
+      margin:
+        7px 0 0;
+
+      color:
+        #70533b;
+
+      font-size:
+        clamp(
+          12px,
+          1.15vw,
+          15px
+        );
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        2px;
+    }
+
+
+    /* =========================================================
+       LIVE STATUS
+    ========================================================= */
+
+    .status {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap: 10px;
+
+      padding:
+        10px 15px;
+
+      border:
+        1px solid
+        rgba(32, 163, 90, .20);
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(255,255,255,.48);
+
+      color:
+        #53745f;
+
+      font-size:
+        clamp(
+          12px,
+          1.1vw,
+          15px
+        );
+
+      font-weight:
+        800;
+
+      white-space:
+        nowrap;
+    }
+
+
+    .status-dot {
+
+      width: 11px;
+
+      height: 11px;
+
+      flex-shrink: 0;
+
+      border-radius:
+        50%;
+
+      background:
+        #20a35a;
 
       box-shadow:
         0 0 0 5px
-        rgba(32, 163, 90, .10);
+        rgba(32,163,90,.10);
 
       animation:
         pulse 1.4s infinite;
+    }
+
+
+    .status.error {
+
+      color:
+        #9d3939;
+
+      border-color:
+        rgba(198,40,40,.20);
+    }
+
+
+    .status.error .status-dot {
+
+      background:
+        #c62828;
+
+      box-shadow:
+        0 0 0 5px
+        rgba(198,40,40,.10);
+
+      animation:
+        none;
+    }
+
+
+    /* =========================================================
+       ANIMATION
+    ========================================================= */
+
+    @keyframes pulse {
+
+      0% {
+        transform:
+          scale(1);
+
+        opacity:
+          1;
+      }
+
+      50% {
+
+        transform:
+          scale(1.35);
+
+        opacity:
+          .55;
+      }
+
+      100% {
+
+        transform:
+          scale(1);
+
+        opacity:
+          1;
+      }
+    }
+
+
+    /* =========================================================
+       MAIN TITLE
+    ========================================================= */
+
+    .hero {
+
+      text-align:
+        center;
+
+      margin-bottom:
+        30px;
+    }
+
+
+    .hero-label {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap: 9px;
+
+      margin-bottom:
+        12px;
+
+      color:
+        #a8734b;
+
+      font-size:
+        clamp(
+          11px,
+          1vw,
+          14px
+        );
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        2px;
+    }
+
+
+    .hero-label::before,
+    .hero-label::after {
+
+      content: "";
+
+      width: 28px;
+
+      height: 1px;
+
+      background:
+        #c39871;
+    }
+
+
+    .hero h2 {
+
+      margin: 0;
+
+      font-size:
+        clamp(
+          31px,
+          4vw,
+          56px
+        );
+
+      line-height:
+        1.1;
+
+      font-weight:
+        950;
+
+      letter-spacing:
+        -.5px;
+    }
+
+
+    .hero p {
+
+      margin:
+        12px 0 0;
+
+      color:
+        #70533b;
+
+      font-size:
+        clamp(
+          12px,
+          1.2vw,
+          16px
+        );
+
+      font-weight:
+        600;
+    }
+
+
+    /* =========================================================
+       PRICE BOARD
+    ========================================================= */
+
+    .prices {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+      gap:
+        16px;
+
+      width:
+        100%;
+    }
+
+
+    /* =========================================================
+       PRICE CARD
+    ========================================================= */
+
+    .price-card {
+
+      position:
+        relative;
+
+      min-height:
+        245px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
+
+      padding:
+        28px 12px;
+
+      background:
+        rgba(255,253,249,.78);
+
+      border:
+        1px solid
+        rgba(163,125,92,.30);
+
+      border-radius:
+        24px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(112,83,59,.08);
+
+      overflow:
+        hidden;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+    }
+
+
+    .price-card::before {
+
+      content: "";
+
+      position:
+        absolute;
+
+      top: 0;
+
+      right: 18%;
+
+      left: 18%;
+
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #c39871,
+          transparent
+        );
+
+      opacity:
+        .75;
+    }
+
+
+    .price-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        rgba(163,125,92,.50);
+
+      box-shadow:
+        0 20px 42px
+        rgba(112,83,59,.13);
+    }
+
+
+    /* =========================================================
+       PRICE TITLE
+    ========================================================= */
+
+    .price-title {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      gap:
+        10px;
+
+      color:
+        #70533b;
+
+      font-size:
+        clamp(
+          14px,
+          1.25vw,
+          18px
+        );
+
+      font-weight:
+        900;
+
+      white-space:
+        nowrap;
+    }
+
+
+    .live-dot {
+
+      width: 10px;
+
+      height: 10px;
 
       flex-shrink: 0;
+
+      border-radius:
+        50%;
+
+      background:
+        #20a35a;
+
+      box-shadow:
+        0 0 0 5px
+        rgba(32,163,90,.09);
+
+      animation:
+        pulse 1.4s infinite;
     }
 
-    /* =========================
-       PRICE NUMBER
-    ========================= */
+
+    /* =========================================================
+       PRICE VALUE
+    ========================================================= */
 
     .price-value {
-      margin-top: 27px;
 
-      color: #2e0803;
+      margin-top:
+        25px;
+
+      color:
+        #2e0803;
 
       font-size:
-        clamp(25px, 3vw, 42px);
+        clamp(
+          26px,
+          3vw,
+          43px
+        );
 
-      font-weight: 950;
+      line-height:
+        1.12;
 
-      line-height: 1.15;
+      font-weight:
+        950;
 
-      direction: rtl;
+      letter-spacing:
+        -.5px;
 
-      white-space: nowrap;
+      direction:
+        rtl;
+
+      white-space:
+        nowrap;
     }
+
 
     .price-unit {
-      margin-top: 12px;
 
-      color: #a8734b;
+      margin-top:
+        12px;
+
+      color:
+        #a8734b;
 
       font-size:
-        clamp(11px, 1vw, 14px);
+        clamp(
+          10px,
+          .9vw,
+          13px
+        );
 
-      font-weight: 800;
+      font-weight:
+        800;
     }
 
-    /* =========================
-       UPDATE
-    ========================= */
+
+    /* =========================================================
+       UPDATE TIME
+    ========================================================= */
 
     .update {
-      text-align: center;
 
-      margin: 28px 0 20px;
+      display:
+        flex;
 
-      color: #70533b;
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      gap:
+        6px;
+
+      margin:
+        24px 0 16px;
+
+      color:
+        #806b58;
 
       font-size:
-        clamp(12px, 1vw, 14px);
+        clamp(
+          11px,
+          .95vw,
+          14px
+        );
+
+      font-weight:
+        700;
     }
 
-    /* =========================
+
+    .update-time {
+
+      color:
+        #632a16;
+
+      font-weight:
+        900;
+    }
+
+
+    /* =========================================================
        FOOTER
-    ========================= */
+    ========================================================= */
 
     footer {
-      margin-top: auto;
 
-      padding-top: 25px;
+      margin-top:
+        auto;
 
-      text-align: center;
+      padding-top:
+        16px;
 
-      color: #70533b;
+      text-align:
+        center;
+
+      border-top:
+        1px solid
+        rgba(112,83,59,.15);
+
+      color:
+        #806b58;
 
       font-size:
-        clamp(12px, 1vw, 14px);
+        clamp(
+          11px,
+          .9vw,
+          13px
+        );
     }
+
 
     footer strong {
-      display: block;
 
-      margin-bottom: 8px;
+      display:
+        inline-block;
 
-      color: #2e0803;
+      margin-left:
+        8px;
+
+      color:
+        #2e0803;
 
       font-size:
-        clamp(15px, 1.3vw, 19px);
+        clamp(
+          13px,
+          1.1vw,
+          16px
+        );
     }
+
 
     .instagram {
-      margin-top: 9px;
 
-      direction: ltr;
+      display:
+        inline-block;
 
-      color: #632a16;
+      margin-right:
+        8px;
 
-      font-weight: 900;
+      direction:
+        ltr;
+
+      color:
+        #632a16;
+
+      font-weight:
+        900;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
 
-    @media (max-width: 1100px) {
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1150px) {
 
       .prices {
+
         grid-template-columns:
           repeat(3, 1fr);
       }
 
+
       .price-card {
-        min-height: 220px;
+
+        min-height:
+          215px;
       }
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
 
-    @media (max-width: 650px) {
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
 
       .container {
-        width: 92%;
-        padding: 20px 0;
+
+        width:
+          92%;
+
+        padding:
+          20px 0;
       }
+
 
       header {
-        flex-direction: column;
-        text-align: center;
-        margin-bottom: 30px;
+
+        flex-direction:
+          column;
+
+        text-align:
+          center;
+
+        margin-bottom:
+          28px;
       }
+
 
       .brand {
-        flex-direction: column;
+
+        flex-direction:
+          column;
       }
 
+
+      .status {
+
+        font-size:
+          11px;
+      }
+
+
       .prices {
+
         grid-template-columns:
           repeat(2, 1fr);
 
-        gap: 11px;
+        gap:
+          10px;
       }
+
 
       .price-card {
-        min-height: 175px;
-        padding: 20px 8px;
-        border-radius: 20px;
+
+        min-height:
+          175px;
+
+        padding:
+          20px 7px;
+
+        border-radius:
+          19px;
       }
+
 
       .price-title {
-        font-size: 12px;
-        gap: 7px;
+
+        font-size:
+          11px;
+
+        gap:
+          7px;
       }
+
 
       .live-dot {
-        width: 9px;
-        height: 9px;
+
+        width:
+          8px;
+
+        height:
+          8px;
       }
+
 
       .price-value {
-        margin-top: 18px;
-        font-size: 21px;
+
+        margin-top:
+          17px;
+
+        font-size:
+          20px;
       }
 
+
       .price-unit {
-        font-size: 10px;
+
+        font-size:
+          9px;
+      }
+
+
+      footer {
+
+        line-height:
+          2;
       }
     }
+
+
+    /* =========================================================
+       VERY SMALL SCREEN
+    ========================================================= */
 
     @media (max-width: 380px) {
 
       .prices {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
       }
 
+
       .price-card {
-        min-height: 150px;
+
+        min-height:
+          145px;
       }
     }
 
-  </style>
-</head>
+  </style></head><body>  <main class="container"><!-- =======================================================
+     HEADER
+======================================================== -->
 
-<body>
-
-  <main class="container">
-
-    <!-- HEADER -->
-
-    <header>
-
-      <div class="brand">
-
-        <div class="logo">
-          SZF
-        </div>
-
-        <div>
-
-          <h1>
-            SILVER ZARIN FAKHR
-          </h1>
-
-          <p>
-            نقره زرین فخر
-          </p>
-
-        </div>
-
-      </div>
+<header>
 
 
-      <div
-        class="status"
-        id="status"
-      >
-
-        <span class="status-dot"></span>
-
-        <span id="statusText">
-          در حال دریافت قیمت‌ها...
-        </span>
-
-      </div>
-
-    </header>
+  <div class="brand">
 
 
-    <!-- TITLE -->
+    <!--
+      فعلاً SZF است.
+      بعداً با لوگوی واقعی جایگزین می‌شود.
+    -->
 
-    <section class="hero">
+    <div class="logo">
+      SZF
+    </div>
 
-      <h2>
-        تابلو قیمت نقره
-      </h2>
 
-      <p>
-        قیمت لحظه‌ای بازار نقره
+    <div>
+
+      <h1 class="brand-title">
+        SILVER ZARIN FAKHR
+      </h1>
+
+      <p class="brand-subtitle">
+        نقره زرین فخر
       </p>
 
-    </section>
+    </div>
 
 
-    <!-- PRICE CARDS -->
-
-    <section class="prices">
+  </div>
 
 
-      <!-- MITHQAL -->
+  <div
+    class="status"
+    id="status"
+  >
 
-      <div class="price-card">
+    <span class="status-dot"></span>
 
-        <div class="price-title">
+    <span id="statusText">
+      در حال دریافت قیمت‌ها...
+    </span>
 
-          <span class="live-dot"></span>
-
-          <span>
-            مثقال ۱۷ عیار
-          </span>
-
-        </div>
-
-        <div
-          class="price-value"
-          id="mithqal17"
-        >
-          —
-        </div>
-
-        <div class="price-unit">
-          تومان / مثقال
-        </div>
-
-      </div>
+  </div>
 
 
-      <!-- OUNCE -->
-
-      <div class="price-card">
-
-        <div class="price-title">
-
-          <span class="live-dot"></span>
-
-          <span>
-            انس نقره
-          </span>
-
-        </div>
-
-        <div
-          class="price-value"
-          id="silverOunce"
-        >
-          —
-        </div>
-
-        <div class="price-unit">
-          دلار / انس
-        </div>
-
-      </div>
+</header>
 
 
-      <!-- USD -->
+<!-- =======================================================
+     HERO
+======================================================== -->
 
-      <div class="price-card">
-
-        <div class="price-title">
-
-          <span class="live-dot"></span>
-
-          <span>
-            دلار
-          </span>
-
-        </div>
-
-        <div
-          class="price-value"
-          id="usd"
-        >
-          —
-        </div>
-
-        <div class="price-unit">
-          تومان / دلار
-        </div>
-
-      </div>
+<section class="hero">
 
 
-      <!-- 999 -->
-
-      <div class="price-card">
-
-        <div class="price-title">
-
-          <span class="live-dot"></span>
-
-          <span>
-            نقره ۹۹۹
-          </span>
-
-        </div>
-
-        <div
-          class="price-value"
-          id="silver999"
-        >
-          —
-        </div>
-
-        <div class="price-unit">
-          تومان / گرم
-        </div>
-
-      </div>
+  <div class="hero-label">
+    MARKET BOARD
+  </div>
 
 
-      <!-- 925 -->
-
-      <div class="price-card">
-
-        <div class="price-title">
-
-          <span class="live-dot"></span>
-
-          <span>
-            نقره ۹۲۵
-          </span>
-
-        </div>
-
-        <div
-          class="price-value"
-          id="silver925"
-        >
-          —
-        </div>
-
-        <div class="price-unit">
-          تومان / گرم
-        </div>
-
-      </div>
+  <h2>
+    تابلو قیمت نقره
+  </h2>
 
 
-    </section>
+  <p>
+    قیمت لحظه‌ای بازار نقره
+  </p>
 
 
-    <!-- UPDATE -->
+</section>
 
-    <div class="update">
 
-      آخرین بروزرسانی:
+<!-- =======================================================
+     PRICE CARDS
+======================================================== -->
 
-      <span id="updatedAt">
-        —
+<section class="prices">
+
+
+  <!-- MITHQAL -->
+
+  <div class="price-card">
+
+    <div class="price-title">
+
+      <span class="live-dot"></span>
+
+      <span>
+        مثقال ۱۷ عیار
       </span>
 
     </div>
 
 
-    <!-- FOOTER -->
-
-    <footer>
-
-      <strong>
-        SILVER ZARIN FAKHR
-      </strong>
-
-      زیبایی در درخشندگی،
-      اصالت در ماندگاری
-
-      <div class="instagram">
-        @zarinfakhrSZF
-      </div>
-
-    </footer>
-
-  </main>
+    <div
+      class="price-value"
+      id="mithqal17"
+    >
+      —
+    </div>
 
 
-  <script>
+    <div class="price-unit">
+      تومان / مثقال
+    </div>
+
+  </div>
+
+
+  <!-- OUNCE -->
+
+  <div class="price-card">
+
+    <div class="price-title">
+
+      <span class="live-dot"></span>
+
+      <span>
+        انس نقره
+      </span>
+
+    </div>
+
+
+    <div
+      class="price-value"
+      id="silverOunce"
+    >
+      —
+    </div>
+
+
+    <div class="price-unit">
+      دلار / انس
+    </div>
+
+  </div>
+
+
+  <!-- USD -->
+
+  <div class="price-card">
+
+    <div class="price-title">
+
+      <span class="live-dot"></span>
+
+      <span>
+        دلار
+      </span>
+
+    </div>
+
+
+    <div
+      class="price-value"
+      id="usd"
+    >
+      —
+    </div>
+
+
+    <div class="price-unit">
+      تومان / دلار
+    </div>
+
+  </div>
+
+
+  <!-- SILVER 999 -->
+
+  <div class="price-card">
+
+    <div class="price-title">
+
+      <span class="live-dot"></span>
+
+      <span>
+        نقره ۹۹۹
+      </span>
+
+    </div>
+
+
+    <div
+      class="price-value"
+      id="silver999"
+    >
+      —
+    </div>
+
+
+    <div class="price-unit">
+      تومان / گرم
+    </div>
+
+  </div>
+
+
+  <!-- SILVER 925 -->
+
+  <div class="price-card">
+
+    <div class="price-title">
+
+      <span class="live-dot"></span>
+
+      <span>
+        نقره ۹۲۵
+      </span>
+
+    </div>
+
+
+    <div
+      class="price-value"
+      id="silver925"
+    >
+      —
+    </div>
+
+
+    <div class="price-unit">
+      تومان / گرم
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<!-- =======================================================
+     UPDATE
+======================================================== -->
+
+<div class="update">
+
+  <span>
+    آخرین بروزرسانی:
+  </span>
+
+  <span
+    class="update-time"
+    id="updatedAt"
+  >
+    —
+  </span>
+
+</div>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer>
+
+  <strong>
+    SILVER ZARIN FAKHR
+  </strong>
+
+  زیبایی در درخشندگی،
+  اصالت در ماندگاری
+
+  <span class="instagram">
+    @zarinfakhrSZF
+  </span>
+
+</footer>
+
+  </main>  <script>
+
+
+    /* =========================================================
+       API
+    ========================================================= */
 
     const API =
       "/api/prices";
 
+
+    /* =========================================================
+       MITHQAL CONSTANTS
+    ========================================================= */
 
     const MITHQAL_GRAM =
       4.608;
@@ -698,45 +1228,73 @@
       700;
 
 
+    /* =========================================================
+       NUMBER FORMAT
+    ========================================================= */
+
     function formatNumber(value) {
 
       if (
+
         value === null ||
+
         value === undefined ||
-        !Number.isFinite(Number(value))
+
+        !Number.isFinite(
+          Number(value)
+        )
+
       ) {
+
         return "—";
       }
 
-      return Number(value).toLocaleString(
-        "fa-IR",
-        {
-          maximumFractionDigits: 0
-        }
-      );
+
+      return Number(value)
+        .toLocaleString(
+          "fa-IR",
+          {
+            maximumFractionDigits:
+              0
+          }
+        );
     }
 
+
+    /* =========================================================
+       MITHQAL 17K
+    ========================================================= */
 
     function calculateMithqal17(
       silver999
     ) {
 
       if (
+
         !Number.isFinite(
           Number(silver999)
         )
+
       ) {
+
         return null;
       }
 
+
       return (
+
         Number(silver999) /
         1000 *
         PURITY_17K *
         MITHQAL_GRAM
+
       );
     }
 
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
 
     function setStatus(
       online,
@@ -748,13 +1306,16 @@
           "status"
         );
 
+
       const statusText =
         document.getElementById(
           "statusText"
         );
 
+
       statusText.textContent =
         message;
+
 
       status.classList.toggle(
         "error",
@@ -763,7 +1324,12 @@
     }
 
 
+    /* =========================================================
+       UPDATE UI
+    ========================================================= */
+
     function updateUI(data) {
+
 
       const silver999 =
         Number(
@@ -771,16 +1337,24 @@
         );
 
 
+      /* 925 = 999 × 0.925 */
+
       const silver925 =
         silver999 *
         0.925;
 
+
+      /* 17K Mithqal */
 
       const mithqal17 =
         calculateMithqal17(
           silver999
         );
 
+
+      /* =======================================================
+         MITHQAL
+      ======================================================== */
 
       document.getElementById(
         "mithqal17"
@@ -790,18 +1364,28 @@
         );
 
 
+      /* =======================================================
+         SILVER OUNCE
+      ======================================================== */
+
       document.getElementById(
         "silverOunce"
       ).textContent =
+
         Number(
           data.silverOunce
         ).toLocaleString(
           "en-US",
           {
-            maximumFractionDigits: 3
+            maximumFractionDigits:
+              3
           }
         );
 
+
+      /* =======================================================
+         USD
+      ======================================================== */
 
       document.getElementById(
         "usd"
@@ -811,6 +1395,10 @@
         );
 
 
+      /* =======================================================
+         SILVER 999
+      ======================================================== */
+
       document.getElementById(
         "silver999"
       ).textContent =
@@ -818,6 +1406,10 @@
           silver999
         );
 
+
+      /* =======================================================
+         SILVER 925
+      ======================================================== */
 
       document.getElementById(
         "silver925"
@@ -827,6 +1419,10 @@
         );
 
 
+      /* =======================================================
+         UPDATE TIME
+      ======================================================== */
+
       if (data.updatedAt) {
 
         const date =
@@ -834,35 +1430,53 @@
             data.updatedAt
           );
 
+
         document.getElementById(
           "updatedAt"
         ).textContent =
+
           date.toLocaleTimeString(
             "fa-IR"
           );
       }
 
 
+      /* =======================================================
+         ONLINE
+      ======================================================== */
+
       setStatus(
         true,
         "آنلاین • قیمت‌ها به‌روز هستند"
       );
+
     }
 
+
+    /* =========================================================
+       LOAD PRICES
+    ========================================================= */
 
     async function loadPrices() {
 
       try {
 
+
         const response =
           await fetch(
+
             API +
             "?t=" +
             Date.now(),
+
             {
-              method: "GET",
-              cache: "no-store"
+              method:
+                "GET",
+
+              cache:
+                "no-store"
             }
+
           );
 
 
@@ -881,40 +1495,55 @@
         if (!data.success) {
 
           throw new Error(
+
             data.error ||
             "خطای API"
+
           );
         }
 
 
-        updateUI(data);
+        updateUI(
+          data
+        );
+
 
       }
 
       catch (error) {
+
 
         console.error(
           "PRICE LOAD ERROR:",
           error
         );
 
+
         setStatus(
           false,
           "خطا در دریافت اطلاعات"
         );
+
       }
+
     }
 
 
+    /* =========================================================
+       INITIAL LOAD
+    ========================================================= */
+
     loadPrices();
 
+
+    /* =========================================================
+       AUTO UPDATE
+    ========================================================= */
 
     setInterval(
       loadPrices,
       1000
     );
 
-  </script>
 
-</body>
-  </html>
+  </script></body></html>
