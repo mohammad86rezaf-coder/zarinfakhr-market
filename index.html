@@ -7,6 +7,7 @@
   <title>SILVER ZARIN FAKHR | تابلو قیمت نقره</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -14,209 +15,507 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Tahoma, Arial, sans-serif;
+
+      font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
       background:
         radial-gradient(
           circle at top,
           #fffdf9 0%,
-          #f7e9d9 45%,
+          #f7e9d9 48%,
           #ead8c7 100%
         );
+
       color: #2e0803;
     }
+
 
     .container {
       width: min(1100px, 94%);
       margin: auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 30px 0;
+      padding: 35px 0;
     }
+
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 20px;
-      margin-bottom: 45px;
+
+      margin-bottom: 40px;
     }
+
 
     .brand {
       display: flex;
       align-items: center;
+
       gap: 14px;
     }
 
+
     .logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
+      width: 62px;
+      height: 62px;
+
       display: grid;
       place-items: center;
+
+      border-radius: 18px;
+
       background: #fffaf3;
-      border: 1px solid #c39871;
-      box-shadow: 0 8px 25px rgba(112, 83, 59, .12);
-      font-size: 20px;
-      font-weight: 900;
+
+      border:
+        1px solid #c39871;
+
+      box-shadow:
+        0 8px 25px
+        rgba(112, 83, 59, .12);
+
       color: #70533b;
+
+      font-size: 19px;
+      font-weight: 900;
     }
+
 
     .brand h1 {
       margin: 0;
-      font-size: clamp(18px, 3vw, 28px);
+
+      font-size:
+        clamp(18px, 3vw, 28px);
+
       letter-spacing: 1px;
     }
 
+
     .brand p {
       margin: 5px 0 0;
+
       color: #70533b;
+
       font-size: 12px;
+
       letter-spacing: 1.5px;
     }
+
+
+    /* =========================
+       ONLINE STATUS
+    ========================= */
 
     .status {
       display: flex;
       align-items: center;
-      gap: 8px;
+
+      gap: 9px;
+
       color: #70533b;
+
       font-size: 13px;
       font-weight: 700;
     }
 
+
     .status-dot {
       width: 10px;
       height: 10px;
+
       border-radius: 50%;
+
       background: #20a35a;
-      box-shadow: 0 0 0 5px rgba(32, 163, 90, .10);
+
+      box-shadow:
+        0 0 0 5px
+        rgba(32, 163, 90, .10);
+
+      animation:
+        onlinePulse 1.4s infinite;
+
       flex: 0 0 auto;
     }
+
 
     .status.error .status-dot {
       background: #c62828;
-      box-shadow: 0 0 0 5px rgba(198, 40, 40, .10);
+
+      box-shadow:
+        0 0 0 5px
+        rgba(198, 40, 40, .10);
+
+      animation: none;
     }
+
+
+    @keyframes onlinePulse {
+
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.35);
+        opacity: .55;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+    }
+
+
+    /* =========================
+       TITLE
+    ========================= */
 
     .hero {
       text-align: center;
+
       margin-bottom: 30px;
     }
 
+
     .hero h2 {
       margin: 0;
-      font-size: clamp(26px, 5vw, 48px);
+
+      font-size:
+        clamp(25px, 5vw, 44px);
+
       font-weight: 900;
     }
 
+
     .hero p {
-      margin: 12px auto 0;
+      margin: 10px 0 0;
+
       color: #70533b;
+
       font-size: 14px;
     }
 
-    .main-price {
-      background: rgba(255, 253, 249, .9);
-      border: 1px solid #c39871;
-      border-radius: 30px;
-      padding: 55px 25px;
-      text-align: center;
-      box-shadow:
-        0 20px 55px rgba(112, 83, 59, .14);
+
+    /* =========================
+       PRICE GRID
+    ========================= */
+
+    .prices {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap: 15px;
+
+      align-items: stretch;
     }
 
-    .main-title {
+
+    .price-card {
+
+      min-height: 190px;
+
       display: flex;
+
+      flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
-      gap: 10px;
-      color: #70533b;
-      font-size: clamp(16px, 3vw, 21px);
-      font-weight: 900;
+
+      text-align: center;
+
+      padding: 24px 14px;
+
+      background:
+        rgba(
+          255,
+          253,
+          249,
+          .90
+        );
+
+      border:
+        1px solid #d6bda7;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(
+          112,
+          83,
+          59,
+          .09
+        );
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
     }
+
+
+    .price-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 18px 40px
+        rgba(
+          112,
+          83,
+          59,
+          .14
+        );
+    }
+
+
+    /* =========================
+       PRICE TITLE
+    ========================= */
+
+    .price-title {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      color: #70533b;
+
+      font-size: 14px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+
+    /* Animated green dot */
 
     .live-dot {
-      width: 11px;
-      height: 11px;
+
+      width: 10px;
+      height: 10px;
+
       border-radius: 50%;
+
       background: #20a35a;
+
       box-shadow:
-        0 0 0 5px rgba(32, 163, 90, .10);
+        0 0 0 4px
+        rgba(
+          32,
+          163,
+          90,
+          .10
+        );
+
+      animation:
+        onlinePulse 1.4s infinite;
+
       flex: 0 0 auto;
     }
 
-    .main-value {
-      margin-top: 25px;
-      font-size: clamp(45px, 10vw, 90px);
-      line-height: 1.1;
-      font-weight: 950;
+
+    /* =========================
+       PRICE NUMBER
+    ========================= */
+
+    .price-value {
+
+      margin-top: 20px;
+
       color: #2e0803;
+
+      font-size:
+        clamp(21px, 3vw, 31px);
+
+      font-weight: 950;
+
+      line-height: 1.2;
+
       direction: rtl;
-      letter-spacing: 1px;
+
+      white-space: nowrap;
     }
 
-    .main-unit {
-      margin-top: 18px;
+
+    .price-unit {
+
+      margin-top: 9px;
+
       color: #a8734b;
-      font-size: 15px;
-      font-weight: 800;
+
+      font-size: 11px;
+
+      font-weight: 700;
     }
+
+
+    /* =========================
+       UPDATE
+    ========================= */
 
     .update {
+
       text-align: center;
-      margin: 25px 0;
+
+      margin:
+        25px 0 20px;
+
       color: #70533b;
+
       font-size: 12px;
     }
 
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
+
       text-align: center;
-      padding: 20px 10px 5px;
+
+      padding-top: 15px;
+
       color: #70533b;
+
+      font-size: 13px;
     }
+
 
     footer strong {
+
       display: block;
-      color: #2e0803;
-      font-size: 15px;
+
       margin-bottom: 8px;
+
+      color: #2e0803;
+
+      font-size: 15px;
     }
 
+
     .instagram {
-      margin-top: 10px;
+
+      margin-top: 9px;
+
       direction: ltr;
-      font-weight: 900;
+
       color: #632a16;
+
+      font-weight: 900;
     }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .prices {
+
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 600px) {
 
       .container {
-        padding-top: 20px;
+        padding-top: 22px;
       }
+
 
       header {
+
         flex-direction: column;
+
         align-items: center;
+
         text-align: center;
-        margin-bottom: 35px;
+
+        margin-bottom: 30px;
       }
 
-      .main-price {
-        padding: 45px 15px;
+
+      .prices {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 10px;
       }
 
-      .main-value {
-        font-size: clamp(38px, 12vw, 65px);
+
+      .price-card {
+
+        min-height: 165px;
+
+        padding: 20px 8px;
       }
+
+
+      .price-title {
+
+        font-size: 12px;
+      }
+
+
+      .price-value {
+
+        font-size: 20px;
+      }
+
     }
+
+
+    @media (max-width: 380px) {
+
+      .prices {
+
+        grid-template-columns: 1fr;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="container">
+
+
+    <!-- HEADER -->
 
     <header>
 
@@ -227,24 +526,41 @@
         </div>
 
         <div>
-          <h1>SILVER ZARIN FAKHR</h1>
-          <p>نقره زرین فخر</p>
+
+          <h1>
+            SILVER ZARIN FAKHR
+          </h1>
+
+          <p>
+            نقره زرین فخر
+          </p>
+
         </div>
 
       </div>
 
-      <div class="status" id="status">
 
-        <span class="status-dot"></span>
+      <div
+        class="status"
+        id="status"
+      >
 
-        <span id="statusText">
-          در حال دریافت قیمت...
+        <span
+          class="status-dot"
+        ></span>
+
+        <span
+          id="statusText"
+        >
+          در حال دریافت قیمت‌ها...
         </span>
 
       </div>
 
     </header>
 
+
+    <!-- TITLE -->
 
     <section class="hero">
 
@@ -253,47 +569,184 @@
       </h2>
 
       <p>
-        قیمت لحظه‌ای یک مثقال نقره ۱۷ عیار
+        قیمت لحظه‌ای بازار نقره
       </p>
 
     </section>
 
 
-    <section class="main-price">
+    <!-- PRICES -->
 
-      <div class="main-title">
+    <section class="prices">
 
-        <span class="live-dot"></span>
 
-        <span>
-          قیمت یک مثقال نقره ۱۷ عیار
-        </span>
+      <!-- MITHQAL -->
+
+      <div class="price-card">
+
+        <div class="price-title">
+
+          <span class="live-dot"></span>
+
+          <span>
+            مثقال ۱۷ عیار
+          </span>
+
+        </div>
+
+
+        <div
+          class="price-value"
+          id="mithqal17"
+        >
+          —
+        </div>
+
+
+        <div class="price-unit">
+          تومان / مثقال
+        </div>
 
       </div>
 
 
-      <div
-        class="main-value"
-        id="mithqal17"
-      >
-        —
+      <!-- SILVER OUNCE -->
+
+      <div class="price-card">
+
+        <div class="price-title">
+
+          <span class="live-dot"></span>
+
+          <span>
+            انس نقره
+          </span>
+
+        </div>
+
+
+        <div
+          class="price-value"
+          id="silverOunce"
+        >
+          —
+        </div>
+
+
+        <div class="price-unit">
+          دلار / انس
+        </div>
+
       </div>
 
 
-      <div class="main-unit">
-        تومان / مثقال
+      <!-- USD -->
+
+      <div class="price-card">
+
+        <div class="price-title">
+
+          <span class="live-dot"></span>
+
+          <span>
+            دلار
+          </span>
+
+        </div>
+
+
+        <div
+          class="price-value"
+          id="usd"
+        >
+          —
+        </div>
+
+
+        <div class="price-unit">
+          تومان / دلار
+        </div>
+
       </div>
+
+
+      <!-- SILVER 999 -->
+
+      <div class="price-card">
+
+        <div class="price-title">
+
+          <span class="live-dot"></span>
+
+          <span>
+            نقره ۹۹۹
+          </span>
+
+        </div>
+
+
+        <div
+          class="price-value"
+          id="silver999"
+        >
+          —
+        </div>
+
+
+        <div class="price-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
+
+      <!-- SILVER 925 -->
+
+      <div class="price-card">
+
+        <div class="price-title">
+
+          <span class="live-dot"></span>
+
+          <span>
+            نقره ۹۲۵
+          </span>
+
+        </div>
+
+
+        <div
+          class="price-value"
+          id="silver925"
+        >
+          —
+        </div>
+
+
+        <div class="price-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
 
     </section>
 
 
+    <!-- UPDATE -->
+
     <div class="update">
 
       آخرین بروزرسانی:
-      <span id="updatedAt">—</span>
+
+      <span id="updatedAt">
+        —
+      </span>
 
     </div>
 
+
+    <!-- FOOTER -->
 
     <footer>
 
@@ -301,7 +754,8 @@
         SILVER ZARIN FAKHR
       </strong>
 
-      زیبایی در درخشندگی، اصالت در ماندگاری
+      زیبایی در درخشندگی،
+      اصالت در ماندگاری
 
       <div class="instagram">
         @zarinfakhrSZF
@@ -309,49 +763,77 @@
 
     </footer>
 
+
   </main>
 
 
   <script>
 
-    const API = "/api/prices";
 
-    // وزن یک مثقال
-    const MITHQAL_GRAM = 4.608;
-
-    // عیار 17
-    const PURITY_17K = 700;
+    const API =
+      "/api/prices";
 
 
-    function formatNumber(value) {
+    /*
+     * وزن یک مثقال:
+     * 4.608 گرم
+     */
+
+    const MITHQAL_GRAM =
+      4.608;
+
+
+    /*
+     * عیار 17:
+     * 700
+     */
+
+    const PURITY_17K =
+      700;
+
+
+    /*
+     * تبدیل اعداد
+     */
+
+    function formatNumber(
+      value
+    ) {
 
       if (
         value === null ||
         value === undefined ||
-        !Number.isFinite(Number(value))
+        !Number.isFinite(
+          Number(value)
+        )
       ) {
+
         return "—";
+
       }
 
-      return Number(value).toLocaleString(
+
+      return Number(
+        value
+      ).toLocaleString(
         "fa-IR",
         {
           maximumFractionDigits: 0
         }
       );
+
     }
 
 
-    // محاسبه قیمت یک مثقال نقره 17 عیار
-    //
-    // مثال:
-    //
-    // 505000 ÷ 1000 = 505
-    //
-    // 505 × 700 = 353500
-    //
-    // 353500 × 4.608 = 1628928
-    //
+    /*
+     * قیمت مثقال 17 عیار
+     *
+     * قیمت 999
+     * ÷ 1000
+     * × 700
+     * × 4.608
+     */
+
     function calculateMithqal17(
       silver999
     ) {
@@ -361,8 +843,11 @@
           Number(silver999)
         )
       ) {
+
         return null;
+
       }
+
 
       return (
         Number(silver999) /
@@ -370,8 +855,13 @@
         PURITY_17K *
         MITHQAL_GRAM
       );
+
     }
 
+
+    /*
+     * وضعیت اتصال
+     */
 
     function setStatus(
       online,
@@ -383,28 +873,36 @@
           "status"
         );
 
+
       const statusText =
         document.getElementById(
           "statusText"
         );
 
+
       statusText.textContent =
         message;
+
 
       status.classList.toggle(
         "error",
         !online
       );
+
     }
 
 
-    function updateUI(data) {
+    /*
+     * نمایش قیمت‌ها
+     */
+
+    function updateUI(
+      data
+    ) {
+
 
       /*
-       * قیمت 999 مستقیماً از API گرفته می‌شود.
-       *
-       * silver999Toman:
-       * قیمت یک گرم نقره 999 به تومان
+       * 999
        */
 
       const silver999 =
@@ -413,11 +911,28 @@
         );
 
 
+      /*
+       * 925
+       */
+
+      const silver925 =
+        silver999 *
+        0.925;
+
+
+      /*
+       * مثقال 17 عیار
+       */
+
       const mithqal17 =
         calculateMithqal17(
           silver999
         );
 
+
+      /*
+       * نمایش مثقال
+       */
 
       document.getElementById(
         "mithqal17"
@@ -427,12 +942,72 @@
         );
 
 
-      if (data.updatedAt) {
+      /*
+       * نمایش انس
+       */
+
+      document.getElementById(
+        "silverOunce"
+      ).textContent =
+        Number(
+          data.silverOunce
+        ).toLocaleString(
+          "en-US",
+          {
+            maximumFractionDigits: 3
+          }
+        );
+
+
+      /*
+       * نمایش دلار
+       */
+
+      document.getElementById(
+        "usd"
+      ).textContent =
+        formatNumber(
+          data.usdToman
+        );
+
+
+      /*
+       * نمایش 999
+       */
+
+      document.getElementById(
+        "silver999"
+      ).textContent =
+        formatNumber(
+          silver999
+        );
+
+
+      /*
+       * نمایش 925
+       */
+
+      document.getElementById(
+        "silver925"
+      ).textContent =
+        formatNumber(
+          silver925
+        );
+
+
+      /*
+       * زمان بروزرسانی
+       */
+
+      if (
+        data.updatedAt
+      ) {
 
         const date =
           new Date(
             data.updatedAt
           );
+
 
         document.getElementById(
           "updatedAt"
@@ -444,17 +1019,26 @@
       }
 
 
+      /*
+       * وضعیت آنلاین
+       */
+
       setStatus(
         true,
-        "آنلاین • قیمت به‌روز است"
+        "آنلاین • قیمت‌ها به‌روز هستند"
       );
 
     }
 
 
+    /*
+     * دریافت قیمت‌ها
+     */
+
     async function loadPrices() {
 
       try {
+
 
         const response =
           await fetch(
@@ -468,7 +1052,9 @@
           );
 
 
-        if (!response.ok) {
+        if (
+          !response.ok
+        ) {
 
           throw new Error(
             "API Error"
@@ -481,7 +1067,9 @@
           await response.json();
 
 
-        if (!data.success) {
+        if (
+          !data.success
+        ) {
 
           throw new Error(
             data.error ||
@@ -496,12 +1084,16 @@
         );
 
 
-      } catch (error) {
+      }
+
+      catch (error) {
+
 
         console.error(
           "PRICE LOAD ERROR:",
           error
         );
+
 
         setStatus(
           false,
@@ -513,17 +1105,25 @@
     }
 
 
-    // بارگذاری اولیه
+    /*
+     * بارگذاری اولیه
+     */
+
     loadPrices();
 
 
-    // بروزرسانی هر 1 ثانیه
+    /*
+     * بروزرسانی هر 1 ثانیه
+     */
+
     setInterval(
       loadPrices,
       1000
     );
 
+
   </script>
 
+
 </body>
-          </html>
+  </html>
