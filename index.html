@@ -3,1379 +3,1276 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <title>
-    SILVER ZARIN FAKHR | تابلو قیمت نقره
-  </title>
+<title>
+SILVER ZARIN FAKHR | تابلو قیمت نقره
+</title>
 
 
-  <style>
+<style>
 
-    /* =========================================================
-       COLOR SYSTEM
-    ========================================================= */
+/* =========================================================
+   SILVER ZARIN FAKHR
+   LUXURY EDITORIAL — V5
+   ========================================================= */
 
-    :root {
+:root {
 
-      --cream:
-        #FAF1E4;
+  --c1: #FAF1E4;
+  --c2: #F2E1CF;
+  --c3: #D2C6BE;
+  --c4: #CABCB2;
+  --c5: #E0D3CA;
+  --c6: #B3A59A;
 
-      --cream-2:
-        #F2E1CF;
+  --gold: #C0936C;
+  --gold2: #A3744D;
 
-      --stone:
-        #D2C6BE;
+  --brown: #835935;
+  --brown2: #5C3D24;
 
-      --stone-2:
-        #CABCB2;
+  --red: #9E1E19;
+  --red2: #521107;
+  --deep: #240603;
 
-      --beige:
-        #E0D3CA;
+  --white: #FFFFFF;
 
-      --taupe:
-        #B3A59A;
+  --green: #159447;
 
-      --gold:
-        #C0936C;
+}
 
-      --gold-2:
-        #A3744D;
 
-      --brown:
-        #835935;
+/* =========================================================
+   RESET
+   ========================================================= */
 
-      --brown-dark:
-        #5C3D24;
+* {
+  box-sizing: border-box;
+}
 
-      --red:
-        #9E1E19;
 
-      --red-dark:
-        #521107;
+html,
+body {
 
-      --deep:
-        #240603;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
 
-      --white:
-        #FFFFFF;
+}
 
-      --green:
-        #159447;
 
-      --green-light:
-        #29B765;
+body {
 
-    }
+  font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
 
+  color:
+    var(--deep);
 
-    /* =========================================================
-       RESET
-    ========================================================= */
+  background:
 
-    * {
-      box-sizing: border-box;
-    }
+    linear-gradient(
+      135deg,
+      var(--c1) 0%,
+      var(--c2) 34%,
+      var(--c5) 67%,
+      var(--c3) 100%
+    );
 
+  overflow-x:
+    hidden;
 
-    html,
-    body {
+}
 
-      width:
-        100%;
 
-      min-height:
-        100%;
+/* =========================================================
+   BACKGROUND LIGHT
+   ========================================================= */
 
-      margin:
-        0;
-    }
+body::before {
 
+  content: "";
 
-    body {
+  position: fixed;
 
-      font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
+  width: 700px;
+  height: 700px;
 
-      color:
-        var(--deep);
+  top: -430px;
+  left: 50%;
 
-      background:
+  transform:
+    translateX(-50%);
 
-        radial-gradient(
-          circle at 50% -20%,
-          var(--white) 0%,
-          var(--cream) 34%,
-          var(--cream-2) 68%,
-          var(--beige) 100%
-        );
+  border-radius:
+    50%;
 
-      overflow-x:
-        hidden;
-    }
+  background:
+    rgba(255,255,255,.60);
 
+  filter:
+    blur(20px);
 
-    /* =========================================================
-       MAIN
-    ========================================================= */
+  pointer-events:
+    none;
 
-    .container {
+}
 
-      width:
-        min(1600px, 94%);
 
-      min-height:
-        100vh;
+/* =========================================================
+   MAIN
+   ========================================================= */
 
-      margin:
-        auto;
+.container {
 
-      padding:
-        24px 0;
+  width:
+    min(1600px, 94%);
 
-      display:
-        flex;
+  min-height:
+    100vh;
 
-      flex-direction:
-        column;
-    }
+  margin:
+    auto;
 
+  padding:
+    22px 0;
 
-    /* =========================================================
-       LUXURY BOARD
-    ========================================================= */
+  display:
+    flex;
 
-    .board-frame {
+}
 
-      position:
-        relative;
 
-      flex:
-        1;
+/* =========================================================
+   MAIN BOARD
+   ========================================================= */
 
-      display:
-        flex;
+.board-frame {
 
-      flex-direction:
-        column;
+  position:
+    relative;
 
-      padding:
-        26px 30px 20px;
+  width:
+    100%;
 
-      border:
-        1px solid
-        rgba(131, 89, 53, .32);
+  display:
+    flex;
 
-      border-radius:
-        30px;
+  flex-direction:
+    column;
 
-      background:
+  padding:
+    24px 30px 20px;
 
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.86),
-          rgba(250,241,228,.72)
-        );
+  background:
 
-      box-shadow:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.82),
+      rgba(242,225,207,.70)
+    );
 
-        0 28px 80px
-        rgba(92,61,36,.14),
+  border:
+    1px solid
+    rgba(92,61,36,.28);
 
-        inset 0 1px 0
-        rgba(255,255,255,.95);
+  border-radius:
+    28px;
 
-      overflow:
-        hidden;
-    }
+  box-shadow:
 
+    0 35px 90px
+    rgba(92,61,36,.15),
 
-    /* =========================================================
-       GLOWING TOP BAR
-    ========================================================= */
+    inset
+    0 1px 0
+    rgba(255,255,255,.95);
 
-    .board-frame::before {
+  overflow:
+    hidden;
 
-      content:
-        "";
+}
 
-      position:
-        absolute;
 
-      top:
-        0;
+/* =========================================================
+   LUXURY LIGHT LINE
+   ========================================================= */
 
-      right:
-        7%;
+.board-frame::before {
 
-      left:
-        7%;
+  content:
+    "";
 
-      height:
-        3px;
+  position:
+    absolute;
 
-      background:
+  top:
+    0;
 
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold),
-          #E5C49D,
-          var(--red),
-          #E5C49D,
-          var(--gold),
-          transparent
-        );
+  right:
+    5%;
 
-      box-shadow:
+  left:
+    5%;
 
-        0 0 6px
-        rgba(192,147,108,.70),
+  height:
+    2px;
 
-        0 0 18px
-        rgba(192,147,108,.45),
+  background:
 
-        0 0 30px
-        rgba(158,30,25,.18);
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      var(--white),
+      var(--red),
+      var(--white),
+      var(--gold),
+      transparent
+    );
 
-      animation:
-        lightFlow 3s linear infinite;
-    }
+  box-shadow:
 
+    0 0 8px
+    rgba(192,147,108,.75),
 
-    @keyframes lightFlow {
+    0 0 25px
+    rgba(158,30,25,.20);
 
-      0% {
-        opacity: .65;
-      }
+}
 
-      50% {
-        opacity: 1;
-      }
 
-      100% {
-        opacity: .65;
-      }
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-    }
+header {
 
+  position:
+    relative;
 
-    /* =========================================================
-       DECORATIVE LIGHT
-    ========================================================= */
+  z-index:
+    2;
 
-    .board-frame::after {
+  display:
+    flex;
 
-      content:
-        "";
+  align-items:
+    center;
 
-      position:
-        absolute;
+  justify-content:
+    space-between;
 
-      width:
-        420px;
+  padding:
+    5px 4px 19px;
 
-      height:
-        420px;
+  border-bottom:
+    1px solid
+    rgba(131,89,53,.22);
 
-      top:
-        -280px;
+}
 
-      left:
-        50%;
 
-      transform:
-        translateX(-50%);
+/* =========================================================
+   BRAND
+   ========================================================= */
 
-      border-radius:
-        50%;
+.brand {
 
-      background:
-        rgba(192,147,108,.10);
+  display:
+    flex;
 
-      filter:
-        blur(5px);
+  align-items:
+    center;
 
-      pointer-events:
-        none;
-    }
+  gap:
+    17px;
 
+}
 
-    /* =========================================================
-       HEADER
-    ========================================================= */
 
-    header {
+.logo {
 
-      position:
-        relative;
+  width:
+    66px;
 
-      z-index:
-        2;
+  height:
+    66px;
 
-      display:
-        flex;
+  display:
+    grid;
 
-      align-items:
-        center;
+  place-items:
+    center;
 
-      justify-content:
-        space-between;
+  border-radius:
+    50%;
 
-      gap:
-        25px;
+  background:
 
-      padding:
-        4px 0 22px;
+    radial-gradient(
+      circle,
+      var(--white),
+      var(--c2)
+    );
 
-      border-bottom:
-        1px solid
-        rgba(131,89,53,.20);
-    }
+  border:
+    1px solid
+    var(--gold);
 
+  color:
+    var(--red2);
 
-    .brand {
+  font-size:
+    19px;
 
-      display:
-        flex;
+  font-weight:
+    950;
 
-      align-items:
-        center;
+  box-shadow:
 
-      gap:
-        16px;
-    }
+    0 7px 22px
+    rgba(92,61,36,.15),
 
+    0 0 16px
+    rgba(192,147,108,.22);
 
-    /* =========================================================
-       LOGO
-    ========================================================= */
+}
 
-    .logo {
 
-      width:
-        70px;
+.brand-title {
 
-      height:
-        70px;
+  margin:
+    0;
 
-      flex-shrink:
-        0;
+  color:
+    var(--deep);
 
-      display:
-        grid;
+  font-size:
+    clamp(22px,2.5vw,36px);
 
-      place-items:
-        center;
+  font-weight:
+    950;
 
-      border-radius:
-        20px;
+  letter-spacing:
+    1.5px;
 
-      background:
+}
 
-        linear-gradient(
-          145deg,
-          var(--white),
-          var(--cream-2)
-        );
 
-      border:
-        1px solid
-        var(--gold);
+.brand-subtitle {
 
-      box-shadow:
+  margin:
+    6px 0 0;
 
-        inset 0 0 0 1px
-        rgba(255,255,255,.95),
+  color:
+    var(--brown);
 
-        0 7px 22px
-        rgba(92,61,36,.14),
+  font-size:
+    clamp(12px,1.1vw,15px);
 
-        0 0 15px
-        rgba(192,147,108,.18);
+  font-weight:
+    800;
 
-      color:
-        var(--red-dark);
+  letter-spacing:
+    2px;
 
-      font-size:
-        20px;
+}
 
-      font-weight:
-        950;
 
-      letter-spacing:
-        1px;
-    }
+/* =========================================================
+   STATUS
+   ========================================================= */
 
+.status {
 
-    .brand-title {
+  display:
+    flex;
 
-      margin:
-        0;
+  align-items:
+    center;
 
-      color:
-        var(--deep);
+  gap:
+    10px;
 
-      font-size:
-        clamp(
-          22px,
-          2.5vw,
-          36px
-        );
+  padding:
+    9px 16px;
 
-      font-weight:
-        950;
+  border:
+    1px solid
+    rgba(21,148,71,.24);
 
-      letter-spacing:
-        1.4px;
-    }
+  border-radius:
+    8px;
 
+  background:
+    rgba(255,255,255,.60);
 
-    .brand-subtitle {
+  color:
+    var(--brown2);
 
-      margin:
-        7px 0 0;
+  font-size:
+    clamp(11px,1vw,14px);
 
-      color:
-        var(--brown-dark);
+  font-weight:
+    800;
 
-      font-size:
-        clamp(
-          12px,
-          1.1vw,
-          15px
-        );
+}
 
-      font-weight:
-        800;
 
-      letter-spacing:
-        2px;
-    }
+/* =========================================================
+   GREEN LIGHT
+   NON-SYNC RHYTHM
+   ========================================================= */
 
+.status-dot,
+.live-dot {
 
-    /* =========================================================
-       ONLINE STATUS
-    ========================================================= */
+  width:
+    9px;
 
-    .status {
+  height:
+    9px;
 
-      display:
-        flex;
+  flex-shrink:
+    0;
 
-      align-items:
-        center;
+  border-radius:
+    50%;
 
-      gap:
-        10px;
+  background:
+    var(--green);
 
-      padding:
-        10px 17px;
+  box-shadow:
+    0 0 8px
+    rgba(21,148,71,.75);
 
-      border:
-        1px solid
-        rgba(21,148,71,.25);
+  animation:
+    blink 1.6s steps(1,end) infinite;
 
-      border-radius:
-        999px;
+}
 
-      background:
-        rgba(255,255,255,.68);
 
-      color:
-        var(--brown-dark);
+.live-dot:nth-child(1) {
+  animation-delay: 0s;
+}
 
-      font-size:
-        clamp(
-          12px,
-          1vw,
-          15px
-        );
+.price-card:nth-child(2) .live-dot {
+  animation-delay: .27s;
+}
 
-      font-weight:
-        800;
+.price-card:nth-child(3) .live-dot {
+  animation-delay: .54s;
+}
 
-      white-space:
-        nowrap;
+.price-card:nth-child(4) .live-dot {
+  animation-delay: .81s;
+}
 
-      box-shadow:
-        0 5px 18px
-        rgba(92,61,36,.07);
-    }
+.price-card:nth-child(5) .live-dot {
+  animation-delay: 1.08s;
+}
 
 
-    /* =========================================================
-       GREEN BLINK
-       فقط چشمک می‌زند — بدون pulse
-    ========================================================= */
+@keyframes blink {
 
-    .status-dot,
-    .live-dot {
+  0% {
+    opacity: 1;
+  }
 
-      width:
-        10px;
+  32% {
+    opacity: 1;
+  }
 
-      height:
-        10px;
+  33% {
+    opacity: .18;
+  }
 
-      flex-shrink:
-        0;
+  65% {
+    opacity: .18;
+  }
 
-      border-radius:
-        50%;
+  66% {
+    opacity: 1;
+  }
 
-      background:
-        var(--green);
+  100% {
+    opacity: 1;
+  }
 
-      box-shadow:
-        0 0 7px
-        rgba(21,148,71,.75);
+}
 
-      animation:
-        greenBlink 1s steps(1, end) infinite;
-    }
 
+/* =========================================================
+   HERO
+   ========================================================= */
 
-    @keyframes greenBlink {
+.hero {
 
-      0%,
-      45% {
-        opacity: 1;
-      }
+  position:
+    relative;
 
-      46%,
-      100% {
-        opacity: .25;
-      }
+  z-index:
+    2;
 
-    }
+  text-align:
+    center;
 
+  padding:
+    25px 0 24px;
 
-    .status.error {
+}
 
-      color:
-        var(--red);
 
-      border-color:
-        rgba(158,30,25,.25);
-    }
+.hero-small {
 
+  color:
+    var(--gold2);
 
-    .status.error .status-dot {
+  font-size:
+    clamp(10px,.9vw,13px);
 
-      background:
-        var(--red);
+  font-weight:
+    900;
 
-      box-shadow:
-        0 0 8px
-        rgba(158,30,25,.45);
+  letter-spacing:
+    4px;
 
-      animation:
-        none;
-    }
+  margin-bottom:
+    9px;
 
+}
 
-    /* =========================================================
-       HERO
-    ========================================================= */
 
-    .hero {
+.hero-small::before,
+.hero-small::after {
 
-      position:
-        relative;
+  content:
+    "";
 
-      z-index:
-        2;
+  display:
+    inline-block;
 
-      text-align:
-        center;
+  width:
+    50px;
 
-      padding:
-        27px 0 25px;
-    }
+  height:
+    1px;
 
+  vertical-align:
+    middle;
 
-    .hero-small {
+  margin:
+    0 13px;
 
-      display:
-        flex;
+  background:
 
-      align-items:
-        center;
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold)
+    );
 
-      justify-content:
-        center;
+  box-shadow:
+    0 0 7px
+    rgba(192,147,108,.65);
 
-      gap:
-        12px;
+}
 
-      margin-bottom:
-        10px;
 
-      color:
-        var(--gold-2);
+.hero-small::after {
 
-      font-size:
-        clamp(
-          10px,
-          .9vw,
-          13px
-        );
+  background:
 
-      font-weight:
-        900;
+    linear-gradient(
+      90deg,
+      var(--gold),
+      transparent
+    );
 
-      letter-spacing:
-        3px;
-    }
+}
 
 
-    .hero-small::before,
-    .hero-small::after {
+.hero h2 {
 
-      content:
-        "";
+  margin:
+    0;
 
-      width:
-        45px;
+  color:
+    var(--deep);
 
-      height:
-        1px;
+  font-size:
+    clamp(34px,4vw,58px);
 
-      background:
+  font-weight:
+    950;
 
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold)
-        );
+  line-height:
+    1.12;
 
-      box-shadow:
-        0 0 7px
-        rgba(192,147,108,.55);
-    }
+}
 
 
-    .hero-small::after {
+.hero p {
 
-      background:
+  margin:
+    10px 0 0;
 
-        linear-gradient(
-          90deg,
-          var(--gold),
-          transparent
-        );
-    }
+  color:
+    var(--brown);
 
+  font-size:
+    clamp(12px,1.1vw,16px);
 
-    .hero h2 {
+  font-weight:
+    650;
 
-      margin:
-        0;
+}
 
-      color:
-        var(--deep);
 
-      font-size:
-        clamp(
-          34px,
-          4vw,
-          58px
-        );
+/* =========================================================
+   PRICE GRID
+   جای قیمت‌ها ثابت
+   ========================================================= */
 
-      line-height:
-        1.1;
+.prices {
 
-      font-weight:
-        950;
+  position:
+    relative;
 
-      text-shadow:
-        0 2px 10px
-        rgba(131,89,53,.10);
-    }
+  z-index:
+    2;
 
+  display:
+    grid;
 
-    .hero p {
+  grid-template-columns:
+    repeat(5,minmax(0,1fr));
 
-      margin:
-        12px 0 0;
+  gap:
+    15px;
 
-      color:
-        var(--brown-dark);
+}
 
-      font-size:
-        clamp(
-          12px,
-          1.1vw,
-          16px
-        );
 
-      font-weight:
-        650;
-    }
+/* =========================================================
+   PRICE CARD
+   ========================================================= */
 
+.price-card {
 
-    /* =========================================================
-       PRICE GRID
-       جای قیمت‌ها بدون تغییر
-    ========================================================= */
+  position:
+    relative;
 
-    .prices {
+  min-height:
+    245px;
 
-      position:
-        relative;
+  display:
+    flex;
 
-      z-index:
-        2;
+  flex-direction:
+    column;
 
-      display:
-        grid;
+  align-items:
+    center;
 
-      grid-template-columns:
-        repeat(5, minmax(0, 1fr));
+  justify-content:
+    center;
 
-      gap:
-        15px;
+  text-align:
+    center;
 
-      width:
-        100%;
-    }
+  padding:
+    25px 10px;
 
+  background:
 
-    /* =========================================================
-       PRICE CARD
-    ========================================================= */
+    linear-gradient(
+      160deg,
+      rgba(255,255,255,.91),
+      rgba(224,211,202,.55)
+    );
 
-    .price-card {
+  border:
+    1px solid
+    rgba(92,61,36,.25);
 
-      position:
-        relative;
+  border-radius:
+    12px;
 
-      min-height:
-        245px;
+  box-shadow:
 
-      display:
-        flex;
+    0 18px 38px
+    rgba(92,61,36,.10),
 
-      flex-direction:
-        column;
+    inset
+    0 1px 0
+    rgba(255,255,255,.95);
 
-      align-items:
-        center;
+  overflow:
+    hidden;
 
-      justify-content:
-        center;
+}
 
-      text-align:
-        center;
 
-      padding:
-        28px 10px;
+/* =========================================================
+   TOP GLOW
+   ========================================================= */
 
-      background:
+.price-card::before {
 
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.96),
-          rgba(242,225,207,.72)
-        );
+  content:
+    "";
 
-      border:
-        1px solid
-        rgba(131,89,53,.30);
+  position:
+    absolute;
 
-      border-radius:
-        22px;
+  top:
+    0;
 
-      box-shadow:
+  right:
+    8%;
 
-        0 16px 40px
-        rgba(92,61,36,.10),
+  left:
+    8%;
 
-        inset 0 1px 0
-        rgba(255,255,255,.95);
+  height:
+    2px;
 
-      overflow:
-        hidden;
+  background:
 
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      var(--red),
+      var(--gold),
+      transparent
+    );
 
+  box-shadow:
 
-    /* =========================================================
-       GLOWING CARD TOP LINE
-    ========================================================= */
+    0 0 7px
+    rgba(192,147,108,.75),
 
-    .price-card::before {
+    0 0 18px
+    rgba(192,147,108,.35);
 
-      content:
-        "";
+}
 
-      position:
-        absolute;
 
-      top:
-        0;
+/* =========================================================
+   SIDE LIGHT
+   ========================================================= */
 
-      right:
-        15%;
+.price-card::after {
 
-      left:
-        15%;
+  content:
+    "";
 
-      height:
-        3px;
+  position:
+    absolute;
 
-      background:
+  top:
+    15%;
 
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold-2),
-          #E4C098,
-          var(--red),
-          #E4C098,
-          var(--gold-2),
-          transparent
-        );
+  bottom:
+    15%;
 
-      box-shadow:
+  right:
+    0;
 
-        0 0 5px
-        rgba(192,147,108,.75),
+  width:
+    1px;
 
-        0 0 15px
-        rgba(192,147,108,.35);
-    }
+  background:
 
+    linear-gradient(
+      180deg,
+      transparent,
+      var(--gold),
+      var(--red),
+      transparent
+    );
 
-    /* =========================================================
-       CARD LIGHT STRIPE
-    ========================================================= */
+  box-shadow:
+    0 0 8px
+    rgba(192,147,108,.5);
 
-    .price-card::after {
+}
 
-      content:
-        "";
 
-      position:
-        absolute;
+/* =========================================================
+   TITLE
+   ========================================================= */
 
-      top:
-        30%;
+.price-title {
 
-      right:
-        -45%;
+  display:
+    flex;
 
-      width:
-        190%;
+  align-items:
+    center;
 
-      height:
-        1px;
+  justify-content:
+    center;
 
-      transform:
-        rotate(-18deg);
+  gap:
+    10px;
 
-      background:
+  color:
+    var(--brown2);
 
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.85),
-          transparent
-        );
+  font-size:
+    clamp(14px,1.25vw,18px);
 
-      opacity:
-        .65;
+  font-weight:
+    900;
 
-      pointer-events:
-        none;
-    }
+  white-space:
+    nowrap;
 
+}
 
-    .price-card:hover {
 
-      transform:
-        translateY(-4px);
+/* =========================================================
+   PRICE VALUE
+   ========================================================= */
 
-      box-shadow:
+.price-value {
 
-        0 24px 50px
-        rgba(92,61,36,.16),
+  margin-top:
+    25px;
 
-        0 0 20px
-        rgba(192,147,108,.12);
-    }
+  color:
+    var(--deep);
 
+  font-size:
+    clamp(27px,3vw,44px);
 
-    /* =========================================================
-       PRICE TITLE
-    ========================================================= */
+  line-height:
+    1.1;
 
-    .price-title {
+  font-weight:
+    950;
 
-      display:
-        flex;
+  letter-spacing:
+    -.7px;
 
-      align-items:
-        center;
+  direction:
+    rtl;
 
-      justify-content:
-        center;
+  white-space:
+    nowrap;
 
-      gap:
-        10px;
+  text-shadow:
+    0 2px 8px
+    rgba(92,61,36,.10);
 
-      color:
-        var(--brown-dark);
+}
 
-      font-size:
-        clamp(
-          14px,
-          1.25vw,
-          18px
-        );
 
-      font-weight:
-        900;
+.price-unit {
 
-      white-space:
-        nowrap;
-    }
+  margin-top:
+    12px;
 
+  color:
+    var(--gold2);
 
-    /* =========================================================
-       PRICE
-    ========================================================= */
+  font-size:
+    clamp(10px,.9vw,13px);
 
-    .price-value {
+  font-weight:
+    800;
 
-      margin-top:
-        25px;
+}
 
-      color:
-        var(--deep);
 
-      font-size:
-        clamp(
-          27px,
-          3vw,
-          44px
-        );
+/* =========================================================
+   UPDATE
+   تاریخ و ساعت کاملاً جدا
+   ========================================================= */
 
-      line-height:
-        1.1;
+.update {
 
-      font-weight:
-        950;
+  position:
+    relative;
 
-      letter-spacing:
-        -.7px;
+  z-index:
+    2;
 
-      direction:
-        rtl;
+  display:
+    flex;
 
-      white-space:
-        nowrap;
+  align-items:
+    center;
 
-      text-shadow:
-        0 2px 8px
-        rgba(92,61,36,.10);
-    }
+  justify-content:
+    center;
 
+  gap:
+    20px;
 
-    .price-unit {
+  margin:
+    22px 0 14px;
 
-      margin-top:
-        12px;
+  padding:
+    11px 22px;
 
-      color:
-        var(--gold-2);
+  color:
+    var(--brown2);
 
-      font-size:
-        clamp(
-          10px,
-          .9vw,
-          13px
-        );
+  font-size:
+    clamp(11px,.9vw,14px);
 
-      font-weight:
-        800;
-    }
+  font-weight:
+    700;
 
+}
 
-    /* =========================================================
-       UPDATE BAR
-    ========================================================= */
 
-    .update {
+/* DATE */
 
-      position:
-        relative;
+.update-date {
 
-      z-index:
-        2;
+  direction:
+    rtl;
 
-      display:
-        flex;
+  color:
+    var(--brown2);
 
-      justify-content:
-        center;
+  font-weight:
+    800;
 
-      align-items:
-        center;
+}
 
-      gap:
-        7px;
 
-      margin:
-        23px 0 15px;
+/* TIME */
 
-      padding:
-        9px 20px;
+.update-time {
 
-      color:
-        var(--brown-dark);
+  direction:
+    ltr;
 
-      font-size:
-        clamp(
-          11px,
-          .9vw,
-          14px
-        );
+  color:
+    var(--red2);
 
-      font-weight:
-        700;
-    }
+  font-weight:
+    950;
 
+  padding-right:
+    20px;
 
-    /* glowing lines around update */
+  border-right:
+    1px solid
+    var(--gold);
 
-    .update::before,
-    .update::after {
+}
 
-      content:
-        "";
 
-      width:
-        70px;
+/* glowing update line */
 
-      height:
-        1px;
+.update::before,
+.update::after {
 
-      background:
+  content:
+    "";
 
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold)
-        );
+  width:
+    55px;
 
-      box-shadow:
-        0 0 6px
-        rgba(192,147,108,.55);
-    }
+  height:
+    1px;
 
+  background:
 
-    .update::after {
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold)
+    );
 
-      background:
+  box-shadow:
+    0 0 6px
+    rgba(192,147,108,.55);
 
-        linear-gradient(
-          90deg,
-          var(--gold),
-          transparent
-        );
-    }
+}
 
 
-    .update-time {
+.update::after {
 
-      color:
-        var(--red-dark);
+  background:
 
-      font-weight:
-        950;
+    linear-gradient(
+      90deg,
+      var(--gold),
+      transparent
+    );
 
-      direction:
-        ltr;
+}
 
-      white-space:
-        nowrap;
-    }
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+footer {
 
-    footer {
+  position:
+    relative;
 
-      position:
-        relative;
+  z-index:
+    2;
 
-      z-index:
-        2;
+  display:
+    flex;
 
-      display:
-        flex;
+  justify-content:
+    center;
 
-      align-items:
-        center;
+  align-items:
+    center;
 
-      justify-content:
-        center;
+  flex-wrap:
+    wrap;
 
-      flex-wrap:
-        wrap;
+  gap:
+    9px;
 
-      gap:
-        9px;
+  padding-top:
+    15px;
 
-      padding-top:
-        16px;
+  border-top:
+    1px solid
+    rgba(92,61,36,.18);
 
-      border-top:
-        1px solid
-        rgba(131,89,53,.18);
+  color:
+    var(--brown);
 
-      text-align:
-        center;
+  font-size:
+    clamp(11px,.9vw,13px);
 
-      color:
-        var(--brown-dark);
+}
 
-      font-size:
-        clamp(
-          11px,
-          .9vw,
-          13px
-        );
-    }
 
+footer strong {
 
-    footer strong {
+  color:
+    var(--deep);
 
-      color:
-        var(--deep);
+  font-size:
+    clamp(13px,1.1vw,16px);
 
-      font-size:
-        clamp(
-          13px,
-          1.1vw,
-          16px
-        );
-    }
+}
 
 
-    .footer-separator {
+.footer-separator {
 
-      color:
-        var(--gold);
-    }
+  color:
+    var(--gold);
 
+}
 
-    .instagram {
 
-      direction:
-        ltr;
+.instagram {
 
-      color:
-        var(--red-dark);
+  direction:
+    ltr;
 
-      font-weight:
-        900;
-    }
+  color:
+    var(--red2);
 
+  font-weight:
+    900;
 
-    /* =========================================================
-       TABLET
-    ========================================================= */
+}
 
-    @media (max-width: 1150px) {
 
-      .prices {
+/* =========================================================
+   TABLET
+   ========================================================= */
 
-        grid-template-columns:
-          repeat(3, 1fr);
-      }
+@media (max-width:1150px) {
 
+  .prices {
 
-      .price-card {
+    grid-template-columns:
+      repeat(3,1fr);
 
-        min-height:
-          215px;
-      }
-    }
+  }
 
+  .price-card {
 
-    /* =========================================================
-       MOBILE
-    ========================================================= */
+    min-height:
+      215px;
 
-    @media (max-width: 700px) {
+  }
 
-      .container {
+}
 
-        width:
-          92%;
 
-        padding:
-          16px 0;
-      }
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
+@media (max-width:700px) {
 
-      .board-frame {
+  .container {
 
-        padding:
-          20px 15px 18px;
+    width:
+      92%;
 
-        border-radius:
-          23px;
-      }
+    padding:
+      15px 0;
 
+  }
 
-      header {
 
-        flex-direction:
-          column;
+  .board-frame {
 
-        text-align:
-          center;
+    padding:
+      19px 14px;
 
-        padding-bottom:
-          20px;
-      }
+    border-radius:
+      20px;
 
+  }
 
-      .brand {
 
-        flex-direction:
-          column;
-      }
+  header {
 
+    flex-direction:
+      column;
 
-      .status {
+    text-align:
+      center;
 
-        font-size:
-          11px;
-      }
+  }
 
 
-      .hero {
+  .brand {
 
-        padding:
-          24px 0;
-      }
+    flex-direction:
+      column;
 
+  }
 
-      .prices {
 
-        grid-template-columns:
-          repeat(2, 1fr);
+  .prices {
 
-        gap:
-          10px;
-      }
+    grid-template-columns:
+      repeat(2,1fr);
 
+    gap:
+      10px;
 
-      .price-card {
+  }
 
-        min-height:
-          175px;
 
-        padding:
-          20px 7px;
+  .price-card {
 
-        border-radius:
-          18px;
-      }
+    min-height:
+      175px;
 
+    padding:
+      20px 7px;
 
-      .price-title {
+  }
 
-        font-size:
-          11px;
 
-        gap:
-          7px;
-      }
+  .price-title {
 
+    font-size:
+      11px;
 
-      .live-dot {
+    gap:
+      7px;
 
-        width:
-          8px;
+  }
 
-        height:
-          8px;
-      }
 
+  .live-dot {
 
-      .price-value {
+    width:
+      8px;
 
-        margin-top:
-          17px;
+    height:
+      8px;
 
-        font-size:
-          20px;
-      }
+  }
 
 
-      .price-unit {
+  .price-value {
 
-        font-size:
-          9px;
-      }
+    margin-top:
+      17px;
 
+    font-size:
+      20px;
 
-      .update::before,
-      .update::after {
+  }
 
-        width:
-          25px;
-      }
 
+  .price-unit {
 
-      footer {
+    font-size:
+      9px;
 
-        line-height:
-          2;
-      }
-    }
+  }
 
 
-    /* =========================================================
-       VERY SMALL
-    ========================================================= */
+  .update {
 
-    @media (max-width: 380px) {
+    gap:
+      10px;
 
-      .prices {
+  }
 
-        grid-template-columns:
-          1fr;
-      }
 
+  .update::before,
+  .update::after {
 
-      .price-card {
+    width:
+      20px;
 
-        min-height:
-          145px;
-      }
-    }
+  }
 
+}
 
-  </style>
+
+/* =========================================================
+   VERY SMALL
+   ========================================================= */
+
+@media (max-width:380px) {
+
+  .prices {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .price-card {
+
+    min-height:
+      145px;
+
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -1383,701 +1280,749 @@
 <body>
 
 
-  <main class="container">
+<main class="container">
 
 
-    <section class="board-frame">
+<section class="board-frame">
 
 
-      <!-- =====================================================
-           HEADER
-      ====================================================== -->
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-      <header>
+<header>
 
 
-        <div class="brand">
+<div class="brand">
 
 
-          <div class="logo">
-            SZF
-          </div>
+<div class="logo">
+SZF
+</div>
 
 
-          <div>
+<div>
 
-            <h1 class="brand-title">
-              SILVER ZARIN FAKHR
-            </h1>
+<h1 class="brand-title">
+SILVER ZARIN FAKHR
+</h1>
 
 
-            <p class="brand-subtitle">
-              نقره زرین فخر
-            </p>
+<p class="brand-subtitle">
+نقره زرین فخر
+</p>
 
-          </div>
 
+</div>
 
-        </div>
 
+</div>
 
-        <div
-          class="status"
-          id="status"
-        >
 
-          <span class="status-dot"></span>
+<div
+  class="status"
+  id="status"
+>
 
-          <span id="statusText">
-            در حال دریافت قیمت‌ها...
-          </span>
+<span class="status-dot"></span>
 
-        </div>
+<span id="statusText">
+در حال دریافت قیمت‌ها...
+</span>
 
+</div>
 
-      </header>
 
+</header>
 
-      <!-- =====================================================
-           HERO
-      ====================================================== -->
 
-      <section class="hero">
 
+<!-- =====================================================
+     HERO
+====================================================== -->
 
-        <div class="hero-small">
-          MARKET BOARD
-        </div>
+<section class="hero">
 
 
-        <h2>
-          تابلو قیمت نقره
-        </h2>
+<div class="hero-small">
+MARKET BOARD
+</div>
 
 
-        <p>
-          قیمت لحظه‌ای بازار نقره
-        </p>
+<h2>
+تابلو قیمت نقره
+</h2>
 
 
-      </section>
+<p>
+قیمت لحظه‌ای بازار نقره
+</p>
 
 
-      <!-- =====================================================
-           PRICE BOARD
-           جای قیمت‌ها ثابت است
-      ====================================================== -->
+</section>
 
-      <section class="prices">
 
 
-        <!-- MITHQAL -->
+<!-- =====================================================
+     PRICE BOARD
+     ترتیب قیمت‌ها تغییر نکرده
+====================================================== -->
 
-        <div class="price-card">
+<section class="prices">
 
-          <div class="price-title">
 
-            <span class="live-dot"></span>
+<!-- 1 — MITHQAL -->
 
-            <span>
-              مثقال ۱۷ عیار
-            </span>
+<div class="price-card">
 
-          </div>
+<div class="price-title">
 
+<span class="live-dot"></span>
 
-          <div
-            class="price-value"
-            id="mithqal17"
-          >
-            —
-          </div>
+<span>
+مثقال ۱۷ عیار
+</span>
 
+</div>
 
-          <div class="price-unit">
-            تومان / مثقال
-          </div>
 
-        </div>
+<div
+  class="price-value"
+  id="mithqal17"
+>
+—
+</div>
 
 
-        <!-- OUNCE -->
+<div class="price-unit">
+تومان / مثقال
+</div>
 
-        <div class="price-card">
+</div>
 
-          <div class="price-title">
 
-            <span class="live-dot"></span>
 
-            <span>
-              انس نقره
-            </span>
+<!-- 2 — OUNCE -->
 
-          </div>
+<div class="price-card">
 
+<div class="price-title">
 
-          <div
-            class="price-value"
-            id="silverOunce"
-          >
-            —
-          </div>
+<span class="live-dot"></span>
 
+<span>
+انس نقره
+</span>
 
-          <div class="price-unit">
-            دلار / انس
-          </div>
+</div>
 
-        </div>
 
+<div
+  class="price-value"
+  id="silverOunce"
+>
+—
+</div>
 
-        <!-- USD -->
 
-        <div class="price-card">
+<div class="price-unit">
+دلار / انس
+</div>
 
-          <div class="price-title">
+</div>
 
-            <span class="live-dot"></span>
 
-            <span>
-              دلار
-            </span>
 
-          </div>
+<!-- 3 — USD -->
 
+<div class="price-card">
 
-          <div
-            class="price-value"
-            id="usd"
-          >
-            —
-          </div>
+<div class="price-title">
 
+<span class="live-dot"></span>
 
-          <div class="price-unit">
-            تومان / دلار
-          </div>
+<span>
+دلار
+</span>
 
-        </div>
+</div>
 
 
-        <!-- SILVER 999 -->
+<div
+  class="price-value"
+  id="usd"
+>
+—
+</div>
 
-        <div class="price-card">
 
-          <div class="price-title">
+<div class="price-unit">
+تومان / دلار
+</div>
 
-            <span class="live-dot"></span>
+</div>
 
-            <span>
-              نقره ۹۹۹
-            </span>
 
-          </div>
 
+<!-- 4 — SILVER 999 -->
 
-          <div
-            class="price-value"
-            id="silver999"
-          >
-            —
-          </div>
+<div class="price-card">
 
+<div class="price-title">
 
-          <div class="price-unit">
-            تومان / گرم
-          </div>
+<span class="live-dot"></span>
 
-        </div>
+<span>
+نقره ۹۹۹
+</span>
 
+</div>
 
-        <!-- SILVER 925 -->
 
-        <div class="price-card">
+<div
+  class="price-value"
+  id="silver999"
+>
+—
+</div>
 
-          <div class="price-title">
 
-            <span class="live-dot"></span>
+<div class="price-unit">
+تومان / گرم
+</div>
 
-            <span>
-              نقره ۹۲۵
-            </span>
+</div>
 
-          </div>
 
 
-          <div
-            class="price-value"
-            id="silver925"
-          >
-            —
-          </div>
+<!-- 5 — SILVER 925 -->
 
+<div class="price-card">
 
-          <div class="price-unit">
-            تومان / گرم
-          </div>
+<div class="price-title">
 
-        </div>
+<span class="live-dot"></span>
 
+<span>
+نقره ۹۲۵
+</span>
 
-      </section>
+</div>
 
 
-      <!-- =====================================================
-           UPDATE TIME
-      ====================================================== -->
+<div
+  class="price-value"
+  id="silver925"
+>
+—
+</div>
 
-      <div class="update">
 
-        <span>
-          آخرین بروزرسانی:
-        </span>
+<div class="price-unit">
+تومان / گرم
+</div>
 
-        <span
-          class="update-time"
-          id="updatedAt"
-        >
-          —
-        </span>
+</div>
 
-      </div>
 
+</section>
 
-      <!-- =====================================================
-           FOOTER
-      ====================================================== -->
 
-      <footer>
 
-        <strong>
-          SILVER ZARIN FAKHR
-        </strong>
+<!-- =====================================================
+     UPDATE
+====================================================== -->
 
-        <span class="footer-separator">
-          •
-        </span>
+<div class="update">
 
-        <span>
-          زیبایی در درخشندگی، اصالت در ماندگاری
-        </span>
+<span>
+آخرین بروزرسانی:
+</span>
 
-        <span class="footer-separator">
-          •
-        </span>
 
-        <span class="instagram">
-          @zarinfakhrSZF
-        </span>
+<span
+  class="update-date"
+  id="updatedDate"
+>
+—
+</span>
 
-      </footer>
 
+<span
+  class="update-time"
+  id="updatedTime"
+>
+—
+</span>
 
-    </section>
 
+</div>
 
-  </main>
 
 
-  <script>
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
+<footer>
 
-    /* =========================================================
-       API
-    ========================================================= */
 
-    const API =
-      "/api/prices";
+<strong>
+SILVER ZARIN FAKHR
+</strong>
 
 
-    /* =========================================================
-       MITHQAL CONSTANTS
-    ========================================================= */
+<span class="footer-separator">
+•
+</span>
 
-    const MITHQAL_GRAM =
-      4.608;
 
+<span>
+زیبایی در درخشندگی، اصالت در ماندگاری
+</span>
 
-    const PURITY_17K =
-      700;
 
+<span class="footer-separator">
+•
+</span>
 
-    /* =========================================================
-       NUMBER FORMAT
-    ========================================================= */
 
-    function formatNumber(value) {
+<span class="instagram">
+@zarinfakhrSZF
+</span>
 
-      if (
 
-        value === null ||
+</footer>
 
-        value === undefined ||
 
-        !Number.isFinite(
-          Number(value)
-        )
+</section>
 
-      ) {
 
-        return "—";
+</main>
+
+
+
+<script>
+
+
+/* =========================================================
+   API
+========================================================= */
+
+const API =
+  "/api/prices";
+
+
+/* =========================================================
+   MITHQAL
+========================================================= */
+
+const MITHQAL_GRAM =
+  4.608;
+
+
+const PURITY_17K =
+  700;
+
+
+/* =========================================================
+   NUMBER FORMAT
+========================================================= */
+
+function formatNumber(value) {
+
+  if (
+
+    value === null ||
+    value === undefined ||
+    !Number.isFinite(
+      Number(value)
+    )
+
+  ) {
+
+    return "—";
+
+  }
+
+
+  return Number(value)
+    .toLocaleString(
+      "fa-IR",
+      {
+        maximumFractionDigits:
+          0
       }
+    );
+
+}
 
 
-      return Number(value)
-        .toLocaleString(
-          "fa-IR",
-          {
-            maximumFractionDigits:
-              0
-          }
-        );
-    }
+/* =========================================================
+   MITHQAL 17K
+========================================================= */
+
+function calculateMithqal17(
+  silver999
+) {
+
+  if (
+    !Number.isFinite(
+      Number(silver999)
+    )
+  ) {
+
+    return null;
+
+  }
 
 
-    /* =========================================================
-       MITHQAL 17K
-    ========================================================= */
+  return (
 
-    function calculateMithqal17(
-      silver999
-    ) {
+    Number(silver999)
+    / 1000
+    * PURITY_17K
+    * MITHQAL_GRAM
 
-      if (
+  );
 
-        !Number.isFinite(
-          Number(silver999)
-        )
-
-      ) {
-
-        return null;
-      }
+}
 
 
-      return (
+/* =========================================================
+   DATE + TIME
+   ایران — یک ساعت عقب‌تر
+========================================================= */
 
-        Number(silver999) /
-        1000 *
-        PURITY_17K *
-        MITHQAL_GRAM
-
-      );
-    }
+function updateDateTime(
+  isoDate
+) {
 
 
-    /* =========================================================
-       IRAN LOCAL TIME
-       زمان ایران — Asia/Tehran
-    ========================================================= */
-
-    function formatIranDateTime(
+  const date =
+    new Date(
       isoDate
-    ) {
-
-      const date =
-        new Date(
-          isoDate
-        );
-
-
-      if (
-        Number.isNaN(
-          date.getTime()
-        )
-      ) {
-
-        return "—";
-      }
-
-
-      return new Intl.DateTimeFormat(
-        "fa-IR",
-        {
-          timeZone:
-            "Asia/Tehran",
-
-          year:
-            "numeric",
-
-          month:
-            "2-digit",
-
-          day:
-            "2-digit",
-
-          hour:
-            "2-digit",
-
-          minute:
-            "2-digit",
-
-          second:
-            "2-digit",
-
-          hour12:
-            false
-        }
-      ).format(date);
-    }
-
-
-    /* =========================================================
-       STATUS
-    ========================================================= */
-
-    function setStatus(
-      online,
-      message
-    ) {
-
-      const status =
-        document.getElementById(
-          "status"
-        );
-
-
-      const statusText =
-        document.getElementById(
-          "statusText"
-        );
-
-
-      statusText.textContent =
-        message;
-
-
-      status.classList.toggle(
-        "error",
-        !online
-      );
-    }
-
-
-    /* =========================================================
-       UPDATE UI
-    ========================================================= */
-
-    function updateUI(
-      data
-    ) {
-
-
-      /* 999 */
-
-      const silver999 =
-        Number(
-          data.silver999Toman
-        );
-
-
-      /* 925 */
-
-      const silver925 =
-        silver999 *
-        0.925;
-
-
-      /* 17K MITHQAL */
-
-      const mithqal17 =
-        calculateMithqal17(
-          silver999
-        );
-
-
-      /* =====================================================
-         MITHQAL
-      ===================================================== */
-
-      document.getElementById(
-        "mithqal17"
-      ).textContent =
-        formatNumber(
-          mithqal17
-        );
-
-
-      /* =====================================================
-         SILVER OUNCE
-      ===================================================== */
-
-      document.getElementById(
-        "silverOunce"
-      ).textContent =
-
-        Number(
-          data.silverOunce
-        ).toLocaleString(
-          "en-US",
-          {
-            maximumFractionDigits:
-              3
-          }
-        );
-
-
-      /* =====================================================
-         USD
-      ===================================================== */
-
-      document.getElementById(
-        "usd"
-      ).textContent =
-        formatNumber(
-          data.usdToman
-        );
-
-
-      /* =====================================================
-         SILVER 999
-      ===================================================== */
-
-      document.getElementById(
-        "silver999"
-      ).textContent =
-        formatNumber(
-          silver999
-        );
-
-
-      /* =====================================================
-         SILVER 925
-      ===================================================== */
-
-      document.getElementById(
-        "silver925"
-      ).textContent =
-        formatNumber(
-          silver925
-        );
-
-
-      /* =====================================================
-         DATE + TIME
-      ===================================================== */
-
-      if (
-        data.updatedAt
-      ) {
-
-        document.getElementById(
-          "updatedAt"
-        ).textContent =
-
-          formatIranDateTime(
-            data.updatedAt
-          );
-      }
-
-
-      /* =====================================================
-         ONLINE
-      ===================================================== */
-
-      setStatus(
-        true,
-        "آنلاین • قیمت‌ها به‌روز هستند"
-      );
-
-    }
-
-
-    /* =========================================================
-       LOAD PRICES
-    ========================================================= */
-
-    async function loadPrices() {
-
-      try {
-
-
-        const response =
-          await fetch(
-
-            API +
-            "?t=" +
-            Date.now(),
-
-            {
-              method:
-                "GET",
-
-              cache:
-                "no-store"
-            }
-
-          );
-
-
-        if (!response.ok) {
-
-          throw new Error(
-            "API Error"
-          );
-        }
-
-
-        const data =
-          await response.json();
-
-
-        if (!data.success) {
-
-          throw new Error(
-
-            data.error ||
-            "خطای API"
-
-          );
-        }
-
-
-        updateUI(
-          data
-        );
-
-
-      }
-
-      catch (error) {
-
-
-        console.error(
-          "PRICE LOAD ERROR:",
-          error
-        );
-
-
-        setStatus(
-          false,
-          "خطا در دریافت اطلاعات"
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
-       FIRST LOAD
-    ========================================================= */
-
-    loadPrices();
-
-
-    /* =========================================================
-       AUTO UPDATE
-       هر ۱ ثانیه
-    ========================================================= */
-
-    setInterval(
-      loadPrices,
-      1000
     );
 
 
-  </script>
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  /*
+    زمان واقعی ایران
+    سپس یک ساعت عقب‌تر
+  */
+
+  const iranTime =
+    new Date(
+      date.toLocaleString(
+        "en-US",
+        {
+          timeZone:
+            "Asia/Tehran"
+        }
+      )
+    );
+
+
+  iranTime.setHours(
+    iranTime.getHours() - 1
+  );
+
+
+  const dateText =
+    iranTime.toLocaleDateString(
+      "fa-IR",
+      {
+        year:
+          "numeric",
+
+        month:
+          "2-digit",
+
+        day:
+          "2-digit"
+      }
+    );
+
+
+  const timeText =
+    iranTime.toLocaleTimeString(
+      "fa-IR",
+      {
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit",
+
+        second:
+          "2-digit",
+
+        hour12:
+          false
+      }
+    );
+
+
+  document.getElementById(
+    "updatedDate"
+  ).textContent =
+    dateText;
+
+
+  document.getElementById(
+    "updatedTime"
+  ).textContent =
+    timeText;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function setStatus(
+  online,
+  message
+) {
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  const statusText =
+    document.getElementById(
+      "statusText"
+    );
+
+
+  statusText.textContent =
+    message;
+
+
+  status.classList.toggle(
+    "error",
+    !online
+  );
+
+}
+
+
+/* =========================================================
+   UPDATE UI
+========================================================= */
+
+function updateUI(
+  data
+) {
+
+
+  const silver999 =
+    Number(
+      data.silver999Toman
+    );
+
+
+  const silver925 =
+    silver999 *
+    0.925;
+
+
+  const mithqal17 =
+    calculateMithqal17(
+      silver999
+    );
+
+
+  /* MITHQAL */
+
+  document.getElementById(
+    "mithqal17"
+  ).textContent =
+    formatNumber(
+      mithqal17
+    );
+
+
+  /* OUNCE */
+
+  document.getElementById(
+    "silverOunce"
+  ).textContent =
+
+    Number(
+      data.silverOunce
+    ).toLocaleString(
+      "en-US",
+      {
+        maximumFractionDigits:
+          3
+      }
+    );
+
+
+  /* USD */
+
+  document.getElementById(
+    "usd"
+  ).textContent =
+    formatNumber(
+      data.usdToman
+    );
+
+
+  /* 999 */
+
+  document.getElementById(
+    "silver999"
+  ).textContent =
+    formatNumber(
+      silver999
+    );
+
+
+  /* 925 */
+
+  document.getElementById(
+    "silver925"
+  ).textContent =
+    formatNumber(
+      silver925
+    );
+
+
+  /* DATE + TIME */
+
+  if (
+    data.updatedAt
+  ) {
+
+    updateDateTime(
+      data.updatedAt
+    );
+
+  }
+
+
+  /* ONLINE */
+
+  setStatus(
+    true,
+    "آنلاین • قیمت‌ها به‌روز هستند"
+  );
+
+}
+
+
+/* =========================================================
+   LOAD PRICES
+========================================================= */
+
+async function loadPrices() {
+
+
+  try {
+
+
+    const response =
+      await fetch(
+
+        API +
+        "?t=" +
+        Date.now(),
+
+        {
+          method:
+            "GET",
+
+          cache:
+            "no-store"
+        }
+
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "API Error"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (!data.success) {
+
+      throw new Error(
+        data.error ||
+        "خطای API"
+      );
+
+    }
+
+
+    updateUI(
+      data
+    );
+
+
+  }
+
+  catch (error) {
+
+
+    console.error(
+      "PRICE LOAD ERROR:",
+      error
+    );
+
+
+    setStatus(
+      false,
+      "خطا در دریافت اطلاعات"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   FIRST LOAD
+========================================================= */
+
+loadPrices();
+
+
+/* =========================================================
+   AUTO UPDATE
+   هر ۱ ثانیه
+========================================================= */
+
+setInterval(
+  loadPrices,
+  1000
+);
+
+
+</script>
 
 
 </body>
