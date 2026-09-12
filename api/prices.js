@@ -1108,8 +1108,6 @@ body{
   </header>
 
 
-  <!-- NAV -->
-
   <nav class="nav">
 
     <button
@@ -1136,10 +1134,6 @@ body{
 
   <main class="container">
 
-    <!-- =====================================================
-         MARKET PAGE
-    ====================================================== -->
-
     <section
       id="market"
       class="page active"
@@ -1156,9 +1150,7 @@ body{
       <div class="market-grid">
 
         <div class="market-area">
-
           <div class="market-card">
-
             <div class="market-title">
               مثقال ۱۷ عیار
             </div>
@@ -1173,16 +1165,12 @@ body{
             <div class="market-unit">
               تومان
             </div>
-
           </div>
-
         </div>
 
 
         <div class="market-area">
-
           <div class="market-card">
-
             <div class="market-title">
               انس نقره
             </div>
@@ -1197,16 +1185,12 @@ body{
             <div class="market-unit">
               دلار
             </div>
-
           </div>
-
         </div>
 
 
         <div class="market-area">
-
           <div class="market-card">
-
             <div class="market-title">
               دلار
             </div>
@@ -1221,16 +1205,12 @@ body{
             <div class="market-unit">
               تومان
             </div>
-
           </div>
-
         </div>
 
 
         <div class="market-area">
-
           <div class="market-card">
-
             <div class="market-title">
               نقره 999
             </div>
@@ -1245,16 +1225,12 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
-
           </div>
-
         </div>
 
 
         <div class="market-area">
-
           <div class="market-card">
-
             <div class="market-title">
               نقره 925
             </div>
@@ -1269,19 +1245,13 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
-
           </div>
-
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- =====================================================
-         CALCULATOR
-    ====================================================== -->
 
     <section
       id="calculator"
@@ -1405,67 +1375,28 @@ body{
         <div class="result-box">
 
           <div class="result-item">
-
-            <span>
-              قیمت هر گرم
-            </span>
-
-            <strong id="calcGramPrice">
-              0
-            </strong>
-
+            <span>قیمت هر گرم</span>
+            <strong id="calcGramPrice">0</strong>
           </div>
 
-
           <div class="result-item">
-
-            <span>
-              قیمت پایه
-            </span>
-
-            <strong id="calcBase">
-              0
-            </strong>
-
+            <span>قیمت پایه</span>
+            <strong id="calcBase">0</strong>
           </div>
 
-
           <div class="result-item">
-
-            <span>
-              مجموع اجرت
-            </span>
-
-            <strong id="calcLaborResult">
-              0
-            </strong>
-
+            <span>مجموع اجرت</span>
+            <strong id="calcLaborResult">0</strong>
           </div>
 
-
           <div class="result-item">
-
-            <span>
-              هزینه اضافی
-            </span>
-
-            <strong id="calcExtraResult">
-              0
-            </strong>
-
+            <span>هزینه اضافی</span>
+            <strong id="calcExtraResult">0</strong>
           </div>
 
-
           <div class="result-item">
-
-            <span>
-              سود
-            </span>
-
-            <strong id="calcProfitResult">
-              0
-            </strong>
-
+            <span>سود</span>
+            <strong id="calcProfitResult">0</strong>
           </div>
 
         </div>
@@ -1487,10 +1418,6 @@ body{
 
     </section>
 
-
-    <!-- =====================================================
-         SETTINGS
-    ====================================================== -->
 
     <section
       id="settings"
@@ -1632,8 +1559,6 @@ body{
   </main>
 
 
-  <!-- FOOTER -->
-
   <footer class="footer">
 
     <div>
@@ -1713,7 +1638,7 @@ let priceInterval = null;
 
 /* =========================================================
    LOGIN
-   رمز اصلی ثابت است:
+   رمز اصلی:
    @Mohammad1386
 ========================================================= */
 
@@ -1727,6 +1652,10 @@ function getCurrentPassword(){
 }
 
 
+/* =========================================================
+   LOGIN - اصلاح شده
+========================================================= */
+
 function login(){
 
   const input =
@@ -1735,14 +1664,17 @@ function login(){
   const error =
     document.getElementById("loginError");
 
+  if(!input || !error){
+    return;
+  }
+
   const password =
     String(input.value);
 
+
   /*
-    ========================================================
-    رمز اصلی همیشه معتبر است.
-    localStorage در ورود اصلی هیچ نقشی ندارد.
-    ========================================================
+    فقط رمز اصلی بررسی می‌شود.
+    localStorage هیچ دخالتی در ورود ندارد.
   */
 
   if(password === DEFAULT_PASSWORD){
@@ -1766,6 +1698,7 @@ function login(){
     calculatePrice();
 
     return;
+
   }
 
 
@@ -1865,7 +1798,6 @@ function formatNumber(
 
 /* =========================================================
    MANUAL DATE / TIME
-   ساعت بعد از تنظیم، خودکار جلو می‌رود.
 ========================================================= */
 
 function getManualDateTime(){
@@ -1874,6 +1806,7 @@ function getManualDateTime(){
     localStorage.getItem(
       "zarinFakhrManualDateTimeEnabled"
     ) === "true";
+
 
   if(!enabled){
     return null;
@@ -1967,6 +1900,14 @@ function updateDeviceClock(){
     convertDigitsToEnglish(timeText);
 
 }
+
+
+/* هر ثانیه ساعت به‌روزرسانی شود */
+
+setInterval(
+  updateDeviceClock,
+  1000
+);
 
 
 /* =========================================================
@@ -2517,81 +2458,4 @@ function saveSettings(){
 
   if(manualDate){
 
-    localStorage.setItem(
-      "zarinFakhrManualDate",
-      manualDate
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManualDate"
-    );
-
-  }
-
-
-  /* ساعت */
-
-  if(manualTime){
-
-    localStorage.setItem(
-      "zarinFakhrManualTime",
-      manualTime
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManualTime"
-    );
-
-  }
-
-
-  /* فعال‌سازی تاریخ و ساعت دستی */
-
-  localStorage.setItem(
-    "zarinFakhrManualDateTimeEnabled",
-    String(
-      manualDateTimeEnabled
-    )
-  );
-
-
-  /*
-    ========================================================
-    ساخت زمان پایه دستی
-    تاریخ و ساعت ورودی به‌عنوان زمان تهران در نظر گرفته می‌شود.
-    ========================================================
-  */
-
-  if(
-    manualDate &&
-    manualTime &&
-    manualDateTimeEnabled
-  ){
-
-    const dateMatch =
-      manualDate.match(
-        /^(\d{4})-(\d{2})-(\d{2})$/
-      );
-
-
-    const timeMatch =
-      manualTime.match(
-        /^(\d{2}):(\d{2})(?::(\d{2}))?$/
-      );
-
-
-    if(
-      dateMatch &&
-      timeMatch
-    ){
-
-      const year =
-        Number(
-          dateMatch[1]
-        );
+   
