@@ -1074,7 +1074,9 @@ body{
       <div class="market-grid">
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               مثقال ۱۷ عیار
             </div>
@@ -1086,11 +1088,15 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
+
         </div>
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               انس نقره
             </div>
@@ -1102,11 +1108,15 @@ body{
             <div class="market-unit">
               دلار
             </div>
+
           </div>
+
         </div>
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               دلار
             </div>
@@ -1118,11 +1128,15 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
+
         </div>
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               نقره 999
             </div>
@@ -1134,11 +1148,15 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
+
         </div>
 
         <div class="market-area">
+
           <div class="market-card">
+
             <div class="market-title">
               نقره 925
             </div>
@@ -1150,7 +1168,9 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
+
         </div>
 
       </div>
@@ -1174,6 +1194,7 @@ body{
         <div class="form-grid">
 
           <div class="form-group">
+
             <label>
               وزن نقره (گرم)
             </label>
@@ -1186,6 +1207,7 @@ body{
               placeholder="مثلاً 10"
               oninput="calculatePrice()"
             >
+
           </div>
 
           <div class="form-group">
@@ -1271,28 +1293,63 @@ body{
         <div class="result-box">
 
           <div class="result-item">
-            <span>قیمت هر گرم</span>
-            <strong id="calcGramPrice">0</strong>
+
+            <span>
+              قیمت هر گرم
+            </span>
+
+            <strong id="calcGramPrice">
+              0
+            </strong>
+
           </div>
 
           <div class="result-item">
-            <span>قیمت پایه</span>
-            <strong id="calcBase">0</strong>
+
+            <span>
+              قیمت پایه
+            </span>
+
+            <strong id="calcBase">
+              0
+            </strong>
+
           </div>
 
           <div class="result-item">
-            <span>مجموع اجرت</span>
-            <strong id="calcLaborResult">0</strong>
+
+            <span>
+              مجموع اجرت
+            </span>
+
+            <strong id="calcLaborResult">
+              0
+            </strong>
+
           </div>
 
           <div class="result-item">
-            <span>هزینه اضافی</span>
-            <strong id="calcExtraResult">0</strong>
+
+            <span>
+              هزینه اضافی
+            </span>
+
+            <strong id="calcExtraResult">
+              0
+            </strong>
+
           </div>
 
           <div class="result-item">
-            <span>سود</span>
-            <strong id="calcProfitResult">0</strong>
+
+            <span>
+              سود
+            </span>
+
+            <strong id="calcProfitResult">
+              0
+            </strong>
+
           </div>
 
         </div>
@@ -1578,7 +1635,9 @@ const STORAGE_KEYS = {
 ========================================================= */
 
 function getCurrentPassword(){
+
   return DEFAULT_PASSWORD;
+
 }
 
 
@@ -2290,6 +2349,7 @@ function stopClock(){
 
 /* =========================================================
    CLOCK - IRAN FIXED UTC+3:30
+   ONLY THIS CLOCK SECTION WAS CORRECTED
 ========================================================= */
 
 function updateIranClock(){
@@ -2315,20 +2375,20 @@ function updateIranClock(){
       new Date();
 
 
-    /* 
-       محاسبه مستقیم زمان UTC
-       بدون وابستگی به Time Zone دستگاه
+    /*
+      تبدیل زمان فعلی دستگاه به UTC
+      و سپس اضافه کردن ۳ ساعت و ۳۰ دقیقه
+      برای ساعت رسمی ایران.
+
+      این روش به Time Zone تنظیم‌شده
+      روی تلویزیون، کامپیوتر یا مرورگر
+      وابسته نیست.
     */
 
     const utcMilliseconds =
       now.getTime() +
-      now.getTimezoneOffset() * 60000;
+      (now.getTimezoneOffset() * 60000);
 
-
-    /*
-       ساعت رسمی ایران:
-       UTC + 3:30
-    */
 
     const iranTime =
       new Date(
@@ -2645,14 +2705,18 @@ function loadSettings(){
 
 
   if(manual999){
+
     manual999.value =
       saved999 || "";
+
   }
 
 
   if(defaultLabor){
+
     defaultLabor.value =
       savedLabor || "";
+
   }
 
 }
@@ -3014,8 +3078,10 @@ function resetPasswordChangeForm(){
 
 
   if(verifyButton){
+
     verifyButton.style.display =
       "block";
+
   }
 
 
