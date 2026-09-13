@@ -126,7 +126,6 @@ body{
 
 /* =========================================================
    LOGIN SZF LOGO
-   فقط یک خط نقره‌ای کوچک، نورانی و 360 درجه
 ========================================================= */
 
 .logo{
@@ -160,14 +159,6 @@ body{
   position:relative;
   isolation:isolate;
 }
-
-
-/*
-  خط نقره‌ای باریک دور دایره
-  بدون مثلث
-  بدون نوار پهن
-  حرکت یکنواخت 360 درجه
-*/
 
 .logo::before{
   content:"";
@@ -681,11 +672,6 @@ body{
   gap:13px;
 }
 
-
-/*
-  کادر قیمت کوچک‌تر و مستطیلی
-*/
-
 .market-area{
   position:relative;
 
@@ -699,13 +685,6 @@ body{
 
   isolation:isolate;
 }
-
-
-/*
-  فقط یک خط سبز کوچک و نورانی
-  که به‌صورت یکنواخت 360 درجه
-  دور مستطیل حرکت می‌کند.
-*/
 
 .market-area::before{
   content:"";
@@ -754,12 +733,6 @@ body{
   pointer-events:none;
 }
 
-
-/*
-  هنگام قطع اتصال:
-  همان خط کوچک به رنگ قرمز
-*/
-
 .status-error .market-area::before{
   background:
     conic-gradient(
@@ -800,11 +773,6 @@ body{
     transform:rotate(360deg);
   }
 }
-
-
-/* =========================================================
-   MARKET CARD
-========================================================= */
 
 .market-card{
   width:100%;
@@ -2214,7 +2182,6 @@ function getCurrentPassword(){
       STORAGE_KEYS.password
     );
 
-
   if(
     typeof savedPassword === "string" &&
     savedPassword.trim().length > 0
@@ -2224,7 +2191,6 @@ function getCurrentPassword(){
 
   }
 
-
   return DEFAULT_PASSWORD;
 
 }
@@ -2232,7 +2198,6 @@ function getCurrentPassword(){
 
 /* =========================================================
    LOGIN
-   بعد از تغییر رمز، فقط رمز جدید معتبر است.
 ========================================================= */
 
 function login(){
@@ -2275,12 +2240,6 @@ function login(){
       input.value || ""
     ).trim();
 
-
-  /*
-    فقط رمز فعلی معتبر است.
-    در اولین استفاده رمز پیش‌فرض:
-    @Mohammad1386
-  */
 
   if(
     password ===
@@ -2364,6 +2323,7 @@ document.addEventListener(
 
 
     calculatePrice();
+
 
     setTimeout(
       function(){
@@ -2883,12 +2843,6 @@ function processPrices(data){
   }
 
 
-  /*
-    مثقال 17 عیار نقره
-
-    انس × دلار ÷ 1000 × 700 × 4.608
-  */
-
   if(
     currentSilverOunce > 0 &&
     currentUSD > 0
@@ -2946,7 +2900,6 @@ function setText(
 
 /* =========================================================
    CONNECTION STATE
-   عبارت «در حال اتصال» حذف شده است.
 ========================================================= */
 
 function setConnectionState(
@@ -3001,7 +2954,6 @@ function setConnectionState(
 
 /* =========================================================
    PRICE UPDATES
-   هر 1 ثانیه
 ========================================================= */
 
 function startPriceUpdates(){
@@ -3206,4 +3158,533 @@ function showPage(
   if(button){
 
     button.classList.add(
-      "
+      "active"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+function calculatePrice(){
+
+  const weight =
+    toNumber(
+      document.getElementById(
+        "calcWeight"
+      )?.value
+    );
+
+
+  const purity =
+    toNumber(
+      document.getElementById(
+        "calcPurity"
+      )?.value
+    ) || 999;
+
+
+  const laborInput =
+    document.getElementById(
+      "calcLabor"
+    );
+
+
+  let labor =
+    toNumber(
+      laborInput?.value
+    );
+
+
+  if(
+    !laborInput?.value &&
+    localStorage.getItem(
+      STORAGE_KEYS.defaultLabor
+    )
+  ){
+
+    labor =
+      toNumber(
+        localStorage.getItem(
+          STORAGE_KEYS.defaultLabor
+        )
+      );
+
+  }
+
+
+  const extra =
+    toNumber(
+      document.getElementById(
+        "calcExtra"
+      )?.value
+    );
+
+
+  const profitPercent =
+    toNumber(
+      document.getElementById(
+        "calcProfit"
+      )?.value
+    );
+
+
+  let baseGramPrice = 0;
+
+
+  if(currentSilver999 > 0){
+
+    baseGramPrice =
+      currentSilver999 *
+      purity /
+      999;
+
+  }
+
+
+  const gramPrice =
+    baseGramPrice +
+    labor;
+
+
+  const base =
+    baseGramPrice *
+    weight;
+
+
+  const laborTotal =
+    labor *
+    weight;
+
+
+  const subtotal =
+    base +
+    laborTotal +
+    extra;
+
+
+  const profit =
+    subtotal *
+    profitPercent /
+    100;
+
+
+  const finalPrice =
+    subtotal +
+    profit;
+
+
+  setText(
+    "calcGramPrice",
+    formatToman(
+      gramPrice
+    )
+  );
+
+
+  setText(
+    "calcBase",
+    formatToman(
+      base
+    )
+  );
+
+
+  setText(
+    "calcLaborResult",
+    formatToman(
+      laborTotal
+    )
+  );
+
+
+  setText(
+    "calcExtraResult",
+    formatToman(
+      extra
+    )
+  );
+
+
+  setText(
+    "calcProfitResult",
+    formatToman(
+      profit
+    )
+  );
+
+
+  setText(
+    "calcFinal",
+    formatToman(
+      finalPrice
+    ) +
+    " تومان"
+  );
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function getManual999(){
+
+  const value =
+    localStorage.getItem(
+      STORAGE_KEYS.manual999
+    );
+
+
+  if(
+    value === null ||
+    value === ""
+  ){
+
+    return 0;
+
+  }
+
+
+  return toNumber(
+    value
+  );
+
+}
+
+
+function loadSettings(){
+
+  const manual999 =
+    document.getElementById(
+      "manual999"
+    );
+
+  const defaultLabor =
+    document.getElementById(
+      "defaultLabor"
+    );
+
+
+  const saved999 =
+    localStorage.getItem(
+      STORAGE_KEYS.manual999
+    );
+
+  const savedLabor =
+    localStorage.getItem(
+      STORAGE_KEYS.defaultLabor
+    );
+
+
+  if(manual999){
+
+    manual999.value =
+      saved999 || "";
+
+  }
+
+
+  if(defaultLabor){
+
+    defaultLabor.value =
+      savedLabor || "";
+
+  }
+
+}
+
+
+function saveSettings(){
+
+  const manual999 =
+    document.getElementById(
+      "manual999"
+    );
+
+  const defaultLabor =
+    document.getElementById(
+      "defaultLabor"
+    );
+
+  const message =
+    document.getElementById(
+      "saveMessage"
+    );
+
+
+  if(manual999){
+
+    const value =
+      String(
+        manual999.value || ""
+      ).trim();
+
+
+    if(value){
+
+      localStorage.setItem(
+        STORAGE_KEYS.manual999,
+        value
+      );
+
+    }else{
+
+      localStorage.removeItem(
+        STORAGE_KEYS.manual999
+      );
+
+    }
+
+  }
+
+
+  if(defaultLabor){
+
+    const value =
+      String(
+        defaultLabor.value || ""
+      ).trim();
+
+
+    if(value){
+
+      localStorage.setItem(
+        STORAGE_KEYS.defaultLabor,
+        value
+      );
+
+    }else{
+
+      localStorage.removeItem(
+        STORAGE_KEYS.defaultLabor
+      );
+
+    }
+
+  }
+
+
+  if(message){
+
+    message.textContent =
+      "تنظیمات با موفقیت ذخیره شد.";
+
+    setTimeout(
+      function(){
+
+        message.textContent =
+          "";
+
+      },
+      2500
+    );
+
+  }
+
+
+  calculatePrice();
+
+}
+
+
+/* =========================================================
+   VERIFY CURRENT PASSWORD
+========================================================= */
+
+function verifyCurrentPassword(){
+
+  const currentPassword =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const passwordStatus =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+  const passwordFields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const verifyButton =
+    document.getElementById(
+      "verifyPasswordButton"
+    );
+
+
+  if(
+    !currentPassword ||
+    !passwordStatus ||
+    !passwordFields ||
+    !verifyButton
+  ){
+
+    return;
+
+  }
+
+
+  const enteredPassword =
+    String(
+      currentPassword.value || ""
+    ).trim();
+
+
+  if(
+    enteredPassword ===
+    getCurrentPassword()
+  ){
+
+    passwordVerified = true;
+
+    passwordStatus.textContent =
+      "رمز فعلی صحیح است. رمز جدید را وارد کنید.";
+
+    passwordStatus.className =
+      "password-status success";
+
+    passwordFields.classList.add(
+      "show"
+    );
+
+    verifyButton.style.display =
+      "none";
+
+    currentPassword.disabled =
+      true;
+
+    return;
+
+  }
+
+
+  passwordVerified = false;
+
+  passwordStatus.textContent =
+    "رمز فعلی اشتباه است.";
+
+  passwordStatus.className =
+    "password-status error";
+
+  passwordFields.classList.remove(
+    "show"
+  );
+
+  verifyButton.style.display =
+    "block";
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+========================================================= */
+
+function changePassword(){
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    );
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    );
+
+  const currentPassword =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const passwordStatus =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+
+  if(
+    !passwordVerified
+  ){
+
+    return;
+
+  }
+
+
+  const newValue =
+    String(
+      newPassword?.value || ""
+    ).trim();
+
+
+  const confirmValue =
+    String(
+      confirmPassword?.value || ""
+    ).trim();
+
+
+  if(!newValue){
+
+    passwordStatus.textContent =
+      "رمز جدید را وارد کنید.";
+
+    passwordStatus.className =
+      "password-status error";
+
+    return;
+
+  }
+
+
+  if(
+    newValue.length < 4
+  ){
+
+    passwordStatus.textContent =
+      "رمز جدید باید حداقل ۴ کاراکتر باشد.";
+
+    passwordStatus.className =
+      "password-status error";
+
+    return;
+
+  }
+
+
+  if(
+    newValue !==
+    confirmValue
+  ){
+
+    passwordStatus.textContent =
+      "تکرار رمز جدید صحیح نیست.";
+
+    passwordStatus.className =
+      "password-status error";
+
+    return;
+
+  }
+
+
+  /*
+    رمز جدید جایگزین کامل رمز قبلی می‌شود.
+    بعد از این مرحله رمز قبلی دیگر معتبر نیست.
+  */
+
+  localStorage.setItem(
+    STORAGE_KEYS.password,
+    newValue
+  );
+
+
+  password
