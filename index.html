@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SILVER ZARIN FAKHR</title>
 
@@ -85,7 +80,6 @@ body{
   color:var(--brown);
 
   min-height:100vh;
-
 }
 
 
@@ -106,7 +100,6 @@ body{
   padding:20px;
 
 }
-
 
 .login-box{
 
@@ -139,7 +132,6 @@ body{
 
 }
 
-
 .login-box::before{
 
   content:"";
@@ -166,7 +158,8 @@ body{
 
 
 /* =========================================================
-   LOGIN LOGO
+   LOGIN SZF LOGO
+   خط نقره‌ای باریک و یکنواخت 360 درجه
 ========================================================= */
 
 .logo{
@@ -211,9 +204,10 @@ body{
 }
 
 
-/* =========================================================
-   SILVER ROTATING RING — LOGIN
-========================================================= */
+/*
+  فقط یک خط نقره‌ای باریک دور دایره
+  بدون مثلث و بدون قطعه‌های جدا
+*/
 
 .logo::before{
 
@@ -221,34 +215,41 @@ body{
 
   position:absolute;
 
-  inset:-8px;
+  inset:-7px;
 
   border-radius:50%;
 
   background:
     conic-gradient(
       from 0deg,
-
-      transparent 0deg,
-      transparent 225deg,
-
-      rgba(100,100,100,.35) 238deg,
-      rgba(175,175,175,.75) 252deg,
-      rgba(225,225,225,.95) 267deg,
-      #FFFFFF 280deg,
-      #FFFFFF 287deg,
-      rgba(215,215,215,.95) 296deg,
-      rgba(125,125,125,.60) 309deg,
-
-      transparent 322deg,
-      transparent 360deg
+      #666666 0deg,
+      #AFAFAF 70deg,
+      #E8E8E8 140deg,
+      #FFFFFF 180deg,
+      #E8E8E8 220deg,
+      #AFAFAF 290deg,
+      #666666 360deg
     );
 
-  z-index:-1;
+  -webkit-mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px)
+    );
+
+  mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 2px),
+      #000 calc(100% - 1px)
+    );
 
   animation:
-    silverNeonRotate
-    2.4s linear infinite;
+    silverCircleRotate
+    3s linear infinite;
+
+  z-index:-1;
 
   filter:
     drop-shadow(
@@ -257,13 +258,12 @@ body{
     )
     drop-shadow(
       0 0 5px
-      rgba(210,210,210,.75)
+      rgba(190,190,190,.75)
     );
 
 }
 
-
-@keyframes silverNeonRotate{
+@keyframes silverCircleRotate{
 
   from{
     transform:rotate(0deg);
@@ -274,7 +274,6 @@ body{
   }
 
 }
-
 
 .logo span{
 
@@ -301,11 +300,6 @@ body{
 
 }
 
-
-/* =========================================================
-   LOGIN TEXT
-========================================================= */
-
 .login-title{
 
   text-align:center;
@@ -325,7 +319,6 @@ body{
 
 }
 
-
 .login-subtitle{
 
   text-align:center;
@@ -338,17 +331,11 @@ body{
 
 }
 
-
-/* =========================================================
-   PASSWORD
-========================================================= */
-
 .password-wrap{
 
   margin-top:28px;
 
 }
-
 
 .password-wrap input{
 
@@ -382,7 +369,6 @@ body{
 
 }
 
-
 .password-wrap input:focus{
 
   border-color:
@@ -393,7 +379,6 @@ body{
     rgba(192,147,108,.14);
 
 }
-
 
 .login-button{
 
@@ -432,16 +417,13 @@ body{
 
 }
 
-
 .login-button:hover{
   filter:brightness(1.04);
 }
 
-
 .login-button:active{
   transform:scale(.985);
 }
-
 
 .login-error{
 
@@ -502,7 +484,6 @@ body{
 
 }
 
-
 .header-main{
 
   display:flex;
@@ -515,7 +496,6 @@ body{
 
 }
 
-
 .brand{
 
   display:flex;
@@ -525,7 +505,6 @@ body{
   gap:11px;
 
 }
-
 
 .brand-logo{
 
@@ -559,62 +538,7 @@ body{
 
   position:relative;
 
-  isolation:isolate;
-
 }
-
-
-/* =========================================================
-   SILVER ROTATING RING — HEADER LOGO
-========================================================= */
-
-.brand-logo::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:-6px;
-
-  border-radius:50%;
-
-  background:
-    conic-gradient(
-      from 0deg,
-
-      transparent 0deg,
-      transparent 225deg,
-
-      rgba(100,100,100,.30) 238deg,
-      rgba(175,175,175,.72) 252deg,
-      rgba(225,225,225,.95) 267deg,
-      #FFFFFF 280deg,
-      #FFFFFF 287deg,
-      rgba(215,215,215,.90) 296deg,
-      rgba(125,125,125,.58) 309deg,
-
-      transparent 322deg,
-      transparent 360deg
-    );
-
-  z-index:-1;
-
-  animation:
-    silverNeonRotate
-    2.4s linear infinite;
-
-  filter:
-    drop-shadow(
-      0 0 2px
-      rgba(255,255,255,.95)
-    )
-    drop-shadow(
-      0 0 5px
-      rgba(210,210,210,.70)
-    );
-
-}
-
 
 .brand-logo span{
 
@@ -629,7 +553,6 @@ body{
   color:var(--white);
 
 }
-
 
 .brand-text strong{
 
@@ -648,7 +571,6 @@ body{
 
 }
 
-
 .brand-text small{
 
   display:block;
@@ -660,11 +582,6 @@ body{
   color:var(--bronze);
 
 }
-
-
-/* =========================================================
-   CONNECTION STATUS
-========================================================= */
 
 .status-box{
 
@@ -681,7 +598,6 @@ body{
   white-space:nowrap;
 
 }
-
 
 .live-light{
 
@@ -703,7 +619,6 @@ body{
 
 }
 
-
 .status-error .live-light{
 
   background:var(--red);
@@ -713,7 +628,6 @@ body{
     var(--red);
 
 }
-
 
 @keyframes livePulse{
 
@@ -726,7 +640,6 @@ body{
   }
 
 }
-
 
 .header-date{
 
@@ -765,11 +678,9 @@ body{
 
 }
 
-
 .nav::-webkit-scrollbar{
   display:none;
 }
-
 
 .nav button{
 
@@ -802,14 +713,12 @@ body{
 
 }
 
-
 .nav button:hover{
 
   border-color:
     var(--champagne);
 
 }
-
 
 .nav button.active{
 
@@ -845,11 +754,9 @@ body{
 
 }
 
-
 .page{
   display:none;
 }
-
 
 .page.active{
 
@@ -859,7 +766,6 @@ body{
     pageAppear .25s ease;
 
 }
-
 
 @keyframes pageAppear{
 
@@ -874,7 +780,6 @@ body{
   }
 
 }
-
 
 .page-title{
 
@@ -893,7 +798,6 @@ body{
   color:var(--darkBrown);
 
 }
-
 
 .page-description{
 
@@ -925,6 +829,12 @@ body{
 }
 
 
+/*
+  کادر قیمت:
+  فقط سبز درخشان
+  بدون نوار نقره‌ای
+*/
+
 .market-area{
 
   position:relative;
@@ -942,9 +852,11 @@ body{
 }
 
 
-/* =========================================================
-   THIN ROTATING MARKET BORDER
-========================================================= */
+/*
+  نوار سبز 360 درجه
+  ضخامت بسیار ظریف
+  حرکت یکنواخت
+*/
 
 .market-area::before{
 
@@ -952,7 +864,7 @@ body{
 
   position:absolute;
 
-  inset:-55%;
+  inset:-50%;
 
   border-radius:30px;
 
@@ -961,50 +873,43 @@ body{
       from 0deg,
 
       transparent 0deg,
-      transparent 72deg,
 
-      rgba(130,130,130,.22) 76deg,
-      rgba(185,185,185,.65) 80deg,
-      rgba(235,235,235,.95) 84deg,
-      #FFFFFF 87deg,
-      rgba(205,205,205,.80) 91deg,
-      transparent 96deg,
+      transparent 345deg,
 
-      transparent 247deg,
+      var(--green) 350deg,
 
-      var(--green) 254deg,
-      var(--greenLight) 258deg,
-      rgba(255,255,255,.95) 262deg,
-      #FFFFFF 265deg,
-      var(--greenLight) 268deg,
-      var(--green) 272deg,
+      var(--greenLight) 354deg,
 
-      transparent 278deg,
-      transparent 360deg
+      #FFFFFF 357deg,
+
+      var(--greenLight) 359deg,
+
+      var(--green) 360deg
     );
 
   animation:
-    marketSilverRotate
-    2.8s linear infinite;
+    greenBorderRotate
+    3s linear infinite;
 
   z-index:0;
 
   filter:
     drop-shadow(
-      0 0 1px
-      rgba(255,255,255,.9)
+      0 0 2px
+      rgba(32,168,90,.95)
     )
     drop-shadow(
-      0 0 3px
-      rgba(32,168,90,.40)
+      0 0 5px
+      rgba(32,168,90,.55)
     );
 
 }
 
 
-/* =========================================================
-   RED STATE
-========================================================= */
+/*
+  حالت قطع اتصال:
+  فقط نوار قرمز
+*/
 
 .status-error .market-area::before{
 
@@ -1013,42 +918,33 @@ body{
       from 0deg,
 
       transparent 0deg,
-      transparent 72deg,
 
-      rgba(130,130,130,.22) 76deg,
-      rgba(185,185,185,.65) 80deg,
-      rgba(235,235,235,.95) 84deg,
-      #FFFFFF 87deg,
-      rgba(205,205,205,.80) 91deg,
-      transparent 96deg,
+      transparent 345deg,
 
-      transparent 247deg,
+      var(--red) 350deg,
 
-      var(--red) 254deg,
-      var(--redLight) 258deg,
-      rgba(255,255,255,.95) 262deg,
-      #FFFFFF 265deg,
-      var(--redLight) 268deg,
-      var(--red) 272deg,
+      var(--redLight) 354deg,
 
-      transparent 278deg,
-      transparent 360deg
+      #FFFFFF 357deg,
+
+      var(--redLight) 359deg,
+
+      var(--red) 360deg
     );
 
   filter:
     drop-shadow(
-      0 0 1px
-      rgba(255,255,255,.9)
+      0 0 2px
+      rgba(198,40,40,.95)
     )
     drop-shadow(
-      0 0 3px
-      rgba(198,40,40,.42)
+      0 0 5px
+      rgba(198,40,40,.55)
     );
 
 }
 
-
-@keyframes marketSilverRotate{
+@keyframes greenBorderRotate{
 
   from{
     transform:rotate(0deg);
@@ -1088,13 +984,12 @@ body{
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.99),
-      rgba(242,225,207,.96)
+      rgba(255,255,255,.98),
+      rgba(242,225,207,.72)
     );
 
   border:
-    1px solid
-    rgba(192,147,108,.30);
+    0;
 
   border-radius:20px;
 
@@ -1112,30 +1007,6 @@ body{
 
 }
 
-
-.market-card::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:22%;
-  right:22%;
-
-  height:2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--champagne),
-      transparent
-    );
-
-}
-
-
 .market-card:hover{
 
   transform:translateY(-2px);
@@ -1146,7 +1017,6 @@ body{
 
 }
 
-
 .market-title{
 
   font-size:12px;
@@ -1156,7 +1026,6 @@ body{
   color:var(--darkBrown);
 
 }
-
 
 .market-value{
 
@@ -1177,7 +1046,6 @@ body{
   letter-spacing:.2px;
 
 }
-
 
 .market-unit{
 
@@ -1213,7 +1081,6 @@ body{
 
 }
 
-
 .form-grid{
 
   display:grid;
@@ -1228,7 +1095,6 @@ body{
 
 }
 
-
 .form-group label{
 
   display:block;
@@ -1240,7 +1106,6 @@ body{
   color:var(--darkBrown);
 
 }
-
 
 .form-group input,
 .form-group select{
@@ -1270,7 +1135,6 @@ body{
   text-align:left;
 
 }
-
 
 .form-group input:focus,
 .form-group select:focus{
@@ -1305,7 +1169,6 @@ body{
 
 }
 
-
 .result-item{
 
   padding:14px 10px;
@@ -1327,7 +1190,6 @@ body{
 
 }
 
-
 .result-item span{
 
   display:block;
@@ -1339,7 +1201,6 @@ body{
   color:var(--bronze);
 
 }
-
 
 .result-item strong{
 
@@ -1354,7 +1215,6 @@ body{
   color:var(--darkBrown);
 
 }
-
 
 .final-result{
 
@@ -1381,7 +1241,6 @@ body{
 
 }
 
-
 .final-result span{
 
   display:block;
@@ -1391,7 +1250,6 @@ body{
   font-size:11px;
 
 }
-
 
 .final-result strong{
 
@@ -1418,7 +1276,6 @@ body{
 
 }
 
-
 .settings-item{
 
   padding:15px;
@@ -1434,7 +1291,6 @@ body{
 
 }
 
-
 .settings-item label{
 
   display:block;
@@ -1446,7 +1302,6 @@ body{
   color:var(--darkBrown);
 
 }
-
 
 .settings-item input{
 
@@ -1478,7 +1333,6 @@ body{
 
 }
 
-
 .settings-item input:focus{
 
   border-color:
@@ -1489,7 +1343,6 @@ body{
     rgba(192,147,108,.11);
 
 }
-
 
 .settings-hint{
 
@@ -1502,7 +1355,6 @@ body{
   color:var(--bronze);
 
 }
-
 
 .settings-button{
 
@@ -1535,11 +1387,9 @@ body{
 
 }
 
-
 .settings-button:active{
   transform:scale(.99);
 }
-
 
 .password-status{
 
@@ -1553,23 +1403,17 @@ body{
 
 }
 
-
 .password-status.error{
   color:var(--ruby);
 }
-
 
 .password-status.success{
   color:var(--green);
 }
 
-
 .password-fields{
-
   display:none;
-
 }
-
 
 .password-fields.show{
 
@@ -1578,7 +1422,6 @@ body{
   gap:13px;
 
 }
-
 
 .change-password-button{
 
@@ -1609,11 +1452,9 @@ body{
 
 }
 
-
 .change-password-button:hover{
   background:var(--warmIvory);
 }
-
 
 .save-message{
 
@@ -1652,7 +1493,6 @@ body{
 
 }
 
-
 .footer-slogan{
 
   font-family:
@@ -1662,7 +1502,6 @@ body{
   font-size:11px;
 
 }
-
 
 .instagram-link{
 
@@ -1685,7 +1524,6 @@ body{
   font-weight:bold;
 
 }
-
 
 .instagram-icon{
 
@@ -1726,7 +1564,6 @@ body{
 
 }
 
-
 .exit-button:hover{
 
   background:
@@ -1765,7 +1602,7 @@ body{
   }
 
   .market-area .market-card{
-    min-height:145px;
+    min-height:147px;
   }
 
   .market-card{
@@ -1786,7 +1623,6 @@ body{
 
 }
 
-
 @media(max-width:380px){
 
   .market-grid{
@@ -1795,15 +1631,31 @@ body{
 
 }
 
-</style>
 
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  .logo::before,
+  .market-area::before{
+
+    animation-duration:
+      8s;
+
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
 
 <!-- =========================================================
-     LOGIN PAGE
+     LOGIN
 ========================================================= -->
 
 <div id="loginPage">
@@ -1852,13 +1704,15 @@ body{
 
 
 <!-- =========================================================
-     MAIN APP
+     APP
 ========================================================= -->
 
 <div id="app">
 
 
-  <!-- HEADER -->
+  <!-- =======================================================
+       HEADER
+  ======================================================= -->
 
   <header class="app-header">
 
@@ -1920,7 +1774,9 @@ body{
   </header>
 
 
-  <!-- NAV -->
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================= -->
 
   <nav class="nav">
 
@@ -1949,14 +1805,12 @@ body{
   </nav>
 
 
-  <!-- CONTENT -->
-
   <main class="container">
 
 
     <!-- =====================================================
-         MARKET PAGE
-    ====================================================== -->
+         MARKET
+    ===================================================== -->
 
     <section
       id="market"
@@ -1975,7 +1829,7 @@ body{
       <div class="market-grid">
 
 
-        <!-- MITHQAL -->
+        <!-- 17 MITHQAL -->
 
         <div class="market-area">
 
@@ -2111,8 +1965,8 @@ body{
 
 
     <!-- =====================================================
-         CALCULATOR PAGE
-    ====================================================== -->
+         CALCULATOR
+    ===================================================== -->
 
     <section
       id="calculator"
@@ -2238,7 +2092,6 @@ body{
 
         <div class="result-box">
 
-
           <div class="result-item">
 
             <span>
@@ -2303,7 +2156,6 @@ body{
 
           </div>
 
-
         </div>
 
 
@@ -2325,8 +2177,8 @@ body{
 
 
     <!-- =====================================================
-         SETTINGS PAGE
-    ====================================================== -->
+         SETTINGS
+    ===================================================== -->
 
     <section
       id="settings"
@@ -2346,6 +2198,8 @@ body{
 
         <div class="settings-list">
 
+
+          <!-- MANUAL SILVER -->
 
           <div class="settings-item">
 
@@ -2368,6 +2222,8 @@ body{
           </div>
 
 
+          <!-- DEFAULT LABOR -->
+
           <div class="settings-item">
 
             <label>
@@ -2389,6 +2245,8 @@ body{
           </div>
 
 
+          <!-- PASSWORD -->
+
           <div class="settings-item">
 
             <label>
@@ -2401,7 +2259,6 @@ body{
               placeholder="رمز فعلی"
               autocomplete="current-password"
             >
-
 
             <div
               id="passwordStatus"
@@ -2505,7 +2362,9 @@ body{
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================= -->
 
   <footer class="footer">
 
@@ -2561,7 +2420,6 @@ body{
 
   </footer>
 
-
 </div>
 
 
@@ -2579,16 +2437,16 @@ const API =
 
 
 /* =========================================================
-   GLOBAL VARIABLES
+   GLOBAL
 ========================================================= */
 
 let currentSilver999 = 0;
 
+let currentSilver925 = 0;
+
 let currentSilverOunce = 0;
 
-let currentUsd = 0;
-
-let currentSilver925 = 0;
+let currentUSD = 0;
 
 let currentMithqal17 = 0;
 
@@ -2607,21 +2465,26 @@ let passwordVerified = false;
    DEFAULT PASSWORD
 ========================================================= */
 
-const DEFAULT_PASSWORD = "@Mohammad1386";
+const DEFAULT_PASSWORD =
+  "@Mohammad1386";
 
 
 /* =========================================================
    STORAGE KEYS
 ========================================================= */
 
-const PASSWORD_KEY =
-  "zarinFakhrPassword";
+const STORAGE_KEYS = {
 
-const MANUAL_999_KEY =
-  "zarinFakhrManual999";
+  password:
+    "zarinFakhrPassword",
 
-const DEFAULT_LABOR_KEY =
-  "zarinFakhrDefaultLabor";
+  manual999:
+    "zarinFakhrManual999",
+
+  defaultLabor:
+    "zarinFakhrDefaultLabor"
+
+};
 
 
 /* =========================================================
@@ -2632,7 +2495,7 @@ function getCurrentPassword(){
 
   const savedPassword =
     localStorage.getItem(
-      PASSWORD_KEY
+      STORAGE_KEYS.password
     );
 
 
@@ -2653,6 +2516,8 @@ function getCurrentPassword(){
 
 /* =========================================================
    LOGIN
+   رمز اصلی همیشه قابل ورود است.
+   رمز تغییر داده‌شده نیز از localStorage خوانده می‌شود.
 ========================================================= */
 
 function login(){
@@ -2698,43 +2563,37 @@ function login(){
 
   const savedPassword =
     localStorage.getItem(
-      PASSWORD_KEY
+      STORAGE_KEYS.password
     );
 
 
-  /*
-    رمز اصلی همیشه معتبر است.
-  */
-
-  const isDefaultPassword =
+  const validDefaultPassword =
     password === DEFAULT_PASSWORD;
 
 
-  /*
-    رمز ذخیره‌شده نیز معتبر است.
-  */
-
-  const isSavedPassword =
+  const validSavedPassword =
     typeof savedPassword === "string" &&
-    savedPassword.length > 0 &&
+    savedPassword.trim().length > 0 &&
     password === savedPassword;
 
 
+  /*
+    رمز جدید معتبر است.
+    رمز اصلی نیز برای دسترسی اضطراری حفظ شده است.
+  */
+
   if(
-    isDefaultPassword ||
-    isSavedPassword
+    validDefaultPassword ||
+    validSavedPassword
   ){
 
     error.textContent = "";
-
-    input.value = "";
 
     passwordVerified = true;
 
 
     loginPage.style.display =
       "none";
-
 
     app.style.display =
       "block";
@@ -2748,9 +2607,14 @@ function login(){
 
     updateIranClock();
 
+    startClock();
+
     startPriceUpdates();
 
     calculatePrice();
+
+
+    input.value = "";
 
     return;
 
@@ -2787,9 +2651,7 @@ document.addEventListener(
         "keydown",
         function(event){
 
-          if(
-            event.key === "Enter"
-          ){
+          if(event.key === "Enter"){
 
             event.preventDefault();
 
@@ -2810,38 +2672,21 @@ document.addEventListener(
 
 
 /* =========================================================
-   EXIT APP
+   EXIT
 ========================================================= */
 
 function exitApp(){
 
-  if(priceInterval){
+  stopPriceUpdates();
 
-    clearInterval(
-      priceInterval
-    );
-
-    priceInterval = null;
-
-  }
+  stopClock();
 
 
-  if(clockInterval){
-
-    clearInterval(
-      clockInterval
-    );
-
-    clockInterval = null;
-
-  }
-
+  passwordVerified = false;
 
   serverBaseTime = null;
 
   clientBaseTime = null;
-
-  passwordVerified = false;
 
 
   const app =
@@ -2869,16 +2714,13 @@ function exitApp(){
     app.style.display = "none";
   }
 
-
   if(loginPage){
     loginPage.style.display = "flex";
   }
 
-
   if(passwordInput){
     passwordInput.value = "";
   }
-
 
   if(loginError){
     loginError.textContent = "";
@@ -2886,7 +2728,6 @@ function exitApp(){
 
 
   resetPasswordChangeForm();
-
 
   setConnectionState(
     "loading"
@@ -2940,6 +2781,32 @@ function convertDigitsToEnglish(value){
    NUMBER
 ========================================================= */
 
+function toNumber(value){
+
+  const normalized =
+    convertDigitsToEnglish(
+      value
+    )
+    .replace(/,/g,"")
+    .replace(/٬/g,"")
+    .replace(/٫/g,".");
+
+
+  const number =
+    Number(normalized);
+
+
+  return Number.isFinite(number)
+    ? number
+    : 0;
+
+}
+
+
+/* =========================================================
+   FORMAT NUMBER
+========================================================= */
+
 function formatNumber(
   value,
   decimals = 0
@@ -2958,92 +2825,63 @@ function formatNumber(
   }
 
 
-  return number
-    .toLocaleString(
-      "en-US",
-      {
-        minimumFractionDigits:
-          decimals,
+  return number.toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits:
+        decimals,
 
-        maximumFractionDigits:
-          decimals
-      }
-    );
+      maximumFractionDigits:
+        decimals
+    }
+  );
 
 }
 
 
 /* =========================================================
-   PARSE NUMBER
+   FORMAT TOMAN
 ========================================================= */
 
-function parseNumber(value){
+function formatToman(value){
 
   if(
-    value === null ||
-    value === undefined
+    !Number.isFinite(
+      Number(value)
+    )
   ){
 
-    return 0;
+    return "—";
 
   }
 
 
-  let text =
-    convertDigitsToEnglish(
-      value
-    );
-
-
-  text =
-    String(text)
-      .replace(
-        /,/g,
-        ""
-      )
-      .replace(
-        /٬/g,
-        ""
-      )
-      .replace(
-        /٫/g,
-        "."
-      )
-      .trim();
-
-
-  const number =
-    Number(text);
-
-
-  return Number.isFinite(number)
-    ? number
-    : 0;
+  return formatNumber(
+    Math.round(
+      Number(value)
+    ),
+    0
+  );
 
 }
 
 
 /* =========================================================
-   FIND VALUE FROM API OBJECT
+   FIND VALUE IN API RESPONSE
 ========================================================= */
 
-function findValue(
+function findNumericValue(
   object,
-  possibleKeys
+  keys = []
 ){
 
-  if(
-    !object ||
-    typeof object !== "object"
-  ){
-
+  if(!object || typeof object !== "object"){
     return 0;
-
   }
 
 
   for(
-    const key of possibleKeys
+    const key of keys
   ){
 
     if(
@@ -3054,17 +2892,13 @@ function findValue(
     ){
 
       const value =
-        parseNumber(
+        toNumber(
           object[key]
         );
 
 
-      if(
-        value !== 0
-      ){
-
+      if(value > 0){
         return value;
-
       }
 
     }
@@ -3078,16 +2912,25 @@ function findValue(
 
 
 /* =========================================================
-   DEEP VALUE SEARCH
+   DEEP SEARCH
 ========================================================= */
 
-function deepFindValue(
+function deepFindNumber(
   object,
-  keys
+  keys = []
 ){
 
   if(
-    !object ||
+    object === null ||
+    object === undefined
+  ){
+
+    return 0;
+
+  }
+
+
+  if(
     typeof object !== "object"
   ){
 
@@ -3096,63 +2939,15 @@ function deepFindValue(
   }
 
 
-  const wanted =
-    keys.map(
-      key =>
-        String(key).toLowerCase()
+  const direct =
+    findNumericValue(
+      object,
+      keys
     );
 
 
-  if(
-    Array.isArray(object)
-  ){
-
-    for(
-      const item of object
-    ){
-
-      const result =
-        deepFindValue(
-          item,
-          keys
-        );
-
-
-      if(result){
-        return result;
-      }
-
-    }
-
-    return 0;
-
-  }
-
-
-  for(
-    const key of Object.keys(object)
-  ){
-
-    const lower =
-      String(key).toLowerCase();
-
-
-    if(
-      wanted.includes(lower)
-    ){
-
-      const number =
-        parseNumber(
-          object[key]
-        );
-
-
-      if(number){
-        return number;
-      }
-
-    }
-
+  if(direct > 0){
+    return direct;
   }
 
 
@@ -3161,13 +2956,13 @@ function deepFindValue(
   ){
 
     const result =
-      deepFindValue(
+      deepFindNumber(
         object[key],
         keys
       );
 
 
-    if(result){
+    if(result > 0){
       return result;
     }
 
@@ -3180,307 +2975,12 @@ function deepFindValue(
 
 
 /* =========================================================
-   API DATA EXTRACTION
-========================================================= */
-
-function extractMarketData(data){
-
-  let source =
-    data;
-
-
-  if(
-    data &&
-    typeof data === "object"
-  ){
-
-    if(
-      data.data &&
-      typeof data.data === "object"
-    ){
-
-      source =
-        data.data;
-
-    }
-    else if(
-      data.result &&
-      typeof data.result === "object"
-    ){
-
-      source =
-        data.result;
-
-    }
-    else if(
-      data.prices &&
-      typeof data.prices === "object"
-    ){
-
-      source =
-        data.prices;
-
-    }
-
-  }
-
-
-  /*
-    Silver ounce
-  */
-
-  let silverOunce =
-    deepFindValue(
-      source,
-      [
-        "silverOunce",
-        "silver_ounce",
-        "ounceSilver",
-        "silverOzt",
-        "xag",
-        "xagUsd",
-        "silver"
-      ]
-    );
-
-
-  /*
-    USD
-  */
-
-  let usd =
-    deepFindValue(
-      source,
-      [
-        "usd",
-        "usdPrice",
-        "dollar",
-        "dollarPrice",
-        "freeDollar",
-        "usd_free"
-      ]
-    );
-
-
-  /*
-    Silver 999
-  */
-
-  let silver999 =
-    deepFindValue(
-      source,
-      [
-        "silver999",
-        "silver_999",
-        "silver999Price",
-        "silver_999_price",
-        "silverFine",
-        "silverGram999"
-      ]
-    );
-
-
-  /*
-    بعضی APIها ممکن است نام را price
-    داخل آبجکت مربوطه قرار دهند.
-  */
-
-  if(
-    !silverOunce &&
-    source &&
-    typeof source === "object"
-  ){
-
-    const ounceObject =
-      source.silverOunce ||
-      source.silver_ounce ||
-      source.ounceSilver;
-
-
-    if(ounceObject){
-
-      silverOunce =
-        findValue(
-          ounceObject,
-          [
-            "price",
-            "value",
-            "last",
-            "close"
-          ]
-        );
-
-    }
-
-  }
-
-
-  if(
-    !usd &&
-    source &&
-    typeof source === "object"
-  ){
-
-    const usdObject =
-      source.usd ||
-      source.dollar ||
-      source.usdPrice;
-
-
-    if(usdObject){
-
-      usd =
-        findValue(
-          usdObject,
-          [
-            "price",
-            "value",
-            "last",
-            "close"
-          ]
-        );
-
-    }
-
-  }
-
-
-  if(
-    !silver999 &&
-    source &&
-    typeof source === "object"
-  ){
-
-    const silverObject =
-      source.silver999 ||
-      source.silver_999;
-
-
-    if(silverObject){
-
-      silver999 =
-        findValue(
-          silverObject,
-          [
-            "price",
-            "value",
-            "last",
-            "close"
-          ]
-        );
-
-    }
-
-  }
-
-
-  return {
-
-    silverOunce,
-
-    usd,
-
-    silver999
-
-  };
-
-}
-
-
-/* =========================================================
-   CONNECTION STATE
-========================================================= */
-
-function setConnectionState(
-  state
-){
-
-  const app =
-    document.getElementById(
-      "app"
-    );
-
-  const connectionText =
-    document.getElementById(
-      "connectionText"
-    );
-
-
-  if(!app){
-    return;
-  }
-
-
-  app.classList.remove(
-    "status-error"
-  );
-
-
-  if(
-    state === "online"
-  ){
-
-    if(connectionText){
-
-      connectionText.textContent =
-        "آنلاین • به‌روز";
-
-    }
-
-    return;
-
-  }
-
-
-  if(
-    state === "error"
-  ){
-
-    app.classList.add(
-      "status-error"
-    );
-
-
-    if(connectionText){
-
-      connectionText.textContent =
-        "قطع اتصال";
-
-    }
-
-    return;
-
-  }
-
-
-  if(
-    state === "loading"
-  ){
-
-    if(connectionText){
-
-      connectionText.textContent =
-        "در حال اتصال…";
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   FETCH PRICES
+   API FETCH
 ========================================================= */
 
 async function fetchPrices(){
 
   try{
-
-    setConnectionState(
-      "loading"
-    );
-
 
     const response =
       await fetch(
@@ -3498,15 +2998,10 @@ async function fetchPrices(){
       );
 
 
-    if(
-      !response.ok
-    ){
-
+    if(!response.ok){
       throw new Error(
-        "HTTP " +
-        response.status
+        "API_ERROR"
       );
-
     }
 
 
@@ -3514,108 +3009,20 @@ async function fetchPrices(){
       await response.json();
 
 
-    const market =
-      extractMarketData(
-        data
-      );
+    processPrices(
+      data
+    );
 
-
-    /*
-      اگر API ساختار شناخته‌شده نداشت،
-      اتصال را قطع‌شده در نظر می‌گیریم.
-    */
-
-    if(
-      !market.silverOunce &&
-      !market.usd &&
-      !market.silver999
-    ){
-
-      throw new Error(
-        "Price data not found"
-      );
-
-    }
-
-
-    if(
-      market.silverOunce > 0
-    ){
-
-      currentSilverOunce =
-        market.silverOunce;
-
-    }
-
-
-    if(
-      market.usd > 0
-    ){
-
-      currentUsd =
-        market.usd;
-
-    }
-
-
-    if(
-      market.silver999 > 0
-    ){
-
-      currentSilver999 =
-        market.silver999;
-
-    }
-
-
-    /*
-      925 بر اساس 999
-    */
-
-    currentSilver925 =
-      currentSilver999 *
-      0.925;
-
-
-    /*
-      مثقال 17 عیار:
-      انس نقره × دلار
-      سپس ÷ 1000 × 700 × 4.608
-    */
-
-    if(
-      currentSilverOunce > 0 &&
-      currentUsd > 0
-    ){
-
-      currentMithqal17 =
-        (
-          currentSilverOunce *
-          currentUsd
-        ) /
-        1000 *
-        700 *
-        4.608;
-
-    }
-
-
-    updateMarketDisplay();
-
-    calculatePrice();
 
     setConnectionState(
       "online"
     );
 
 
-    return true;
-
-  }
-  catch(error){
+  }catch(error){
 
     console.error(
-      "Price API Error:",
+      "Price API error:",
       error
     );
 
@@ -3624,144 +3031,315 @@ async function fetchPrices(){
       "error"
     );
 
-
-    /*
-      در صورت خطا قیمت قبلی پاک نمی‌شود.
-      فقط وضعیت اتصال قرمز می‌شود.
-    */
-
-    return false;
-
   }
 
 }
 
 
 /* =========================================================
-   UPDATE MARKET DISPLAY
+   PROCESS API DATA
 ========================================================= */
 
-function updateMarketDisplay(){
+function processPrices(data){
 
-  const mithqalElement =
-    document.getElementById(
-      "mithqal17"
-    );
+  /*
+    تلاش برای پشتیبانی از ساختارهای
+    مختلف خروجی API.
+  */
 
-  const ounceElement =
-    document.getElementById(
-      "silverOunce"
-    );
 
-  const usdElement =
-    document.getElementById(
-      "usd"
-    );
-
-  const silver999Element =
-    document.getElementById(
-      "silver999"
-    );
-
-  const silver925Element =
-    document.getElementById(
-      "silver925"
+  const silverOunce =
+    deepFindNumber(
+      data,
+      [
+        "silverOunce",
+        "silver_ounce",
+        "silverOzt",
+        "silver",
+        "ounceSilver",
+        "ounce"
+      ]
     );
 
 
-  if(mithqalElement){
-
-    mithqalElement.textContent =
-      currentMithqal17 > 0
-        ? formatNumber(
-            currentMithqal17
-          )
-        : "—";
-
-  }
-
-
-  if(ounceElement){
-
-    ounceElement.textContent =
-      currentSilverOunce > 0
-        ? formatNumber(
-            currentSilverOunce,
-            2
-          )
-        : "—";
-
-  }
+  const usd =
+    deepFindNumber(
+      data,
+      [
+        "usd",
+        "usdPrice",
+        "dollar",
+        "dollarPrice",
+        "USD"
+      ]
+    );
 
 
-  if(usdElement){
+  const silver999 =
+    deepFindNumber(
+      data,
+      [
+        "silver999",
+        "silver_999",
+        "silver999Price",
+        "silver_999_price"
+      ]
+    );
 
-    usdElement.textContent =
-      currentUsd > 0
-        ? formatNumber(
-            currentUsd
-          )
-        : "—";
+
+  /*
+    انس نقره
+  */
+
+  if(
+    silverOunce > 0
+  ){
+
+    currentSilverOunce =
+      silverOunce;
+
+    setText(
+      "silverOunce",
+      formatNumber(
+        silverOunce,
+        2
+      )
+    );
 
   }
 
 
   /*
-    قیمت دستی 999 در تنظیمات
+    دلار
+  */
+
+  if(
+    usd > 0
+  ){
+
+    currentUSD =
+      usd;
+
+    setText(
+      "usd",
+      formatToman(
+        usd
+      )
+    );
+
+  }
+
+
+  /*
+    نقره 999
+  */
+
+  if(
+    silver999 > 0
+  ){
+
+    currentSilver999 =
+      silver999;
+
+  }
+
+
+  /*
+    اگر قیمت دستی وجود نداشته باشد
+    قیمت آنلاین نمایش داده می‌شود.
   */
 
   const manual999 =
     getManual999();
 
 
-  const displayed999 =
+  if(
     manual999 > 0
-      ? manual999
-      : currentSilver999;
+  ){
+
+    currentSilver999 =
+      manual999;
+
+  }
 
 
-  if(silver999Element){
+  setText(
+    "silver999",
+    currentSilver999 > 0
+      ? formatToman(
+          currentSilver999
+        )
+      : "—"
+  );
 
-    silver999Element.textContent =
-      displayed999 > 0
-        ? formatNumber(
-            displayed999
-          )
-        : "—";
+
+  /*
+    نقره 925
+    بر اساس 999
+  */
+
+  if(
+    currentSilver999 > 0
+  ){
+
+    currentSilver925 =
+      currentSilver999 *
+      0.925;
+
+
+    setText(
+      "silver925",
+      formatToman(
+        currentSilver925
+      )
+    );
 
   }
 
 
   /*
-    925 همیشه از 999 آنلاین
-    یا قیمت دستی 999 محاسبه می‌شود.
+    مثقال 17 عیار نقره
+
+    فرمول:
+    انس × دلار ÷ 1000 × 700 × 4.608
   */
 
-  const displayed925 =
-    displayed999 > 0
-      ? displayed999 * 0.925
-      : currentSilver925;
+  if(
+    currentSilverOunce > 0 &&
+    currentUSD > 0
+  ){
+
+    currentMithqal17 =
+      (
+        currentSilverOunce *
+        currentUSD
+      ) /
+      1000 *
+      700 *
+      4.608;
 
 
-  if(silver925Element){
+    setText(
+      "mithqal17",
+      formatToman(
+        currentMithqal17
+      )
+    );
 
-    silver925Element.textContent =
-      displayed925 > 0
-        ? formatNumber(
-            displayed925
-          )
-        : "—";
+  }
 
+
+  calculatePrice();
+
+}
+
+
+/* =========================================================
+   SET TEXT
+========================================================= */
+
+function setText(
+  id,
+  value
+){
+
+  const element =
+    document.getElementById(id);
+
+
+  if(element){
+    element.textContent =
+      value;
   }
 
 }
 
 
 /* =========================================================
-   START PRICE UPDATES
+   CONNECTION STATE
+========================================================= */
+
+function setConnectionState(
+  state
+){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  const text =
+    document.getElementById(
+      "connectionText"
+    );
+
+
+  if(!app || !text){
+    return;
+  }
+
+
+  app.classList.remove(
+    "status-error"
+  );
+
+
+  if(state === "online"){
+
+    text.textContent =
+      "آنلاین • به‌روز";
+
+    return;
+
+  }
+
+
+  if(state === "error"){
+
+    app.classList.add(
+      "status-error"
+    );
+
+    text.textContent =
+      "قطع اتصال";
+
+    return;
+
+  }
+
+
+  text.textContent =
+    "در حال اتصال…";
+
+}
+
+
+/* =========================================================
+   PRICE UPDATES
+   هر 1 ثانیه
 ========================================================= */
 
 function startPriceUpdates(){
+
+  stopPriceUpdates();
+
+  fetchPrices();
+
+
+  priceInterval =
+    setInterval(
+      function(){
+
+        fetchPrices();
+
+      },
+      1000
+    );
+
+}
+
+
+function stopPriceUpdates(){
 
   if(priceInterval){
 
@@ -3769,25 +3347,9 @@ function startPriceUpdates(){
       priceInterval
     );
 
+    priceInterval = null;
+
   }
-
-
-  /*
-    اولین دریافت بلافاصله
-  */
-
-  fetchPrices();
-
-
-  /*
-    بروزرسانی هر ۱ ثانیه
-  */
-
-  priceInterval =
-    setInterval(
-      fetchPrices,
-      1000
-    );
 
 }
 
@@ -3796,10 +3358,23 @@ function startPriceUpdates(){
    CLOCK
 ========================================================= */
 
-function updateIranClock(){
+function startClock(){
 
-  updateClockDisplay();
+  stopClock();
 
+  updateIranClock();
+
+
+  clockInterval =
+    setInterval(
+      updateIranClock,
+      1000
+    );
+
+}
+
+
+function stopClock(){
 
   if(clockInterval){
 
@@ -3807,23 +3382,14 @@ function updateIranClock(){
       clockInterval
     );
 
+    clockInterval = null;
+
   }
-
-
-  clockInterval =
-    setInterval(
-      updateClockDisplay,
-      1000
-    );
 
 }
 
 
-/* =========================================================
-   IRAN DATE/TIME
-========================================================= */
-
-function updateClockDisplay(){
+function updateIranClock(){
 
   const dateElement =
     document.getElementById(
@@ -3836,13 +3402,23 @@ function updateClockDisplay(){
     );
 
 
+  if(
+    !dateElement ||
+    !timeElement
+  ){
+
+    return;
+
+  }
+
+
   const now =
     new Date();
 
 
   const dateFormatter =
     new Intl.DateTimeFormat(
-      "fa-IR-u-ca-persian",
+      "fa-IR",
       {
         timeZone:
           "Asia/Tehran",
@@ -3874,74 +3450,22 @@ function updateClockDisplay(){
     );
 
 
-  if(dateElement){
-
-    dateElement.textContent =
-      dateFormatter.format(
-        now
-      );
-
-  }
+  dateElement.textContent =
+    dateFormatter.format(
+      now
+    );
 
 
-  if(timeElement){
-
-    timeElement.textContent =
-      timeFormatter.format(
-        now
-      );
-
-  }
+  timeElement.textContent =
+    timeFormatter.format(
+      now
+    );
 
 }
 
 
 /* =========================================================
-   REMOVE OLD DATE/TIME KEYS
-========================================================= */
-
-function removeOldManualDateTimeKeys(){
-
-  const oldKeys = [
-
-    "zarinFakhrManualDate",
-
-    "zarinFakhrManualTime",
-
-    "SZF_MANUAL_DATE",
-
-    "SZF_MANUAL_TIME"
-
-  ];
-
-
-  oldKeys.forEach(
-    function(key){
-
-      try{
-
-        localStorage.removeItem(
-          key
-        );
-
-      }
-      catch(error){
-
-        console.warn(
-          "Storage cleanup:",
-          error
-        );
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   PAGE NAVIGATION
+   NAVIGATION
 ========================================================= */
 
 function showPage(
@@ -3966,15 +3490,15 @@ function showPage(
   );
 
 
-  const selectedPage =
+  const target =
     document.getElementById(
       pageId
     );
 
 
-  if(selectedPage){
+  if(target){
 
-    selectedPage.classList.add(
+    target.classList.add(
       "active"
     );
 
@@ -4007,9 +3531,7 @@ function showPage(
   }
 
 
-  if(
-    pageId === "calculator"
-  ){
+  if(pageId === "calculator"){
 
     calculatePrice();
 
@@ -4019,35 +3541,212 @@ function showPage(
 
 
 /* =========================================================
-   SETTINGS
+   MANUAL 999
 ========================================================= */
 
 function getManual999(){
 
-  const value =
+  const saved =
     localStorage.getItem(
-      MANUAL_999_KEY
+      STORAGE_KEYS.manual999
     );
 
 
-  return parseNumber(
-    value
+  const number =
+    toNumber(saved);
+
+
+  return number > 0
+    ? number
+    : 0;
+
+}
+
+
+/* =========================================================
+   DEFAULT LABOR
+========================================================= */
+
+function getDefaultLabor(){
+
+  const saved =
+    localStorage.getItem(
+      STORAGE_KEYS.defaultLabor
+    );
+
+
+  return toNumber(
+    saved
   );
 
 }
 
 
-function getDefaultLabor(){
+/* =========================================================
+   CALCULATOR
+========================================================= */
 
-  const value =
-    localStorage.getItem(
-      DEFAULT_LABOR_KEY
+function calculatePrice(){
+
+  const weight =
+    toNumber(
+      getValue(
+        "calcWeight"
+      )
     );
 
 
-  return parseNumber(
-    value
+  const purity =
+    toNumber(
+      getValue(
+        "calcPurity"
+      )
+    ) || 999;
+
+
+  let gramPrice =
+    currentSilver999;
+
+
+  if(
+    purity === 925
+  ){
+
+    gramPrice =
+      currentSilver999 *
+      0.925;
+
+  }
+  else if(
+    purity === 700
+  ){
+
+    gramPrice =
+      currentSilver999 *
+      0.700;
+
+  }
+
+
+  const labor =
+    toNumber(
+      getValue(
+        "calcLabor"
+      )
+    );
+
+
+  const extra =
+    toNumber(
+      getValue(
+        "calcExtra"
+      )
+    );
+
+
+  const profitPercent =
+    toNumber(
+      getValue(
+        "calcProfit"
+      )
+    );
+
+
+  const base =
+    weight *
+    gramPrice;
+
+
+  const laborTotal =
+    weight *
+    labor;
+
+
+  const beforeProfit =
+    base +
+    laborTotal +
+    extra;
+
+
+  const profit =
+    beforeProfit *
+    (
+      profitPercent /
+      100
+    );
+
+
+  const finalPrice =
+    beforeProfit +
+    profit;
+
+
+  setText(
+    "calcGramPrice",
+    formatToman(
+      gramPrice
+    )
   );
+
+
+  setText(
+    "calcBase",
+    formatToman(
+      base
+    )
+  );
+
+
+  setText(
+    "calcLaborResult",
+    formatToman(
+      laborTotal
+    )
+  );
+
+
+  setText(
+    "calcExtraResult",
+    formatToman(
+      extra
+    )
+  );
+
+
+  setText(
+    "calcProfitResult",
+    formatToman(
+      profit
+    )
+  );
+
+
+  setText(
+    "calcFinal",
+    formatToman(
+      finalPrice
+    ) +
+    " تومان"
+  );
+
+}
+
+
+/* =========================================================
+   GET VALUE
+========================================================= */
+
+function getValue(id){
+
+  const element =
+    document.getElementById(
+      id
+    );
+
+
+  return element
+    ? element.value
+    : "";
 
 }
 
@@ -4058,66 +3757,112 @@ function getDefaultLabor(){
 
 function loadSettings(){
 
-  const manual999Input =
+  const manual999 =
     document.getElementById(
       "manual999"
     );
 
-  const defaultLaborInput =
+  const defaultLabor =
     document.getElementById(
       "defaultLabor"
     );
 
-  const manual999 =
-    localStorage.getItem(
-      MANUAL_999_KEY
-    );
-
-  const defaultLabor =
-    localStorage.getItem(
-      DEFAULT_LABOR_KEY
-    );
-
-
-  if(manual999Input){
-
-    manual999Input.value =
-      manual999 || "";
-
-  }
-
-
-  if(defaultLaborInput){
-
-    defaultLaborInput.value =
-      defaultLabor || "";
-
-  }
-
-
-  /*
-    اجرت پیش‌فرض
-  */
-
-  const laborInput =
+  const calcLabor =
     document.getElementById(
       "calcLabor"
     );
 
 
-  if(
-    laborInput &&
-    !laborInput.value &&
-    defaultLabor
-  ){
+  const savedManual999 =
+    getManual999();
 
-    laborInput.value =
-      defaultLabor;
+
+  const savedLabor =
+    getDefaultLabor();
+
+
+  if(manual999){
+
+    manual999.value =
+      savedManual999 > 0
+        ? savedManual999
+        : "";
 
   }
 
 
-  updateMarketDisplay();
+  if(defaultLabor){
+
+    defaultLabor.value =
+      savedLabor > 0
+        ? savedLabor
+        : "";
+
+  }
+
+
+  if(
+    calcLabor &&
+    savedLabor > 0
+  ){
+
+    calcLabor.value =
+      savedLabor;
+
+  }
+
+
+  updateManual999Display();
+
+}
+
+
+/* =========================================================
+   MANUAL 999 DISPLAY
+========================================================= */
+
+function updateManual999Display(){
+
+  const manual999 =
+    getManual999();
+
+
+  if(manual999 > 0){
+
+    currentSilver999 =
+      manual999;
+
+  }
+
+
+  if(
+    currentSilver999 > 0
+  ){
+
+    currentSilver925 =
+      currentSilver999 *
+      0.925;
+
+
+    setText(
+      "silver999",
+      formatToman(
+        currentSilver999
+      )
+    );
+
+
+    setText(
+      "silver925",
+      formatToman(
+        currentSilver925
+      )
+    );
+
+  }
+
+
+  calculatePrice();
 
 }
 
@@ -4128,92 +3873,72 @@ function loadSettings(){
 
 function saveSettings(){
 
-  const manual999Input =
-    document.getElementById(
-      "manual999"
-    );
-
-  const defaultLaborInput =
-    document.getElementById(
-      "defaultLabor"
-    );
-
-  const message =
-    document.getElementById(
-      "saveMessage"
-    );
-
-
   const manual999 =
-    manual999Input
-      ? String(
-          manual999Input.value || ""
-        ).trim()
-      : "";
+    toNumber(
+      getValue(
+        "manual999"
+      )
+    );
 
 
   const defaultLabor =
-    defaultLaborInput
-      ? String(
-          defaultLaborInput.value || ""
-        ).trim()
-      : "";
+    toNumber(
+      getValue(
+        "defaultLabor"
+      )
+    );
 
 
-  if(manual999){
+  if(manual999 > 0){
 
     localStorage.setItem(
-      MANUAL_999_KEY,
-      manual999
+      STORAGE_KEYS.manual999,
+      String(manual999)
     );
 
-  }
-  else{
+  }else{
 
     localStorage.removeItem(
-      MANUAL_999_KEY
+      STORAGE_KEYS.manual999
     );
 
   }
 
 
-  if(defaultLabor){
-
-    localStorage.setItem(
-      DEFAULT_LABOR_KEY,
-      defaultLabor
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      DEFAULT_LABOR_KEY
-    );
-
-  }
+  localStorage.setItem(
+    STORAGE_KEYS.defaultLabor,
+    String(
+      Math.max(
+        0,
+        defaultLabor
+      )
+    )
+  );
 
 
-  const laborInput =
+  const calcLabor =
     document.getElementById(
       "calcLabor"
     );
 
 
-  if(
-    laborInput &&
-    defaultLabor
-  ){
+  if(calcLabor){
 
-    laborInput.value =
-      defaultLabor;
+    calcLabor.value =
+      defaultLabor > 0
+        ? defaultLabor
+        : "";
 
   }
 
 
-  updateMarketDisplay();
+  updateManual999Display();
 
-  calculatePrice();
+
+  const message =
+    document.getElementById(
+      "saveMessage"
+    );
 
 
   if(message){
@@ -4224,7 +3949,8 @@ function saveSettings(){
     setTimeout(
       function(){
 
-        message.textContent = "";
+        message.textContent =
+          "";
 
       },
       2500
@@ -4273,64 +3999,68 @@ function verifyCurrentPassword(){
   }
 
 
-  const entered =
+  const enteredPassword =
     String(
       input.value || ""
     ).trim();
 
 
-  const current =
-    getCurrentPassword();
-
-
-  if(
-    entered === DEFAULT_PASSWORD ||
-    entered === current
-  ){
-
-    passwordVerified = true;
-
-
-    status.className =
-      "password-status success";
-
-
-    status.textContent =
-      "رمز فعلی تأیید شد.";
-
-
-    fields.classList.add(
-      "show"
+  const savedPassword =
+    localStorage.getItem(
+      STORAGE_KEYS.password
     );
 
 
-    if(button){
+  const valid =
+    enteredPassword ===
+      DEFAULT_PASSWORD ||
 
-      button.style.display =
-        "none";
+    (
+      typeof savedPassword === "string" &&
+      savedPassword.length > 0 &&
+      enteredPassword === savedPassword
+    );
 
-    }
 
+  if(!valid){
+
+    status.className =
+      "password-status error";
+
+    status.textContent =
+      "رمز فعلی صحیح نیست.";
+
+    passwordVerified = false;
+
+    fields.classList.remove(
+      "show"
+    );
 
     return;
 
   }
 
 
-  passwordVerified = false;
+  passwordVerified = true;
 
 
   status.className =
-    "password-status error";
-
+    "password-status success";
 
   status.textContent =
-    "رمز فعلی اشتباه است.";
+    "رمز فعلی تأیید شد.";
 
-
-  fields.classList.remove(
+  fields.classList.add(
     "show"
   );
+
+
+  if(button){
+
+    button.style.display =
+      "none";
+
+  }
 
 }
 
@@ -4341,12 +4071,17 @@ function verifyCurrentPassword(){
 
 function changePassword(){
 
-  const newPasswordInput =
+  const currentInput =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const newInput =
     document.getElementById(
       "newPassword"
     );
 
-  const confirmPasswordInput =
+  const confirmInput =
     document.getElementById(
       "confirmPassword"
     );
@@ -4358,8 +4093,9 @@ function changePassword(){
 
 
   if(
-    !newPasswordInput ||
-    !confirmPasswordInput ||
+    !currentInput ||
+    !newInput ||
+    !confirmInput ||
     !status
   ){
 
@@ -4368,29 +4104,52 @@ function changePassword(){
   }
 
 
-  if(!passwordVerified){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "ابتدا رمز فعلی را تأیید کنید.";
-
-    return;
-
-  }
+  const currentPassword =
+    String(
+      currentInput.value || ""
+    ).trim();
 
 
   const newPassword =
     String(
-      newPasswordInput.value || ""
+      newInput.value || ""
     ).trim();
 
 
   const confirmPassword =
     String(
-      confirmPasswordInput.value || ""
+      confirmInput.value || ""
     ).trim();
+
+
+  const savedPassword =
+    localStorage.getItem(
+      STORAGE_KEYS.password
+    );
+
+
+  const validCurrent =
+    currentPassword ===
+      DEFAULT_PASSWORD ||
+
+    (
+      typeof savedPassword === "string" &&
+      savedPassword.length > 0 &&
+      currentPassword === savedPassword
+    );
+
+
+  if(!validCurrent){
+
+    status.className =
+      "password-status error";
+
+    status.textContent =
+      "رمز فعلی صحیح نیست.";
+
+    return;
+
+  }
 
 
   if(
@@ -4409,14 +4168,15 @@ function changePassword(){
 
 
   if(
-    newPassword !== confirmPassword
+    newPassword !==
+    confirmPassword
   ){
 
     status.className =
       "password-status error";
 
     status.textContent =
-      "تکرار رمز جدید صحیح نیست.";
+      "تکرار رمز جدید مطابقت ندارد.";
 
     return;
 
@@ -4424,56 +4184,33 @@ function changePassword(){
 
 
   /*
-    رمز اصلی همچنان همیشه معتبر است.
-    رمز جدید نیز ذخیره می‌شود.
+    رمز جدید به‌صورت کامل در localStorage
+    ذخیره می‌شود و از این لحظه رمز جدید
+    برای ورود استفاده خواهد شد.
   */
 
   localStorage.setItem(
-    PASSWORD_KEY,
+    STORAGE_KEYS.password,
     newPassword
   );
+
+
+  passwordVerified = false;
 
 
   status.className =
     "password-status success";
 
-
   status.textContent =
-    "رمز جدید با موفقیت ذخیره شد.";
+    "رمز عبور با موفقیت تغییر کرد.";
 
 
-  newPasswordInput.value = "";
+  newInput.value = "";
 
-  confirmPasswordInput.value = "";
+  confirmInput.value = "";
 
-}
+  currentInput.value = "";
 
-
-/* =========================================================
-   RESET PASSWORD FORM
-========================================================= */
-
-function resetPasswordChangeForm(){
-
-  const currentPassword =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmPassword =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
 
   const fields =
     document.getElementById(
@@ -4484,37 +4221,6 @@ function resetPasswordChangeForm(){
     document.getElementById(
       "verifyPasswordButton"
     );
-
-
-  if(currentPassword){
-
-    currentPassword.value = "";
-
-  }
-
-
-  if(newPassword){
-
-    newPassword.value = "";
-
-  }
-
-
-  if(confirmPassword){
-
-    confirmPassword.value = "";
-
-  }
-
-
-  if(status){
-
-    status.textContent = "";
-
-    status.className =
-      "password-status";
-
-  }
 
 
   if(fields){
@@ -4533,6 +4239,86 @@ function resetPasswordChangeForm(){
 
   }
 
+}
+
+
+/* =========================================================
+   RESET PASSWORD FORM
+========================================================= */
+
+function resetPasswordChangeForm(){
+
+  const current =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    );
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    );
+
+  const fields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const status =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+  const button =
+    document.getElementById(
+      "verifyPasswordButton"
+    );
+
+
+  if(current){
+    current.value = "";
+  }
+
+  if(newPassword){
+    newPassword.value = "";
+  }
+
+  if(confirmPassword){
+    confirmPassword.value = "";
+  }
+
+
+  if(fields){
+
+    fields.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  if(status){
+
+    status.textContent =
+      "";
+
+    status.className =
+      "password-status";
+
+  }
+
+
+  if(button){
+
+    button.style.display =
+      "block";
+
+  }
+
 
   passwordVerified = false;
 
@@ -4540,293 +4326,44 @@ function resetPasswordChangeForm(){
 
 
 /* =========================================================
-   CALCULATE PRICE
+   REMOVE OLD KEYS
 ========================================================= */
 
-function calculatePrice(){
-
-  const weightInput =
-    document.getElementById(
-      "calcWeight"
-    );
-
-  const purityInput =
-    document.getElementById(
-      "calcPurity"
-    );
-
-  const laborInput =
-    document.getElementById(
-      "calcLabor"
-    );
-
-  const extraInput =
-    document.getElementById(
-      "calcExtra"
-    );
-
-  const profitInput =
-    document.getElementById(
-      "calcProfit"
-    );
-
-
-  if(
-    !weightInput ||
-    !purityInput ||
-    !laborInput ||
-    !extraInput ||
-    !profitInput
-  ){
-
-    return;
-
-  }
-
-
-  const weight =
-    parseNumber(
-      weightInput.value
-    );
-
-
-  const purity =
-    parseNumber(
-      purityInput.value
-    ) || 999;
-
-
-  const manual999 =
-    getManual999();
-
-
-  const base999 =
-    manual999 > 0
-      ? manual999
-      : currentSilver999;
-
+function removeOldManualDateTimeKeys(){
 
   /*
-    قیمت هر گرم بر اساس عیار
+    این تابع عمداً هیچ داده مهمی را حذف نمی‌کند.
+    فقط برای سازگاری با نسخه‌های قبلی نگه داشته شده است.
   */
-
-  let gramPrice =
-    base999 *
-    (purity / 999);
-
-
-  if(
-    !Number.isFinite(
-      gramPrice
-    )
-  ){
-
-    gramPrice = 0;
-
-  }
-
-
-  const labor =
-    parseNumber(
-      laborInput.value
-    );
-
-
-  const extra =
-    parseNumber(
-      extraInput.value
-    );
-
-
-  const profitPercent =
-    parseNumber(
-      profitInput.value
-    );
-
-
-  const basePrice =
-    weight *
-    gramPrice;
-
-
-  const laborTotal =
-    weight *
-    labor;
-
-
-  const subtotal =
-    basePrice +
-    laborTotal +
-    extra;
-
-
-  const profit =
-    subtotal *
-    (
-      profitPercent / 100
-    );
-
-
-  const finalPrice =
-    subtotal +
-    profit;
-
-
-  const gramElement =
-    document.getElementById(
-      "calcGramPrice"
-    );
-
-  const baseElement =
-    document.getElementById(
-      "calcBase"
-    );
-
-  const laborElement =
-    document.getElementById(
-      "calcLaborResult"
-    );
-
-  const extraElement =
-    document.getElementById(
-      "calcExtraResult"
-    );
-
-  const profitElement =
-    document.getElementById(
-      "calcProfitResult"
-    );
-
-  const finalElement =
-    document.getElementById(
-      "calcFinal"
-    );
-
-
-  if(gramElement){
-
-    gramElement.textContent =
-      formatNumber(
-        gramPrice
-      );
-
-  }
-
-
-  if(baseElement){
-
-    baseElement.textContent =
-      formatNumber(
-        basePrice
-      );
-
-  }
-
-
-  if(laborElement){
-
-    laborElement.textContent =
-      formatNumber(
-        laborTotal
-      );
-
-  }
-
-
-  if(extraElement){
-
-    extraElement.textContent =
-      formatNumber(
-        extra
-      );
-
-  }
-
-
-  if(profitElement){
-
-    profitElement.textContent =
-      formatNumber(
-        profit
-      );
-
-  }
-
-
-  if(finalElement){
-
-    finalElement.textContent =
-      formatNumber(
-        finalPrice
-      ) +
-      " تومان";
-
-  }
 
 }
 
 
 /* =========================================================
-   INITIAL STATE
+   INITIAL CALCULATOR
 ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
   function(){
 
-    /*
-      پنل در ابتدا مخفی است.
-    */
-
-    const app =
-      document.getElementById(
-        "app"
-      );
+    const labor =
+      getDefaultLabor();
 
 
-    const loginPage =
-      document.getElementById(
-        "loginPage"
-      );
-
-
-    if(app){
-
-      app.style.display =
-        "none";
-
-    }
-
-
-    if(loginPage){
-
-      loginPage.style.display =
-        "flex";
-
-    }
-
-
-    /*
-      مقدار پیش‌فرض اجرت
-    */
-
-    const laborInput =
+    const calcLabor =
       document.getElementById(
         "calcLabor"
       );
 
 
-    const defaultLabor =
-      getDefaultLabor();
-
-
     if(
-      laborInput &&
-      defaultLabor > 0
+      calcLabor &&
+      labor > 0
     ){
 
-      laborInput.value =
-        defaultLabor;
+      calcLabor.value =
+        labor;
 
     }
 
