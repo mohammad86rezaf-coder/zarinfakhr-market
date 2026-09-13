@@ -2288,6 +2288,10 @@ function stopClock(){
 }
 
 
+/* =========================================================
+   CLOCK - IRAN FIXED UTC+3:30
+========================================================= */
+
 function updateIranClock(){
 
   const dateElement =
@@ -2305,17 +2309,39 @@ function updateIranClock(){
   }
 
 
-  const now =
-    new Date();
-
-
   try{
+
+    const now =
+      new Date();
+
+
+    /* 
+       محاسبه مستقیم زمان UTC
+       بدون وابستگی به Time Zone دستگاه
+    */
+
+    const utcMilliseconds =
+      now.getTime() +
+      now.getTimezoneOffset() * 60000;
+
+
+    /*
+       ساعت رسمی ایران:
+       UTC + 3:30
+    */
+
+    const iranTime =
+      new Date(
+        utcMilliseconds +
+        (3.5 * 60 * 60 * 1000)
+      );
+
 
     const dateFormatter =
       new Intl.DateTimeFormat(
         "fa-IR",
         {
-          timeZone:"Asia/Tehran",
+          calendar:"persian",
           year:"numeric",
           month:"2-digit",
           day:"2-digit"
@@ -2327,7 +2353,6 @@ function updateIranClock(){
       new Intl.DateTimeFormat(
         "fa-IR",
         {
-          timeZone:"Asia/Tehran",
           hour:"2-digit",
           minute:"2-digit",
           second:"2-digit",
@@ -2337,11 +2362,16 @@ function updateIranClock(){
 
 
     dateElement.textContent =
-      dateFormatter.format(now);
+      dateFormatter.format(
+        iranTime
+      );
 
 
     timeElement.textContent =
-      timeFormatter.format(now);
+      timeFormatter.format(
+        iranTime
+      );
+
 
   }catch(error){
 
