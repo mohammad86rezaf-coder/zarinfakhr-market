@@ -7,7 +7,6 @@
 <title>SILVER ZARIN FAKHR</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -15,21 +14,17 @@
 }
 
 :root{
-
   --ivory:#FAF1E4;
   --warmIvory:#F2E1CF;
-  --softIvory:#FFFDF9;
-
-  --beige:#E8D7C7;
+  --grayBeige:#D2C6BE;
   --greige:#CABCB2;
-  --silver:#B3A59A;
+  --lightBeige:#E0D3CA;
+  --warmSilver:#B3A59A;
 
   --champagne:#C0936C;
-  --gold:#A3744D;
+  --darkGold:#A3744D;
   --bronze:#835935;
-
-  --brown:#5C3D24;
-  --darkBrown:#321D10;
+  --darkBrown:#5C3D24;
 
   --ruby:#9E1E19;
   --burgundy:#521107;
@@ -37,1455 +32,1166 @@
 
   --white:#FFFFFF;
 
-  --green:#20A85A;
-  --greenLight:#74D99A;
+  --onlineGreen:#20D66B;
+  --onlineGreenBright:#7CFFAE;
 
-  --red:#C62828;
-  --redLight:#EF7777;
+  --offlineRed:#FF2929;
+  --offlineRedBright:#FF7777;
+
+  --shadow:0 12px 35px rgba(92,61,36,.13);
 }
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 html{
   scroll-behavior:smooth;
 }
 
 body{
-
   font-family:
     Tahoma,
     Arial,
     sans-serif;
 
   background:
-    linear-gradient(
-      135deg,
-      var(--softIvory),
-      var(--ivory) 45%,
-      var(--warmIvory)
+    radial-gradient(
+      circle at top,
+      #fffaf4 0%,
+      var(--ivory) 42%,
+      var(--warmIvory) 100%
     );
 
-  color:var(--brown);
-
+  color:var(--darkBrown);
   min-height:100vh;
 }
-
 
 /* =========================================================
    LOGIN
 ========================================================= */
 
-#loginPage{
-
+.login-page{
   min-height:100vh;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   padding:20px;
-
 }
 
 .login-box{
-
   width:100%;
-
-  max-width:410px;
-
-  padding:38px 28px;
+  max-width:430px;
 
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,.98),
-      rgba(242,225,207,.96)
+      rgba(250,241,228,.98)
     );
 
-  border:
+  border:1px solid rgba(192,147,108,.45);
+  border-radius:28px;
 
-    1px solid
-    rgba(163,116,77,.55);
-
-  border-radius:24px;
+  padding:35px 25px;
 
   box-shadow:
+    0 20px 60px rgba(92,61,36,.18),
+    inset 0 1px 0 rgba(255,255,255,.9);
 
-    0 20px 55px
-    rgba(92,61,36,.14);
-
-  position:relative;
-
-  overflow:hidden;
-
+  text-align:center;
 }
 
-.login-box::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:0;
-  right:0;
-
-  height:3px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--champagne),
-      var(--gold),
-      var(--champagne),
-      transparent
-    );
-
-}
-
-.logo{
-
-  width:104px;
-  height:104px;
-
-  margin:0 auto 20px;
+.login-logo{
+  width:75px;
+  height:75px;
+  margin:0 auto 18px;
 
   border-radius:50%;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #D9B58C,
-      var(--gold) 55%,
-      var(--brown)
-    );
-
-  border:
-    3px solid
-    var(--white);
-
-  box-shadow:
-
-    0 0 0 1px
-    var(--champagne),
-
-    0 12px 30px
-    rgba(92,61,36,.20);
-
-  position:relative;
-
-}
-
-.logo::after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:8px;
-
-  border:
-
-    1px solid
-    rgba(255,255,255,.55);
-
-  border-radius:50%;
-
-}
-
-.logo span{
-
-  position:relative;
-
-  z-index:2;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:28px;
-
-  font-weight:bold;
+  font-size:22px;
+  font-weight:900;
 
   color:var(--white);
-
-  letter-spacing:1px;
-
-  text-shadow:
-    0 2px 5px
-    rgba(0,0,0,.22);
-
-}
-
-.login-title{
-
-  text-align:center;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:23px;
-
-  font-weight:bold;
-
-  letter-spacing:.4px;
-
-  color:var(--darkBrown);
-
-}
-
-.login-subtitle{
-
-  text-align:center;
-
-  margin-top:8px;
-
-  color:var(--bronze);
-
-  font-size:12px;
-
-}
-
-.password-wrap{
-
-  margin-top:28px;
-
-}
-
-.password-wrap input{
-
-  width:100%;
-
-  height:52px;
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:13px;
-
-  background:var(--white);
-
-  padding:0 15px;
-
-  outline:none;
-
-  font-family:Arial,sans-serif;
-
-  font-size:16px;
-
-  color:var(--darkBrown);
-
-  direction:ltr;
-
-  text-align:left;
-
-  transition:.2s;
-
-}
-
-.password-wrap input:focus{
-
-  border-color:
-    var(--champagne);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(192,147,108,.14);
-
-}
-
-.login-button{
-
-  width:100%;
-
-  height:52px;
-
-  margin-top:14px;
-
-  border:0;
-
-  border-radius:13px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold),
-      var(--champagne)
-    );
-
-  color:var(--white);
-
-  font-family:inherit;
-
-  font-size:15px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 8px 20px
-    rgba(92,61,36,.16);
-
-  transition:.2s;
-
-}
-
-.login-button:hover{
-
-  filter:brightness(1.04);
-
-}
-
-.login-button:active{
-
-  transform:scale(.985);
-
-}
-
-.login-error{
-
-  min-height:22px;
-
-  margin-top:11px;
-
-  text-align:center;
-
-  color:var(--ruby);
-
-  font-size:12px;
-
-}
-
-
-/* =========================================================
-   MAIN APP
-========================================================= */
-
-#app{
-
-  display:none;
-
-  min-height:100vh;
-
-  padding-bottom:30px;
-
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.app-header{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:50;
-
-  background:
-    rgba(250,241,228,.97);
-
-  backdrop-filter:blur(10px);
-
-  border-bottom:
-    1px solid
-    var(--beige);
-
-  box-shadow:
-    0 5px 20px
-    rgba(92,61,36,.06);
-
-  padding:14px 17px;
-
-}
-
-.header-main{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:15px;
-
-}
-
-.brand{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:11px;
-
-}
-
-.brand-logo{
-
-  width:45px;
-  height:45px;
-
-  flex-shrink:0;
-
-  border-radius:50%;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
 
   background:
     linear-gradient(
       145deg,
       var(--champagne),
-      var(--gold)
+      var(--darkGold),
+      var(--bronze)
     );
 
-  border:
-    2px solid
-    var(--white);
-
   box-shadow:
-    0 0 0 1px
-    var(--champagne);
-
+    0 8px 25px rgba(163,116,77,.28);
 }
 
-.brand-logo span{
+.login-title{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
 
-  font-family:
-    Georgia,
-    serif;
-
+.login-subtitle{
+  margin-top:7px;
+  color:#8C7562;
   font-size:14px;
-
-  font-weight:bold;
-
-  color:var(--white);
-
 }
 
-.brand-text strong{
+.input-group{
+  margin-top:25px;
+  text-align:right;
+}
 
+.input-group label{
   display:block;
+  margin-bottom:8px;
+  font-size:13px;
+  font-weight:bold;
+}
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+.input{
+  width:100%;
+  height:48px;
 
-  font-size:15px;
+  border-radius:14px;
+  border:1px solid #D5C4B3;
+
+  background:#FFFDF9;
+
+  padding:0 15px;
 
   color:var(--darkBrown);
+  font-size:15px;
 
-  letter-spacing:.2px;
+  outline:none;
 
+  transition:.2s;
 }
 
-.brand-text small{
+.input:focus{
+  border-color:var(--champagne);
 
-  display:block;
-
-  margin-top:3px;
-
-  font-size:10px;
-
-  color:var(--bronze);
-
+  box-shadow:
+    0 0 0 3px rgba(192,147,108,.12);
 }
 
-.status-box{
+.primary-btn{
+  width:100%;
+  min-height:48px;
+
+  margin-top:18px;
+
+  border:0;
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--darkGold),
+      var(--champagne)
+    );
+
+  color:white;
+
+  font-size:15px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 20px rgba(163,116,77,.22);
+
+  transition:.2s;
+}
+
+.primary-btn:hover{
+  transform:translateY(-1px);
+}
+
+.error-message{
+  min-height:22px;
+  margin-top:12px;
+
+  color:var(--ruby);
+
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+  display:none;
+  min-height:100vh;
+}
+
+.container{
+  width:min(1180px, calc(100% - 28px));
+  margin:auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+
+  background:
+    rgba(250,241,228,.92);
+
+  backdrop-filter:blur(15px);
+
+  border-bottom:
+    1px solid rgba(192,147,108,.25);
+}
+
+.header-inner{
+  min-height:78px;
 
   display:flex;
-
   align-items:center;
+  justify-content:space-between;
 
-  gap:7px;
-
-  font-size:10px;
-
-  color:var(--brown);
-
-  white-space:nowrap;
-
+  gap:15px;
 }
 
-.live-light{
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-  width:9px;
-  height:9px;
+.brand-logo{
+  width:46px;
+  height:46px;
 
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-weight:900;
+  font-size:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--champagne),
+      var(--darkGold)
+    );
+
+  box-shadow:
+    0 7px 18px rgba(163,116,77,.2);
+}
+
+.brand-text h1{
+  font-size:18px;
+  font-weight:900;
+}
+
+.brand-text p{
+  margin-top:3px;
+  font-size:11px;
+  color:#8C7562;
+}
+
+.connection{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  font-size:12px;
+  font-weight:bold;
+
+  color:#397A51;
+}
+
+.connection-dot{
+  width:10px;
+  height:10px;
   border-radius:50%;
 
-  background:var(--green);
+  background:var(--onlineGreen);
 
   box-shadow:
-    0 0 7px
-    var(--green);
+    0 0 7px var(--onlineGreen),
+    0 0 14px rgba(32,214,107,.7);
 
-  animation:
-    livePulse 1.6s
-    ease-in-out
-    infinite;
-
+  animation:pulseOnline 1.4s infinite;
 }
 
-.status-error .live-light{
-
-  background:var(--red);
-
-  box-shadow:
-    0 0 7px
-    var(--red);
-
-}
-
-@keyframes livePulse{
-
+@keyframes pulseOnline{
   0%,100%{
+    transform:scale(1);
     opacity:1;
   }
 
   50%{
-    opacity:.35;
+    transform:scale(.72);
+    opacity:.65;
   }
-
 }
 
-.header-date{
+.status-error .connection{
+  color:var(--ruby);
+}
 
-  margin-top:8px;
+.status-error .connection-dot{
+  background:var(--offlineRed);
 
-  text-align:left;
+  box-shadow:
+    0 0 7px var(--offlineRed),
+    0 0 14px rgba(255,41,41,.7);
+}
+
+/* =========================================================
+   CLOCK
+========================================================= */
+
+.clock-panel{
+  margin-top:20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.92),
+      rgba(242,225,207,.75)
+    );
+
+  border:1px solid rgba(192,147,108,.3);
+
+  border-radius:22px;
+
+  padding:17px 20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:15px;
+
+  box-shadow:var(--shadow);
+}
+
+.clock-title{
+  font-size:12px;
+  color:#907764;
+}
+
+.server-time{
+  font-size:22px;
+  font-weight:900;
+
+  color:var(--darkBrown);
 
   direction:ltr;
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:10px;
-
-  color:var(--bronze);
-
+  text-align:right;
 }
 
+.server-date{
+  margin-top:4px;
+
+  font-size:12px;
+  color:#927967;
+}
 
 /* =========================================================
    NAV
 ========================================================= */
 
 .nav{
+  margin-top:18px;
 
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
 
-  gap:8px;
-
-  overflow-x:auto;
-
-  padding:12px 15px;
-
-  scrollbar-width:none;
-
+  gap:9px;
 }
 
-.nav::-webkit-scrollbar{
-  display:none;
-}
+.nav-btn{
+  min-height:45px;
 
-.nav button{
+  border:1px solid #D9C7B5;
 
-  flex:0 0 auto;
-
-  min-width:95px;
-
-  height:39px;
-
-  padding:0 15px;
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:12px;
+  border-radius:14px;
 
   background:
-    rgba(255,255,255,.9);
+    rgba(255,255,255,.65);
 
-  color:var(--brown);
+  color:#75583F;
 
-  font-family:inherit;
-
-  font-size:11px;
+  font-weight:bold;
+  font-size:13px;
 
   cursor:pointer;
 
   transition:.2s;
-
 }
 
-.nav button:hover{
-
-  border-color:
-    var(--champagne);
-
-}
-
-.nav button.active{
-
+.nav-btn.active{
   background:
     linear-gradient(
       135deg,
-      var(--gold),
-      var(--champagne)
+      var(--champagne),
+      var(--darkGold)
     );
 
-  color:var(--white);
+  color:white;
 
-  border-color:
-    var(--gold);
+  border-color:transparent;
 
+  box-shadow:
+    0 7px 18px rgba(163,116,77,.2);
 }
 
-
 /* =========================================================
-   CONTAINER
+   SECTIONS
 ========================================================= */
 
-.container{
-
-  width:100%;
-
-  max-width:1120px;
-
-  margin:auto;
-
-  padding:
-    5px 15px 25px;
-
-}
-
-.page{
-
+.section{
   display:none;
-
+  padding:22px 0 35px;
 }
 
-.page.active{
-
+.section.active{
   display:block;
-
-  animation:
-    pageAppear .25s ease;
-
 }
 
-@keyframes pageAppear{
-
-  from{
-    opacity:0;
-    transform:translateY(5px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
+.section-title{
+  font-size:21px;
+  font-weight:900;
 }
 
-.page-title{
+.section-description{
+  margin-top:6px;
 
-  margin:
-    10px 0 7px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:22px;
-
-  font-weight:bold;
-
-  color:var(--darkBrown);
-
+  font-size:12px;
+  color:#927967;
 }
-
-.page-description{
-
-  margin-bottom:18px;
-
-  font-size:11px;
-
-  color:var(--bronze);
-
-}
-
 
 /* =========================================================
-   MARKET
+   MARKET GRID
 ========================================================= */
 
 .market-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(155px,1fr)
-    );
-
-  gap:13px;
-
-}
-
-.market-card{
-
-  min-height:155px;
-
-  padding:20px 13px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  justify-content:center;
-
-  text-align:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.98),
-      rgba(242,225,207,.72)
-    );
-
-  border:
-    1px solid
-    rgba(192,147,108,.42);
-
-  border-radius:19px;
-
-  box-shadow:
-    0 8px 22px
-    rgba(92,61,36,.07);
-
-  position:relative;
-
-  overflow:hidden;
-
-  transition:.2s;
-
-}
-
-.market-card::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:22%;
-  right:22%;
-
-  height:2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--champagne),
-      transparent
-    );
-
-}
-
-.market-card:hover{
-
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 12px 27px
-    rgba(92,61,36,.10);
-
-}
-
-.market-title{
-
-  font-size:12px;
-
-  font-weight:bold;
-
-  color:var(--darkBrown);
-
-}
-
-.market-value{
-
-  margin-top:14px;
-
-  direction:ltr;
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:23px;
-
-  font-weight:bold;
-
-  color:var(--gold);
-
-  letter-spacing:.2px;
-
-}
-
-.market-unit{
-
-  margin-top:7px;
-
-  font-size:10px;
-
-  color:var(--bronze);
-
-}
-
-
-/* =========================================================
-   PANEL
-========================================================= */
-
-.panel{
-
-  background:
-    rgba(255,255,255,.90);
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:20px;
-
-  padding:20px;
-
-  box-shadow:
-    0 10px 28px
-    rgba(92,61,36,.07);
-
-}
-
-.form-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(180px,1fr)
-    );
-
-  gap:13px;
-
-}
-
-.form-group label{
-
-  display:block;
-
-  margin-bottom:7px;
-
-  font-size:11px;
-
-  color:var(--darkBrown);
-
-}
-
-.form-group input,
-.form-group select{
-
-  width:100%;
-
-  height:45px;
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:11px;
-
-  background:var(--white);
-
-  padding:0 12px;
-
-  outline:none;
-
-  font-family:inherit;
-
-  color:var(--darkBrown);
-
-  direction:ltr;
-
-  text-align:left;
-
-}
-
-.form-group input:focus,
-.form-group select:focus{
-
-  border-color:
-    var(--champagne);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(192,147,108,.11);
-
-}
-
-
-/* =========================================================
-   RESULTS
-========================================================= */
-
-.result-box{
-
   margin-top:20px;
 
   display:grid;
 
   grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(145px,1fr)
-    );
+    repeat(5, minmax(0,1fr));
 
-  gap:10px;
-
+  gap:14px;
 }
 
-.result-item{
+/* =========================================================
+   MOVING NEON BORDER
+========================================================= */
 
-  padding:14px 10px;
+.market-area{
+  position:relative;
 
-  border:
-    1px solid
-    var(--beige);
+  min-height:158px;
 
-  border-radius:14px;
+  padding:2px;
+
+  overflow:hidden;
+
+  border-radius:22px;
+}
+
+.market-area::before{
+  content:"";
+
+  position:absolute;
+
+  inset:-80%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+
+      transparent 0deg,
+      transparent 285deg,
+
+      var(--onlineGreen) 315deg,
+      var(--onlineGreenBright) 330deg,
+
+      #FFFFFF 340deg,
+
+      var(--onlineGreen) 350deg,
+
+      transparent 360deg
+    );
+
+  animation:
+    priceBorderMove 2s linear infinite;
+
+  filter:
+    drop-shadow(0 0 4px var(--onlineGreen))
+    drop-shadow(0 0 10px rgba(32,214,107,.65));
+}
+
+@keyframes priceBorderMove{
+  0%{
+    transform:rotate(0deg);
+  }
+
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+/* RED BORDER WHEN CONNECTION FAILS */
+
+.status-error .market-area::before{
+  background:
+    conic-gradient(
+      from 0deg,
+
+      transparent 0deg,
+      transparent 285deg,
+
+      var(--offlineRed) 315deg,
+      var(--offlineRedBright) 330deg,
+
+      #FFFFFF 340deg,
+
+      var(--offlineRed) 350deg,
+
+      transparent 360deg
+    );
+
+  filter:
+    drop-shadow(0 0 4px var(--offlineRed))
+    drop-shadow(0 0 10px rgba(255,41,41,.65));
+}
+
+/* =========================================================
+   MARKET CARD
+========================================================= */
+
+.market-card{
+  position:relative;
+
+  z-index:1;
+
+  min-height:154px;
+
+  height:100%;
+
+  padding:18px 14px;
+
+  border-radius:20px;
 
   background:
     linear-gradient(
       145deg,
-      var(--softIvory),
-      var(--warmIvory)
+      rgba(255,255,255,.99),
+      rgba(250,241,228,.98)
     );
 
-  text-align:center;
+  border:1px solid rgba(255,255,255,.9);
 
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 8px 22px rgba(92,61,36,.1);
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
 }
 
-.result-item span{
+.market-icon{
+  width:38px;
+  height:38px;
 
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:9px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #F6E7D4,
+      #E7D0B7
+    );
+
+  color:var(--darkGold);
+
+  font-size:16px;
+  font-weight:900;
+
+  border:1px solid rgba(192,147,108,.25);
+}
+
+.market-title{
+  font-size:13px;
+  font-weight:bold;
+
+  color:#806247;
+}
+
+.market-value{
+  margin-top:8px;
+
+  font-size:20px;
+
+  font-weight:900;
+
+  color:var(--darkBrown);
+
+  direction:ltr;
+}
+
+.market-unit{
+  margin-top:4px;
+
+  font-size:10px;
+
+  color:#9B816B;
+}
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+.calculator-box{
+  margin-top:20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.96),
+      rgba(250,241,228,.95)
+    );
+
+  border:
+    1px solid rgba(192,147,108,.3);
+
+  border-radius:24px;
+
+  padding:22px;
+
+  box-shadow:var(--shadow);
+}
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap:15px;
+}
+
+.form-field label{
   display:block;
 
   margin-bottom:7px;
-
-  font-size:10px;
-
-  color:var(--bronze);
-
-}
-
-.result-item strong{
-
-  direction:ltr;
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:15px;
-
-  color:var(--darkBrown);
-
-}
-
-.final-result{
-
-  margin-top:13px;
-
-  padding:20px;
-
-  border-radius:17px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--brown),
-      var(--gold)
-    );
-
-  color:var(--white);
-
-  text-align:center;
-
-  box-shadow:
-    0 10px 22px
-    rgba(92,61,36,.14);
-
-}
-
-.final-result span{
-
-  display:block;
-
-  margin-bottom:8px;
-
-  font-size:11px;
-
-}
-
-.final-result strong{
-
-  direction:ltr;
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  font-size:24px;
-
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-.settings-list{
-
-  display:grid;
-
-  gap:13px;
-
-}
-
-.settings-item{
-
-  padding:15px;
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:15px;
-
-  background:
-    rgba(255,255,255,.95);
-
-}
-
-.settings-item label{
-
-  display:block;
-
-  margin-bottom:8px;
-
-  font-size:11px;
-
-  color:var(--darkBrown);
-
-}
-
-.settings-item input{
-
-  width:100%;
-
-  height:45px;
-
-  border:
-    1px solid
-    var(--greige);
-
-  border-radius:11px;
-
-  background:var(--white);
-
-  padding:0 12px;
-
-  outline:none;
-
-  font-family:Arial,sans-serif;
-
-  font-size:14px;
-
-  color:var(--darkBrown);
-
-  direction:ltr;
-
-  text-align:left;
-
-}
-
-.settings-item input:focus{
-
-  border-color:
-    var(--champagne);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(192,147,108,.11);
-
-}
-
-.settings-hint{
-
-  margin-top:6px;
-
-  font-size:10px;
-
-  line-height:1.8;
-
-  color:var(--bronze);
-
-}
-
-.settings-button{
-
-  width:100%;
-
-  height:47px;
-
-  margin-top:4px;
-
-  border:0;
-
-  border-radius:12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold),
-      var(--champagne)
-    );
-
-  color:var(--white);
-
-  font-family:inherit;
-
-  font-size:13px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
-}
-
-.settings-button:active{
-
-  transform:scale(.99);
-
-}
-
-.password-status{
-
-  min-height:20px;
-
-  margin-top:8px;
-
-  text-align:center;
-
-  font-size:11px;
-
-}
-
-.password-status.error{
-
-  color:var(--ruby);
-
-}
-
-.password-status.success{
-
-  color:var(--green);
-
-}
-
-.password-fields{
-
-  display:none;
-
-}
-
-.password-fields.show{
-
-  display:grid;
-
-  gap:13px;
-
-}
-
-.change-password-button{
-
-  width:100%;
-
-  height:45px;
-
-  border:
-    1px solid
-    var(--gold);
-
-  border-radius:12px;
-
-  background:
-    var(--softIvory);
-
-  color:var(--brown);
-
-  font-family:inherit;
 
   font-size:12px;
 
   font-weight:bold;
 
+  color:#75583F;
+}
+
+.select,
+.number-input{
+  width:100%;
+
+  height:46px;
+
+  border:1px solid #D6C4B1;
+
+  border-radius:13px;
+
+  background:#FFFDF9;
+
+  padding:0 12px;
+
+  color:var(--darkBrown);
+
+  outline:none;
+
+  font-size:14px;
+}
+
+.select:focus,
+.number-input:focus{
+  border-color:var(--champagne);
+
+  box-shadow:
+    0 0 0 3px rgba(192,147,108,.12);
+}
+
+.calc-button{
+  width:100%;
+
+  margin-top:18px;
+
+  min-height:48px;
+
+  border:0;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--darkGold),
+      var(--champagne)
+    );
+
+  color:white;
+
+  font-weight:bold;
+
   cursor:pointer;
-
-  transition:.2s;
-
 }
 
-.change-password-button:hover{
+.result-box{
+  margin-top:20px;
 
-  background:var(--warmIvory);
+  border-top:
+    1px solid rgba(192,147,108,.25);
 
+  padding-top:18px;
 }
 
-.save-message{
+.result-row{
+  display:flex;
 
-  min-height:20px;
+  justify-content:space-between;
 
-  margin-top:8px;
+  align-items:center;
 
-  text-align:center;
+  padding:9px 0;
+
+  border-bottom:
+    1px dashed rgba(192,147,108,.2);
+
+  font-size:13px;
+}
+
+.result-row span:first-child{
+  color:#806247;
+}
+
+.result-row span:last-child{
+  font-weight:900;
+
+  direction:ltr;
+}
+
+.final-result{
+  margin-top:12px;
+
+  padding:15px;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #F5E4CF,
+      #EBD4BB
+    );
+
+  border:1px solid rgba(192,147,108,.3);
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+}
+
+.final-result strong{
+  color:var(--darkBrown);
+}
+
+.final-result-value{
+  font-size:22px;
+
+  font-weight:900;
+
+  direction:ltr;
+
+  color:var(--burgundy);
+}
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-box{
+  margin-top:20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.96),
+      rgba(250,241,228,.96)
+    );
+
+  border:
+    1px solid rgba(192,147,108,.3);
+
+  border-radius:24px;
+
+  padding:22px;
+
+  box-shadow:var(--shadow);
+}
+
+.setting-item{
+  margin-bottom:18px;
+}
+
+.setting-item label{
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:13px;
+
+  font-weight:bold;
+}
+
+.setting-help{
+  margin-top:6px;
 
   font-size:11px;
 
-  color:var(--green);
-
+  color:#967D69;
 }
 
+.save-settings{
+  width:100%;
+
+  min-height:48px;
+
+  border:0;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--darkGold),
+      var(--champagne)
+    );
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   PASSWORD CHANGE
+========================================================= */
+
+.password-box{
+  margin-top:22px;
+
+  padding-top:22px;
+
+  border-top:
+    1px solid rgba(192,147,108,.25);
+}
+
+.password-title{
+  font-size:16px;
+
+  font-weight:900;
+
+  margin-bottom:15px;
+}
+
+.password-fields{
+  display:none;
+}
+
+.password-message{
+  min-height:22px;
+
+  margin-top:9px;
+
+  font-size:12px;
+
+  font-weight:bold;
+}
+
+.password-message.success{
+  color:#21854B;
+}
+
+.password-message.error{
+  color:var(--ruby);
+}
+
+.change-password-btn{
+  width:100%;
+
+  min-height:46px;
+
+  margin-top:15px;
+
+  border:1px solid var(--darkGold);
+
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.65);
+
+  color:var(--darkGold);
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+.change-password-btn:hover{
+  background:#F5E5D2;
+}
+
+/* =========================================================
+   EXIT
+========================================================= */
+
+.exit-btn{
+  width:100%;
+
+  margin-top:14px;
+
+  min-height:48px;
+
+  border:1px solid rgba(158,30,25,.3);
+
+  border-radius:14px;
+
+  background:
+    rgba(158,30,25,.04);
+
+  color:var(--ruby);
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 .footer{
-
-  max-width:1120px;
-
-  margin:
-    10px auto 0;
-
-  padding:
-    20px 15px;
+  padding:15px 0 28px;
 
   text-align:center;
 
-  color:var(--bronze);
-
-  font-size:10px;
-
-}
-
-.footer-slogan{
-
-  font-family:
-    Georgia,
-    serif;
+  color:#9A806A;
 
   font-size:11px;
-
 }
 
-.instagram-link{
+.footer-brand{
+  color:var(--darkGold);
 
-  display:inline-flex;
+  font-weight:900;
 
-  align-items:center;
-
-  gap:7px;
-
-  margin-top:9px;
-
-  color:var(--brown);
-
-  text-decoration:none;
-
-  font-family:Arial,sans-serif;
-
-  font-size:11px;
-
-  font-weight:bold;
-
+  margin-bottom:5px;
 }
-
-.instagram-icon{
-
-  width:19px;
-
-  height:19px;
-
-}
-
 
 /* =========================================================
-   EXIT
+   TOAST
 ========================================================= */
 
-.exit-button{
+.toast{
+  position:fixed;
 
-  width:100%;
+  left:50%;
 
-  height:45px;
+  bottom:22px;
 
-  margin-top:18px;
+  transform:
+    translate(-50%,120px);
 
-  border:
-    1px solid
-    var(--ruby);
+  z-index:1000;
 
-  border-radius:12px;
+  min-width:240px;
 
-  background:transparent;
+  max-width:calc(100% - 30px);
 
-  color:var(--ruby);
+  padding:13px 18px;
 
-  font-family:inherit;
+  border-radius:14px;
+
+  background:
+    rgba(92,61,36,.95);
+
+  color:white;
+
+  text-align:center;
 
   font-size:12px;
 
-  cursor:pointer;
+  font-weight:bold;
 
+  opacity:0;
+
+  transition:.3s;
 }
 
-.exit-button:hover{
+.toast.show{
+  transform:
+    translate(-50%,0);
 
-  background:
-    rgba(158,30,25,.05);
-
+  opacity:1;
 }
-
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:650px){
+@media(max-width:1050px){
 
-  .header-main{
-
-    align-items:flex-start;
-
+  .market-grid{
+    grid-template-columns:
+      repeat(3,1fr);
   }
 
-  .status-box{
+}
 
-    padding-top:4px;
+@media(max-width:700px){
 
+  .container{
+    width:min(100% - 20px, 600px);
   }
 
-  .brand-text strong{
+  .header-inner{
+    min-height:70px;
+  }
 
-    font-size:13px;
+  .brand-text h1{
+    font-size:15px;
+  }
 
+  .connection{
+    font-size:10px;
+  }
+
+  .clock-panel{
+    padding:14px;
+  }
+
+  .server-time{
+    font-size:19px;
   }
 
   .market-grid{
-
     grid-template-columns:
       repeat(2,1fr);
 
+    gap:12px;
+  }
+
+  .market-area{
+    min-height:150px;
   }
 
   .market-card{
-
-    min-height:145px;
-
-    padding:13px 8px;
-
-  }
-
-  .market-title{
-
-    font-size:10px;
-
+    min-height:146px;
   }
 
   .market-value{
-
-    font-size:19px;
-
+    font-size:18px;
   }
 
-  .market-unit{
-
-    font-size:9px;
-
+  .form-grid{
+    grid-template-columns:1fr;
   }
 
 }
 
-@media(max-width:380px){
+@media(max-width:420px){
+
+  .brand-logo{
+    width:40px;
+    height:40px;
+  }
+
+  .brand-text h1{
+    font-size:13px;
+  }
+
+  .brand-text p{
+    font-size:9px;
+  }
 
   .market-grid{
+    gap:9px;
+  }
 
-    grid-template-columns:1fr;
+  .market-card{
+    padding:13px 8px;
+  }
 
+  .market-value{
+    font-size:16px;
+  }
+
+  .market-title{
+    font-size:11px;
   }
 
 }
 
+/* احترام به کاهش حرکت */
+@media(prefers-reduced-motion:reduce){
+
+  .market-area::before{
+    animation:none;
+  }
+
+  .connection-dot{
+    animation:none;
+  }
+}
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
+<!-- =======================================================
      LOGIN
-========================================================= -->
+======================================================= -->
 
-<div id="loginPage">
+<div id="loginPage" class="login-page">
 
   <div class="login-box">
 
-    <div class="logo">
-      <span>SZF</span>
+    <div class="login-logo">
+      SZF
     </div>
 
     <div class="login-title">
@@ -1493,326 +1199,398 @@ body{
     </div>
 
     <div class="login-subtitle">
-      پنل مدیریت و نمایش قیمت
+      پنل مدیریت تابلو قیمت نقره
     </div>
 
-    <div class="password-wrap">
+    <div class="input-group">
+
+      <label for="loginPassword">
+        رمز عبور
+      </label>
 
       <input
-        id="passwordInput"
+        id="loginPassword"
+        class="input"
         type="password"
-        placeholder="رمز عبور"
-        autocomplete="off"
+        autocomplete="current-password"
+        placeholder="رمز عبور را وارد کنید"
       >
-
-      <button
-        class="login-button"
-        onclick="login()"
-      >
-        ورود به پنل
-      </button>
-
-      <div
-        id="loginError"
-        class="login-error"
-      ></div>
 
     </div>
+
+    <button
+      class="primary-btn"
+      onclick="login()"
+    >
+      ورود به پنل
+    </button>
+
+    <div
+      id="loginError"
+      class="error-message"
+    ></div>
 
   </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      APP
-========================================================= -->
+======================================================= -->
 
-<div id="app">
-
+<div id="app" class="app">
 
   <!-- HEADER -->
 
-  <header class="app-header">
+  <header class="header">
 
-    <div class="header-main">
+    <div class="container header-inner">
 
       <div class="brand">
 
         <div class="brand-logo">
-          <span>SZF</span>
+          SZF
         </div>
 
         <div class="brand-text">
 
-          <strong>
+          <h1>
             SILVER ZARIN FAKHR
-          </strong>
+          </h1>
 
-          <small>
-            نقره زرین فخر
-          </small>
+          <p>
+            تابلو حرفه‌ای قیمت نقره
+          </p>
 
         </div>
 
       </div>
 
-
-      <div class="status-box">
+      <div class="connection">
 
         <span
-          id="liveLight"
-          class="live-light"
+          id="connectionDot"
+          class="connection-dot"
         ></span>
 
         <span id="connectionText">
-          آنلاین • به‌روز
+          آنلاین
         </span>
 
       </div>
 
     </div>
 
-
-    <div class="header-date">
-
-      <span id="currentDate">
-        ----
-      </span>
-
-      <span>
-        &nbsp;|&nbsp;
-      </span>
-
-      <span id="currentTime">
-        --:--:--
-      </span>
-
-    </div>
-
   </header>
 
 
-  <!-- NAVIGATION -->
-
-  <nav class="nav">
-
-    <button
-      class="active"
-      onclick="showPage('market',this)"
-    >
-      بازار
-    </button>
-
-    <button
-      onclick="showPage('calculator',this)"
-    >
-      محاسبه قیمت
-    </button>
-
-    <button
-      onclick="showPage('settings',this)"
-    >
-      تنظیمات
-    </button>
-
-  </nav>
-
-
-  <!-- CONTENT -->
-
   <main class="container">
 
+    <!-- CLOCK -->
 
-    <!-- =====================================================
-         MARKET
-    ====================================================== -->
+    <div class="clock-panel">
 
-    <section
-      id="market"
-      class="page active"
-    >
+      <div>
 
-      <div class="page-title">
-        قیمت لحظه‌ای بازار
+        <div class="clock-title">
+          زمان سرور
+        </div>
+
+        <div
+          id="serverTime"
+          class="server-time"
+        >
+          --:--:--
+        </div>
+
+        <div
+          id="serverDate"
+          class="server-date"
+        >
+          ----/--/--
+        </div>
+
       </div>
 
-      <div class="page-description">
-        اطلاعات بازار به‌صورت خودکار به‌روزرسانی می‌شود.
+      <div>
+        <div class="clock-title">
+          وضعیت اطلاعات بازار
+        </div>
+
+        <div
+          id="lastUpdate"
+          class="server-date"
+        >
+          در حال دریافت...
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- NAV -->
+
+    <nav class="nav">
+
+      <button
+        class="nav-btn active"
+        data-section="marketSection"
+        onclick="showSection('marketSection',this)"
+      >
+        بازار
+      </button>
+
+      <button
+        class="nav-btn"
+        data-section="calculatorSection"
+        onclick="showSection('calculatorSection',this)"
+      >
+        محاسبه قیمت
+      </button>
+
+      <button
+        class="nav-btn"
+        data-section="settingsSection"
+        onclick="showSection('settingsSection',this)"
+      >
+        تنظیمات
+      </button>
+
+    </nav>
+
+
+    <!-- ===================================================
+         MARKET
+    ==================================================== -->
+
+    <section
+      id="marketSection"
+      class="section active"
+    >
+
+      <div class="section-title">
+        قیمت لحظه‌ای نقره
+      </div>
+
+      <div class="section-description">
+        اطلاعات بازار به‌صورت خودکار و پیوسته به‌روزرسانی می‌شود.
       </div>
 
 
       <div class="market-grid">
 
+        <!-- 1 -->
 
-        <div class="market-card">
+        <div class="market-area">
 
-          <div class="market-title">
-            مثقال ۱۷ عیار
-          </div>
+          <div class="market-card">
 
-          <div
-            id="mithqal17"
-            class="market-value"
-          >
-            —
-          </div>
+            <div class="market-icon">
+              M
+            </div>
 
-          <div class="market-unit">
-            تومان
-          </div>
+            <div class="market-title">
+              مثقال ۱۷ عیار
+            </div>
 
-        </div>
+            <div
+              id="mithqal17"
+              class="market-value"
+            >
+              --
+            </div>
 
+            <div class="market-unit">
+              تومان
+            </div>
 
-        <div class="market-card">
-
-          <div class="market-title">
-            انس نقره
-          </div>
-
-          <div
-            id="silverOunce"
-            class="market-value"
-          >
-            —
-          </div>
-
-          <div class="market-unit">
-            دلار
           </div>
 
         </div>
 
 
-        <div class="market-card">
+        <!-- 2 -->
 
-          <div class="market-title">
-            دلار
-          </div>
+        <div class="market-area">
 
-          <div
-            id="usd"
-            class="market-value"
-          >
-            —
-          </div>
+          <div class="market-card">
 
-          <div class="market-unit">
-            تومان
-          </div>
+            <div class="market-icon">
+              Ag
+            </div>
 
-        </div>
+            <div class="market-title">
+              انس نقره
+            </div>
 
+            <div
+              id="silverOunce"
+              class="market-value"
+            >
+              --
+            </div>
 
-        <div class="market-card">
+            <div class="market-unit">
+              دلار
+            </div>
 
-          <div class="market-title">
-            نقره 999
-          </div>
-
-          <div
-            id="silver999"
-            class="market-value"
-          >
-            —
-          </div>
-
-          <div class="market-unit">
-            تومان / گرم
           </div>
 
         </div>
 
 
-        <div class="market-card">
+        <!-- 3 -->
 
-          <div class="market-title">
-            نقره 925
-          </div>
+        <div class="market-area">
 
-          <div
-            id="silver925"
-            class="market-value"
-          >
-            —
-          </div>
+          <div class="market-card">
 
-          <div class="market-unit">
-            تومان / گرم
+            <div class="market-icon">
+              $
+            </div>
+
+            <div class="market-title">
+              دلار
+            </div>
+
+            <div
+              id="usdPrice"
+              class="market-value"
+            >
+              --
+            </div>
+
+            <div class="market-unit">
+              تومان
+            </div>
+
           </div>
 
         </div>
 
+
+        <!-- 4 -->
+
+        <div class="market-area">
+
+          <div class="market-card">
+
+            <div class="market-icon">
+              999
+            </div>
+
+            <div class="market-title">
+              نقره ۹۹۹
+            </div>
+
+            <div
+              id="silver999"
+              class="market-value"
+            >
+              --
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="market-area">
+
+          <div class="market-card">
+
+            <div class="market-icon">
+              925
+            </div>
+
+            <div class="market-title">
+              نقره ۹۲۵
+            </div>
+
+            <div
+              id="silver925"
+              class="market-value"
+            >
+              --
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          CALCULATOR
-    ====================================================== -->
+    ==================================================== -->
 
     <section
-      id="calculator"
-      class="page"
+      id="calculatorSection"
+      class="section"
     >
 
-      <div class="page-title">
+      <div class="section-title">
         محاسبه قیمت نقره
       </div>
 
-      <div class="page-description">
-        محاسبه قیمت بر اساس وزن، عیار، اجرت، هزینه اضافی و سود فروش.
+      <div class="section-description">
+        محاسبه قیمت بر اساس عیار، وزن، اجرت، سود و هزینه‌های اضافی.
       </div>
 
 
-      <div class="panel">
-
+      <div class="calculator-box">
 
         <div class="form-grid">
 
+          <div class="form-field">
 
-          <div class="form-group">
-
-            <label>
-              وزن نقره (گرم)
+            <label for="calcWeight">
+              وزن نقره / گرم
             </label>
 
             <input
               id="calcWeight"
+              class="number-input"
               type="number"
               step="0.01"
               min="0"
-              placeholder="مثلاً 10"
-              oninput="calculatePrice()"
+              placeholder="مثلاً 10.50"
             >
 
           </div>
 
 
-          <div class="form-group">
+          <div class="form-field">
 
-            <label>
+            <label for="calcPurity">
               عیار
             </label>
 
             <select
               id="calcPurity"
-              onchange="calculatePrice()"
+              class="select"
             >
-
-              <option value="999">
-                999
-              </option>
 
               <option value="925">
                 925
               </option>
 
-              <option value="700">
-                700
+              <option value="999">
+                999
               </option>
 
             </select>
@@ -1820,476 +1598,477 @@ body{
           </div>
 
 
-          <div class="form-group">
+          <div class="form-field">
 
-            <label>
+            <label for="calcLabor">
               اجرت هر گرم
             </label>
 
             <input
               id="calcLabor"
+              class="number-input"
               type="number"
               min="0"
-              step="1"
-              placeholder="0"
-              oninput="calculatePrice()"
+              step="1000"
+              placeholder="اجرت"
             >
 
           </div>
 
 
-          <div class="form-group">
+          <div class="form-field">
 
-            <label>
+            <label for="calcExtra">
               هزینه اضافی
             </label>
 
             <input
               id="calcExtra"
+              class="number-input"
               type="number"
               min="0"
-              step="1"
-              placeholder="0"
-              oninput="calculatePrice()"
+              step="1000"
+              value="0"
             >
 
           </div>
 
 
-          <div class="form-group">
+          <div class="form-field">
 
-            <label>
-              سود فروش (%)
+            <label for="calcProfit">
+              درصد سود
             </label>
 
             <input
               id="calcProfit"
+              class="number-input"
               type="number"
               min="0"
               step="0.1"
               value="0"
-              oninput="calculatePrice()"
             >
 
           </div>
 
-
         </div>
+
+
+        <button
+          class="calc-button"
+          onclick="calculatePrice()"
+        >
+          محاسبه قیمت
+        </button>
 
 
         <div class="result-box">
 
-
-          <div class="result-item">
+          <div class="result-row">
 
             <span>
-              قیمت هر گرم
+              قیمت هر گرم بر اساس عیار
             </span>
 
-            <strong id="calcGramPrice">
-              0
-            </strong>
+            <span id="calcGramPrice">
+              ۰ تومان
+            </span>
 
           </div>
 
 
-          <div class="result-item">
+          <div class="result-row">
 
             <span>
-              قیمت پایه
+              ارزش نقره
             </span>
 
-            <strong id="calcBase">
-              0
-            </strong>
+            <span id="calcBase">
+              ۰ تومان
+            </span>
 
           </div>
 
 
-          <div class="result-item">
+          <div class="result-row">
 
             <span>
               مجموع اجرت
             </span>
 
-            <strong id="calcLaborResult">
-              0
-            </strong>
+            <span id="calcLaborResult">
+              ۰ تومان
+            </span>
 
           </div>
 
 
-          <div class="result-item">
+          <div class="result-row">
 
             <span>
               هزینه اضافی
             </span>
 
-            <strong id="calcExtraResult">
-              0
-            </strong>
+            <span id="calcExtraResult">
+              ۰ تومان
+            </span>
 
           </div>
 
 
-          <div class="result-item">
+          <div class="result-row">
 
             <span>
               سود
             </span>
 
-            <strong id="calcProfitResult">
-              0
-            </strong>
+            <span id="calcProfitResult">
+              ۰ تومان
+            </span>
 
           </div>
 
 
+          <div class="final-result">
+
+            <strong>
+              قیمت نهایی
+            </strong>
+
+            <span
+              id="calcFinal"
+              class="final-result-value"
+            >
+              ۰ تومان
+            </span>
+
+          </div>
+
         </div>
-
-
-        <div class="final-result">
-
-          <span>
-            قیمت نهایی
-          </span>
-
-          <strong id="calcFinal">
-            0 تومان
-          </strong>
-
-        </div>
-
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          SETTINGS
-    ====================================================== -->
+    ==================================================== -->
 
     <section
-      id="settings"
-      class="page"
+      id="settingsSection"
+      class="section"
     >
 
-      <div class="page-title">
+      <div class="section-title">
         تنظیمات
       </div>
 
-      <div class="page-description">
-        تنظیمات اختصاصی پنل زرین فخر
+      <div class="section-description">
+        تنظیمات مدیریتی تابلو قیمت SILVER ZARIN FAKHR
       </div>
 
 
-      <div class="panel">
-
-        <div class="settings-list">
+      <div class="settings-box">
 
 
-          <!-- MANUAL SILVER -->
+        <!-- MANUAL 999 -->
 
-          <div class="settings-item">
+        <div class="setting-item">
 
-            <label>
-              قیمت دستی نقره 999
-            </label>
+          <label for="manual999">
+            قیمت دستی نقره ۹۹۹
+          </label>
 
-            <input
-              id="manual999"
-              type="number"
-              min="0"
-              step="1"
-              placeholder="برای استفاده از قیمت آنلاین خالی بگذارید"
-            >
+          <input
+            id="manual999"
+            class="number-input"
+            type="number"
+            min="0"
+            step="100"
+            placeholder="خالی = استفاده از قیمت آنلاین"
+          >
 
-            <div class="settings-hint">
-              اگر خالی باشد، قیمت آنلاین نقره 999 استفاده می‌شود.
-            </div>
-
+          <div class="setting-help">
+            اگر مقدار وارد شود، محاسبات از این قیمت استفاده می‌کنند.
+            خالی بودن یعنی استفاده از قیمت آنلاین.
           </div>
 
+        </div>
 
-          <!-- DEFAULT LABOR -->
 
-          <div class="settings-item">
+        <!-- DEFAULT LABOR -->
 
-            <label>
-              اجرت پیش‌فرض هر گرم
-            </label>
+        <div class="setting-item">
 
-            <input
-              id="defaultLabor"
-              type="number"
-              min="0"
-              step="1"
-              placeholder="0"
-            >
+          <label for="defaultLabor">
+            اجرت پیش‌فرض هر گرم
+          </label>
 
-            <div class="settings-hint">
-              این مقدار به‌صورت پیش‌فرض در محاسبه قیمت استفاده می‌شود.
-            </div>
+          <input
+            id="defaultLabor"
+            class="number-input"
+            type="number"
+            min="0"
+            step="1000"
+            placeholder="مثلاً 100000"
+          >
 
+        </div>
+
+
+        <button
+          class="save-settings"
+          onclick="saveSettings()"
+        >
+          ذخیره تنظیمات
+        </button>
+
+
+        <!-- PASSWORD -->
+
+        <div class="password-box">
+
+          <div class="password-title">
+            تغییر رمز عبور
           </div>
 
 
           <!-- CURRENT PASSWORD -->
 
-          <div class="settings-item">
+          <div id="currentPasswordArea">
 
-            <label>
-              تغییر رمز عبور
-            </label>
+            <div class="setting-item">
 
-            <input
-              id="currentPassword"
-              type="password"
-              placeholder="رمز فعلی"
-              autocomplete="current-password"
-            >
+              <label for="currentPassword">
+                رمز عبور فعلی
+              </label>
 
-            <div
-              id="passwordStatus"
-              class="password-status"
-            ></div>
-
-
-            <div
-              id="passwordFields"
-              class="password-fields"
-            >
-
-              <div>
-
-                <label>
-                  رمز جدید
-                </label>
-
-                <input
-                  id="newPassword"
-                  type="password"
-                  placeholder="رمز جدید"
-                  autocomplete="new-password"
-                >
-
-              </div>
-
-
-              <div>
-
-                <label>
-                  تکرار رمز جدید
-                </label>
-
-                <input
-                  id="confirmPassword"
-                  type="password"
-                  placeholder="تکرار رمز جدید"
-                  autocomplete="new-password"
-                >
-
-              </div>
-
-
-              <button
-                class="change-password-button"
-                onclick="changePassword()"
+              <input
+                id="currentPassword"
+                class="input"
+                type="password"
+                autocomplete="current-password"
+                placeholder="رمز فعلی را وارد کنید"
               >
-                تغییر رمز عبور
-              </button>
+
+            </div>
+
+            <button
+              class="change-password-btn"
+              onclick="verifyCurrentPassword()"
+            >
+              بررسی رمز فعلی
+            </button>
+
+          </div>
+
+
+          <!-- NEW PASSWORD -->
+
+          <div
+            id="newPasswordArea"
+            class="password-fields"
+          >
+
+            <div class="setting-item">
+
+              <label for="newPassword">
+                رمز عبور جدید
+              </label>
+
+              <input
+                id="newPassword"
+                class="input"
+                type="password"
+                autocomplete="new-password"
+                placeholder="حداقل ۶ کاراکتر"
+              >
+
+            </div>
+
+
+            <div class="setting-item">
+
+              <label for="confirmPassword">
+                تکرار رمز عبور جدید
+              </label>
+
+              <input
+                id="confirmPassword"
+                class="input"
+                type="password"
+                autocomplete="new-password"
+                placeholder="رمز جدید را دوباره وارد کنید"
+              >
 
             </div>
 
 
             <button
-              id="verifyPasswordButton"
-              class="settings-button"
-              onclick="verifyCurrentPassword()"
+              class="change-password-btn"
+              onclick="changePassword()"
             >
-              تأیید رمز فعلی
+              تغییر رمز عبور
             </button>
-
 
           </div>
 
 
-          <!-- SAVE GENERAL SETTINGS -->
-
-          <button
-            class="settings-button"
-            onclick="saveSettings()"
-          >
-            ذخیره تنظیمات
-          </button>
-
-
           <div
-            id="saveMessage"
-            class="save-message"
+            id="passwordMessage"
+            class="password-message"
           ></div>
-
 
         </div>
 
+
+        <!-- EXIT -->
+
+        <button
+          class="exit-btn"
+          onclick="logout()"
+        >
+          خروج از پنل
+        </button>
+
       </div>
-
-
-      <button
-        class="exit-button"
-        onclick="exitApp()"
-      >
-        خروج از پنل
-      </button>
-
 
     </section>
 
 
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+      <div class="footer-brand">
+        SILVER ZARIN FAKHR
+      </div>
+
+      <div>
+        زیبایی در درخشندگی، اصالت در ماندگاری
+      </div>
+
+    </footer>
+
   </main>
-
-
-  <!-- FOOTER -->
-
-  <footer class="footer">
-
-    <div class="footer-slogan">
-      زیبایی در درخشندگی، اصالت در ماندگاری
-    </div>
-
-
-    <a
-      class="instagram-link"
-      href="https://instagram.com/zarinfakhrSZF"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-
-      <svg
-        class="instagram-icon"
-        viewBox="0 0 24 24"
-      >
-
-        <rect
-          x="3"
-          y="3"
-          width="18"
-          height="18"
-          rx="5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        />
-
-        <circle
-          cx="12"
-          cy="12"
-          r="4.2"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        />
-
-        <circle
-          cx="17.5"
-          cy="6.5"
-          r="1.3"
-          fill="currentColor"
-        />
-
-      </svg>
-
-      @zarinfakhrSZF
-
-    </a>
-
-  </footer>
-
 
 </div>
 
 
+<!-- TOAST -->
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
 <script>
 
-
 /* =========================================================
-   API
+   CONFIG
 ========================================================= */
 
 const API =
   location.protocol === "file:" ||
   location.hostname === "localhost"
-
     ? "https://zarinfakhr-market-v2.vercel.app/api/prices"
-
     : "/api/prices";
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-let currentSilver999 = 0;
-
-let priceInterval = null;
-
-
-/*
-  زمان پایه سرور
-*/
-
-let serverBaseTime = null;
-
-
-/*
-  زمان دستگاه در لحظه دریافت
-  زمان سرور
-*/
-
-let clientBaseTime = null;
-
-
-/*
-  مشخص می‌کند رمز فعلی
-  برای تغییر رمز تأیید شده یا خیر.
-*/
-
-let passwordVerified = false;
-
-
-/* =========================================================
-   DEFAULT PASSWORD
-========================================================= */
 
 const DEFAULT_PASSWORD =
   "@Mohammad1386";
 
 
+const PASSWORD_KEY =
+  "zarinFakhrPassword";
+
+
+const MANUAL_999_KEY =
+  "zarinFakhrManual999";
+
+
+const DEFAULT_LABOR_KEY =
+  "zarinFakhrDefaultLabor";
+
+
 /* =========================================================
-   PASSWORD
+   MARKET DATA
 ========================================================= */
+
+let silverOunceValue = 0;
+let usdValue = 0;
+let silver999Value = 0;
+
+let serverBaseTime = null;
+let clientBaseTime = null;
+
+let lastSuccessfulUpdate = null;
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function convertDigitsToEnglish(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/[۰-۹]/g, function(d){
+      return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+    })
+    .replace(/[٠-٩]/g, function(d){
+      return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+    });
+}
+
+
+function formatNumber(value, decimals = 0){
+
+  if(!Number.isFinite(Number(value))){
+    return "۰";
+  }
+
+  return Number(value).toLocaleString(
+    "fa-IR",
+    {
+      minimumFractionDigits:decimals,
+      maximumFractionDigits:decimals
+    }
+  );
+}
+
+
+function formatEnglishNumber(value, decimals = 2){
+
+  if(!Number.isFinite(Number(value))){
+    return "--";
+  }
+
+  return Number(value).toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits:decimals,
+      maximumFractionDigits:decimals
+    }
+  );
+}
+
 
 function getCurrentPassword(){
 
-  const savedPassword =
-    localStorage.getItem(
-      "zarinFakhrPassword"
-    );
+  const saved =
+    localStorage.getItem(PASSWORD_KEY);
 
-
-  if(
-    typeof savedPassword === "string" &&
-    savedPassword.length > 0
-  ){
-
-    return savedPassword;
-
+  if(saved !== null && saved !== ""){
+    return saved;
   }
 
-
   return DEFAULT_PASSWORD;
-
 }
 
 
@@ -2300,1371 +2079,72 @@ function getCurrentPassword(){
 function login(){
 
   const input =
-    document.getElementById(
-      "passwordInput"
-    );
+    document.getElementById("loginPassword");
 
   const error =
-    document.getElementById(
-      "loginError"
-    );
-
-  const loginPage =
-    document.getElementById(
-      "loginPage"
-    );
-
-  const app =
-    document.getElementById(
-      "app"
-    );
-
-
-  if(
-    !input ||
-    !error ||
-    !loginPage ||
-    !app
-  ){
-
-    return;
-
-  }
-
+    document.getElementById("loginError");
 
   const password =
-    String(
-      input.value || ""
-    );
+    input.value;
 
+  if(password === getCurrentPassword()){
 
-  /*
-    فقط رمز فعلی معتبر است.
-    اگر رمز جدید قبلاً ثبت شده باشد،
-    رمز پیش‌فرض دیگر پذیرفته نمی‌شود.
-  */
+    document.getElementById("loginPage")
+      .style.display = "none";
 
-  const correctPassword =
-    getCurrentPassword();
-
-
-  if(
-    password === correctPassword
-  ){
-
-    loginPage.style.display =
-      "none";
-
-    app.style.display =
-      "block";
-
-
-    input.value = "";
+    document.getElementById("app")
+      .style.display = "block";
 
     error.textContent = "";
 
+    input.value = "";
 
     loadSettings();
 
-    updateIranClock();
-
-    startPriceUpdates();
-
-    calculatePrice();
-
+    startMarket();
 
     return;
-
   }
-
-
-  input.value = "";
 
   error.textContent =
-    "رمز عبور اشتباه است.";
-
-  input.focus();
+    "رمز عبور اشتباه است";
 
 }
 
 
-/* =========================================================
-   EXIT
-========================================================= */
+document
+  .getElementById("loginPassword")
+  .addEventListener(
+    "keydown",
+    function(event){
 
-function exitApp(){
-
-  if(priceInterval){
-
-    clearInterval(
-      priceInterval
-    );
-
-    priceInterval = null;
-
-  }
-
-
-  serverBaseTime = null;
-
-  clientBaseTime = null;
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "loginPage"
-  ).style.display =
-    "flex";
-
-
-  document.getElementById(
-    "passwordInput"
-  ).value = "";
-
-
-  document.getElementById(
-    "loginError"
-  ).textContent = "";
-
-
-  setConnectionState(
-    "loading"
-  );
-
-
-  passwordVerified = false;
-
-
-  resetPasswordChangeForm();
-
-
-  setTimeout(
-    function(){
-
-      const input =
-        document.getElementById(
-          "passwordInput"
-        );
-
-      if(input){
-        input.focus();
+      if(event.key === "Enter"){
+        login();
       }
 
-    },
-    50
-  );
-
-}
-
-
-/* =========================================================
-   DIGITS
-========================================================= */
-
-function convertDigitsToEnglish(
-  value
-){
-
-  return String(value)
-
-    .replace(
-      /[۰-۹]/g,
-      d =>
-        "۰۱۲۳۴۵۶۷۸۹"
-          .indexOf(d)
-    )
-
-    .replace(
-      /[٠-٩]/g,
-      d =>
-        "٠١٢٣٤٥٦٧٨٩"
-          .indexOf(d)
-    );
-
-}
-
-
-/* =========================================================
-   NUMBER FORMAT
-========================================================= */
-
-function formatNumber(
-  value,
-  decimals = 0
-){
-
-  const number =
-    Number(value);
-
-
-  if(
-    !Number.isFinite(number)
-  ){
-
-    return "—";
-
-  }
-
-
-  return number.toLocaleString(
-    "en-US",
-    {
-      minimumFractionDigits:
-        decimals,
-
-      maximumFractionDigits:
-        decimals
     }
   );
 
-}
-
 
 /* =========================================================
-   IRAN CLOCK
+   LOGOUT
 ========================================================= */
 
-function updateIranClock(){
+function logout(){
 
-  const dateElement =
-    document.getElementById(
-      "currentDate"
-    );
+  document.getElementById("app")
+    .style.display = "none";
 
-  const timeElement =
-    document.getElementById(
-      "currentTime"
-    );
+  document.getElementById("loginPage")
+    .style.display = "flex";
 
+  document.getElementById("loginPassword")
+    .value = "";
 
-  if(
-    !dateElement ||
-    !timeElement
-  ){
+  document.getElementById("loginError")
+    .textContent = "";
 
-    return;
-
-  }
-
-
-  let now;
-
-
-  /*
-    اگر زمان سرور دریافت شده باشد،
-    ساعت از زمان سرور محاسبه می‌شود.
-  */
-
-  if(
-    Number.isFinite(
-      serverBaseTime
-    ) &&
-    Number.isFinite(
-      clientBaseTime
-    )
-  ){
-
-    const elapsed =
-      Date.now() -
-      clientBaseTime;
-
-
-    now =
-      new Date(
-        serverBaseTime +
-        elapsed
-      );
-
-  }
-  else{
-
-    now =
-      new Date();
-
-  }
-
-
-  const dateText =
-    new Intl.DateTimeFormat(
-      "fa-IR-u-ca-persian",
-      {
-        timeZone:
-          "Asia/Tehran",
-
-        year:"numeric",
-
-        month:"2-digit",
-
-        day:"2-digit"
-      }
-    ).format(now);
-
-
-  const timeText =
-    new Intl.DateTimeFormat(
-      "en-GB",
-      {
-        timeZone:
-          "Asia/Tehran",
-
-        hour:"2-digit",
-
-        minute:"2-digit",
-
-        second:"2-digit",
-
-        hour12:false
-      }
-    ).format(now);
-
-
-  dateElement.textContent =
-    convertDigitsToEnglish(
-      dateText
-    );
-
-
-  timeElement.textContent =
-    convertDigitsToEnglish(
-      timeText
-    );
-
-}
-
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-setInterval(
-  updateIranClock,
-  1000
-);
-
-
-/* =========================================================
-   CONNECTION
-========================================================= */
-
-function setConnectionState(
-  state
-){
-
-  const body =
-    document.body;
-
-  const text =
-    document.getElementById(
-      "connectionText"
-    );
-
-
-  if(!text){
-    return;
-  }
-
-
-  body.classList.remove(
-    "status-error"
-  );
-
-
-  if(
-    state === "online"
-  ){
-
-    text.textContent =
-      "آنلاین • به‌روز";
-
-    return;
-
-  }
-
-
-  if(
-    state === "error"
-  ){
-
-    body.classList.add(
-      "status-error"
-    );
-
-    text.textContent =
-      "قطع اتصال";
-
-    return;
-
-  }
-
-
-  text.textContent =
-    "در حال اتصال...";
-
-}
-
-
-/* =========================================================
-   LOAD PRICES
-========================================================= */
-
-async function loadPrices(){
-
-  try{
-
-    const response =
-      await fetch(
-        API,
-        {
-          method:"GET",
-
-          cache:"no-store",
-
-          headers:{
-            "Cache-Control":
-              "no-cache"
-          }
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "API Error"
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    if(
-      data.success !== true
-    ){
-
-      throw new Error(
-        "API Success False"
-      );
-
-    }
-
-
-    /*
-      دریافت زمان سرور
-    */
-
-    const receivedServerTime =
-      Date.parse(
-        data.serverTime
-      );
-
-
-    if(
-      Number.isFinite(
-        receivedServerTime
-      )
-    ){
-
-      serverBaseTime =
-        receivedServerTime;
-
-      clientBaseTime =
-        Date.now();
-
-    }
-
-
-    const silver999 =
-      Number(
-        data.silver999Toman
-      );
-
-
-    const silverOunce =
-      Number(
-        data.silverOunce
-      );
-
-
-    const usd =
-      Number(
-        data.usdToman
-      );
-
-
-    if(
-      !Number.isFinite(
-        silver999
-      ) ||
-      silver999 <= 0
-    ){
-
-      throw new Error(
-        "Invalid silver999"
-      );
-
-    }
-
-
-    currentSilver999 =
-      silver999;
-
-
-    /*
-      925 از 999
-    */
-
-    const silver925 =
-      silver999 *
-      (925 / 999);
-
-
-    /*
-      مثقال 17 عیار
-    */
-
-    const mithqal17 =
-      (silver999 / 1000) *
-      700 *
-      4.608;
-
-
-    document.getElementById(
-      "silver999"
-    ).textContent =
-      formatNumber(
-        silver999
-      );
-
-
-    document.getElementById(
-      "silver925"
-    ).textContent =
-      formatNumber(
-        silver925
-      );
-
-
-    document.getElementById(
-      "silverOunce"
-    ).textContent =
-      formatNumber(
-        silverOunce,
-        2
-      );
-
-
-    document.getElementById(
-      "usd"
-    ).textContent =
-      formatNumber(
-        usd
-      );
-
-
-    document.getElementById(
-      "mithqal17"
-    ).textContent =
-      formatNumber(
-        mithqal17
-      );
-
-
-    updateIranClock();
-
-
-    setConnectionState(
-      "online"
-    );
-
-
-    calculatePrice();
-
-  }
-  catch(error){
-
-    console.error(
-      "PRICE ERROR:",
-      error
-    );
-
-
-    setConnectionState(
-      "error"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   PRICE UPDATES
-========================================================= */
-
-function startPriceUpdates(){
-
-  if(priceInterval){
-
-    clearInterval(
-      priceInterval
-    );
-
-  }
-
-
-  loadPrices();
-
-
-  priceInterval =
-    setInterval(
-      loadPrices,
-      1000
-    );
-
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function calculatePrice(){
-
-  const weightElement =
-    document.getElementById(
-      "calcWeight"
-    );
-
-  const purityElement =
-    document.getElementById(
-      "calcPurity"
-    );
-
-  const laborElement =
-    document.getElementById(
-      "calcLabor"
-    );
-
-  const extraElement =
-    document.getElementById(
-      "calcExtra"
-    );
-
-  const profitElement =
-    document.getElementById(
-      "calcProfit"
-    );
-
-
-  if(
-    !weightElement ||
-    !purityElement ||
-    !laborElement ||
-    !extraElement ||
-    !profitElement
-  ){
-
-    return;
-
-  }
-
-
-  const manual999 =
-    Number(
-      localStorage.getItem(
-        "zarinFakhrManual999"
-      )
-    );
-
-
-  let silver999 =
-    currentSilver999;
-
-
-  if(
-    Number.isFinite(
-      manual999
-    ) &&
-    manual999 > 0
-  ){
-
-    silver999 =
-      manual999;
-
-  }
-
-
-  if(
-    !Number.isFinite(
-      silver999
-    ) ||
-    silver999 <= 0
-  ){
-
-    silver999 = 0;
-
-  }
-
-
-  const weight =
-    Number(
-      weightElement.value
-    ) || 0;
-
-
-  const purity =
-    Number(
-      purityElement.value
-    ) || 999;
-
-
-  let labor =
-    Number(
-      laborElement.value
-    );
-
-
-  if(
-    !Number.isFinite(
-      labor
-    )
-  ){
-
-    labor =
-      Number(
-        localStorage.getItem(
-          "zarinFakhrDefaultLabor"
-        )
-      ) || 0;
-
-  }
-
-
-  const extra =
-    Number(
-      extraElement.value
-    ) || 0;
-
-
-  const profitPercent =
-    Number(
-      profitElement.value
-    ) || 0;
-
-
-  const gramPrice =
-    silver999 *
-    (purity / 999);
-
-
-  const base =
-    weight *
-    gramPrice;
-
-
-  const laborTotal =
-    weight *
-    labor;
-
-
-  const subtotal =
-    base +
-    laborTotal +
-    extra;
-
-
-  const profit =
-    subtotal *
-    (profitPercent / 100);
-
-
-  const finalPrice =
-    subtotal +
-    profit;
-
-
-  document.getElementById(
-    "calcGramPrice"
-  ).textContent =
-    formatNumber(
-      gramPrice
-    );
-
-
-  document.getElementById(
-    "calcBase"
-  ).textContent =
-    formatNumber(
-      base
-    );
-
-
-  document.getElementById(
-    "calcLaborResult"
-  ).textContent =
-    formatNumber(
-      laborTotal
-    );
-
-
-  document.getElementById(
-    "calcExtraResult"
-  ).textContent =
-    formatNumber(
-      extra
-    );
-
-
-  document.getElementById(
-    "calcProfitResult"
-  ).textContent =
-    formatNumber(
-      profit
-    );
-
-
-  document.getElementById(
-    "calcFinal"
-  ).textContent =
-    formatNumber(
-      finalPrice
-    ) +
-    " تومان";
-
-}
-
-
-/* =========================================================
-   LOAD SETTINGS
-========================================================= */
-
-function loadSettings(){
-
-  const manual999 =
-    localStorage.getItem(
-      "zarinFakhrManual999"
-    );
-
-
-  const defaultLabor =
-    localStorage.getItem(
-      "zarinFakhrDefaultLabor"
-    );
-
-
-  const manual999Input =
-    document.getElementById(
-      "manual999"
-    );
-
-
-  const defaultLaborInput =
-    document.getElementById(
-      "defaultLabor"
-    );
-
-
-  if(manual999Input){
-
-    manual999Input.value =
-      manual999 || "";
-
-  }
-
-
-  if(defaultLaborInput){
-
-    defaultLaborInput.value =
-      defaultLabor || "";
-
-  }
-
-
-  resetPasswordChangeForm();
-
-
-  calculatePrice();
-
-}
-
-
-/* =========================================================
-   SAVE SETTINGS
-========================================================= */
-
-function saveSettings(){
-
-  const manual999 =
-    document.getElementById(
-      "manual999"
-    ).value.trim();
-
-
-  const defaultLabor =
-    document.getElementById(
-      "defaultLabor"
-    ).value.trim();
-
-
-  /*
-    قیمت دستی 999
-  */
-
-  if(manual999){
-
-    localStorage.setItem(
-      "zarinFakhrManual999",
-      manual999
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManual999"
-    );
-
-  }
-
-
-  /*
-    اجرت پیش‌فرض
-  */
-
-  if(defaultLabor){
-
-    localStorage.setItem(
-      "zarinFakhrDefaultLabor",
-      defaultLabor
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrDefaultLabor"
-    );
-
-  }
-
-
-  /*
-    پاکسازی کامل کلیدهای
-    قدیمی تاریخ و ساعت
-  */
-
-  localStorage.removeItem(
-    "zarinFakhrManualDate"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualTime"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeEnabled"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeBase"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeSetAt"
-  );
-
-
-  document.getElementById(
-    "saveMessage"
-  ).textContent =
-    "تنظیمات با موفقیت ذخیره شد.";
-
-
-  calculatePrice();
-
-
-  setTimeout(
-    function(){
-
-      const message =
-        document.getElementById(
-          "saveMessage"
-        );
-
-      if(message){
-
-        message.textContent = "";
-
-      }
-
-    },
-    2500
-  );
-
-}
-
-
-/* =========================================================
-   VERIFY CURRENT PASSWORD
-========================================================= */
-
-function verifyCurrentPassword(){
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const fields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-
-  if(
-    !currentInput ||
-    !status ||
-    !fields ||
-    !verifyButton
-  ){
-
-    return;
-
-  }
-
-
-  const enteredPassword =
-    String(
-      currentInput.value || ""
-    );
-
-
-  const correctPassword =
-    getCurrentPassword();
-
-
-  if(
-    enteredPassword !==
-    correctPassword
-  ){
-
-    passwordVerified =
-      false;
-
-
-    fields.classList.remove(
-      "show"
-    );
-
-
-    status.className =
-      "password-status error";
-
-
-    status.textContent =
-      "رمز فعلی اشتباه است.";
-
-
-    return;
-
-  }
-
-
-  passwordVerified =
-    true;
-
-
-  fields.classList.add(
-    "show"
-  );
-
-
-  status.className =
-    "password-status success";
-
-
-  status.textContent =
-    "رمز فعلی صحیح است. رمز جدید را وارد کنید.";
-
-
-  verifyButton.style.display =
-    "none";
-
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    );
-
-
-  if(newPassword){
-
-    newPassword.focus();
-
-  }
-
-}
-
-
-/* =========================================================
-   CHANGE PASSWORD
-========================================================= */
-
-function changePassword(){
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newInput =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmInput =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-
-  if(
-    !passwordVerified
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "ابتدا رمز فعلی را تأیید کنید.";
-
-    return;
-
-  }
-
-
-  const newPassword =
-    String(
-      newInput.value || ""
-    ).trim();
-
-
-  const confirmPassword =
-    String(
-      confirmInput.value || ""
-    ).trim();
-
-
-  if(
-    newPassword.length < 6
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "رمز جدید باید حداقل ۶ کاراکتر باشد.";
-
-    return;
-
-  }
-
-
-  if(
-    newPassword !==
-    confirmPassword
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "تکرار رمز جدید صحیح نیست.";
-
-    return;
-
-  }
-
-
-  /*
-    اطمینان نهایی از رمز فعلی
-  */
-
-  if(
-    currentInput.value !==
-    getCurrentPassword()
-  ){
-
-    passwordVerified =
-      false;
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "رمز فعلی اشتباه است.";
-
-    return;
-
-  }
-
-
-  /*
-    ذخیره رمز جدید
-  */
-
-  localStorage.setItem(
-    "zarinFakhrPassword",
-    newPassword
-  );
-
-
-  status.className =
-    "password-status success";
-
-
-  status.textContent =
-    "رمز عبور با موفقیت تغییر کرد.";
-
-
-  newInput.value = "";
-
-  confirmInput.value = "";
-
-  currentInput.value = "";
-
-
-  passwordVerified =
-    false;
-
-
-  document
-    .getElementById(
-      "passwordFields"
-    )
-    .classList.remove(
-      "show"
-    );
-
-
-  document.getElementById(
-    "verifyPasswordButton"
-  ).style.display =
-    "block";
-
-}
-
-
-/* =========================================================
-   RESET PASSWORD CHANGE FORM
-========================================================= */
-
-function resetPasswordChangeForm(){
-
-  passwordVerified =
-    false;
-
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newInput =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmInput =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-  const fields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-
-  if(currentInput){
-
-    currentInput.value = "";
-
-  }
-
-
-  if(newInput){
-
-    newInput.value = "";
-
-  }
-
-
-  if(confirmInput){
-
-    confirmInput.value = "";
-
-  }
-
-
-  if(fields){
-
-    fields.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  if(status){
-
-    status.className =
-      "password-status";
-
-    status.textContent = "";
-
-  }
-
-
-  if(verifyButton){
-
-    verifyButton.style.display =
-      "block";
-
-  }
+  showToast("از پنل خارج شدید");
 
 }
 
@@ -3673,61 +2153,168 @@ function resetPasswordChangeForm(){
    NAVIGATION
 ========================================================= */
 
-function showPage(
-  pageId,
-  button
-){
+function showSection(sectionId, button){
 
   document
-    .querySelectorAll(
-      ".page"
-    )
-    .forEach(
-      page => {
+    .querySelectorAll(".section")
+    .forEach(function(section){
 
-        page.classList.remove(
-          "active"
-        );
+      section.classList.remove("active");
 
-      }
-    );
-
-
-  const target =
-    document.getElementById(
-      pageId
-    );
-
-
-  if(target){
-
-    target.classList.add(
-      "active"
-    );
-
-  }
+    });
 
 
   document
-    .querySelectorAll(
-      ".nav button"
-    )
-    .forEach(
-      btn => {
+    .querySelectorAll(".nav-btn")
+    .forEach(function(btn){
 
-        btn.classList.remove(
-          "active"
-        );
+      btn.classList.remove("active");
 
-      }
-    );
+    });
+
+
+  document
+    .getElementById(sectionId)
+    .classList.add("active");
 
 
   if(button){
+    button.classList.add("active");
+  }
 
-    button.classList.add(
-      "active"
-    );
+}
+
+
+/* =========================================================
+   MARKET
+========================================================= */
+
+async function fetchPrices(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "?t=" + Date.now(),
+        {
+          cache:"no-store",
+          headers:{
+            "Cache-Control":"no-cache"
+          }
+        }
+      );
+
+
+    if(!response.ok){
+      throw new Error(
+        "HTTP " + response.status
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(!data.success){
+      throw new Error(
+        "API failed"
+      );
+    }
+
+
+    if(
+      !Number.isFinite(
+        Number(data.silverOunce)
+      )
+    ){
+      throw new Error(
+        "silverOunce invalid"
+      );
+    }
+
+
+    if(
+      !Number.isFinite(
+        Number(data.usdToman)
+      )
+    ){
+      throw new Error(
+        "usd invalid"
+      );
+    }
+
+
+    if(
+      !Number.isFinite(
+        Number(data.silver999Toman)
+      )
+    ){
+      throw new Error(
+        "silver999 invalid"
+      );
+    }
+
+
+    silverOunceValue =
+      Number(data.silverOunce);
+
+
+    usdValue =
+      Number(data.usdToman);
+
+
+    silver999Value =
+      Number(data.silver999Toman);
+
+
+    /* SERVER CLOCK */
+
+    if(data.serverTime){
+
+      const parsed =
+        new Date(data.serverTime);
+
+      if(!isNaN(parsed.getTime())){
+
+        serverBaseTime =
+          parsed.getTime();
+
+        clientBaseTime =
+          Date.now();
+
+      }
+
+    }
+
+
+    updateMarketUI();
+
+    setOnline();
+
+    lastSuccessfulUpdate =
+      Date.now();
+
+    document.getElementById("lastUpdate")
+      .textContent =
+      "آخرین دریافت موفق: " +
+      new Date()
+        .toLocaleTimeString(
+          "fa-IR",
+          {
+            hour:"2-digit",
+            minute:"2-digit",
+            second:"2-digit"
+          }
+        );
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    setOffline();
 
   }
 
@@ -3735,54 +2322,256 @@ function showPage(
 
 
 /* =========================================================
-   INITIAL
+   MARKET UI
 ========================================================= */
 
-document.getElementById(
-  "loginPage"
-).style.display =
-  "flex";
+function updateMarketUI(){
+
+  const manual999 =
+    Number(
+      localStorage.getItem(
+        MANUAL_999_KEY
+      )
+    );
 
 
-document.getElementById(
-  "app"
-).style.display =
-  "none";
+  const effective999 =
+    Number.isFinite(manual999) &&
+    manual999 > 0
+      ? manual999
+      : silver999Value;
 
 
-setConnectionState(
-  "loading"
-);
+  const silver925 =
+    effective999 *
+    (925 / 999);
 
 
-updateIranClock();
+  const mithqal17 =
+    (effective999 / 1000) *
+    700 *
+    4.608;
+
+
+  document.getElementById("silverOunce")
+    .textContent =
+    formatEnglishNumber(
+      silverOunceValue,
+      3
+    );
+
+
+  document.getElementById("usdPrice")
+    .textContent =
+    formatNumber(
+      usdValue,
+      0
+    );
+
+
+  document.getElementById("silver999")
+    .textContent =
+    formatNumber(
+      effective999,
+      0
+    );
+
+
+  document.getElementById("silver925")
+    .textContent =
+    formatNumber(
+      silver925,
+      0
+    );
+
+
+  document.getElementById("mithqal17")
+    .textContent =
+    formatNumber(
+      mithqal17,
+      0
+    );
+
+
+  calculatePrice();
+
+}
 
 
 /* =========================================================
-   ENTER KEY — LOGIN
+   CONNECTION STATUS
 ========================================================= */
 
-document.addEventListener(
-  "keydown",
-  function(event){
+function setOnline(){
 
-    if(
-      event.key === "Enter" &&
-      document.activeElement &&
-      document.activeElement.id ===
-        "passwordInput"
-    ){
+  document.body
+    .classList.remove(
+      "status-error"
+    );
 
-      event.preventDefault();
 
-      login();
+  document.getElementById(
+    "connectionText"
+  ).textContent =
+    "آنلاین";
 
-    }
+
+  document.getElementById(
+    "connectionDot"
+  ).style.background =
+    "var(--onlineGreen)";
+
+}
+
+
+function setOffline(){
+
+  document.body
+    .classList.add(
+      "status-error"
+    );
+
+
+  document.getElementById(
+    "connectionText"
+  ).textContent =
+    "قطع ارتباط";
+
+
+  document.getElementById(
+    "connectionDot"
+  ).style.background =
+    "var(--offlineRed)";
+
+}
+
+
+/* =========================================================
+   MARKET LOOP
+========================================================= */
+
+function startMarket(){
+
+  fetchPrices();
+
+  setInterval(
+    fetchPrices,
+    1000
+  );
+
+}
+
+
+/* =========================================================
+   SERVER CLOCK
+========================================================= */
+
+function updateServerClock(){
+
+  if(
+    serverBaseTime !== null &&
+    clientBaseTime !== null
+  ){
+
+    const elapsed =
+      Date.now() -
+      clientBaseTime;
+
+
+    const now =
+      new Date(
+        serverBaseTime +
+        elapsed
+      );
+
+
+    const time =
+      now.toLocaleTimeString(
+        "en-US",
+        {
+          timeZone:"Asia/Tehran",
+          hour:"2-digit",
+          minute:"2-digit",
+          second:"2-digit",
+          hour12:false
+        }
+      );
+
+
+    const date =
+      new Intl.DateTimeFormat(
+        "fa-IR-u-ca-persian",
+        {
+          timeZone:"Asia/Tehran",
+          year:"numeric",
+          month:"2-digit",
+          day:"2-digit"
+        }
+      ).format(now);
+
+
+    document.getElementById(
+      "serverTime"
+    ).textContent =
+      convertDigitsToEnglish(time);
+
+
+    document.getElementById(
+      "serverDate"
+    ).textContent =
+      convertDigitsToEnglish(date);
 
   }
+
+}
+
+
+setInterval(
+  updateServerClock,
+  1000
 );
 
-</script>
 
-</body>
-  </html>
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+function calculatePrice(){
+
+  const weight =
+    Number(
+      document.getElementById(
+        "calcWeight"
+      ).value
+    );
+
+
+  const purity =
+    Number(
+      document.getElementById(
+        "calcPurity"
+      ).value
+    );
+
+
+  const laborInput =
+    document.getElementById(
+      "calcLabor"
+    ).value;
+
+
+  const savedLabor =
+    Number(
+      localStorage.getItem(
+        DEFAULT_LABOR_KEY
+      )
+    );
+
+
+  let labor;
+
+
+  if(
+    laborInput !== "" &&
+    Number.isFinite(
+     
