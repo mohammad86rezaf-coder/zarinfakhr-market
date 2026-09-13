@@ -1469,6 +1469,317 @@ body{
 
 }
 
+
+/* =========================================================
+   ADDED NEON EFFECTS
+   فقط افکت‌های درخواستی
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   SILVER NEON AROUND SZF LOGIN LOGO
+--------------------------------------------------------- */
+
+.logo{
+
+  isolation:isolate;
+
+}
+
+.logo::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-7px;
+
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 250deg,
+      #8E8E8E 275deg,
+      #D8D8D8 295deg,
+      #FFFFFF 315deg,
+      #E8E8E8 330deg,
+      #777777 345deg,
+      transparent 360deg
+    );
+
+  z-index:-1;
+
+  animation:
+    silverNeonRotate
+    2.2s linear infinite;
+
+  filter:
+    drop-shadow(
+      0 0 3px
+      #BDBDBD
+    )
+    drop-shadow(
+      0 0 8px
+      rgba(210,210,210,.95)
+    )
+    drop-shadow(
+      0 0 16px
+      rgba(255,255,255,.65)
+    );
+
+}
+
+@keyframes silverNeonRotate{
+
+  0%{
+    transform:rotate(0deg);
+  }
+
+  100%{
+    transform:rotate(360deg);
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SILVER NEON AROUND HEADER SZF
+--------------------------------------------------------- */
+
+.brand-logo{
+
+  position:relative;
+
+  isolation:isolate;
+
+}
+
+.brand-logo::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-5px;
+
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 250deg,
+      #888888 275deg,
+      #D8D8D8 295deg,
+      #FFFFFF 315deg,
+      #E8E8E8 330deg,
+      #777777 345deg,
+      transparent 360deg
+    );
+
+  z-index:-1;
+
+  animation:
+    silverNeonRotate
+    2.2s linear infinite;
+
+  filter:
+    drop-shadow(
+      0 0 3px
+      #BDBDBD
+    )
+    drop-shadow(
+      0 0 7px
+      rgba(220,220,220,.9)
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   MARKET CARD NEON FRAME
+--------------------------------------------------------- */
+
+.market-area{
+
+  position:relative;
+
+  min-height:161px;
+
+  padding:3px;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  isolation:isolate;
+
+}
+
+
+/*
+  نوار متحرک سبز
+*/
+
+.market-area::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-90%;
+
+  background:
+    conic-gradient(
+      from 0deg,
+
+      transparent 0deg,
+
+      transparent 285deg,
+
+      var(--green) 310deg,
+
+      var(--greenLight) 326deg,
+
+      #FFFFFF 337deg,
+
+      var(--greenLight) 347deg,
+
+      var(--green) 355deg,
+
+      transparent 360deg
+    );
+
+  animation:
+    marketNeonRotate
+    2.1s linear infinite;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      var(--green)
+    )
+    drop-shadow(
+      0 0 9px
+      rgba(32,168,90,.85)
+    )
+    drop-shadow(
+      0 0 18px
+      rgba(32,168,90,.48)
+    );
+
+  z-index:-1;
+
+}
+
+
+/*
+  وقتی اتصال قطع شود:
+  سبز → قرمز
+*/
+
+.status-error .market-area::before{
+
+  background:
+    conic-gradient(
+      from 0deg,
+
+      transparent 0deg,
+
+      transparent 285deg,
+
+      var(--red) 310deg,
+
+      var(--redLight) 326deg,
+
+      #FFFFFF 337deg,
+
+      var(--redLight) 347deg,
+
+      var(--red) 355deg,
+
+      transparent 360deg
+    );
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      var(--red)
+    )
+    drop-shadow(
+      0 0 9px
+      rgba(198,40,40,.90)
+    )
+    drop-shadow(
+      0 0 18px
+      rgba(198,40,40,.55)
+    );
+
+}
+
+@keyframes marketNeonRotate{
+
+  0%{
+    transform:rotate(0deg);
+  }
+
+  100%{
+    transform:rotate(360deg);
+  }
+
+}
+
+
+/*
+  خود کادر قیمت روی نوار نئون قرار می‌گیرد.
+*/
+
+.market-area .market-card{
+
+  width:100%;
+
+  min-height:155px;
+
+  margin:0;
+
+  position:relative;
+
+  z-index:1;
+
+}
+
+
+/*
+  موبایل
+*/
+
+@media(max-width:650px){
+
+  .market-area{
+
+    min-height:151px;
+
+    padding:3px;
+
+    border-radius:21px;
+
+  }
+
+  .market-area .market-card{
+
+    min-height:145px;
+
+  }
+
+}
+
+
+/* =========================================================
+   END ADDED NEON EFFECTS
+========================================================= */
+
 </style>
 </head>
 
@@ -2214,6 +2525,71 @@ body{
 
 
 /* =========================================================
+   ADDED — WRAP FIVE MARKET CARDS
+   برای اضافه کردن نوار نئون بدون تغییر
+   در منطق اصلی کارت‌ها
+========================================================= */
+
+function addMarketNeonFrames(){
+
+  const grid =
+    document.querySelector(
+      ".market-grid"
+    );
+
+  if(!grid){
+    return;
+  }
+
+
+  const cards =
+    grid.querySelectorAll(
+      ":scope > .market-card"
+    );
+
+
+  cards.forEach(
+    function(card){
+
+      if(
+        card.parentElement &&
+        card.parentElement.classList.contains(
+          "market-area"
+        )
+      ){
+
+        return;
+
+      }
+
+
+      const wrapper =
+        document.createElement(
+          "div"
+        );
+
+
+      wrapper.className =
+        "market-area";
+
+
+      grid.insertBefore(
+        wrapper,
+        card
+      );
+
+
+      wrapper.appendChild(
+        card
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
    API
 ========================================================= */
 
@@ -2643,1146 +3019,4 @@ function updateIranClock(){
 
 setInterval(
   updateIranClock,
-  1000
-);
-
-
-/* =========================================================
-   CONNECTION
-========================================================= */
-
-function setConnectionState(
-  state
-){
-
-  const body =
-    document.body;
-
-  const text =
-    document.getElementById(
-      "connectionText"
-    );
-
-
-  if(!text){
-    return;
-  }
-
-
-  body.classList.remove(
-    "status-error"
-  );
-
-
-  if(
-    state === "online"
-  ){
-
-    text.textContent =
-      "آنلاین • به‌روز";
-
-    return;
-
-  }
-
-
-  if(
-    state === "error"
-  ){
-
-    body.classList.add(
-      "status-error"
-    );
-
-    text.textContent =
-      "قطع اتصال";
-
-    return;
-
-  }
-
-
-  text.textContent =
-    "در حال اتصال...";
-
-}
-
-
-/* =========================================================
-   LOAD PRICES
-========================================================= */
-
-async function loadPrices(){
-
-  try{
-
-    const response =
-      await fetch(
-        API,
-        {
-          method:"GET",
-
-          cache:"no-store",
-
-          headers:{
-            "Cache-Control":
-              "no-cache"
-          }
-        }
-      );
-
-
-    if(!response.ok){
-
-      throw new Error(
-        "API Error"
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-
-    if(
-      data.success !== true
-    ){
-
-      throw new Error(
-        "API Success False"
-      );
-
-    }
-
-
-    /*
-      دریافت زمان سرور
-    */
-
-    const receivedServerTime =
-      Date.parse(
-        data.serverTime
-      );
-
-
-    if(
-      Number.isFinite(
-        receivedServerTime
-      )
-    ){
-
-      serverBaseTime =
-        receivedServerTime;
-
-      clientBaseTime =
-        Date.now();
-
-    }
-
-
-    const silver999 =
-      Number(
-        data.silver999Toman
-      );
-
-
-    const silverOunce =
-      Number(
-        data.silverOunce
-      );
-
-
-    const usd =
-      Number(
-        data.usdToman
-      );
-
-
-    if(
-      !Number.isFinite(
-        silver999
-      ) ||
-      silver999 <= 0
-    ){
-
-      throw new Error(
-        "Invalid silver999"
-      );
-
-    }
-
-
-    currentSilver999 =
-      silver999;
-
-
-    /*
-      925 از 999
-    */
-
-    const silver925 =
-      silver999 *
-      (925 / 999);
-
-
-    /*
-      مثقال 17 عیار
-    */
-
-    const mithqal17 =
-      (silver999 / 1000) *
-      700 *
-      4.608;
-
-
-    document.getElementById(
-      "silver999"
-    ).textContent =
-      formatNumber(
-        silver999
-      );
-
-
-    document.getElementById(
-      "silver925"
-    ).textContent =
-      formatNumber(
-        silver925
-      );
-
-
-    document.getElementById(
-      "silverOunce"
-    ).textContent =
-      formatNumber(
-        silverOunce,
-        2
-      );
-
-
-    document.getElementById(
-      "usd"
-    ).textContent =
-      formatNumber(
-        usd
-      );
-
-
-    document.getElementById(
-      "mithqal17"
-    ).textContent =
-      formatNumber(
-        mithqal17
-      );
-
-
-    updateIranClock();
-
-
-    setConnectionState(
-      "online"
-    );
-
-
-    calculatePrice();
-
-  }
-  catch(error){
-
-    console.error(
-      "PRICE ERROR:",
-      error
-    );
-
-
-    setConnectionState(
-      "error"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   PRICE UPDATES
-========================================================= */
-
-function startPriceUpdates(){
-
-  if(priceInterval){
-
-    clearInterval(
-      priceInterval
-    );
-
-  }
-
-
-  loadPrices();
-
-
-  priceInterval =
-    setInterval(
-      loadPrices,
-      1000
-    );
-
-}
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function calculatePrice(){
-
-  const weightElement =
-    document.getElementById(
-      "calcWeight"
-    );
-
-  const purityElement =
-    document.getElementById(
-      "calcPurity"
-    );
-
-  const laborElement =
-    document.getElementById(
-      "calcLabor"
-    );
-
-  const extraElement =
-    document.getElementById(
-      "calcExtra"
-    );
-
-  const profitElement =
-    document.getElementById(
-      "calcProfit"
-    );
-
-
-  if(
-    !weightElement ||
-    !purityElement ||
-    !laborElement ||
-    !extraElement ||
-    !profitElement
-  ){
-
-    return;
-
-  }
-
-
-  const manual999 =
-    Number(
-      localStorage.getItem(
-        "zarinFakhrManual999"
-      )
-    );
-
-
-  let silver999 =
-    currentSilver999;
-
-
-  if(
-    Number.isFinite(
-      manual999
-    ) &&
-    manual999 > 0
-  ){
-
-    silver999 =
-      manual999;
-
-  }
-
-
-  if(
-    !Number.isFinite(
-      silver999
-    ) ||
-    silver999 <= 0
-  ){
-
-    silver999 = 0;
-
-  }
-
-
-  const weight =
-    Number(
-      weightElement.value
-    ) || 0;
-
-
-  const purity =
-    Number(
-      purityElement.value
-    ) || 999;
-
-
-  let labor =
-    Number(
-      laborElement.value
-    );
-
-
-  if(
-    !Number.isFinite(
-      labor
-    )
-  ){
-
-    labor =
-      Number(
-        localStorage.getItem(
-          "zarinFakhrDefaultLabor"
-        )
-      ) || 0;
-
-  }
-
-
-  const extra =
-    Number(
-      extraElement.value
-    ) || 0;
-
-
-  const profitPercent =
-    Number(
-      profitElement.value
-    ) || 0;
-
-
-  const gramPrice =
-    silver999 *
-    (purity / 999);
-
-
-  const base =
-    weight *
-    gramPrice;
-
-
-  const laborTotal =
-    weight *
-    labor;
-
-
-  const subtotal =
-    base +
-    laborTotal +
-    extra;
-
-
-  const profit =
-    subtotal *
-    (profitPercent / 100);
-
-
-  const finalPrice =
-    subtotal +
-    profit;
-
-
-  document.getElementById(
-    "calcGramPrice"
-  ).textContent =
-    formatNumber(
-      gramPrice
-    );
-
-
-  document.getElementById(
-    "calcBase"
-  ).textContent =
-    formatNumber(
-      base
-    );
-
-
-  document.getElementById(
-    "calcLaborResult"
-  ).textContent =
-    formatNumber(
-      laborTotal
-    );
-
-
-  document.getElementById(
-    "calcExtraResult"
-  ).textContent =
-    formatNumber(
-      extra
-    );
-
-
-  document.getElementById(
-    "calcProfitResult"
-  ).textContent =
-    formatNumber(
-      profit
-    );
-
-
-  document.getElementById(
-    "calcFinal"
-  ).textContent =
-    formatNumber(
-      finalPrice
-    ) +
-    " تومان";
-
-}
-
-
-/* =========================================================
-   LOAD SETTINGS
-========================================================= */
-
-function loadSettings(){
-
-  const manual999 =
-    localStorage.getItem(
-      "zarinFakhrManual999"
-    );
-
-
-  const defaultLabor =
-    localStorage.getItem(
-      "zarinFakhrDefaultLabor"
-    );
-
-
-  const manual999Input =
-    document.getElementById(
-      "manual999"
-    );
-
-
-  const defaultLaborInput =
-    document.getElementById(
-      "defaultLabor"
-    );
-
-
-  if(manual999Input){
-
-    manual999Input.value =
-      manual999 || "";
-
-  }
-
-
-  if(defaultLaborInput){
-
-    defaultLaborInput.value =
-      defaultLabor || "";
-
-  }
-
-
-  resetPasswordChangeForm();
-
-
-  calculatePrice();
-
-}
-
-
-/* =========================================================
-   SAVE SETTINGS
-========================================================= */
-
-function saveSettings(){
-
-  const manual999 =
-    document.getElementById(
-      "manual999"
-    ).value.trim();
-
-
-  const defaultLabor =
-    document.getElementById(
-      "defaultLabor"
-    ).value.trim();
-
-
-  /*
-    قیمت دستی 999
-  */
-
-  if(manual999){
-
-    localStorage.setItem(
-      "zarinFakhrManual999",
-      manual999
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManual999"
-    );
-
-  }
-
-
-  /*
-    اجرت پیش‌فرض
-  */
-
-  if(defaultLabor){
-
-    localStorage.setItem(
-      "zarinFakhrDefaultLabor",
-      defaultLabor
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrDefaultLabor"
-    );
-
-  }
-
-
-  /*
-    پاکسازی کامل کلیدهای
-    قدیمی تاریخ و ساعت
-  */
-
-  localStorage.removeItem(
-    "zarinFakhrManualDate"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualTime"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeEnabled"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeBase"
-  );
-
-  localStorage.removeItem(
-    "zarinFakhrManualDateTimeSetAt"
-  );
-
-
-  document.getElementById(
-    "saveMessage"
-  ).textContent =
-    "تنظیمات با موفقیت ذخیره شد.";
-
-
-  calculatePrice();
-
-
-  setTimeout(
-    function(){
-
-      const message =
-        document.getElementById(
-          "saveMessage"
-        );
-
-      if(message){
-
-        message.textContent = "";
-
-      }
-
-    },
-    2500
-  );
-
-}
-
-
-/* =========================================================
-   VERIFY CURRENT PASSWORD
-========================================================= */
-
-function verifyCurrentPassword(){
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const fields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-
-  if(
-    !currentInput ||
-    !status ||
-    !fields ||
-    !verifyButton
-  ){
-
-    return;
-
-  }
-
-
-  const enteredPassword =
-    String(
-      currentInput.value || ""
-    );
-
-
-  const correctPassword =
-    getCurrentPassword();
-
-
-  if(
-    enteredPassword !==
-    correctPassword
-  ){
-
-    passwordVerified =
-      false;
-
-
-    fields.classList.remove(
-      "show"
-    );
-
-
-    status.className =
-      "password-status error";
-
-
-    status.textContent =
-      "رمز فعلی اشتباه است.";
-
-
-    return;
-
-  }
-
-
-  passwordVerified =
-    true;
-
-
-  fields.classList.add(
-    "show"
-  );
-
-
-  status.className =
-    "password-status success";
-
-
-  status.textContent =
-    "رمز فعلی صحیح است. رمز جدید را وارد کنید.";
-
-
-  verifyButton.style.display =
-    "none";
-
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    );
-
-
-  if(newPassword){
-
-    newPassword.focus();
-
-  }
-
-}
-
-
-/* =========================================================
-   CHANGE PASSWORD
-========================================================= */
-
-function changePassword(){
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newInput =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmInput =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-
-  if(
-    !passwordVerified
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "ابتدا رمز فعلی را تأیید کنید.";
-
-    return;
-
-  }
-
-
-  const newPassword =
-    String(
-      newInput.value || ""
-    ).trim();
-
-
-  const confirmPassword =
-    String(
-      confirmInput.value || ""
-    ).trim();
-
-
-  if(
-    newPassword.length < 6
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "رمز جدید باید حداقل ۶ کاراکتر باشد.";
-
-    return;
-
-  }
-
-
-  if(
-    newPassword !==
-    confirmPassword
-  ){
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "تکرار رمز جدید صحیح نیست.";
-
-    return;
-
-  }
-
-
-  /*
-    اطمینان نهایی از رمز فعلی
-  */
-
-  if(
-    currentInput.value !==
-    getCurrentPassword()
-  ){
-
-    passwordVerified =
-      false;
-
-    status.className =
-      "password-status error";
-
-    status.textContent =
-      "رمز فعلی اشتباه است.";
-
-    return;
-
-  }
-
-
-  /*
-    ذخیره رمز جدید
-  */
-
-  localStorage.setItem(
-    "zarinFakhrPassword",
-    newPassword
-  );
-
-
-  status.className =
-    "password-status success";
-
-
-  status.textContent =
-    "رمز عبور با موفقیت تغییر کرد.";
-
-
-  newInput.value = "";
-
-  confirmInput.value = "";
-
-  currentInput.value = "";
-
-
-  passwordVerified =
-    false;
-
-
-  document
-    .getElementById(
-      "passwordFields"
-    )
-    .classList.remove(
-      "show"
-    );
-
-
-  document.getElementById(
-    "verifyPasswordButton"
-  ).style.display =
-    "block";
-
-}
-
-
-/* =========================================================
-   RESET PASSWORD CHANGE FORM
-========================================================= */
-
-function resetPasswordChangeForm(){
-
-  passwordVerified =
-    false;
-
-
-  const currentInput =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newInput =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmInput =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-  const fields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const status =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-
-  if(currentInput){
-
-    currentInput.value = "";
-
-  }
-
-
-  if(newInput){
-
-    newInput.value = "";
-
-  }
-
-
-  if(confirmInput){
-
-    confirmInput.value = "";
-
-  }
-
-
-  if(fields){
-
-    fields.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  if(status){
-
-    status.className =
-      "password-status";
-
-    status.textContent = "";
-
-  }
-
-
-  if(verifyButton){
-
-    verifyButton.style.display =
-      "block";
-
-  }
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showPage(
-  pageId,
-  button
-){
-
-  document
-    .querySelectorAll(
-      ".page"
-    )
-    .forEach(
-      page => {
-
-        page.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-  const target =
-    document.getElementById(
-      pageId
-    );
-
-
-  if(target){
-
-    target.classList.add(
-      "active"
-    );
-
-  }
-
-
-  document
-    .querySelectorAll(
-      ".nav button"
-    )
-    .forEach(
-      btn => {
-
-        btn.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-  if(button){
-
-    button.classList.add(
-      "active"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   INITIAL
-========================================================= */
-
-document.getElementById(
-  "loginPage"
-).style.display =
-  "flex";
-
-
-document.getElementById(
-  "app"
-).style.display =
-  "none";
-
-
-setConnectionState(
-  "loading"
-);
-
-
-updateIranClock();
-
-
-/* =========================================================
-   ENTER KEY — LOGIN
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(
-      event.key === "Enter" &&
-      document.activeElement &&
-      document.activeElement.id ===
-        "passwordInput"
-    ){
-
-      event.preventDefault();
-
-      login();
-
-    }
-
-  }
-);
-
-</script>
-
-</body>
-  </html>
+  100
