@@ -1151,6 +1151,7 @@ body{
 
         <div class="market-area">
           <div class="market-card">
+
             <div class="market-title">
               مثقال ۱۷ عیار
             </div>
@@ -1165,12 +1166,14 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
         </div>
 
 
         <div class="market-area">
           <div class="market-card">
+
             <div class="market-title">
               انس نقره
             </div>
@@ -1185,12 +1188,14 @@ body{
             <div class="market-unit">
               دلار
             </div>
+
           </div>
         </div>
 
 
         <div class="market-area">
           <div class="market-card">
+
             <div class="market-title">
               دلار
             </div>
@@ -1205,12 +1210,14 @@ body{
             <div class="market-unit">
               تومان
             </div>
+
           </div>
         </div>
 
 
         <div class="market-area">
           <div class="market-card">
+
             <div class="market-title">
               نقره 999
             </div>
@@ -1225,12 +1232,14 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
         </div>
 
 
         <div class="market-area">
           <div class="market-card">
+
             <div class="market-title">
               نقره 925
             </div>
@@ -1245,6 +1254,7 @@ body{
             <div class="market-unit">
               تومان / گرم
             </div>
+
           </div>
         </div>
 
@@ -1473,50 +1483,6 @@ body{
           <div class="settings-item">
 
             <label>
-              تنظیم دستی تاریخ
-            </label>
-
-            <input
-              id="manualDate"
-              type="date"
-            >
-
-          </div>
-
-
-          <div class="settings-item">
-
-            <label>
-              تنظیم دستی ساعت
-            </label>
-
-            <input
-              id="manualTime"
-              type="time"
-              step="1"
-            >
-
-          </div>
-
-
-          <div class="settings-item">
-
-            <label>
-              فعال‌سازی تاریخ و ساعت دستی
-            </label>
-
-            <input
-              id="manualDateTimeEnabled"
-              type="checkbox"
-              style="width:20px;height:20px;direction:ltr;text-align:left;"
-            >
-
-          </div>
-
-
-          <div class="settings-item">
-
-            <label>
               تغییر رمز ورود
             </label>
 
@@ -1637,13 +1603,28 @@ let currentSilver999 = 0;
 let priceInterval = null;
 
 
+/*
+  زمان همگام‌شده با سرور
+
+  serverBaseTime:
+  زمانی که سرور در پاسخ API اعلام کرده است.
+
+  clientBaseTime:
+  زمان دستگاه در همان لحظه دریافت پاسخ.
+
+  با استفاده از اختلاف این دو،
+  ساعت دستگاه را از وابستگی مستقیم
+  به ساعت اشتباه گوشی جدا می‌کنیم.
+*/
+
+let serverBaseTime = null;
+let clientBaseTime = null;
+
+
 /* =========================================================
    LOGIN
 ========================================================= */
 
-/*
-  رمز اصلی که همیشه قابل قبول است.
-*/
 const DEFAULT_PASSWORD = "@Mohammad1386";
 
 
@@ -1653,15 +1634,6 @@ function getCurrentPassword(){
 
 }
 
-
-/*
-  ورود به پنل
-
-  نکته مهم:
-  رمز اصلی همیشه کار می‌کند.
-  اگر رمز دیگری قبلاً در localStorage ذخیره شده باشد،
-  آن رمز نیز قابل استفاده است.
-*/
 
 function login(){
 
@@ -1757,6 +1729,10 @@ function exitApp(){
   }
 
 
+  serverBaseTime = null;
+  clientBaseTime = null;
+
+
   document.getElementById("app")
     .style.display = "none";
 
@@ -1843,73 +1819,10 @@ function formatNumber(
 
 
 /* =========================================================
-   MANUAL DATE / TIME
-========================================================= */
-
-function getManualDateTime(){
-
-  const enabled =
-    localStorage.getItem(
-      "zarinFakhrManualDateTimeEnabled"
-    ) === "true";
-
-
-  if(!enabled){
-    return null;
-  }
-
-
-  const base =
-    Number(
-      localStorage.getItem(
-        "zarinFakhrManualDateTimeBase"
-      )
-    );
-
-
-  const setAt =
-    Number(
-      localStorage.getItem(
-        "zarinFakhrManualDateTimeSetAt"
-      )
-    );
-
-
-  if(
-    !Number.isFinite(base) ||
-    !Number.isFinite(setAt)
-  ){
-
-    return null;
-
-  }
-
-
-  return new Date(
-    base +
-    (Date.now() - setAt)
-  );
-
-}
-
-
-/* =========================================================
-   IRAN DATE / TIME
+   SERVER-SYNCHRONIZED IRAN DATE / TIME
 ========================================================= */
 
 function updateDeviceClock(){
-
-  let now =
-    getManualDateTime();
-
-
-  if(!now){
-
-    now =
-      new Date();
-
-  }
-
 
   const dateElement =
     document.getElementById(
@@ -1925,6 +1838,39 @@ function updateDeviceClock(){
 
   if(!dateElement || !timeElement){
     return;
+  }
+
+
+  /*
+    اگر زمان سرور هنوز دریافت نشده باشد،
+    موقتاً از زمان دستگاه استفاده می‌کنیم.
+  */
+
+  let now;
+
+
+  if(
+    Number.isFinite(serverBaseTime) &&
+    Number.isFinite(clientBaseTime)
+  ){
+
+    const elapsed =
+      Date.now() -
+      clientBaseTime;
+
+
+    now =
+      new Date(
+        serverBaseTime +
+        elapsed
+      );
+
+  }
+  else{
+
+    now =
+      new Date();
+
   }
 
 
@@ -2072,6 +2018,31 @@ async function loadPrices(){
       await response.json();
 
 
+    /*
+      همگام‌سازی ساعت با زمان سرور
+    */
+
+    const receivedServerTime =
+      Date.parse(
+        data.serverTime
+      );
+
+
+    if(
+      Number.isFinite(
+        receivedServerTime
+      )
+    ){
+
+      serverBaseTime =
+        receivedServerTime;
+
+      clientBaseTime =
+        Date.now();
+
+    }
+
+
     const silver999 =
       Number(
         data.silver999Toman
@@ -2156,6 +2127,9 @@ async function loadPrices(){
       formatNumber(
         mithqal17
       );
+
+
+    updateDeviceClock();
 
 
     setConnectionState(
@@ -2434,24 +2408,6 @@ function loadSettings(){
     );
 
 
-  const manualDate =
-    localStorage.getItem(
-      "zarinFakhrManualDate"
-    );
-
-
-  const manualTime =
-    localStorage.getItem(
-      "zarinFakhrManualTime"
-    );
-
-
-  const manualDateTimeEnabled =
-    localStorage.getItem(
-      "zarinFakhrManualDateTimeEnabled"
-    ) === "true";
-
-
   document.getElementById(
     "manual999"
   ).value =
@@ -2462,24 +2418,6 @@ function loadSettings(){
     "defaultLabor"
   ).value =
     defaultLabor || "";
-
-
-  document.getElementById(
-    "manualDate"
-  ).value =
-    manualDate || "";
-
-
-  document.getElementById(
-    "manualTime"
-  ).value =
-    manualTime || "";
-
-
-  document.getElementById(
-    "manualDateTimeEnabled"
-  ).checked =
-    manualDateTimeEnabled;
 
 
   calculatePrice();
@@ -2503,24 +2441,6 @@ function saveSettings(){
     document.getElementById(
       "defaultLabor"
     ).value.trim();
-
-
-  const manualDate =
-    document.getElementById(
-      "manualDate"
-    ).value;
-
-
-  const manualTime =
-    document.getElementById(
-      "manualTime"
-    ).value;
-
-
-  const manualDateTimeEnabled =
-    document.getElementById(
-      "manualDateTimeEnabled"
-    ).checked;
 
 
   const newPassword =
@@ -2572,199 +2492,33 @@ function saveSettings(){
 
 
   /* =======================================================
-     تاریخ
+     حذف کامل تنظیمات قدیمی تاریخ و ساعت
   ======================================================= */
 
-  if(manualDate){
-
-    localStorage.setItem(
-      "zarinFakhrManualDate",
-      manualDate
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManualDate"
-    );
-
-  }
-
-
-  /* =======================================================
-     ساعت
-  ======================================================= */
-
-  if(manualTime){
-
-    localStorage.setItem(
-      "zarinFakhrManualTime",
-      manualTime
-    );
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManualTime"
-    );
-
-  }
-
-
-  /* =======================================================
-     فعال‌سازی تاریخ و ساعت دستی
-  ======================================================= */
-
-  localStorage.setItem(
-    "zarinFakhrManualDateTimeEnabled",
-    manualDateTimeEnabled
-      ? "true"
-      : "false"
+  localStorage.removeItem(
+    "zarinFakhrManualDate"
   );
 
+  localStorage.removeItem(
+    "zarinFakhrManualTime"
+  );
 
-  /* =======================================================
-     ساخت زمان پایه
-  ======================================================= */
+  localStorage.removeItem(
+    "zarinFakhrManualDateTimeEnabled"
+  );
 
-  if(
-    manualDate &&
-    manualTime &&
-    manualDateTimeEnabled
-  ){
+  localStorage.removeItem(
+    "zarinFakhrManualDateTimeBase"
+  );
 
-    const dateMatch =
-      manualDate.match(
-        /^(\d{4})-(\d{2})-(\d{2})$/
-      );
-
-
-    const timeMatch =
-      manualTime.match(
-        /^(\d{2}):(\d{2})(?::(\d{2}))?$/
-      );
-
-
-    if(
-      dateMatch &&
-      timeMatch
-    ){
-
-      const year =
-        Number(
-          dateMatch[1]
-        );
-
-
-      const month =
-        Number(
-          dateMatch[2]
-        );
-
-
-      const day =
-        Number(
-          dateMatch[3]
-        );
-
-
-      const hour =
-        Number(
-          timeMatch[1]
-        );
-
-
-      const minute =
-        Number(
-          timeMatch[2]
-        );
-
-
-      const second =
-        Number(
-          timeMatch[3] || 0
-        );
-
-
-      /*
-        زمان واردشده بر اساس ساعت ایران
-        UTC+3:30
-      */
-
-      const manualTimestamp =
-        Date.UTC(
-          year,
-          month - 1,
-          day,
-          hour,
-          minute,
-          second
-        ) -
-        (
-          3.5 *
-          60 *
-          60 *
-          1000
-        );
-
-
-      localStorage.setItem(
-        "zarinFakhrManualDateTimeBase",
-        String(
-          manualTimestamp
-        )
-      );
-
-
-      localStorage.setItem(
-        "zarinFakhrManualDateTimeSetAt",
-        String(
-          Date.now()
-        )
-      );
-
-    }
-    else{
-
-      localStorage.removeItem(
-        "zarinFakhrManualDateTimeBase"
-      );
-
-
-      localStorage.removeItem(
-        "zarinFakhrManualDateTimeSetAt"
-      );
-
-    }
-
-  }
-  else{
-
-    localStorage.removeItem(
-      "zarinFakhrManualDateTimeBase"
-    );
-
-
-    localStorage.removeItem(
-      "zarinFakhrManualDateTimeSetAt"
-    );
-
-  }
+  localStorage.removeItem(
+    "zarinFakhrManualDateTimeSetAt"
+  );
 
 
   /* =======================================================
      تغییر رمز
   ======================================================= */
-
-  /*
-    اگر کاربر رمز جدید وارد کند،
-    آن رمز ذخیره می‌شود.
-
-    اما رمز اصلی @Mohammad1386
-    همچنان همیشه معتبر باقی می‌ماند.
-  */
 
   if(
     typeof newPassword === "string" &&
@@ -2923,4 +2677,4 @@ document.addEventListener(
 </script>
 
 </body>
-      </html>
+  </html>
