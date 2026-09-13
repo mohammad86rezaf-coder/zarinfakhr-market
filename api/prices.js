@@ -142,10 +142,11 @@ export default async function handler(req, res) {
 
       silver999Rial: silver999Rial,
 
-      updatedAt:
+      serverTime:
         new Date().toISOString(),
 
-      source: "Servatmandi"
+      updatedAt:
+        new Date().toISOString()
     };
 
     res.setHeader(
@@ -186,8 +187,11 @@ export default async function handler(req, res) {
       message:
         error.message,
 
+      serverTime:
+        new Date().toISOString(),
+
       updatedAt:
         new Date().toISOString()
     });
   }
-        }
+    }
