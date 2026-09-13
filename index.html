@@ -125,7 +125,7 @@ body{
 
 
 /* =========================================================
-   LOGIN SZF LOGO
+   LOGIN LOGO
 ========================================================= */
 
 .logo{
@@ -164,7 +164,6 @@ body{
   content:"";
 
   position:absolute;
-
   inset:-8px;
 
   border-radius:50%;
@@ -672,112 +671,111 @@ body{
   gap:13px;
 }
 
+
+/* =========================================================
+   FIXED GLOW RECTANGLE
+========================================================= */
+
 .market-area{
   position:relative;
 
   min-height:145px;
 
-  padding:2px;
+  padding:1px;
 
   overflow:hidden;
 
   border-radius:14px;
 
-  isolation:isolate;
-}
-
-.market-area::before{
-  content:"";
-
-  position:absolute;
-
-  inset:-60%;
-
   background:
-    conic-gradient(
-      from 0deg,
+    var(--green);
 
-      transparent 0deg 347deg,
-
-      rgba(32,168,90,.35) 350deg,
-
-      var(--green) 353deg,
-
-      var(--greenLight) 355deg,
-
-      #FFFFFF 357deg,
-
-      var(--greenLight) 359deg,
-
-      var(--green) 360deg
-    );
+  box-shadow:
+    0 0 4px rgba(32,168,90,.70),
+    0 0 9px rgba(32,168,90,.35);
 
   animation:
-    greenBorderRotate
-    3s
-    linear
+    marketBorderPulse
+    2.8s
+    ease-in-out
     infinite;
 
-  z-index:0;
-
-  filter:
-    drop-shadow(
-      0 0 2px
-      rgba(32,168,90,.95)
-    )
-    drop-shadow(
-      0 0 5px
-      rgba(32,168,90,.55)
-    );
-
-  pointer-events:none;
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
 }
 
-.status-error .market-area::before{
+
+/*
+  خط قرمز هنگام قطع اتصال
+*/
+
+.status-error .market-area{
   background:
-    conic-gradient(
-      from 0deg,
+    var(--red);
 
-      transparent 0deg 347deg,
+  box-shadow:
+    0 0 4px rgba(198,40,40,.80),
+    0 0 10px rgba(198,40,40,.40);
 
-      rgba(198,40,40,.35) 350deg,
-
-      var(--red) 353deg,
-
-      var(--redLight) 355deg,
-
-      #FFFFFF 357deg,
-
-      var(--redLight) 359deg,
-
-      var(--red) 360deg
-    );
-
-  filter:
-    drop-shadow(
-      0 0 2px
-      rgba(198,40,40,.95)
-    )
-    drop-shadow(
-      0 0 5px
-      rgba(198,40,40,.55)
-    );
+  animation:
+    marketBorderPulseError
+    2.8s
+    ease-in-out
+    infinite;
 }
 
-@keyframes greenBorderRotate{
-  from{
-    transform:rotate(0deg);
+
+/*
+  چشمک بسیار آرام خط سبز
+*/
+
+@keyframes marketBorderPulse{
+
+  0%,100%{
+    box-shadow:
+      0 0 3px rgba(32,168,90,.60),
+      0 0 7px rgba(32,168,90,.25);
   }
 
-  to{
-    transform:rotate(360deg);
+  50%{
+    box-shadow:
+      0 0 5px rgba(32,168,90,.95),
+      0 0 13px rgba(32,168,90,.55);
   }
+
 }
+
+
+/*
+  چشمک بسیار آرام خط قرمز
+*/
+
+@keyframes marketBorderPulseError{
+
+  0%,100%{
+    box-shadow:
+      0 0 3px rgba(198,40,40,.60),
+      0 0 7px rgba(198,40,40,.25);
+  }
+
+  50%{
+    box-shadow:
+      0 0 5px rgba(198,40,40,.95),
+      0 0 13px rgba(198,40,40,.55);
+  }
+
+}
+
+
+/*
+  کارت داخلی
+*/
 
 .market-card{
   width:100%;
 
-  min-height:141px;
+  min-height:143px;
 
   margin:0;
 
@@ -800,7 +798,7 @@ body{
 
   border:0;
 
-  border-radius:12px;
+  border-radius:13px;
 
   box-shadow:
     0 8px 22px
@@ -1308,12 +1306,12 @@ body{
 
   .market-area{
     min-height:137px;
-    padding:2px;
+    padding:1px;
     border-radius:14px;
   }
 
   .market-area .market-card{
-    min-height:133px;
+    min-height:135px;
   }
 
   .market-card{
@@ -1347,8 +1345,11 @@ body{
 
 @media(prefers-reduced-motion:reduce){
 
-  .logo::before,
-  .market-area::before{
+  .logo::before{
+    animation-duration:8s;
+  }
+
+  .market-area{
     animation-duration:8s;
   }
 
@@ -2177,11 +2178,6 @@ const STORAGE_KEYS = {
 
 function getCurrentPassword(){
 
-  /*
-    رمز ورود اصلی ثابت است.
-    localStorage روی ورود اصلی تأثیر نمی‌گذارد.
-  */
-
   return DEFAULT_PASSWORD;
 
 }
@@ -2231,11 +2227,6 @@ function login(){
     ).trim();
 
 
-  /*
-    فقط رمز ثابت زیر برای ورود استفاده می‌شود:
-    @Mohammad1386
-  */
-
   if(
     password ===
     DEFAULT_PASSWORD
@@ -2253,25 +2244,13 @@ function login(){
       true;
 
 
-    /*
-      بستن صفحه ورود
-    */
-
     loginPage.style.display =
       "none";
 
 
-    /*
-      نمایش پنل
-    */
-
     app.style.display =
       "block";
 
-
-    /*
-      همیشه ورود از صفحه بازار شروع شود
-    */
 
     const pages =
       document.querySelectorAll(
@@ -2305,10 +2284,6 @@ function login(){
     }
 
 
-    /*
-      فعال کردن دکمه بازار
-    */
-
     const buttons =
       document.querySelectorAll(
         ".nav button"
@@ -2335,10 +2310,6 @@ function login(){
     }
 
 
-    /*
-      راه‌اندازی پنل
-    */
-
     loadSettings();
 
     setConnectionState(
@@ -2357,15 +2328,10 @@ function login(){
     input.value =
       "";
 
-
     return;
 
   }
 
-
-  /*
-    رمز اشتباه
-  */
 
   if(error){
 
@@ -2818,7 +2784,6 @@ async function fetchPrices(){
             "Accept":
               "application/json"
           }
-
         }
       );
 
@@ -2828,7 +2793,8 @@ async function fetchPrices(){
     ){
 
       throw new Error(
-        "API_ERROR"
+        "API_ERROR_" +
+        response.status
       );
 
     }
@@ -2836,6 +2802,22 @@ async function fetchPrices(){
 
     const data =
       await response.json();
+
+
+    /*
+      بررسی پاسخ واقعی API
+    */
+
+    if(
+      !data ||
+      data.success !== true
+    ){
+
+      throw new Error(
+        "INVALID_API_RESPONSE"
+      );
+
+    }
 
 
     processPrices(
@@ -2871,44 +2853,37 @@ async function fetchPrices(){
 
 function processPrices(data){
 
+  /*
+    ساختار واقعی API:
+
+    silverOunce
+    usdToman
+    usdRial
+    silver999Toman
+  */
+
+
   const silverOunce =
-    deepFindNumber(
-      data,
-      [
-        "silverOunce",
-        "silver_ounce",
-        "silverOzt",
-        "ounceSilver",
-        "silverOuncePrice"
-      ]
+    toNumber(
+      data.silverOunce
     );
 
 
-  const usd =
-    deepFindNumber(
-      data,
-      [
-        "usd",
-        "usdPrice",
-        "dollar",
-        "dollarPrice",
-        "USD",
-        "usd_irr"
-      ]
+  const usdToman =
+    toNumber(
+      data.usdToman
     );
 
 
-  const silver999 =
-    deepFindNumber(
-      data,
-      [
-        "silver999",
-        "silver_999",
-        "silver999Price",
-        "silver_999_price"
-      ]
+  const silver999Toman =
+    toNumber(
+      data.silver999Toman
     );
 
+
+  /*
+    انس نقره
+  */
 
   if(
     silverOunce > 0
@@ -2921,7 +2896,7 @@ function processPrices(data){
     setText(
       "silverOunce",
       formatNumber(
-        silverOunce,
+        currentSilverOunce,
         2
       )
     );
@@ -2929,33 +2904,46 @@ function processPrices(data){
   }
 
 
+  /*
+    دلار به تومان
+  */
+
   if(
-    usd > 0
+    usdToman > 0
   ){
 
     currentUSD =
-      usd;
+      usdToman;
 
 
     setText(
       "usd",
       formatToman(
-        usd
+        currentUSD
       )
     );
 
   }
 
 
+  /*
+    نقره 999
+  */
+
   if(
-    silver999 > 0
+    silver999Toman > 0
   ){
 
     currentSilver999 =
-      silver999;
+      silver999Toman;
 
   }
 
+
+  /*
+    قیمت دستی نقره 999
+    در صورت ثبت در تنظیمات
+  */
 
   const manual999 =
     getManual999();
@@ -2971,6 +2959,10 @@ function processPrices(data){
   }
 
 
+  /*
+    نمایش نقره 999
+  */
+
   setText(
     "silver999",
     currentSilver999 > 0
@@ -2980,6 +2972,10 @@ function processPrices(data){
       : "—"
   );
 
+
+  /*
+    نقره 925
+  */
 
   if(
     currentSilver999 > 0
@@ -2997,8 +2993,25 @@ function processPrices(data){
       )
     );
 
+  }else{
+
+    setText(
+      "silver925",
+      "—"
+    );
+
   }
 
+
+  /*
+    مثقال 17 عیار
+
+    فرمول:
+    انس نقره × دلار
+    ÷ 1000
+    × 700
+    × 4.608
+  */
 
   if(
     currentSilverOunce > 0 &&
@@ -3022,8 +3035,19 @@ function processPrices(data){
       )
     );
 
+  }else{
+
+    setText(
+      "mithqal17",
+      "—"
+    );
+
   }
 
+
+  /*
+    بروزرسانی ماشین حساب
+  */
 
   calculatePrice();
 
@@ -3845,211 +3869,4 @@ function changePassword(){
   ){
 
     passwordStatus.textContent =
-      "رمز جدید باید حداقل ۴ کاراکتر باشد.";
-
-    passwordStatus.className =
-      "password-status error";
-
-    return;
-
-  }
-
-
-  if(
-    newValue !==
-    confirmValue
-  ){
-
-    passwordStatus.textContent =
-      "تکرار رمز جدید صحیح نیست.";
-
-    passwordStatus.className =
-      "password-status error";
-
-    return;
-
-  }
-
-
-  /*
-    رمز جدید ذخیره می‌شود.
-    توجه:
-    رمز اصلی ورود همچنان ثابت است.
-  */
-
-  localStorage.setItem(
-    STORAGE_KEYS.password,
-    newValue
-  );
-
-
-  passwordVerified =
-    false;
-
-
-  if(currentPassword){
-
-    currentPassword.value =
-      "";
-
-    currentPassword.disabled =
-      false;
-
-  }
-
-
-  if(newPassword){
-
-    newPassword.value =
-      "";
-
-  }
-
-
-  if(confirmPassword){
-
-    confirmPassword.value =
-      "";
-
-  }
-
-
-  const passwordFields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-
-  if(passwordFields){
-
-    passwordFields.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  if(verifyButton){
-
-    verifyButton.style.display =
-      "block";
-
-  }
-
-
-  passwordStatus.textContent =
-    "رمز عبور با موفقیت تغییر کرد.";
-
-
-  passwordStatus.className =
-    "password-status success";
-
-}
-
-
-/* =========================================================
-   RESET PASSWORD FORM
-========================================================= */
-
-function resetPasswordChangeForm(){
-
-  const currentPassword =
-    document.getElementById(
-      "currentPassword"
-    );
-
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    );
-
-  const confirmPassword =
-    document.getElementById(
-      "confirmPassword"
-    );
-
-  const passwordFields =
-    document.getElementById(
-      "passwordFields"
-    );
-
-  const verifyButton =
-    document.getElementById(
-      "verifyPasswordButton"
-    );
-
-  const passwordStatus =
-    document.getElementById(
-      "passwordStatus"
-    );
-
-
-  passwordVerified =
-    false;
-
-
-  if(currentPassword){
-
-    currentPassword.value =
-      "";
-
-    currentPassword.disabled =
-      false;
-
-  }
-
-
-  if(newPassword){
-
-    newPassword.value =
-      "";
-
-  }
-
-
-  if(confirmPassword){
-
-    confirmPassword.value =
-      "";
-
-  }
-
-
-  if(passwordFields){
-
-    passwordFields.classList.remove(
-      "show"
-    );
-
-  }
-
-
-  if(verifyButton){
-
-    verifyButton.style.display =
-      "block";
-
-  }
-
-
-  if(passwordStatus){
-
-    passwordStatus.textContent =
-      "";
-
-    passwordStatus.className =
-      "password-status";
-
-  }
-
-}
-
-</script>
-
-</body>
-  </html>
+      "رمز
