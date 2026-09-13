@@ -76,7 +76,7 @@ body{
   overflow:hidden;
 }
 
-/* خطوط نور بسیار ظریف لوکس */
+/* خطوط نور بسیار ظریف و آهسته */
 
 #loginPage::before{
   content:"";
@@ -95,10 +95,11 @@ body{
       transparent
     );
 
-  opacity:.45;
+  opacity:.35;
 
   animation:
-    loginLightLine 9s
+    loginLightLine
+    9s
     ease-in-out
     infinite;
 }
@@ -120,52 +121,51 @@ body{
       transparent
     );
 
-  opacity:.35;
+  opacity:.28;
 
   animation:
-    loginLightLineReverse 11s
+    loginLightLineReverse
+    11s
     ease-in-out
     infinite;
 }
 
 @keyframes loginLightLine{
-
-  0%,100%{
-    transform:translateX(0);
-    opacity:.25;
-  }
-
-  50%{
-    transform:translateX(-70px);
-    opacity:.65;
-  }
-
-}
-
-@keyframes loginLightLineReverse{
-
   0%,100%{
     transform:translateX(0);
     opacity:.20;
   }
 
   50%{
-    transform:translateX(65px);
-    opacity:.55;
+    transform:translateX(-70px);
+    opacity:.58;
+  }
+}
+
+@keyframes loginLightLineReverse{
+  0%,100%{
+    transform:translateX(0);
+    opacity:.16;
   }
 
+  50%{
+    transform:translateX(65px);
+    opacity:.48;
+  }
 }
 
 .login-box{
   width:100%;
   max-width:410px;
   padding:38px 28px;
+
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,.98),
       rgba(242,225,207,.96)
     );
+
   border:1px solid rgba(192,147,108,.55);
   border-radius:24px;
 
@@ -184,8 +184,75 @@ body{
     infinite;
 }
 
-@keyframes loginBoxLuxury{
+/* حاشیه نور بسیار ظریف متحرک */
 
+.login-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  border-radius:24px;
+  padding:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(192,147,108,.18) 20%,
+      rgba(192,147,108,.80) 50%,
+      rgba(192,147,108,.18) 80%,
+      transparent 100%
+    );
+
+  background-size:220% 100%;
+
+  animation:
+    loginBorderSweep
+    8s
+    ease-in-out
+    infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite:exclude;
+
+  pointer-events:none;
+}
+
+.login-box::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+
+  border-radius:22px;
+
+  box-shadow:
+    0 0 18px rgba(192,147,108,.045);
+
+  pointer-events:none;
+}
+
+@keyframes loginBorderSweep{
+  0%,100%{
+    background-position:220% 0;
+    opacity:.42;
+  }
+
+  50%{
+    background-position:-20% 0;
+    opacity:.82;
+  }
+}
+
+@keyframes loginBoxLuxury{
   0%,100%{
     box-shadow:
       0 20px 55px rgba(36,6,3,.28),
@@ -199,53 +266,15 @@ body{
       0 0 0 1px rgba(192,147,108,.14),
       0 0 28px rgba(192,147,108,.09);
   }
-
-}
-
-.login-box::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--champagne),
-      #E2C49D,
-      var(--champagne),
-      transparent
-    );
-
-  opacity:.72;
-
-  animation:
-    loginTopLine
-    8s
-    ease-in-out
-    infinite;
-}
-
-@keyframes loginTopLine{
-
-  0%,100%{
-    opacity:.45;
-  }
-
-  50%{
-    opacity:.90;
-  }
-
 }
 
 .logo{
   width:104px;
   height:104px;
   margin:0 auto 20px;
+
   border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
@@ -268,13 +297,13 @@ body{
   isolation:isolate;
 }
 
-/* حلقه شامپاینی بسیار ظریف
-   بدون نئون تند */
+/* حلقه شامپاینی ظریف و غیرنئونی */
 
 .logo::before{
   content:"";
   position:absolute;
   inset:-8px;
+
   border-radius:50%;
   padding:2px;
 
@@ -302,61 +331,40 @@ body{
 
   mask-composite:exclude;
 
-  animation:
-    loginLogoLuxury
-    6.5s
-    ease-in-out
-    infinite;
-
-  filter:
-    drop-shadow(0 0 2px rgba(192,147,108,.45))
-    drop-shadow(0 0 5px rgba(192,147,108,.16));
+  opacity:.72;
 
   pointer-events:none;
-}
-
-@keyframes loginLogoLuxury{
-
-  0%,100%{
-    opacity:.48;
-
-    filter:
-      drop-shadow(0 0 2px rgba(192,147,108,.30))
-      drop-shadow(0 0 4px rgba(192,147,108,.10));
-  }
-
-  50%{
-    opacity:.92;
-
-    filter:
-      drop-shadow(0 0 3px rgba(192,147,108,.65))
-      drop-shadow(0 0 8px rgba(192,147,108,.20));
-  }
-
 }
 
 .logo span{
   position:relative;
   z-index:2;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:28px;
   font-weight:bold;
+
   color:var(--white);
   letter-spacing:1px;
-  text-shadow:0 2px 5px rgba(0,0,0,.22);
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.22);
 }
 
 .login-title{
   text-align:center;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:23px;
   font-weight:bold;
+
   color:var(--darkBrown);
 }
 
 .login-subtitle{
   text-align:center;
   margin-top:8px;
+
   color:var(--bronze);
   font-size:12px;
 }
@@ -368,32 +376,40 @@ body{
 .password-wrap input{
   width:100%;
   height:52px;
+
   border:1px solid var(--greige);
   border-radius:13px;
+
   background:var(--white);
+
   padding:0 15px;
   outline:none;
+
   font-family:Arial,sans-serif;
   font-size:16px;
+
   color:var(--darkBrown);
+
   direction:ltr;
   text-align:left;
 }
 
 .password-wrap input:focus{
   border-color:var(--champagne);
+
   box-shadow:
     0 0 0 3px rgba(192,147,108,.14),
     0 0 12px rgba(192,147,108,.10);
 }
 
 /* دکمه ورود:
-   قرمز یاقوتی + Glow ملایم */
+   قرمز یاقوتی + Glow بسیار ملایم */
 
 .login-button{
   width:100%;
   height:52px;
   margin-top:14px;
+
   border:0;
   border-radius:13px;
 
@@ -405,14 +421,16 @@ body{
     );
 
   color:var(--white);
+
   font-family:inherit;
   font-size:15px;
   font-weight:bold;
+
   cursor:pointer;
 
   box-shadow:
     0 8px 20px rgba(92,61,36,.16),
-    0 0 8px rgba(158,30,25,.16);
+    0 0 8px rgba(158,30,25,.14);
 
   transition:
     box-shadow .45s ease,
@@ -430,12 +448,13 @@ body{
 
   box-shadow:
     0 8px 22px rgba(92,61,36,.18),
-    0 0 12px rgba(158,30,25,.25),
-    0 0 24px rgba(158,30,25,.08);
+    0 0 12px rgba(158,30,25,.24),
+    0 0 24px rgba(158,30,25,.07);
 }
 
 .login-button:active{
   transform:scale(.985);
+
   box-shadow:
     0 5px 14px rgba(92,61,36,.15),
     0 0 8px rgba(158,30,25,.18);
@@ -444,7 +463,9 @@ body{
 .login-error{
   min-height:22px;
   margin-top:11px;
+
   text-align:center;
+
   color:var(--ruby);
   font-size:12px;
 }
@@ -467,10 +488,16 @@ body{
   position:sticky;
   top:0;
   z-index:50;
+
   background:rgba(250,241,228,.97);
+
   backdrop-filter:blur(10px);
+
   border-bottom:1px solid var(--beige);
-  box-shadow:0 5px 20px rgba(92,61,36,.06);
+
+  box-shadow:
+    0 5px 20px rgba(92,61,36,.06);
+
   padding:14px 17px;
 }
 
@@ -490,19 +517,26 @@ body{
 .brand-logo{
   width:45px;
   height:45px;
+
   flex-shrink:0;
+
   border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:
     linear-gradient(
       145deg,
       var(--champagne),
       var(--gold)
     );
+
   border:2px solid var(--white);
-  box-shadow:0 0 0 1px var(--champagne);
+
+  box-shadow:
+    0 0 0 1px var(--champagne);
 }
 
 .brand-logo span{
@@ -514,14 +548,18 @@ body{
 
 .brand-text strong{
   display:block;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:15px;
+
   color:var(--darkBrown);
 }
 
 .brand-text small{
   display:block;
+
   margin-top:3px;
+
   font-size:10px;
   color:var(--bronze);
 }
@@ -530,36 +568,57 @@ body{
   display:flex;
   align-items:center;
   gap:7px;
+
   font-size:10px;
   color:var(--brown);
+
   white-space:nowrap;
 }
 
 .live-light{
   width:9px;
   height:9px;
+
   border-radius:50%;
+
   background:var(--green);
-  box-shadow:0 0 7px var(--green);
-  animation:livePulse 1.6s ease-in-out infinite;
+
+  box-shadow:
+    0 0 7px var(--green);
+
+  animation:
+    livePulse
+    1.6s
+    ease-in-out
+    infinite;
 }
 
 .status-error .live-light{
   background:var(--red);
-  box-shadow:0 0 7px var(--red);
+
+  box-shadow:
+    0 0 7px var(--red);
 }
 
 @keyframes livePulse{
-  0%,100%{opacity:1;}
-  50%{opacity:.35;}
+  0%,100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.35;
+  }
 }
 
 .header-date{
   margin-top:8px;
+
   text-align:left;
   direction:ltr;
+
   font-family:Arial,sans-serif;
   font-size:10px;
+
   color:var(--bronze);
 }
 
@@ -570,8 +629,11 @@ body{
 .nav{
   display:flex;
   gap:8px;
+
   overflow-x:auto;
+
   padding:12px 15px;
+
   scrollbar-width:none;
 }
 
@@ -581,15 +643,22 @@ body{
 
 .nav button{
   flex:0 0 auto;
+
   min-width:95px;
   height:39px;
+
   padding:0 15px;
+
   border:1px solid var(--greige);
   border-radius:12px;
+
   background:rgba(255,255,255,.9);
+
   color:var(--brown);
+
   font-family:inherit;
   font-size:11px;
+
   cursor:pointer;
 }
 
@@ -600,7 +669,9 @@ body{
       var(--gold),
       var(--champagne)
     );
+
   color:var(--white);
+
   border-color:var(--gold);
 }
 
@@ -611,7 +682,9 @@ body{
 .container{
   width:100%;
   max-width:1120px;
+
   margin:auto;
+
   padding:5px 15px 25px;
 }
 
@@ -621,7 +694,11 @@ body{
 
 .page.active{
   display:block;
-  animation:pageAppear .25s ease;
+
+  animation:
+    pageAppear
+    .25s
+    ease;
 }
 
 @keyframes pageAppear{
@@ -629,6 +706,7 @@ body{
     opacity:0;
     transform:translateY(5px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -637,14 +715,17 @@ body{
 
 .page-title{
   margin:10px 0 7px;
+
   font-family:Georgia,"Times New Roman",serif;
   font-size:22px;
   font-weight:bold;
+
   color:var(--darkBrown);
 }
 
 .page-description{
   margin-bottom:18px;
+
   font-size:11px;
   color:var(--bronze);
 }
@@ -655,41 +736,53 @@ body{
 
 .market-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(155px,1fr));
+
   gap:13px;
 }
 
 /* =========================================================
    MARKET NEON
-   ترکیب:
-   14 - Crystal Flash
-   5  - Moving Light
-   12 - Luxury Pulse
+   ترکیب نهایی:
+   1. Luxury Pulse
+   2. Moving Light
+   3. Crystal Flash
 
-   سبز = وضعیت زنده بازار
+   سبز = آنلاین و زنده
+   قرمز = خطا / قطع اتصال
 ========================================================= */
 
 .market-area{
+  --neon-rgb:32,168,90;
+
   position:relative;
+
   min-height:145px;
   padding:2px;
+
   border-radius:14px;
 
-  border:1px solid rgba(32,168,90,.78);
+  border:
+    1px solid rgba(
+      var(--neon-rgb),
+      .78
+    );
 
   background:
     linear-gradient(
       120deg,
-      rgba(32,168,90,.12),
+      rgba(var(--neon-rgb),.12),
       transparent 25%,
       transparent 75%,
-      rgba(32,168,90,.12)
+      rgba(var(--neon-rgb),.12)
     );
 
   box-shadow:
-    0 0 4px rgba(32,168,90,.32),
-    0 0 9px rgba(32,168,90,.14),
-    inset 0 0 4px rgba(32,168,90,.08);
+    0 0 4px rgba(var(--neon-rgb),.32),
+    0 0 9px rgba(var(--neon-rgb),.14),
+    inset 0 0 4px rgba(var(--neon-rgb),.08);
 
   overflow:hidden;
 
@@ -708,39 +801,52 @@ body{
 
 .market-area::before{
   content:"";
+
   position:absolute;
   inset:-1px;
 
   border-radius:14px;
+  padding:1px;
 
   background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 38%,
-      rgba(255,255,255,0) 43%,
-      rgba(255,255,255,.92) 50%,
-      rgba(32,168,90,.95) 54%,
-      transparent 62%,
-      transparent 100%
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 285deg,
+      rgba(var(--neon-rgb),.10) 300deg,
+      rgba(255,255,255,.75) 315deg,
+      rgba(var(--neon-rgb),1) 325deg,
+      rgba(var(--neon-rgb),.28) 340deg,
+      transparent 355deg 360deg
     );
 
-  background-size:220% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  mask-composite:exclude;
 
   animation:
     marketMovingLight
-    4.6s
+    3.8s
     linear
     infinite;
 
   pointer-events:none;
+
+  z-index:2;
 }
 
-/* Crystal Flash
-   برق بسیار کوتاه و کنترل‌شده */
+/* Crystal Flash */
 
 .market-area::after{
   content:"";
+
   position:absolute;
   inset:0;
 
@@ -749,9 +855,9 @@ body{
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(255,255,255,.65),
-      rgba(32,168,90,.18) 12%,
-      transparent 32%
+      rgba(255,255,255,.72),
+      rgba(var(--neon-rgb),.20) 10%,
+      transparent 30%
     );
 
   opacity:0;
@@ -763,62 +869,37 @@ body{
     infinite;
 
   pointer-events:none;
+
+  z-index:2;
 }
 
+/* حالت خطا */
+
 .status-error .market-area{
-  border-color:rgba(198,40,40,.88);
+  --neon-rgb:198,40,40;
+
+  border-color:
+    rgba(var(--neon-rgb),.88);
 
   background:
     linear-gradient(
       120deg,
-      rgba(198,40,40,.10),
+      rgba(var(--neon-rgb),.10),
       transparent 25%,
       transparent 75%,
-      rgba(198,40,40,.10)
+      rgba(var(--neon-rgb),.10)
     );
 
   box-shadow:
-    0 0 4px rgba(198,40,40,.35),
-    0 0 9px rgba(198,40,40,.15),
-    inset 0 0 4px rgba(198,40,40,.08);
+    0 0 4px rgba(var(--neon-rgb),.35),
+    0 0 9px rgba(var(--neon-rgb),.15),
+    inset 0 0 4px rgba(var(--neon-rgb),.08);
 
   animation:
-    marketLuxuryPulseError
+    marketLuxuryPulse
     3.8s
     ease-in-out
     infinite;
-}
-
-.status-error .market-area::before{
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 38%,
-      rgba(255,255,255,0) 43%,
-      rgba(255,255,255,.82) 50%,
-      rgba(198,40,40,.90) 54%,
-      transparent 62%,
-      transparent 100%
-    );
-
-  background-size:220% 100%;
-
-  animation:
-    marketMovingLightError
-    4.6s
-    linear
-    infinite;
-}
-
-.status-error .market-area::after{
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(255,255,255,.55),
-      rgba(198,40,40,.17) 12%,
-      transparent 32%
-    );
 }
 
 /* Luxury Pulse */
@@ -829,20 +910,19 @@ body{
     opacity:.88;
 
     box-shadow:
-      0 0 3px rgba(32,168,90,.24),
-      0 0 7px rgba(32,168,90,.10),
-      inset 0 0 3px rgba(32,168,90,.06);
+      0 0 3px rgba(var(--neon-rgb),.24),
+      0 0 7px rgba(var(--neon-rgb),.10),
+      inset 0 0 3px rgba(var(--neon-rgb),.06);
   }
 
   50%{
     opacity:1;
 
     box-shadow:
-      0 0 5px rgba(32,168,90,.48),
-      0 0 13px rgba(32,168,90,.22),
-      inset 0 0 5px rgba(32,168,90,.10);
+      0 0 5px rgba(var(--neon-rgb),.52),
+      0 0 14px rgba(var(--neon-rgb),.24),
+      inset 0 0 5px rgba(var(--neon-rgb),.11);
   }
-
 }
 
 /* Moving Light */
@@ -850,29 +930,26 @@ body{
 @keyframes marketMovingLight{
 
   0%{
-    background-position:
-      220% 0;
-    opacity:.15;
+    transform:rotate(0deg);
+    opacity:.20;
   }
 
-  12%{
-    opacity:.35;
+  35%{
+    opacity:.62;
   }
 
   50%{
-    opacity:.90;
+    opacity:1;
   }
 
-  88%{
-    opacity:.35;
+  65%{
+    opacity:.62;
   }
 
   100%{
-    background-position:
-      -20% 0;
-    opacity:.15;
+    transform:rotate(360deg);
+    opacity:.20;
   }
-
 }
 
 /* Crystal Flash */
@@ -881,7 +958,10 @@ body{
 
   0%,78%,100%{
     opacity:0;
-    transform:translateY(0) scale(.85);
+
+    transform:
+      translateY(0)
+      scale(.85);
   }
 
   82%{
@@ -889,8 +969,11 @@ body{
   }
 
   84%{
-    opacity:.75;
-    transform:translateY(0) scale(1);
+    opacity:.80;
+
+    transform:
+      translateY(0)
+      scale(1);
   }
 
   86%{
@@ -900,108 +983,71 @@ body{
   88%{
     opacity:0;
   }
-
-}
-
-/* Error Luxury Pulse */
-
-@keyframes marketLuxuryPulseError{
-
-  0%,100%{
-    opacity:.88;
-
-    box-shadow:
-      0 0 3px rgba(198,40,40,.25),
-      0 0 7px rgba(198,40,40,.10),
-      inset 0 0 3px rgba(198,40,40,.06);
-  }
-
-  50%{
-    opacity:1;
-
-    box-shadow:
-      0 0 5px rgba(198,40,40,.50),
-      0 0 13px rgba(198,40,40,.22),
-      inset 0 0 5px rgba(198,40,40,.10);
-  }
-
-}
-
-/* Error Moving Light */
-
-@keyframes marketMovingLightError{
-
-  0%{
-    background-position:
-      220% 0;
-    opacity:.15;
-  }
-
-  12%{
-    opacity:.30;
-  }
-
-  50%{
-    opacity:.78;
-  }
-
-  88%{
-    opacity:.30;
-  }
-
-  100%{
-    background-position:
-      -20% 0;
-    opacity:.15;
-  }
-
 }
 
 .market-card{
   width:100%;
   min-height:141px;
+
   padding:15px 12px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   text-align:center;
+
   background:
     linear-gradient(
       145deg,
       rgba(255,255,255,.98),
       rgba(242,225,207,.72)
     );
+
   border-radius:12px;
-  box-shadow:0 8px 22px rgba(92,61,36,.07);
+
+  box-shadow:
+    0 8px 22px rgba(92,61,36,.07);
+
   position:relative;
+
   z-index:1;
+
   overflow:hidden;
 }
 
 .market-card:hover{
   transform:translateY(-2px);
-  box-shadow:0 12px 27px rgba(92,61,36,.10);
+
+  box-shadow:
+    0 12px 27px rgba(92,61,36,.10);
 }
 
 .market-title{
   font-size:12px;
   font-weight:bold;
+
   color:var(--darkBrown);
 }
 
 .market-value{
   margin-top:12px;
+
   direction:ltr;
+
   font-family:Arial,sans-serif;
   font-size:21px;
   font-weight:bold;
+
   color:var(--gold);
 }
 
 .market-unit{
   margin-top:6px;
+
   font-size:10px;
+
   color:var(--bronze);
 }
 
@@ -1011,21 +1057,30 @@ body{
 
 .panel{
   background:rgba(255,255,255,.90);
+
   border:1px solid var(--greige);
   border-radius:20px;
+
   padding:20px;
-  box-shadow:0 10px 28px rgba(92,61,36,.07);
+
+  box-shadow:
+    0 10px 28px rgba(92,61,36,.07);
 }
 
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
   gap:13px;
 }
 
 .form-group label{
   display:block;
+
   margin-bottom:7px;
+
   font-size:11px;
   color:var(--darkBrown);
 }
@@ -1034,13 +1089,20 @@ body{
 .form-group select{
   width:100%;
   height:45px;
+
   border:1px solid var(--greige);
   border-radius:11px;
+
   background:var(--white);
+
   padding:0 12px;
+
   outline:none;
+
   font-family:inherit;
+
   color:var(--darkBrown);
+
   direction:ltr;
   text-align:left;
 }
@@ -1048,7 +1110,9 @@ body{
 .form-group input:focus,
 .form-group select:focus{
   border-color:var(--champagne);
-  box-shadow:0 0 0 3px rgba(192,147,108,.11);
+
+  box-shadow:
+    0 0 0 3px rgba(192,147,108,.11);
 }
 
 /* =========================
@@ -1057,60 +1121,80 @@ body{
 
 .result-box{
   margin-top:20px;
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(145px,1fr));
+
   gap:10px;
 }
 
 .result-item{
   padding:14px 10px;
+
   border:1px solid var(--beige);
   border-radius:14px;
+
   background:
     linear-gradient(
       145deg,
       var(--softIvory),
       var(--warmIvory)
     );
+
   text-align:center;
 }
 
 .result-item span{
   display:block;
+
   margin-bottom:7px;
+
   font-size:10px;
+
   color:var(--bronze);
 }
 
 .result-item strong{
   direction:ltr;
+
   font-family:Arial,sans-serif;
   font-size:15px;
+
   color:var(--darkBrown);
 }
 
 .final-result{
   margin-top:13px;
+
   padding:20px;
+
   border-radius:17px;
+
   background:
     linear-gradient(
       135deg,
       var(--brown),
       var(--gold)
     );
+
   color:var(--white);
+
   text-align:center;
 }
 
 .final-result span{
   display:block;
+
   margin-bottom:8px;
+
   font-size:11px;
 }
 
 .final-result strong{
   direction:ltr;
+
   font-family:Arial,sans-serif;
   font-size:24px;
 }
@@ -1126,14 +1210,18 @@ body{
 
 .settings-item{
   padding:15px;
+
   border:1px solid var(--greige);
   border-radius:15px;
+
   background:rgba(255,255,255,.95);
 }
 
 .settings-item label{
   display:block;
+
   margin-bottom:8px;
+
   font-size:11px;
   color:var(--darkBrown);
 }
@@ -1141,48 +1229,66 @@ body{
 .settings-item input{
   width:100%;
   height:45px;
+
   border:1px solid var(--greige);
   border-radius:11px;
+
   background:var(--white);
+
   padding:0 12px;
+
   outline:none;
+
   font-family:Arial,sans-serif;
   font-size:14px;
+
   color:var(--darkBrown);
+
   direction:ltr;
   text-align:left;
 }
 
 .settings-hint{
   margin-top:6px;
+
   font-size:10px;
   line-height:1.8;
+
   color:var(--bronze);
 }
 
 .settings-button{
   width:100%;
   height:47px;
+
   margin-top:4px;
+
   border:0;
   border-radius:12px;
+
   background:
     linear-gradient(
       135deg,
       var(--gold),
       var(--champagne)
     );
+
   color:var(--white);
+
   font-family:inherit;
   font-size:13px;
   font-weight:bold;
+
   cursor:pointer;
 }
 
 .password-status{
   min-height:20px;
+
   margin-top:8px;
+
   text-align:center;
+
   font-size:11px;
 }
 
@@ -1206,21 +1312,30 @@ body{
 .change-password-button{
   width:100%;
   height:45px;
+
   border:1px solid var(--gold);
   border-radius:12px;
+
   background:var(--softIvory);
+
   color:var(--brown);
+
   font-family:inherit;
   font-size:12px;
   font-weight:bold;
+
   cursor:pointer;
 }
 
 .save-message{
   min-height:20px;
+
   margin-top:8px;
+
   text-align:center;
+
   font-size:11px;
+
   color:var(--green);
 }
 
@@ -1230,10 +1345,15 @@ body{
 
 .footer{
   max-width:1120px;
+
   margin:10px auto 0;
+
   padding:20px 15px;
+
   text-align:center;
+
   color:var(--bronze);
+
   font-size:10px;
 }
 
@@ -1244,11 +1364,16 @@ body{
 
 .instagram-link{
   display:inline-flex;
+
   align-items:center;
   gap:7px;
+
   margin-top:9px;
+
   color:var(--brown);
+
   text-decoration:none;
+
   font-family:Arial,sans-serif;
   font-size:11px;
   font-weight:bold;
@@ -1262,13 +1387,19 @@ body{
 .exit-button{
   width:100%;
   height:45px;
+
   margin-top:18px;
+
   border:1px solid var(--ruby);
   border-radius:12px;
+
   background:transparent;
+
   color:var(--ruby);
+
   font-family:inherit;
   font-size:12px;
+
   cursor:pointer;
 }
 
@@ -1328,20 +1459,23 @@ body{
   }
 }
 
+/* =========================
+   REDUCED MOTION
+========================= */
+
 @media(prefers-reduced-motion:reduce){
 
-  .logo::before{
-    animation-duration:8s;
-  }
-
+  .logo::before,
   .market-area,
   .market-area::before,
   .market-area::after,
   #loginPage::before,
   #loginPage::after,
   .login-box,
-  .login-box::before{
-    animation-duration:12s;
+  .login-box::before,
+  .login-button,
+  .live-light{
+    animation:none !important;
   }
 
 }
@@ -2608,23 +2742,10 @@ function processPrices(data){
   /* =====================================================
      مثقال ۱۷ عیار نقره
 
-     فرمول صحیح:
-
-     مرحله ۱:
-     انس نقره × قیمت دلار
-     = قیمت ۱ انس نقره
-
-     مرحله ۲:
-     قیمت ۱ انس ÷ 31.103
-     = قیمت هر گرم نقره
-
-     مرحله ۳:
-     قیمت هر گرم ÷ 1000 × 700
-     = قیمت هر گرم نقره ۱۷ عیار
-
-     مرحله ۴:
-     قیمت هر گرم نقره ۱۷ عیار × 4.608
-     = قیمت یک مثقال ۱۷ عیار
+     انس نقره × دلار
+     ÷ 31.103
+     ÷ 1000 × 700
+     × 4.608
   ===================================================== */
 
   if(
@@ -2824,15 +2945,6 @@ function updateIranClock(){
     const now =
       new Date();
 
-
-    /*
-       نمایش مستقیم زمان رسمی ایران
-       با Time Zone رسمی تهران.
-
-       این روش مستقل از Time Zone
-       تنظیم‌شده روی موبایل، تلویزیون
-       یا کامپیوتر است.
-    */
 
     const dateFormatter =
       new Intl.DateTimeFormat(
@@ -3420,11 +3532,6 @@ function changePassword(){
     return;
   }
 
-
-  /*
-    رمز اصلی ورود پنل عمداً ثابت است:
-    @Mohammad1386
-  */
 
   passwordStatus.textContent =
     "رمز جدید ثبت شد؛ رمز اصلی ورود پنل ثابت است.";
