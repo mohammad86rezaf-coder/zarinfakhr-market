@@ -3845,4 +3845,998 @@ function updateClockDisplay(){
       "fa-IR-u-ca-persian",
       {
         timeZone:
-          "Asia
+          "Asia/Tehran",
+
+        year:"numeric",
+
+        month:"2-digit",
+
+        day:"2-digit"
+      }
+    );
+
+
+  const timeFormatter =
+    new Intl.DateTimeFormat(
+      "fa-IR",
+      {
+        timeZone:
+          "Asia/Tehran",
+
+        hour:"2-digit",
+
+        minute:"2-digit",
+
+        second:"2-digit",
+
+        hour12:false
+      }
+    );
+
+
+  if(dateElement){
+
+    dateElement.textContent =
+      dateFormatter.format(
+        now
+      );
+
+  }
+
+
+  if(timeElement){
+
+    timeElement.textContent =
+      timeFormatter.format(
+        now
+      );
+
+  }
+
+}
+
+
+/* =========================================================
+   REMOVE OLD DATE/TIME KEYS
+========================================================= */
+
+function removeOldManualDateTimeKeys(){
+
+  const oldKeys = [
+
+    "zarinFakhrManualDate",
+
+    "zarinFakhrManualTime",
+
+    "SZF_MANUAL_DATE",
+
+    "SZF_MANUAL_TIME"
+
+  ];
+
+
+  oldKeys.forEach(
+    function(key){
+
+      try{
+
+        localStorage.removeItem(
+          key
+        );
+
+      }
+      catch(error){
+
+        console.warn(
+          "Storage cleanup:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function showPage(
+  pageId,
+  button
+){
+
+  const pages =
+    document.querySelectorAll(
+      ".page"
+    );
+
+
+  pages.forEach(
+    function(page){
+
+      page.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const selectedPage =
+    document.getElementById(
+      pageId
+    );
+
+
+  if(selectedPage){
+
+    selectedPage.classList.add(
+      "active"
+    );
+
+  }
+
+
+  const buttons =
+    document.querySelectorAll(
+      ".nav button"
+    );
+
+
+  buttons.forEach(
+    function(item){
+
+      item.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  if(button){
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(
+    pageId === "calculator"
+  ){
+
+    calculatePrice();
+
+  }
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function getManual999(){
+
+  const value =
+    localStorage.getItem(
+      MANUAL_999_KEY
+    );
+
+
+  return parseNumber(
+    value
+  );
+
+}
+
+
+function getDefaultLabor(){
+
+  const value =
+    localStorage.getItem(
+      DEFAULT_LABOR_KEY
+    );
+
+
+  return parseNumber(
+    value
+  );
+
+}
+
+
+/* =========================================================
+   LOAD SETTINGS
+========================================================= */
+
+function loadSettings(){
+
+  const manual999Input =
+    document.getElementById(
+      "manual999"
+    );
+
+  const defaultLaborInput =
+    document.getElementById(
+      "defaultLabor"
+    );
+
+  const manual999 =
+    localStorage.getItem(
+      MANUAL_999_KEY
+    );
+
+  const defaultLabor =
+    localStorage.getItem(
+      DEFAULT_LABOR_KEY
+    );
+
+
+  if(manual999Input){
+
+    manual999Input.value =
+      manual999 || "";
+
+  }
+
+
+  if(defaultLaborInput){
+
+    defaultLaborInput.value =
+      defaultLabor || "";
+
+  }
+
+
+  /*
+    اجرت پیش‌فرض
+  */
+
+  const laborInput =
+    document.getElementById(
+      "calcLabor"
+    );
+
+
+  if(
+    laborInput &&
+    !laborInput.value &&
+    defaultLabor
+  ){
+
+    laborInput.value =
+      defaultLabor;
+
+  }
+
+
+  updateMarketDisplay();
+
+}
+
+
+/* =========================================================
+   SAVE SETTINGS
+========================================================= */
+
+function saveSettings(){
+
+  const manual999Input =
+    document.getElementById(
+      "manual999"
+    );
+
+  const defaultLaborInput =
+    document.getElementById(
+      "defaultLabor"
+    );
+
+  const message =
+    document.getElementById(
+      "saveMessage"
+    );
+
+
+  const manual999 =
+    manual999Input
+      ? String(
+          manual999Input.value || ""
+        ).trim()
+      : "";
+
+
+  const defaultLabor =
+    defaultLaborInput
+      ? String(
+          defaultLaborInput.value || ""
+        ).trim()
+      : "";
+
+
+  if(manual999){
+
+    localStorage.setItem(
+      MANUAL_999_KEY,
+      manual999
+    );
+
+  }
+  else{
+
+    localStorage.removeItem(
+      MANUAL_999_KEY
+    );
+
+  }
+
+
+  if(defaultLabor){
+
+    localStorage.setItem(
+      DEFAULT_LABOR_KEY,
+      defaultLabor
+    );
+
+  }
+  else{
+
+    localStorage.removeItem(
+      DEFAULT_LABOR_KEY
+    );
+
+  }
+
+
+  const laborInput =
+    document.getElementById(
+      "calcLabor"
+    );
+
+
+  if(
+    laborInput &&
+    defaultLabor
+  ){
+
+    laborInput.value =
+      defaultLabor;
+
+  }
+
+
+  updateMarketDisplay();
+
+  calculatePrice();
+
+
+  if(message){
+
+    message.textContent =
+      "تنظیمات با موفقیت ذخیره شد.";
+
+    setTimeout(
+      function(){
+
+        message.textContent = "";
+
+      },
+      2500
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   VERIFY CURRENT PASSWORD
+========================================================= */
+
+function verifyCurrentPassword(){
+
+  const input =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const status =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+  const fields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const button =
+    document.getElementById(
+      "verifyPasswordButton"
+    );
+
+
+  if(
+    !input ||
+    !status ||
+    !fields
+  ){
+
+    return;
+
+  }
+
+
+  const entered =
+    String(
+      input.value || ""
+    ).trim();
+
+
+  const current =
+    getCurrentPassword();
+
+
+  if(
+    entered === DEFAULT_PASSWORD ||
+    entered === current
+  ){
+
+    passwordVerified = true;
+
+
+    status.className =
+      "password-status success";
+
+
+    status.textContent =
+      "رمز فعلی تأیید شد.";
+
+
+    fields.classList.add(
+      "show"
+    );
+
+
+    if(button){
+
+      button.style.display =
+        "none";
+
+    }
+
+
+    return;
+
+  }
+
+
+  passwordVerified = false;
+
+
+  status.className =
+    "password-status error";
+
+
+  status.textContent =
+    "رمز فعلی اشتباه است.";
+
+
+  fields.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+========================================================= */
+
+function changePassword(){
+
+  const newPasswordInput =
+    document.getElementById(
+      "newPassword"
+    );
+
+  const confirmPasswordInput =
+    document.getElementById(
+      "confirmPassword"
+    );
+
+  const status =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+
+  if(
+    !newPasswordInput ||
+    !confirmPasswordInput ||
+    !status
+  ){
+
+    return;
+
+  }
+
+
+  if(!passwordVerified){
+
+    status.className =
+      "password-status error";
+
+    status.textContent =
+      "ابتدا رمز فعلی را تأیید کنید.";
+
+    return;
+
+  }
+
+
+  const newPassword =
+    String(
+      newPasswordInput.value || ""
+    ).trim();
+
+
+  const confirmPassword =
+    String(
+      confirmPasswordInput.value || ""
+    ).trim();
+
+
+  if(
+    newPassword.length < 4
+  ){
+
+    status.className =
+      "password-status error";
+
+    status.textContent =
+      "رمز جدید باید حداقل ۴ کاراکتر باشد.";
+
+    return;
+
+  }
+
+
+  if(
+    newPassword !== confirmPassword
+  ){
+
+    status.className =
+      "password-status error";
+
+    status.textContent =
+      "تکرار رمز جدید صحیح نیست.";
+
+    return;
+
+  }
+
+
+  /*
+    رمز اصلی همچنان همیشه معتبر است.
+    رمز جدید نیز ذخیره می‌شود.
+  */
+
+  localStorage.setItem(
+    PASSWORD_KEY,
+    newPassword
+  );
+
+
+  status.className =
+    "password-status success";
+
+
+  status.textContent =
+    "رمز جدید با موفقیت ذخیره شد.";
+
+
+  newPasswordInput.value = "";
+
+  confirmPasswordInput.value = "";
+
+}
+
+
+/* =========================================================
+   RESET PASSWORD FORM
+========================================================= */
+
+function resetPasswordChangeForm(){
+
+  const currentPassword =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    );
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    );
+
+  const status =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+  const fields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const button =
+    document.getElementById(
+      "verifyPasswordButton"
+    );
+
+
+  if(currentPassword){
+
+    currentPassword.value = "";
+
+  }
+
+
+  if(newPassword){
+
+    newPassword.value = "";
+
+  }
+
+
+  if(confirmPassword){
+
+    confirmPassword.value = "";
+
+  }
+
+
+  if(status){
+
+    status.textContent = "";
+
+    status.className =
+      "password-status";
+
+  }
+
+
+  if(fields){
+
+    fields.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  if(button){
+
+    button.style.display =
+      "block";
+
+  }
+
+
+  passwordVerified = false;
+
+}
+
+
+/* =========================================================
+   CALCULATE PRICE
+========================================================= */
+
+function calculatePrice(){
+
+  const weightInput =
+    document.getElementById(
+      "calcWeight"
+    );
+
+  const purityInput =
+    document.getElementById(
+      "calcPurity"
+    );
+
+  const laborInput =
+    document.getElementById(
+      "calcLabor"
+    );
+
+  const extraInput =
+    document.getElementById(
+      "calcExtra"
+    );
+
+  const profitInput =
+    document.getElementById(
+      "calcProfit"
+    );
+
+
+  if(
+    !weightInput ||
+    !purityInput ||
+    !laborInput ||
+    !extraInput ||
+    !profitInput
+  ){
+
+    return;
+
+  }
+
+
+  const weight =
+    parseNumber(
+      weightInput.value
+    );
+
+
+  const purity =
+    parseNumber(
+      purityInput.value
+    ) || 999;
+
+
+  const manual999 =
+    getManual999();
+
+
+  const base999 =
+    manual999 > 0
+      ? manual999
+      : currentSilver999;
+
+
+  /*
+    قیمت هر گرم بر اساس عیار
+  */
+
+  let gramPrice =
+    base999 *
+    (purity / 999);
+
+
+  if(
+    !Number.isFinite(
+      gramPrice
+    )
+  ){
+
+    gramPrice = 0;
+
+  }
+
+
+  const labor =
+    parseNumber(
+      laborInput.value
+    );
+
+
+  const extra =
+    parseNumber(
+      extraInput.value
+    );
+
+
+  const profitPercent =
+    parseNumber(
+      profitInput.value
+    );
+
+
+  const basePrice =
+    weight *
+    gramPrice;
+
+
+  const laborTotal =
+    weight *
+    labor;
+
+
+  const subtotal =
+    basePrice +
+    laborTotal +
+    extra;
+
+
+  const profit =
+    subtotal *
+    (
+      profitPercent / 100
+    );
+
+
+  const finalPrice =
+    subtotal +
+    profit;
+
+
+  const gramElement =
+    document.getElementById(
+      "calcGramPrice"
+    );
+
+  const baseElement =
+    document.getElementById(
+      "calcBase"
+    );
+
+  const laborElement =
+    document.getElementById(
+      "calcLaborResult"
+    );
+
+  const extraElement =
+    document.getElementById(
+      "calcExtraResult"
+    );
+
+  const profitElement =
+    document.getElementById(
+      "calcProfitResult"
+    );
+
+  const finalElement =
+    document.getElementById(
+      "calcFinal"
+    );
+
+
+  if(gramElement){
+
+    gramElement.textContent =
+      formatNumber(
+        gramPrice
+      );
+
+  }
+
+
+  if(baseElement){
+
+    baseElement.textContent =
+      formatNumber(
+        basePrice
+      );
+
+  }
+
+
+  if(laborElement){
+
+    laborElement.textContent =
+      formatNumber(
+        laborTotal
+      );
+
+  }
+
+
+  if(extraElement){
+
+    extraElement.textContent =
+      formatNumber(
+        extra
+      );
+
+  }
+
+
+  if(profitElement){
+
+    profitElement.textContent =
+      formatNumber(
+        profit
+      );
+
+  }
+
+
+  if(finalElement){
+
+    finalElement.textContent =
+      formatNumber(
+        finalPrice
+      ) +
+      " تومان";
+
+  }
+
+}
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    /*
+      پنل در ابتدا مخفی است.
+    */
+
+    const app =
+      document.getElementById(
+        "app"
+      );
+
+
+    const loginPage =
+      document.getElementById(
+        "loginPage"
+      );
+
+
+    if(app){
+
+      app.style.display =
+        "none";
+
+    }
+
+
+    if(loginPage){
+
+      loginPage.style.display =
+        "flex";
+
+    }
+
+
+    /*
+      مقدار پیش‌فرض اجرت
+    */
+
+    const laborInput =
+      document.getElementById(
+        "calcLabor"
+      );
+
+
+    const defaultLabor =
+      getDefaultLabor();
+
+
+    if(
+      laborInput &&
+      defaultLabor > 0
+    ){
+
+      laborInput.value =
+        defaultLabor;
+
+    }
+
+
+    calculatePrice();
+
+  }
+);
+
+</script>
+
+</body>
+  </html>
