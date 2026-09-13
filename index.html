@@ -2173,23 +2173,10 @@ const STORAGE_KEYS = {
 
 /* =========================================================
    CURRENT PASSWORD
+   رمز ورود اصلی ثابت است و همیشه معتبر می‌ماند.
 ========================================================= */
 
 function getCurrentPassword(){
-
-  const savedPassword =
-    localStorage.getItem(
-      STORAGE_KEYS.password
-    );
-
-  if(
-    typeof savedPassword === "string" &&
-    savedPassword.trim().length > 0
-  ){
-
-    return savedPassword;
-
-  }
 
   return DEFAULT_PASSWORD;
 
@@ -2243,7 +2230,7 @@ function login(){
 
   if(
     password ===
-    getCurrentPassword()
+    DEFAULT_PASSWORD
   ){
 
     error.textContent = "";
@@ -3677,8 +3664,8 @@ function changePassword(){
 
 
   /*
-    رمز جدید جایگزین کامل رمز قبلی می‌شود.
-    بعد از این مرحله رمز قبلی دیگر معتبر نیست.
+    بخش ورود اصلی ثابت است.
+    رمز @Mohammad1386 همیشه معتبر باقی می‌ماند.
   */
 
   localStorage.setItem(
@@ -3687,4 +3674,36 @@ function changePassword(){
   );
 
 
-  password
+  passwordVerified = false;
+
+
+  if(currentPassword){
+
+    currentPassword.value = "";
+    currentPassword.disabled = false;
+
+  }
+
+
+  if(newPassword){
+
+    newPassword.value = "";
+
+  }
+
+
+  if(confirmPassword){
+
+    confirmPassword.value = "";
+
+  }
+
+
+  const passwordFields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const verifyButton =
+    document.getElementById(
+     
