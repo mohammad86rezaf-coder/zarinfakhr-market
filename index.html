@@ -2146,7 +2146,7 @@ let passwordVerified = false;
 
 
 /* =========================================================
-   DEFAULT PASSWORD
+   FIXED LOGIN PASSWORD
 ========================================================= */
 
 const DEFAULT_PASSWORD =
@@ -2173,10 +2173,14 @@ const STORAGE_KEYS = {
 
 /* =========================================================
    CURRENT PASSWORD
-   رمز ورود اصلی ثابت است و همیشه معتبر می‌ماند.
 ========================================================= */
 
 function getCurrentPassword(){
+
+  /*
+    رمز ورود اصلی ثابت است.
+    localStorage روی ورود اصلی تأثیر نمی‌گذارد.
+  */
 
   return DEFAULT_PASSWORD;
 
@@ -2212,7 +2216,6 @@ function login(){
 
   if(
     !input ||
-    !error ||
     !loginPage ||
     !app
   ){
@@ -2228,21 +2231,113 @@ function login(){
     ).trim();
 
 
+  /*
+    فقط رمز ثابت زیر برای ورود استفاده می‌شود:
+    @Mohammad1386
+  */
+
   if(
     password ===
     DEFAULT_PASSWORD
   ){
 
-    error.textContent = "";
+    if(error){
 
-    passwordVerified = true;
+      error.textContent =
+        "";
+
+    }
+
+
+    passwordVerified =
+      true;
+
+
+    /*
+      بستن صفحه ورود
+    */
 
     loginPage.style.display =
       "none";
 
+
+    /*
+      نمایش پنل
+    */
+
     app.style.display =
       "block";
 
+
+    /*
+      همیشه ورود از صفحه بازار شروع شود
+    */
+
+    const pages =
+      document.querySelectorAll(
+        ".page"
+      );
+
+
+    pages.forEach(
+      function(page){
+
+        page.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+    const market =
+      document.getElementById(
+        "market"
+      );
+
+
+    if(market){
+
+      market.classList.add(
+        "active"
+      );
+
+    }
+
+
+    /*
+      فعال کردن دکمه بازار
+    */
+
+    const buttons =
+      document.querySelectorAll(
+        ".nav button"
+      );
+
+
+    buttons.forEach(
+      function(button){
+
+        button.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+    if(buttons.length > 0){
+
+      buttons[0].classList.add(
+        "active"
+      );
+
+    }
+
+
+    /*
+      راه‌اندازی پنل
+    */
 
     loadSettings();
 
@@ -2258,17 +2353,30 @@ function login(){
 
     calculatePrice();
 
-    input.value = "";
+
+    input.value =
+      "";
+
 
     return;
 
   }
 
 
-  error.textContent =
-    "رمز عبور اشتباه است.";
+  /*
+    رمز اشتباه
+  */
 
-  input.value = "";
+  if(error){
+
+    error.textContent =
+      "رمز عبور اشتباه است.";
+
+  }
+
+
+  input.value =
+    "";
 
   input.focus();
 
@@ -2295,7 +2403,10 @@ document.addEventListener(
         "keydown",
         function(event){
 
-          if(event.key === "Enter"){
+          if(
+            event.key ===
+            "Enter"
+          ){
 
             event.preventDefault();
 
@@ -2316,7 +2427,9 @@ document.addEventListener(
       function(){
 
         if(input){
+
           input.focus();
+
         }
 
       },
@@ -2337,10 +2450,14 @@ function exitApp(){
 
   stopClock();
 
-  passwordVerified = false;
+  passwordVerified =
+    false;
 
-  serverBaseTime = null;
-  clientBaseTime = null;
+  serverBaseTime =
+    null;
+
+  clientBaseTime =
+    null;
 
 
   const app =
@@ -2365,19 +2482,34 @@ function exitApp(){
 
 
   if(app){
-    app.style.display = "none";
+
+    app.style.display =
+      "none";
+
   }
+
 
   if(loginPage){
-    loginPage.style.display = "flex";
+
+    loginPage.style.display =
+      "flex";
+
   }
+
 
   if(passwordInput){
-    passwordInput.value = "";
+
+    passwordInput.value =
+      "";
+
   }
 
+
   if(loginError){
-    loginError.textContent = "";
+
+    loginError.textContent =
+      "";
+
   }
 
 
@@ -2392,7 +2524,9 @@ function exitApp(){
     function(){
 
       if(passwordInput){
+
         passwordInput.focus();
+
       }
 
     },
@@ -2414,7 +2548,9 @@ function convertDigitsToEnglish(value){
       /[۰-۹]/g,
       function(d){
 
-        return "۰۱۲۳۴۵۶۷۸۹".indexOf(d);
+        return "۰۱۲۳۴۵۶۷۸۹".indexOf(
+          d
+        );
 
       }
     )
@@ -2423,7 +2559,9 @@ function convertDigitsToEnglish(value){
       /[٠-٩]/g,
       function(d){
 
-        return "٠١٢٣٤٥٦٧٨٩".indexOf(d);
+        return "٠١٢٣٤٥٦٧٨٩".indexOf(
+          d
+        );
 
       }
     );
@@ -2441,13 +2579,24 @@ function toNumber(value){
     convertDigitsToEnglish(
       value
     )
-    .replace(/,/g,"")
-    .replace(/٬/g,"")
-    .replace(/٫/g,".");
+    .replace(
+      /,/g,
+      ""
+    )
+    .replace(
+      /٬/g,
+      ""
+    )
+    .replace(
+      /٫/g,
+      "."
+    );
 
 
   const number =
-    Number(normalized);
+    Number(
+      normalized
+    );
 
 
   return Number.isFinite(number)
@@ -2467,7 +2616,9 @@ function formatNumber(
 ){
 
   const number =
-    Number(value);
+    Number(
+      value
+    );
 
 
   if(
@@ -2521,7 +2672,7 @@ function formatToman(value){
 
 
 /* =========================================================
-   FIND VALUE IN API RESPONSE
+   FIND VALUE
 ========================================================= */
 
 function findNumericValue(
@@ -2556,8 +2707,12 @@ function findNumericValue(
         );
 
 
-      if(value > 0){
+      if(
+        value > 0
+      ){
+
         return value;
+
       }
 
     }
@@ -2605,8 +2760,12 @@ function deepFindNumber(
     );
 
 
-  if(direct > 0){
+  if(
+    direct > 0
+  ){
+
     return direct;
+
   }
 
 
@@ -2621,8 +2780,12 @@ function deepFindNumber(
       );
 
 
-    if(result > 0){
+    if(
+      result > 0
+    ){
+
       return result;
+
     }
 
   }
@@ -2645,19 +2808,24 @@ async function fetchPrices(){
       await fetch(
         API,
         {
-          method:"GET",
+          method:
+            "GET",
 
-          cache:"no-store",
+          cache:
+            "no-store",
 
           headers:{
             "Accept":
               "application/json"
           }
+
         }
       );
 
 
-    if(!response.ok){
+    if(
+      !response.ok
+    ){
 
       throw new Error(
         "API_ERROR"
@@ -2749,6 +2917,7 @@ function processPrices(data){
     currentSilverOunce =
       silverOunce;
 
+
     setText(
       "silverOunce",
       formatNumber(
@@ -2766,6 +2935,7 @@ function processPrices(data){
 
     currentUSD =
       usd;
+
 
     setText(
       "usd",
@@ -2886,7 +3056,7 @@ function setText(
 
 
 /* =========================================================
-   CONNECTION STATE
+   CONNECTION
 ========================================================= */
 
 function setConnectionState(
@@ -2919,14 +3089,18 @@ function setConnectionState(
   );
 
 
-  if(state === "error"){
+  if(
+    state === "error"
+  ){
 
     app.classList.add(
       "status-error"
     );
 
+
     text.textContent =
       "قطع اتصال";
+
 
     return;
 
@@ -2965,13 +3139,16 @@ function startPriceUpdates(){
 
 function stopPriceUpdates(){
 
-  if(priceInterval){
+  if(
+    priceInterval
+  ){
 
     clearInterval(
       priceInterval
     );
 
-    priceInterval = null;
+    priceInterval =
+      null;
 
   }
 
@@ -3000,13 +3177,16 @@ function startClock(){
 
 function stopClock(){
 
-  if(clockInterval){
+  if(
+    clockInterval
+  ){
 
     clearInterval(
       clockInterval
     );
 
-    clockInterval = null;
+    clockInterval =
+      null;
 
   }
 
@@ -3047,9 +3227,14 @@ function updateIranClock(){
         timeZone:
           "Asia/Tehran",
 
-        year:"numeric",
-        month:"2-digit",
-        day:"2-digit"
+        year:
+          "numeric",
+
+        month:
+          "2-digit",
+
+        day:
+          "2-digit"
       }
     );
 
@@ -3061,11 +3246,17 @@ function updateIranClock(){
         timeZone:
           "Asia/Tehran",
 
-        hour:"2-digit",
-        minute:"2-digit",
-        second:"2-digit",
+        hour:
+          "2-digit",
 
-        hour12:false
+        minute:
+          "2-digit",
+
+        second:
+          "2-digit",
+
+        hour12:
+          false
       }
     );
 
@@ -3220,10 +3411,13 @@ function calculatePrice(){
     );
 
 
-  let baseGramPrice = 0;
+  let baseGramPrice =
+    0;
 
 
-  if(currentSilver999 > 0){
+  if(
+    currentSilver999 > 0
+  ){
 
     baseGramPrice =
       currentSilver999 *
@@ -3363,6 +3557,7 @@ function loadSettings(){
       STORAGE_KEYS.manual999
     );
 
+
   const savedLabor =
     localStorage.getItem(
       STORAGE_KEYS.defaultLabor
@@ -3462,6 +3657,7 @@ function saveSettings(){
     message.textContent =
       "تنظیمات با موفقیت ذخیره شد.";
 
+
     setTimeout(
       function(){
 
@@ -3530,40 +3726,52 @@ function verifyCurrentPassword(){
     getCurrentPassword()
   ){
 
-    passwordVerified = true;
+    passwordVerified =
+      true;
+
 
     passwordStatus.textContent =
       "رمز فعلی صحیح است. رمز جدید را وارد کنید.";
 
+
     passwordStatus.className =
       "password-status success";
+
 
     passwordFields.classList.add(
       "show"
     );
 
+
     verifyButton.style.display =
       "none";
 
+
     currentPassword.disabled =
       true;
+
 
     return;
 
   }
 
 
-  passwordVerified = false;
+  passwordVerified =
+    false;
+
 
   passwordStatus.textContent =
     "رمز فعلی اشتباه است.";
 
+
   passwordStatus.className =
     "password-status error";
+
 
   passwordFields.classList.remove(
     "show"
   );
+
 
   verifyButton.style.display =
     "block";
@@ -3664,8 +3872,9 @@ function changePassword(){
 
 
   /*
-    بخش ورود اصلی ثابت است.
-    رمز @Mohammad1386 همیشه معتبر باقی می‌ماند.
+    رمز جدید ذخیره می‌شود.
+    توجه:
+    رمز اصلی ورود همچنان ثابت است.
   */
 
   localStorage.setItem(
@@ -3674,27 +3883,33 @@ function changePassword(){
   );
 
 
-  passwordVerified = false;
+  passwordVerified =
+    false;
 
 
   if(currentPassword){
 
-    currentPassword.value = "";
-    currentPassword.disabled = false;
+    currentPassword.value =
+      "";
+
+    currentPassword.disabled =
+      false;
 
   }
 
 
   if(newPassword){
 
-    newPassword.value = "";
+    newPassword.value =
+      "";
 
   }
 
 
   if(confirmPassword){
 
-    confirmPassword.value = "";
+    confirmPassword.value =
+      "";
 
   }
 
@@ -3706,4 +3921,135 @@ function changePassword(){
 
   const verifyButton =
     document.getElementById(
-     
+      "verifyPasswordButton"
+    );
+
+
+  if(passwordFields){
+
+    passwordFields.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  if(verifyButton){
+
+    verifyButton.style.display =
+      "block";
+
+  }
+
+
+  passwordStatus.textContent =
+    "رمز عبور با موفقیت تغییر کرد.";
+
+
+  passwordStatus.className =
+    "password-status success";
+
+}
+
+
+/* =========================================================
+   RESET PASSWORD FORM
+========================================================= */
+
+function resetPasswordChangeForm(){
+
+  const currentPassword =
+    document.getElementById(
+      "currentPassword"
+    );
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    );
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    );
+
+  const passwordFields =
+    document.getElementById(
+      "passwordFields"
+    );
+
+  const verifyButton =
+    document.getElementById(
+      "verifyPasswordButton"
+    );
+
+  const passwordStatus =
+    document.getElementById(
+      "passwordStatus"
+    );
+
+
+  passwordVerified =
+    false;
+
+
+  if(currentPassword){
+
+    currentPassword.value =
+      "";
+
+    currentPassword.disabled =
+      false;
+
+  }
+
+
+  if(newPassword){
+
+    newPassword.value =
+      "";
+
+  }
+
+
+  if(confirmPassword){
+
+    confirmPassword.value =
+      "";
+
+  }
+
+
+  if(passwordFields){
+
+    passwordFields.classList.remove(
+      "show"
+    );
+
+  }
+
+
+  if(verifyButton){
+
+    verifyButton.style.display =
+      "block";
+
+  }
+
+
+  if(passwordStatus){
+
+    passwordStatus.textContent =
+      "";
+
+    passwordStatus.className =
+      "password-status";
+
+  }
+
+}
+
+</script>
+
+</body>
+  </html>
