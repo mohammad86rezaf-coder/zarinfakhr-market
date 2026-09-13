@@ -59,6 +59,101 @@ body{
   align-items:center;
   justify-content:center;
   padding:20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(192,147,108,.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      var(--wine),
+      var(--burgundy)
+    );
+
+  position:relative;
+  overflow:hidden;
+}
+
+/* خطوط نور بسیار ظریف لوکس */
+
+#loginPage::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:1px;
+  top:18%;
+  right:-110px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(192,147,108,.55),
+      rgba(255,255,255,.30),
+      transparent
+    );
+
+  opacity:.45;
+
+  animation:
+    loginLightLine 9s
+    ease-in-out
+    infinite;
+}
+
+#loginPage::after{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:1px;
+  bottom:19%;
+  left:-80px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(192,147,108,.48),
+      rgba(255,255,255,.24),
+      transparent
+    );
+
+  opacity:.35;
+
+  animation:
+    loginLightLineReverse 11s
+    ease-in-out
+    infinite;
+}
+
+@keyframes loginLightLine{
+
+  0%,100%{
+    transform:translateX(0);
+    opacity:.25;
+  }
+
+  50%{
+    transform:translateX(-70px);
+    opacity:.65;
+  }
+
+}
+
+@keyframes loginLightLineReverse{
+
+  0%,100%{
+    transform:translateX(0);
+    opacity:.20;
+  }
+
+  50%{
+    transform:translateX(65px);
+    opacity:.55;
+  }
+
 }
 
 .login-box{
@@ -71,12 +166,40 @@ body{
       rgba(255,255,255,.98),
       rgba(242,225,207,.96)
     );
-  border:1px solid rgba(163,116,77,.55);
+  border:1px solid rgba(192,147,108,.55);
   border-radius:24px;
+
   box-shadow:
-    0 20px 55px rgba(92,61,36,.14);
+    0 20px 55px rgba(36,6,3,.28),
+    0 0 0 1px rgba(192,147,108,.08),
+    0 0 22px rgba(192,147,108,.06);
+
   position:relative;
   overflow:hidden;
+
+  animation:
+    loginBoxLuxury
+    7s
+    ease-in-out
+    infinite;
+}
+
+@keyframes loginBoxLuxury{
+
+  0%,100%{
+    box-shadow:
+      0 20px 55px rgba(36,6,3,.28),
+      0 0 0 1px rgba(192,147,108,.08),
+      0 0 18px rgba(192,147,108,.04);
+  }
+
+  50%{
+    box-shadow:
+      0 20px 55px rgba(36,6,3,.32),
+      0 0 0 1px rgba(192,147,108,.14),
+      0 0 28px rgba(192,147,108,.09);
+  }
+
 }
 
 .login-box::before{
@@ -85,16 +208,37 @@ body{
   top:0;
   left:0;
   right:0;
-  height:3px;
+  height:2px;
+
   background:
     linear-gradient(
       90deg,
       transparent,
       var(--champagne),
-      var(--gold),
+      #E2C49D,
       var(--champagne),
       transparent
     );
+
+  opacity:.72;
+
+  animation:
+    loginTopLine
+    8s
+    ease-in-out
+    infinite;
+}
+
+@keyframes loginTopLine{
+
+  0%,100%{
+    opacity:.45;
+  }
+
+  50%{
+    opacity:.90;
+  }
+
 }
 
 .logo{
@@ -105,6 +249,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:
     radial-gradient(
       circle at 35% 30%,
@@ -112,15 +257,20 @@ body{
       var(--gold) 55%,
       var(--brown)
     );
+
   border:3px solid var(--white);
+
   box-shadow:
     0 0 0 1px var(--champagne),
     0 12px 30px rgba(92,61,36,.20);
+
   position:relative;
   isolation:isolate;
 }
 
-/* نوار نقره‌ای ثابت و نورانی */
+/* حلقه شامپاینی بسیار ظریف
+   بدون نئون تند */
+
 .logo::before{
   content:"";
   position:absolute;
@@ -131,14 +281,13 @@ body{
   background:
     linear-gradient(
       90deg,
-      #777777,
-      #B8B8B8,
-      #F8F8F8,
-      #FFFFFF,
-      #BDBDBD,
-      #888888,
-      #E7E7E7,
-      #777777
+      transparent,
+      rgba(192,147,108,.35),
+      #E3C49D,
+      rgba(255,255,255,.72),
+      #C0936C,
+      rgba(192,147,108,.35),
+      transparent
     );
 
   -webkit-mask:
@@ -154,33 +303,36 @@ body{
   mask-composite:exclude;
 
   animation:
-    silverRingPulse
-    2.8s
+    loginLogoLuxury
+    6.5s
     ease-in-out
     infinite;
 
   filter:
-    drop-shadow(0 0 2px rgba(255,255,255,.95))
-    drop-shadow(0 0 5px rgba(190,190,190,.75));
+    drop-shadow(0 0 2px rgba(192,147,108,.45))
+    drop-shadow(0 0 5px rgba(192,147,108,.16));
 
   pointer-events:none;
 }
 
-/* فقط نور نوار تغییر می‌کند، خود نوار ثابت است */
-@keyframes silverRingPulse{
+@keyframes loginLogoLuxury{
+
   0%,100%{
-    opacity:.72;
+    opacity:.48;
+
     filter:
-      drop-shadow(0 0 2px rgba(255,255,255,.70))
-      drop-shadow(0 0 4px rgba(190,190,190,.50));
+      drop-shadow(0 0 2px rgba(192,147,108,.30))
+      drop-shadow(0 0 4px rgba(192,147,108,.10));
   }
 
   50%{
-    opacity:1;
+    opacity:.92;
+
     filter:
-      drop-shadow(0 0 3px rgba(255,255,255,1))
-      drop-shadow(0 0 8px rgba(190,190,190,.90));
+      drop-shadow(0 0 3px rgba(192,147,108,.65))
+      drop-shadow(0 0 8px rgba(192,147,108,.20));
   }
+
 }
 
 .logo span{
@@ -231,8 +383,12 @@ body{
 .password-wrap input:focus{
   border-color:var(--champagne);
   box-shadow:
-    0 0 0 3px rgba(192,147,108,.14);
+    0 0 0 3px rgba(192,147,108,.14),
+    0 0 12px rgba(192,147,108,.10);
 }
+
+/* دکمه ورود:
+   قرمز یاقوتی + Glow ملایم */
 
 .login-button{
   width:100%;
@@ -240,23 +396,49 @@ body{
   margin-top:14px;
   border:0;
   border-radius:13px;
+
   background:
     linear-gradient(
       135deg,
-      var(--gold),
-      var(--champagne)
+      var(--burgundy),
+      var(--ruby)
     );
+
   color:var(--white);
   font-family:inherit;
   font-size:15px;
   font-weight:bold;
   cursor:pointer;
+
   box-shadow:
-    0 8px 20px rgba(92,61,36,.16);
+    0 8px 20px rgba(92,61,36,.16),
+    0 0 8px rgba(158,30,25,.16);
+
+  transition:
+    box-shadow .45s ease,
+    transform .2s ease,
+    background .45s ease;
+}
+
+.login-button:hover{
+  background:
+    linear-gradient(
+      135deg,
+      var(--ruby),
+      #B52A25
+    );
+
+  box-shadow:
+    0 8px 22px rgba(92,61,36,.18),
+    0 0 12px rgba(158,30,25,.25),
+    0 0 24px rgba(158,30,25,.08);
 }
 
 .login-button:active{
   transform:scale(.985);
+  box-shadow:
+    0 5px 14px rgba(92,61,36,.15),
+    0 0 8px rgba(158,30,25,.18);
 }
 
 .login-error{
@@ -477,61 +659,302 @@ body{
   gap:13px;
 }
 
+/* =========================================================
+   MARKET NEON
+   ترکیب:
+   14 - Crystal Flash
+   5  - Moving Light
+   12 - Luxury Pulse
+
+   سبز = وضعیت زنده بازار
+========================================================= */
+
 .market-area{
   position:relative;
   min-height:145px;
   padding:2px;
   border-radius:14px;
-  border:1px solid rgba(32,168,90,.95);
+
+  border:1px solid rgba(32,168,90,.78);
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(32,168,90,.12),
+      transparent 25%,
+      transparent 75%,
+      rgba(32,168,90,.12)
+    );
+
   box-shadow:
-    0 0 4px rgba(32,168,90,.75),
-    0 0 10px rgba(32,168,90,.38),
-    inset 0 0 4px rgba(32,168,90,.16);
-  animation:marketBorderPulse 2.4s ease-in-out infinite;
-  transition:border-color .35s ease,box-shadow .35s ease;
+    0 0 4px rgba(32,168,90,.32),
+    0 0 9px rgba(32,168,90,.14),
+    inset 0 0 4px rgba(32,168,90,.08);
+
+  overflow:hidden;
+
+  animation:
+    marketLuxuryPulse
+    3.8s
+    ease-in-out
+    infinite;
+
+  transition:
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+/* خط نور متحرک دور قاب */
+
+.market-area::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255,255,255,0) 43%,
+      rgba(255,255,255,.92) 50%,
+      rgba(32,168,90,.95) 54%,
+      transparent 62%,
+      transparent 100%
+    );
+
+  background-size:220% 100%;
+
+  animation:
+    marketMovingLight
+    4.6s
+    linear
+    infinite;
+
+  pointer-events:none;
+}
+
+/* Crystal Flash
+   برق بسیار کوتاه و کنترل‌شده */
+
+.market-area::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  border-radius:14px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,255,255,.65),
+      rgba(32,168,90,.18) 12%,
+      transparent 32%
+    );
+
+  opacity:0;
+
+  animation:
+    marketCrystalFlash
+    5.5s
+    ease-in-out
+    infinite;
+
+  pointer-events:none;
 }
 
 .status-error .market-area{
-  border-color:rgba(198,40,40,.98);
+  border-color:rgba(198,40,40,.88);
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(198,40,40,.10),
+      transparent 25%,
+      transparent 75%,
+      rgba(198,40,40,.10)
+    );
+
   box-shadow:
-    0 0 4px rgba(198,40,40,.78),
-    0 0 10px rgba(198,40,40,.40),
-    inset 0 0 4px rgba(198,40,40,.17);
-  animation:marketBorderPulseError 2.4s ease-in-out infinite;
+    0 0 4px rgba(198,40,40,.35),
+    0 0 9px rgba(198,40,40,.15),
+    inset 0 0 4px rgba(198,40,40,.08);
+
+  animation:
+    marketLuxuryPulseError
+    3.8s
+    ease-in-out
+    infinite;
 }
 
-@keyframes marketBorderPulse{
-  0%,100%{
-    opacity:.78;
-    box-shadow:
-      0 0 3px rgba(32,168,90,.65),
-      0 0 8px rgba(32,168,90,.28),
-      inset 0 0 3px rgba(32,168,90,.12);
-  }
-  50%{
-    opacity:1;
-    box-shadow:
-      0 0 5px rgba(32,168,90,.95),
-      0 0 14px rgba(32,168,90,.52),
-      inset 0 0 5px rgba(32,168,90,.20);
-  }
+.status-error .market-area::before{
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255,255,255,0) 43%,
+      rgba(255,255,255,.82) 50%,
+      rgba(198,40,40,.90) 54%,
+      transparent 62%,
+      transparent 100%
+    );
+
+  background-size:220% 100%;
+
+  animation:
+    marketMovingLightError
+    4.6s
+    linear
+    infinite;
 }
 
-@keyframes marketBorderPulseError{
+.status-error .market-area::after{
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,255,255,.55),
+      rgba(198,40,40,.17) 12%,
+      transparent 32%
+    );
+}
+
+/* Luxury Pulse */
+
+@keyframes marketLuxuryPulse{
+
   0%,100%{
-    opacity:.78;
+    opacity:.88;
+
     box-shadow:
-      0 0 3px rgba(198,40,40,.65),
-      0 0 8px rgba(198,40,40,.28),
-      inset 0 0 3px rgba(198,40,40,.12);
+      0 0 3px rgba(32,168,90,.24),
+      0 0 7px rgba(32,168,90,.10),
+      inset 0 0 3px rgba(32,168,90,.06);
   }
+
   50%{
     opacity:1;
+
     box-shadow:
-      0 0 5px rgba(198,40,40,.95),
-      0 0 14px rgba(198,40,40,.52),
-      inset 0 0 5px rgba(198,40,40,.20);
+      0 0 5px rgba(32,168,90,.48),
+      0 0 13px rgba(32,168,90,.22),
+      inset 0 0 5px rgba(32,168,90,.10);
   }
+
+}
+
+/* Moving Light */
+
+@keyframes marketMovingLight{
+
+  0%{
+    background-position:
+      220% 0;
+    opacity:.15;
+  }
+
+  12%{
+    opacity:.35;
+  }
+
+  50%{
+    opacity:.90;
+  }
+
+  88%{
+    opacity:.35;
+  }
+
+  100%{
+    background-position:
+      -20% 0;
+    opacity:.15;
+  }
+
+}
+
+/* Crystal Flash */
+
+@keyframes marketCrystalFlash{
+
+  0%,78%,100%{
+    opacity:0;
+    transform:translateY(0) scale(.85);
+  }
+
+  82%{
+    opacity:.18;
+  }
+
+  84%{
+    opacity:.75;
+    transform:translateY(0) scale(1);
+  }
+
+  86%{
+    opacity:.12;
+  }
+
+  88%{
+    opacity:0;
+  }
+
+}
+
+/* Error Luxury Pulse */
+
+@keyframes marketLuxuryPulseError{
+
+  0%,100%{
+    opacity:.88;
+
+    box-shadow:
+      0 0 3px rgba(198,40,40,.25),
+      0 0 7px rgba(198,40,40,.10),
+      inset 0 0 3px rgba(198,40,40,.06);
+  }
+
+  50%{
+    opacity:1;
+
+    box-shadow:
+      0 0 5px rgba(198,40,40,.50),
+      0 0 13px rgba(198,40,40,.22),
+      inset 0 0 5px rgba(198,40,40,.10);
+  }
+
+}
+
+/* Error Moving Light */
+
+@keyframes marketMovingLightError{
+
+  0%{
+    background-position:
+      220% 0;
+    opacity:.15;
+  }
+
+  12%{
+    opacity:.30;
+  }
+
+  50%{
+    opacity:.78;
+  }
+
+  88%{
+    opacity:.30;
+  }
+
+  100%{
+    background-position:
+      -20% 0;
+    opacity:.15;
+  }
+
 }
 
 .market-card{
@@ -911,9 +1334,16 @@ body{
     animation-duration:8s;
   }
 
-  .market-area{
-    animation-duration:8s;
+  .market-area,
+  .market-area::before,
+  .market-area::after,
+  #loginPage::before,
+  #loginPage::after,
+  .login-box,
+  .login-box::before{
+    animation-duration:12s;
   }
+
 }
 </style>
 </head>
