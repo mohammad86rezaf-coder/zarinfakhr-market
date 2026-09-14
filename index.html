@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#FAF1E4">
-<title>SILVER ZARIN FAKHR | پنل مدیریت</title>
+
+<title>SILVER ZARIN FAKHR</title>
 
 <style>
 *{
@@ -35,12 +35,6 @@
   --sage:#6F8F86;
   --sageSoft:#8DA8A0;
 
-  --bg:var(--ivory);
-  --card:rgba(255,255,255,.82);
-  --text:var(--brown);
-  --muted:#8C7A6D;
-  --border:rgba(131,89,53,.14);
-
   --shadow:0 16px 45px rgba(92,61,36,.09);
   --shadowSmall:0 8px 24px rgba(92,61,36,.08);
 
@@ -48,40 +42,28 @@
   --transition:.25s ease;
 }
 
-body.dark{
-  --bg:#240603;
-  --card:#321D10;
-  --softIvory:#321D10;
-  --text:#FAF1E4;
-  --muted:#C9B7A8;
-  --border:rgba(243,233,220,.13);
-  --shadow:0 18px 50px rgba(0,0,0,.25);
-}
-
 html{
   scroll-behavior:smooth;
 }
 
 body{
+  min-height:100vh;
   font-family:
     Tahoma,
     Arial,
-    "Segoe UI",
     sans-serif;
   background:
-    radial-gradient(circle at 10% 0%,rgba(192,147,108,.13),transparent 30%),
-    radial-gradient(circle at 90% 10%,rgba(158,30,25,.07),transparent 25%),
-    var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  transition:background var(--transition),color var(--transition);
+    radial-gradient(circle at 15% 10%,rgba(192,147,108,.12),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(158,30,25,.06),transparent 28%),
+    var(--ivory);
+  color:var(--brown);
 }
 
 button,
 input,
 select,
 textarea{
-  font:inherit;
+  font-family:inherit;
 }
 
 button{
@@ -99,23 +81,24 @@ button{
 #loginPage{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   padding:24px;
   background:
-    radial-gradient(circle at 20% 20%,rgba(192,147,108,.18),transparent 30%),
-    radial-gradient(circle at 80% 80%,rgba(143,23,24,.10),transparent 30%),
-    linear-gradient(135deg,#FAF1E4,#F2E1CF);
+    radial-gradient(circle at 50% 15%,rgba(192,147,108,.18),transparent 35%),
+    linear-gradient(145deg,#FAF1E4,#F2E1CF);
 }
 
 .login-box{
-  width:min(440px,100%);
-  background:rgba(255,255,255,.86);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(131,89,53,.18);
+  width:100%;
+  max-width:440px;
+  padding:42px 34px 34px;
+  background:rgba(255,253,249,.94);
+  border:1px solid rgba(192,147,108,.55);
   border-radius:28px;
-  padding:42px 34px 30px;
-  box-shadow:0 30px 80px rgba(92,61,36,.14);
+  box-shadow:
+    0 30px 80px rgba(92,61,36,.16),
+    inset 0 1px 0 rgba(255,255,255,.9);
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -125,49 +108,46 @@ button{
   content:"";
   position:absolute;
   inset:0;
-  border:1px solid transparent;
-  border-radius:28px;
-  background:linear-gradient(135deg,rgba(192,147,108,.7),transparent 35%,rgba(158,30,25,.35),transparent 70%,rgba(192,147,108,.6)) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
   pointer-events:none;
+  border-radius:28px;
+  border:1px solid rgba(192,147,108,.18);
 }
 
 .logo{
-  width:82px;
-  height:82px;
-  margin:0 auto 20px;
+  width:92px;
+  height:92px;
+  margin:0 auto 22px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  border:1px solid var(--champagne);
-  background:linear-gradient(145deg,#fff,#E0D3CA);
+  background:
+    linear-gradient(145deg,#FFFFFF,#D2C6BE);
+  border:2px solid var(--champagne);
   box-shadow:
     0 0 0 7px rgba(192,147,108,.08),
-    0 10px 35px rgba(131,89,53,.14);
+    0 12px 30px rgba(92,61,36,.15);
 }
 
 .logo span{
-  font-size:22px;
-  font-weight:900;
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:700;
   letter-spacing:2px;
-  color:var(--brown);
+  color:var(--burgundy);
 }
 
 .login-title{
-  font-size:20px;
-  letter-spacing:1.5px;
+  font-family:Georgia,serif;
+  font-size:25px;
+  letter-spacing:1.2px;
   color:var(--brown);
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
 .login-subtitle{
   font-size:13px;
-  color:#8C7A6D;
+  color:var(--silver);
   margin-bottom:30px;
 }
 
@@ -177,9 +157,9 @@ button{
 
 .password-label{
   display:block;
-  font-size:13px;
-  font-weight:bold;
   margin-bottom:9px;
+  font-size:13px;
+  font-weight:700;
   color:var(--brown);
 }
 
@@ -189,13 +169,16 @@ button{
 
 .password-input-wrap input{
   width:100%;
-  height:52px;
+  height:54px;
   border:1px solid var(--greige);
-  background:rgba(250,241,228,.55);
-  color:var(--brown);
   border-radius:14px;
-  padding:0 48px 0 15px;
+  background:#FFFFFF;
   outline:none;
+  padding:0 18px 0 52px;
+  font-size:14px;
+  color:var(--brown);
+  direction:ltr;
+  text-align:left;
   transition:var(--transition);
 }
 
@@ -206,53 +189,57 @@ button{
 
 .password-toggle{
   position:absolute;
-  right:8px;
+  left:8px;
   top:7px;
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border:0;
   border-radius:10px;
-  background:transparent;
-  color:var(--bronze);
+  background:var(--warmIvory);
+  color:var(--brown);
+  font-size:17px;
 }
 
 .login-button{
   width:100%;
-  height:52px;
-  margin-top:14px;
+  height:54px;
+  margin-top:15px;
   border:0;
   border-radius:14px;
-  color:white;
-  font-weight:800;
-  background:linear-gradient(135deg,var(--burgundy),var(--ruby));
-  box-shadow:0 12px 28px rgba(82,17,7,.22);
+  background:
+    linear-gradient(135deg,var(--burgundy),var(--ruby));
+  color:#FFFFFF;
+  font-size:15px;
+  font-weight:700;
+  box-shadow:0 10px 25px rgba(82,17,7,.18);
   transition:var(--transition);
 }
 
 .login-button:hover{
   transform:translateY(-2px);
-  box-shadow:0 16px 34px rgba(82,17,7,.28);
+  box-shadow:0 14px 30px rgba(82,17,7,.24);
+}
+
+.login-button:active{
+  transform:translateY(0);
 }
 
 .login-error{
   min-height:22px;
-  padding-top:10px;
+  margin-top:10px;
   color:var(--red);
   font-size:12px;
   text-align:center;
 }
 
 .login-security{
+  margin-top:22px;
   display:flex;
+  gap:7px;
+  align-items:center;
   justify-content:center;
-  gap:8px;
-  margin-top:20px;
-  color:#927D6E;
+  color:var(--sage);
   font-size:11px;
-}
-
-.login-security span:first-child{
-  color:var(--green);
 }
 
 /* =========================
@@ -263,77 +250,62 @@ button{
   min-height:100vh;
 }
 
-.topbar{
-  height:76px;
+.app-header{
   position:sticky;
   top:0;
   z-index:100;
+  min-height:76px;
+  background:rgba(255,253,249,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--beige);
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
-  padding:0 26px;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
+  padding:12px 28px;
 }
 
-body.dark .topbar{
-  background:rgba(50,29,16,.92);
-}
-
-.brand{
+.header-brand{
   display:flex;
   align-items:center;
-  gap:13px;
+  gap:12px;
 }
 
-.brand-mark{
-  width:44px;
-  height:44px;
+.header-logo{
+  width:46px;
+  height:46px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(145deg,#fff,#E0D3CA);
+  background:linear-gradient(145deg,#FFFFFF,#D2C6BE);
   border:1px solid var(--champagne);
+  color:var(--burgundy);
+  font-family:Georgia,serif;
+  font-weight:bold;
+  letter-spacing:1px;
+  font-size:14px;
+}
+
+.header-brand-text strong{
+  display:block;
+  font-family:Georgia,serif;
+  letter-spacing:.7px;
+  font-size:16px;
   color:var(--brown);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
 }
 
-.brand-title{
-  font-size:15px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-.brand-subtitle{
-  font-size:10px;
-  color:var(--muted);
+.header-brand-text span{
+  display:block;
   margin-top:3px;
+  color:var(--silver);
+  font-size:10px;
 }
 
-.top-actions{
+.header-actions{
   display:flex;
   align-items:center;
   gap:8px;
-}
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--card);
-  color:var(--text);
-  transition:var(--transition);
-}
-
-.icon-btn:hover{
-  border-color:var(--champagne);
-  transform:translateY(-1px);
 }
 
 .connection{
@@ -341,8 +313,8 @@ body.dark .topbar{
   align-items:center;
   gap:7px;
   font-size:11px;
-  color:var(--muted);
-  margin-left:4px;
+  color:var(--sage);
+  margin-left:8px;
 }
 
 .connection-dot{
@@ -353,90 +325,99 @@ body.dark .topbar{
   box-shadow:0 0 0 4px rgba(32,168,90,.10);
 }
 
-.status-error .connection-dot{
-  background:var(--red);
-  box-shadow:0 0 0 4px rgba(198,40,40,.10);
+.header-time{
+  font-size:11px;
+  color:var(--silver);
+  direction:rtl;
 }
 
-.logout-btn{
-  border:1px solid rgba(158,30,25,.2);
-  color:var(--ruby);
-  background:rgba(158,30,25,.06);
-  padding:10px 14px;
+.icon-button{
+  width:40px;
+  height:40px;
+  border:1px solid var(--beige);
   border-radius:12px;
+  background:#FFFFFF;
+  color:var(--brown);
+  transition:var(--transition);
+}
+
+.icon-button:hover{
+  border-color:var(--champagne);
+  background:var(--warmIvory);
+}
+
+.logout-button{
+  height:40px;
+  padding:0 14px;
+  border:1px solid rgba(158,30,25,.18);
+  border-radius:12px;
+  background:#FFF7F5;
+  color:var(--ruby);
   font-size:12px;
-  font-weight:bold;
 }
 
 /* =========================
-   LAYOUT
+   NAV
 ========================= */
 
-.layout{
+.main-layout{
   display:flex;
   min-height:calc(100vh - 76px);
 }
 
 .sidebar{
-  width:250px;
-  flex-shrink:0;
-  padding:22px 15px;
-  border-left:1px solid var(--border);
-  background:rgba(255,255,255,.42);
+  width:245px;
+  flex:none;
+  background:rgba(255,253,249,.75);
+  border-left:1px solid var(--beige);
+  padding:22px 14px;
 }
 
-body.dark .sidebar{
-  background:rgba(50,29,16,.35);
-}
-
-.nav-label{
-  color:var(--muted);
+.nav-title{
+  color:var(--silver);
   font-size:10px;
-  padding:5px 13px 10px;
-  font-weight:bold;
+  padding:0 12px 10px;
 }
 
 .nav-item{
   width:100%;
+  min-height:48px;
+  border:0;
+  border-radius:13px;
+  background:transparent;
+  color:var(--brown);
+  text-align:right;
+  padding:0 15px;
   display:flex;
   align-items:center;
   gap:11px;
-  padding:13px 14px;
-  border:0;
-  border-radius:14px;
-  background:transparent;
-  color:var(--text);
-  margin-bottom:5px;
-  text-align:right;
   font-size:13px;
+  margin-bottom:5px;
   transition:var(--transition);
 }
 
 .nav-item:hover{
-  background:rgba(192,147,108,.08);
+  background:var(--warmIvory);
 }
 
 .nav-item.active{
-  background:linear-gradient(135deg,rgba(192,147,108,.18),rgba(158,30,25,.06));
+  background:
+    linear-gradient(135deg,rgba(192,147,108,.18),rgba(158,30,25,.06));
   color:var(--burgundy);
-  font-weight:900;
-  box-shadow:inset -3px 0 0 var(--champagne);
-}
-
-body.dark .nav-item.active{
-  color:var(--warmIvory);
+  font-weight:700;
+  border-right:3px solid var(--champagne);
 }
 
 .nav-icon{
-  width:25px;
+  width:27px;
   text-align:center;
-  font-size:16px;
+  font-size:17px;
 }
 
-.main{
+.content{
   flex:1;
   min-width:0;
-  padding:26px;
+  padding:28px;
 }
 
 .page{
@@ -451,11 +432,11 @@ body.dark .nav-item.active{
 @keyframes pageIn{
   from{
     opacity:0;
-    transform:translateY(7px);
+    transform:translateY(5px);
   }
   to{
     opacity:1;
-    transform:none;
+    transform:translateY(0);
   }
 }
 
@@ -465,61 +446,43 @@ body.dark .nav-item.active{
 
 .page-header{
   display:flex;
-  align-items:flex-start;
+  align-items:flex-end;
   justify-content:space-between;
-  gap:20px;
+  gap:15px;
   margin-bottom:24px;
 }
 
 .page-title{
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:6px;
+  font-size:25px;
+  color:var(--brown);
 }
 
 .page-description{
-  color:var(--muted);
+  color:var(--silver);
   font-size:12px;
+  margin-top:6px;
 }
 
-.page-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.primary-btn,
-.secondary-btn,
-.danger-btn{
+.primary-button{
+  height:44px;
+  padding:0 18px;
   border:0;
-  border-radius:12px;
-  padding:11px 17px;
-  font-size:12px;
-  font-weight:800;
-  transition:var(--transition);
-}
-
-.primary-btn{
-  color:white;
+  border-radius:13px;
   background:linear-gradient(135deg,var(--burgundy),var(--ruby));
-  box-shadow:0 9px 20px rgba(82,17,7,.15);
+  color:#FFFFFF;
+  font-weight:700;
+  font-size:12px;
+  box-shadow:0 8px 20px rgba(82,17,7,.14);
 }
 
-.secondary-btn{
-  background:var(--card);
-  color:var(--text);
-  border:1px solid var(--border);
-}
-
-.danger-btn{
-  color:white;
-  background:var(--red);
-}
-
-.primary-btn:hover,
-.secondary-btn:hover,
-.danger-btn:hover{
-  transform:translateY(-2px);
+.secondary-button{
+  height:42px;
+  padding:0 17px;
+  border:1px solid var(--greige);
+  border-radius:12px;
+  background:#FFFFFF;
+  color:var(--brown);
+  font-size:12px;
 }
 
 /* =========================
@@ -527,32 +490,21 @@ body.dark .nav-item.active{
 ========================= */
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
+  background:rgba(255,255,255,.86);
+  border:1px solid var(--beige);
   border-radius:var(--radius);
   box-shadow:var(--shadowSmall);
-  padding:20px;
-}
-
-.card-title{
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:5px;
-}
-
-.card-subtitle{
-  color:var(--muted);
-  font-size:11px;
 }
 
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:18px;
+  gap:15px;
+  margin-bottom:20px;
 }
 
 .stat-card{
+  padding:20px;
   position:relative;
   overflow:hidden;
 }
@@ -560,58 +512,45 @@ body.dark .nav-item.active{
 .stat-card::after{
   content:"";
   position:absolute;
+  left:-20px;
+  bottom:-25px;
   width:100px;
   height:100px;
-  left:-40px;
-  bottom:-55px;
   border-radius:50%;
-  background:rgba(192,147,108,.08);
-}
-
-.stat-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:15px;
-}
-
-.stat-icon{
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:13px;
-  background:rgba(192,147,108,.10);
-  color:var(--bronze);
-  font-size:18px;
+  background:rgba(192,147,108,.07);
 }
 
 .stat-label{
   font-size:11px;
-  color:var(--muted);
+  color:var(--silver);
+  margin-bottom:10px;
 }
 
 .stat-value{
-  font-size:21px;
-  font-weight:900;
-  margin-bottom:7px;
+  font-size:23px;
+  font-weight:700;
+  color:var(--brown);
+}
+
+.stat-unit{
+  font-size:10px;
+  color:var(--silver);
+  margin-right:5px;
 }
 
 .stat-change{
+  display:inline-flex;
+  margin-top:10px;
+  padding:5px 8px;
+  border-radius:8px;
   font-size:10px;
-}
-
-.up{
+  background:#F1FBF5;
   color:var(--green);
 }
 
-.down{
+.stat-change.down{
+  background:#FFF3F2;
   color:var(--red);
-}
-
-.neutral{
-  color:var(--sage);
 }
 
 /* =========================
@@ -619,39 +558,34 @@ body.dark .nav-item.active{
 ========================= */
 
 .ticker{
+  width:100%;
+  overflow:hidden;
+  margin-bottom:20px;
+  border-radius:15px;
+  background:var(--wine);
+  color:#FFFFFF;
+  min-height:46px;
   display:flex;
   align-items:center;
-  gap:12px;
-  overflow:auto;
-  margin-bottom:18px;
-  padding-bottom:2px;
 }
 
-.ticker::-webkit-scrollbar{
-  display:none;
+.ticker-track{
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  gap:20px;
+  padding:0 15px;
+  flex-wrap:wrap;
 }
 
 .ticker-item{
-  min-width:190px;
-  padding:13px 15px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.ticker-name{
   font-size:11px;
-  color:var(--muted);
 }
 
-.ticker-price{
-  font-weight:900;
-  font-size:13px;
-  margin-top:4px;
+.ticker-item strong{
+  color:#FFFFFF;
+  margin-right:5px;
 }
 
 /* =========================
@@ -661,113 +595,129 @@ body.dark .nav-item.active{
 .market-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:18px;
+  gap:16px;
 }
 
 .market-card{
-  padding:20px;
+  padding:21px;
   position:relative;
-  overflow:hidden;
 }
 
-.market-card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:90px;
-  height:90px;
-  border-radius:0 0 0 90px;
-  background:rgba(192,147,108,.07);
-}
-
-.market-header{
+.market-card-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:20px;
+  margin-bottom:17px;
 }
 
 .market-name{
   font-size:13px;
-  font-weight:900;
-}
-
-.market-code{
-  font-size:9px;
-  color:var(--muted);
-  margin-top:4px;
+  font-weight:700;
 }
 
 .market-badge{
   font-size:9px;
   padding:5px 8px;
-  border-radius:8px;
-  background:rgba(32,168,90,.09);
+  border-radius:7px;
+  background:#F1FBF5;
   color:var(--green);
 }
 
 .market-price{
   font-size:24px;
-  font-weight:900;
-  margin-bottom:8px;
+  font-weight:700;
+  direction:ltr;
+  text-align:right;
+  color:var(--brown);
 }
 
 .market-unit{
-  color:var(--muted);
+  color:var(--silver);
   font-size:10px;
+  margin-top:5px;
 }
 
 .market-footer{
+  border-top:1px solid var(--beige);
+  margin-top:17px;
+  padding-top:13px;
   display:flex;
   justify-content:space-between;
-  margin-top:18px;
-  padding-top:13px;
-  border-top:1px solid var(--border);
+  color:var(--silver);
   font-size:10px;
-  color:var(--muted);
+}
+
+.connection-card{
+  padding:18px 20px;
+  margin-bottom:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.connection-main{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.status-pill{
+  padding:7px 11px;
+  border-radius:9px;
+  background:#F1FBF5;
+  color:var(--green);
+  font-size:10px;
+}
+
+.status-pill.error{
+  background:#FFF3F2;
+  color:var(--red);
 }
 
 /* =========================
-   CHART
+   DASHBOARD LOWER
 ========================= */
 
 .dashboard-grid{
   display:grid;
   grid-template-columns:1.5fr 1fr;
-  gap:16px;
+  gap:18px;
+  margin-top:18px;
 }
 
-.chart-box{
-  min-height:330px;
+.panel{
+  padding:20px;
 }
 
-.chart-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
+.panel-title{
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:18px;
+  color:var(--brown);
 }
 
 .chart{
-  width:100%;
   height:230px;
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 45px,
-      rgba(131,89,53,.07) 46px
-    );
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+  padding:10px 0;
+  border-bottom:1px solid var(--beige);
+  direction:ltr;
 }
 
-.chart svg{
-  width:100%;
-  height:100%;
+.bar{
+  flex:1;
+  max-width:34px;
+  border-radius:7px 7px 0 0;
+  background:linear-gradient(to top,var(--champagne),var(--silver));
+  opacity:.82;
+  transition:.3s;
+}
+
+.bar:hover{
+  opacity:1;
 }
 
 .quick-actions{
@@ -777,35 +727,29 @@ body.dark .nav-item.active{
 }
 
 .quick-action{
-  min-height:105px;
-  border:1px solid var(--border);
-  background:rgba(250,241,228,.35);
-  border-radius:14px;
-  padding:15px;
+  min-height:76px;
+  border:1px solid var(--beige);
+  border-radius:13px;
+  background:#FFFFFF;
+  color:var(--brown);
   text-align:right;
-  color:var(--text);
+  padding:13px;
   transition:var(--transition);
 }
 
 .quick-action:hover{
+  border-color:var(--champagne);
   transform:translateY(-2px);
-  border-color:rgba(192,147,108,.45);
 }
 
 .quick-action-icon{
-  font-size:20px;
-  margin-bottom:9px;
-}
-
-.quick-action-title{
-  font-size:11px;
-  font-weight:900;
+  font-size:19px;
+  margin-bottom:7px;
 }
 
 .quick-action-text{
-  font-size:9px;
-  color:var(--muted);
-  margin-top:4px;
+  font-size:11px;
+  font-weight:700;
 }
 
 /* =========================
@@ -813,28 +757,28 @@ body.dark .nav-item.active{
 ========================= */
 
 .table-card{
-  padding:0;
   overflow:hidden;
 }
 
-.table-toolbar{
+.table-top{
   padding:18px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:10px;
-  border-bottom:1px solid var(--border);
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid var(--beige);
 }
 
 .search{
-  width:min(320px,100%);
+  width:280px;
+  max-width:100%;
   height:42px;
-  border:1px solid var(--border);
+  border:1px solid var(--beige);
   border-radius:11px;
-  padding:0 13px;
+  background:#FFFFFF;
   outline:none;
-  background:var(--softIvory);
-  color:var(--text);
+  padding:0 13px;
+  font-size:12px;
 }
 
 .search:focus{
@@ -842,180 +786,173 @@ body.dark .nav-item.active{
 }
 
 .table-wrap{
+  width:100%;
   overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:720px;
+  min-width:700px;
 }
 
 th,
 td{
   padding:14px 16px;
+  border-bottom:1px solid rgba(224,211,202,.7);
   text-align:right;
-  border-bottom:1px solid var(--border);
   font-size:11px;
+  white-space:nowrap;
 }
 
 th{
-  color:var(--muted);
-  font-size:10px;
-  font-weight:800;
-  background:rgba(192,147,108,.04);
+  color:var(--silver);
+  font-weight:600;
+  background:rgba(250,241,228,.45);
 }
 
 td{
-  font-weight:600;
+  color:var(--brown);
 }
 
-.table-product{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.product-thumb{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  background:linear-gradient(145deg,#fff,#E0D3CA);
-  border:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:16px;
+.product-name{
+  font-weight:700;
 }
 
 .badge{
   display:inline-flex;
-  align-items:center;
-  padding:5px 9px;
-  border-radius:8px;
+  padding:5px 8px;
+  border-radius:7px;
   font-size:9px;
-  font-weight:bold;
 }
 
 .badge-green{
   color:var(--green);
-  background:rgba(32,168,90,.09);
+  background:#F1FBF5;
 }
 
 .badge-red{
   color:var(--red);
-  background:rgba(198,40,40,.08);
-}
-
-.badge-gold{
-  color:var(--bronze);
-  background:rgba(192,147,108,.12);
+  background:#FFF3F2;
 }
 
 .badge-sage{
   color:var(--sage);
-  background:rgba(111,143,134,.10);
+  background:#F0F6F4;
+}
+
+.table-actions{
+  display:flex;
+  gap:5px;
+}
+
+.small-button{
+  border:1px solid var(--beige);
+  background:#FFFFFF;
+  border-radius:8px;
+  width:31px;
+  height:31px;
+  color:var(--brown);
 }
 
 /* =========================
    CALCULATOR
 ========================= */
 
-.calculator-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:17px;
+.calculator{
+  max-width:850px;
+  margin:auto;
 }
 
 .form-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-.field{
-  margin-bottom:13px;
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
-.field.full{
+.form-group.full{
   grid-column:1/-1;
 }
 
-.field label{
-  display:block;
-  margin-bottom:7px;
+.form-group label{
   font-size:11px;
-  font-weight:bold;
+  color:var(--brown);
+  font-weight:700;
 }
 
-.field input,
-.field select,
-.field textarea{
+.form-group input,
+.form-group select,
+.form-group textarea{
   width:100%;
-  border:1px solid var(--border);
-  background:var(--softIvory);
-  color:var(--text);
+  min-height:46px;
+  border:1px solid var(--beige);
   border-radius:11px;
-  min-height:43px;
-  padding:9px 11px;
+  background:#FFFFFF;
   outline:none;
+  padding:0 13px;
+  font-size:12px;
+  color:var(--brown);
 }
 
-.field textarea{
+.form-group textarea{
+  padding-top:12px;
   resize:vertical;
+  min-height:100px;
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
   border-color:var(--champagne);
   box-shadow:0 0 0 3px rgba(192,147,108,.08);
 }
 
+.calculator-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
 .result-box{
-  margin-top:18px;
-  border-radius:16px;
+  margin-top:20px;
   padding:20px;
-  background:linear-gradient(135deg,rgba(82,17,7,.96),rgba(158,30,25,.92));
-  color:white;
+  border-radius:15px;
+  background:
+    linear-gradient(135deg,rgba(192,147,108,.12),rgba(158,30,25,.04));
+  border:1px solid rgba(192,147,108,.35);
 }
 
-.result-main{
-  font-size:27px;
-  font-weight:900;
-  margin:10px 0;
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(192,147,108,.18);
+  font-size:12px;
 }
 
-.result-details{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:15px;
+.result-row:last-child{
+  border-bottom:0;
 }
 
-.result-line{
-  padding:10px;
-  border-radius:10px;
-  background:rgba(255,255,255,.08);
-}
-
-.result-line span{
-  display:block;
-  font-size:9px;
-  opacity:.72;
-  margin-bottom:5px;
-}
-
-.result-line strong{
-  font-size:11px;
+.result-total{
+  font-size:19px;
+  font-weight:700;
+  color:var(--burgundy);
 }
 
 /* =========================
-   ORDERS / REPORTS
+   ORDERS
 ========================= */
 
-.order-grid,
-.report-grid{
+.order-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
@@ -1028,49 +965,50 @@ td{
 .order-top{
   display:flex;
   justify-content:space-between;
+  gap:10px;
   margin-bottom:14px;
 }
 
 .order-number{
-  font-weight:900;
+  font-weight:700;
   font-size:13px;
 }
 
-.order-date{
-  color:var(--muted);
-  font-size:9px;
+.order-info{
+  color:var(--silver);
+  font-size:10px;
+  line-height:2;
 }
 
-.order-customer{
-  font-size:11px;
-  margin-bottom:7px;
+.order-price{
+  font-size:18px;
+  font-weight:700;
+  margin-top:12px;
 }
 
-.order-total{
-  font-size:17px;
-  font-weight:900;
-  margin:12px 0;
+/* =========================
+   REPORTS
+========================= */
+
+.report-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.report-card{
+  padding:20px;
 }
 
 .report-number{
   font-size:25px;
-  font-weight:900;
-  margin-top:15px;
+  font-weight:700;
+  margin:8px 0;
 }
 
-.report-bar{
-  height:8px;
-  border-radius:99px;
-  background:rgba(131,89,53,.09);
-  margin-top:15px;
-  overflow:hidden;
-}
-
-.report-bar span{
-  display:block;
-  height:100%;
-  border-radius:99px;
-  background:linear-gradient(90deg,var(--champagne),var(--burgundy));
+.report-label{
+  color:var(--silver);
+  font-size:11px;
 }
 
 /* =========================
@@ -1078,47 +1016,39 @@ td{
 ========================= */
 
 .notification-list{
-  display:grid;
+  display:flex;
+  flex-direction:column;
   gap:10px;
 }
 
 .notification{
+  padding:16px;
   display:flex;
   gap:13px;
   align-items:flex-start;
-  padding:16px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
 }
 
 .notification-icon{
   width:40px;
   height:40px;
-  flex-shrink:0;
-  border-radius:12px;
+  flex:none;
+  border-radius:11px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(192,147,108,.1);
+  background:var(--warmIvory);
 }
 
 .notification-title{
+  font-weight:700;
   font-size:12px;
-  font-weight:900;
   margin-bottom:5px;
 }
 
 .notification-text{
-  color:var(--muted);
+  color:var(--silver);
   font-size:10px;
   line-height:1.8;
-}
-
-.notification-time{
-  color:var(--muted);
-  font-size:9px;
-  margin-top:7px;
 }
 
 /* =========================
@@ -1128,16 +1058,20 @@ td{
 .settings-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:18px;
+}
+
+.settings-card{
+  padding:20px;
 }
 
 .setting-row{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
   padding:15px 0;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--beige);
 }
 
 .setting-row:last-child{
@@ -1146,126 +1080,105 @@ td{
 
 .setting-name{
   font-size:12px;
-  font-weight:bold;
+  font-weight:700;
 }
 
 .setting-description{
-  font-size:9px;
-  color:var(--muted);
+  color:var(--silver);
+  font-size:10px;
   margin-top:4px;
 }
 
 .switch{
   position:relative;
-  width:46px;
-  height:25px;
-  flex-shrink:0;
+  width:44px;
+  height:24px;
+  flex:none;
 }
 
 .switch input{
-  opacity:0;
-  width:0;
-  height:0;
+  display:none;
 }
 
 .slider{
   position:absolute;
   inset:0;
-  background:#CABCB2;
-  border-radius:99px;
-  transition:.25s;
+  background:var(--greige);
+  border-radius:20px;
+  cursor:pointer;
+  transition:.2s;
 }
 
 .slider::before{
   content:"";
   position:absolute;
-  width:19px;
-  height:19px;
+  width:18px;
+  height:18px;
   right:3px;
   top:3px;
-  background:white;
+  background:#FFFFFF;
   border-radius:50%;
-  transition:.25s;
+  transition:.2s;
 }
 
-.switch input:checked+.slider{
+.switch input:checked + .slider{
   background:var(--sage);
 }
 
-.switch input:checked+.slider::before{
-  transform:translateX(-21px);
-}
-
-.settings-form{
-  display:grid;
-  gap:12px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  text-align:center;
-  padding:28px 10px 10px;
-  color:var(--muted);
-  font-size:9px;
-}
-
-.footer strong{
-  color:var(--bronze);
+.switch input:checked + .slider::before{
+  transform:translateX(-20px);
 }
 
 /* =========================
    MODAL
 ========================= */
 
-.modal{
+.modal-overlay{
   position:fixed;
   inset:0;
-  z-index:300;
+  z-index:500;
   display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:rgba(36,6,3,.42);
+  background:rgba(36,6,3,.28);
   backdrop-filter:blur(5px);
 }
 
-.modal.show{
+.modal-overlay.show{
   display:flex;
 }
 
-.modal-box{
-  width:min(520px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:var(--card);
-  border:1px solid var(--border);
+.modal{
+  width:100%;
+  max-width:550px;
+  background:#FFFDF9;
+  border:1px solid var(--beige);
   border-radius:22px;
-  padding:22px;
-  box-shadow:0 30px 80px rgba(0,0,0,.2);
+  box-shadow:0 30px 80px rgba(36,6,3,.18);
+  padding:23px;
 }
 
 .modal-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+  gap:10px;
   margin-bottom:20px;
 }
 
 .modal-title{
-  font-size:16px;
-  font-weight:900;
+  font-size:17px;
+  font-weight:700;
 }
 
-.close-btn{
+.close-modal{
   width:35px;
   height:35px;
   border:0;
   border-radius:10px;
-  background:rgba(131,89,53,.08);
-  color:var(--text);
+  background:var(--warmIvory);
+  color:var(--brown);
 }
 
 /* =========================
@@ -1274,43 +1187,53 @@ td{
 
 #toast{
   position:fixed;
+  z-index:1000;
   left:20px;
   bottom:20px;
-  z-index:500;
   min-width:220px;
-  max-width:calc(100% - 40px);
-  padding:13px 16px;
-  border-radius:13px;
-  color:white;
-  background:var(--burgundy);
-  box-shadow:0 15px 35px rgba(82,17,7,.25);
-  transform:translateY(20px);
+  max-width:calc(100vw - 40px);
+  padding:13px 17px;
+  border-radius:12px;
+  background:var(--wine);
+  color:#FFFFFF;
+  font-size:11px;
+  box-shadow:0 15px 40px rgba(36,6,3,.2);
+  transform:translateY(120px);
   opacity:0;
   pointer-events:none;
-  transition:.25s;
-  font-size:11px;
+  transition:.3s ease;
 }
 
 #toast.show{
+  transform:translateY(0);
   opacity:1;
-  transform:none;
 }
 
 /* =========================
-   MOBILE
+   FOOTER
 ========================= */
 
-.mobile-menu{
-  display:none;
+.footer{
+  margin-top:35px;
+  padding:20px 5px 5px;
+  border-top:1px solid var(--beige);
+  display:flex;
+  justify-content:space-between;
+  color:var(--silver);
+  font-size:10px;
 }
 
-@media(max-width:1050px){
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
   .stats-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
   }
 
   .market-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
   }
 
   .dashboard-grid{
@@ -1319,81 +1242,82 @@ td{
 
   .order-grid,
   .report-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:800px){
-  .topbar{
-    height:68px;
-    padding:0 13px;
+  .app-header{
+    padding:10px 14px;
   }
 
-  .brand-subtitle{
+  .header-brand-text{
     display:none;
   }
 
-  .connection{
+  .connection,
+  .header-time{
     display:none;
   }
 
-  .layout{
+  .main-layout{
     display:block;
   }
 
   .sidebar{
-    position:fixed;
-    z-index:200;
-    top:68px;
-    right:0;
-    bottom:0;
-    width:270px;
-    transform:translateX(100%);
-    transition:.3s;
-    box-shadow:-20px 0 50px rgba(0,0,0,.12);
-    background:var(--card);
-  }
-
-  .sidebar.open{
-    transform:none;
-  }
-
-  .mobile-menu{
-    display:block;
-    width:40px;
-    height:40px;
-    border:1px solid var(--border);
-    border-radius:11px;
-    background:var(--card);
-    color:var(--text);
-  }
-
-  .main{
-    padding:18px 13px;
-  }
-
-  .top-actions{
+    width:100%;
+    border-left:0;
+    border-bottom:1px solid var(--beige);
+    padding:8px;
+    overflow-x:auto;
+    display:flex;
     gap:5px;
   }
 
-  .top-actions .icon-btn{
+  .nav-title{
     display:none;
   }
 
-  .top-actions .mobile-menu{
-    display:block;
+  .nav-item{
+    width:auto;
+    flex:none;
+    min-height:42px;
+    padding:0 12px;
+    margin:0;
+    font-size:10px;
+  }
+
+  .nav-icon{
+    font-size:14px;
+  }
+
+  .content{
+    padding:18px 13px;
   }
 
   .page-header{
+    align-items:flex-start;
     flex-direction:column;
   }
 
-  .stats-grid,
-  .market-grid,
-  .calculator-grid,
-  .settings-grid,
-  .order-grid,
-  .report-grid{
+  .page-title{
+    font-size:21px;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat-card{
+    padding:15px;
+  }
+
+  .stat-value{
+    font-size:19px;
+  }
+
+  .market-grid{
     grid-template-columns:1fr;
   }
 
@@ -1401,48 +1325,63 @@ td{
     grid-template-columns:1fr;
   }
 
-  .field.full{
+  .form-group.full{
     grid-column:auto;
   }
 
-  .quick-actions{
-    grid-template-columns:1fr 1fr;
+  .settings-grid,
+  .order-grid,
+  .report-grid{
+    grid-template-columns:1fr;
   }
 
-  .page-title{
-    font-size:20px;
+  .table-top{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .search{
+    width:100%;
   }
 }
 
 @media(max-width:480px){
+  #loginPage{
+    padding:14px;
+  }
+
   .login-box{
-    padding:34px 22px 25px;
+    padding:32px 20px 25px;
   }
 
-  .brand-title{
-    font-size:12px;
+  .login-title{
+    font-size:21px;
   }
 
-  .brand-mark{
-    width:38px;
-    height:38px;
+  .logo{
+    width:80px;
+    height:80px;
   }
 
-  .logout-btn{
-    padding:9px 10px;
-    font-size:10px;
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat-label{
+    font-size:9px;
+  }
+
+  .stat-value{
+    font-size:17px;
   }
 
   .quick-actions{
     grid-template-columns:1fr;
   }
 
-  .ticker-item{
-    min-width:175px;
-  }
-
-  .stat-value{
-    font-size:18px;
+  .footer{
+    flex-direction:column;
+    gap:7px;
   }
 }
 </style>
@@ -1450,25 +1389,34 @@ td{
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      LOGIN
-========================= -->
+===================================================== -->
 
 <section id="loginPage">
+
   <div class="login-box">
 
     <div class="logo">
       <span>SZF</span>
     </div>
 
-    <h1 class="login-title">SILVER ZARIN FAKHR</h1>
-    <p class="login-subtitle">پنل مدیریت هوشمند نقره زرین فخر</p>
+    <h1 class="login-title">
+      SILVER ZARIN FAKHR
+    </h1>
+
+    <p class="login-subtitle">
+      پنل مدیریت هوشمند نقره زرین فخر
+    </p>
 
     <div class="password-wrap">
 
-      <label class="password-label">رمز ورود</label>
+      <label class="password-label">
+        رمز ورود
+      </label>
 
       <div class="password-input-wrap">
+
         <input
           id="passwordInput"
           type="password"
@@ -1477,22 +1425,28 @@ td{
         >
 
         <button
+          id="passwordToggle"
           class="password-toggle"
           type="button"
-          onclick="togglePassword()"
           aria-label="نمایش رمز"
-        >◉</button>
+        >
+          ◉
+        </button>
+
       </div>
 
       <button
+        id="loginButton"
         class="login-button"
         type="button"
-        onclick="login()"
       >
         ورود به پنل
       </button>
 
-      <div id="loginError" class="login-error"></div>
+      <div
+        id="loginError"
+        class="login-error"
+      ></div>
 
     </div>
 
@@ -1502,73 +1456,68 @@ td{
     </div>
 
   </div>
+
 </section>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
 
 <div id="app" class="hidden">
 
-  <!-- TOP BAR -->
-  <header class="topbar">
+  <!-- HEADER -->
+  <header class="app-header">
 
-    <div class="brand">
+    <div class="header-brand">
 
-      <button
-        class="mobile-menu"
-        onclick="toggleSidebar()"
-        type="button"
-      >
-        ☰
-      </button>
+      <div class="header-logo">
+        SZF
+      </div>
 
-      <div class="brand-mark">SZF</div>
-
-      <div>
-        <div class="brand-title">SILVER ZARIN FAKHR</div>
-        <div class="brand-subtitle">پنل مدیریت و نمایش قیمت</div>
+      <div class="header-brand-text">
+        <strong>SILVER ZARIN FAKHR</strong>
+        <span>پنل مدیریت نقره زرین فخر</span>
       </div>
 
     </div>
 
-    <div class="top-actions">
+    <div class="header-actions">
 
       <div class="connection">
         <span class="connection-dot"></span>
-        <span id="connectionText">متصل</span>
+        <span id="connectionText">آنلاین</span>
       </div>
 
       <div
-        id="tehranClock"
-        style="font-size:11px;color:var(--muted);"
+        id="tehranTime"
+        class="header-time"
       >
-        --
+        در حال دریافت زمان...
       </div>
 
       <button
-        class="icon-btn"
+        id="refreshButton"
+        class="icon-button"
         type="button"
-        onclick="refreshMarket()"
-        title="به‌روزرسانی"
+        title="بروزرسانی"
       >
         ↻
       </button>
 
       <button
-        class="icon-btn"
+        id="darkButton"
+        class="icon-button"
         type="button"
-        onclick="toggleDarkMode()"
-        title="حالت شب"
+        title="حالت نمایش"
       >
-        ☾
+        ◐
       </button>
 
       <button
-        class="logout-btn"
+        id="logoutButton"
+        class="logout-button"
         type="button"
-        onclick="logout()"
       >
         خروج
       </button>
@@ -1578,51 +1527,76 @@ td{
   </header>
 
 
-  <div class="layout">
+  <div class="main-layout">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
 
-      <div class="nav-label">مدیریت</div>
+    <aside class="sidebar">
 
-      <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard',this)">
+      <div class="nav-title">
+        منوی اصلی
+      </div>
+
+      <button
+        class="nav-item active"
+        data-page="dashboard"
+      >
         <span class="nav-icon">⌂</span>
         <span>داشبورد</span>
       </button>
 
-      <button class="nav-item" data-page="market" onclick="showPage('market',this)">
+      <button
+        class="nav-item"
+        data-page="market"
+      >
         <span class="nav-icon">◈</span>
         <span>بازار</span>
       </button>
 
-      <button class="nav-item" data-page="products" onclick="showPage('products',this)">
+      <button
+        class="nav-item"
+        data-page="products"
+      >
         <span class="nav-icon">◇</span>
         <span>محصولات</span>
       </button>
 
-      <button class="nav-item" data-page="calculator" onclick="showPage('calculator',this)">
-        <span class="nav-icon">⌘</span>
+      <button
+        class="nav-item"
+        data-page="calculator"
+      >
+        <span class="nav-icon">⌗</span>
         <span>محاسبه قیمت</span>
       </button>
 
-      <button class="nav-item" data-page="orders" onclick="showPage('orders',this)">
+      <button
+        class="nav-item"
+        data-page="orders"
+      >
         <span class="nav-icon">▣</span>
         <span>سفارش‌ها</span>
       </button>
 
-      <button class="nav-item" data-page="reports" onclick="showPage('reports',this)">
-        <span class="nav-icon">◒</span>
+      <button
+        class="nav-item"
+        data-page="reports"
+      >
+        <span class="nav-icon">◫</span>
         <span>گزارش‌ها</span>
       </button>
 
-      <button class="nav-item" data-page="notifications" onclick="showPage('notifications',this)">
+      <button
+        class="nav-item"
+        data-page="notifications"
+      >
         <span class="nav-icon">♢</span>
         <span>اعلان‌ها</span>
       </button>
 
-      <div class="nav-label" style="margin-top:18px;">سیستم</div>
-
-      <button class="nav-item" data-page="settings" onclick="showPage('settings',this)">
+      <button
+        class="nav-item"
+        data-page="settings"
+      >
         <span class="nav-icon">⚙</span>
         <span>تنظیمات</span>
       </button>
@@ -1630,167 +1604,176 @@ td{
     </aside>
 
 
-    <!-- MAIN -->
-    <main class="main">
+    <!-- CONTENT -->
 
-      <!-- =========================
+    <main class="content">
+
+
+      <!-- =================================================
            DASHBOARD
-      ========================= -->
+      ================================================== -->
 
-      <section class="page active" id="dashboard">
+      <section
+        id="dashboard"
+        class="page active"
+      >
 
         <div class="page-header">
 
           <div>
-            <h1 class="page-title">داشبورد</h1>
+            <h2 class="page-title">
+              داشبورد
+            </h2>
+
             <p class="page-description">
-              نمای کلی وضعیت بازار، محصولات و فعالیت فروشگاه
+              نمای کلی وضعیت بازار و فروش نقره زرین فخر
             </p>
           </div>
 
-          <div class="page-actions">
-            <button class="secondary-btn" onclick="showPage('market')">
-              مشاهده بازار
-            </button>
-
-            <button class="primary-btn" onclick="showModal('productModal')">
-              + محصول جدید
-            </button>
-          </div>
+          <button
+            class="primary-button"
+            type="button"
+            onclick="showPage('market')"
+          >
+            مشاهده بازار
+          </button>
 
         </div>
 
-
-        <!-- TICKER -->
 
         <div class="ticker">
 
-          <div class="ticker-item">
-            <div>
-              <div class="ticker-name">نقره ۹۹۹</div>
-              <div class="ticker-price" id="ticker999">--</div>
-            </div>
-            <span class="up">●</span>
-          </div>
+          <div class="ticker-track">
 
-          <div class="ticker-item">
-            <div>
-              <div class="ticker-name">نقره ۹۲۵</div>
-              <div class="ticker-price" id="ticker925">--</div>
+            <div class="ticker-item">
+              نقره ۹۲۵:
+              <strong id="ticker925">—</strong>
             </div>
-            <span class="up">●</span>
-          </div>
 
-          <div class="ticker-item">
-            <div>
-              <div class="ticker-name">دلار</div>
-              <div class="ticker-price" id="tickerUsd">--</div>
+            <div class="ticker-item">
+              نقره ۹۹۹:
+              <strong id="ticker999">—</strong>
             </div>
-            <span class="neutral">●</span>
-          </div>
 
-          <div class="ticker-item">
-            <div>
-              <div class="ticker-name">اونس نقره</div>
-              <div class="ticker-price" id="tickerOunce">--</div>
+            <div class="ticker-item">
+              دلار:
+              <strong id="tickerUSD">—</strong>
             </div>
-            <span class="up">●</span>
+
+            <div class="ticker-item">
+              بروزرسانی:
+              <strong id="tickerTime">—</strong>
+            </div>
+
           </div>
 
         </div>
 
-
-        <!-- STATS -->
 
         <div class="stats-grid">
 
           <div class="card stat-card">
 
-            <div class="stat-top">
-              <div class="stat-icon">◇</div>
-              <span class="stat-label">محصولات فعال</span>
+            <div class="stat-label">
+              قیمت نقره ۹۲۵
             </div>
 
-            <div class="stat-value" id="statProducts">24</div>
-
-            <div class="stat-change up">
-              ↑ ۸٪ نسبت به ماه قبل
+            <div class="stat-value">
+              <span id="stat925">—</span>
+              <span class="stat-unit">تومان</span>
             </div>
+
+            <span class="stat-change">
+              بازار
+            </span>
 
           </div>
 
 
           <div class="card stat-card">
 
-            <div class="stat-top">
-              <div class="stat-icon">▣</div>
-              <span class="stat-label">سفارش‌های امروز</span>
+            <div class="stat-label">
+              قیمت نقره ۹۹۹
             </div>
 
-            <div class="stat-value" id="statOrders">8</div>
-
-            <div class="stat-change up">
-              ↑ ۱۲٪ امروز
+            <div class="stat-value">
+              <span id="stat999">—</span>
+              <span class="stat-unit">تومان</span>
             </div>
+
+            <span class="stat-change">
+              لحظه‌ای
+            </span>
 
           </div>
 
 
           <div class="card stat-card">
 
-            <div class="stat-top">
-              <div class="stat-icon">₺</div>
-              <span class="stat-label">فروش ماه</span>
+            <div class="stat-label">
+              دلار
             </div>
 
-            <div class="stat-value">۸۲.۴M</div>
-
-            <div class="stat-change up">
-              ↑ ۱۸٪ رشد فروش
+            <div class="stat-value">
+              <span id="statUSD">—</span>
+              <span class="stat-unit">تومان</span>
             </div>
+
+            <span class="stat-change">
+              بازار ارز
+            </span>
 
           </div>
 
 
           <div class="card stat-card">
 
-            <div class="stat-top">
-              <div class="stat-icon">◈</div>
-              <span class="stat-label">وضعیت بازار</span>
+            <div class="stat-label">
+              محصولات
             </div>
 
-            <div class="stat-value" style="font-size:17px;">فعال</div>
-
-            <div class="stat-change up">
-              ● دریافت اطلاعات
+            <div class="stat-value">
+              <span id="statProducts">12</span>
+              <span class="stat-unit">عدد</span>
             </div>
+
+            <span class="stat-change">
+              فعال
+            </span>
 
           </div>
 
         </div>
 
-
-        <!-- MARKET -->
 
         <div class="market-grid">
 
           <div class="card market-card">
 
-            <div class="market-header">
-              <div>
-                <div class="market-name">نقره ۹۲۵</div>
-                <div class="market-code">SILVER 925</div>
+            <div class="market-card-top">
+              <div class="market-name">
+                نقره ۹۲۵
               </div>
 
-              <span class="market-badge">زنده</span>
+              <div class="market-badge">
+                زنده
+              </div>
             </div>
 
-            <div class="market-price" id="dash925">--</div>
-            <div class="market-unit">تومان / گرم</div>
+            <div
+              id="market925"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
 
             <div class="market-footer">
-              <span>قیمت محاسباتی</span>
-              <span id="dash925Time">--</span>
+              <span>عیار ۹۲۵</span>
+              <span id="market925Update">—</span>
             </div>
 
           </div>
@@ -1798,21 +1781,30 @@ td{
 
           <div class="card market-card">
 
-            <div class="market-header">
-              <div>
-                <div class="market-name">نقره ۹۹۹</div>
-                <div class="market-code">SILVER 999</div>
+            <div class="market-card-top">
+              <div class="market-name">
+                نقره ۹۹۹
               </div>
 
-              <span class="market-badge">زنده</span>
+              <div class="market-badge">
+                زنده
+              </div>
             </div>
 
-            <div class="market-price" id="dash999">--</div>
-            <div class="market-unit">تومان / گرم</div>
+            <div
+              id="market999"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
 
             <div class="market-footer">
-              <span>قیمت خالص</span>
-              <span id="dash999Time">--</span>
+              <span>عیار ۹۹۹</span>
+              <span id="market999Update">—</span>
             </div>
 
           </div>
@@ -1820,21 +1812,30 @@ td{
 
           <div class="card market-card">
 
-            <div class="market-header">
-              <div>
-                <div class="market-name">اونس نقره</div>
-                <div class="market-code">SILVER OUNCE</div>
+            <div class="market-card-top">
+              <div class="market-name">
+                دلار
               </div>
 
-              <span class="market-badge">بازار</span>
+              <div class="market-badge">
+                بازار
+              </div>
             </div>
 
-            <div class="market-price" id="dashOunce">--</div>
-            <div class="market-unit">دلار</div>
+            <div
+              id="marketUSD"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان
+            </div>
 
             <div class="market-footer">
-              <span>آخرین دریافت</span>
-              <span id="dashOunceTime">--</span>
+              <span>USD</span>
+              <span id="marketUSDUpdate">—</span>
             </div>
 
           </div>
@@ -1842,98 +1843,99 @@ td{
         </div>
 
 
-        <!-- CHART + QUICK -->
-
         <div class="dashboard-grid">
 
-          <div class="card chart-box">
+          <div class="card panel">
 
-            <div class="chart-head">
-              <div>
-                <div class="card-title">روند قیمت نقره</div>
-                <div class="card-subtitle">نمایش نمونه روند قیمت</div>
-              </div>
-
-              <span class="badge badge-green">+۲.۴٪</span>
+            <div class="panel-title">
+              روند نمایشی قیمت
             </div>
 
             <div class="chart">
 
-              <svg viewBox="0 0 800 230" preserveAspectRatio="none">
-
-                <defs>
-                  <linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stop-color="#C0936C" stop-opacity=".25"/>
-                    <stop offset="100%" stop-color="#C0936C" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-
-                <path
-                  d="M0 185
-                     C55 170 70 175 115 150
-                     C160 125 180 145 220 130
-                     C270 110 295 120 340 105
-                     C390 88 410 108 455 85
-                     C510 55 530 75 580 65
-                     C635 52 660 68 700 40
-                     C735 20 765 34 800 18
-                     L800 230 L0 230 Z"
-                  fill="url(#areaGradient)"
-                />
-
-                <path
-                  d="M0 185
-                     C55 170 70 175 115 150
-                     C160 125 180 145 220 130
-                     C270 110 295 120 340 105
-                     C390 88 410 108 455 85
-                     C510 55 530 75 580 65
-                     C635 52 660 68 700 40
-                     C735 20 765 34 800 18"
-                  fill="none"
-                  stroke="#A3744D"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-
-              </svg>
+              <div class="bar" style="height:38%"></div>
+              <div class="bar" style="height:44%"></div>
+              <div class="bar" style="height:41%"></div>
+              <div class="bar" style="height:54%"></div>
+              <div class="bar" style="height:50%"></div>
+              <div class="bar" style="height:61%"></div>
+              <div class="bar" style="height:58%"></div>
+              <div class="bar" style="height:69%"></div>
+              <div class="bar" style="height:64%"></div>
+              <div class="bar" style="height:77%"></div>
+              <div class="bar" style="height:73%"></div>
+              <div class="bar" style="height:84%"></div>
 
             </div>
 
           </div>
 
 
-          <div class="card">
+          <div class="card panel">
 
-            <div class="card-title">دسترسی سریع</div>
-            <div class="card-subtitle" style="margin-bottom:14px;">
-              عملیات پرکاربرد پنل
+            <div class="panel-title">
+              دسترسی سریع
             </div>
 
             <div class="quick-actions">
 
-              <button class="quick-action" onclick="showPage('calculator')">
-                <div class="quick-action-icon">⌘</div>
-                <div class="quick-action-title">محاسبه قیمت</div>
-                <div class="quick-action-text">محاسبه قیمت فروش</div>
+              <button
+                class="quick-action"
+                type="button"
+                onclick="showPage('market')"
+              >
+                <div class="quick-action-icon">
+                  ◈
+                </div>
+
+                <div class="quick-action-text">
+                  مشاهده قیمت بازار
+                </div>
               </button>
 
-              <button class="quick-action" onclick="showPage('market')">
-                <div class="quick-action-icon">◈</div>
-                <div class="quick-action-title">بازار</div>
-                <div class="quick-action-text">قیمت‌های بازار</div>
+
+              <button
+                class="quick-action"
+                type="button"
+                onclick="showPage('calculator')"
+              >
+                <div class="quick-action-icon">
+                  ⌗
+                </div>
+
+                <div class="quick-action-text">
+                  محاسبه قیمت
+                </div>
               </button>
 
-              <button class="quick-action" onclick="showModal('productModal')">
-                <div class="quick-action-icon">◇</div>
-                <div class="quick-action-title">افزودن محصول</div>
-                <div class="quick-action-text">ثبت محصول جدید</div>
+
+              <button
+                class="quick-action"
+                type="button"
+                onclick="openProductModal()"
+              >
+                <div class="quick-action-icon">
+                  ＋
+                </div>
+
+                <div class="quick-action-text">
+                  افزودن محصول
+                </div>
               </button>
 
-              <button class="quick-action" onclick="showPage('orders')">
-                <div class="quick-action-icon">▣</div>
-                <div class="quick-action-title">سفارش‌ها</div>
-                <div class="quick-action-text">مدیریت سفارش‌ها</div>
+
+              <button
+                class="quick-action"
+                type="button"
+                onclick="showPage('orders')"
+              >
+                <div class="quick-action-icon">
+                  ▣
+                </div>
+
+                <div class="quick-action-text">
+                  سفارش‌ها
+                </div>
               </button>
 
             </div>
@@ -1945,48 +1947,69 @@ td{
       </section>
 
 
-      <!-- =========================
+      <!-- =================================================
            MARKET
-      ========================= -->
+      ================================================== -->
 
-      <section class="page" id="market">
+      <section
+        id="market"
+        class="page"
+      >
 
         <div class="page-header">
 
           <div>
-            <h1 class="page-title">بازار</h1>
+            <h2 class="page-title">
+              بازار
+            </h2>
+
             <p class="page-description">
-              نمایش قیمت‌های بازار و اطلاعات محاسباتی نقره
+              نمایش قیمت‌های بازار و وضعیت اتصال
             </p>
           </div>
 
-          <div class="page-actions">
-            <button class="primary-btn" onclick="refreshMarket()">
-              ↻ به‌روزرسانی بازار
-            </button>
-          </div>
+          <button
+            id="marketRefreshButton"
+            class="primary-button"
+            type="button"
+          >
+            بروزرسانی بازار
+          </button>
 
         </div>
 
 
-        <div class="card" style="margin-bottom:17px;">
+        <div class="card connection-card">
 
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;">
+          <div class="connection-main">
+
+            <span
+              id="marketConnectionDot"
+              class="connection-dot"
+            ></span>
 
             <div>
-              <div class="card-title">وضعیت اتصال بازار</div>
-              <div class="card-subtitle" id="marketStatus">
-                آماده دریافت اطلاعات
+
+              <strong>
+                وضعیت اتصال بازار
+              </strong>
+
+              <div
+                id="marketConnectionText"
+                style="font-size:10px;color:var(--silver);margin-top:4px"
+              >
+                در حال بررسی...
               </div>
+
             </div>
 
-            <div style="text-align:left;">
-              <div style="font-size:9px;color:var(--muted);">
-                آخرین همگام‌سازی
-              </div>
-              <strong id="lastSync">--</strong>
-            </div>
+          </div>
 
+          <div
+            id="marketStatus"
+            class="status-pill"
+          >
+            آنلاین
           </div>
 
         </div>
@@ -1995,131 +2018,99 @@ td{
         <div class="market-grid">
 
           <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">نقره ۹۹۹</div>
-                <div class="market-code">999 PURE SILVER</div>
+
+            <div class="market-card-top">
+
+              <div class="market-name">
+                نقره ۹۲۵
               </div>
-              <span class="market-badge">999</span>
+
+              <div class="market-badge">
+                925
+              </div>
+
             </div>
-            <div class="market-price" id="market999">--</div>
-            <div class="market-unit">تومان / گرم</div>
+
+            <div
+              id="page925"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
+
             <div class="market-footer">
-              <span>خلوص</span>
-              <span>۹۹۹</span>
+              <span>قیمت تبدیل‌شده</span>
+              <span id="page925Time">—</span>
             </div>
+
           </div>
 
 
           <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">نقره ۹۲۵</div>
-                <div class="market-code">STERLING SILVER</div>
+
+            <div class="market-card-top">
+
+              <div class="market-name">
+                نقره ۹۹۹
               </div>
-              <span class="market-badge">925</span>
+
+              <div class="market-badge">
+                999
+              </div>
+
             </div>
-            <div class="market-price" id="market925">--</div>
-            <div class="market-unit">تومان / گرم</div>
+
+            <div
+              id="page999"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان / گرم
+            </div>
+
             <div class="market-footer">
-              <span>محاسبه</span>
-              <span>۹۲.۵٪</span>
+              <span>خالص</span>
+              <span id="page999Time">—</span>
             </div>
+
           </div>
 
 
           <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">اونس نقره</div>
-                <div class="market-code">XAG / USD</div>
+
+            <div class="market-card-top">
+
+              <div class="market-name">
+                دلار
               </div>
-              <span class="market-badge">XAG</span>
+
+              <div class="market-badge">
+                USD
+              </div>
+
             </div>
-            <div class="market-price" id="marketOunce">--</div>
-            <div class="market-unit">دلار</div>
+
+            <div
+              id="pageUSD"
+              class="market-price"
+            >
+              —
+            </div>
+
+            <div class="market-unit">
+              تومان
+            </div>
+
             <div class="market-footer">
-              <span>بازار جهانی</span>
-              <span>USD</span>
-            </div>
-          </div>
-
-
-          <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">دلار</div>
-                <div class="market-code">USD / IRR</div>
-              </div>
-              <span class="market-badge">USD</span>
-            </div>
-            <div class="market-price" id="marketUsd">--</div>
-            <div class="market-unit">تومان</div>
-            <div class="market-footer">
-              <span>نرخ تبدیل</span>
-              <span>تومان</span>
-            </div>
-          </div>
-
-
-          <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">مثقال نقره</div>
-                <div class="market-code">17 MITHQAL</div>
-              </div>
-              <span class="market-badge">17</span>
-            </div>
-            <div class="market-price" id="marketMithqal">--</div>
-            <div class="market-unit">تومان</div>
-            <div class="market-footer">
-              <span>واحد</span>
-              <span>مثقال</span>
-            </div>
-          </div>
-
-
-          <div class="card market-card">
-            <div class="market-header">
-              <div>
-                <div class="market-name">قیمت گرم خالص</div>
-                <div class="market-code">PURE GRAM</div>
-              </div>
-              <span class="market-badge">LIVE</span>
-            </div>
-            <div class="market-price" id="marketGram">--</div>
-            <div class="market-unit">تومان</div>
-            <div class="market-footer">
-              <span>مبنای محاسبه</span>
-              <span>۹۹۹</span>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-title">فرمول‌های بازار</div>
-
-          <div class="form-grid" style="margin-top:16px;">
-
-            <div class="card" style="box-shadow:none;background:rgba(192,147,108,.05);">
-              <div style="font-size:11px;font-weight:bold;margin-bottom:8px;">
-                تبدیل ۹۹۹ به ۹۲۵
-              </div>
-              <div style="font-size:12px;color:var(--muted);">
-                قیمت نقره ۹۹۹ × ۰٫۹۲۵
-              </div>
-            </div>
-
-            <div class="card" style="box-shadow:none;background:rgba(111,143,134,.05);">
-              <div style="font-size:11px;font-weight:bold;margin-bottom:8px;">
-                ارزش اونس
-              </div>
-              <div style="font-size:12px;color:var(--muted);">
-                اونس جهانی × نرخ دلار
-              </div>
+              <span>نرخ ارز</span>
+              <span id="pageUSDTime">—</span>
             </div>
 
           </div>
@@ -2129,22 +2120,32 @@ td{
       </section>
 
 
-      <!-- =========================
+      <!-- =================================================
            PRODUCTS
-      ========================= -->
+      ================================================== -->
 
-      <section class="page" id="products">
+      <section
+        id="products"
+        class="page"
+      >
 
         <div class="page-header">
 
           <div>
-            <h1 class="page-title">محصولات</h1>
+            <h2 class="page-title">
+              محصولات
+            </h2>
+
             <p class="page-description">
-              مدیریت موجودی و مشخصات محصولات نقره
+              مدیریت محصولات فروشگاه نقره زرین فخر
             </p>
           </div>
 
-          <button class="primary-btn" onclick="showModal('productModal')">
+          <button
+            class="primary-button"
+            type="button"
+            onclick="openProductModal()"
+          >
             + افزودن محصول
           </button>
 
@@ -2153,18 +2154,17 @@ td{
 
         <div class="card table-card">
 
-          <div class="table-toolbar">
+          <div class="table-top">
 
-            <div>
-              <div class="card-title">فهرست محصولات</div>
-              <div class="card-subtitle">مدیریت محصولات فروشگاه</div>
-            </div>
+            <strong>
+              فهرست محصولات
+            </strong>
 
             <input
-              class="search"
               id="productSearch"
+              class="search"
+              type="search"
               placeholder="جستجوی محصول..."
-              oninput="filterProducts()"
             >
 
           </div>
@@ -2175,84 +2175,92 @@ td{
             <table>
 
               <thead>
+
                 <tr>
                   <th>محصول</th>
-                  <th>کد</th>
+                  <th>دسته‌بندی</th>
                   <th>وزن</th>
                   <th>عیار</th>
-                  <th>قیمت</th>
                   <th>وضعیت</th>
                   <th>عملیات</th>
                 </tr>
+
               </thead>
 
-              <tbody id="productTable">
+              <tbody id="productsTable">
 
                 <tr>
+                  <td class="product-name">گردنبند عقیق سبز</td>
+                  <td>گردنبند</td>
+                  <td>4.5 گرم</td>
+                  <td>925</td>
                   <td>
-                    <div class="table-product">
-                      <div class="product-thumb">◇</div>
-                      <span>گردنبند سنگ عقیق سبز</span>
-                    </div>
+                    <span class="badge badge-green">
+                      فعال
+                    </span>
                   </td>
-                  <td>SZF-001</td>
-                  <td>۴.۵ گرم</td>
-                  <td>۹۲۵</td>
-                  <td>محاسباتی</td>
-                  <td><span class="badge badge-green">فعال</span></td>
                   <td>
-                    <button class="secondary-btn" onclick="toast('جزئیات محصول')">مشاهده</button>
+                    <div class="table-actions">
+                      <button class="small-button">✎</button>
+                      <button class="small-button">⋯</button>
+                    </div>
                   </td>
                 </tr>
 
+
                 <tr>
+                  <td class="product-name">انگشتر طرح گرگ</td>
+                  <td>انگشتر</td>
+                  <td>6.71 گرم</td>
+                  <td>925</td>
                   <td>
-                    <div class="table-product">
-                      <div class="product-thumb">◇</div>
-                      <span>انگشتر مردانه عقیق سرخ</span>
-                    </div>
+                    <span class="badge badge-green">
+                      فعال
+                    </span>
                   </td>
-                  <td>SZF-002</td>
-                  <td>۱۱.۷۹ گرم</td>
-                  <td>۹۲۵</td>
-                  <td>محاسباتی</td>
-                  <td><span class="badge badge-green">فعال</span></td>
                   <td>
-                    <button class="secondary-btn" onclick="toast('جزئیات محصول')">مشاهده</button>
+                    <div class="table-actions">
+                      <button class="small-button">✎</button>
+                      <button class="small-button">⋯</button>
+                    </div>
                   </td>
                 </tr>
 
+
                 <tr>
+                  <td class="product-name">سرویس اینفینیتی</td>
+                  <td>سرویس</td>
+                  <td>16.14 گرم</td>
+                  <td>925</td>
                   <td>
-                    <div class="table-product">
-                      <div class="product-thumb">◇</div>
-                      <span>سرویس اینفینیتی</span>
-                    </div>
+                    <span class="badge badge-sage">
+                      موجود
+                    </span>
                   </td>
-                  <td>SZF-003</td>
-                  <td>۱۶.۱۴ گرم</td>
-                  <td>۹۲۵</td>
-                  <td>محاسباتی</td>
-                  <td><span class="badge badge-sage">موجود</span></td>
                   <td>
-                    <button class="secondary-btn" onclick="toast('جزئیات محصول')">مشاهده</button>
+                    <div class="table-actions">
+                      <button class="small-button">✎</button>
+                      <button class="small-button">⋯</button>
+                    </div>
                   </td>
                 </tr>
 
+
                 <tr>
+                  <td class="product-name">انگشتر عقیق سرخ</td>
+                  <td>انگشتر</td>
+                  <td>11.79 گرم</td>
+                  <td>925</td>
                   <td>
-                    <div class="table-product">
-                      <div class="product-thumb">◇</div>
-                      <span>انگشتر گرگ</span>
-                    </div>
+                    <span class="badge badge-green">
+                      فعال
+                    </span>
                   </td>
-                  <td>SZF-004</td>
-                  <td>۶.۷۱ گرم</td>
-                  <td>۹۲۵</td>
-                  <td>محاسباتی</td>
-                  <td><span class="badge badge-green">فعال</span></td>
                   <td>
-                    <button class="secondary-btn" onclick="toast('جزئیات محصول')">مشاهده</button>
+                    <div class="table-actions">
+                      <button class="small-button">✎</button>
+                      <button class="small-button">⋯</button>
+                    </div>
                   </td>
                 </tr>
 
@@ -2267,125 +2275,195 @@ td{
       </section>
 
 
-      <!-- =========================
+      <!-- =================================================
            CALCULATOR
-      ========================= -->
+      ================================================== -->
 
-      <section class="page" id="calculator">
+      <section
+        id="calculator"
+        class="page"
+      >
 
         <div class="page-header">
 
           <div>
-            <h1 class="page-title">محاسبه قیمت</h1>
+            <h2 class="page-title">
+              محاسبه قیمت
+            </h2>
+
             <p class="page-description">
-              محاسبه قیمت نهایی محصول بر اساس وزن، اجرت و هزینه‌ها
+              محاسبه قیمت فروش محصول بر اساس قیمت روز نقره
             </p>
           </div>
-
-          <button class="secondary-btn" onclick="clearCalculator()">
-            پاک کردن
-          </button>
 
         </div>
 
 
-        <div class="calculator-grid">
+        <div class="calculator">
 
-          <div class="card">
-
-            <div class="card-title">اطلاعات محصول</div>
-            <div class="card-subtitle" style="margin-bottom:18px;">
-              مقادیر مورد نیاز برای محاسبه
-            </div>
+          <div class="card panel">
 
             <div class="form-grid">
 
-              <div class="field">
-                <label>وزن محصول (گرم)</label>
+              <div class="form-group">
+
+                <label>
+                  قیمت نقره ۹۲۵
+                </label>
+
+                <input
+                  id="calcSilver"
+                  type="number"
+                  placeholder="قیمت هر گرم"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>
+                  وزن محصول (گرم)
+                </label>
+
                 <input
                   id="calcWeight"
                   type="number"
                   step="0.01"
                   placeholder="مثلاً 4.5"
-                  oninput="calculatePrice()"
                 >
+
               </div>
 
-              <div class="field">
-                <label>عیار</label>
-                <select id="calcPurity" onchange="calculatePrice()">
-                  <option value="925">925</option>
-                  <option value="999">999</option>
-                </select>
-              </div>
 
-              <div class="field">
-                <label>اجرت (%)</label>
+              <div class="form-group">
+
+                <label>
+                  اجرت (%)
+                </label>
+
                 <input
                   id="calcWage"
                   type="number"
-                  step="0.01"
                   value="0"
-                  oninput="calculatePrice()"
+                  step="0.1"
                 >
+
               </div>
 
-              <div class="field">
-                <label>۶٪</label>
+
+              <div class="form-group">
+
+                <label>
+                  سود (%)
+                </label>
+
                 <input
-                  id="calcSix"
+                  id="calcProfit"
                   type="number"
-                  step="0.01"
-                  value="6"
-                  oninput="calculatePrice()"
+                  value="0"
+                  step="0.1"
                 >
+
               </div>
 
-              <div class="field full">
-                <label>هزینه‌های اضافی (تومان)</label>
+
+              <div class="form-group">
+
+                <label>
+                  هزینه / متفرقه
+                </label>
+
                 <input
                   id="calcExtra"
                   type="number"
-                  step="1000"
                   value="0"
-                  oninput="calculatePrice()"
                 >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>
+                  مالیات / درصد اضافه
+                </label>
+
+                <input
+                  id="calcTax"
+                  type="number"
+                  value="6"
+                  step="0.1"
+                >
+
               </div>
 
             </div>
 
 
-            <div class="result-box">
+            <div class="calculator-actions">
 
-              <div style="font-size:10px;opacity:.75;">
-                قیمت نهایی تقریبی
+              <button
+                id="calculateButton"
+                class="primary-button"
+                type="button"
+              >
+                محاسبه قیمت
+              </button>
+
+              <button
+                id="clearCalculator"
+                class="secondary-button"
+                type="button"
+              >
+                پاک کردن
+              </button>
+
+            </div>
+
+
+            <div
+              id="calculatorResult"
+              class="result-box hidden"
+            >
+
+              <div class="result-row">
+                <span>ارزش نقره</span>
+                <strong id="resultSilver">0 تومان</strong>
               </div>
 
-              <div class="result-main" id="calcFinal">
-                ۰ تومان
+              <div class="result-row">
+                <span>اجرت</span>
+                <strong id="resultWage">0 تومان</strong>
               </div>
 
-              <div class="result-details">
+              <div class="result-row">
+                <span>سود</span>
+                <strong id="resultProfit">0 تومان</strong>
+              </div>
 
-                <div class="result-line">
-                  <span>ارزش نقره</span>
-                  <strong id="calcSilver">۰</strong>
-                </div>
+              <div class="result-row">
+                <span>هزینه</span>
+                <strong id="resultExtra">0 تومان</strong>
+              </div>
 
-                <div class="result-line">
-                  <span>اجرت</span>
-                  <strong id="calcWageValue">۰</strong>
-                </div>
+              <div class="result-row">
+                <span>مالیات / درصد اضافه</span>
+                <strong id="resultTax">0 تومان</strong>
+              </div>
 
-                <div class="result-line">
-                  <span>۶٪</span>
-                  <strong id="calcSixValue">۰</strong>
-                </div>
+              <div class="result-row">
 
-                <div class="result-line">
-                  <span>هزینه اضافی</span>
-                  <strong id="calcExtraValue">۰</strong>
-                </div>
+                <span>
+                  قیمت نهایی
+                </span>
+
+                <strong
+                  id="resultTotal"
+                  class="result-total"
+                >
+                  0 تومان
+                </strong>
 
               </div>
 
@@ -2393,25 +2471,379 @@ td{
 
           </div>
 
+        </div>
 
-          <div class="card">
+      </section>
 
-            <div class="card-title">مبنای قیمت بازار</div>
-            <div class="card-subtitle" style="margin-bottom:20px;">
-              آخرین اطلاعات دریافت‌شده
+
+      <!-- =================================================
+           ORDERS
+      ================================================== -->
+
+      <section
+        id="orders"
+        class="page"
+      >
+
+        <div class="page-header">
+
+          <div>
+            <h2 class="page-title">
+              سفارش‌ها
+            </h2>
+
+            <p class="page-description">
+              مدیریت سفارش‌های فروشگاه
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="order-grid">
+
+          <div class="card order-card">
+
+            <div class="order-top">
+
+              <div class="order-number">
+                #SZF-1001
+              </div>
+
+              <span class="badge badge-green">
+                تکمیل شده
+              </span>
+
             </div>
 
-            <div class="setting-row">
-              <div>
-                <div class="setting-name">نقره ۹۹۹</div>
-                <div class="setting-description">تومان / گرم</div>
-              </div>
-              <strong id="calcMarket999">--</strong>
+            <div class="order-info">
+              گردنبند عقیق سبز
+              <br>
+              وزن: 4.5 گرم
+              <br>
+              مشتری: مشتری فروشگاه
             </div>
 
-            <div class="setting-row">
-              <div>
-                <div class="setting-name">نقره ۹۲۵</div>
-                <div class="setting-description">تومان / گرم</div>
+            <div class="order-price">
+              0 تومان
+            </div>
+
+          </div>
+
+
+          <div class="card order-card">
+
+            <div class="order-top">
+
+              <div class="order-number">
+                #SZF-1002
               </div>
-              <strong id="
+
+              <span class="badge badge-sage">
+                در حال بررسی
+              </span>
+
+            </div>
+
+            <div class="order-info">
+              انگشتر طرح گرگ
+              <br>
+              وزن: 6.71 گرم
+              <br>
+              مشتری: سفارش آنلاین
+            </div>
+
+            <div class="order-price">
+              0 تومان
+            </div>
+
+          </div>
+
+
+          <div class="card order-card">
+
+            <div class="order-top">
+
+              <div class="order-number">
+                #SZF-1003
+              </div>
+
+              <span class="badge badge-red">
+                در انتظار پرداخت
+              </span>
+
+            </div>
+
+            <div class="order-info">
+              سرویس اینفینیتی
+              <br>
+              وزن: 16.14 گرم
+              <br>
+              مشتری: سفارش آنلاین
+            </div>
+
+            <div class="order-price">
+              0 تومان
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           REPORTS
+      ================================================== -->
+
+      <section
+        id="reports"
+        class="page"
+      >
+
+        <div class="page-header">
+
+          <div>
+            <h2 class="page-title">
+              گزارش‌ها
+            </h2>
+
+            <p class="page-description">
+              گزارش کلی عملکرد پنل
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="report-grid">
+
+          <div class="card report-card">
+
+            <div class="report-label">
+              تعداد محصولات
+            </div>
+
+            <div class="report-number">
+              12
+            </div>
+
+            <div class="report-label">
+              محصول ثبت‌شده
+            </div>
+
+          </div>
+
+
+          <div class="card report-card">
+
+            <div class="report-label">
+              سفارش‌های امروز
+            </div>
+
+            <div class="report-number">
+              3
+            </div>
+
+            <div class="report-label">
+              سفارش
+            </div>
+
+          </div>
+
+
+          <div class="card report-card">
+
+            <div class="report-label">
+              وضعیت بازار
+            </div>
+
+            <div class="report-number">
+              آنلاین
+            </div>
+
+            <div class="report-label">
+              آخرین وضعیت اتصال
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           NOTIFICATIONS
+      ================================================== -->
+
+      <section
+        id="notifications"
+        class="page"
+      >
+
+        <div class="page-header">
+
+          <div>
+            <h2 class="page-title">
+              اعلان‌ها
+            </h2>
+
+            <p class="page-description">
+              آخرین رویدادهای پنل
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="notification-list">
+
+          <div class="card notification">
+
+            <div class="notification-icon">
+              ◈
+            </div>
+
+            <div>
+
+              <div class="notification-title">
+                وضعیت بازار
+              </div>
+
+              <div class="notification-text">
+                سیستم آماده دریافت و نمایش قیمت‌های بازار است.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card notification">
+
+            <div class="notification-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <div class="notification-title">
+                پنل آماده است
+              </div>
+
+              <div class="notification-text">
+                ورود با موفقیت انجام شده و پنل مدیریت فعال است.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card notification">
+
+            <div class="notification-icon">
+              ◇
+            </div>
+
+            <div>
+
+              <div class="notification-title">
+                محصولات
+              </div>
+
+              <div class="notification-text">
+                محصولات فروشگاه از بخش محصولات قابل مدیریت هستند.
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SETTINGS
+      ================================================== -->
+
+      <section
+        id="settings"
+        class="page"
+      >
+
+        <div class="page-header">
+
+          <div>
+            <h2 class="page-title">
+              تنظیمات
+            </h2>
+
+            <p class="page-description">
+              تنظیمات عمومی پنل مدیریت
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="settings-grid">
+
+          <div class="card settings-card">
+
+            <div class="panel-title">
+              تنظیمات عمومی
+            </div>
+
+
+            <div class="setting-row">
+
+              <div>
+
+                <div class="setting-name">
+                  بروزرسانی خودکار
+                </div>
+
+                <div class="setting-description">
+                  دریافت دوره‌ای اطلاعات بازار
+                </div>
+
+              </div>
+
+              <label class="switch">
+
+                <input
+                  id="autoRefresh"
+                  type="checkbox"
+                  checked
+                >
+
+                <span class="slider"></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <div>
+
+                <div class="setting-name">
+                  اعلان‌ها
+                </div>
+
+                <div class="setting-description">
+                  نمایش اعلان‌های داخلی پنل
+                </div>
+
+              </div>
+
+              <label class="switch">
+
+                <input
+                  id="
