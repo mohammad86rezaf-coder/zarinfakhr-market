@@ -7,7 +7,6 @@
 <title>SILVER ZARIN FAKHR | پنل قیمت نقره</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -43,33 +42,20 @@
   --borderSilver:rgba(201,201,201,.18);
 }
 
-html{
-  scroll-behavior:smooth;
+html,
+body{
+  width:100%;
+  min-height:100%;
 }
 
 body{
-  font-family:Tahoma,Arial,sans-serif;
-  min-height:100vh;
-
-  background:
-    radial-gradient(
-      circle at 50% -15%,
-      rgba(184,138,74,.13),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 90% 20%,
-      rgba(74,8,12,.18),
-      transparent 28%
-    ),
-    linear-gradient(
-      135deg,
-      #020202,
-      #0A0908 48%,
-      #030303
-    );
-
+  background:var(--black);
   color:var(--text);
+  font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+  overflow-x:hidden;
 }
 
 button,
@@ -78,199 +64,118 @@ select{
   font-family:inherit;
 }
 
-button{
-  cursor:pointer;
-}
-
 .hidden{
   display:none !important;
 }
 
-.container{
-  width:min(1180px,94%);
-  margin:auto;
-}
-
-
 /* =========================================================
    LOGIN
-   ========================================================= */
+========================================================= */
 
 #loginPage{
   min-height:100vh;
-
+  width:100%;
   display:flex;
-  justify-content:center;
   align-items:center;
-
-  padding:24px;
-
+  justify-content:center;
+  padding:20px;
   background:
     radial-gradient(
-      circle at 50% 35%,
-      rgba(184,138,74,.09),
-      transparent 30%
+      circle at center,
+      rgba(184,138,74,.08),
+      transparent 45%
     ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(74,8,12,.22),
-      transparent 32%
-    ),
-    linear-gradient(
-      145deg,
-      #020202,
-      #0A0908,
-      #030303
-    );
+    var(--black);
 }
 
 .login-box{
-  width:min(430px,100%);
-
-  padding:38px 30px 30px;
-
+  width:100%;
+  max-width:430px;
   position:relative;
-
+  padding:42px 30px 30px;
   background:
     linear-gradient(
       145deg,
-      rgba(22,22,22,.97),
-      rgba(7,7,7,.98)
+      #111111,
+      #080808
     );
-
-  border:1px solid rgba(212,175,106,.42);
-
-  border-radius:26px;
-
+  border:1px solid var(--borderGold);
+  border-radius:20px;
   box-shadow:
-    0 30px 80px rgba(0,0,0,.75),
-    0 0 45px rgba(184,138,74,.07),
-    inset 0 1px 0 rgba(255,255,255,.04);
+    0 25px 70px rgba(0,0,0,.65),
+    0 0 35px rgba(184,138,74,.06);
+  text-align:center;
 }
 
 .login-top-line{
   position:absolute;
   top:0;
-  left:12%;
   right:12%;
+  left:12%;
   height:2px;
-
   background:
     linear-gradient(
       90deg,
       transparent,
       var(--goldBright),
-      var(--silverBright),
-      var(--goldBright),
       transparent
     );
-
-  box-shadow:
-    0 0 12px rgba(212,175,106,.45);
 }
 
 .logo-circle{
-  width:112px;
-  height:112px;
-
+  width:90px;
+  height:90px;
   margin:0 auto 22px;
 
-  position:relative;
-
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   border-radius:50%;
 
+  border:1px solid var(--gold);
   background:
     radial-gradient(
-      circle at 32% 25%,
-      #F7F7F7 0%,
-      #D8D8D8 17%,
-      #888888 35%,
-      #353535 57%,
-      #111111 78%,
-      #050505 100%
+      circle,
+      #21180e,
+      #090909 70%
     );
 
-  border:3px solid #0A0A0A;
-
   box-shadow:
-    0 0 0 1px var(--goldBright),
-    0 0 0 4px rgba(212,175,106,.10),
-    0 14px 40px rgba(0,0,0,.75);
-
-  animation:logoBreath 3.8s ease-in-out infinite;
-}
-
-.logo-circle::before{
-  content:"";
-
-  position:absolute;
-  inset:-8px;
-
-  border-radius:50%;
-
-  border:2px solid transparent;
-
-  background:
-    linear-gradient(
-      90deg,
-      #686868,
-      #E5E5E5,
-      #FFFFFF,
-      #AFAFAF,
-      #5A5A5A,
-      #EEEEEE,
-      #686868
-    ) border-box;
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) padding-box,
-    linear-gradient(#000 0 0);
-
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  animation:silverRingPulse 3.2s ease-in-out infinite;
+    0 0 30px rgba(184,138,74,.15),
+    inset 0 0 20px rgba(212,175,106,.08);
 }
 
 .logo-text{
-  color:#111;
-  font-size:30px;
-  font-weight:900;
+  color:var(--goldBright);
+  font-size:26px;
+  font-weight:bold;
   letter-spacing:3px;
-
-  text-shadow:
-    0 1px 1px rgba(255,255,255,.75);
 }
 
 .login-title{
-  text-align:center;
-  color:var(--silverBright);
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:1px;
-  margin-bottom:7px;
+  color:var(--ivory);
+  font-size:22px;
+  letter-spacing:1.5px;
+  margin-bottom:10px;
 }
 
 .login-subtitle{
-  text-align:center;
-  color:var(--goldBright);
+  color:var(--muted);
   font-size:14px;
-  margin-bottom:28px;
+  margin-bottom:32px;
 }
 
 .login-label{
   display:block;
-  color:var(--silver);
+  text-align:right;
+  color:var(--text);
   font-size:14px;
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
 .password-wrapper{
-  position:relative;
+  width:100%;
 }
 
 .password-input{
@@ -278,23 +183,27 @@ button{
   height:52px;
   padding:0 16px;
 
-  border-radius:14px;
+  border:1px solid var(--borderSilver);
+  border-radius:12px;
+
+  background:#080808;
+  color:var(--ivory);
+
   outline:none;
-
-  color:#fff;
-  background:#050505;
-
-  border:1px solid rgba(201,201,201,.25);
+  font-size:16px;
+  text-align:center;
 
   transition:.25s;
 }
 
 .password-input:focus{
-  border-color:var(--goldBright);
-
+  border-color:var(--gold);
   box-shadow:
-    0 0 0 3px rgba(212,175,106,.08),
-    0 0 18px rgba(212,175,106,.12);
+    0 0 0 3px rgba(184,138,74,.08);
+}
+
+.password-input::placeholder{
+  color:#625e59;
 }
 
 .login-button{
@@ -302,1105 +211,772 @@ button{
   height:52px;
   margin-top:18px;
 
-  border:0;
-  border-radius:14px;
-
-  color:#100B05;
-
-  font-size:15px;
-  font-weight:900;
+  border:1px solid var(--gold);
+  border-radius:12px;
 
   background:
     linear-gradient(
       135deg,
-      #8E6736,
-      #D4AF6A,
-      #B88A4A
+      var(--goldDark),
+      var(--gold)
     );
 
-  box-shadow:
-    0 8px 25px rgba(184,138,74,.20);
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
 
-  transition:.25s;
+  cursor:pointer;
+
+  transition:
+    transform .2s,
+    box-shadow .2s,
+    filter .2s;
 }
 
 .login-button:hover{
-  transform:translateY(-2px);
-
+  filter:brightness(1.08);
   box-shadow:
-    0 10px 30px rgba(212,175,106,.32);
+    0 8px 25px rgba(184,138,74,.20);
 }
 
 .login-button:active{
-  transform:translateY(0);
+  transform:scale(.98);
 }
 
 .login-error{
   min-height:22px;
-  margin-top:13px;
-
-  text-align:center;
-
+  margin-top:12px;
   color:var(--red);
   font-size:13px;
 }
 
 .login-footer{
-  margin-top:22px;
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.06);
 
-  text-align:center;
-
-  color:#777;
+  color:#665f56;
   font-size:11px;
+  letter-spacing:1px;
 }
 
-
 /* =========================================================
-   MAIN APP
-   ========================================================= */
+   APP
+========================================================= */
 
 #appPage{
   min-height:100vh;
-
   background:
     radial-gradient(
-      circle at 50% -20%,
-      rgba(184,138,74,.08),
+      circle at top,
+      rgba(184,138,74,.045),
       transparent 35%
     ),
-    linear-gradient(
-      180deg,
-      #050505,
-      #080808 45%,
-      #030303
-    );
+    var(--black);
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 .app-header{
   position:sticky;
   top:0;
-  z-index:50;
+  z-index:100;
 
-  backdrop-filter:blur(16px);
+  padding:18px 20px;
 
-  background:rgba(7,7,7,.92);
+  background:
+    rgba(3,3,3,.94);
 
-  border-bottom:
-    1px solid rgba(212,175,106,.18);
+  backdrop-filter:blur(12px);
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45);
+  border-bottom:1px solid rgba(212,175,106,.16);
 }
 
 .header-inner{
-  min-height:82px;
+  max-width:1200px;
+  margin:auto;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
 }
 
-.brand{
+.brand-area{
   display:flex;
   align-items:center;
   gap:13px;
 }
 
 .brand-logo{
-  width:48px;
-  height:48px;
+  width:46px;
+  height:46px;
 
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   border-radius:50%;
 
-  color:#111;
+  border:1px solid var(--gold);
+
+  color:var(--goldBright);
 
   font-size:13px;
-  font-weight:900;
-
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      #F3F3F3,
-      #BEBEBE 35%,
-      #444 70%,
-      #111
-    );
-
-  border:2px solid var(--goldBright);
-
-  box-shadow:
-    0 0 15px rgba(212,175,106,.12);
-}
-
-.brand-text strong{
-  display:block;
-  color:var(--silverBright);
-  font-size:17px;
+  font-weight:bold;
   letter-spacing:1px;
 }
 
-.brand-text span{
-  display:block;
-  color:var(--goldBright);
-  font-size:12px;
+.brand-title{
+  color:var(--ivory);
+  font-size:17px;
+  font-weight:bold;
+}
+
+.brand-subtitle{
+  color:var(--muted);
+  font-size:11px;
   margin-top:4px;
 }
 
-.header-status{
+.clock-area{
+  color:var(--goldBright);
+  font-size:13px;
   text-align:left;
-  font-size:12px;
-  color:var(--muted);
 }
 
-.status-live{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-
-  color:var(--green);
-  font-weight:700;
-}
-
-.status-dot{
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:var(--green);
-
-  box-shadow:
-    0 0 7px var(--green),
-    0 0 15px rgba(0,230,118,.45);
-
-  animation:statusBlink 2s ease-in-out infinite;
-}
-
-.status-offline{
-  color:var(--red);
-}
-
-.status-offline .status-dot{
-  background:var(--red);
-
-  box-shadow:
-    0 0 7px var(--red),
-    0 0 15px rgba(255,23,68,.45);
-}
-
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
+/* NAV */
 
 .nav-bar{
-  padding:15px 0;
-}
+  max-width:1200px;
+  margin:18px auto 0;
+  padding:0 20px;
 
-.nav-inner{
   display:flex;
-  gap:9px;
+  gap:8px;
 
   overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.nav-inner::-webkit-scrollbar{
-  display:none;
 }
 
 .nav-button{
   flex:0 0 auto;
 
-  padding:10px 17px;
+  padding:12px 18px;
 
-  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
 
-  color:#AAA;
-  background:#0C0C0C;
+  background:var(--panel);
 
-  border:1px solid rgba(201,201,201,.14);
+  color:var(--muted);
 
-  transition:.25s;
+  cursor:pointer;
+
+  transition:.2s;
 }
 
 .nav-button:hover{
-  color:var(--silverBright);
-
-  border-color:
-    rgba(212,175,106,.35);
+  border-color:var(--borderGold);
+  color:var(--text);
 }
 
 .nav-button.active{
-  color:#120C05;
-
-  font-weight:900;
-
+  color:#fff;
+  border-color:var(--gold);
   background:
     linear-gradient(
       135deg,
-      #9D733D,
-      #D4AF6A
+      rgba(184,138,74,.22),
+      rgba(118,83,40,.12)
     );
-
-  border-color:var(--goldBright);
-
-  box-shadow:
-    0 0 18px rgba(212,175,106,.13);
 }
 
+/* MAIN */
 
-/* =========================================================
-   SECTION
-   ========================================================= */
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:25px 20px 45px;
+}
 
 .section{
-  padding:25px 0 35px;
+  display:block;
 }
 
+.section.hidden{
+  display:none;
+}
+
+/* SECTION TITLE */
+
 .section-title{
-  color:var(--silverBright);
-  font-size:22px;
-  font-weight:900;
-  margin-bottom:6px;
+  color:var(--ivory);
+  font-size:23px;
+  margin-bottom:7px;
 }
 
 .section-description{
   color:var(--muted);
   font-size:13px;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 
+/* CONNECTION */
 
-/* =========================================================
-   MARKET GRID
-   ========================================================= */
+.connection{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  margin-bottom:20px;
+
+  font-size:12px;
+  color:var(--muted);
+}
+
+.connection-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px rgba(0,230,118,.5);
+}
+
+.connection.offline .connection-dot{
+  background:var(--red);
+  box-shadow:0 0 10px rgba(255,23,68,.4);
+}
+
+/* MARKET GRID */
 
 .market-grid{
   display:grid;
-
   grid-template-columns:
-    repeat(5,minmax(0,1fr));
+    repeat(5, minmax(0,1fr));
 
   gap:14px;
-}
-
-.market-area{
-  position:relative;
-
-  min-height:154px;
-  padding:1px;
-
-  border-radius:18px;
-
-  background:#0B0B0B;
-
-  overflow:hidden;
-
-  transition:.25s;
-
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.45);
-
-  border:1px solid var(--green);
-
-  animation:
-    marketGreenPulse 3.4s ease-in-out infinite;
-}
-
-.market-area.error{
-  border-color:var(--red);
-
-  animation:
-    marketRedPulse 2.8s ease-in-out infinite;
 }
 
 .market-card{
-  width:100%;
-  height:100%;
-  min-height:152px;
+  min-height:185px;
 
-  padding:20px 15px;
+  padding:20px 16px;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  text-align:center;
+  border:1px solid var(--borderSilver);
+  border-radius:16px;
 
   background:
     linear-gradient(
       145deg,
-      #151515,
-      #090909
+      var(--panel2),
+      var(--panel)
     );
 
-  border-radius:17px;
+  position:relative;
+  overflow:hidden;
+
+  transition:.25s;
 }
 
-.market-title{
-  color:var(--silver);
-  font-size:14px;
-  font-weight:800;
+.market-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:15%;
+  left:15%;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,175,106,.55),
+      transparent
+    );
 }
 
-.market-value{
-  color:var(--goldBright);
+.market-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--borderGold);
+}
 
-  font-size:24px;
-  font-weight:900;
+.market-name{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:17px;
+}
+
+.market-price{
+  color:var(--silverBright);
+  font-size:25px;
+  font-weight:bold;
 
   direction:ltr;
+  text-align:center;
 
-  text-shadow:
-    0 0 12px rgba(212,175,106,.10);
+  word-break:break-word;
 }
 
 .market-unit{
-  color:var(--muted);
+  color:var(--goldBright);
   font-size:11px;
+  margin-top:8px;
+  text-align:center;
 }
 
 .market-update{
-  color:#6F6A64;
+  color:#625d56;
   font-size:10px;
+  margin-top:17px;
+  text-align:center;
 }
 
-
-/* =========================================================
-   PANELS
-   ========================================================= */
+/* PANELS */
 
 .panel{
-  padding:22px;
   margin-top:22px;
+  padding:22px;
+
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;
+
+  background:var(--panel);
+}
+
+.panel-title{
+  color:var(--goldBright);
+  font-size:16px;
+  margin-bottom:18px;
+}
+
+/* DETAILS */
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(3,1fr);
+  gap:12px;
+}
+
+.detail-card{
+  padding:15px;
+
+  border-radius:11px;
+
+  background:var(--panel2);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.detail-label{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.detail-value{
+  color:var(--silverBright);
+  font-size:15px;
+  font-weight:bold;
+}
+
+/* CALCULATOR */
+
+.calculator-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+.form-label{
+  color:var(--text);
+  font-size:13px;
+}
+
+.form-input,
+.form-select{
+  width:100%;
+  height:48px;
+
+  padding:0 13px;
+
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+
+  background:#090909;
+  color:var(--ivory);
+
+  outline:none;
+
+  font-size:14px;
+}
+
+.form-input:focus,
+.form-select:focus{
+  border-color:var(--gold);
+}
+
+.calculate-button{
+  width:100%;
+  height:52px;
+
+  margin-top:20px;
+
+  border:1px solid var(--gold);
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--goldDark),
+      var(--gold)
+    );
+
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+/* RESULT */
+
+.result-box{
+  display:none;
+
+  margin-top:22px;
+  padding:22px;
+
+  border-radius:15px;
 
   background:
     linear-gradient(
       145deg,
-      #111111,
-      #080808
+      #15110d,
+      #0d0d0d
     );
 
-  border:1px solid rgba(201,201,201,.13);
-
-  border-radius:20px;
-
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.42);
+  border:1px solid var(--borderGold);
 }
 
-.panel-title{
-  color:var(--silverBright);
-  font-size:18px;
-  font-weight:900;
-  margin-bottom:18px;
-}
-
-
-/* =========================================================
-   LIVE PRICE INFO
-   ========================================================= */
-
-.market-info-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-  gap:14px;
-}
-
-.info-box{
-  padding:17px;
-
-  background:#090909;
-
-  border:
-    1px solid rgba(184,138,74,.18);
-
-  border-radius:15px;
-}
-
-.info-label{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:9px;
-}
-
-.info-value{
-  color:var(--silverBright);
-  font-size:20px;
-  font-weight:900;
-}
-
-.info-unit{
-  color:var(--goldBright);
-  font-size:11px;
-  margin-top:4px;
-}
-
-
-/* =========================================================
-   FORM
-   ========================================================= */
-
-.form-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:15px;
-}
-
-.form-group label{
+.result-box.show{
   display:block;
-
-  color:var(--silver);
-  font-size:13px;
-
-  margin-bottom:8px;
-}
-
-.form-control{
-  width:100%;
-  height:48px;
-
-  padding:0 14px;
-
-  color:#fff;
-  background:#050505;
-
-  border:
-    1px solid rgba(201,201,201,.20);
-
-  border-radius:12px;
-
-  outline:none;
-
-  transition:.25s;
-}
-
-.form-control:focus{
-  border-color:var(--goldBright);
-
-  box-shadow:
-    0 0 0 3px rgba(212,175,106,.07);
-}
-
-.form-help{
-  color:#666;
-  font-size:10px;
-  margin-top:6px;
-}
-
-
-/* =========================================================
-   CALCULATOR
-   ========================================================= */
-
-.calculator-section-grid{
-  display:grid;
-
-  grid-template-columns:
-    1.3fr .7fr;
-
-  gap:20px;
-
-  align-items:start;
-}
-
-.sub-title{
-  color:var(--goldBright);
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:15px;
-}
-
-.calculation-box{
-  margin-top:20px;
-  padding:18px;
-
-  background:#080808;
-
-  border:
-    1px solid rgba(212,175,106,.18);
-
-  border-radius:16px;
-}
-
-.calculation-row{
-  display:flex;
-
-  justify-content:space-between;
-  align-items:center;
-
-  gap:15px;
-
-  padding:11px 0;
-
-  border-bottom:
-    1px solid rgba(255,255,255,.06);
-
-  font-size:13px;
-}
-
-.calculation-row:last-child{
-  border-bottom:0;
-}
-
-.calculation-label{
-  color:#9D968C;
-}
-
-.calculation-value{
-  color:var(--silverBright);
-  font-weight:800;
-  text-align:left;
-}
-
-.calculation-total{
-  margin-top:12px;
-  padding:16px;
-
-  display:flex;
-
-  justify-content:space-between;
-  align-items:center;
-
-  border-radius:14px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(74,8,12,.55),
-      rgba(35,6,3,.55)
-    );
-
-  border:
-    1px solid rgba(212,175,106,.35);
-}
-
-.calculation-total-label{
-  color:#C0B5A7;
-  font-size:13px;
-}
-
-.calculation-total-value{
-  color:#F1D49A;
-  font-size:25px;
-  font-weight:900;
-}
-
-
-/* =========================================================
-   CALCULATE BUTTON
-   ========================================================= */
-
-.calculate-button{
-  width:100%;
-  height:50px;
-
-  margin-top:18px;
-
-  color:#100B05;
-
-  border:0;
-  border-radius:12px;
-
-  font-weight:900;
-
-  background:
-    linear-gradient(
-      135deg,
-      #A7783E,
-      #D4AF6A
-    );
-
-  transition:.25s;
-}
-
-.calculate-button:hover{
-  box-shadow:
-    0 0 22px rgba(212,175,106,.20);
-
-  transform:translateY(-1px);
-}
-
-
-/* =========================================================
-   RESULT
-   ========================================================= */
-
-.result-box{
-  margin-top:20px;
-
-  padding:20px;
-
-  border-radius:16px;
-
-  background:#070707;
-
-  border:
-    1px solid rgba(212,175,106,.25);
 }
 
 .result-title{
   color:var(--goldBright);
-
-  font-size:14px;
-  font-weight:900;
-
-  margin-bottom:14px;
+  font-size:17px;
+  margin-bottom:18px;
 }
 
+.result-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(2,1fr);
+  gap:10px;
+}
 
-/* =========================================================
-   PREVIEW
-   ========================================================= */
+.result-row{
+  padding:12px;
 
-.preview-box{
+  border-radius:9px;
+
+  background:rgba(255,255,255,.025);
+
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.result-row span:first-child{
+  color:var(--muted);
+}
+
+.result-row span:last-child{
+  color:var(--silverBright);
+  font-weight:bold;
+}
+
+/* FINAL RESULT */
+
+.final-price{
+  margin-top:18px;
   padding:20px;
 
+  text-align:center;
+
+  border-radius:12px;
+
+  border:1px solid var(--gold);
+
   background:
-    linear-gradient(
-      145deg,
-      #12100E,
-      #070707
-    );
+    rgba(184,138,74,.07);
+}
 
-  border:
-    1px solid rgba(212,175,106,.25);
+.final-price-label{
+  color:var(--muted);
+  font-size:12px;
+}
 
-  border-radius:17px;
+.final-price-value{
+  margin-top:8px;
 
-  position:sticky;
-  top:115px;
+  color:var(--goldBright);
+
+  font-size:30px;
+  font-weight:bold;
+}
+
+/* PREVIEW */
+
+.preview{
+  margin-top:18px;
+  padding:20px;
+
+  border-radius:14px;
+
+  background:#090909;
+  border:1px solid rgba(255,255,255,.07);
 }
 
 .preview-title{
   color:var(--silverBright);
-
-  font-size:17px;
-  font-weight:900;
-
-  margin-bottom:17px;
-}
-
-.preview-price{
-  text-align:center;
-
-  padding:22px 10px;
-
-  margin-bottom:15px;
-
-  border-radius:15px;
-
-  background:#050505;
-
-  border:
-    1px solid rgba(212,175,106,.20);
-}
-
-.preview-price-label{
-  color:#777;
-  font-size:11px;
-}
-
-.preview-price-value{
-  color:var(--goldBright);
-
-  font-size:29px;
-  font-weight:900;
-
-  margin-top:8px;
+  margin-bottom:14px;
 }
 
 .preview-line{
   display:flex;
-
   justify-content:space-between;
 
-  gap:10px;
+  padding:8px 0;
 
-  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
 
-  border-bottom:
-    1px solid rgba(255,255,255,.06);
-
-  font-size:12px;
+  font-size:13px;
 }
 
 .preview-line:last-child{
-  border-bottom:0;
+  border-bottom:none;
 }
 
 .preview-line span:first-child{
-  color:#888;
+  color:var(--muted);
 }
 
 .preview-line span:last-child{
-  color:#DDD;
-  font-weight:700;
+  color:var(--text);
 }
 
-
-/* =========================================================
-   SETTINGS
-   ========================================================= */
+/* SETTINGS */
 
 .settings-grid{
   display:grid;
-
   grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
+    repeat(2,1fr);
   gap:15px;
 }
 
-.settings-item{
-  padding:17px;
-
-  background:#090909;
-
-  border:
-    1px solid rgba(201,201,201,.13);
-
-  border-radius:15px;
-}
-
-.settings-label{
-  color:var(--muted);
-
-  font-size:12px;
-
-  margin-bottom:7px;
-}
-
-.settings-value{
-  color:var(--silverBright);
-  font-size:14px;
-}
-
-.settings-input{
-  margin-top:10px;
-}
-
-.save-settings-button{
+.save-button{
   width:100%;
-  height:48px;
+  height:50px;
 
-  margin-top:18px;
+  margin-top:20px;
 
-  border:0;
-  border-radius:12px;
+  border:1px solid var(--gold);
+  border-radius:10px;
 
-  color:#100B05;
+  background:transparent;
 
-  font-weight:900;
+  color:var(--goldBright);
 
-  background:
-    linear-gradient(
-      135deg,
-      #A7783E,
-      #D4AF6A
-    );
+  cursor:pointer;
 }
 
 .settings-message{
   min-height:20px;
-
-  margin-top:10px;
+  margin-top:12px;
 
   color:var(--green);
 
+  font-size:12px;
   text-align:center;
+}
+
+/* SYSTEM */
+
+.system-list{
+  display:grid;
+  gap:9px;
+}
+
+.system-row{
+  display:flex;
+  justify-content:space-between;
+
+  padding:12px;
+
+  background:rgba(255,255,255,.025);
+
+  border-radius:9px;
 
   font-size:12px;
 }
 
+.system-row span:first-child{
+  color:var(--muted);
+}
 
-/* =========================================================
-   EXIT
-   ========================================================= */
+.system-row span:last-child{
+  color:var(--text);
+}
+
+/* EXIT */
 
 .exit-button{
-  margin-top:15px;
+  width:100%;
+  height:50px;
 
-  padding:10px 18px;
+  margin-top:20px;
 
-  border-radius:11px;
+  border:1px solid rgba(255,23,68,.35);
+  border-radius:10px;
 
-  color:#FF7185;
+  background:rgba(255,23,68,.05);
 
-  background:rgba(255,23,68,.06);
+  color:#ff6b83;
 
-  border:1px solid rgba(255,23,68,.25);
-
-  transition:.25s;
+  cursor:pointer;
 }
 
-.exit-button:hover{
-  color:#fff;
+/* FOOTER */
 
-  background:rgba(255,23,68,.12);
+.app-footer{
+  padding:25px 20px 35px;
 
-  box-shadow:
-    0 0 18px rgba(255,23,68,.10);
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer{
-  padding:30px 0 45px;
+  border-top:1px solid rgba(255,255,255,.06);
 
   text-align:center;
-
-  border-top:
-    1px solid rgba(212,175,106,.10);
 }
 
 .footer-brand{
   color:var(--goldBright);
-
   font-size:15px;
-  font-weight:900;
-
-  letter-spacing:1px;
+  font-weight:bold;
 }
 
-.footer-text{
-  color:#666;
-
+.footer-slogan{
+  margin-top:8px;
+  color:var(--muted);
   font-size:11px;
-
-  margin-top:7px;
 }
 
-.instagram-link{
+.footer-instagram{
   display:inline-block;
-
-  margin-top:14px;
+  margin-top:12px;
 
   color:var(--silver);
-
   text-decoration:none;
 
-  font-size:12px;
-
-  transition:.2s;
+  font-size:11px;
 }
 
-.instagram-link:hover{
-  color:var(--goldBright);
+/* ERROR */
+
+.market-area.error .market-card{
+  border-color:rgba(255,23,68,.20);
 }
 
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes logoBreath{
-
-  0%,100%{
-    box-shadow:
-      0 0 0 1px var(--goldBright),
-      0 0 0 4px rgba(212,175,106,.08),
-      0 14px 40px rgba(0,0,0,.75);
-  }
-
-  50%{
-    box-shadow:
-      0 0 0 1px var(--goldBright),
-      0 0 0 5px rgba(212,175,106,.14),
-      0 14px 45px rgba(212,175,106,.10);
-  }
-}
-
-@keyframes silverRingPulse{
-
-  0%,100%{
-    opacity:.72;
-
-    filter:
-      drop-shadow(0 0 3px rgba(201,201,201,.25));
-  }
-
-  50%{
-    opacity:1;
-
-    filter:
-      drop-shadow(0 0 10px rgba(201,201,201,.55))
-      drop-shadow(0 0 4px rgba(212,175,106,.25));
-  }
-}
-
-@keyframes statusBlink{
-
-  0%,100%{
-    opacity:.65;
-  }
-
-  50%{
-    opacity:1;
-  }
-}
-
-@keyframes marketGreenPulse{
-
-  0%,100%{
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.45),
-      0 0 5px rgba(0,230,118,.18);
-  }
-
-  50%{
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.45),
-      0 0 15px rgba(0,230,118,.42),
-      0 0 28px rgba(0,230,118,.10);
-  }
-}
-
-@keyframes marketRedPulse{
-
-  0%,100%{
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.45),
-      0 0 5px rgba(255,23,68,.18);
-  }
-
-  50%{
-    box-shadow:
-      0 15px 35px rgba(0,0,0,.45),
-      0 0 15px rgba(255,23,68,.42),
-      0 0 28px rgba(255,23,68,.10);
-  }
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* RESPONSIVE */
 
 @media(max-width:1050px){
-
   .market-grid{
     grid-template-columns:
-      repeat(3,minmax(0,1fr));
-  }
-
-  .calculator-section-grid{
-    grid-template-columns:1fr;
-  }
-
-  .preview-box{
-    position:static;
+      repeat(3,1fr);
   }
 }
 
-@media(max-width:750px){
+@media(max-width:700px){
+
+  .header-inner{
+    align-items:flex-start;
+  }
+
+  .clock-area{
+    display:none;
+  }
 
   .market-grid{
     grid-template-columns:
-      repeat(2,minmax(0,1fr));
+      repeat(2,1fr);
   }
 
-  .market-info-grid{
-    grid-template-columns:1fr;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
+  .calculator-grid,
   .settings-grid{
     grid-template-columns:1fr;
   }
-}
 
-@media(max-width:550px){
-
-  .header-inner{
-    min-height:72px;
-  }
-
-  .brand-text strong{
-    font-size:13px;
-  }
-
-  .brand-text span{
-    font-size:10px;
-  }
-
-  .header-status{
-    font-size:9px;
-  }
-
-  .market-grid{
+  .result-grid{
     grid-template-columns:1fr;
   }
 
-  .panel{
-    padding:17px;
+  .detail-grid{
+    grid-template-columns:1fr;
   }
 
-  .login-box{
-    padding:32px 22px 25px;
+  .container{
+    padding:22px 14px 35px;
   }
 
-  .market-value{
-    font-size:25px;
+  .nav-bar{
+    padding:0 14px;
   }
 
-  .calculation-row{
-    font-size:11px;
+  .market-card{
+    min-height:165px;
   }
 
-  .calculation-total-value{
+  .market-price{
     font-size:21px;
   }
 }
 
-@media(prefers-reduced-motion:reduce){
+@media(max-width:430px){
 
-  *,
-  *::before,
-  *::after{
+  .login-box{
+    padding:36px 20px 25px;
+  }
 
-    animation-duration:.001ms !important;
+  .login-title{
+    font-size:19px;
+  }
 
-    animation-iteration-count:1 !important;
+  .market-grid{
+    grid-template-columns:1fr;
+  }
 
-    scroll-behavior:auto !important;
+  .section-title{
+    font-size:20px;
   }
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      LOGIN PAGE
-     ========================================================= -->
+========================================================= -->
 
 <section id="loginPage">
 
@@ -1428,7 +1004,6 @@ button{
     </label>
 
     <div class="password-wrapper">
-
       <input
         id="passwordInput"
         class="password-input"
@@ -1436,14 +1011,12 @@ button{
         autocomplete="current-password"
         placeholder="رمز ورود را وارد کنید"
       >
-
     </div>
 
     <button
       id="loginButton"
       type="button"
       class="login-button"
-      onclick="login()"
     >
       ورود به پنل قیمت‌ها
     </button>
@@ -1462,61 +1035,42 @@ button{
 </section>
 
 
-
 <!-- =========================================================
-     MAIN APPLICATION
-     ========================================================= -->
+     APP PAGE
+========================================================= -->
 
 <section
   id="appPage"
   class="hidden"
 >
 
-
 <header class="app-header">
 
-  <div class="container header-inner">
+  <div class="header-inner">
 
-    <div class="brand">
+    <div class="brand-area">
 
       <div class="brand-logo">
         SZF
       </div>
 
-      <div class="brand-text">
-
-        <strong>
+      <div>
+        <div class="brand-title">
           SILVER ZARIN FAKHR
-        </strong>
+        </div>
 
-        <span>
-          نقره زرین فخر
-        </span>
-
+        <div class="brand-subtitle">
+          پنل حرفه‌ای قیمت نقره
+        </div>
       </div>
 
     </div>
 
-
-    <div class="header-status">
-
-      <div
-        id="connectionStatus"
-        class="status-live"
-      >
-
-        <span class="status-dot"></span>
-
-        <span id="connectionText">
-          متصل
-        </span>
-
-      </div>
-
-      <div id="clock">
-        در حال دریافت ساعت...
-      </div>
-
+    <div
+      id="iranClock"
+      class="clock-area"
+    >
+      --:--:--
     </div>
 
   </div>
@@ -1524,51 +1078,41 @@ button{
 </header>
 
 
-
 <nav class="nav-bar">
 
-  <div class="container nav-inner">
+  <button
+    class="nav-button active"
+    onclick="showSection('marketSection',this)"
+  >
+    قیمت‌ها
+  </button>
 
-    <button
-      class="nav-button active"
-      type="button"
-      onclick="showSection('marketSection',this)"
-    >
-      قیمت بازار
-    </button>
+  <button
+    class="nav-button"
+    onclick="showSection('calculatorSection',this)"
+  >
+    محاسبه قیمت
+  </button>
 
-    <button
-      class="nav-button"
-      type="button"
-      onclick="showSection('calculatorSection',this)"
-    >
-      محاسبه قیمت
-    </button>
-
-    <button
-      class="nav-button"
-      type="button"
-      onclick="showSection('settingsSection',this)"
-    >
-      تنظیمات
-    </button>
-
-  </div>
+  <button
+    class="nav-button"
+    onclick="showSection('settingsSection',this)"
+  >
+    تنظیمات
+  </button>
 
 </nav>
 
 
-
 <main class="container">
-
 
 <!-- =========================================================
      MARKET
-     ========================================================= -->
+========================================================= -->
 
 <section
   id="marketSection"
-  class="section"
+  class="section market-area"
 >
 
   <h2 class="section-title">
@@ -1576,178 +1120,152 @@ button{
   </h2>
 
   <p class="section-description">
-    آخرین قیمت‌های بازار نقره و دلار
+    قیمت‌ها به‌صورت خودکار به‌روزرسانی می‌شوند.
   </p>
+
+  <div class="connection">
+
+    <span class="connection-dot"></span>
+
+    <span id="marketSystemStatus">
+      در حال اتصال...
+    </span>
+
+  </div>
 
 
   <div class="market-grid">
 
+    <div class="market-card">
 
-    <div
-      id="mithqalArea"
-      class="market-area"
-    >
+      <div class="market-name">
+        مثقال ۱۷ عیار
+      </div>
 
-      <div class="market-card">
+      <div
+        id="mithqal17"
+        class="market-price"
+      >
+        —
+      </div>
 
-        <div class="market-title">
-          مثقال ۱۷ عیار
-        </div>
+      <div class="market-unit">
+        تومان
+      </div>
 
-        <div
-          id="mithqal17"
-          class="market-value"
-        >
-          —
-        </div>
-
-        <div class="market-unit">
-          تومان
-        </div>
-
-        <div
-          id="mithqalUpdate"
-          class="market-update"
-        >
-          در انتظار اطلاعات
-        </div>
-
+      <div
+        id="mithqal17Update"
+        class="market-update"
+      >
+        در انتظار اطلاعات
       </div>
 
     </div>
 
 
-    <div
-      id="silverOunceArea"
-      class="market-area"
-    >
+    <div class="market-card">
 
-      <div class="market-card">
+      <div class="market-name">
+        انس نقره
+      </div>
 
-        <div class="market-title">
-          انس نقره
-        </div>
+      <div
+        id="silverOunce"
+        class="market-price"
+      >
+        —
+      </div>
 
-        <div
-          id="silverOunce"
-          class="market-value"
-        >
-          —
-        </div>
+      <div class="market-unit">
+        دلار
+      </div>
 
-        <div class="market-unit">
-          دلار
-        </div>
-
-        <div
-          id="silverOunceUpdate"
-          class="market-update"
-        >
-          در انتظار اطلاعات
-        </div>
-
+      <div
+        id="silverOunceUpdate"
+        class="market-update"
+      >
+        در انتظار اطلاعات
       </div>
 
     </div>
 
 
-    <div
-      id="usdArea"
-      class="market-area"
-    >
+    <div class="market-card">
 
-      <div class="market-card">
+      <div class="market-name">
+        دلار
+      </div>
 
-        <div class="market-title">
-          دلار
-        </div>
+      <div
+        id="usdPrice"
+        class="market-price"
+      >
+        —
+      </div>
 
-        <div
-          id="usdPrice"
-          class="market-value"
-        >
-          —
-        </div>
+      <div class="market-unit">
+        تومان
+      </div>
 
-        <div class="market-unit">
-          تومان
-        </div>
-
-        <div
-          id="usdUpdate"
-          class="market-update"
-        >
-          در انتظار اطلاعات
-        </div>
-
+      <div
+        id="usdUpdate"
+        class="market-update"
+      >
+        در انتظار اطلاعات
       </div>
 
     </div>
 
 
-    <div
-      id="silver999Area"
-      class="market-area"
-    >
+    <div class="market-card">
 
-      <div class="market-card">
+      <div class="market-name">
+        نقره ۹۹۹
+      </div>
 
-        <div class="market-title">
-          نقره ۹۹۹
-        </div>
+      <div
+        id="silver999"
+        class="market-price"
+      >
+        —
+      </div>
 
-        <div
-          id="silver999"
-          class="market-value"
-        >
-          —
-        </div>
+      <div class="market-unit">
+        تومان / گرم
+      </div>
 
-        <div class="market-unit">
-          تومان / گرم
-        </div>
-
-        <div
-          id="silver999Update"
-          class="market-update"
-        >
-          در انتظار اطلاعات
-        </div>
-
+      <div
+        id="silver999Update"
+        class="market-update"
+      >
+        در انتظار اطلاعات
       </div>
 
     </div>
 
 
-    <div
-      id="silver925Area"
-      class="market-area"
-    >
+    <div class="market-card">
 
-      <div class="market-card">
+      <div class="market-name">
+        نقره ۹۲۵
+      </div>
 
-        <div class="market-title">
-          نقره ۹۲۵
-        </div>
+      <div
+        id="silver925"
+        class="market-price"
+      >
+        —
+      </div>
 
-        <div
-          id="silver925"
-          class="market-value"
-        >
-          —
-        </div>
+      <div class="market-unit">
+        تومان / گرم
+      </div>
 
-        <div class="market-unit">
-          تومان / گرم
-        </div>
-
-        <div
-          id="silver925Update"
-          class="market-update"
-        >
-          در انتظار اطلاعات
-        </div>
-
+      <div
+        id="silver925Update"
+        class="market-update"
+      >
+        محاسبه از نقره ۹۹۹
       </div>
 
     </div>
@@ -1761,63 +1279,51 @@ button{
       اطلاعات پایه محاسبات
     </div>
 
-    <div class="market-info-grid">
+    <div class="detail-grid">
 
-      <div class="info-box">
+      <div class="detail-card">
 
-        <div class="info-label">
-          قیمت پایه نقره ۹۹۹
+        <div class="detail-label">
+          نقره ۹۹۹
         </div>
 
         <div
           id="detail999"
-          class="info-value"
+          class="detail-value"
         >
           —
-        </div>
-
-        <div class="info-unit">
-          تومان / گرم
         </div>
 
       </div>
 
 
-      <div class="info-box">
+      <div class="detail-card">
 
-        <div class="info-label">
-          قیمت پایه نقره ۹۲۵
+        <div class="detail-label">
+          نقره ۹۲۵
         </div>
 
         <div
           id="detail925"
-          class="info-value"
+          class="detail-value"
         >
           —
-        </div>
-
-        <div class="info-unit">
-          تومان / گرم
         </div>
 
       </div>
 
 
-      <div class="info-box">
+      <div class="detail-card">
 
-        <div class="info-label">
-          قیمت پایه نقره ۷۰۰
+        <div class="detail-label">
+          نقره ۷۰۰
         </div>
 
         <div
           id="detail700"
-          class="info-value"
+          class="detail-value"
         >
           —
-        </div>
-
-        <div class="info-unit">
-          تومان / گرم
         </div>
 
       </div>
@@ -1829,10 +1335,9 @@ button{
 </section>
 
 
-
 <!-- =========================================================
      CALCULATOR
-     ========================================================= -->
+========================================================= -->
 
 <section
   id="calculatorSection"
@@ -1840,516 +1345,210 @@ button{
 >
 
   <h2 class="section-title">
-    محاسبه قیمت نقره
+    محاسبه قیمت محصول
   </h2>
 
   <p class="section-description">
-    محاسبه کامل ارزش و قیمت فروش محصول نقره
-  </p>
-
-
-  <div class="calculator-section-grid">
-
-
-    <div class="panel">
-
-      <div class="panel-title">
-        ماشین حساب حرفه‌ای نقره
-      </div>
-
-      <div class="sub-title">
-        اطلاعات محصول
-      </div>
-
-
-      <div class="form-grid">
-
-
-        <div class="form-group">
-
-          <label for="productType">
-            نوع محصول
-          </label>
-
-          <select
-            id="productType"
-            class="form-control select-control"
-          >
-
-            <option value="انگشتر">انگشتر</option>
-            <option value="گردنبند">گردنبند</option>
-            <option value="دستبند">دستبند</option>
-            <option value="گوشواره">گوشواره</option>
-            <option value="پلاک">پلاک</option>
-            <option value="سرویس">سرویس</option>
-            <option value="نیم‌ست">نیم‌ست</option>
-            <option value="سایر">سایر</option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="calcWeight">
-            وزن محصول
-          </label>
-
-          <input
-            id="calcWeight"
-            class="form-control"
-            type="number"
-            min="0"
-            step="0.001"
-            placeholder="مثلاً 10.500"
-          >
-
-          <div class="form-help">
-            وزن را بر حسب گرم وارد کنید.
-          </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="calcPurity">
-            عیار نقره
-          </label>
-
-          <select
-            id="calcPurity"
-            class="form-control select-control"
-          >
-
-            <option value="999">
-              ۹۹۹
-            </option>
-
-            <option
-              value="925"
-              selected
-            >
-              ۹۲۵
-            </option>
-
-            <option value="700">
-              ۷۰۰
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="laborType">
-            نوع اجرت
-          </label>
-
-          <select
-            id="laborType"
-            class="form-control select-control"
-            onchange="updateLaborLabel()"
-          >
-
-            <option value="gram">
-              اجرت به ازای هر گرم
-            </option>
-
-            <option value="percent">
-              اجرت درصدی
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label id="laborLabel" for="laborValue">
-            اجرت هر گرم
-          </label>
-
-          <input
-            id="laborValue"
-            class="form-control"
-            type="number"
-            min="0"
-            step="1000"
-            value="0"
-            placeholder="مثلاً 150000"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="stoneCost">
-            هزینه سنگ و نگین
-          </label>
-
-          <input
-            id="stoneCost"
-            class="form-control"
-            type="number"
-            min="0"
-            step="1000"
-            value="0"
-            placeholder="مثلاً 2500000"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="otherCost">
-            سایر هزینه‌ها
-          </label>
-
-          <input
-            id="otherCost"
-            class="form-control"
-            type="number"
-            min="0"
-            step="1000"
-            value="0"
-            placeholder="آبکاری، قفل، زنجیر و..."
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="profitPercent">
-            درصد سود
-          </label>
-
-          <input
-            id="profitPercent"
-            class="form-control"
-            type="number"
-            min="0"
-            step="0.1"
-            value="0"
-            placeholder="مثلاً 15"
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="discountPercent">
-            درصد تخفیف
-          </label>
-
-          <input
-            id="discountPercent"
-            class="form-control"
-            type="number"
-            min="0"
-            max="100"
-            step="0.1"
-            value="0"
-            placeholder="مثلاً 5"
-          >
-
-        </div>
-
-      </div>
-
-
-      <button
-        type="button"
-        class="calculate-button"
-        onclick="calculateManualPrice()"
-      >
-        محاسبه قیمت نهایی
-      </button>
-
-
-      <div
-        id="resultBox"
-        class="result-box hidden"
-      >
-
-        <div class="result-title">
-          جزئیات محاسبه
-        </div>
-
-
-        <div class="calculation-row">
-          <span class="calculation-label">نوع محصول</span>
-          <span id="resultProductType" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">وزن</span>
-          <span id="resultWeight" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">عیار</span>
-          <span id="resultPurity" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">قیمت هر گرم</span>
-          <span id="resultGramPrice" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">ارزش خام نقره</span>
-          <span id="resultSilverValue" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">اجرت ساخت</span>
-          <span id="resultLabor" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">سنگ و نگین</span>
-          <span id="resultStone" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">سایر هزینه‌ها</span>
-          <span id="resultOther" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">قیمت قبل از سود</span>
-          <span id="resultBeforeProfit" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">سود</span>
-          <span id="resultProfit" class="calculation-value">—</span>
-        </div>
-
-        <div class="calculation-row">
-          <span class="calculation-label">تخفیف</span>
-          <span id="resultDiscount" class="calculation-value">—</span>
-        </div>
-
-
-        <div class="calculation-total">
-
-          <span class="calculation-total-label">
-            قیمت نهایی فروش
-          </span>
-
-          <span
-            id="resultFinal"
-            class="calculation-total-value"
-          >
-            —
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <aside class="preview-box">
-
-      <div class="preview-title">
-        خلاصه قیمت
-      </div>
-
-      <div class="preview-price">
-
-        <div class="preview-price-label">
-          قیمت نهایی
-        </div>
-
-        <div
-          id="previewFinal"
-          class="preview-price-value"
-        >
-          —
-        </div>
-
-        <div class="preview-price-label">
-          تومان
-        </div>
-
-      </div>
-
-      <div class="preview-line">
-        <span>محصول</span>
-        <span id="previewProduct">—</span>
-      </div>
-
-      <div class="preview-line">
-        <span>وزن</span>
-        <span id="previewWeight">—</span>
-      </div>
-
-      <div class="preview-line">
-        <span>عیار</span>
-        <span id="previewPurity">—</span>
-      </div>
-
-      <div class="preview-line">
-        <span>نقره خام</span>
-        <span id="previewSilver">—</span>
-      </div>
-
-      <div class="preview-line">
-        <span>اجرت</span>
-        <span id="previewLabor">—</span>
-      </div>
-
-    </aside>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SETTINGS
-     ========================================================= -->
-
-<section
-  id="settingsSection"
-  class="section hidden"
->
-
-  <h2 class="section-title">
-    تنظیمات پنل
-  </h2>
-
-  <p class="section-description">
-    تنظیم مقادیر پیش‌فرض و اطلاعات سیستم
+    قیمت نهایی محصول را بر اساس وزن، عیار، اجرت و هزینه‌ها محاسبه کنید.
   </p>
 
 
   <div class="panel">
 
-    <div class="panel-title">
-      تنظیمات محاسبه
-    </div>
+    <div class="calculator-grid">
 
+      <div class="form-group">
 
-    <div class="settings-grid">
-
-      <div class="settings-item">
-
-        <div class="settings-label">
-          اجرت پیش‌فرض هر گرم
-        </div>
-
-        <input
-          id="defaultLabor"
-          class="form-control settings-input"
-          type="number"
-          min="0"
-          step="1000"
-          value="0"
-        >
-
-      </div>
-
-
-      <div class="settings-item">
-
-        <div class="settings-label">
-          سود پیش‌فرض
-        </div>
-
-        <input
-          id="defaultProfit"
-          class="form-control settings-input"
-          type="number"
-          min="0"
-          step="0.1"
-          value="0"
-        >
-
-      </div>
-
-
-      <div class="settings-item">
-
-        <div class="settings-label">
-          تخفیف پیش‌فرض
-        </div>
-
-        <input
-          id="defaultDiscount"
-          class="form-control settings-input"
-          type="number"
-          min="0"
-          max="100"
-          step="0.1"
-          value="0"
-        >
-
-      </div>
-
-
-      <div class="settings-item">
-
-        <div class="settings-label">
-          عیار پیش‌فرض
-        </div>
+        <label class="form-label">
+          نوع محصول
+        </label>
 
         <select
-          id="defaultPurity"
-          class="form-control settings-input"
+          id="productType"
+          class="form-select"
         >
-
-          <option value="999">۹۹۹</option>
-
-          <option
-            value="925"
-            selected
-          >
-            ۹۲۵
+          <option value="انگشتر">
+            انگشتر
           </option>
 
-          <option value="700">۷۰۰</option>
+          <option value="گردنبند">
+            گردنبند
+          </option>
+
+          <option value="دستبند">
+            دستبند
+          </option>
+
+          <option value="گوشواره">
+            گوشواره
+          </option>
+
+          <option value="سایر">
+            سایر
+          </option>
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          وزن محصول (گرم)
+        </label>
+
+        <input
+          id="calcWeight"
+          class="form-input"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="مثلاً 6.50"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          عیار نقره
+        </label>
+
+        <select
+          id="calcPurity"
+          class="form-select"
+        >
+
+          <option value="925">
+            925
+          </option>
+
+          <option value="999">
+            999
+          </option>
+
+          <option value="700">
+            700
+          </option>
 
         </select>
 
       </div>
 
 
-      <div class="settings-item">
+      <div class="form-group">
 
-        <div class="settings-label">
-          واحد پول
-        </div>
+        <label class="form-label">
+          نوع اجرت
+        </label>
 
-        <div class="settings-value">
-          تومان
-        </div>
+        <select
+          id="laborType"
+          class="form-select"
+          onchange="updateLaborLabel()"
+        >
+
+          <option value="percent">
+            درصدی
+          </option>
+
+          <option value="gram">
+            هر گرم
+          </option>
+
+        </select>
 
       </div>
 
 
-      <div class="settings-item">
+      <div class="form-group">
 
-        <div class="settings-label">
-          بروزرسانی قیمت
-        </div>
+        <label
+          id="laborLabel"
+          class="form-label"
+        >
+          درصد اجرت
+        </label>
 
-        <div class="settings-value">
-          هر ۱ ثانیه
-        </div>
+        <input
+          id="laborValue"
+          class="form-input"
+          type="number"
+          min="0"
+          step="0.01"
+          value="20"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          هزینه سنگ (تومان)
+        </label>
+
+        <input
+          id="stoneCost"
+          class="form-input"
+          type="number"
+          min="0"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          سایر هزینه‌ها (تومان)
+        </label>
+
+        <input
+          id="otherCost"
+          class="form-input"
+          type="number"
+          min="0"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          سود (%)
+        </label>
+
+        <input
+          id="profitPercent"
+          class="form-input"
+          type="number"
+          min="0"
+          step="0.01"
+          value="10"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          تخفیف (%)
+        </label>
+
+        <input
+          id="discountPercent"
+          class="form-input"
+          type="number"
+          min="0"
+          step="0.01"
+          value="0"
+        >
 
       </div>
 
@@ -2357,8 +1556,248 @@ button{
 
 
     <button
+      class="calculate-button"
       type="button"
-      class="save-settings-button"
+      onclick="calculateManualPrice()"
+    >
+      محاسبه قیمت نهایی
+    </button>
+
+
+    <div
+      id="resultBox"
+      class="result-box"
+    >
+
+      <div class="result-title">
+        نتیجه محاسبه
+      </div>
+
+
+      <div class="result-grid">
+
+        <div class="result-row">
+          <span>نوع محصول</span>
+          <span id="resultProductType">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>وزن</span>
+          <span id="resultWeight">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>عیار</span>
+          <span id="resultPurity">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>قیمت هر گرم</span>
+          <span id="resultGramPrice">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>ارزش نقره</span>
+          <span id="resultSilverValue">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>اجرت</span>
+          <span id="resultLabor">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>سنگ</span>
+          <span id="resultStone">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>سایر هزینه</span>
+          <span id="resultOther">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>قبل از سود</span>
+          <span id="resultBeforeProfit">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>سود</span>
+          <span id="resultProfit">—</span>
+        </div>
+
+        <div class="result-row">
+          <span>تخفیف</span>
+          <span id="resultDiscount">—</span>
+        </div>
+
+      </div>
+
+
+      <div class="final-price">
+
+        <div class="final-price-label">
+          قیمت نهایی
+        </div>
+
+        <div
+          id="resultFinal"
+          class="final-price-value"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div class="preview">
+
+        <div class="preview-title">
+          پیش‌نمایش
+        </div>
+
+        <div class="preview-line">
+          <span>محصول</span>
+          <span id="previewProduct">—</span>
+        </div>
+
+        <div class="preview-line">
+          <span>وزن</span>
+          <span id="previewWeight">—</span>
+        </div>
+
+        <div class="preview-line">
+          <span>عیار</span>
+          <span id="previewPurity">—</span>
+        </div>
+
+        <div class="preview-line">
+          <span>ارزش نقره</span>
+          <span id="previewSilver">—</span>
+        </div>
+
+        <div class="preview-line">
+          <span>اجرت</span>
+          <span id="previewLabor">—</span>
+        </div>
+
+        <div class="preview-line">
+          <span>قیمت نهایی</span>
+          <span id="previewFinal">—</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SETTINGS
+========================================================= -->
+
+<section
+  id="settingsSection"
+  class="section hidden"
+>
+
+  <h2 class="section-title">
+    تنظیمات
+  </h2>
+
+  <p class="section-description">
+    مقادیر پیش‌فرض محاسبه قیمت را تنظیم کنید.
+  </p>
+
+
+  <div class="panel">
+
+    <div class="settings-grid">
+
+      <div class="form-group">
+
+        <label class="form-label">
+          اجرت پیش‌فرض (%)
+        </label>
+
+        <input
+          id="defaultLabor"
+          class="form-input"
+          type="number"
+          value="20"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          سود پیش‌فرض (%)
+        </label>
+
+        <input
+          id="defaultProfit"
+          class="form-input"
+          type="number"
+          value="10"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          تخفیف پیش‌فرض (%)
+        </label>
+
+        <input
+          id="defaultDiscount"
+          class="form-input"
+          type="number"
+          value="0"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="form-label">
+          عیار پیش‌فرض
+        </label>
+
+        <select
+          id="defaultPurity"
+          class="form-select"
+        >
+
+          <option value="925">
+            925
+          </option>
+
+          <option value="999">
+            999
+          </option>
+
+          <option value="700">
+            700
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="save-button"
+      type="button"
       onclick="saveSettings()"
     >
       ذخیره تنظیمات
@@ -2379,8 +1818,817 @@ button{
       اطلاعات سیستم
     </div>
 
+    <div class="system-list">
 
-    <div class="settings-grid">
+      <div class="system-row">
+        <span>وضعیت اتصال</span>
+        <span id="settingsConnection">
+          بررسی می‌شود
+        </span>
+      </div>
 
-      <div class="settings-item">
-        <div class="settings-label">
+      <div class="system-row">
+        <span>نسخه</span>
+        <span>
+          SILVER ZARIN FAKHR 2.0
+        </span>
+      </div>
+
+      <div class="system-row">
+        <span>دامنه</span>
+        <span>
+          SILVER ZARIN FAKHR.COM
+        </span>
+      </div>
+
+    </div>
+
+
+    <button
+      class="exit-button"
+      type="button"
+      onclick="logout()"
+    >
+      خروج از پنل
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer class="app-footer">
+
+  <div class="footer-brand">
+    SILVER ZARIN FAKHR
+  </div>
+
+  <div class="footer-slogan">
+    زیبایی در درخشندگی، اصالت در ماندگاری
+  </div>
+
+  <a
+    class="footer-instagram"
+    href="https://instagram.com/zarinfakhrSZF"
+    target="_blank"
+  >
+    @zarinfakhrSZF
+  </a>
+
+</footer>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   API
+========================================================= */
+
+const API =
+  location.protocol === "file:" ||
+  location.hostname === "localhost"
+    ? "https://zarinfakhr-market-v2.vercel.app/api/prices"
+    : "/api/prices";
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+const LOGIN_PASSWORD = "@Mohammad1386";
+
+
+function login(){
+
+  const passwordInput =
+    document.getElementById("passwordInput");
+
+  const loginError =
+    document.getElementById("loginError");
+
+  const loginPage =
+    document.getElementById("loginPage");
+
+  const appPage =
+    document.getElementById("appPage");
+
+
+  if(
+    !passwordInput ||
+    !loginPage ||
+    !appPage
+  ){
+    console.error("Login elements not found");
+    return;
+  }
+
+
+  const password =
+    passwordInput.value.trim();
+
+
+  if(password === LOGIN_PASSWORD){
+
+    if(loginError){
+      loginError.textContent = "";
+    }
+
+
+    loginPage.classList.add("hidden");
+
+    appPage.classList.remove("hidden");
+
+
+    loadSettings();
+
+    startPriceUpdates();
+
+    startClock();
+
+    calculatePrice();
+
+  }else{
+
+    if(loginError){
+      loginError.textContent =
+        "رمز ورود صحیح نیست.";
+    }
+
+
+    passwordInput.value = "";
+
+    passwordInput.focus();
+
+  }
+
+}
+
+
+window.login = login;
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout(){
+
+  const appPage =
+    document.getElementById("appPage");
+
+  const loginPage =
+    document.getElementById("loginPage");
+
+  const passwordInput =
+    document.getElementById("passwordInput");
+
+
+  if(appPage){
+    appPage.classList.add("hidden");
+  }
+
+
+  if(loginPage){
+    loginPage.classList.remove("hidden");
+  }
+
+
+  if(passwordInput){
+
+    passwordInput.value = "";
+
+    setTimeout(function(){
+
+      passwordInput.focus();
+
+    },100);
+
+  }
+
+}
+
+
+/* =========================================================
+   MARKET VARIABLES
+========================================================= */
+
+let currentSilverOunce = 0;
+let currentUSD = 0;
+let currentSilver999 = 0;
+let currentSilver925 = 0;
+let currentSilver700 = 0;
+let currentMithqal17 = 0;
+
+let priceInterval = null;
+
+let iranClockDate = null;
+let clockApiTimer = null;
+let clockDisplayTimer = null;
+
+const SETTINGS_KEY =
+  "SZF_CALCULATOR_SETTINGS";
+
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+function formatNumber(value){
+
+  if(
+    value === null ||
+    value === undefined ||
+    !isFinite(Number(value))
+  ){
+    return "—";
+  }
+
+  return Number(value).toLocaleString(
+    "fa-IR",
+    {
+      maximumFractionDigits:0
+    }
+  );
+
+}
+
+
+function formatDecimal(value){
+
+  if(
+    value === null ||
+    value === undefined ||
+    !isFinite(Number(value))
+  ){
+    return "—";
+  }
+
+  return Number(value).toLocaleString(
+    "fa-IR",
+    {
+      maximumFractionDigits:2
+    }
+  );
+
+}
+
+
+function formatPrice(value){
+
+  return formatNumber(value);
+
+}
+
+
+/* =========================================================
+   CALCULATE MARKET PRICES
+========================================================= */
+
+function calculatePrice(){
+
+  currentSilver925 =
+    currentSilver999 * 0.925;
+
+  currentSilver700 =
+    currentSilver999 * 0.700;
+
+
+  const ouncePrice =
+    currentSilverOunce * currentUSD;
+
+
+  const silverPerGram =
+    ouncePrice / 31.103;
+
+
+  const gram17Price =
+    (silverPerGram / 1000) * 700;
+
+
+  currentMithqal17 =
+    gram17Price * 4.608;
+
+
+  const silverOunceEl =
+    document.getElementById("silverOunce");
+
+  const usdPriceEl =
+    document.getElementById("usdPrice");
+
+  const silver999El =
+    document.getElementById("silver999");
+
+  const silver925El =
+    document.getElementById("silver925");
+
+  const mithqal17El =
+    document.getElementById("mithqal17");
+
+
+  if(silverOunceEl){
+    silverOunceEl.textContent =
+      formatDecimal(currentSilverOunce);
+  }
+
+
+  if(usdPriceEl){
+    usdPriceEl.textContent =
+      formatPrice(currentUSD);
+  }
+
+
+  if(silver999El){
+    silver999El.textContent =
+      formatPrice(currentSilver999);
+  }
+
+
+  if(silver925El){
+    silver925El.textContent =
+      formatPrice(currentSilver925);
+  }
+
+
+  if(mithqal17El){
+    mithqal17El.textContent =
+      formatPrice(currentMithqal17);
+  }
+
+
+  const detail999 =
+    document.getElementById("detail999");
+
+  const detail925 =
+    document.getElementById("detail925");
+
+  const detail700 =
+    document.getElementById("detail700");
+
+
+  if(detail999){
+    detail999.textContent =
+      formatPrice(currentSilver999)
+      + " تومان / گرم";
+  }
+
+
+  if(detail925){
+    detail925.textContent =
+      formatPrice(currentSilver925)
+      + " تومان / گرم";
+  }
+
+
+  if(detail700){
+    detail700.textContent =
+      formatPrice(currentSilver700)
+      + " تومان / گرم";
+  }
+
+}
+
+
+/* =========================================================
+   PROCESS API DATA
+========================================================= */
+
+function processPrices(data){
+
+  if(!data || data.success !== true){
+    throw new Error("Invalid API response");
+  }
+
+
+  const silverOunce =
+    Number(data.silverOunce);
+
+  const usdToman =
+    Number(data.usdToman);
+
+  const silver999Toman =
+    Number(data.silver999Toman);
+
+
+  if(
+    !isFinite(silverOunce) ||
+    silverOunce <= 0
+  ){
+    throw new Error("silverOunce invalid");
+  }
+
+
+  if(
+    !isFinite(usdToman) ||
+    usdToman <= 0
+  ){
+    throw new Error("usdToman invalid");
+  }
+
+
+  if(
+    !isFinite(silver999Toman) ||
+    silver999Toman <= 0
+  ){
+    throw new Error("silver999Toman invalid");
+  }
+
+
+  currentSilverOunce =
+    silverOunce;
+
+  currentUSD =
+    usdToman;
+
+  currentSilver999 =
+    silver999Toman;
+
+
+  calculatePrice();
+
+
+  const now =
+    new Date().toLocaleTimeString(
+      "fa-IR"
+    );
+
+
+  const updateIds = [
+    "silverOunceUpdate",
+    "usdUpdate",
+    "silver999Update",
+    "silver925Update",
+    "mithqal17Update"
+  ];
+
+
+  updateIds.forEach(function(id){
+
+    const el =
+      document.getElementById(id);
+
+    if(el){
+      el.textContent =
+        "آخرین بروزرسانی: " + now;
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   CONNECTION STATUS
+========================================================= */
+
+function setConnectionStatus(isOnline){
+
+  const connection =
+    document.querySelector(".connection");
+
+  const status =
+    document.getElementById(
+      "marketSystemStatus"
+    );
+
+  const settingsConnection =
+    document.getElementById(
+      "settingsConnection"
+    );
+
+  const marketArea =
+    document.querySelector(".market-area");
+
+
+  if(isOnline){
+
+    if(connection){
+      connection.classList.remove("offline");
+    }
+
+    if(status){
+      status.textContent =
+        "اتصال برقرار است";
+    }
+
+    if(settingsConnection){
+      settingsConnection.textContent =
+        "آنلاین";
+    }
+
+    if(marketArea){
+      marketArea.classList.remove("error");
+    }
+
+  }else{
+
+    if(connection){
+      connection.classList.add("offline");
+    }
+
+    if(status){
+      status.textContent =
+        "اتصال برقرار نیست";
+    }
+
+    if(settingsConnection){
+      settingsConnection.textContent =
+        "آفلاین";
+    }
+
+    if(marketArea){
+      marketArea.classList.add("error");
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   FETCH PRICES
+========================================================= */
+
+async function fetchPrices(){
+
+  try{
+
+    const response =
+      await fetch(
+        API + "?t=" + Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+      throw new Error(
+        "HTTP " + response.status
+      );
+    }
+
+
+    const data =
+      await response.json();
+
+
+    processPrices(data);
+
+    setConnectionStatus(true);
+
+  }catch(error){
+
+    console.error(
+      "Price API error:",
+      error
+    );
+
+    setConnectionStatus(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   START PRICE UPDATES
+========================================================= */
+
+function startPriceUpdates(){
+
+  if(priceInterval){
+    clearInterval(priceInterval);
+  }
+
+
+  fetchPrices();
+
+
+  priceInterval =
+    setInterval(
+      fetchPrices,
+      1000
+    );
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showSection(
+  sectionId,
+  button
+){
+
+  document
+    .querySelectorAll(".section")
+    .forEach(function(section){
+
+      section.classList.add("hidden");
+
+    });
+
+
+  const target =
+    document.getElementById(sectionId);
+
+
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+
+  document
+    .querySelectorAll(".nav-button")
+    .forEach(function(btn){
+
+      btn.classList.remove("active");
+
+    });
+
+
+  if(button){
+    button.classList.add("active");
+  }
+
+}
+
+
+/* =========================================================
+   LABOR LABEL
+========================================================= */
+
+function updateLaborLabel(){
+
+  const type =
+    document.getElementById("laborType");
+
+  const label =
+    document.getElementById("laborLabel");
+
+  if(!type || !label){
+    return;
+  }
+
+
+  if(type.value === "gram"){
+
+    label.textContent =
+      "اجرت هر گرم";
+
+  }else{
+
+    label.textContent =
+      "درصد اجرت";
+
+  }
+
+}
+
+
+/* =========================================================
+   MANUAL CALCULATOR
+========================================================= */
+
+function calculateManualPrice(){
+
+  const productType =
+    document.getElementById(
+      "productType"
+    ).value;
+
+
+  const weight =
+    Number(
+      document.getElementById(
+        "calcWeight"
+      ).value
+    );
+
+
+  const purity =
+    Number(
+      document.getElementById(
+        "calcPurity"
+      ).value
+    );
+
+
+  const laborType =
+    document.getElementById(
+      "laborType"
+    ).value;
+
+
+  const laborValue =
+    Number(
+      document.getElementById(
+        "laborValue"
+      ).value
+    ) || 0;
+
+
+  const stone =
+    Number(
+      document.getElementById(
+        "stoneCost"
+      ).value
+    ) || 0;
+
+
+  const other =
+    Number(
+      document.getElementById(
+        "otherCost"
+      ).value
+    ) || 0;
+
+
+  const profitPercent =
+    Number(
+      document.getElementById(
+        "profitPercent"
+      ).value
+    ) || 0;
+
+
+  const discountPercent =
+    Number(
+      document.getElementById(
+        "discountPercent"
+      ).value
+    ) || 0;
+
+
+  if(
+    !isFinite(weight) ||
+    weight <= 0
+  ){
+
+    alert(
+      "لطفاً وزن محصول را وارد کنید."
+    );
+
+    return;
+
+  }
+
+
+  let gramPrice = 0;
+
+
+  if(purity === 925){
+
+    gramPrice =
+      currentSilver925;
+
+  }else if(purity === 999){
+
+    gramPrice =
+      currentSilver999;
+
+  }else if(purity === 700){
+
+    gramPrice =
+      currentSilver700;
+
+  }
+
+
+  if(
+    !gramPrice ||
+    gramPrice <= 0
+  ){
+
+    alert(
+      "قیمت نقره هنوز دریافت نشده است."
+    );
+
+    return;
+
+  }
+
+
+  const silverValue =
+    weight * gramPrice;
+
+
+  let labor = 0;
+
+
+  if(laborType === "gram"){
+
+    labor =
+      weight * laborValue;
+
+  }else{
+
+    labor =
+      silverValue *
+      (laborValue
