@@ -710,6 +710,49 @@ button{
 
 
 /* =========================================================
+   LIVE PRICE INFO
+   ========================================================= */
+
+.market-info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:14px;
+}
+
+.info-box{
+  padding:17px;
+
+  background:#090909;
+
+  border:
+    1px solid rgba(184,138,74,.18);
+
+  border-radius:15px;
+}
+
+.info-label{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:9px;
+}
+
+.info-value{
+  color:var(--silverBright);
+  font-size:20px;
+  font-weight:900;
+}
+
+.info-unit{
+  color:var(--goldBright);
+  font-size:11px;
+  margin-top:4px;
+}
+
+
+/* =========================================================
    FORM
    ========================================================= */
 
@@ -1278,6 +1321,10 @@ button{
       repeat(2,minmax(0,1fr));
   }
 
+  .market-info-grid{
+    grid-template-columns:1fr;
+  }
+
   .form-grid{
     grid-template-columns:1fr;
   }
@@ -1398,7 +1445,7 @@ button{
       class="login-button"
       onclick="login()"
     >
-      ورود
+      ورود به پنل قیمت‌ها
     </button>
 
     <div
@@ -1699,6 +1746,78 @@ button{
           class="market-update"
         >
           در انتظار اطلاعات
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="panel">
+
+    <div class="panel-title">
+      اطلاعات پایه محاسبات
+    </div>
+
+    <div class="market-info-grid">
+
+      <div class="info-box">
+
+        <div class="info-label">
+          قیمت پایه نقره ۹۹۹
+        </div>
+
+        <div
+          id="detail999"
+          class="info-value"
+        >
+          —
+        </div>
+
+        <div class="info-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <div class="info-label">
+          قیمت پایه نقره ۹۲۵
+        </div>
+
+        <div
+          id="detail925"
+          class="info-value"
+        >
+          —
+        </div>
+
+        <div class="info-unit">
+          تومان / گرم
+        </div>
+
+      </div>
+
+
+      <div class="info-box">
+
+        <div class="info-label">
+          قیمت پایه نقره ۷۰۰
+        </div>
+
+        <div
+          id="detail700"
+          class="info-value"
+        >
+          —
+        </div>
+
+        <div class="info-unit">
+          تومان / گرم
         </div>
 
       </div>
@@ -2264,29 +2383,4 @@ button{
     <div class="settings-grid">
 
       <div class="settings-item">
-        <div class="settings-label">برند</div>
-        <div class="settings-value">SILVER ZARIN FAKHR</div>
-      </div>
-
-      <div class="settings-item">
-        <div class="settings-label">نام فارسی</div>
-        <div class="settings-value">نقره زرین فخر</div>
-      </div>
-
-      <div class="settings-item">
-        <div class="settings-label">دامنه</div>
-        <div class="settings-value">SILVER ZARIN FAKHR.COM</div>
-      </div>
-
-      <div class="settings-item">
-
         <div class="settings-label">
-          وضعیت اتصال
-        </div>
-
-        <div
-          id="settingsConnection"
-          class="settings-value"
-        >
-          متصل
-       
