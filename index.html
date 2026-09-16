@@ -521,7 +521,6 @@ SILVER ZARIN FAKHR
 </div>
 </section>
 
-
 <!-- =========================================================
 MAIN APP
 ========================================================= -->
@@ -548,7 +547,6 @@ MAIN APP
 
 </div>
 </header>
-
 
 <nav class="nav-bar">
 <div class="container nav-inner">
@@ -587,7 +585,6 @@ MAIN APP
 
 </div>
 </nav>
-
 
 <main class="container">
 
@@ -628,7 +625,6 @@ DASHBOARD
 </div>
 
 </div>
-
 
 <!-- خلاصه فروش -->
 <div class="panel">
@@ -689,7 +685,6 @@ DASHBOARD
 
 </div>
 
-
 <div class="panel">
 
 <div class="panel-title">خلاصه وضعیت بازار</div>
@@ -741,7 +736,6 @@ DASHBOARD
 
 </div>
 </section>
-
 
 <!-- =========================================================
 MARKET
@@ -854,7 +848,6 @@ MARKET
 </div>
 
 </section>
-
 
 <!-- =========================================================
 CALCULATOR
@@ -1017,7 +1010,6 @@ CALCULATOR
 </div>
 </div>
 
-
 <aside class="preview-box">
 
 <div class="preview-title">خلاصه قیمت</div>
@@ -1057,7 +1049,6 @@ CALCULATOR
 
 </div>
 </section>
-
 
 <!-- =========================================================
 INVOICE
@@ -1125,7 +1116,6 @@ INVOICE
 
 </div>
 
-
 <div id="invoicePreview" class="panel hidden">
 
 <div class="invoice-head">
@@ -1187,7 +1177,6 @@ SILVER ZARIN FAKHR | زیبایی در درخشندگی، اصالت در مان
 </div>
 
 </section>
-
 
 <!-- =========================================================
 PRODUCTS
@@ -1319,14 +1308,12 @@ PRODUCTS
 
 </div>
 
-
 <div class="panel">
 <div class="panel-title">محصولات ثبت‌شده</div>
 <div id="productGrid" class="product-grid"></div>
 </div>
 
 </section>
-
 
 <!-- =========================================================
 HISTORY
@@ -1361,7 +1348,6 @@ HISTORY
 
 </div>
 </section>
-
 
 <!-- =========================================================
 SETTINGS
@@ -1444,7 +1430,6 @@ SETTINGS
 
 </div>
 
-
 <div class="panel">
 
 <div class="panel-title">اطلاعات سیستم</div>
@@ -1493,7 +1478,6 @@ SETTINGS
 
 </main>
 
-
 <footer class="footer">
 <div class="container">
 <div class="footer-brand">SILVER ZARIN FAKHR</div>
@@ -1505,7 +1489,6 @@ SETTINGS
 </footer>
 
 </section>
-
 
 <!-- =========================================================
 DISPLAY BOARD
@@ -1577,7 +1560,6 @@ gap:18px;
 </div>
 </section>
 
-
 <script>
 
 /* =========================================================
@@ -1590,13 +1572,11 @@ const API =
     ? "https://zarinfakhr-market-v2.vercel.app/api/prices"
     : "/api/prices";
 
-
 /* =========================================================
 LOGIN - کاملاً ثابت
 ========================================================= */
 
 const LOGIN_PASSWORD = "@Mohammad1386";
-
 
 /* =========================================================
 VARIABLES
@@ -1645,7 +1625,6 @@ const HISTORY_KEY = "SZF_PRICE_HISTORY";
 const HISTORY_SLOT_KEY = "SZF_LAST_HISTORY_SLOT";
 const PRODUCTS_KEY = "SZF_PRODUCTS";
 const INVOICES_KEY = "SZF_INVOICES";
-
 
 /* =========================================================
 LOGIN
@@ -1699,7 +1678,6 @@ function login(){
 
 window.login = login;
 
-
 /* =========================================================
 LOGOUT
 ========================================================= */
@@ -1747,7 +1725,6 @@ function logout(){
 
 }
 
-
 /* =========================================================
 FORMAT
 ========================================================= */
@@ -1772,7 +1749,6 @@ function formatNumber(value,decimals=0){
 
 }
 
-
 function formatPrice(value){
 
   if(
@@ -1787,7 +1763,6 @@ function formatPrice(value){
     .toLocaleString("fa-IR");
 
 }
-
 
 function formatDateIran(date){
 
@@ -1806,7 +1781,6 @@ function formatDateIran(date){
 
 }
 
-
 function formatTimeIran(date){
 
   if(!(date instanceof Date) || Number.isNaN(date.getTime()))
@@ -1824,7 +1798,6 @@ function formatTimeIran(date){
 
 }
 
-
 function formatDateTimeIran(date){
 
   if(!(date instanceof Date) || Number.isNaN(date.getTime()))
@@ -1840,7 +1813,6 @@ function formatDateTimeIran(date){
   );
 
 }
-
 
 /* =========================================================
 IRAN TIME HELPERS
@@ -1867,7 +1839,6 @@ function getIranFallbackDate(){
 
 }
 
-
 function normalizeTimeApiValue(value){
 
   if(value === null || value === undefined)
@@ -1889,17 +1860,14 @@ function normalizeTimeApiValue(value){
 
   }
 
-
   if(typeof value !== "string")
     return null;
-
 
   const text =
     value.trim();
 
   if(!text)
     return null;
-
 
   /*
     اگر رشته دارای timezone باشد،
@@ -1918,7 +1886,6 @@ function normalizeTimeApiValue(value){
       : date;
 
   }
-
 
   /*
     برای زمان بدون timezone، رشته را به عنوان
@@ -1960,7 +1927,6 @@ function normalizeTimeApiValue(value){
     );
 
   }
-
 
   /*
     بعضی APIها ممکن است فقط زمان بدهند.
@@ -2006,7 +1972,6 @@ function normalizeTimeApiValue(value){
 
   }
 
-
   const parsed =
     new Date(text);
 
@@ -2015,7 +1980,6 @@ function normalizeTimeApiValue(value){
     : parsed;
 
 }
-
 
 function parseIranTime(data){
 
@@ -2048,7 +2012,6 @@ function parseIranTime(data){
 
   ];
 
-
   for(const value of values){
 
     const parsed =
@@ -2059,11 +2022,9 @@ function parseIranTime(data){
 
   }
 
-
   return null;
 
 }
-
 
 function getIranParts(date){
 
@@ -2098,13 +2059,11 @@ function getIranParts(date){
 
 }
 
-
 function getIranHour(date){
 
   return getIranParts(date).hour;
 
 }
-
 
 function getIranMinute(date){
 
@@ -2112,13 +2071,11 @@ function getIranMinute(date){
 
 }
 
-
 function getIranSecond(date){
 
   return getIranParts(date).second;
 
 }
-
 
 function getIranDateKey(date){
 
@@ -2132,7 +2089,6 @@ function getIranDateKey(date){
   ].join("-");
 
 }
-
 
 function getIranDateFromParts(parts){
 
@@ -2149,7 +2105,6 @@ function getIranDateFromParts(parts){
 
 }
 
-
 function getIranClockNow(){
 
   if(
@@ -2162,7 +2117,6 @@ function getIranClockNow(){
   return getIranFallbackDate();
 
 }
-
 
 /* =========================================================
 CLOCK
@@ -2187,19 +2141,16 @@ function renderClock(){
 
   }
 
-
   const clock =
     document.getElementById("clock");
 
   if(!clock)
     return;
 
-
   clock.textContent =
     formatDateTimeIran(iranClockDate);
 
 }
-
 
 async function fetchIranTime(){
 
@@ -2275,7 +2226,6 @@ async function fetchIranTime(){
 
 }
 
-
 function startClock(){
 
   if(clockApiTimer)
@@ -2284,23 +2234,19 @@ function startClock(){
   if(clockDisplayTimer)
     clearInterval(clockDisplayTimer);
 
-
   iranClockDate =
     getIranFallbackDate();
 
   iranClockSource =
     "fallback";
 
-
   fetchIranTime();
-
 
   clockApiTimer =
     setInterval(
       fetchIranTime,
       60000
     );
-
 
   clockDisplayTimer =
     setInterval(
@@ -2309,7 +2255,6 @@ function startClock(){
     );
 
 }
-
 
 /* =========================================================
 UPDATE ALL IRAN TIME LABELS
@@ -2326,7 +2271,6 @@ function updateAllIranTimes(){
   const full =
     formatDateTimeIran(lastPriceUpdateIranDate);
 
-
   [
     "mithqalUpdate",
     "silverOunceUpdate",
@@ -2342,7 +2286,6 @@ function updateAllIranTimes(){
 
   });
 
-
   setText("marketTableOunceTime",time);
   setText("marketTableUSDTime",time);
   setText("marketTable999Time",time);
@@ -2352,7 +2295,6 @@ function updateAllIranTimes(){
   setText("boardTime",full);
 
 }
-
 
 /* =========================================================
 PRICE CHANGE
@@ -2386,7 +2328,6 @@ function getReactionState(key){
 
 }
 
-
 function setReactionState(key,base,direction){
 
   localStorage.setItem(
@@ -2401,7 +2342,6 @@ function setReactionState(key,base,direction){
 
 }
 
-
 function renderChange(id,current,previous,key){
 
   const el =
@@ -2409,13 +2349,11 @@ function renderChange(id,current,previous,key){
 
   if(!el) return;
 
-
   current =
     Number(current) || 0;
 
   previous =
     Number(previous) || 0;
-
 
   if(current <= 0){
 
@@ -2425,10 +2363,8 @@ function renderChange(id,current,previous,key){
 
   }
 
-
   let state =
     getReactionState(key);
-
 
   /*
     اولین قیمت:
@@ -2448,7 +2384,6 @@ function renderChange(id,current,previous,key){
 
   }
 
-
   if(previous <= 0){
 
     el.textContent = "بدون سابقه";
@@ -2456,7 +2391,6 @@ function renderChange(id,current,previous,key){
     return;
 
   }
-
 
   if(current === previous){
 
@@ -2500,12 +2434,10 @@ function renderChange(id,current,previous,key){
 
   }
 
-
   const direction =
     current > previous
       ? "up"
       : "down";
-
 
   /*
     جهت عوض شده است:
@@ -2544,13 +2476,11 @@ function renderChange(id,current,previous,key){
 
   }
 
-
   const percent =
     Math.abs(
       (current - state.base) /
       state.base
     ) * 100;
-
 
   if(direction === "up"){
 
@@ -2576,7 +2506,6 @@ function renderChange(id,current,previous,key){
 
 }
 
-
 /* =========================================================
 LIVE PRICE CALCULATION
 ========================================================= */
@@ -2601,7 +2530,6 @@ function calculatePrice(){
 
   currentSilver700 =
     currentSilver999 * 0.700;
-
 
   /*
     محاسبه مثقال ۱۷ عیار:
@@ -2630,7 +2558,6 @@ function calculatePrice(){
 
   }
 
-
   setText(
     "silverOunce",
     formatNumber(currentSilverOunce,3)
@@ -2655,7 +2582,6 @@ function calculatePrice(){
     "mithqal17",
     formatPrice(currentMithqal17)
   );
-
 
   renderChange(
     "ounceChange",
@@ -2685,7 +2611,6 @@ function calculatePrice(){
     "mithqal"
   );
 
-
   /*
     تغییر ۹۲۵ نیز همان جهت ۹۹۹ را دنبال می‌کند.
   */
@@ -2697,7 +2622,6 @@ function calculatePrice(){
       : 0,
     "silver925"
   );
-
 
   setText(
     "dashOunce",
@@ -2724,7 +2648,6 @@ function calculatePrice(){
     formatPrice(currentMithqal17)
   );
 
-
   setText(
     "marketTableOunce",
     formatNumber(currentSilverOunce,3)
@@ -2749,7 +2672,6 @@ function calculatePrice(){
     "marketTableMithqal",
     formatPrice(currentMithqal17)
   );
-
 
   setText(
     "boardOunce",
@@ -2787,7 +2709,6 @@ function calculatePrice(){
 
 }
 
-
 /* =========================================================
 SAFE TEXT
 ========================================================= */
@@ -2802,7 +2723,6 @@ function setText(id,value){
 
 }
 
-
 function setValue(id,value){
 
   const el =
@@ -2812,7 +2732,6 @@ function setValue(id,value){
     el.value = value;
 
 }
-
 
 /* =========================================================
 PROCESS API
@@ -2829,7 +2748,6 @@ function processPrices(data){
     );
   }
 
-
   const ounce =
     Number(data.silverOunce);
 
@@ -2838,7 +2756,6 @@ function processPrices(data){
 
   const silver999 =
     Number(data.silver999Toman);
-
 
   if(
     !Number.isFinite(ounce) ||
@@ -2855,7 +2772,6 @@ function processPrices(data){
 
   }
 
-
   previousSilverOunce =
     currentSilverOunce;
 
@@ -2868,7 +2784,6 @@ function processPrices(data){
   previousMithqal17 =
     currentMithqal17;
 
-
   currentSilverOunce =
     ounce;
 
@@ -2878,18 +2793,15 @@ function processPrices(data){
   currentSilver999 =
     silver999;
 
-
   /*
     زمان بروزرسانی از ساعت API ایران گرفته می‌شود.
   */
   lastPriceUpdateIranDate =
     getIranClockNow();
 
-
   calculatePrice();
 
   updateAllIranTimes();
-
 
   /*
     تاریخچه فقط در اسلات‌های ۰۰:۰۰ و ۱۲:۰۰ ثبت می‌شود.
@@ -2913,7 +2825,6 @@ function processPrices(data){
 
 }
 
-
 /* =========================================================
 CONNECTION
 ========================================================= */
@@ -2931,7 +2842,6 @@ function setConnectionStatus(isOnline){
 
   const areas =
     document.querySelectorAll(".market-area");
-
 
   if(isOnline){
 
@@ -2970,7 +2880,6 @@ function setConnectionStatus(isOnline){
   }
 
 }
-
 
 /* =========================================================
 FETCH
@@ -3012,7 +2921,6 @@ async function fetchPrices(){
 
 }
 
-
 /* =========================================================
 PRICE UPDATES
 ========================================================= */
@@ -3032,7 +2940,6 @@ function startPriceUpdates(){
 
 }
 
-
 /* =========================================================
 NAVIGATION
 ========================================================= */
@@ -3046,13 +2953,11 @@ function showSection(sectionId,button){
         section.classList.add("hidden")
     );
 
-
   const target =
     document.getElementById(sectionId);
 
   if(target)
     target.classList.remove("hidden");
-
 
   document
     .querySelectorAll(".nav-button")
@@ -3061,10 +2966,8 @@ function showSection(sectionId,button){
         btn.classList.remove("active")
     );
 
-
   if(button)
     button.classList.add("active");
-
 
   if(sectionId === "dashboardSection")
     updateDashboard();
@@ -3076,7 +2979,6 @@ function showSection(sectionId,button){
     renderHistory();
 
 }
-
 
 /* =========================================================
 CALCULATOR
@@ -3098,7 +3000,6 @@ function updateLaborLabel(){
       : "اجرت هر گرم";
 
 }
-
 
 function calculateManualPrice(){
 
@@ -3148,14 +3049,12 @@ function calculateManualPrice(){
       document.getElementById("discountPercent").value
     ) || 0;
 
-
   if(!Number.isFinite(weight) || weight <= 0){
 
     alert("لطفاً وزن محصول را وارد کنید.");
     return;
 
   }
-
 
   if(!Number.isFinite(currentSilver999) || currentSilver999 <= 0){
 
@@ -3164,9 +3063,7 @@ function calculateManualPrice(){
 
   }
 
-
   let gramPrice = 0;
-
 
   if(purity === 999)
     gramPrice = currentSilver999;
@@ -3182,19 +3079,15 @@ function calculateManualPrice(){
     return;
   }
 
-
   const silverValue =
     weight * gramPrice;
 
-
   let labor = 0;
-
 
   if(laborType === "gram")
     labor = weight * laborValue;
   else
     labor = silverValue * (laborValue / 100);
-
 
   const beforeProfit =
     silverValue +
@@ -3202,31 +3095,25 @@ function calculateManualPrice(){
     stoneCost +
     otherCost;
 
-
   const profit =
     beforeProfit *
     (profitPercent / 100);
-
 
   const priceBeforeTax =
     beforeProfit +
     profit;
 
-
   const tax =
     priceBeforeTax *
     (taxPercent / 100);
-
 
   const priceBeforeDiscount =
     priceBeforeTax +
     tax;
 
-
   const discount =
     priceBeforeDiscount *
     (discountPercent / 100);
-
 
   const finalPrice =
     Math.max(
@@ -3234,11 +3121,9 @@ function calculateManualPrice(){
       priceBeforeDiscount - discount
     );
 
-
   document
     .getElementById("resultBox")
     .classList.remove("hidden");
-
 
   setText("resultProductType",productType);
 
@@ -3302,7 +3187,6 @@ function calculateManualPrice(){
     formatPrice(finalPrice) + " تومان"
   );
 
-
   setText(
     "previewFinal",
     formatPrice(finalPrice)
@@ -3333,7 +3217,6 @@ function calculateManualPrice(){
     formatPrice(labor)
   );
 
-
   return {
     finalPrice,
     profit,
@@ -3343,7 +3226,6 @@ function calculateManualPrice(){
   };
 
 }
-
 
 function clearCalculator(){
 
@@ -3370,7 +3252,6 @@ function clearCalculator(){
     .classList.add("hidden");
 
 }
-
 
 /* =========================================================
 SETTINGS
@@ -3413,15 +3294,12 @@ function saveSettings(){
 
   };
 
-
   localStorage.setItem(
     SETTINGS_KEY,
     JSON.stringify(settings)
   );
 
-
   applySettings(settings);
-
 
   const message =
     document.getElementById("settingsMessage");
@@ -3439,7 +3317,6 @@ function saveSettings(){
   }
 
 }
-
 
 function loadSettings(){
 
@@ -3467,7 +3344,6 @@ function loadSettings(){
 
 }
 
-
 function applySettings(settings){
 
   if(!settings) return;
@@ -3483,7 +3359,6 @@ function applySettings(settings){
 
   };
 
-
   Object.keys(map).forEach(id => {
 
     const el =
@@ -3494,14 +3369,12 @@ function applySettings(settings){
 
   });
 
-
   const alertEnabled =
     document.getElementById("priceAlertEnabled");
 
   if(alertEnabled)
     alertEnabled.checked =
       settings.alertEnabled !== false;
-
 
   const labor =
     document.getElementById("laborValue");
@@ -3517,7 +3390,6 @@ function applySettings(settings){
 
   const purity =
     document.getElementById("calcPurity");
-
 
   if(labor)
     labor.value = settings.labor ?? 0;
@@ -3535,7 +3407,6 @@ function applySettings(settings){
     purity.value = settings.purity ?? "925";
 
 }
-
 
 /* =========================================================
 PRICE HISTORY - فقط ۰۰:۰۰ و ۱۲:۰۰
@@ -3562,7 +3433,6 @@ function getHistory(){
 
 }
 
-
 function getHistorySlot(date){
 
   const parts =
@@ -3581,7 +3451,6 @@ function getHistorySlot(date){
 
 }
 
-
 function savePriceHistory(){
 
   if(
@@ -3590,7 +3459,6 @@ function savePriceHistory(){
     currentSilverOunce <= 0
   )
     return;
-
 
   const now =
     getIranClockNow();
@@ -3601,7 +3469,6 @@ function savePriceHistory(){
   const lastSlot =
     localStorage.getItem(HISTORY_SLOT_KEY);
 
-
   /*
     اگر همین اسلات قبلاً ثبت شده،
     در هر ثانیه دوباره ذخیره نمی‌شود.
@@ -3609,10 +3476,8 @@ function savePriceHistory(){
   if(lastSlot === slot)
     return;
 
-
   let history =
     getHistory();
-
 
   const item = {
 
@@ -3641,7 +3506,6 @@ function savePriceHistory(){
 
   };
 
-
   history.unshift(item);
 
   /*
@@ -3650,7 +3514,6 @@ function savePriceHistory(){
   */
   history =
     history.slice(0,500);
-
 
   localStorage.setItem(
     HISTORY_KEY,
@@ -3662,11 +3525,9 @@ function savePriceHistory(){
     slot
   );
 
-
   renderHistory();
 
 }
-
 
 function renderHistory(){
 
@@ -3676,10 +3537,8 @@ function renderHistory(){
   if(!tbody)
     return;
 
-
   const history =
     getHistory();
-
 
   if(history.length === 0){
 
@@ -3689,7 +3548,6 @@ function renderHistory(){
     return;
 
   }
-
 
   tbody.innerHTML =
     history.map(item => `
@@ -3705,7 +3563,6 @@ function renderHistory(){
 
 }
 
-
 function clearHistory(){
 
   if(
@@ -3715,7 +3572,6 @@ function clearHistory(){
   )
     return;
 
-
   localStorage.removeItem(HISTORY_KEY);
   localStorage.removeItem(HISTORY_SLOT_KEY);
 
@@ -3723,12 +3579,10 @@ function clearHistory(){
 
 }
 
-
 function exportHistory(){
 
   const history =
     getHistory();
-
 
   if(history.length === 0){
 
@@ -3737,10 +3591,8 @@ function exportHistory(){
 
   }
 
-
   let csv =
     "زمان,انس نقره,دلار,نقره 999,نقره 925,مثقال 17\n";
-
 
   history.forEach(item => {
 
@@ -3748,7 +3600,6 @@ function exportHistory(){
       `"${String(item.time).replace(/"/g,'""')}",${item.ounce},${item.usd},${item.silver999},${item.silver925},${item.mithqal}\n`;
 
   });
-
 
   const blob =
     new Blob(
@@ -3758,10 +3609,8 @@ function exportHistory(){
       }
     );
 
-
   const url =
     URL.createObjectURL(blob);
-
 
   const a =
     document.createElement("a");
@@ -3780,7 +3629,6 @@ function exportHistory(){
 
 }
 
-
 /* =========================================================
 HISTORY SLOT CHECK
 ========================================================= */
@@ -3797,7 +3645,6 @@ function checkHistorySlot(){
   savePriceHistory();
 
 }
-
 
 function startHistorySlotChecker(){
 
@@ -3817,7 +3664,6 @@ function startHistorySlotChecker(){
 
 }
 
-
 /* =========================================================
 PRICE ALERT
 ========================================================= */
@@ -3832,7 +3678,6 @@ function checkPriceAlert(){
       document.getElementById("alertPercent")?.value
     ) || 2;
 
-
   if(
     !enabled ||
     !enabled.checked ||
@@ -3840,13 +3685,11 @@ function checkPriceAlert(){
   )
     return;
 
-
   const percent =
     Math.abs(
       (currentSilver999 - previousSilver999) /
       previousSilver999
     ) * 100;
-
 
   if(percent >= threshold){
 
@@ -3854,7 +3697,6 @@ function checkPriceAlert(){
       currentSilver999 > previousSilver999
         ? "افزایش"
         : "کاهش";
-
 
     showAlert(
       "هشدار تغییر قیمت",
@@ -3865,7 +3707,6 @@ function checkPriceAlert(){
 
 }
 
-
 function showAlert(title,text){
 
   const container =
@@ -3874,14 +3715,12 @@ function showAlert(title,text){
   if(!container)
     return;
 
-
   container.innerHTML = `
     <div class="alert-box">
       <div class="alert-title">⚠️ ${escapeHTML(title)}</div>
       <div class="alert-text">${escapeHTML(text)}</div>
     </div>
   `;
-
 
   setTimeout(
     () => {
@@ -3892,7 +3731,6 @@ function showAlert(title,text){
   );
 
 }
-
 
 /* =========================================================
 PRODUCT MANAGEMENT
@@ -3947,7 +3785,6 @@ function getProducts(){
 
 }
 
-
 function saveProducts(products){
 
   localStorage.setItem(
@@ -3956,7 +3793,6 @@ function saveProducts(products){
   );
 
 }
-
 
 /* =========================================================
 PRODUCT IMAGE
@@ -3973,7 +3809,6 @@ function previewProductImage(){
   const image =
     document.getElementById("productImagePreview");
 
-
   if(
     !input ||
     !input.files ||
@@ -3987,10 +3822,8 @@ function previewProductImage(){
 
   }
 
-
   const file =
     input.files[0];
-
 
   if(!file.type.startsWith("image/")){
 
@@ -4004,7 +3837,6 @@ function previewProductImage(){
     return;
 
   }
-
 
   /*
     محدودیت منطقی برای جلوگیری از پر شدن localStorage.
@@ -4022,10 +3854,8 @@ function previewProductImage(){
 
   }
 
-
   const reader =
     new FileReader();
-
 
   reader.onload =
     function(event){
@@ -4039,11 +3869,9 @@ function previewProductImage(){
 
     };
 
-
   reader.readAsDataURL(file);
 
 }
-
 
 function readProductImage(){
 
@@ -4063,10 +3891,8 @@ function readProductImage(){
 
     }
 
-
     const file =
       input.files[0];
-
 
     if(!file.type.startsWith("image/")){
 
@@ -4075,7 +3901,6 @@ function readProductImage(){
 
     }
 
-
     if(file.size > 5 * 1024 * 1024){
 
       resolve("");
@@ -4083,10 +3908,8 @@ function readProductImage(){
 
     }
 
-
     const reader =
       new FileReader();
-
 
     reader.onload =
       event =>
@@ -4097,13 +3920,11 @@ function readProductImage(){
     reader.onerror =
       () => resolve("");
 
-
     reader.readAsDataURL(file);
 
   });
 
 }
-
 
 /* =========================================================
 PRODUCT PRICE CALCULATION
@@ -4121,7 +3942,6 @@ function getGramPriceByPurity(purity){
     return 0;
   }
 
-
   if(p === 999)
     return currentSilver999;
 
@@ -4135,12 +3955,10 @@ function getGramPriceByPurity(purity){
 
 }
 
-
 function calculateProductCurrentPrice(product){
 
   if(!product)
     return 0;
-
 
   const weight =
     Number(product.weight) || 0;
@@ -4148,21 +3966,17 @@ function calculateProductCurrentPrice(product){
   if(weight <= 0)
     return 0;
 
-
   const purity =
     Number(product.purity ?? 925);
 
   const gramPrice =
     getGramPriceByPurity(purity);
 
-
   if(gramPrice <= 0)
     return 0;
 
-
   const silverValue =
     weight * gramPrice;
-
 
   const laborType =
     product.laborType || "gram";
@@ -4171,7 +3985,6 @@ function calculateProductCurrentPrice(product){
     Number(product.laborValue) || 0;
 
   let labor = 0;
-
 
   if(laborType === "percent"){
 
@@ -4187,10 +4000,8 @@ function calculateProductCurrentPrice(product){
 
   }
 
-
   const otherCost =
     Number(product.otherCost) || 0;
-
 
   return Math.max(
     0,
@@ -4200,7 +4011,6 @@ function calculateProductCurrentPrice(product){
   );
 
 }
-
 
 /* =========================================================
 ADD PRODUCT
@@ -4247,7 +4057,6 @@ async function addProduct(){
   const stock =
     document.getElementById("productStock").value;
 
-
   if(!code || !name){
 
     alert(
@@ -4257,7 +4066,6 @@ async function addProduct(){
     return;
 
   }
-
 
   if(
     !Number.isFinite(weight) ||
@@ -4272,7 +4080,6 @@ async function addProduct(){
 
   }
 
-
   if(
     !Number.isFinite(laborValue) ||
     laborValue < 0
@@ -4285,7 +4092,6 @@ async function addProduct(){
     return;
 
   }
-
 
   if(
     !Number.isFinite(otherCost) ||
@@ -4300,10 +4106,8 @@ async function addProduct(){
 
   }
 
-
   const products =
     getProducts();
-
 
   const existing =
     products.find(
@@ -4311,7 +4115,6 @@ async function addProduct(){
         String(p.code).toLowerCase() ===
         code.toLowerCase()
     );
-
 
   if(existing){
 
@@ -4323,10 +4126,8 @@ async function addProduct(){
 
   }
 
-
   const image =
     await readProductImage();
-
 
   const product = {
 
@@ -4358,7 +4159,6 @@ async function addProduct(){
 
   };
 
-
   products.unshift(product);
 
   saveProducts(products);
@@ -4367,13 +4167,11 @@ async function addProduct(){
   renderProducts();
   updateDashboard();
 
-
   alert(
     "محصول با موفقیت ثبت شد."
   );
 
 }
-
 
 /* =========================================================
 UPDATE PRODUCT LABOR LABEL
@@ -4390,7 +4188,6 @@ function updateProductLaborLabel(){
   if(!type || !label)
     return;
 
-
   label.textContent =
     type.value === "percent"
       ? "درصد اجرت کار"
@@ -4398,6 +4195,27 @@ function updateProductLaborLabel(){
 
 }
 
+/* =========================================================
+PRODUCT SEARCH + RENDER
+========================================================= */
+
+function normalizeProductSearch(value){
+  return String(value ?? "")
+    .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g,"")
+    .replace(/[يى]/g,"ی")
+    .replace(/ك/g,"ک")
+    .replace(/ۀ/g,"ه")
+    .replace(/ة/g,"ه")
+    .replace(/ؤ/g,"و")
+    .replace(/إ|أ|آ/g,"ا")
+    .replace(/[٠-٩]/g, d => String.fromCharCode(d.charCodeAt(0) - 0x0660 + 0x30))
+    .replace(/[۰-۹]/g, d => String.fromCharCode(d.charCodeAt(0) - 0x06F0 + 0x30))
+    .replace(/[\u200c\u200d]/g,"")
+    .replace(/[\u0640]/g,"")
+    .replace(/\s+/g," ")
+    .trim()
+    .toLowerCase();
+}
 
 /* =========================================================
 PRODUCT SEARCH + RENDER
@@ -4411,22 +4229,25 @@ function renderProducts(){
   if(!grid)
     return;
 
-
   const products =
     getProducts();
-
 
   const searchInput =
     document.getElementById("productSearch");
 
-
+  /*
+    جستجوی حرفه‌ای:
+    - اعداد فارسی و انگلیسی یکسان در نظر گرفته می‌شوند.
+    - حروف عربی/فارسی رایج یکسان می‌شوند.
+    - نیم‌فاصله و فاصله‌های اضافی نادیده گرفته می‌شوند.
+    - علاوه بر نام و کد، تمام اطلاعات ثبت‌شده محصول
+      مثل دسته‌بندی، وزن، سایز، سنگ، عیار، اجرت،
+      وضعیت موجودی و سایر اطلاعات نیز قابل جستجو هستند.
+  */
   const search =
-    String(
+    normalizeProductSearch(
       searchInput?.value || ""
-    )
-    .trim()
-    .toLowerCase();
-
+    );
 
   const filtered =
     products.filter(product => {
@@ -4434,21 +4255,40 @@ function renderProducts(){
       if(!search)
         return true;
 
-      const code =
-        String(product.code || "")
-          .toLowerCase();
+      const searchableFields = [
+        product.id,
+        product.code,
+        product.name,
+        product.category,
+        product.weight,
+        product.size,
+        product.stone,
+        product.purity,
+        product.laborType,
+        product.laborValue,
+        product.otherCost,
+        product.stock,
+        product.createdAt
+      ];
 
-      const name =
-        String(product.name || "")
-          .toLowerCase();
+      /*
+        همه فیلدهای قابل جستجوی محصول به یک متن تبدیل
+        می‌شوند تا جستجو محدود به نام یا کد نباشد.
+      */
+      const searchableText =
+        searchableFields
+          .filter(value =>
+            value !== null &&
+            value !== undefined &&
+            value !== ""
+          )
+          .map(value =>
+            normalizeProductSearch(value)
+          )
+          .join(" ");
 
-      return (
-        code.includes(search) ||
-        name.includes(search)
-      );
-
+      return searchableText.includes(search);
     });
-
 
   if(products.length === 0){
 
@@ -4456,19 +4296,15 @@ function renderProducts(){
       '<div class="product-empty">هنوز محصولی ثبت نشده است.</div>';
 
     return;
-
   }
-
 
   if(filtered.length === 0){
 
     grid.innerHTML =
-      '<div class="product-empty">محصولی با این نام یا کد پیدا نشد.</div>';
+      '<div class="product-empty">محصولی با این مشخصات پیدا نشد.</div>';
 
     return;
-
   }
-
 
   grid.innerHTML =
     filtered.map(product => {
@@ -4482,21 +4318,17 @@ function renderProducts(){
       if(product.stock === "سفارشی")
         stockClass = "stock-custom";
 
-
       const currentPrice =
         calculateProductCurrentPrice(product);
-
 
       const purityText =
         Number(product.purity || 925)
           .toLocaleString("fa-IR");
 
-
       const laborText =
         product.laborType === "percent"
           ? formatNumber(product.laborValue,2) + "٪"
           : formatPrice(product.laborValue) + " تومان";
-
 
       const imageHTML =
         product.image
@@ -4512,7 +4344,6 @@ function renderProducts(){
               تصویر محصول ثبت نشده است
             </div>
           `;
-
 
       return `
         <div class="product-card">
@@ -4627,16 +4458,13 @@ function renderProducts(){
       `;
 
     }).join("");
-
 }
-
 
 function loadProducts(){
 
   renderProducts();
 
 }
-
 
 /* =========================================================
 DELETE PRODUCT
@@ -4647,12 +4475,10 @@ function deleteProduct(id){
   if(!confirm("آیا از حذف این محصول مطمئن هستید؟"))
     return;
 
-
   const products =
     getProducts().filter(
       p => Number(p.id) !== Number(id)
     );
-
 
   saveProducts(products);
 
@@ -4660,7 +4486,6 @@ function deleteProduct(id){
   updateDashboard();
 
 }
-
 
 /* =========================================================
 USE PRODUCT FOR INVOICE
@@ -4673,16 +4498,13 @@ function useProductForInvoice(id){
       p => Number(p.id) === Number(id)
     );
 
-
   if(!product)
     return;
-
 
   showSection(
     "invoiceSection",
     document.querySelectorAll(".nav-button")[3]
   );
-
 
   setValue(
     "invoiceProductCode",
@@ -4704,16 +4526,13 @@ function useProductForInvoice(id){
     String(product.purity || 925)
   );
 
-
   const price =
     calculateProductCurrentPrice(product);
-
 
   setValue(
     "invoiceAmount",
     Math.round(price)
   );
-
 
   setValue(
     "invoiceProfit",
@@ -4721,7 +4540,6 @@ function useProductForInvoice(id){
   );
 
 }
-
 
 /* =========================================================
 CLEAR PRODUCT FORM
@@ -4741,7 +4559,6 @@ function clearProductForm(){
     id => setValue(id,"")
   );
 
-
   setValue(
     "productPurity",
     "925"
@@ -4757,13 +4574,11 @@ function clearProductForm(){
     "موجود"
   );
 
-
   const imageInput =
     document.getElementById("productImage");
 
   if(imageInput)
     imageInput.value = "";
-
 
   const wrap =
     document.getElementById("productImagePreviewWrap");
@@ -4771,18 +4586,15 @@ function clearProductForm(){
   const image =
     document.getElementById("productImagePreview");
 
-
   if(wrap)
     wrap.classList.add("hidden");
 
   if(image)
     image.removeAttribute("src");
 
-
   updateProductLaborLabel();
 
 }
-
 
 /* =========================================================
 HTML SAFETY
@@ -4799,13 +4611,11 @@ function escapeHTML(value){
 
 }
 
-
 function escapeAttribute(value){
 
   return escapeHTML(value);
 
 }
-
 
 /* =========================================================
 INVOICE
@@ -4832,7 +4642,6 @@ function getInvoices(){
 
 }
 
-
 function saveInvoices(invoices){
 
   localStorage.setItem(
@@ -4842,7 +4651,6 @@ function saveInvoices(invoices){
 
 }
 
-
 /* =========================================================
 INVOICE NUMBER
 ========================================================= */
@@ -4850,7 +4658,6 @@ INVOICE NUMBER
 function getNextInvoiceNumber(invoices){
 
   let maxNumber = 0;
-
 
   invoices.forEach(invoice => {
 
@@ -4874,7 +4681,6 @@ function getNextInvoiceNumber(invoices){
 
   });
 
-
   return (
     "SZF-" +
     String(maxNumber + 1)
@@ -4882,7 +4688,6 @@ function getNextInvoiceNumber(invoices){
   );
 
 }
-
 
 /* =========================================================
 CREATE INVOICE
@@ -4920,7 +4725,6 @@ function createInvoice(){
       document.getElementById("invoiceProfit").value
     ) || 0;
 
-
   if(!product || amount <= 0){
 
     alert(
@@ -4931,14 +4735,11 @@ function createInvoice(){
 
   }
 
-
   const invoices =
     getInvoices();
 
-
   const number =
     getNextInvoiceNumber(invoices);
-
 
   /*
     تاریخ فاکتور بر اساس ساعت ایران.
@@ -4946,10 +4747,8 @@ function createInvoice(){
   const now =
     getIranClockNow();
 
-
   const date =
     formatDateTimeIran(now);
-
 
   const invoice = {
 
@@ -4973,11 +4772,9 @@ function createInvoice(){
 
   };
 
-
   invoices.unshift(invoice);
 
   saveInvoices(invoices);
-
 
   setText("invoiceNumber",number);
   setText("invoiceDate",date);
@@ -5011,11 +4808,9 @@ function createInvoice(){
     formatPrice(amount) + " تومان"
   );
 
-
   document
     .getElementById("invoicePreview")
     .classList.remove("hidden");
-
 
   updateDashboard();
 
@@ -5024,7 +4819,6 @@ function createInvoice(){
   );
 
 }
-
 
 /* =========================================================
 PRINT INVOICE
@@ -5048,11 +4842,9 @@ function printInvoice(){
 
   }
 
-
   window.print();
 
 }
-
 
 /* =========================================================
 CLEAR INVOICE
@@ -5072,13 +4864,11 @@ function clearInvoice(){
     id => setValue(id,"")
   );
 
-
   document
     .getElementById("invoicePreview")
     .classList.add("hidden");
 
 }
-
 
 /* =========================================================
 INVOICE DATE COMPATIBILITY
@@ -5097,7 +4887,6 @@ function getInvoiceDate(invoice){
 
   }
 
-
   /*
     فاکتورهای قدیمی که timestamp ندارند:
     تلاش برای خواندن تاریخ قبلی.
@@ -5112,11 +4901,9 @@ function getInvoiceDate(invoice){
 
   }
 
-
   return null;
 
 }
-
 
 /* =========================================================
 DASHBOARD
@@ -5130,14 +4917,11 @@ function updateDashboard(){
   const products =
     getProducts();
 
-
   const todayIran =
     getIranClockNow();
 
-
   const todayKey =
     getIranDateKey(todayIran);
-
 
   const todayInvoices =
     invoices.filter(invoice => {
@@ -5155,14 +4939,12 @@ function updateDashboard(){
 
     });
 
-
   const sales =
     todayInvoices.reduce(
       (sum,invoice) =>
         sum + Number(invoice.amount || 0),
       0
     );
-
 
   const profit =
     todayInvoices.reduce(
@@ -5171,12 +4953,10 @@ function updateDashboard(){
       0
     );
 
-
   const inventory =
     products.filter(
       p => p.stock === "موجود"
     ).length;
-
 
   setText(
     "dashboardSales",
@@ -5198,7 +4978,6 @@ function updateDashboard(){
     formatNumber(inventory)
   );
 
-
   updateSummaryPeriodButtons();
 
   showSalesSummary(
@@ -5208,7 +4987,6 @@ function updateDashboard(){
   );
 
 }
-
 
 /* =========================================================
 DASHBOARD SUMMARY DATE HELPERS
@@ -5233,7 +5011,6 @@ function startOfIranDay(date){
 
 }
 
-
 function addIranDays(date,days){
 
   return new Date(
@@ -5243,7 +5020,6 @@ function addIranDays(date,days){
 
 }
 
-
 function getPeriodRange(period){
 
   const now =
@@ -5251,7 +5027,6 @@ function getPeriodRange(period){
 
   const todayStart =
     startOfIranDay(now);
-
 
   if(period === "week"){
 
@@ -5266,7 +5041,6 @@ function getPeriodRange(period){
 
   }
 
-
   if(period === "month"){
 
     return {
@@ -5279,7 +5053,6 @@ function getPeriodRange(period){
     };
 
   }
-
 
   if(period === "year"){
 
@@ -5294,7 +5067,6 @@ function getPeriodRange(period){
 
   }
 
-
   return {
     start:
       todayStart,
@@ -5305,7 +5077,6 @@ function getPeriodRange(period){
   };
 
 }
-
 
 /* =========================================================
 SUMMARY BUTTON DATES
@@ -5333,7 +5104,6 @@ function updateSummaryPeriodButtons(){
       startOfIranDay(now),
       -364
     );
-
 
   setText(
     "periodWeekDate",
@@ -5363,7 +5133,6 @@ function updateSummaryPeriodButtons(){
 
 }
 
-
 /* =========================================================
 SHOW SALES SUMMARY
 ========================================================= */
@@ -5372,7 +5141,6 @@ function showSalesSummary(period,button,silent=false){
 
   selectedSummaryPeriod =
     period || "week";
-
 
   if(button){
 
@@ -5403,14 +5171,12 @@ function showSalesSummary(period,button,silent=false){
 
     };
 
-
     document
       .querySelectorAll(".period-button")
       .forEach(
         btn =>
           btn.classList.remove("active")
       );
-
 
     const selected =
       document.getElementById(
@@ -5422,19 +5188,15 @@ function showSalesSummary(period,button,silent=false){
 
   }
 
-
   updateSummaryPeriodButtons();
-
 
   const range =
     getPeriodRange(
       selectedSummaryPeriod
     );
 
-
   const invoices =
     getInvoices();
-
 
   const filtered =
     invoices.filter(invoice => {
@@ -5455,14 +5217,12 @@ function showSalesSummary(period,button,silent=false){
 
     });
 
-
   const sales =
     filtered.reduce(
       (sum,invoice) =>
         sum + Number(invoice.amount || 0),
       0
     );
-
 
   const profit =
     filtered.reduce(
@@ -5471,12 +5231,10 @@ function showSalesSummary(period,button,silent=false){
       0
     );
 
-
   setText(
     "summaryResultTitle",
     range.title
   );
-
 
   setText(
     "summaryResultDate",
@@ -5485,18 +5243,15 @@ function showSalesSummary(period,button,silent=false){
     formatDateTimeIran(range.end)
   );
 
-
   setText(
     "summarySales",
     formatPrice(sales) + " تومان"
   );
 
-
   setText(
     "summaryCount",
     formatNumber(filtered.length)
   );
-
 
   setText(
     "summaryProfit",
@@ -5504,7 +5259,6 @@ function showSalesSummary(period,button,silent=false){
   );
 
 }
-
 
 /* =========================================================
 DISPLAY MODE
@@ -5524,7 +5278,6 @@ function showDisplayMode(){
 
 }
 
-
 function closeDisplayMode(){
 
   const display =
@@ -5535,7 +5288,6 @@ function closeDisplayMode(){
 
 }
 
-
 /* =========================================================
 UPDATE ALL TIME-DEPENDENT UI
 ========================================================= */
@@ -5545,13 +5297,11 @@ function updateAllIranTimes(){
   if(!lastPriceUpdateIranDate)
     return;
 
-
   const time =
     formatTimeIran(lastPriceUpdateIranDate);
 
   const full =
     formatDateTimeIran(lastPriceUpdateIranDate);
-
 
   setText(
     "mithqalUpdate",
@@ -5578,7 +5328,6 @@ function updateAllIranTimes(){
     "بروزرسانی: " + time
   );
 
-
   setText(
     "marketTableOunceTime",
     time
@@ -5604,14 +5353,12 @@ function updateAllIranTimes(){
     time
   );
 
-
   setText(
     "boardTime",
     full
   );
 
 }
-
 
 /* =========================================================
 DOM READY
@@ -5627,7 +5374,6 @@ document.addEventListener(
     const loginButton =
       document.getElementById("loginButton");
 
-
     if(loginButton){
 
       loginButton.addEventListener(
@@ -5641,7 +5387,6 @@ document.addEventListener(
       );
 
     }
-
 
     if(passwordInput){
 
@@ -5660,7 +5405,6 @@ document.addEventListener(
       );
 
     }
-
 
     updateLaborLabel();
     updateProductLaborLabel();
