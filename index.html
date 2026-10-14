@@ -1186,6 +1186,14 @@ PRODUCTS
 <h2 class="section-title">مدیریت محصولات و موجودی</h2>
 <p class="section-description">ثبت محصولات، موجودی و محاسبه قیمت بر اساس قیمت روز نقره</p>
 
+<div class="panel" style="margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:5px">آخرین کد ثبت‌شده</div>
+    <strong id="latestRegisteredProductCode" style="font-size:20px;color:var(--goldBright)">هنوز محصولی ثبت نشده</strong>
+  </div>
+  <div style="font-size:11px;color:#888">کد پیشنهادی بعدی: <strong id="nextSuggestedProductCode" style="color:#eee">SZF-A1</strong></div>
+</div>
+
 <div class="panel">
 
 <div class="product-search">
@@ -1204,8 +1212,9 @@ PRODUCTS
 <div class="form-grid">
 
 <div class="form-group">
-<label>کد محصول</label>
-<input id="productCode" class="form-control" placeholder="SZF-A23">
+<label>کد اختصاصی محصول (خودکار پیشنهاد می‌شود؛ قابل ویرایش)</label>
+<input id="productCode" class="form-control" placeholder="SZF-A1" autocomplete="off">
+<div class="form-help">پس از ثبت هر محصول، کد پیشنهادی بعدی به‌صورت خودکار ساخته می‌شود.</div>
 </div>
 
 <div class="form-group">
@@ -1570,7 +1579,7 @@ API
 const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
-const PRICE_REFRESH_INTERVAL_MS = 30000;
+const PRICE_REFRESH_INTERVAL_MS = 1000;
 const PRICE_REQUEST_TIMEOUT_MS = 10000;
 let priceFetchInProgress = false;
 
@@ -4117,6 +4126,41 @@ function calculateProductCurrentPrice(product){
 }
 
 /* =========================================================
+PRODUCT CODE SEQUENCE + LAST REGISTERED CODE
+========================================================= */
+
+function getNextSuggestedProductCode(products = getProducts()){
+  let maxNumber = 0;
+  products.forEach(product => {
+    const match = String(product.code || "").trim().match(/^SZF-A(\\d+)$/i);
+    if(match) maxNumber = Math.max(maxNumber, Number(match[1]) || 0);
+  });
+  return "SZF-A" + (maxNumber + 1);
+}
+
+function updateProductCodeSummary(){
+  const products = getProducts();
+  const latestNode = document.getElementById("latestRegisteredProductCode");
+  const nextNode = document.getElementById("nextSuggestedProductCode");
+
+  const latest = products.slice().sort((a,b) => {
+    const aTime = Date.parse(a.createdAt || "") || 0;
+    const bTime = Date.parse(b.createdAt || "") || 0;
+    return bTime - aTime;
+  })[0];
+
+  if(latestNode)
+    latestNode.textContent = latest && latest.code ? latest.code : "هنوز محصولی ثبت نشده";
+
+  const nextCode = getNextSuggestedProductCode(products);
+  if(nextNode) nextNode.textContent = nextCode;
+
+  const codeInput = document.getElementById("productCode");
+  if(codeInput && editingProductId === null && !codeInput.value.trim())
+    codeInput.value = nextCode;
+}
+
+/* =========================================================
 ADD PRODUCT
 ========================================================= */
 
@@ -4261,6 +4305,7 @@ async function addProduct(){
     if(!saveProducts(products))
       return;
 
+    updateProductCodeSummary();
     clearProductForm();
     renderProducts();
     updateDashboard();
@@ -4331,6 +4376,8 @@ PRODUCT SEARCH + RENDER
 ========================================================= */
 
 function renderProducts(){
+
+  updateProductCodeSummary();
 
   const grid =
     document.getElementById("productGrid");
@@ -4784,6 +4831,7 @@ function clearProductForm(){
     image.removeAttribute("src");
 
   updateProductLaborLabel();
+  updateProductCodeSummary();
 
 }
 
@@ -5615,6 +5663,7 @@ document.addEventListener(
 
     loadSettings();
     loadProducts();
+    updateProductCodeSummary();
     renderHistory();
     updateDashboard();
 
