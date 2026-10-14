@@ -2,7 +2,45 @@ export default async function handler(req, res) {
   // =========================================================
   // SILVER ZARIN FAKHR
   // Stable Market Price API
+  // CORS برای اتصال امن صفحه استاتیک GitHub Pages به API عمومی قیمت
   // =========================================================
+
+  const origin = req.headers.origin || "";
+  let allowedOrigin = "";
+
+  try {
+    const parsedOrigin = new URL(origin);
+    const hostname = parsedOrigin.hostname.toLowerCase();
+    const isGitHubPages = hostname.endsWith(".github.io");
+    const isVercelApp = hostname === "zarinfakhr-market-v2.vercel.app";
+    const isLocalDev = hostname === "localhost" || hostname === "127.0.0.1";
+
+    if (isGitHubPages || isVercelApp || isLocalDev) {
+      allowedOrigin = parsedOrigin.origin;
+    }
+  } catch (_) {
+    // درخواست بدون Origin نیز برای بررسی مستقیم API مجاز می‌ماند.
+  }
+
+  if (allowedOrigin) {
+    res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+    res.setHeader("Vary", "Origin");
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+
+  if (req.method !== "GET") {
+    res.setHeader("Allow", "GET, OPTIONS");
+    return res.status(405).json({
+      success: false,
+      error: "Method Not Allowed"
+    });
+  }
 
   const SOURCES = {
     silverOunce:
