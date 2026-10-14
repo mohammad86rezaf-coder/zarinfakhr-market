@@ -1566,11 +1566,13 @@ gap:18px;
 API
 ========================================================= */
 
-const API =
-  location.protocol === "file:" ||
-  location.hostname === "localhost"
-    ? "https://zarinfakhr-market-v2.vercel.app/api/prices"
-    : "/api/prices";
+/* API مستقل روی Vercel؛ برای کارکرد صحیح از GitHub Pages نیز استفاده می‌شود. */
+const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
+
+/* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
+const PRICE_REFRESH_INTERVAL_MS = 30000;
+const PRICE_REQUEST_TIMEOUT_MS = 10000;
+let priceFetchInProgress = false;
 
 /* =========================================================
 LOGIN - کاملاً ثابت
@@ -2891,6 +2893,17 @@ FETCH
 
 async function fetchPrices(){
 
+  /* از انباشته‌شدن درخواست‌ها هنگام کندی سرور جلوگیری می‌کند. */
+  if(priceFetchInProgress)
+    return;
+
+  priceFetchInProgress = true;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(
+    () => controller.abort(),
+    PRICE_REQUEST_TIMEOUT_MS
+  );
+
   try{
 
     const response =
@@ -2898,18 +2911,23 @@ async function fetchPrices(){
         API + "?t=" + Date.now(),
         {
           method:"GET",
-          cache:"no-store"
+          cache:"no-store",
+          signal:controller.signal,
+          headers:{"Accept":"application/json"}
         }
       );
 
     if(!response.ok)
       throw new Error("HTTP " + response.status);
 
-    const data =
-      await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    if(!contentType.toLowerCase().includes("application/json"))
+      throw new Error("پاسخ API از نوع JSON نیست.");
 
+    const data = await response.json();
+
+    /* processPrices اعتبار و مثبت‌بودن قیمت‌های اصلی را بررسی می‌کند. */
     processPrices(data);
-
     setConnectionStatus(true);
 
   }catch(error){
@@ -2920,6 +2938,11 @@ async function fetchPrices(){
     );
 
     setConnectionStatus(false);
+
+  }finally{
+
+    clearTimeout(timeoutId);
+    priceFetchInProgress = false;
 
   }
 
@@ -2939,7 +2962,7 @@ function startPriceUpdates(){
   priceInterval =
     setInterval(
       fetchPrices,
-      1000
+      PRICE_REFRESH_INTERVAL_MS
     );
 
 }
@@ -3298,10 +3321,20 @@ function saveSettings(){
 
   };
 
-  localStorage.setItem(
-    SETTINGS_KEY,
-    JSON.stringify(settings)
-  );
+  try{
+
+    localStorage.setItem(
+      SETTINGS_KEY,
+      JSON.stringify(settings)
+    );
+
+  }catch(error){
+
+    console.error("ذخیره تنظیمات ناموفق بود:",error);
+    alert("تنظیمات ذخیره نشد. فضای ذخیره‌سازی یا دسترسی مرورگر را بررسی کنید.");
+    return;
+
+  }
 
   applySettings(settings);
 
@@ -4561,7 +4594,7 @@ function deleteProduct(id){
 
   const products =
     getProducts().filter(
-      p => Number(p.id) !== Number(id)
+      p => String(p.id) !== String(id)
     );
 
   if(!saveProducts(products))
@@ -4802,10 +4835,22 @@ function getInvoices(){
 
 function saveInvoices(invoices){
 
-  localStorage.setItem(
-    INVOICES_KEY,
-    JSON.stringify(invoices)
-  );
+  try{
+
+    localStorage.setItem(
+      INVOICES_KEY,
+      JSON.stringify(invoices)
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.error("ذخیره فاکتور ناموفق بود:",error);
+    alert("فاکتور ذخیره نشد. فضای ذخیره‌سازی مرورگر را بررسی کنید؛ فاکتور به‌عنوان ثبت‌شده نمایش داده نمی‌شود.");
+    return false;
+
+  }
 
 }
 
@@ -4932,7 +4977,8 @@ function createInvoice(){
 
   invoices.unshift(invoice);
 
-  saveInvoices(invoices);
+  if(!saveInvoices(invoices))
+    return;
 
   setText("invoiceNumber",number);
   setText("invoiceDate",date);
