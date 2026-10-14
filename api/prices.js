@@ -693,4 +693,4 @@ export default async function handler(req, res) {
     // اطلاعات خطا برای پنل لازم نیست.
     // فقط در لاگ سرور ثبت می‌شود.
   });
-}
+      }
