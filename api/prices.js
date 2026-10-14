@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       "https://servatmandi.com/Entity/Summary/50000000001301",
 
     usd:
-      "https://servatmandi.com/Entity/Summary/100000000001"
+      "https://servatmandi.com/Entity/Summary/5000000000000"
   };
 
   // ---------------------------------------------------------
@@ -655,4 +655,4 @@ export default async function handler(req, res) {
     // اطلاعات خطا برای پنل لازم نیست.
     // فقط در لاگ سرور ثبت می‌شود.
   });
-    }
+}
