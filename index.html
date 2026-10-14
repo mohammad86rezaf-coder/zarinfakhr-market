@@ -1186,14 +1186,6 @@ PRODUCTS
 <h2 class="section-title">مدیریت محصولات و موجودی</h2>
 <p class="section-description">ثبت محصولات، موجودی و محاسبه قیمت بر اساس قیمت روز نقره</p>
 
-<div class="panel" style="margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-  <div>
-    <div style="font-size:11px;color:#888;margin-bottom:5px">آخرین کد ثبت‌شده</div>
-    <strong id="latestRegisteredProductCode" style="font-size:20px;color:var(--goldBright)">هنوز محصولی ثبت نشده</strong>
-  </div>
-  <div style="font-size:11px;color:#888">کد پیشنهادی بعدی: <strong id="nextSuggestedProductCode" style="color:#eee">SZF-A1</strong></div>
-</div>
-
 <div class="panel">
 
 <div class="product-search">
@@ -1207,14 +1199,20 @@ PRODUCTS
 >
 </div>
 
+<div id="productCodeInfo" class="form-help" style="margin:12px 0;padding:12px 14px;border:1px solid rgba(212,175,106,.35);border-radius:10px;background:rgba(212,175,106,.07);line-height:1.9">
+<strong>آخرین کد ثبت‌شده:</strong> <span id="lastRegisteredProductCode">هنوز محصولی ثبت نشده</span>
+<br>
+<strong>کد پیشنهادی بعدی:</strong> <span id="nextSuggestedProductCode">SZF-A1</span>
+</div>
+
 <div class="sub-title">ثبت محصول جدید</div>
 
 <div class="form-grid">
 
 <div class="form-group">
-<label>کد اختصاصی محصول (خودکار پیشنهاد می‌شود؛ قابل ویرایش)</label>
-<input id="productCode" class="form-control" placeholder="SZF-A1" autocomplete="off">
-<div class="form-help">پس از ثبت هر محصول، کد پیشنهادی بعدی به‌صورت خودکار ساخته می‌شود.</div>
+<label>کد محصول</label>
+<input id="productCode" class="form-control" placeholder="کد خودکار؛ مانند SZF-A1">
+<div class="form-help">کد پیشنهادی به‌صورت خودکار پر می‌شود؛ در صورت نیاز می‌توانید آن را تغییر دهید.</div>
 </div>
 
 <div class="form-group">
@@ -4126,36 +4124,64 @@ function calculateProductCurrentPrice(product){
 }
 
 /* =========================================================
-PRODUCT CODE SEQUENCE + LAST REGISTERED CODE
+ADD PRODUCT
 ========================================================= */
 
-function getNextSuggestedProductCode(products = getProducts()){
-  let maxNumber = 0;
-  products.forEach(product => {
-    const match = String(product.code || "").trim().match(/^SZF-A(\\d+)$/i);
-    if(match) maxNumber = Math.max(maxNumber, Number(match[1]) || 0);
-  });
-  return "SZF-A" + (maxNumber + 1);
+/* =========================================================
+PRODUCT CODE SEQUENCE
+========================================================= */
+
+function getLatestRegisteredProduct(products = getProducts()){
+  if(!products.length) return null;
+  return products.reduce((latest, product) => {
+    if(!latest) return product;
+    const latestTime = Date.parse(latest.createdAt || "") || 0;
+    const productTime = Date.parse(product.createdAt || "") || 0;
+    return productTime > latestTime ? product : latest;
+  }, null);
 }
 
-function updateProductCodeSummary(){
+function getNextProductCode(products = getProducts()){
+  const latest = getLatestRegisteredProduct(products);
+  const latestMatch = String(latest?.code || "").trim().match(/^SZF-([A-Z])(\d+)$/i);
+  let letter = "A";
+  let number = 1;
+
+  if(latestMatch){
+    letter = latestMatch[1].toUpperCase();
+    number = Number(latestMatch[2]) + 1;
+  }else{
+    let maxA = 0;
+    products.forEach(product => {
+      const match = String(product.code || "").trim().match(/^SZF-A(\d+)$/i);
+      if(match) maxA = Math.max(maxA, Number(match[1]) || 0);
+    });
+    number = maxA + 1;
+  }
+
+  let candidate = "SZF-" + letter + number;
+  const usedCodes = new Set(products.map(p => String(p.code || "").trim().toLowerCase()));
+  while(usedCodes.has(candidate.toLowerCase())){
+    number++;
+    candidate = "SZF-" + letter + number;
+  }
+  return candidate;
+}
+
+function updateProductCodeInfo(){
   const products = getProducts();
-  const latestNode = document.getElementById("latestRegisteredProductCode");
-  const nextNode = document.getElementById("nextSuggestedProductCode");
-
-  const latest = products.slice().sort((a,b) => {
-    const aTime = Date.parse(a.createdAt || "") || 0;
-    const bTime = Date.parse(b.createdAt || "") || 0;
-    return bTime - aTime;
-  })[0];
-
-  if(latestNode)
-    latestNode.textContent = latest && latest.code ? latest.code : "هنوز محصولی ثبت نشده";
-
-  const nextCode = getNextSuggestedProductCode(products);
-  if(nextNode) nextNode.textContent = nextCode;
-
+  const latest = getLatestRegisteredProduct(products);
+  const lastCodeElement = document.getElementById("lastRegisteredProductCode");
+  const nextCodeElement = document.getElementById("nextSuggestedProductCode");
   const codeInput = document.getElementById("productCode");
+
+  if(lastCodeElement)
+    lastCodeElement.textContent = latest?.code || "هنوز محصولی ثبت نشده";
+
+  const nextCode = getNextProductCode(products);
+  if(nextCodeElement)
+    nextCodeElement.textContent = nextCode;
+
   if(codeInput && editingProductId === null && !codeInput.value.trim())
     codeInput.value = nextCode;
 }
@@ -4178,8 +4204,12 @@ async function addProduct(){
 
   try{
 
+    const codeInput =
+      document.getElementById("productCode");
     const code =
-      document.getElementById("productCode").value.trim();
+      codeInput.value.trim() || getNextProductCode();
+    if(codeInput && !codeInput.value.trim())
+      codeInput.value = code;
 
     const name =
       document.getElementById("productName").value.trim();
@@ -4305,7 +4335,6 @@ async function addProduct(){
     if(!saveProducts(products))
       return;
 
-    updateProductCodeSummary();
     clearProductForm();
     renderProducts();
     updateDashboard();
@@ -4377,8 +4406,6 @@ PRODUCT SEARCH + RENDER
 
 function renderProducts(){
 
-  updateProductCodeSummary();
-
   const grid =
     document.getElementById("productGrid");
 
@@ -4387,6 +4414,8 @@ function renderProducts(){
 
   const products =
     getProducts();
+
+  updateProductCodeInfo();
 
   const searchInput =
     document.getElementById("productSearch");
@@ -4831,7 +4860,7 @@ function clearProductForm(){
     image.removeAttribute("src");
 
   updateProductLaborLabel();
-  updateProductCodeSummary();
+  updateProductCodeInfo();
 
 }
 
@@ -5663,7 +5692,6 @@ document.addEventListener(
 
     loadSettings();
     loadProducts();
-    updateProductCodeSummary();
     renderHistory();
     updateDashboard();
 
