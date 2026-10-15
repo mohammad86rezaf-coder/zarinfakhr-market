@@ -1,106 +1,302 @@
-export default async function handler(req, res) {
-  const SOURCES = {
-    silverOunce: "https://servatmandi.com/Entity/Summary/10000000001903",
-    silver999: "https://servatmandi.com/Entity/Summary/50000000001301",
-    // Source is Tether (USDT); the frontend label should display "دلار".
-    usd: "https://servatmandi.com/Entity/Summary/5000000000000"
-  };
+// ============================================================
+// SILVER ZARIN FAKHR
+// LIVE PRICE API — Vercel Serverless Function
+// ============================================================
 
-  // CORS
+const SOURCES = {
+  silverOunce:
+    "https://servatmandi.com/Entity/Summary/10000000001903",
+
+  silver999:
+    "https://servatmandi.com/Entity/Summary/50000000001301",
+
+  usd:
+    "https://servatmandi.com/Entity/Summary/5000000000000"
+};
+
+const TIMEOUT_MS = 10000;
+
+export default async function handler(req, res) {
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store, max-age=0");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   const origin = req.headers.origin || "";
+
   try {
-    const u = new URL(origin);
-    const host = u.hostname.toLowerCase();
+    const parsedOrigin = new URL(origin);
+
+    const allowedHosts = [
+      "zarinfakhr-market-v2.vercel.app",
+      "localhost",
+      "127.0.0.1"
+    ];
+
     if (
-      host.endsWith(".github.io") ||
-      host === "zarinfakhr-market-v2.vercel.app" ||
-      host === "localhost" ||
-      host === "127.0.0.1"
+      allowedHosts.includes(parsedOrigin.hostname) ||
+      parsedOrigin.hostname.endsWith(".github.io")
     ) {
-      res.setHeader("Access-Control-Allow-Origin", u.origin);
+      res.setHeader(
+        "Access-Control-Allow-Origin",
+        parsedOrigin.origin
+      );
       res.setHeader("Vary", "Origin");
     }
   } catch (_) {}
 
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type");
-  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-  res.setHeader("Pragma", "no-cache");
-  res.setHeader("Expires", "0");
-
-  if (req.method === "OPTIONS") return res.status(204).end();
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
 
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET, OPTIONS");
+
     return res.status(405).json({
       success: false,
-      error: "Method Not Allowed"
+      error: "فقط درخواست GET مجاز است"
     });
   }
 
   function normalizeDigits(value) {
     return String(value)
-      .replace(/[۰-۹]/g, d => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)])
-      .replace(/[٠-٩]/g, d => "0123456789"["٠١٢٣٤٥٦٧٨٩".indexOf(d)]);
+      .replace(/[۰-۹]/g, digit =>
+        String("۰۱۲۳۴۵۶۷۸۹".indexOf(digit))
+      )
+      .replace(/[٠-٩]/g, digit =>
+        String("٠١٢٣٤٥٦٧٨٩".indexOf(digit))
+      );
+  }
+
+  function decodeHtml(value) {
+    return String(value)
+      .replace(/&nbsp;|&#160;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;|&#x27;/gi, "'")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">");
   }
 
   function htmlToText(html) {
     return normalizeDigits(
-      String(html)
-        .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
-        .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
-        .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, " ")
-        .replace(/<svg\b[\s\S]*?<\/svg>/gi, " ")
-        .replace(/<[^>]+>/g, " ")
-        .replace(/&nbsp;|&#160;/gi, " ")
-        .replace(/&amp;/gi, "&")
-        .replace(/&quot;/gi, '"')
-        .replace(/&#39;|&#x27;/gi, "'")
-        .replace(/&lt;/gi, "<")
-        .replace(/&gt;/gi, ">")
-        .replace(/[\u200c\u200e\u200f]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim()
+      decodeHtml(
+        String(html)
+          .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+          .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+          .replace(/<noscript\b[\s\S]*?<\/noscript>/gi, " ")
+          .replace(/<[^>]*>/g, " ")
+      )
+    )
+      .replace(/[\u200c\u200e\u200f]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function parseNumber(value) {
+    const normalized = normalizeDigits(value)
+      .replace(/[,\u066C\u060C\s]/g, "");
+
+    if (!/^\d+(?:\.\d+)?$/.test(normalized)) {
+      return null;
+    }
+
+    const number = Number(normalized);
+
+    return Number.isFinite(number) && number > 0
+      ? number
+      : null;
+  }
+
+  async function fetchSource(key, url) {
+    const controller = new AbortController();
+
+    const timer = setTimeout(
+      () => controller.abort(),
+      TIMEOUT_MS
     );
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        cache: "no-store",
+        redirect: "follow",
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+            "AppleWebKit/537.36 Chrome/140.0.0.0 Safari/537.36",
+
+          "Accept":
+            "text/html,application/xhtml+xml,application/json,*/*",
+
+          "Accept-Language": "fa-IR,fa;q=0.9,en;q=0.8"
+        },
+        signal: controller.signal
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          key + ": خطای HTTP " + response.status
+        );
+      }
+
+      const body = await response.text();
+
+      if (!body || body.length < 20) {
+        throw new Error(key + ": پاسخ منبع خالی است");
+      }
+
+      // اگر منبع مستقیماً JSON برگرداند، ساختار آن را بررسی می‌کنیم.
+      let json = null;
+
+      try {
+        json = JSON.parse(body);
+      } catch (_) {}
+
+      if (json !== null) {
+        const result = findPriceInJson(json, key);
+
+        if (result !== null) {
+          return result;
+        }
+      }
+
+      // در غیر این صورت HTML را بررسی می‌کنیم.
+      const text = htmlToText(body);
+
+      const price = extractLabeledPrice(text, key);
+
+      if (price !== null) {
+        return price;
+      }
+
+      throw new Error(
+        key +
+        ": قیمت در پاسخ اولیه پیدا نشد؛ " +
+        "ممکن است قیمت با JavaScript بارگذاری شود"
+      );
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
-  function parseNumber(raw) {
-    const cleaned = normalizeDigits(raw).replace(/[٬،,\s]/g, "");
-    return /^\d+(?:\.\d+)?$/.test(cleaned) ? Number(cleaned) : NaN;
-  }
+  function findPriceInJson(data, key) {
+    const acceptedKeys = {
+      silverOunce: [
+        "silverOunce",
+        "ounce",
+        "price",
+        "lastPrice",
+        "last_price",
+        "value"
+      ],
 
-  function extractPrice(html, key) {
-    const text = htmlToText(html);
+      silver999: [
+        "silver999",
+        "price",
+        "lastPrice",
+        "last_price",
+        "value"
+      ],
 
-    // Only extract a number directly following the "آخرین قیمت" label.
-    // Do not fall back to arbitrary numbers elsewhere on the page.
-    const patterns = [
-      /آخرین\s*قیمت\s*[|:：\-–—]?\s*([0-9][0-9,٬،]*(?:\.[0-9]+)?)/i,
-      /آخرین\s*قیمت\s*([0-9][0-9,٬،]*(?:\.[0-9]+)?)/i
-    ];
+      usd: [
+        "usd",
+        "usdt",
+        "price",
+        "lastPrice",
+        "last_price",
+        "value"
+      ]
+    };
 
-    let price = NaN;
-    for (const pattern of patterns) {
-      const match = text.match(pattern);
-      if (match) {
-        price = parseNumber(match[1]);
-        if (Number.isFinite(price) && price > 0) break;
+    if (!data || typeof data !== "object") {
+      return null;
+    }
+
+    for (const name of acceptedKeys[key] || []) {
+      if (
+        Object.prototype.hasOwnProperty.call(data, name)
+      ) {
+        const value = data[name];
+
+        if (typeof value === "number" && value > 0) {
+          return value;
+        }
+
+        if (typeof value === "string") {
+          const parsed = parseNumber(value);
+
+          if (parsed !== null) {
+            return parsed;
+          }
+        }
       }
     }
 
-    if (!Number.isFinite(price) || price <= 0) {
-      // Diagnostic text helps identify what Vercel actually receives.
-      const index = text.indexOf("آخرین");
-      const snippet = index >= 0
-        ? text.slice(Math.max(0, index - 100), index + 300)
-        : text.slice(0, 500);
+    for (const value of Object.values(data)) {
+      if (value && typeof value === "object") {
+        const result = findPriceInJson(value, key);
 
-      throw new Error(
-        key + ": ردیف قیمت در پاسخ پیدا نشد. متن دریافتی: " + snippet
-      );
+        if (result !== null) {
+          return result;
+        }
+      }
     }
 
-    // Source values: ounce in USD, silver and Tether in rials.
+    return null;
+  }
+
+  function extractLabeledPrice(text, key) {
+    const labels = {
+      silverOunce: [
+        /انس\s*نقره/i,
+        /نقره\s*\(\s*Silver\s*\)/i
+      ],
+
+      silver999: [
+        /نقره\s*999/i
+      ],
+
+      usd: [
+        /تتر\s*\(\s*USDT/i,
+        /دلار\s*آمریکا/i
+      ]
+    };
+
+    const patterns = [
+      /آخرین\s*قیمت\s*[:：]?\s*([\d۰-۹٠-٩][\d۰-۹٠-٩,٬،.]*)/i,
+      /آخرین\s*مقدار\s*[:：]?\s*([\d۰-۹٠-٩][\d۰-۹٠-٩,٬،.]*)/i
+    ];
+
+    for (const label of labels[key] || []) {
+      const match = text.match(label);
+
+      if (!match || match.index === undefined) {
+        continue;
+      }
+
+      const section = text.slice(
+        match.index,
+        match.index + 1500
+      );
+
+      for (const pattern of patterns) {
+        const priceMatch = section.match(pattern);
+
+        if (priceMatch) {
+          const parsed = parseNumber(priceMatch[1]);
+
+          if (parsed !== null) {
+            return parsed;
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  function validatePrice(key, value) {
     const ranges = {
       silverOunce: [10, 500],
       silver999: [100000, 100000000],
@@ -108,113 +304,104 @@ export default async function handler(req, res) {
     };
 
     const range = ranges[key];
-    if (!range || price < range[0] || price > range[1]) {
-      throw new Error(
-        key + ": قیمت خارج از محدوده معتبر است: " + price
-      );
-    }
 
-    return price;
+    return (
+      typeof value === "number" &&
+      Number.isFinite(value) &&
+      value >= range[0] &&
+      value <= range[1]
+    );
   }
 
-  async function fetchPrice(url, key) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 12000);
-
-    try {
-      const response = await fetch(url, {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0.0.0 Safari/537.36",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          "Accept-Language": "fa-IR,fa;q=0.9,en-US;q=0.8,en;q=0.7"
-        },
-        signal: controller.signal,
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error(key + ": HTTP " + response.status);
-      }
-
-      const html = await response.text();
-      if (!html || html.length < 100) {
-        throw new Error(key + ": پاسخ خالی یا ناقص");
-      }
-
-      return extractPrice(html, key);
-    } finally {
-      clearTimeout(timer);
-    }
-  }
-
-  const keys = ["silverOunce", "silver999", "usd"];
-  const urls = [
-    SOURCES.silverOunce,
-    SOURCES.silver999,
-    SOURCES.usd
+  const keys = [
+    "silverOunce",
+    "silver999",
+    "usd"
   ];
 
   const results = await Promise.allSettled(
-    urls.map((url, index) => fetchPrice(url, keys[index]))
+    keys.map(key => fetchSource(key, SOURCES[key]))
   );
 
-  const values = {};
+  const prices = {};
   const errors = [];
 
   results.forEach((result, index) => {
     const key = keys[index];
-    if (result.status === "fulfilled") {
-      values[key] = result.value;
-    } else {
+
+    if (result.status === "rejected") {
       errors.push(
-        result.reason && result.reason.message
-          ? result.reason.message
-          : key + ": خطای دریافت قیمت"
+        result.reason?.message || key + ": خطای دریافت"
       );
+
+      return;
     }
+
+    const price = result.value;
+
+    if (!validatePrice(key, price)) {
+      errors.push(
+        key + ": قیمت خارج از محدوده معتبر است"
+      );
+
+      return;
+    }
+
+    prices[key] = price;
   });
-
-  const valid = {
-    silverOunce: Number.isFinite(values.silverOunce),
-    silver999: Number.isFinite(values.silver999),
-    usd: Number.isFinite(values.usd)
-  };
-
-  if (!valid.silverOunce || !valid.silver999 || !valid.usd) {
-    return res.status(503).json({
-      success: false,
-      partial: true,
-      error: "قیمت معتبر از همه منابع دریافت نشد؛ قیمت اشتباه منتشر نشود",
-      details: errors,
-      extractedForDebug: {
-        silverOunce: values.silverOunce ?? null,
-        silver999Rial: values.silver999 ?? null,
-        usdRial: values.usd ?? null
-      },
-      sources: SOURCES,
-      serverTime: new Date().toISOString()
-    });
-  }
 
   const now = new Date().toISOString();
 
+  if (errors.length > 0) {
+    return res.status(503).json({
+      success: false,
+      error: "دریافت قیمت معتبر کامل نشد",
+      details: errors,
+      prices: {
+        silverOunce: prices.silverOunce ?? null,
+        silver999Rial: prices.silver999 ?? null,
+        usdRial: prices.usd ?? null
+      },
+      updatedAt: now,
+      sources: SOURCES
+    });
+  }
+
+  // منبع نقره و تتر در این پروژه بر حسب ریال است.
+  const silver999Rial = prices.silver999;
+  const silver999Toman = silver999Rial / 10;
+
+  // قیمت نقره 925 از قیمت نقره 999 محاسبه می‌شود.
+  const silver925Rial =
+    silver999Rial * 925 / 999;
+
+  const silver925Toman =
+    silver925Rial / 10;
+
+  const usdRial = prices.usd;
+  const usdToman = usdRial / 10;
+
   return res.status(200).json({
     success: true,
-    silverOunce: values.silverOunce,
-    silver999Rial: values.silver999,
-    silver999Toman: values.silver999 / 10,
-    usdRial: values.usd,
-    usdToman: values.usd / 10,
-    usdtToman: values.usd / 10,
+
+    silverOunce: prices.silverOunce,
+
+    silver999Rial,
+    silver999Toman,
+
+    silver925Rial,
+    silver925Toman,
+
+    usdRial,
+    usdToman,
+
+    usdtToman: usdToman,
+
     updatedAt: now,
     serverTime: now,
+
     partial: false,
     errors: [],
-    sources: {
-      silver999: SOURCES.silver999,
-      silverOunce: SOURCES.silverOunce,
-      dollar: SOURCES.usd
-    },
-    cached: false
+    sources: SOURCES
   });
-}
+                                     }
