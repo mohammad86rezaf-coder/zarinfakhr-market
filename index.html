@@ -480,6 +480,47 @@ button{cursor:pointer}
   .invoice-head{grid-template-columns:1fr}
   .period-summary{grid-template-columns:1fr 1fr}
 }
+
+
+/* LIGHT / DARK THEME FOR THE MANAGEMENT PANEL */
+html[data-szf-theme="light"] #appPage{
+  background:linear-gradient(180deg,#f7f7f7,#eeeeee 55%,#e8e8e8);color:#252525;
+}
+html[data-szf-theme="light"] #appPage .app-header{background:rgba(255,255,255,.95);border-bottom-color:#d9c9ae}
+html[data-szf-theme="light"] #appPage .brand-text strong,
+html[data-szf-theme="light"] #appPage .section-title,
+html[data-szf-theme="light"] #appPage .panel-title,
+html[data-szf-theme="light"] #appPage .settings-value{color:#252525}
+html[data-szf-theme="light"] #appPage .nav-button{color:#454545;background:#f7f7f7;border-color:#d8d8d8}
+html[data-szf-theme="light"] #appPage .nav-button:hover{color:#111}
+html[data-szf-theme="light"] #appPage .panel,
+html[data-szf-theme="light"] #appPage .market-card,
+html[data-szf-theme="light"] #appPage .stat-card,
+html[data-szf-theme="light"] #appPage .settings-item,
+html[data-szf-theme="light"] #appPage .product-card,
+html[data-szf-theme="light"] #appPage .invoice-box,
+html[data-szf-theme="light"] #appPage .alert-box{background:#fff;color:#292929;border-color:#dedede;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+html[data-szf-theme="light"] #appPage .market-area{background:#fff}
+html[data-szf-theme="light"] #appPage .market-title,
+html[data-szf-theme="light"] #appPage .form-group label{color:#444}
+html[data-szf-theme="light"] #appPage .market-update,
+html[data-szf-theme="light"] #appPage .stat-small,
+html[data-szf-theme="light"] #appPage .form-help{color:#666}
+html[data-szf-theme="light"] #appPage .data-table th{background:#f0f0f0;color:#79551f}
+html[data-szf-theme="light"] #appPage .data-table td{color:#333}
+html[data-szf-theme="light"] #appPage .data-table th,
+html[data-szf-theme="light"] #appPage .data-table td{border-bottom-color:#e2e2e2}
+html[data-szf-theme="light"] #appPage .form-control,
+html[data-szf-theme="light"] #appPage .file-input{background:#fff;color:#222;border-color:#d2d2d2}
+html[data-szf-theme="light"] #appPage .footer{border-top-color:#ddd}
+html[data-szf-theme="light"] #appPage .settings-label,
+html[data-szf-theme="light"] #appPage .section-description{color:#666}
+.theme-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.theme-button{min-width:100px;padding:11px 18px;border-radius:11px;border:1px solid var(--goldBright);font-weight:800;transition:.2s}
+.theme-button.active{background:linear-gradient(135deg,#A7783E,#D4AF6A);color:#17110a;box-shadow:0 0 0 2px rgba(212,175,106,.18)}
+.theme-button:not(.active){background:transparent;color:var(--text)}
+html[data-szf-theme="light"] #appPage .theme-button:not(.active){color:#333;background:#f4f4f4;border-color:#ccc}
+
 </style>
 </head>
 
@@ -1379,6 +1420,16 @@ SETTINGS
 
 <div class="panel">
 
+<div class="panel-title">ظاهر پنل</div>
+<div class="settings-item" style="margin-bottom:18px">
+  <div class="settings-label">انتخاب پوسته پنل</div>
+  <div class="theme-buttons">
+    <button id="lightThemeButton" type="button" class="theme-button" onclick="setPanelTheme('light')">روشن</button>
+    <button id="darkThemeButton" type="button" class="theme-button" onclick="setPanelTheme('dark')">تیره</button>
+  </div>
+  <div class="form-help">انتخاب شما در همین مرورگر ذخیره می‌شود.</div>
+</div>
+
 <div class="panel-title">تنظیمات قیمت و فروش</div>
 
 <div class="settings-grid">
@@ -1649,6 +1700,8 @@ const HISTORY_KEY = "SZF_PRICE_HISTORY";
 const HISTORY_SLOT_KEY = "SZF_LAST_HISTORY_SLOT";
 const PRODUCTS_KEY = "SZF_PRODUCTS";
 const INVOICES_KEY = "SZF_INVOICES";
+
+loadPanelTheme();
 
 /* =========================================================
 LOGIN
@@ -2783,19 +2836,13 @@ function processPrices(data){
   const silver999 =
     Number(data.silver999Toman);
 
-  if(
-    !Number.isFinite(ounce) ||
-    !Number.isFinite(usd) ||
-    !Number.isFinite(silver999) ||
-    ounce <= 0 ||
-    usd <= 0 ||
-    silver999 <= 0
-  ){
+  const missingPrices = [];
+  if(!Number.isFinite(ounce) || ounce <= 0) missingPrices.push("اونس نقره");
+  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("تتر/دلار");
+  if(!Number.isFinite(silver999) || silver999 <= 0) missingPrices.push("نقره ۹۹۹");
 
-    throw new Error(
-      "قیمت معتبر دریافت نشد."
-    );
-
+  if(missingPrices.length){
+    throw new Error("قیمت معتبر دریافت نشد: " + missingPrices.join("، "));
   }
 
   previousSilverOunce =
@@ -2946,7 +2993,11 @@ async function fetchPrices(){
 
     const data = await response.json();
 
-    /* processPrices اعتبار و مثبت‌بودن قیمت‌های اصلی را بررسی می‌کند. */
+    if(data && Array.isArray(data.errors) && data.errors.length){
+      console.warn("جزئیات دریافت قیمت:", data.errors);
+    }
+
+    /* قیمت‌های ناقص هرگز به‌عنوان قیمت زنده معتبر پذیرفته نمی‌شوند. */
     processPrices(data);
     setConnectionStatus(true);
 
@@ -3303,6 +3354,26 @@ function clearCalculator(){
 /* =========================================================
 SETTINGS
 ========================================================= */
+
+const SZF_THEME_KEY = "SZF_PANEL_THEME";
+
+function setPanelTheme(theme){
+  const selected = theme === "light" ? "light" : "dark";
+  document.documentElement.setAttribute("data-szf-theme", selected);
+  try { localStorage.setItem(SZF_THEME_KEY, selected); }
+  catch(error) { console.warn("ذخیره پوسته انجام نشد:", error); }
+  const lightButton = document.getElementById("lightThemeButton");
+  const darkButton = document.getElementById("darkThemeButton");
+  if(lightButton) lightButton.classList.toggle("active", selected === "light");
+  if(darkButton) darkButton.classList.toggle("active", selected === "dark");
+}
+
+function loadPanelTheme(){
+  let theme = "dark";
+  try { theme = localStorage.getItem(SZF_THEME_KEY) || "dark"; }
+  catch(error) { /* استفاده از پوسته پیش‌فرض */ }
+  setPanelTheme(theme);
+}
 
 function saveSettings(){
 
