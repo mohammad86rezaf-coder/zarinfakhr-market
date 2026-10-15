@@ -744,11 +744,11 @@ DASHBOARD
 <tr>
 <td>انس نقره</td>
 <td id="dashOunce">—</td>
-<td>دلار</td>
+<td>تتر (USDT)</td>
 <td>زنده</td>
 </tr>
 <tr>
-<td>دلار</td>
+<td>تتر (USDT)</td>
 <td id="dashUSD">—</td>
 <td>تومان</td>
 <td>زنده</td>
@@ -802,7 +802,7 @@ MARKET
 <div class="market-card">
 <div class="market-title">انس نقره</div>
 <div id="silverOunce" class="market-value">—</div>
-<div class="market-unit">دلار</div>
+<div class="market-unit">تتر (USDT)</div>
 <div id="ounceChange" class="price-change price-neutral">—</div>
 <div id="silverOunceUpdate" class="market-update">در انتظار اطلاعات</div>
 </div>
@@ -810,7 +810,7 @@ MARKET
 
 <div id="usdArea" class="market-area">
 <div class="market-card">
-<div class="market-title">دلار</div>
+<div class="market-title">تتر (USDT)</div>
 <div id="usdPrice" class="market-value">—</div>
 <div class="market-unit">تومان</div>
 <div id="usdChange" class="price-change price-neutral">—</div>
@@ -860,7 +860,7 @@ MARKET
 <td>آنلاین</td>
 </tr>
 <tr>
-<td>دلار</td>
+<td>تتر (USDT)</td>
 <td id="marketTableUSD">—</td>
 <td id="marketTableUSDTime">—</td>
 <td>آنلاین</td>
@@ -1397,7 +1397,7 @@ HISTORY
 <tr>
 <th>زمان</th>
 <th>انس</th>
-<th>دلار</th>
+<th>تتر (USDT)</th>
 <th>۹۹۹</th>
 <th>۹۲۵</th>
 <th>مثقال</th>
@@ -1595,11 +1595,11 @@ gap:18px;
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
 <div class="stat-label">انس نقره</div>
 <div id="boardOunce" class="stat-value" style="font-size:35px">—</div>
-<div class="stat-small">دلار</div>
+<div class="stat-small">تتر (USDT)</div>
 </div>
 
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
-<div class="stat-label">دلار</div>
+<div class="stat-label">تتر (USDT)</div>
 <div id="boardUSD" class="stat-value" style="font-size:35px">—</div>
 <div class="stat-small">تومان</div>
 </div>
@@ -2614,7 +2614,7 @@ function calculatePrice(){
     محاسبه مثقال ۱۷ عیار:
     انس × دلار = ارزش هر اونس به تومان
     ÷ 31.103 = ارزش هر گرم نقره خالص
-    × 700 / 1000 = ارزش هر گرم عیار ۷۰۰
+    × 0.700 = ارزش هر گرم عیار ۷۰۰
     × 4.608 = مثقال
   */
   if(
@@ -2630,7 +2630,7 @@ function calculatePrice(){
       ouncePrice / 31.1034768;
 
     const gram17Price =
-      (silverPerGram / 1000) * 700;
+      silverPerGram * 0.700;
 
     currentMithqal17 =
       gram17Price * 4.608;
@@ -2831,14 +2831,14 @@ function processPrices(data){
     Number(data.silverOunce);
 
   const usd =
-    Number(data.usdToman);
+    Number(data.usdtToman ?? data.usdToman);
 
   const silver999 =
     Number(data.silver999Toman);
 
   const missingPrices = [];
   if(!Number.isFinite(ounce) || ounce <= 0) missingPrices.push("اونس نقره");
-  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("تتر/دلار");
+  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("تتر (USDT)");
   if(!Number.isFinite(silver999) || silver999 <= 0) missingPrices.push("نقره ۹۹۹");
 
   if(missingPrices.length){
