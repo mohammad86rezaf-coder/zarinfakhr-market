@@ -1661,6 +1661,7 @@ let currentSilver999 = 0;
 let currentSilver925 = 0;
 let currentSilver700 = 0;
 let currentMithqal17 = 0;
+let currentGold18 = 0;
 
 let previousSilverOunce = 0;
 let previousUSD = 0;
@@ -2611,31 +2612,16 @@ function calculatePrice(){
     currentSilver999 * 0.700;
 
   /*
-    محاسبه مثقال ۱۷ عیار:
-    انس × دلار = ارزش هر اونس به تومان
-    ÷ 31.103 = ارزش هر گرم نقره خالص
-    × 0.700 = ارزش هر گرم عیار ۷۰۰
-    × 4.608 = مثقال
+    مثقال ۱۷ عیار، قیمت طلاست نه نقره.
+    فقط از قیمت هر گرم طلای ۱۸ عیار در API محاسبه می‌شود:
+    قیمت هر گرم طلای ۱۷ عیار = طلای ۱۸ عیار × 17/18
+    قیمت مثقال = قیمت هر گرم طلای ۱۷ عیار × 4.608
+    اگر API قیمت طلای ۱۸ عیار ندهد، عدد اشتباه نمایش داده نمی‌شود.
   */
-  if(
-    currentSilverOunce > 0 &&
-    currentUSD > 0
-  ){
-
-    const ouncePrice =
-      currentSilverOunce *
-      currentUSD;
-
-    const silverPerGram =
-      ouncePrice / 31.1034768;
-
-    const gram17Price =
-      silverPerGram * 0.700;
-
-    currentMithqal17 =
-      gram17Price * 4.608;
-
-  }
+  currentMithqal17 =
+    currentGold18 > 0
+      ? currentGold18 * (17 / 18) * 4.608
+      : 0;
 
   setText(
     "silverOunce",
@@ -2659,7 +2645,7 @@ function calculatePrice(){
 
   setText(
     "mithqal17",
-    formatPrice(currentMithqal17)
+    (currentMithqal17 > 0 ? formatPrice(currentMithqal17) : "—")
   );
 
   renderChange(
@@ -2724,7 +2710,7 @@ function calculatePrice(){
 
   setText(
     "dashMithqal",
-    formatPrice(currentMithqal17)
+    (currentMithqal17 > 0 ? formatPrice(currentMithqal17) : "—")
   );
 
   setText(
@@ -2749,7 +2735,7 @@ function calculatePrice(){
 
   setText(
     "marketTableMithqal",
-    formatPrice(currentMithqal17)
+    (currentMithqal17 > 0 ? formatPrice(currentMithqal17) : "—")
   );
 
   setText(
@@ -2774,7 +2760,7 @@ function calculatePrice(){
 
   setText(
     "boardMithqal",
-    formatPrice(currentMithqal17)
+    (currentMithqal17 > 0 ? formatPrice(currentMithqal17) : "—")
   );
 
   if(lastPriceUpdateIranDate){
@@ -2816,86 +2802,132 @@ function setValue(id,value){
 PROCESS API
 ========================================================= */
 
-function processPrices(data){
+function apiNumber(value){
 
-  if(
-    !data ||
-    data.success !== true
-  ){
+  if(value === null || value === undefined || value === "")
+    return NaN;
+
+  if(typeof value === "object" && value !== null){
+    value = value.value ?? value.price ?? value.amount ??
+            value.toman ?? value.tmn ?? value.formatted;
+  }
+
+  if(typeof value === "string"){
+    value = value
+      .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+      .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+      .replace(/[٬،,\s]/g, "")
+      .replace(/[٫]/g, ".")
+      .replace(/تومان|ریال|IRR|IRT|TOMAN|RIAL/gi, "");
+
+    if(!value) return NaN;
+  }
+
+  const n = Number(value);
+  return Number.isFinite(n) ? n : NaN;
+}
+
+function firstApiValue(objects, keys){
+
+  for(const obj of objects){
+    if(!obj || typeof obj !== "object") continue;
+    for(const key of keys){
+      if(obj[key] !== undefined && obj[key] !== null && obj[key] !== ""){
+        const n = apiNumber(obj[key]);
+        if(Number.isFinite(n) && n > 0) return n;
+      }
+    }
+  }
+  return NaN;
+}
+
+function processPrices(responseData){
+
+  if(!responseData || typeof responseData !== "object"){
+    throw new Error("پاسخ API خالی یا نامعتبر است.");
+  }
+
+  /*
+    پشتیبانی از چند قالب رایج API:
+    {success:true, silverOunce:..., ...}
+    {success:true, data:{...}}
+    {data:{prices:{...}}}
+    {prices:{...}}
+  */
+  const data = responseData;
+  const nestedData = data.data && typeof data.data === "object" ? data.data : {};
+  const nestedPrices = data.prices && typeof data.prices === "object" ? data.prices : {};
+  const nestedDataPrices = nestedData.prices && typeof nestedData.prices === "object" ? nestedData.prices : {};
+  const objects = [data, nestedData, nestedPrices, nestedDataPrices];
+
+  if(data.success === false || nestedData.success === false){
+    throw new Error(data.message || nestedData.message || "API دریافت قیمت را ناموفق اعلام کرد.");
+  }
+
+  const ounce = firstApiValue(objects, [
+    "silverOunce","silver_ounce","silverOunceUsd","silver_ounce_usd",
+    "silverSpotOunce","xagusd","XAGUSD","silver_ounce_price"
+  ]);
+
+  const usd = firstApiValue(objects, [
+    "usdtToman","usdToman","usd_toman","usdt_toman","dollarToman",
+    "dollar_toman","usd","USDT","price_dollar_rl"
+  ]);
+
+  let silver999 = firstApiValue(objects, [
+    "silver999Toman","silver999","silver_999_toman","silver_999",
+    "silverGramToman","silverPerGramToman","silver_per_gram_toman",
+    "silver999Price","silver999PriceToman"
+  ]);
+
+  const gold18 = firstApiValue(objects, [
+    "gold18Toman","gold18","gold_18_toman","gold_18",
+    "geram18","gold18GramToman","goldPerGram18Toman",
+    "gold_18k_toman","gold18Price"
+  ]);
+
+  /*
+    اگر API قیمت گرم نقره ۹۹۹ را نفرستاده باشد، از انس دلاری
+    و نرخ تومان/دلار محاسبه می‌شود. این محاسبه فقط زمانی مجاز است
+    که هر دو ورودی معتبر باشند.
+  */
+  if(!(silver999 > 0) && ounce > 0 && usd > 0){
+    silver999 = (ounce * usd) / 31.1034768;
+  }
+
+  const missingPrices = [];
+  if(!(ounce > 0)) missingPrices.push("اونس نقره (دلار)");
+  if(!(usd > 0)) missingPrices.push("دلار/تتر (تومان)");
+  if(!(silver999 > 0)) missingPrices.push("نقره ۹۹۹ (تومان/گرم)");
+
+  if(missingPrices.length){
     throw new Error(
-      "اطلاعات قیمت معتبر نیست."
+      "فیلدهای لازم در پاسخ API پیدا نشد: " + missingPrices.join("، ") +
+      ". ساختار پاسخ API و واحد قیمت‌ها را بررسی کنید."
     );
   }
 
-  const ounce =
-    Number(data.silverOunce);
+  previousSilverOunce = currentSilverOunce;
+  previousUSD = currentUSD;
+  previousSilver999 = currentSilver999;
+  previousMithqal17 = currentMithqal17;
 
-  const usd =
-    Number(data.usdtToman ?? data.usdToman);
+  currentSilverOunce = ounce;
+  currentUSD = usd;
+  currentSilver999 = silver999;
+  currentGold18 = Number.isFinite(gold18) ? gold18 : 0;
 
-  const silver999 =
-    Number(data.silver999Toman);
-
-  const missingPrices = [];
-  if(!Number.isFinite(ounce) || ounce <= 0) missingPrices.push("اونس نقره");
-  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("دلار");
-  if(!Number.isFinite(silver999) || silver999 <= 0) missingPrices.push("نقره ۹۹۹");
-
-  if(missingPrices.length){
-    throw new Error("قیمت معتبر دریافت نشد: " + missingPrices.join("، "));
-  }
-
-  previousSilverOunce =
-    currentSilverOunce;
-
-  previousUSD =
-    currentUSD;
-
-  previousSilver999 =
-    currentSilver999;
-
-  previousMithqal17 =
-    currentMithqal17;
-
-  currentSilverOunce =
-    ounce;
-
-  currentUSD =
-    usd;
-
-  currentSilver999 =
-    silver999;
-
-  /*
-    زمان بروزرسانی از ساعت API ایران گرفته می‌شود.
-  */
-  lastPriceUpdateIranDate =
-    getIranClockNow();
+  lastPriceUpdateIranDate = getIranClockNow();
 
   calculatePrice();
-
   updateAllIranTimes();
-
-  /*
-    تاریخچه فقط در اسلات‌های ۰۰:۰۰ و ۱۲:۰۰ ثبت می‌شود.
-  */
   savePriceHistory();
-
   checkPriceAlert();
-
   updateDashboard();
 
-  /*
-    قیمت محصولات با قیمت روز دوباره محاسبه می‌شود.
-  */
-  if(
-    !document
-      .getElementById("productsSection")
-      ?.classList.contains("hidden")
-  ){
+  if(!document.getElementById("productsSection")?.classList.contains("hidden")){
     renderProducts();
   }
-
 }
 
 /* =========================================================
