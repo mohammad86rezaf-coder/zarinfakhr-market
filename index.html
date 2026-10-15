@@ -1250,6 +1250,19 @@ PRODUCTS
 </div>
 
 <div class="form-group">
+<label for="productPlating">نوع آبکاری (قابل ورود دلخواه)</label>
+<input id="productPlating" class="form-control" type="text" list="platingOptions" maxlength="100" placeholder="مثلاً طلا، رودیوم، رزگلد یا نوع دلخواه">
+<datalist id="platingOptions">
+<option value="بدون آبکاری"></option>
+<option value="طلا"></option>
+<option value="رودیوم"></option>
+<option value="رزگلد"></option>
+<option value="نقره"></option>
+</datalist>
+<div class="form-help">می‌توانید یکی از پیشنهادها را انتخاب کنید یا نوع آبکاری دلخواه را تایپ کنید.</div>
+</div>
+
+<div class="form-group">
 <label>عیار محصول</label>
 <select id="productPurity" class="form-control">
 <option value="999">۹۹۹</option>
@@ -2881,10 +2894,10 @@ function setConnectionStatus(isOnline){
     }
 
     if(text)
-      text.textContent = "ارتباط قطع است";
+      text.textContent = "اتصال دریافت قیمت برقرار نیست";
 
     if(settingsConnection)
-      settingsConnection.textContent = "قطع";
+      settingsConnection.textContent = "اتصال قیمت قطع است";
 
     areas.forEach(
       area => area.classList.add("error")
@@ -3815,6 +3828,9 @@ function getProducts(){
       otherCost:
         Number(product.otherCost ?? 0),
 
+      plating:
+        String(product.plating ?? ""),
+
       image:
         product.image ??
         ""
@@ -4228,6 +4244,9 @@ async function addProduct(){
     const stone =
       document.getElementById("productStone").value.trim();
 
+    const plating =
+      document.getElementById("productPlating").value.trim().slice(0,100);
+
     const purity =
       Number(document.getElementById("productPurity").value);
 
@@ -4316,6 +4335,7 @@ async function addProduct(){
       weight,
       size,
       stone,
+      plating,
       purity,
       laborType,
       laborValue,
@@ -4448,6 +4468,7 @@ function renderProducts(){
         product.weight,
         product.size,
         product.stone,
+        product.plating,
         product.purity,
         product.laborType,
         product.laborValue,
@@ -4569,6 +4590,13 @@ function renderProducts(){
               <div class="meta-label">سنگ</div>
               <div class="meta-value">
                 ${escapeHTML(product.stone || "—")}
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-label">نوع آبکاری</div>
+              <div class="meta-value">
+                ${escapeHTML(product.plating || "—")}
               </div>
             </div>
 
@@ -4707,6 +4735,7 @@ function editProduct(id){
   setValue("productWeight",product.weight ?? "");
   setValue("productSize",product.size || "");
   setValue("productStone",product.stone || "");
+  setValue("productPlating",product.plating || "");
   setValue("productPurity",String(product.purity ?? 925));
   setValue("productLaborType",product.laborType || "gram");
   setValue("productLaborValue",product.laborValue ?? 0);
@@ -4820,6 +4849,7 @@ function clearProductForm(){
     "productWeight",
     "productSize",
     "productStone",
+    "productPlating",
     "productLaborValue",
     "productOtherCost"
   ].forEach(
