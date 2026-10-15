@@ -5,8 +5,8 @@ function normalizeDigits(value) {
   const arabic = "٠١٢٣٤٥٦٧٨٩";
 
   return String(value)
-    .replace(/[۰-۹]/g, (d) => String(persian.indexOf(d)))
-    .replace(/[٠-٩]/g, (d) => String(arabic.indexOf(d)))
+    .replace(/[۰-۹]/g, d => String(persian.indexOf(d)))
+    .replace(/[٠-٩]/g, d => String(arabic.indexOf(d)))
     .replace(/[٬،]/g, ",")
     .replace(/[\u00a0\u202f]/g, " ");
 }
@@ -41,21 +41,29 @@ function extractNumber(text, patterns) {
 }
 
 function calculatePrices(silverOunce, usdToman, silver999Toman) {
-  // قیمت هر گرم نقره ۹۲۵
+  // قیمت هر گرم نقره ۹۲۵ بر اساس نقره ۹۹۹
   const silver925Toman =
     silver999Toman !== null
       ? (silver999Toman * 925) / 999
       : null;
 
-  // فرمول دقیق مثقال ۱۷ عیار طبق درخواست کاربر:
-  // انس نقره × قیمت دلار
-  // تقسیم بر 31.103
-  // تقسیم بر 1000
-  // ضرب در 700
+  // فرمول سفارشی قیمت مثقال ۱۷ عیار طبق دستور کاربر:
+  // انس نقره × دلار
+  // ÷ 31.103
+  // ÷ 1000
+  // × 700
+  // × 4.608
+
   const mesghal17Toman =
     silverOunce !== null && usdToman !== null
-      ? (silverOunce * usdToman / 31.103 / 1000) * 700
+      ? (
+          (silverOunce * usdToman / 31.103 / 1000)
+          * 700
+          * 4.608
+        )
       : null;
+
+  const now = new Date().toISOString();
 
   return {
     silverOunce,
@@ -72,13 +80,14 @@ function calculatePrices(silverOunce, usdToman, silver999Toman) {
 
     usdtToman: usdToman,
 
+    // قیمت نهایی مثقال ۱۷ عیار به تومان
     mesghal17Toman:
       mesghal17Toman !== null
         ? Math.round(mesghal17Toman)
         : null,
 
-    updatedAt: new Date().toISOString(),
-    serverTime: new Date().toISOString(),
+    updatedAt: now,
+    serverTime: now,
     source: SOURCE_URL
   };
 }
@@ -101,7 +110,6 @@ async function getPrices() {
 
   const html = await response.text();
 
-  // تبدیل HTML به متن برای استخراج قیمت‌ها
   const text = normalizeDigits(
     html
       .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
@@ -116,13 +124,14 @@ async function getPrices() {
       .replace(/\s+/g, " ")
   );
 
-  // قیمت انس نقره به دلار
+  // قیمت انس جهانی نقره به دلار
   let silverOunce = extractNumber(text, [
     /قیمت\s*هر\s*انس\s*نقره[^$]{0,100}\$\s*([\d,]+(?:\.\d+)?)/i,
-    /انس\s*جهانی\s*\$?\s*([\d,]+(?:\.\d+)?)/i
+    /انس\s*جهانی\s*\$?\s*([\d,]+(?:\.\d+)?)/i,
+    /XAG\/USD[\s\S]{0,300}?\$([\d,]+(?:\.\d+)?)/i
   ]);
 
-  // قیمت دلار به تومان
+  // قیمت دلار بازار ایران به تومان
   const usdToman = extractNumber(text, [
     /نرخ\s*دلار\s*بازار\s*([\d,]+)\s*تومان/i
   ]);
@@ -133,21 +142,22 @@ async function getPrices() {
     /گرم\s*999\s*\(\s*بازار\s*ایران\s*\)\s*([\d,]+)\s*تومان/i
   ]);
 
-  // اگر قیمت‌ها از متن اصلی استخراج نشدند، از داده‌های متداول صفحه کمک بگیر.
-  if (silverOunce === null) {
-    silverOunce = extractNumber(text, [
-      /XAG\/USD[\s\S]{0,300}?\$([\d,]+(?:\.\d+)?)/i
-    ]);
-  }
-
   const errors = [];
 
-  if (silverOunce === null || silverOunce < 5 || silverOunce > 200) {
+  if (
+    silverOunce === null ||
+    silverOunce < 5 ||
+    silverOunce > 200
+  ) {
     errors.push("قیمت معتبر انس نقره پیدا نشد.");
     silverOunce = null;
   }
 
-  if (usdToman === null || usdToman < 1000 || usdToman > 10000000) {
+  if (
+    usdToman === null ||
+    usdToman < 1000 ||
+    usdToman > 10000000
+  ) {
     errors.push("قیمت معتبر دلار به تومان پیدا نشد.");
   }
 
@@ -167,9 +177,10 @@ async function getPrices() {
 
   return {
     success: errors.length === 0,
+
     ...prices,
 
-    // سازگاری با بخش‌هایی از پنل که از ساختار قبلی استفاده می‌کنند
+    // حفظ ساختار خروجی برای سازگاری با پنل فعلی
     prices: {
       silverOunce: prices.silverOunce,
       silver999: prices.silver999Rial,
@@ -203,7 +214,9 @@ module.exports = async (req, res) => {
   try {
     const result = await getPrices();
 
-    return res.status(result.success ? 200 : 502).json(result);
+    return res
+      .status(result.success ? 200 : 502)
+      .json(result);
   } catch (error) {
     return res.status(502).json({
       success: false,
