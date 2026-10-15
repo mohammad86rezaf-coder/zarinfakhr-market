@@ -744,11 +744,11 @@ DASHBOARD
 <tr>
 <td>انس نقره</td>
 <td id="dashOunce">—</td>
-<td>تتر (USDT)</td>
+<td>دلار</td>
 <td>زنده</td>
 </tr>
 <tr>
-<td>تتر (USDT)</td>
+<td>دلار</td>
 <td id="dashUSD">—</td>
 <td>تومان</td>
 <td>زنده</td>
@@ -802,7 +802,7 @@ MARKET
 <div class="market-card">
 <div class="market-title">انس نقره</div>
 <div id="silverOunce" class="market-value">—</div>
-<div class="market-unit">تتر (USDT)</div>
+<div class="market-unit">دلار</div>
 <div id="ounceChange" class="price-change price-neutral">—</div>
 <div id="silverOunceUpdate" class="market-update">در انتظار اطلاعات</div>
 </div>
@@ -810,7 +810,7 @@ MARKET
 
 <div id="usdArea" class="market-area">
 <div class="market-card">
-<div class="market-title">تتر (USDT)</div>
+<div class="market-title">دلار</div>
 <div id="usdPrice" class="market-value">—</div>
 <div class="market-unit">تومان</div>
 <div id="usdChange" class="price-change price-neutral">—</div>
@@ -860,7 +860,7 @@ MARKET
 <td>آنلاین</td>
 </tr>
 <tr>
-<td>تتر (USDT)</td>
+<td>دلار</td>
 <td id="marketTableUSD">—</td>
 <td id="marketTableUSDTime">—</td>
 <td>آنلاین</td>
@@ -1397,7 +1397,7 @@ HISTORY
 <tr>
 <th>زمان</th>
 <th>انس</th>
-<th>تتر (USDT)</th>
+<th>دلار</th>
 <th>۹۹۹</th>
 <th>۹۲۵</th>
 <th>مثقال</th>
@@ -1595,11 +1595,11 @@ gap:18px;
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
 <div class="stat-label">انس نقره</div>
 <div id="boardOunce" class="stat-value" style="font-size:35px">—</div>
-<div class="stat-small">تتر (USDT)</div>
+<div class="stat-small">دلار</div>
 </div>
 
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
-<div class="stat-label">تتر (USDT)</div>
+<div class="stat-label">دلار</div>
 <div id="boardUSD" class="stat-value" style="font-size:35px">—</div>
 <div class="stat-small">تومان</div>
 </div>
@@ -1642,7 +1642,7 @@ const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
 const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ جلوگیری از فشار بیش از حد به API
-const PRICE_REQUEST_TIMEOUT_MS = 10000;
+const PRICE_REQUEST_TIMEOUT_MS = 22000;
 let priceFetchInProgress = false;
 
 /* =========================================================
@@ -2838,7 +2838,7 @@ function processPrices(data){
 
   const missingPrices = [];
   if(!Number.isFinite(ounce) || ounce <= 0) missingPrices.push("اونس نقره");
-  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("تتر (USDT)");
+  if(!Number.isFinite(usd) || usd <= 0) missingPrices.push("دلار");
   if(!Number.isFinite(silver999) || silver999 <= 0) missingPrices.push("نقره ۹۹۹");
 
   if(missingPrices.length){
