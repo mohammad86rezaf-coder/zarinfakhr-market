@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     silver999:
       "https://servatmandi.com/Entity/Summary/50000000001301",
 
-    usd:
+    usdt:
       "https://servatmandi.com/Entity/Summary/5000000000000"
   };
 
@@ -224,46 +224,38 @@ export default async function handler(req, res) {
   // =========================================================
 
   function extractPrice(html, type) {
-    // منابع ثروتمندی ممکن است قیمت را در JSON یا اسکریپت صفحه قرار دهند؛
-    // ابتدا فیلدهای عددی صریح را بررسی می‌کنیم تا اعداد منو/شناسه اشتباه گرفته نشوند.
+    // هرگز از عددهای عمومی موجود در اسکریپت‌ها/شناسه‌های صفحه قیمت‌سازی نمی‌کنیم.
     const raw = String(html || "");
-    const numeric = "([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})";
-    const keyPatterns = [
-      /["'](?:LastPrice|lastPrice|lastprice|LastValue|lastValue|currentPrice|CurrentPrice|last_trade_price|LastTradePrice|ClosingPrice|closePrice|priceValue)["']\s*:\s*"?([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})/gi,
-      /(?:LastPrice|lastPrice|lastprice|LastValue|lastValue|currentPrice|CurrentPrice|LastTradePrice|ClosingPrice|closePrice|priceValue)\s*[=:]\s*"?([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})/gi,
-      /data-(?:last-price|price|value)\s*=\s*["']([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})["']/gi
-    ];
+    const explicitKeys = {
+      silverOunce: ["SilverOunceLastPrice", "silverOunceLastPrice"],
+      silver999: ["Silver999LastPrice", "silver999LastPrice"],
+      usdt: ["USDTLastPrice", "usdtLastPrice"]
+    }[type] || [];
 
-    for (const pattern of keyPatterns) {
-      pattern.lastIndex = 0;
-      let match;
-      while ((match = pattern.exec(raw)) !== null) {
+    for (const key of explicitKeys) {
+      const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const pattern = new RegExp(
+        `["']${escaped}["']\\s*:\\s*["']?([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،]*(?:\\.[0-9]+)?)`,
+        "i"
+      );
+      const match = raw.match(pattern);
+      if (match) {
         const price = parseNumber(match[1]);
         if (Number.isFinite(price) && price > 0) return price;
       }
     }
 
-    // برخی نسخه‌های سایت مقدار قیمت را کنار عنوان «آخرین قیمت» در HTML می‌گذارند.
+    // متن قابل مشاهده؛ اسکریپت‌ها حذف می‌شوند تا اعداد شناسه‌ها به‌عنوان قیمت انتخاب نشوند.
     const text = htmlToText(raw);
     if (!text) throw new Error(`محتوای ${type} خالی است`);
 
-    const labels = ["آخرین قیمت", "آخرین مقدار", "قیمت فعلی", "نرخ فعلی", "آخرین نرخ"];
-    for (const label of labels) {
-      let from = 0;
-      while (true) {
-        const index = text.indexOf(label, from);
-        if (index < 0) break;
-        const section = text.substring(index + label.length, index + label.length + 180);
-        const matches = section.match(/[0-9]{1,3}(?:[٬،,][0-9]{3})+(?:\.[0-9]+)?|[0-9]{4,}(?:\.[0-9]+)?/g) || [];
-        for (const item of matches) {
-          const price = parseNumber(item);
-          if (Number.isFinite(price) && price > 0) return price;
-        }
-        from = index + label.length;
-      }
+    const match = /آخرین قیمت\s*[:：|]?\s*([0-9]{1,3}(?:[٬،,][0-9]{3})+(?:\.[0-9]+)?|[0-9]{4,}(?:\.[0-9]+)?)/.exec(text);
+    if (match) {
+      const price = parseNumber(match[1]);
+      if (Number.isFinite(price) && price > 0) return price;
     }
 
-    throw new Error(`قیمت ${type} در HTML قابل استخراج نبود؛ احتمالاً مقدار با JavaScript و درخواست جداگانه بارگذاری می‌شود.`);
+    throw new Error(`قیمت ${type} در متن HTML صفحه پیدا نشد. منبع مقدار را با JavaScript بارگذاری می‌کند؛ باید درخواست داده‌ای که نمودار دریافت می‌کند شناسایی شود.`);
   }
 
   // =========================================================
@@ -359,8 +351,8 @@ export default async function handler(req, res) {
       ),
 
       getPage(
-        SOURCES.usd,
-        "usd"
+        SOURCES.usdt,
+        "usdt"
       )
     ]);
 
@@ -566,6 +558,9 @@ export default async function handler(req, res) {
 
     usdToman,
 
+    // نام دقیق‌تر برای نرخ تتر؛ usdToman برای سازگاری با نسخه فعلی باقی مانده است.
+    usdtToman: usdToman,
+
     usdRial:
       validUSD
         ? usdRial
@@ -596,8 +591,10 @@ export default async function handler(req, res) {
   // ذخیره آخرین داده معتبر
   // =========================================================
 
-  cache.data = result;
-  cache.timestamp = Date.now();
+  if (!result.partial) {
+    cache.data = result;
+    cache.timestamp = Date.now();
+  }
 
   // =========================================================
   // Response Headers
@@ -631,4 +628,4 @@ export default async function handler(req, res) {
     ...result,
     cached: false
   });
-       }
+                }
