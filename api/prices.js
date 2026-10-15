@@ -224,109 +224,46 @@ export default async function handler(req, res) {
   // =========================================================
 
   function extractPrice(html, type) {
-    const text = htmlToText(html);
-
-    if (!text) {
-      throw new Error(
-        `محتوای ${type} خالی است`
-      );
-    }
-
-    // -------------------------------------------------------
-    // حالت اصلی: عبارت «آخرین قیمت»
-    // -------------------------------------------------------
-
-    const lastPriceIndex =
-      text.indexOf("آخرین قیمت");
-
-    if (lastPriceIndex !== -1) {
-      const section = text.substring(
-        lastPriceIndex,
-        lastPriceIndex + 1200
-      );
-
-      /*
-       * نمونه‌های قابل قبول:
-       *
-       * آخرین قیمت 4950000
-       * آخرین قیمت: 4,950,000
-       * آخرین قیمت | 4,950,000
-       * آخرین قیمت - ۴۹۵۰۰۰۰
-       */
-
-      const patterns = [
-        /آخرین\s*قیمت\s*(?:\||:|-)?\s*([0-9]+(?:[,\٬،][0-9]{3})*(?:\.[0-9]+)?)/i,
-
-        /آخرین\s*قیمت[\s\S]{0,80}?([0-9]{3,}(?:[,\٬،][0-9]{3})*)/i
-      ];
-
-      for (const pattern of patterns) {
-        const match = section.match(pattern);
-
-        if (!match) {
-          continue;
-        }
-
-        const price = parseNumber(match[1]);
-
-        if (
-          Number.isFinite(price) &&
-          price > 0
-        ) {
-          return price;
-        }
-      }
-    }
-
-    // -------------------------------------------------------
-    // روش دوم:
-    // اگر ساختار سایت کمی تغییر کرده باشد، اطراف عبارت
-    // «قیمت» را بررسی می‌کنیم.
-    // -------------------------------------------------------
-
-    const priceWords = [
-      "قیمت فعلی",
-      "قیمت",
-      "آخرین نرخ",
-      "نرخ فعلی"
+    // منابع ثروتمندی ممکن است قیمت را در JSON یا اسکریپت صفحه قرار دهند؛
+    // ابتدا فیلدهای عددی صریح را بررسی می‌کنیم تا اعداد منو/شناسه اشتباه گرفته نشوند.
+    const raw = String(html || "");
+    const numeric = "([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})";
+    const keyPatterns = [
+      /["'](?:LastPrice|lastPrice|lastprice|LastValue|lastValue|currentPrice|CurrentPrice|last_trade_price|LastTradePrice|ClosingPrice|closePrice|priceValue)["']\s*:\s*"?([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})/gi,
+      /(?:LastPrice|lastPrice|lastprice|LastValue|lastValue|currentPrice|CurrentPrice|LastTradePrice|ClosingPrice|closePrice|priceValue)\s*[=:]\s*"?([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})/gi,
+      /data-(?:last-price|price|value)\s*=\s*["']([0-9۰-۹٠-٩][0-9۰-۹٠-٩,٬،. ]{0,24})["']/gi
     ];
 
-    for (const word of priceWords) {
-      const index = text.indexOf(word);
-
-      if (index === -1) {
-        continue;
-      }
-
-      const section = text.substring(
-        index,
-        index + 500
-      );
-
-      const matches =
-        section.match(
-          /([0-9]{3,}(?:[,\٬،][0-9]{3})*(?:\.[0-9]+)?)/g
-        );
-
-      if (!matches) {
-        continue;
-      }
-
-      for (const item of matches) {
-        const price = parseNumber(item);
-
-        if (
-          Number.isFinite(price) &&
-          price > 0
-        ) {
-          return price;
-        }
+    for (const pattern of keyPatterns) {
+      pattern.lastIndex = 0;
+      let match;
+      while ((match = pattern.exec(raw)) !== null) {
+        const price = parseNumber(match[1]);
+        if (Number.isFinite(price) && price > 0) return price;
       }
     }
 
-    throw new Error(
-      `قیمت معتبر ${type} پیدا نشد`
-    );
+    // برخی نسخه‌های سایت مقدار قیمت را کنار عنوان «آخرین قیمت» در HTML می‌گذارند.
+    const text = htmlToText(raw);
+    if (!text) throw new Error(`محتوای ${type} خالی است`);
+
+    const labels = ["آخرین قیمت", "آخرین مقدار", "قیمت فعلی", "نرخ فعلی", "آخرین نرخ"];
+    for (const label of labels) {
+      let from = 0;
+      while (true) {
+        const index = text.indexOf(label, from);
+        if (index < 0) break;
+        const section = text.substring(index + label.length, index + label.length + 180);
+        const matches = section.match(/[0-9]{1,3}(?:[٬،,][0-9]{3})+(?:\.[0-9]+)?|[0-9]{4,}(?:\.[0-9]+)?/g) || [];
+        for (const item of matches) {
+          const price = parseNumber(item);
+          if (Number.isFinite(price) && price > 0) return price;
+        }
+        from = index + label.length;
+      }
+    }
+
+    throw new Error(`قیمت ${type} در HTML قابل استخراج نبود؛ احتمالاً مقدار با JavaScript و درخواست جداگانه بارگذاری می‌شود.`);
   }
 
   // =========================================================
@@ -360,8 +297,6 @@ export default async function handler(req, res) {
             cache: "no-store"
           });
 
-        clearTimeout(timeout);
-
         if (!response.ok) {
           throw new Error(
             `${type}: HTTP ${response.status}`
@@ -370,6 +305,7 @@ export default async function handler(req, res) {
 
         const html =
           await response.text();
+        clearTimeout(timeout);
 
         if (
           !html ||
@@ -650,7 +586,10 @@ export default async function handler(req, res) {
     partial:
       !validSilverOunce ||
       !validSilver999 ||
-      !validUSD
+      !validUSD,
+
+    // برای عیب‌یابی، فقط خطاهای دریافت/استخراج را برمی‌گردانیم.
+    errors: errors.slice(0, 6)
   };
 
   // =========================================================
@@ -690,10 +629,6 @@ export default async function handler(req, res) {
 
   return res.status(200).json({
     ...result,
-    cached: false,
-
-    // اگر یک منبع موقتاً مشکل داشته باشد،
-    // اطلاعات خطا برای پنل لازم نیست.
-    // فقط در لاگ سرور ثبت می‌شود.
+    cached: false
   });
-}
+       }
