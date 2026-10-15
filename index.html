@@ -1590,7 +1590,7 @@ API
 const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
-const PRICE_REFRESH_INTERVAL_MS = 1000;
+const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ جلوگیری از فشار بیش از حد به API
 const PRICE_REQUEST_TIMEOUT_MS = 10000;
 let priceFetchInProgress = false;
 
@@ -2894,10 +2894,10 @@ function setConnectionStatus(isOnline){
     }
 
     if(text)
-      text.textContent = "اتصال دریافت قیمت برقرار نیست";
+      text.textContent = "اتصال قطع است";
 
     if(settingsConnection)
-      settingsConnection.textContent = "اتصال قیمت قطع است";
+      settingsConnection.textContent = "اتصال قطع است";
 
     areas.forEach(
       area => area.classList.add("error")
