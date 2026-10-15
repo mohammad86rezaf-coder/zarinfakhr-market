@@ -60,7 +60,7 @@ export default async function handler(req, res) {
   // تنظیمات پایداری
   // ---------------------------------------------------------
 
-  const REQUEST_TIMEOUT = 8000; // 8 ثانیه
+  const REQUEST_TIMEOUT = 6000; // 6 ثانیه؛ با تلاش مجدد، زیر مهلت مرورگر
   const RETRY_COUNT = 1;        // یک بار تلاش مجدد
   const CACHE_TTL = 30000;      // 30 ثانیه؛ کاهش درخواست به منابع قیمت
 
@@ -423,7 +423,7 @@ export default async function handler(req, res) {
       usdRial =
         extractPrice(
           results[2].value,
-          "usd"
+          "usdt"
         );
     } catch (error) {
       errors.push(error.message);
@@ -510,7 +510,7 @@ export default async function handler(req, res) {
         "دریافت اطلاعات بازار با خطا مواجه شد",
 
       message:
-        "تمام منابع قیمت در دسترس نیستند",
+        "تمام منابع قیمت در دسترس نیستند؛ جزئیات خطا را در details ببینید.",
 
       details:
         errors,
@@ -628,4 +628,4 @@ export default async function handler(req, res) {
     ...result,
     cached: false
   });
-                }
+     }
