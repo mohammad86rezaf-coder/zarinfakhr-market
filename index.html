@@ -2618,10 +2618,17 @@ function calculatePrice(){
     قیمت مثقال = قیمت هر گرم طلای ۱۷ عیار × 4.608
     اگر API قیمت طلای ۱۸ عیار ندهد، عدد اشتباه نمایش داده نمی‌شود.
   */
-  currentMithqal17 =
-    currentGold18 > 0
-      ? currentGold18 * (17 / 18) * 4.608
-      : 0;
+  /*
+    اولویت با قیمت مثقالی است که API طبق فرمول سفارشی SILVER ZARIN FAKHR
+    محاسبه کرده و با کلید mesghal17Toman ارسال می‌کند.
+    فقط اگر API این مقدار را نداد، از قیمت طلای ۱۸ عیار استفاده می‌شود.
+  */
+  if(!(currentMithqal17 > 0)){
+    currentMithqal17 =
+      currentGold18 > 0
+        ? currentGold18 * (17 / 18) * 4.608
+        : 0;
+  }
 
   setText(
     "silverOunce",
@@ -2886,6 +2893,12 @@ function processPrices(responseData){
     "gold_18k_toman","gold18Price"
   ]);
 
+  // قیمت مثقال ۱۷ عیار محاسبه‌شده در API
+  const mithqal17 = firstApiValue(objects, [
+    "mesghal17Toman","mithqal17Toman","mithqal17","mesghal17",
+    "goldMithqal17Toman","gold17MithqalToman"
+  ]);
+
   /*
     اگر API قیمت گرم نقره ۹۹۹ را نفرستاده باشد، از انس دلاری
     و نرخ تومان/دلار محاسبه می‌شود. این محاسبه فقط زمانی مجاز است
@@ -2916,6 +2929,8 @@ function processPrices(responseData){
   currentUSD = usd;
   currentSilver999 = silver999;
   currentGold18 = Number.isFinite(gold18) ? gold18 : 0;
+  // مقدار API را قبل از calculatePrice ثبت می‌کنیم تا در پنل نمایش داده شود.
+  currentMithqal17 = Number.isFinite(mithqal17) ? mithqal17 : 0;
 
   lastPriceUpdateIranDate = getIranClockNow();
 
