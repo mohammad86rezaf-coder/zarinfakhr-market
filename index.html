@@ -540,15 +540,10 @@ LOGIN
 <h1 class="login-title">SILVER ZARIN FAKHR</h1>
 <div class="login-subtitle">ورود به پنل حرفه‌ای مدیریت نقره</div>
 
-<label class="login-label" for="passwordInput">رمز ورود</label>
-
-<input
- id="passwordInput"
- class="password-input"
- type="password"
- autocomplete="current-password"
- placeholder="رمز ورود را وارد کنید"
->
+<label class="login-label" for="emailInput">ایمیل حساب Supabase</label>
+<input id="emailInput" class="password-input" type="email" autocomplete="username" placeholder="ایمیل حساب مدیریت" style="margin-bottom:12px">
+<label class="login-label" for="passwordInput">رمز عبور حساب Supabase</label>
+<input id="passwordInput" class="password-input" type="password" autocomplete="current-password" placeholder="رمز عبور حساب را وارد کنید">
 
 <button id="loginButton" type="button" class="login-button" onclick="login()">
 ورود به پنل قیمت‌ها
@@ -1649,7 +1644,58 @@ let priceFetchInProgress = false;
 LOGIN - کاملاً ثابت
 ========================================================= */
 
-const LOGIN_PASSWORD = "@Mohammad1386";
+const SUPABASE_URL = "https://jndmstlpjlnygscizvow.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_mfVS1jxteUfqOLTJm8L16w_795_cviH";
+const SUPABASE_SESSION_KEY = "SZF_SUPABASE_SESSION";
+let supabaseAccessToken = "";
+let supabaseUserId = "";
+
+function getSupabaseHeaders(extra = {}){
+  const headers = {"apikey": SUPABASE_ANON_KEY, "Content-Type":"application/json", ...extra};
+  if(supabaseAccessToken) headers.Authorization = "Bearer " + supabaseAccessToken;
+  else headers.Authorization = "Bearer " + SUPABASE_ANON_KEY;
+  return headers;
+}
+
+async function supabaseRequest(path, options = {}){
+  const response = await fetch(SUPABASE_URL + path, {
+    ...options,
+    headers: getSupabaseHeaders(options.headers || {})
+  });
+  const text = await response.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch { data = text; }
+  if(!response.ok){
+    const message = data && (data.msg || data.message || data.error_description || data.error) || "خطای ارتباط با Supabase (" + response.status + ")";
+    throw new Error(message);
+  }
+  return data;
+}
+
+function mapDbProduct(row){
+  return {
+    id: row.id, code: row.code || "", name: row.name || "", category: row.category || "",
+    weight: row.weight == null ? "" : Number(row.weight), size: row.size || "", stone: row.stone || "",
+    plating: row.plating || "", purity: Number(row.purity || 925), laborType: row.labor_type || "gram",
+    laborValue: Number(row.labor_value || 0), otherCost: Number(row.other_cost || 0),
+    image: row.image_url || "", stock: row.stock_status || (Number(row.stock) > 0 ? "موجود" : "ناموجود"),
+    price: Number(row.price || 0), description: row.description || "", is_active: row.is_active !== false,
+    createdAt: row.created_at || new Date().toISOString(), updatedAt: row.updated_at || undefined
+  };
+}
+
+function mapProductToDb(product){
+  return {
+    code: product.code || null, name: product.name, category: product.category || "",
+    description: product.description || "", price: Number(product.price || 0),
+    weight: Number(product.weight || 0), purity: String(product.purity || 925),
+    size: product.size || "", stone: product.stone || "", plating: product.plating || "",
+    labor_type: product.laborType || "gram", labor_value: Number(product.laborValue || 0),
+    other_cost: Number(product.otherCost || 0), stock_status: product.stock || "موجود",
+    stock: product.stock === "موجود" ? 1 : 0, image_url: product.image || null,
+    is_active: product.is_active !== false, updated_at: new Date().toISOString()
+  };
+}
 
 /* =========================================================
 VARIABLES
@@ -1708,50 +1754,37 @@ loadPanelTheme();
 LOGIN
 ========================================================= */
 
-function login(){
-
-  const passwordInput =
-    document.getElementById("passwordInput");
-
-  const loginError =
-    document.getElementById("loginError");
-
-  if(!passwordInput) return;
-
-  const password =
-    passwordInput.value.trim();
-
-  if(password === LOGIN_PASSWORD){
-
-    if(loginError)
-      loginError.textContent = "";
-
-    document
-      .getElementById("loginPage")
-      .classList.add("hidden");
-
-    document
-      .getElementById("appPage")
-      .classList.remove("hidden");
-
+async function login(){
+  const emailInput = document.getElementById("emailInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const loginError = document.getElementById("loginError");
+  const email = emailInput ? emailInput.value.trim() : "";
+  const password = passwordInput ? passwordInput.value : "";
+  if(!email || !password){ if(loginError) loginError.textContent = "ایمیل و رمز عبور حساب Supabase را وارد کنید."; return; }
+  const button = document.getElementById("loginButton");
+  if(button){ button.disabled = true; button.textContent = "در حال ورود..."; }
+  try{
+    const auth = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=password", {
+      method:"POST", headers:{"apikey":SUPABASE_ANON_KEY,"Content-Type":"application/json"},
+      body:JSON.stringify({email, password})
+    });
+    const result = await auth.json();
+    if(!auth.ok) throw new Error(result.msg || result.message || result.error_description || "ورود ناموفق بود؛ ایمیل و رمز عبور را بررسی کنید.");
+    supabaseAccessToken = result.access_token;
+    supabaseUserId = result.user && result.user.id || "";
+    sessionStorage.setItem(SUPABASE_SESSION_KEY, JSON.stringify({access_token:supabaseAccessToken,user_id:supabaseUserId}));
+    if(loginError) loginError.textContent = "";
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("appPage").classList.remove("hidden");
     loadSettings();
-    loadProducts();
-    updateDashboard();
-    startPriceUpdates();
-    startClock();
-    calculatePrice();
-
-  }else{
-
-    if(loginError)
-      loginError.textContent =
-        "رمز ورود صحیح نیست.";
-
-    passwordInput.value = "";
-    passwordInput.focus();
-
+    await loadProducts();
+    updateDashboard(); startPriceUpdates(); startClock(); calculatePrice();
+  }catch(error){
+    console.error("Supabase login error:", error);
+    if(loginError) loginError.textContent = "ورود/اتصال ناموفق: " + (error.message || "خطای نامشخص");
+  }finally{
+    if(button){ button.disabled = false; button.textContent = "ورود به پنل قیمت‌ها"; }
   }
-
 }
 
 window.login = login;
@@ -1763,6 +1796,10 @@ LOGOUT
 ========================================================= */
 
 function logout(){
+
+  supabaseAccessToken = "";
+  supabaseUserId = "";
+  sessionStorage.removeItem(SUPABASE_SESSION_KEY);
 
   document
     .getElementById("appPage")
@@ -4470,8 +4507,23 @@ async function addProduct(){
       products.unshift(product);
     }
 
-    if(!saveProducts(products))
-      return;
+    // ذخیره اصلی در دیتابیس Supabase؛ فقط بعد از موفقیت، کش محلی به‌روزرسانی می‌شود.
+    const dbProduct = mapProductToDb(product);
+    let savedRows;
+    if(oldProduct && oldProduct.id && Number.isFinite(Number(oldProduct.id))){
+      savedRows = await supabaseRequest("/rest/v1/products?id=eq." + encodeURIComponent(oldProduct.id) + "&select=*", {
+        method:"PATCH", headers:{"Prefer":"return=representation"}, body:JSON.stringify(dbProduct)
+      });
+    }else{
+      savedRows = await supabaseRequest("/rest/v1/products?select=*", {
+        method:"POST", headers:{"Prefer":"return=representation"}, body:JSON.stringify(dbProduct)
+      });
+    }
+    if(!Array.isArray(savedRows) || !savedRows.length) throw new Error("دیتابیس محصولی برنگرداند؛ ذخیره تأیید نشد.");
+    const savedProduct = mapDbProduct(savedRows[0]);
+    if(oldProduct) products[editingIndex] = savedProduct;
+    else products.unshift(savedProduct);
+    if(!saveProducts(products)) return;
 
     clearProductForm();
     renderProducts();
@@ -4482,7 +4534,7 @@ async function addProduct(){
   }catch(error){
 
     console.error("خطا در ذخیره محصول:",error);
-    alert("ذخیره محصول انجام نشد. اطلاعات واردشده را بررسی و دوباره تلاش کنید.");
+    alert("ذخیره محصول در Supabase انجام نشد: " + (error.message || "خطای نامشخص") + "\nاطلاعات در دیتابیس ثبت نشده است.");
 
   }finally{
 
@@ -4799,35 +4851,35 @@ function renderProducts(){
     }).join("");
 }
 
-function loadProducts(){
-
-  renderProducts();
-
+async function loadProducts(){
+  try{
+    const rows = await supabaseRequest("/rest/v1/products?select=*&order=created_at.desc", {method:"GET"});
+    const products = (Array.isArray(rows) ? rows : []).map(mapDbProduct);
+    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+    renderProducts();
+    updateDashboard();
+  }catch(error){
+    console.error("خواندن محصولات از Supabase ناموفق بود:", error);
+    alert("خواندن محصولات از دیتابیس انجام نشد: " + (error.message || "خطای نامشخص"));
+    renderProducts();
+  }
 }
 
 /* =========================================================
 DELETE PRODUCT
 ========================================================= */
 
-function deleteProduct(id){
-
-  if(!confirm("آیا از حذف این محصول مطمئن هستید؟"))
-    return;
-
-  const products =
-    getProducts().filter(
-      p => String(p.id) !== String(id)
-    );
-
-  if(!saveProducts(products))
-    return;
-
-  if(String(editingProductId) === String(id))
-    clearProductForm();
-
-  renderProducts();
-  updateDashboard();
-
+async function deleteProduct(id){
+  if(!confirm("آیا از حذف این محصول از دیتابیس مطمئن هستید؟")) return;
+  try{
+    await supabaseRequest("/rest/v1/products?id=eq." + encodeURIComponent(id), {method:"DELETE"});
+    const products = getProducts().filter(p => String(p.id) !== String(id));
+    saveProducts(products);
+    if(String(editingProductId) === String(id)) clearProductForm();
+    renderProducts(); updateDashboard();
+  }catch(error){
+    alert("حذف محصول از Supabase انجام نشد: " + (error.message || "خطای نامشخص"));
+  }
 }
 
 /* =========================================================
