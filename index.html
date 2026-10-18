@@ -4209,6 +4209,45 @@ function readProductImage(){
 }
 
 /* =========================================================
+SUPABASE STORAGE: PRODUCT IMAGE UPLOAD
+========================================================= */
+const PRODUCT_IMAGE_BUCKET = "product-images";
+
+async function uploadProductImageDataURL(dataURL, productCode){
+  if(!dataURL || !String(dataURL).startsWith("data:image/")) return dataURL || "";
+  if(!supabaseAccessToken) throw new Error("نشست ورود منقضی شده است؛ دوباره وارد پنل شوید.");
+
+  const parts = String(dataURL).match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,([\s\S]+)$/);
+  if(!parts) throw new Error("ساختار تصویر برای بارگذاری معتبر نیست.");
+  const mimeType = parts[1] === "image/jpg" ? "image/jpeg" : parts[1];
+  const binary = atob(parts[2]);
+  const bytes = new Uint8Array(binary.length);
+  for(let i=0;i<binary.length;i++) bytes[i] = binary.charCodeAt(i);
+  const blob = new Blob([bytes], {type:mimeType});
+  const safeCode = String(productCode || "product").replace(/[^a-zA-Z0-9_-]/g,"-").slice(0,80) || "product";
+  const objectPath = safeCode + "-" + Date.now() + ".jpg";
+  const endpoint = SUPABASE_URL + "/storage/v1/object/" + PRODUCT_IMAGE_BUCKET + "/" + encodeURIComponent(objectPath);
+  const response = await fetch(endpoint, {
+    method:"POST",
+    headers:{
+      "apikey":SUPABASE_ANON_KEY,
+      "Authorization":"Bearer " + supabaseAccessToken,
+      "Content-Type":"image/jpeg",
+      "x-upsert":"true"
+    },
+    body:blob
+  });
+  const bodyText = await response.text();
+  if(!response.ok){
+    let detail = bodyText;
+    try { const parsed = JSON.parse(bodyText); detail = parsed.message || parsed.error || parsed.msg || bodyText; } catch {}
+    if(response.status === 404) throw new Error("فضای product-images در Supabase ساخته نشده است. ابتدا دستور SQL همراه فایل را اجرا کنید.");
+    throw new Error("بارگذاری تصویر در Supabase ناموفق بود: " + (detail || response.status));
+  }
+  return SUPABASE_URL + "/storage/v1/object/public/" + PRODUCT_IMAGE_BUCKET + "/" + encodeURIComponent(objectPath);
+}
+
+/* =========================================================
 PRODUCT PRICE CALCULATION
 ========================================================= */
 
@@ -4481,6 +4520,9 @@ async function addProduct(){
     }
 
     const oldProduct = editingIndex >= 0 ? products[editingIndex] : null;
+    if(selectedImage && selectedImage.startsWith("data:image/")){
+      selectedImage = await uploadProductImageDataURL(selectedImage, code);
+    }
     const product = {
       ...(oldProduct || {}),
       id: oldProduct ? oldProduct.id : Date.now(),
@@ -4510,7 +4552,7 @@ async function addProduct(){
     // ذخیره اصلی در دیتابیس Supabase؛ فقط بعد از موفقیت، کش محلی به‌روزرسانی می‌شود.
     const dbProduct = mapProductToDb(product);
     let savedRows;
-    if(oldProduct && oldProduct.id && Number.isFinite(Number(oldProduct.id))){
+    if(oldProduct && oldProduct.id !== undefined && oldProduct.id !== null){
       savedRows = await supabaseRequest("/rest/v1/products?id=eq." + encodeURIComponent(oldProduct.id) + "&select=*", {
         method:"PATCH", headers:{"Prefer":"return=representation"}, body:JSON.stringify(dbProduct)
       });
@@ -4822,7 +4864,7 @@ function renderProducts(){
             <button
               class="blue-button"
               style="min-height:38px;padding:0 12px"
-              onclick="editProduct(${Number(product.id)})"
+              onclick="editProduct(decodeURIComponent('${encodeURIComponent(String(product.id))}'))"
             >
               ویرایش
             </button>
@@ -4830,7 +4872,7 @@ function renderProducts(){
             <button
               class="danger-button"
               style="min-height:38px;padding:0 12px"
-              onclick="deleteProduct(${Number(product.id)})"
+              onclick="deleteProduct(decodeURIComponent('${encodeURIComponent(String(product.id))}'))"
             >
               حذف
             </button>
@@ -4838,7 +4880,7 @@ function renderProducts(){
             <button
               class="secondary-button"
               style="min-height:38px;padding:0 12px"
-              onclick="useProductForInvoice(${Number(product.id)})"
+              onclick="useProductForInvoice(decodeURIComponent('${encodeURIComponent(String(product.id))}'))"
             >
               فاکتور
             </button>
@@ -4852,6 +4894,10 @@ function renderProducts(){
 }
 
 async function loadProducts(){
+  if(!supabaseAccessToken){
+    renderProducts();
+    return;
+  }
   try{
     const rows = await supabaseRequest("/rest/v1/products?select=*&order=created_at.desc", {method:"GET"});
     const products = (Array.isArray(rows) ? rows : []).map(mapDbProduct);
@@ -4951,7 +4997,7 @@ function useProductForInvoice(id){
 
   const product =
     getProducts().find(
-      p => Number(p.id) === Number(id)
+      p => String(p.id) === String(id)
     );
 
   if(!product)
@@ -5891,7 +5937,7 @@ document.addEventListener(
     updateProductLaborLabel();
 
     loadSettings();
-    loadProducts();
+    // داده‌های محصولات فقط پس از ورود معتبر به Supabase خوانده می‌شوند.
     renderHistory();
     updateDashboard();
 
