@@ -521,7 +521,172 @@ html[data-szf-theme="light"] #appPage .section-description{color:#666}
 .theme-button:not(.active){background:transparent;color:var(--text)}
 html[data-szf-theme="light"] #appPage .theme-button:not(.active){color:#333;background:#f4f4f4;border-color:#ccc}
 
+
+/* PHASE 2: inventory overview and filters */
+.inventory-toolbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 18px}
+.inventory-mini-stat{border:1px solid var(--borderGold);border-radius:12px;padding:12px 14px;background:linear-gradient(145deg,rgba(212,175,106,.09),rgba(15,15,15,.75));min-width:0}
+.inventory-mini-stat .mini-label{font-size:12px;color:var(--muted);margin-bottom:7px}
+.inventory-mini-stat .mini-value{font-size:21px;font-weight:800;color:var(--goldBright);overflow-wrap:anywhere}
+.inventory-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,.45fr) minmax(140px,.45fr);gap:10px;margin-bottom:12px}
+.inventory-result-line{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:0 0 14px}
+.inventory-result-line strong{color:var(--goldBright)}
+@media(max-width:650px){.inventory-toolbar{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.inventory-mini-stat{padding:10px}.inventory-mini-stat .mini-value{font-size:18px}.inventory-filters{grid-template-columns:1fr 1fr}.inventory-filters .product-search{grid-column:1/-1}}
+
+/* ================= SZF PHASE 3: coherent cross-section improvements ================= */
+:root{--szf-overlay:rgba(3,3,3,.55)}
+.login-label{margin-top:2px}
+.product-code-lookup,.invoice-draft-panel{padding:15px;border:1px solid rgba(212,175,106,.27);border-radius:14px;background:rgba(128,102,66,.06);margin:0 0 16px}
+.lookup-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;align-items:center}
+.lookup-details{margin-top:10px;padding:12px;border-radius:10px;border:1px solid var(--borderGold);font-size:12px;line-height:1.9}
+.lookup-details strong{color:var(--goldBright)}
+.product-save-summary{padding:13px;border:1px solid rgba(212,175,106,.28);border-radius:12px;background:rgba(184,138,74,.08);line-height:1.9;font-size:13px}
+.inventory-weight-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:0 0 16px}
+.weight-stat{padding:12px 14px;border:1px solid var(--borderGold);border-radius:12px;background:rgba(184,138,74,.055)}
+.weight-stat span{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}
+.weight-stat strong{display:block;font-size:17px;color:var(--goldBright)}
+.product-stock-quantity{font-size:11px;color:var(--muted);margin-top:8px}
+.existing-product-images{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.existing-product-image{width:112px;border:1px solid var(--borderGold);border-radius:10px;padding:7px;background:rgba(184,138,74,.05)}
+.existing-product-image img{width:96px;height:82px;object-fit:contain;background:#fff;border-radius:6px;display:block;margin:0 auto 6px}
+.existing-product-image .image-main-tag{font-size:10px;text-align:center;color:var(--goldBright);min-height:17px}
+.existing-product-image button{display:block;width:100%;margin-top:5px;padding:5px;font-size:10px;min-height:30px}
+
+.price-freshness-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 18px;padding:13px 16px;border:1px solid var(--borderGold);border-radius:14px;background:rgba(184,138,74,.06)}
+.price-freshness-bar .freshness-main{font-size:12px;line-height:1.9}
+.price-freshness-bar strong{color:var(--goldBright)}
+.price-freshness-bar .freshness-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.history-toolbar{display:grid;grid-template-columns:minmax(180px,260px) auto;gap:12px;align-items:end}
+.history-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-start}
+.history-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.history-stat{border:1px solid var(--borderGold);border-radius:12px;padding:11px}
+.history-stat span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+.history-stat strong{font-size:15px;color:var(--goldBright)}
+.history-chart-wrap{height:250px;padding:8px 0;margin:12px 0 22px;position:relative}
+#priceHistoryChart{width:100%;height:100%;display:block}
+.invoice-draft-total{text-align:left;font-weight:900;color:var(--goldBright);margin-top:14px;padding:10px}
+.invoice-status-line{margin-top:10px;color:var(--muted);font-size:12px}
+.invoice-status-line strong{color:var(--goldBright)}
+.appearance-preview{margin-top:16px;min-height:80px;padding:24px;border:1px solid var(--borderGold);border-radius:14px;color:var(--silverBright);background:#0a0a0a center/cover no-repeat;text-align:center}
+.settings-item input[type=range]{width:100%;accent-color:var(--goldBright)}
+.settings-item input.color-picker{width:100%;height:48px;padding:5px;border:1px solid var(--borderGold);background:transparent;border-radius:10px;cursor:pointer}
+@media(max-width:700px){#panelColorSettings{grid-template-columns:1fr 1fr}}
+.tax-toggle-label{display:flex;align-items:center;gap:8px;margin-top:9px;font-size:11px;color:var(--muted)}
+.tax-toggle-label input{accent-color:var(--goldBright)}
+html[data-szf-theme="light"] #loginPage{background:linear-gradient(145deg,#f3f0e9,#fff,#e8e3d9);color:#222}
+html[data-szf-theme="light"] #loginPage .login-box{background:rgba(255,255,255,.94);border-color:#d8c39e;box-shadow:0 22px 58px rgba(0,0,0,.12)}
+html[data-szf-theme="light"] #loginPage .login-title{color:#222}
+html[data-szf-theme="light"] #loginPage .login-label{color:#444}
+html[data-szf-theme="light"] #loginPage .password-input{background:#fff;color:#222;border-color:#ccc}
+html[data-szf-theme="light"] #loginPage .logo-text{color:#111}
+html[data-szf-theme="light"] #appPage .inventory-weight-summary .weight-stat,
+html[data-szf-theme="light"] #appPage .product-code-lookup,
+html[data-szf-theme="light"] #appPage .invoice-draft-panel,
+html[data-szf-theme="light"] #appPage .price-freshness-bar,
+html[data-szf-theme="light"] #appPage .history-stat{background:rgba(255,255,255,.83);color:#222}
+html[data-szf-theme="light"] #appPage .lookup-details{background:#fff;color:#222}
+html[data-szf-theme="light"] #appPage .product-save-summary{background:#fcf8ee;color:#222}
+html[data-szf-theme="light"] #appPage .invoice-draft-total{color:#765328}
+.brand-logo img,.logo-circle img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
+.brand-logo.has-image{background:#fff}
+.logo-circle.has-image{background:#fff}
+@media(max-width:700px){.inventory-weight-summary,.history-stats{grid-template-columns:1fr}.history-toolbar{grid-template-columns:1fr}.lookup-row{grid-template-columns:1fr}.price-freshness-bar{align-items:stretch}.history-chart-wrap{height:210px}}
+@media print{
+  @page{size:auto;margin:10mm}
+  html,body{background:#fff!important;color:#000!important;margin:0!important;padding:0!important;min-height:0!important}
+  body *{visibility:hidden!important}
+  #loginPage,.app-header,.nav-bar,.footer,#displayMode,#invoiceHistoryPanel,.no-print{display:none!important}
+  /* Keep the application ancestor rendered; otherwise the nested invoice cannot print. */
+  #appPage{display:block!important;position:static!important;min-height:0!important;margin:0!important;padding:0!important;background:#fff!important}
+  #appPage .section{display:none!important}
+  #invoiceSection{display:block!important;visibility:visible!important;position:static!important;margin:0!important;padding:0!important;background:#fff!important}
+  #invoicePreview,#invoicePreview *{visibility:visible!important}
+  #invoicePreview{display:block!important;position:static!important;left:auto!important;top:auto!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#fff!important;color:#000!important;box-shadow:none!important}
+  #invoicePreview .invoice-box{background:#fff!important;color:#000!important;border:1px solid #bbb!important}
+  #invoicePreview .invoice-box span,#invoicePreview .invoice-box strong{color:#000!important}
+  #invoicePreview .data-table th,#invoicePreview .data-table td{color:#000!important;background:#fff!important;border-color:#ccc!important}
+  #invoicePreview .invoice-total{background:#f4f4f4!important;border:1px solid #bbb!important;color:#000!important}
+  #invoicePreview .invoice-total strong{color:#000!important}
+  #invoicePreview .invoice-status-line{color:#333!important}
+}
+
 </style>
+
+<style id="szf-business-workspace-styles">
+/* PHASE 4 — operational workspace */
+.biz-module-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin:12px 0;scrollbar-width:thin}
+.biz-module-tab{white-space:nowrap;border:1px solid var(--borderGold);border-radius:10px;padding:9px 13px;background:rgba(128,102,66,.08);color:var(--text);font-weight:700;cursor:pointer}
+.biz-module-tab.active{background:linear-gradient(135deg,#A7783E,#D4AF6A);color:#17110a}
+.biz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.biz-field{min-width:0}
+.biz-field.full{grid-column:1/-1}
+.biz-field label{display:block;font-size:12px;margin-bottom:6px;color:var(--muted)}
+.biz-field input,.biz-field select,.biz-field textarea{width:100%;box-sizing:border-box;background:var(--inputBg,rgba(0,0,0,.22));color:var(--text);border:1px solid var(--borderGold);border-radius:9px;padding:10px;font:inherit;min-height:42px}
+.biz-field textarea{min-height:76px;resize:vertical}
+.biz-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:9px;align-items:center;margin:14px 0}
+.biz-toolbar input{width:100%;min-width:0;box-sizing:border-box;background:var(--inputBg,rgba(0,0,0,.22));color:var(--text);border:1px solid var(--borderGold);border-radius:9px;padding:10px}
+.biz-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.biz-summary-card{padding:12px;border:1px solid var(--borderGold);border-radius:12px;background:rgba(184,138,74,.06);min-width:0}
+.biz-summary-card span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+.biz-summary-card strong{font-size:18px;color:var(--goldBright);overflow-wrap:anywhere}
+.biz-note{padding:11px 13px;border:1px solid rgba(212,175,106,.32);border-radius:10px;font-size:12px;line-height:1.9;margin:10px 0;background:rgba(184,138,74,.06)}
+.biz-action{padding:6px 9px;border-radius:7px;border:1px solid var(--borderGold);margin:2px;cursor:pointer;background:transparent;color:var(--text);font:inherit;font-size:11px}
+.biz-action.danger{border-color:#a94b4b;color:#e99b9b}
+.biz-empty{padding:20px;text-align:center;color:var(--muted)}
+@media(max-width:650px){.biz-grid{grid-template-columns:1fr}.biz-field.full{grid-column:auto}.biz-toolbar{grid-template-columns:1fr 1fr}.biz-toolbar input{grid-column:1/-1}.biz-summary{grid-template-columns:1fr 1fr}.biz-summary-card:last-child{grid-column:1/-1}}
+</style>
+
+<style id="szf-cleanup-and-product-view-styles">
+.password-field-wrap{position:relative;display:flex;align-items:center;gap:7px}
+.password-field-wrap .password-input{flex:1;min-width:0;padding-inline-end:12px}
+.password-visibility-button{flex:0 0 auto;min-height:44px;padding:8px 11px;border:1px solid var(--borderGold);border-radius:9px;background:rgba(212,175,106,.09);color:var(--goldBright);font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.product-view-controls{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.product-view-controls .active{background:linear-gradient(135deg,#A7783E,#D4AF6A);color:#17110a;border-color:#D4AF6A}
+.product-admin-table{min-width:900px}
+.product-admin-table td{vertical-align:middle}
+.product-table-actions{display:flex;flex-wrap:wrap;gap:5px;min-width:190px}
+.product-table-actions button{padding:7px 9px;min-height:34px;font-size:11px}
+.product-table-no-image{display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border:1px dashed var(--borderGold);border-radius:8px;color:var(--muted)}
+@media(max-width:700px){.inventory-result-line{align-items:flex-start;gap:10px;flex-direction:column}.product-view-controls{width:100%}.product-view-controls button{flex:1;min-width:100px}}
+</style>
+
+<style id="szf-organization-and-display-fixes">
+/* نظم منو: گروه‌بندی بر اساس ترتیب انجام کار */
+.nav-inner{align-items:flex-start;gap:12px;}
+.nav-group{display:flex;flex-direction:column;align-items:stretch;gap:7px;flex:0 0 auto;padding:0 4px 6px;border-inline-start:1px solid var(--borderGold);}
+.nav-group:first-child{border-inline-start:0;}
+.nav-group-title{display:block;padding:0 5px;color:var(--muted);font-size:10px;font-weight:900;white-space:nowrap;}
+.nav-group-buttons{display:flex;align-items:center;gap:7px;flex:0 0 auto;}
+.nav-group .nav-button{white-space:nowrap;min-height:42px;padding:10px 13px;}
+/* تنظیمات رنگ در ابتدای بخش قرار می‌گیرد و در موبایل نیز واضح نمایش داده می‌شود. */
+#appearanceSettingsPanel{scroll-margin-top:14px;border-color:var(--borderGold);}
+#panelColorSettings .settings-item{min-width:0;}
+#panelColorSettings .color-picker{display:block;min-width:0;}
+/* حالت تابلو نیز از پوسته سراسری روشن/تیره پیروی می‌کند. */
+#displayMode{background:var(--board-bg,#030303)!important;color:var(--board-text,#F4F4F4);transition:background .2s,color .2s;}
+#displayMode .displayMode-price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
+#displayMode .stat-card{background:var(--board-card,#090909);color:var(--board-text,#F4F4F4);border:1px solid var(--borderGold);}
+#displayMode .stat-label,#displayMode .stat-small{color:var(--board-muted,#999)!important;}
+#displayMode .stat-value{color:var(--goldBright)!important;}
+#displayMode .board-brand-title{color:var(--board-text,#F4F4F4)!important;}
+#displayMode .board-brand-subtitle{color:var(--goldBright)!important;}
+#displayMode .board-footer{color:var(--board-muted,#777)!important;}
+html[data-szf-theme="dark"] #displayMode{--board-bg:#030303;--board-card:#090909;--board-text:#F4F4F4;--board-muted:#999;}
+html[data-szf-theme="light"] #displayMode{--board-bg:#F6F2E9;--board-card:#FFFFFF;--board-text:#262626;--board-muted:#666;}
+html[data-szf-theme="light"] #displayMode .stat-card{box-shadow:0 8px 24px rgba(0,0,0,.06);border-color:#ded6c8;}
+@media(max-width:700px){
+  .nav-inner{gap:9px;}
+  .nav-group{gap:6px;}
+  .nav-group-title{font-size:9px;}
+  .nav-group .nav-button{padding:9px 11px;font-size:11px;}
+  #panelColorSettings{grid-template-columns:1fr 1fr;}
+  #displayMode{padding:12px!important;}
+  #displayMode .displayMode-price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px!important;}
+  #displayMode .stat-card{min-height:130px!important;padding:12px 8px;}
+  #displayMode .stat-value{font-size:24px!important;}
+}
+@media(max-width:380px){#panelColorSettings{grid-template-columns:1fr;}}
+</style>
+
 </head>
 
 <body>
@@ -538,18 +703,18 @@ LOGIN
 </div>
 
 <h1 class="login-title">SILVER ZARIN FAKHR</h1>
-<div class="login-subtitle">ورود به پنل حرفه‌ای مدیریت نقره</div>
+<div class="login-subtitle">ورود امن به پنل حرفه‌ای مدیریت نقره</div>
 
-<label class="login-label" for="emailInput">ایمیل حساب Supabase</label>
-<input id="emailInput" class="password-input" type="email" autocomplete="username" placeholder="ایمیل حساب مدیریت" style="margin-bottom:12px">
-<label class="login-label" for="passwordInput">رمز عبور حساب Supabase</label>
-<input id="passwordInput" class="password-input" type="password" autocomplete="current-password" placeholder="رمز عبور حساب را وارد کنید">
+<label class="login-label" for="emailInput">نام کاربری</label>
+<input id="emailInput" class="password-input" type="email" autocomplete="username" placeholder="ایمیل حساب مدیریت را وارد کنید" style="margin-bottom:12px">
+<label class="login-label" for="passwordInput">رمز عبور</label>
+<div class="password-field-wrap"><input id="passwordInput" class="password-input" type="password" autocomplete="current-password" placeholder="رمز عبور حساب را وارد کنید"><button id="togglePasswordButton" class="password-visibility-button" type="button" aria-label="نمایش رمز عبور" aria-pressed="false" onclick="toggleLoginPassword()">نمایش</button></div>
 
 <button id="loginButton" type="button" class="login-button" onclick="login()">
-ورود به پنل قیمت‌ها
+ورود به پنل مدیریت
 </button>
-
-<div id="loginError" class="login-error"></div>
+<button type="button" class="secondary-button" style="width:100%;margin-top:9px" onclick="sendPasswordRecovery()">بازیابی رمز عبور</button>
+<div id="loginError" class="login-error" aria-live="polite"></div>
 
 <div class="login-footer">
 SILVER ZARIN FAKHR
@@ -584,42 +749,38 @@ MAIN APP
 </div>
 </header>
 
-<nav class="nav-bar">
-<div class="container nav-inner">
-
-<button class="nav-button active" onclick="showSection('dashboardSection',this)">
-داشبورد
-</button>
-
-<button class="nav-button" onclick="showSection('marketSection',this)">
-قیمت بازار
-</button>
-
-<button class="nav-button" onclick="showSection('calculatorSection',this)">
-محاسبه قیمت
-</button>
-
-<button class="nav-button" onclick="showSection('invoiceSection',this)">
-فاکتور فروش
-</button>
-
-<button class="nav-button" onclick="showSection('productsSection',this)">
-محصولات و موجودی
-</button>
-
-<button class="nav-button" onclick="showSection('historySection',this)">
-تاریخچه قیمت
-</button>
-
-<button class="nav-button" onclick="showSection('settingsSection',this)">
-تنظیمات
-</button>
-
-<button class="nav-button" onclick="showDisplayMode()">
-حالت تابلو
-</button>
-
-</div>
+<nav class="nav-bar" aria-label="منوی اصلی پنل مدیریت">
+  <div class="container nav-inner">
+    <div class="nav-group">
+      <span class="nav-group-title">۱. شروع و بازار</span>
+      <div class="nav-group-buttons">
+        <button class="nav-button active" onclick="showSection('dashboardSection',this)">داشبورد</button>
+        <button class="nav-button" onclick="showSection('marketSection',this)">قیمت بازار</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-title">۲. محصولات و محاسبه</span>
+      <div class="nav-group-buttons">
+        <button class="nav-button" onclick="showSection('productsSection',this)">محصولات و موجودی</button>
+        <button class="nav-button" onclick="showSection('calculatorSection',this)">محاسبه قیمت</button>
+      </div>
+    </div>
+    <div class="nav-group">
+      <span class="nav-group-title">۳. فروش و سوابق</span>
+      <div class="nav-group-buttons">
+        <button class="nav-button" onclick="showSection('invoiceSection',this)">فاکتور فروش</button>
+        <button class="nav-button" onclick="showSection('historySection',this)">تاریخچه قیمت</button>
+        <button class="nav-button" onclick="showSection('businessSection',this);window.szfLoadBusinessModule&&window.szfLoadBusinessModule('customers')">مدیریت کسب‌وکار</button>
+      </div>
+    </div>
+    <div class="nav-group nav-group-tools">
+      <span class="nav-group-title">۴. تنظیمات و ابزار</span>
+      <div class="nav-group-buttons">
+        <button class="nav-button" onclick="showSection('settingsSection',this)">تنظیمات</button>
+        <button class="nav-button" onclick="showDisplayMode()">حالت تابلو</button>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <main class="container">
@@ -761,7 +922,7 @@ DASHBOARD
 <td>محاسباتی</td>
 </tr>
 <tr>
-<td>مثقال ۱۷ عیار</td>
+<td>قیمت خرید</td>
 <td id="dashMithqal">—</td>
 <td>تومان</td>
 <td>محاسباتی</td>
@@ -781,11 +942,16 @@ MARKET
 <h2 class="section-title">تابلو قیمت نقره</h2>
 <p class="section-description">آخرین قیمت‌های بازار نقره و دلار</p>
 
+<div class="price-freshness-bar" id="priceFreshnessBar">
+  <div class="freshness-main"><strong>وضعیت اطلاعات بازار</strong><br><span id="priceFreshnessStatus">هنوز داده معتبری دریافت نشده است.</span><br><span>آخرین دریافت موفق: <b id="priceLastSuccess">—</b> | گذشت زمان: <b id="priceElapsed">—</b></span><br><small>نمایش ساعت و وضعیت هر ثانیه تازه می‌شود؛ دریافت واقعی قیمت طبق فاصله امن API انجام می‌شود.</small></div>
+  <div class="freshness-actions"><button type="button" class="secondary-button" onclick="refreshMarketPricesNow()">به‌روزرسانی دستی</button></div>
+</div>
+
 <div class="market-grid">
 
 <div id="mithqalArea" class="market-area">
 <div class="market-card">
-<div class="market-title">مثقال ۱۷ عیار</div>
+<div class="market-title">قیمت خرید</div>
 <div id="mithqal17" class="market-value">—</div>
 <div class="market-unit">تومان</div>
 <div id="mithqalChange" class="price-change price-neutral">—</div>
@@ -873,7 +1039,7 @@ MARKET
 <td>محاسباتی</td>
 </tr>
 <tr>
-<td>مثقال ۱۷ عیار</td>
+<td>قیمت خرید</td>
 <td id="marketTableMithqal">—</td>
 <td id="marketTableMithqalTime">—</td>
 <td>محاسباتی</td>
@@ -899,6 +1065,16 @@ CALCULATOR
 
 <div class="sub-title">اطلاعات محصول</div>
 
+<div class="product-code-lookup" id="calculatorProductLookup">
+  <label for="calcProductCode">بارگذاری مشخصات از کد محصول</label>
+  <div class="lookup-row">
+    <input id="calcProductCode" class="form-control" type="search" placeholder="کد محصول؛ مثلاً SZF-A1" autocomplete="off">
+    <button type="button" class="secondary-button" onclick="lookupCalculatorProduct()">خواندن محصول</button>
+  </div>
+  <div id="calcProductLookupStatus" class="form-help" aria-live="polite">با واردکردن کد، اطلاعات ثبت‌شده وارد محاسبه موقت می‌شود؛ تغییر مقادیر این فرم، اطلاعات انبار را تغییر نمی‌دهد.</div>
+  <div id="calcProductLookupDetails" class="lookup-details hidden"></div>
+</div>
+
 <div class="form-grid">
 
 <div class="form-group">
@@ -921,11 +1097,11 @@ CALCULATOR
 </div>
 
 <div class="form-group">
-<label for="calcPurity">عیار نقره</label>
+<label for="calcPurity">مبنای محاسبه</label>
 <select id="calcPurity" class="form-control">
 <option value="999">۹۹۹</option>
 <option value="925" selected>۹۲۵</option>
-<option value="700">۷۰۰</option>
+<option value="700">قیمت خرید</option>
 </select>
 </div>
 
@@ -943,7 +1119,15 @@ CALCULATOR
 </div>
 
 <div class="form-group">
-<label for="stoneCost">هزینه سنگ و نگین</label>
+<label for="stoneCostType">روش هزینه سنگ و نگین</label>
+<select id="stoneCostType" class="form-control">
+<option value="fixed">مبلغ ثابت</option>
+<option value="percent">درصدی از ارزش خام نقره</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="stoneCost">هزینه سنگ و نگین (مبلغ یا درصد)</label>
 <input id="stoneCost" class="form-control" type="number" min="0" step="1000" value="0">
 </div>
 
@@ -960,11 +1144,20 @@ CALCULATOR
 <div class="form-group">
 <label for="taxPercent">درصد مالیات</label>
 <input id="taxPercent" class="form-control" type="number" min="0" step="0.1" value="0">
+<label class="tax-toggle-label"><input id="calcTaxEnabled" type="checkbox" checked> اعمال مالیات در این محاسبه</label>
 </div>
 
 <div class="form-group">
-<label for="discountPercent">درصد تخفیف</label>
-<input id="discountPercent" class="form-control" type="number" min="0" max="100" step="0.1" value="0">
+<label for="discountType">روش تخفیف</label>
+<select id="discountType" class="form-control">
+<option value="percent">درصدی</option>
+<option value="fixed">مبلغ ثابت (تومان)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="discountPercent">مقدار تخفیف</label>
+<input id="discountPercent" class="form-control" type="number" min="0" step="1000" value="0">
 </div>
 
 </div>
@@ -1138,16 +1331,55 @@ INVOICE
 </div>
 
 <div class="form-group">
-<label>سود فاکتور</label>
-<input id="invoiceProfit" class="form-control" type="number" step="1000" value="0">
+<label>سود برآوردی محصول (تومان)</label>
+<input id="invoiceProfit" class="form-control" type="number" min="0" step="1000" value="0">
 </div>
 
+<div class="form-group">
+<label>تعداد این محصول در فاکتور</label>
+<input id="invoiceQuantity" class="form-control" type="number" min="1" step="1" value="1">
+</div>
+
+<div class="form-group">
+<label>نوع تخفیف کل فاکتور</label>
+<select id="invoiceDiscountType" class="form-control">
+<option value="percent">درصدی</option>
+<option value="fixed">مبلغ ثابت (تومان)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>مقدار تخفیف کل فاکتور</label>
+<input id="invoiceDiscountValue" class="form-control" type="number" min="0" step="1000" value="0">
+</div>
+
+<div class="form-group">
+<label>مالیات فاکتور (%)</label>
+<input id="invoiceTaxPercent" class="form-control" type="number" min="0" max="100" step="0.1" value="0">
+<label class="tax-toggle-label"><input id="invoiceTaxEnabled" type="checkbox"> اعمال مالیات جداگانه روی فاکتور</label>
+<div class="form-help">برای جلوگیری از محاسبه دوباره، این گزینه را فقط وقتی فعال کن که مالیات در قیمت واحد محصول لحاظ نشده باشد.</div>
+</div>
+
+</div>
+
+<div class="panel invoice-draft-panel no-print">
+  <div class="panel-title">اقلام فاکتور پیش‌نویس</div>
+  <div class="form-help">ابتدا کد محصول را وارد کن؛ مشخصات از محصولات ثبت‌شده خوانده می‌شوند. می‌توانی چند محصول اضافه کنی. پیش‌نویس موجودی را کم نمی‌کند.</div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>کد</th><th>محصول</th><th>وزن</th><th>تعداد</th><th>مبلغ واحد</th><th>جمع</th><th>عملیات</th></tr></thead>
+      <tbody id="invoiceDraftItemsTable"><tr><td colspan="7" class="history-empty">هنوز محصولی به فاکتور اضافه نشده است.</td></tr></tbody>
+    </table>
+  </div>
+  <div id="invoiceDraftTotal" class="invoice-draft-total">جمع موقت: ۰ تومان</div>
 </div>
 
 <div class="action-row no-print">
-<button class="primary-button" onclick="createInvoice()">ایجاد فاکتور</button>
-<button class="secondary-button" onclick="printInvoice()">چاپ فاکتور</button>
-<button class="danger-button" onclick="clearInvoice()">پاک کردن</button>
+<button type="button" class="secondary-button" onclick="addInvoiceItemFromFields()">افزودن محصول به فاکتور</button>
+<button class="primary-button" onclick="createInvoice()">ذخیره پیش‌نویس</button>
+<button class="secondary-button" onclick="confirmInvoiceSale()">تأیید فروش و کسر موجودی</button>
+<button class="secondary-button" onclick="printInvoice()">چاپ فقط فاکتور</button>
+<button class="danger-button" onclick="clearInvoice()">پاک کردن پیش‌نویس</button>
 </div>
 
 </div>
@@ -1182,34 +1414,36 @@ INVOICE
 <table class="data-table">
 <thead>
 <tr>
-<th>محصول</th>
+<th>محصول / کد</th>
 <th>وزن</th>
 <th>عیار</th>
-<th>مبلغ</th>
-<th>سود</th>
+<th>تعداد</th>
+<th>جمع مبلغ</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td id="invoiceProduct">—</td>
-<td id="invoiceWeightShow">—</td>
-<td id="invoicePurityShow">—</td>
-<td id="invoiceAmountShow">—</td>
-<td id="invoiceProfitShow">—</td>
-</tr>
+<tbody id="invoiceItemsPreview">
+<tr><td colspan="5">اقلام فاکتور پس از ذخیره نمایش داده می‌شوند.</td></tr>
 </tbody>
 </table>
 </div>
 
+<div id="invoiceTaxSummary" class="invoice-status-line">مالیات فاکتور: —</div>
 <div class="invoice-total">
 <span>مبلغ نهایی قابل پرداخت</span>
 <strong id="invoiceFinalShow">—</strong>
 </div>
+<div class="invoice-status-line">وضعیت: <strong id="invoiceStatusShow">پیش‌نویس</strong></div>
 
 <div style="text-align:center;margin-top:22px;color:#777;font-size:11px">
 SILVER ZARIN FAKHR | زیبایی در درخشندگی، اصالت در ماندگاری
 </div>
 
+</div>
+
+<div class="panel no-print" id="invoiceHistoryPanel">
+  <div class="panel-title">سوابق فاکتورها</div>
+  <div class="form-help">سوابق مشترک از Supabase خوانده می‌شوند. اگر جدول‌ها و RPC نسخه جدید هنوز راه‌اندازی نشده باشند، ذخیره‌سازی ابری در این بخش تأیید نخواهد شد.</div>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>شماره</th><th>تاریخ</th><th>مشتری</th><th>تعداد اقلام</th><th>مبلغ نهایی</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="invoiceHistoryTable"><tr><td colspan="7">هنوز سابقه‌ای خوانده نشده است.</td></tr></tbody></table></div>
 </div>
 
 </section>
@@ -1224,16 +1458,52 @@ PRODUCTS
 
 <div class="panel">
 
-<div class="product-search">
-<span class="product-search-icon">⌕</span>
-<input
- id="productSearch"
- class="form-control"
- type="search"
- placeholder="جستجو با نام یا کد محصول..."
- oninput="renderProducts()"
->
+<div class="inventory-toolbar" aria-label="خلاصه موجودی محصولات">
+  <div class="inventory-mini-stat"><div class="mini-label">کل محصولات ثبت‌شده</div><div class="mini-value" id="inventoryTotalCount">۰</div></div>
+  <div class="inventory-mini-stat"><div class="mini-label">واحدهای موجود در انبار</div><div class="mini-value" id="inventoryAvailableCount">۰</div></div>
+  <div class="inventory-mini-stat"><div class="mini-label">واحدهای فروخته‌شده</div><div class="mini-value" id="inventorySoldCount">۰</div></div>
+  <div class="inventory-mini-stat"><div class="mini-label">محصولات ناموجود</div><div class="mini-value" id="inventoryOutCount">۰</div></div>
+  <div class="inventory-mini-stat"><div class="mini-label">محصولات سفارشی</div><div class="mini-value" id="inventoryCustomCount">۰</div></div>
 </div>
+<div id="inventoryWeightSummary" class="inventory-weight-summary" aria-live="polite"></div>
+
+<!-- پوشه دسته‌بندی‌ها: فهرست پویا با شمارش تعداد و وزن هر دسته -->
+<div id="szfCategoryFolder" class="szf-category-folder">
+  <button type="button" id="szfCategoryFolderToggle" class="szf-folder-toggle" aria-expanded="false" aria-controls="szfCategoryFolderBody">
+    <span class="szf-folder-icon">📁</span>
+    <span class="szf-folder-heading"><strong>پوشه دسته‌بندی محصولات</strong><small>همه دسته‌بندی‌ها، تعداد محصولات و وزن هر دسته</small></span>
+    <span id="szfFolderCategoryCount" class="szf-folder-count">۰ دسته</span>
+    <span id="szfFolderChevron" class="szf-folder-chevron">⌄</span>
+  </button>
+  <div id="szfCategoryFolderBody" class="szf-folder-body" hidden>
+    <div class="szf-folder-overview" id="szfFolderOverview"></div>
+    <div class="szf-folder-add-row">
+      <label for="szfNewCategoryName">افزودن نام دسته‌بندی جدید</label>
+      <div class="szf-folder-add-controls"><input id="szfNewCategoryName" class="form-control" maxlength="60" placeholder="مثلاً دستبند زنجیری"><button id="szfAddCategoryButton" type="button" class="primary-button">＋ افزودن دسته</button></div>
+      <small>نام جدید به فهرست دسته‌بندی فرم محصول و پوشه اضافه می‌شود. برای ثبت محصول، دسته را در فرم انتخاب کن و محصول را ذخیره کن.</small>
+    </div>
+    <div id="szfCategoryFolderList" class="szf-folder-grid"></div>
+  </div>
+</div>
+
+<div class="inventory-filters">
+  <div class="product-search">
+    <span class="product-search-icon">⌕</span>
+    <input id="productSearch" class="form-control" type="search" placeholder="جستجو با نام، کد، وزن، عیار یا سنگ..." oninput="renderProducts()">
+  </div>
+  <select id="productStockFilter" class="form-control" aria-label="فیلتر وضعیت موجودی" onchange="renderProducts()">
+    <option value="all">همه وضعیت‌ها</option>
+    <option value="موجود">فقط موجود</option>
+    <option value="فروخته شد">فروخته‌شده</option>
+    <option value="ناموجود">ناموجود</option>
+    <option value="سفارشی">سفارشی</option>
+  </select>
+  <select id="productCategoryFilter" class="form-control" aria-label="فیلتر دسته‌بندی" onchange="renderProducts()">
+    <option value="all">همه دسته‌بندی‌ها</option>
+    <option>انگشتر</option><option>گردنبند</option><option>دستبند</option><option>گوشواره</option><option>پلاک</option><option>سرویس</option><option>نیم‌ست</option><option>سایر</option>
+  </select>
+</div>
+<div class="inventory-result-line"><span id="productResultCount">در حال نمایش همه محصولات</span><div class="product-view-controls"><button id="productCardsViewButton" type="button" class="secondary-button active" aria-pressed="true" onclick="setProductView('cards')">نمای کارت‌ها</button><button id="productTableViewButton" type="button" class="secondary-button" aria-pressed="false" onclick="setProductView('table')">نمای جدول</button><button type="button" class="secondary-button" onclick="resetProductFilters()">پاک‌کردن فیلترها</button></div></div>
 
 <div id="productCodeInfo" class="form-help" style="margin:12px 0;padding:12px 14px;border:1px solid rgba(212,175,106,.35);border-radius:10px;background:rgba(212,175,106,.07);line-height:1.9">
 <strong>آخرین کد ثبت‌شده:</strong> <span id="lastRegisteredProductCode">هنوز محصولی ثبت نشده</span>
@@ -1268,6 +1538,11 @@ PRODUCTS
 <option>نیم‌ست</option>
 <option>سایر</option>
 </select>
+<div class="custom-category-row" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+  <input id="newProductCategory" class="form-control" maxlength="50" placeholder="نام دسته‌بندی جدید" aria-label="نام دسته‌بندی جدید" style="flex:1;min-width:150px">
+  <button type="button" class="secondary-button" onclick="addUserProductCategory()">افزودن دسته‌بندی</button>
+</div>
+<div id="categoryStatus" class="form-help" aria-live="polite">دسته‌بندی‌های تازه در جدول اختصاصی Supabase نگهداری می‌شوند و بین دستگاه‌ها مشترک‌اند.</div>
 </div>
 
 <div class="form-group">
@@ -1308,10 +1583,11 @@ PRODUCTS
 </div>
 
 <div class="form-group">
-<label>نوع اجرت کار</label>
+<label>روش محاسبه اجرت</label>
 <select id="productLaborType" class="form-control" onchange="updateProductLaborLabel()">
-<option value="gram">اجرت به ازای هر گرم</option>
-<option value="percent">اجرت درصدی</option>
+<option value="gram">مبلغ به‌ازای هر گرم</option>
+<option value="percent">درصدی از ارزش نقره</option>
+<option value="fixed">مبلغ ثابت برای کل محصول</option>
 </select>
 </div>
 
@@ -1322,9 +1598,71 @@ PRODUCTS
 </div>
 
 <div class="form-group">
+<label>روش محاسبه هزینه سنگ و نگین</label>
+<select id="productStoneCostType" class="form-control">
+<option value="fixed">مبلغ ثابت برای کل محصول</option>
+<option value="percent">درصدی از ارزش خام نقره</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>هزینه سنگ و نگین (مبلغ یا درصد)</label>
+<input id="productStoneCost" class="form-control" type="number" min="0" step="1000" value="0">
+</div>
+
+<div class="form-group">
 <label>سایر هزینه‌ها</label>
 <input id="productOtherCost" class="form-control" type="number" min="0" step="1000" value="0">
-<div class="form-help">هزینه ثابت مربوط به همین محصول.</div>
+<div class="form-help">هزینه ثابت مربوط به همین محصول؛ در کارت محصول به‌صورت جداگانه نمایش داده نمی‌شود.</div>
+</div>
+
+<div class="form-group">
+<label>سود این محصول (%)</label>
+<input id="productProfitPercent" class="form-control" type="number" min="0" step="0.1" value="0">
+<div class="form-help">صفر یعنی استفاده از سود پیش‌فرض تنظیمات پنل.</div>
+</div>
+
+<div class="form-group">
+<label>مالیات این محصول (%)</label>
+<input id="productTaxPercent" class="form-control" type="number" min="0" step="0.1" value="0">
+</div>
+
+<div class="form-group">
+<label>روش تخفیف محصول</label>
+<select id="productDiscountType" class="form-control">
+<option value="percent">درصدی</option>
+<option value="fixed">مبلغ ثابت</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>مقدار تخفیف محصول</label>
+<input id="productDiscountValue" class="form-control" type="number" min="0" step="1000" value="0">
+</div>
+
+<div class="form-group">
+<label>روش قیمت‌گذاری</label>
+<select id="productPriceMode" class="form-control" onchange="toggleFixedProductPrice()">
+<option value="market">وابسته به قیمت روز بازار</option>
+<option value="fixed">قیمت ثابت دستی</option>
+</select>
+</div>
+
+<div class="form-group" id="productFixedPriceWrap">
+<label>قیمت ثابت فروش (تومان)</label>
+<input id="productFixedPrice" class="form-control" type="number" min="0" step="1000" value="0">
+<div class="form-help">فقط اگر «قیمت ثابت دستی» انتخاب شود استفاده می‌شود.</div>
+</div>
+
+<div class="form-group">
+<label>بهای خرید واقعی هر محصول (تومان)</label>
+<input id="productCostPrice" class="form-control" type="number" min="0" step="1000" value="0">
+<div class="form-help">برای محاسبه سود واقعی؛ با قیمت روز بازار اشتباه گرفته نمی‌شود.</div>
+</div>
+
+<div class="form-group">
+<label>تعداد واحد در انبار</label>
+<input id="productStockQuantity" class="form-control" type="number" min="0" step="1" value="1">
 </div>
 
 <div class="form-group">
@@ -1332,8 +1670,11 @@ PRODUCTS
 <select id="productStock" class="form-control">
 <option value="موجود">موجود</option>
 <option value="فروخته شد">فروخته شد</option>
+<option value="ناموجود">ناموجود</option>
 <option value="سفارشی">سفارشی</option>
 </select>
+<label class="tax-toggle-label" style="margin-top:10px"><input id="productPublished" type="checkbox"> آماده نمایش در فروشگاه عمومی جداگانه</label>
+<div class="form-help">این گزینه فقط پرچم انتشار را ذخیره می‌کند؛ فروشگاه عمومی پروژه‌ای مستقل است و هنوز باید جداگانه ساخته شود.</div>
 </div>
 
 <div class="form-group">
@@ -1345,7 +1686,19 @@ PRODUCTS
  accept="image/*"
  onchange="previewProductImage()"
 >
-<div class="form-help">تصویر محصول داخل مرورگر ذخیره می‌شود.</div>
+<div class="form-help">تصویر اصلی محصول در فضای ذخیره‌سازی Supabase بارگذاری می‌شود.</div>
+</div>
+
+<div class="form-group">
+<label>تصاویر تکمیلی محصول (چند انتخابی)</label>
+<input id="productImagesInput" class="file-input" type="file" accept="image/*" multiple>
+<div class="form-help">تصاویر تکمیلی در Supabase ذخیره می‌شوند؛ پس از اجرای SQL نسخه جدید.</div>
+<div id="existingProductImages" class="existing-product-images" aria-live="polite"></div>
+</div>
+
+<div class="form-group full">
+<label>خلاصه قیمت نهایی</label>
+<div id="productSaveSummary" class="product-save-summary">پس از ثبت یا ویرایش، قیمت نهایی محصول اینجا نمایش داده می‌شود.</div>
 </div>
 
 <div id="productImagePreviewWrap" class="form-group full hidden">
@@ -1367,6 +1720,9 @@ PRODUCTS
 <div class="panel">
 <div class="panel-title">محصولات ثبت‌شده</div>
 <div id="productGrid" class="product-grid"></div>
+<div id="productTableWrap" class="table-wrap hidden" aria-label="جدول محصولات">
+<table class="data-table product-admin-table"><thead><tr><th>تصویر</th><th>کد</th><th>نام محصول</th><th>دسته‌بندی</th><th>وزن (گرم)</th><th>عیار</th><th>موجودی</th><th>قیمت فروش</th><th>عملیات</th></tr></thead><tbody id="productTableBody"></tbody></table>
+</div>
 </div>
 
 </section>
@@ -1377,13 +1733,19 @@ HISTORY
 <section id="historySection" class="section hidden">
 
 <h2 class="section-title">تاریخچه قیمت</h2>
-<p class="section-description">ثبت خودکار قیمت‌ها در ساعت ۰۰:۰۰ و ۱۲:۰۰ به وقت ایران</p>
+<p class="section-description">ثبت تاریخچه بازار به‌صورت ساعتی؛ آرشیو محلی و همگام‌سازی سروری پس از راه‌اندازی جدول تاریخچه</p>
 
 <div class="panel">
 
+<div class="history-toolbar no-print">
+  <div class="form-group"><label for="historyPeriod">بازه تحلیل</label><select id="historyPeriod" class="form-control" onchange="renderHistory()"><option value="24">۲۴ ساعت اخیر</option><option value="168" selected>۷ روز اخیر</option><option value="720">۳۰ روز اخیر</option><option value="all">همه رکوردها</option></select></div>
+  <div class="history-actions"><button class="secondary-button" onclick="loadRemotePriceHistory(true)">همگام‌سازی آرشیو سرور</button><button class="secondary-button" onclick="exportHistory()">خروجی CSV</button></div>
+</div>
+<div class="history-stats" id="historyStats"></div>
+<div class="history-chart-wrap"><canvas id="priceHistoryChart" height="220" aria-label="نمودار تاریخچه قیمت خرید" role="img"></canvas></div>
+
 <div class="action-row no-print">
-<button class="secondary-button" onclick="exportHistory()">خروجی تاریخچه</button>
-<button class="danger-button" onclick="clearHistory()">حذف تاریخچه</button>
+<button class="danger-button" onclick="clearHistory()">پاک کردن تاریخچه محلی این مرورگر</button>
 </div>
 
 <div class="table-wrap" style="margin-top:18px">
@@ -1395,7 +1757,7 @@ HISTORY
 <th>دلار</th>
 <th>۹۹۹</th>
 <th>۹۲۵</th>
-<th>مثقال</th>
+<th>قیمت خرید</th>
 </tr>
 </thead>
 <tbody id="historyTable"></tbody>
@@ -1412,6 +1774,48 @@ SETTINGS
 
 <h2 class="section-title">تنظیمات حرفه‌ای پنل</h2>
 <p class="section-description">تنظیم نحوه محاسبه و عملکرد سیستم</p>
+
+<div class="panel" id="szfBusinessProfileSettings">
+  <div class="panel-title">اطلاعات پایه کسب‌وکار</div>
+  <p class="form-help">این اطلاعات برای سربرگ فاکتور، گزارش‌ها و اتصال فروشگاه آینده در نظر گرفته شده‌اند. در این نسخه، ذخیره محلی همین مرورگر فعال است؛ همگام‌سازی بین دستگاه‌ها پس از تأیید ساختار جدول تنظیمات Supabase متصل می‌شود.</p>
+  <div class="settings-grid">
+    <div class="settings-item"><label class="settings-label" for="szfBusinessName">نام کسب‌وکار</label><input id="szfBusinessName" class="form-control" maxlength="120" value="SILVER ZARIN FAKHR"></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessPhone">شماره تماس کسب‌وکار</label><input id="szfBusinessPhone" class="form-control" type="tel" maxlength="30"></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessEmail">ایمیل کسب‌وکار</label><input id="szfBusinessEmail" class="form-control" type="email" maxlength="160"></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessProvince">استان</label><input id="szfBusinessProvince" class="form-control" maxlength="80"></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessCity">شهر</label><input id="szfBusinessCity" class="form-control" maxlength="80"></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessPostalCode">کد پستی</label><input id="szfBusinessPostalCode" class="form-control" inputmode="numeric" maxlength="20"></div>
+    <div class="settings-item" style="grid-column:1/-1"><label class="settings-label" for="szfBusinessAddress">نشانی کسب‌وکار</label><textarea id="szfBusinessAddress" class="form-control" rows="3" maxlength="500"></textarea></div>
+    <div class="settings-item"><label class="settings-label" for="szfBusinessCurrency">واحد نمایش پول</label><select id="szfBusinessCurrency" class="form-control"><option value="تومان">تومان</option><option value="ریال">ریال</option></select></div>
+  </div>
+  <div class="action-row"><button type="button" class="primary-button" id="szfSaveBusinessProfile">ذخیره اطلاعات پایه</button><button type="button" class="secondary-button" id="szfResetBusinessProfile">بازگردانی مقادیر ذخیره‌شده</button></div>
+  <div id="szfBusinessProfileStatus" class="settings-message" aria-live="polite"></div>
+</div>
+
+<div class="panel" id="appearanceSettingsPanel">
+  <div class="panel-title">مدیریت ظاهر، رنگ‌ها و تصاویر همه صفحات</div>
+  <div class="form-help">تصاویر پس‌زمینه و لوگو پس از بارگذاری در فضای ذخیره‌سازی ابری قرار می‌گیرند. برای اشتراک بین دستگاه‌ها باید SQL همراه این نسخه اجرا شده باشد.</div>
+  <div class="panel-title" style="margin-top:18px">تنظیم رنگ‌های پنل (اعمال روی همه صفحات)</div>
+  <p class="form-help" style="margin-bottom:12px">رنگ‌ها را انتخاب کن؛ پیش‌نمایش بلافاصله اعمال می‌شود. ذخیره‌سازی در همین مرورگر انجام می‌شود و در صورت اتصال مدیر، تنظیمات در Supabase نیز همگام می‌شوند.</p>
+  <div class="settings-grid" id="panelColorSettings">
+    <div class="settings-item"><label class="settings-label" for="panelColorPrimary">رنگ اصلی (طلایی)</label><input id="panelColorPrimary" type="color" class="form-control color-picker" value="#D4AF6A"><div class="form-help">رنگ دکمه‌ها، عنوان‌ها و تأکیدها</div></div>
+    <div class="settings-item"><label class="settings-label" for="panelColorSecondary">رنگ مکمل</label><input id="panelColorSecondary" type="color" class="form-control color-picker" value="#B88A4A"><div class="form-help">رنگ طلایی تیره‌تر و عناصر مکمل</div></div>
+    <div class="settings-item"><label class="settings-label" for="panelColorSurface">رنگ زمینه کارت‌ها</label><input id="panelColorSurface" type="color" class="form-control color-picker" value="#101010"><div class="form-help">زمینه کارت‌ها و بخش‌های مدیریتی</div></div>
+    <div class="settings-item"><label class="settings-label" for="panelColorText">رنگ متن اصلی</label><input id="panelColorText" type="color" class="form-control color-picker" value="#E8E3DA"><div class="form-help">رنگ متن‌های اصلی پنل</div></div>
+  </div>
+  <div class="action-row"><button type="button" class="primary-button" onclick="savePanelColors()">ذخیره رنگ‌ها</button><button type="button" class="secondary-button" onclick="resetPanelColors()">بازگردانی رنگ‌های پیش‌فرض</button></div>
+  <div id="panelColorsStatus" class="settings-message" aria-live="polite"></div>
+  <div class="settings-grid" style="margin-top:18px">
+    <div class="settings-item"><label class="settings-label" for="appearancePage">صفحه موردنظر</label><select id="appearancePage" class="form-control"><option value="loginPage">ورود</option><option value="dashboardSection">داشبورد</option><option value="marketSection">قیمت بازار</option><option value="calculatorSection">محاسبه قیمت</option><option value="invoiceSection">فاکتور فروش</option><option value="productsSection">محصولات و موجودی</option><option value="historySection">تاریخچه قیمت</option><option value="businessSection">مدیریت کسب‌وکار</option><option value="settingsSection">تنظیمات</option><option value="displayMode">تابلو قیمت (ظاهر مستقل)</option></select></div>
+    <div class="settings-item"><label class="settings-label" for="appearanceBackgroundFile">تصویر پس‌زمینه صفحه</label><input id="appearanceBackgroundFile" class="file-input" type="file" accept="image/*"><div class="form-help">JPG، PNG یا WEBP؛ پیشنهاد حداکثر 2 مگابایت.</div></div>
+    <div class="settings-item"><label class="settings-label" for="appearanceOverlay">شدت لایه تیره روی تصویر</label><input id="appearanceOverlay" class="form-control" type="range" min="10" max="90" step="5" value="55"><div class="form-help">برای خوانایی بهتر متن‌ها، لایه روی تصویر قابل تنظیم است.</div></div>
+    <div class="settings-item"><label class="settings-label" for="brandLogoFile">تصویر لوگو برای ورود و پنل</label><input id="brandLogoFile" class="file-input" type="file" accept="image/*"><div class="form-help">لوگوی انتخاب‌شده در دایره SZF و نشان داخل پنل نمایش داده می‌شود.</div></div>
+  </div>
+  <div class="action-row"><button type="button" class="primary-button" onclick="savePageBackground()">ذخیره پس‌زمینه این صفحه در ابر</button><button type="button" class="secondary-button" onclick="saveBrandLogo()">ذخیره لوگو در ابر</button><button type="button" class="danger-button" onclick="resetPageBackground()">بازگشت صفحه به پیش‌فرض</button><button type="button" class="secondary-button" onclick="resetBrandLogo()">بازگشت لوگو به SZF</button></div>
+  <div id="appearanceStatus" class="settings-message" aria-live="polite"></div>
+  <div id="appearancePreview" class="appearance-preview">پیش‌نمایش پس‌زمینه پس از انتخاب و ذخیره در اینجا اعمال می‌شود.</div>
+</div>
+
 
 <div class="panel">
 
@@ -1465,7 +1869,7 @@ SETTINGS
 
 <div class="settings-item">
 <div class="settings-label">بروزرسانی قیمت</div>
-<div class="settings-value">هر ۱ ثانیه</div>
+<div class="settings-value">نمایش هر ۱ ثانیه؛ دریافت واقعی از سرور هر ۳۰ ثانیه</div>
 </div>
 
 <div class="settings-item">
@@ -1496,6 +1900,8 @@ SETTINGS
 
 </div>
 
+
+
 <div class="panel">
 
 <div class="panel-title">اطلاعات سیستم</div>
@@ -1524,7 +1930,7 @@ SETTINGS
 
 <div class="settings-item">
 <div class="settings-label">نسخه پنل</div>
-<div class="settings-value">Professional v4.0</div>
+<div class="settings-value">Professional v4.2</div>
 </div>
 
 <div class="settings-item">
@@ -1542,6 +1948,38 @@ SETTINGS
 
 </section>
 
+
+<section id="businessSection" class="section hidden">
+  <h2 class="section-title">مرکز مدیریت کسب‌وکار</h2>
+  <p class="section-description">مدیریت مشتریان، تأمین‌کنندگان، خرید، هزینه، مرجوعی، سفارش، تعمیرات، صندوق، چک، اعلان‌ها، گزارش‌ها و نسخه پشتیبان.</p>
+  <div class="biz-note">اطلاعات این بخش در جدول مستقل Supabase ذخیره می‌شود. خرید و مرجوعی‌های ثبت‌شده با کد محصول و تعداد معتبر، موجودی را در تراکنش پایگاه داده به‌روزرسانی می‌کنند. این مرکز فروشگاه عمومی نیست؛ فروشگاه آینده پروژه‌ای جداگانه خواهد بود.</div>
+  <div id="businessModuleTabs" class="biz-module-tabs" role="tablist" aria-label="بخش‌های مدیریت کسب‌وکار"></div>
+  <div id="businessModuleNote" class="biz-note hidden"></div>
+  <div id="businessSummary" class="biz-summary"></div>
+  <div id="businessEditorPanel" class="panel">
+    <h3 id="businessEditorTitle" class="section-title" style="font-size:18px">ثبت رکورد جدید</h3>
+    <form id="businessRecordForm">
+      <div id="businessFormFields" class="biz-grid"></div>
+      <div class="action-row" style="margin-top:14px">
+        <button class="primary-button" type="submit" id="businessSaveButton">ذخیره در Supabase</button>
+        <button class="secondary-button" type="button" id="businessCancelEdit">پاک‌کردن فرم</button>
+      </div>
+      <div id="businessFormStatus" class="form-help" aria-live="polite"></div>
+    </form>
+  </div>
+  <div id="businessSpecialPanel" class="panel hidden"></div>
+  <div class="biz-toolbar">
+    <input id="businessSearch" type="search" placeholder="جست‌وجو در رکوردهای این بخش..." aria-label="جست‌وجوی رکوردها">
+    <button type="button" class="secondary-button" id="businessExportCsv">خروجی CSV</button>
+    <button type="button" class="secondary-button" id="businessRefresh">تازه‌سازی</button>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>عنوان</th><th>شخص / کد</th><th>مبلغ</th><th>وضعیت</th><th>تاریخ</th><th>عملیات</th></tr></thead>
+      <tbody id="businessRecordsTable"><tr><td colspan="6" class="biz-empty">برای نمایش اطلاعات وارد شو.</td></tr></tbody>
+    </table>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
@@ -1560,7 +1998,7 @@ SETTINGS
 DISPLAY BOARD
 ========================================================= -->
 <section id="displayMode" class="hidden" style="
-position:fixed;inset:0;z-index:9999;background:#030303;
+position:fixed;inset:0;z-index:9999;background:var(--board-bg,#030303);
 padding:25px;overflow:auto;
 ">
 
@@ -1568,10 +2006,10 @@ padding:25px;overflow:auto;
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px">
 <div>
-<div style="font-size:28px;font-weight:900;color:#F4F4F4">
+<div class="board-brand-title" style="font-size:28px;font-weight:900;color:var(--board-text,#F4F4F4)">
 SILVER ZARIN FAKHR
 </div>
-<div style="font-size:14px;color:#D4AF6A;margin-top:7px">
+<div class="board-brand-subtitle" style="font-size:14px;color:var(--goldBright,#D4AF6A);margin-top:7px">
 نقره زرین فخر
 </div>
 </div>
@@ -1581,11 +2019,7 @@ SILVER ZARIN FAKHR
 </button>
 </div>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(5,minmax(0,1fr));
-gap:18px;
-">
+<div class="displayMode-price-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;">
 
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
 <div class="stat-label">انس نقره</div>
@@ -1612,14 +2046,14 @@ gap:18px;
 </div>
 
 <div class="stat-card" style="text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center">
-<div class="stat-label">مثقال ۱۷ عیار</div>
+<div class="stat-label">قیمت خرید</div>
 <div id="boardMithqal" class="stat-value" style="font-size:35px">—</div>
 <div class="stat-small">تومان</div>
 </div>
 
 </div>
 
-<div style="text-align:center;margin-top:35px;color:#777;font-size:12px">
+<div class="board-footer" style="text-align:center;margin-top:35px;color:var(--board-muted,#777);font-size:12px">
 آخرین بروزرسانی: <span id="boardTime">—</span>
 </div>
 
@@ -1636,7 +2070,7 @@ API
 const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
-const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ جلوگیری از فشار بیش از حد به API
+const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ تصمیم آگاهانه برای کاهش فشار روی API
 const PRICE_REQUEST_TIMEOUT_MS = 22000;
 let priceFetchInProgress = false;
 
@@ -1678,8 +2112,14 @@ function mapDbProduct(row){
     weight: row.weight == null ? "" : Number(row.weight), size: row.size || "", stone: row.stone || "",
     plating: row.plating || "", purity: Number(row.purity || 925), laborType: row.labor_type || "gram",
     laborValue: Number(row.labor_value || 0), otherCost: Number(row.other_cost || 0),
-    image: row.image_url || "", stock: row.stock_status || (Number(row.stock) > 0 ? "موجود" : "ناموجود"),
-    price: Number(row.price || 0), description: row.description || "", is_active: row.is_active !== false,
+    stoneCostType: row.stone_cost_type || "fixed", stoneCost: Number(row.stone_cost || 0),
+    profitPercent: Number(row.profit_percent || 0), taxPercent: Number(row.tax_percent || 0),
+    discountType: row.discount_type || "percent", discountValue: Number(row.discount_value || 0),
+    priceMode: row.price_mode || "market", fixedPrice: Number(row.fixed_price || 0),
+    costPrice: Number(row.cost_price || 0), stockQuantity: Number(row.stock_quantity ?? (row.stock ?? 1)),
+    images: Array.isArray(row.product_images) ? row.product_images : [],
+    image: row.image_url || "", stock: row.stock_status || (Number(row.stock_quantity ?? row.stock) > 0 ? "موجود" : "ناموجود"),
+    price: Number(row.price || 0), description: row.description || "", is_active: row.is_active !== false, is_published: row.is_published === true, publishedAt: row.published_at || null,
     createdAt: row.created_at || new Date().toISOString(), updatedAt: row.updated_at || undefined
   };
 }
@@ -1687,13 +2127,19 @@ function mapDbProduct(row){
 function mapProductToDb(product){
   return {
     code: product.code || null, name: product.name, category: product.category || "",
-    description: product.description || "", price: Number(product.price || 0),
+    description: product.description || "", price: (product.priceMode === "fixed" ? safeNum(product.fixedPrice, safeNum(product.price)) : (typeof calculateProductCurrentPrice === "function" ? (()=>{try{const v=calculateProductCurrentPrice(product);return v>0?v:safeNum(product.price);}catch{return safeNum(product.price);}})() : safeNum(product.price))),
     weight: Number(product.weight || 0), purity: String(product.purity || 925),
     size: product.size || "", stone: product.stone || "", plating: product.plating || "",
     labor_type: product.laborType || "gram", labor_value: Number(product.laborValue || 0),
-    other_cost: Number(product.otherCost || 0), stock_status: product.stock || "موجود",
-    stock: product.stock === "موجود" ? 1 : 0, image_url: product.image || null,
-    is_active: product.is_active !== false, updated_at: new Date().toISOString()
+    other_cost: Number(product.otherCost || 0), stone_cost_type: product.stoneCostType || "fixed",
+    stone_cost: Number(product.stoneCost || 0), profit_percent: Number(product.profitPercent || 0),
+    tax_percent: Number(product.taxPercent || 0), discount_type: product.discountType || "percent",
+    discount_value: Number(product.discountValue || 0), price_mode: product.priceMode || "market",
+    fixed_price: Number(product.fixedPrice || 0), cost_price: Number(product.costPrice || 0),
+    stock_quantity: Math.max(0, Math.trunc(Number(product.stockQuantity ?? 1))),
+    product_images: Array.isArray(product.images) ? product.images : [],
+    stock_status: product.stock || "موجود", stock: Math.max(0, Math.trunc(Number(product.stockQuantity ?? (product.stock === "موجود" ? 1 : 0)))),
+    image_url: product.image || null, is_active: product.is_active !== false, is_published: product.is_published === true, published_at: product.is_published ? (product.publishedAt || new Date().toISOString()) : null, updated_at: new Date().toISOString()
   };
 }
 
@@ -1760,7 +2206,7 @@ async function login(){
   const loginError = document.getElementById("loginError");
   const email = emailInput ? emailInput.value.trim() : "";
   const password = passwordInput ? passwordInput.value : "";
-  if(!email || !password){ if(loginError) loginError.textContent = "ایمیل و رمز عبور حساب Supabase را وارد کنید."; return; }
+  if(!email || !password){ if(loginError) loginError.textContent = "نام کاربری (ایمیل حساب مدیریت) و رمز عبور را وارد کنید."; return; }
   const button = document.getElementById("loginButton");
   if(button){ button.disabled = true; button.textContent = "در حال ورود..."; }
   try{
@@ -1772,6 +2218,11 @@ async function login(){
     if(!auth.ok) throw new Error(result.msg || result.message || result.error_description || "ورود ناموفق بود؛ ایمیل و رمز عبور را بررسی کنید.");
     supabaseAccessToken = result.access_token;
     supabaseUserId = result.user && result.user.id || "";
+    if(supabaseUserId !== "e35fddc0-211d-4909-807f-1a26a60e8536"){
+      try{await fetch(SUPABASE_URL + "/auth/v1/logout",{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+supabaseAccessToken}});}catch{}
+      supabaseAccessToken = ""; supabaseUserId = "";
+      throw new Error("این حساب در فهرست مدیر مجاز پنل نیست.");
+    }
     sessionStorage.setItem(SUPABASE_SESSION_KEY, JSON.stringify({access_token:supabaseAccessToken,user_id:supabaseUserId}));
     if(loginError) loginError.textContent = "";
     document.getElementById("loginPage").classList.add("hidden");
@@ -1783,10 +2234,33 @@ async function login(){
     console.error("Supabase login error:", error);
     if(loginError) loginError.textContent = "ورود/اتصال ناموفق: " + (error.message || "خطای نامشخص");
   }finally{
-    if(button){ button.disabled = false; button.textContent = "ورود به پنل قیمت‌ها"; }
+    if(button){ button.disabled = false; button.textContent = "ورود به پنل مدیریت"; }
   }
 }
 
+window.sendPasswordRecovery = async function(){
+  const email=document.getElementById("emailInput")?.value?.trim()||"";
+  const box=document.getElementById("loginError");
+  if(!email){if(box)box.textContent="ابتدا نام کاربری (ایمیل حساب مدیریت) را وارد کن.";return;}
+  try{
+    const redirect=encodeURIComponent(location.origin+location.pathname);
+    const response=await fetch(SUPABASE_URL+"/auth/v1/recover?redirect_to="+redirect,{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Content-Type":"application/json"},body:JSON.stringify({email})});
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(data.msg||data.message||data.error_description||"ارسال ایمیل بازیابی ناموفق بود.");
+    if(box)box.textContent="اگر ایمیل ثبت‌شده باشد، پیام بازیابی ارسال می‌شود. پوشه هرزنامه را هم بررسی کن.";
+  }catch(error){if(box)box.textContent="بازیابی رمز انجام نشد: "+(error.message||"خطای نامشخص");}
+};
+function toggleLoginPassword(){
+  const input=document.getElementById("passwordInput");
+  const button=document.getElementById("togglePasswordButton");
+  if(!input||!button)return;
+  const show=input.type==="password";
+  input.type=show?"text":"password";
+  button.textContent=show?"مخفی":"نمایش";
+  button.setAttribute("aria-label",show?"مخفی کردن رمز عبور":"نمایش رمز عبور");
+  button.setAttribute("aria-pressed",String(show));
+}
+window.toggleLoginPassword=toggleLoginPassword;
 window.login = login;
 window.addProduct = addProduct;
 window.editProduct = editProduct;
@@ -2649,14 +3123,14 @@ function calculatePrice(){
     currentSilver999 * 0.700;
 
   /*
-    مثقال ۱۷ عیار، قیمت طلاست نه نقره.
+    قیمت خرید، قیمت طلاست نه نقره.
     فقط از قیمت هر گرم طلای ۱۸ عیار در API محاسبه می‌شود:
     قیمت هر گرم طلای ۱۷ عیار = طلای ۱۸ عیار × 17/18
-    قیمت مثقال = قیمت هر گرم طلای ۱۷ عیار × 4.608
+    قیمت قیمت خرید = قیمت هر گرم طلای ۱۷ عیار × 4.608
     اگر API قیمت طلای ۱۸ عیار ندهد، عدد اشتباه نمایش داده نمی‌شود.
   */
   /*
-    اولویت با قیمت مثقالی است که API طبق فرمول سفارشی SILVER ZARIN FAKHR
+    اولویت با قیمت قیمت خریدی است که API طبق فرمول سفارشی SILVER ZARIN FAKHR
     محاسبه کرده و با کلید mesghal17Toman ارسال می‌کند.
     فقط اگر API این مقدار را نداد، از قیمت طلای ۱۸ عیار استفاده می‌شود.
   */
@@ -2930,7 +3404,7 @@ function processPrices(responseData){
     "gold_18k_toman","gold18Price"
   ]);
 
-  // قیمت مثقال ۱۷ عیار محاسبه‌شده در API
+  // قیمت قیمت خرید محاسبه‌شده در API
   const mithqal17 = firstApiValue(objects, [
     "mesghal17Toman","mithqal17Toman","mithqal17","mesghal17",
     "goldMithqal17Toman","gold17MithqalToman"
@@ -3804,7 +4278,7 @@ function exportHistory(){
   }
 
   let csv =
-    "زمان,انس نقره,دلار,نقره 999,نقره 925,مثقال 17\n";
+    "زمان,انس نقره,دلار,نقره 999,نقره 925,قیمت خرید 17\n";
 
   history.forEach(item => {
 
@@ -4456,9 +4930,20 @@ async function addProduct(){
       document.getElementById("productOtherCost").value.trim();
 
     const otherCost = Number(otherText || 0);
+    const stoneCostType = document.getElementById("productStoneCostType")?.value || "fixed";
+    const stoneCost = Number(document.getElementById("productStoneCost")?.value || 0);
+    const profitPercent = Number(document.getElementById("productProfitPercent")?.value || 0);
+    const taxPercent = Number(document.getElementById("productTaxPercent")?.value || 0);
+    const discountType = document.getElementById("productDiscountType")?.value || "percent";
+    const discountValue = Number(document.getElementById("productDiscountValue")?.value || 0);
+    const priceMode = document.getElementById("productPriceMode")?.value || "market";
+    const fixedPrice = Number(document.getElementById("productFixedPrice")?.value || 0);
+    const costPrice = Number(document.getElementById("productCostPrice")?.value || 0);
+    const stockQuantity = Math.max(0, Math.trunc(Number(document.getElementById("productStockQuantity")?.value ?? 1)));
 
     const stock =
       document.getElementById("productStock").value;
+    const isPublished = !!document.getElementById("productPublished")?.checked;
 
     if(!code || !name){
       alert("کد و نام محصول را وارد کنید.");
@@ -4479,13 +4964,21 @@ async function addProduct(){
       alert("سایر هزینه‌ها معتبر نیست.");
       return;
     }
+    if([stoneCost, profitPercent, taxPercent, discountValue, fixedPrice, costPrice, stockQuantity].some(v => !Number.isFinite(v) || v < 0)){
+      alert("یکی از مقادیر قیمت، هزینه، تخفیف یا موجودی معتبر نیست.");
+      return;
+    }
+    if(!["fixed","percent"].includes(stoneCostType) || !["fixed","percent"].includes(discountType) || !["market","fixed"].includes(priceMode)){
+      alert("روش محاسبه هزینه یا قیمت‌گذاری معتبر نیست.");
+      return;
+    }
 
     if(![999,925,700].includes(purity)){
       alert("عیار انتخاب‌شده معتبر نیست.");
       return;
     }
 
-    if(!["gram","percent"].includes(laborType)){
+    if(!["gram","percent","fixed"].includes(laborType)){
       alert("نوع اجرت انتخاب‌شده معتبر نیست.");
       return;
     }
@@ -4523,6 +5016,18 @@ async function addProduct(){
     if(selectedImage && selectedImage.startsWith("data:image/")){
       selectedImage = await uploadProductImageDataURL(selectedImage, code);
     }
+    const galleryInput = document.getElementById("productImagesInput");
+    const extraGallery = [];
+    if(galleryInput && galleryInput.files && galleryInput.files.length){
+      for(const file of Array.from(galleryInput.files).slice(0,8)){
+        if(!file.type.startsWith("image/")) continue;
+        if(file.size > 5 * 1024 * 1024) throw new Error("هر تصویر تکمیلی باید حداکثر ۵ مگابایت باشد.");
+        const dataURL = await new Promise((resolve,reject)=>{
+          const reader = new FileReader(); reader.onload=()=>resolve(String(reader.result)); reader.onerror=()=>reject(new Error("خواندن یکی از تصاویر انجام نشد.")); reader.readAsDataURL(file);
+        });
+        extraGallery.push(await uploadProductImageDataURL(dataURL, code + "-gallery"));
+      }
+    }
     const product = {
       ...(oldProduct || {}),
       id: oldProduct ? oldProduct.id : Date.now(),
@@ -4537,8 +5042,21 @@ async function addProduct(){
       laborType,
       laborValue,
       otherCost,
-      image: selectedImage || (oldProduct ? oldProduct.image || "" : ""),
+      stoneCostType,
+      stoneCost,
+      profitPercent,
+      taxPercent,
+      discountType,
+      discountValue,
+      priceMode,
+      fixedPrice,
+      costPrice,
+      stockQuantity,
+      image: selectedImage || (typeof window.getPreferredMainProductImage === "function" ? window.getPreferredMainProductImage() : "") || (oldProduct ? oldProduct.image || "" : ""),
+      images: Array.from(new Set([selectedImage || (typeof window.getPreferredMainProductImage === "function" ? window.getPreferredMainProductImage() : "") || (oldProduct ? oldProduct.image || "" : ""), ...(typeof window.getExistingProductImages === "function" ? window.getExistingProductImages() : (Array.isArray(oldProduct?.images) ? oldProduct.images : [])), ...extraGallery].filter(Boolean))),
       stock,
+      is_published: isPublished,
+      publishedAt: oldProduct ? oldProduct.publishedAt : null,
       createdAt: oldProduct ? oldProduct.createdAt : new Date().toISOString(),
       updatedAt: oldProduct ? new Date().toISOString() : undefined
     };
@@ -4570,8 +5088,12 @@ async function addProduct(){
     clearProductForm();
     renderProducts();
     updateDashboard();
+    const savedPrice = calculateProductCurrentPrice(savedProduct);
+    const summary = document.getElementById("productSaveSummary");
+    if(summary) summary.textContent = `${oldProduct ? "ویرایش شد" : "ثبت شد"}: ${savedProduct.name} | کد ${savedProduct.code} | وزن ${formatNumber(savedProduct.weight,3)} گرم | قیمت نهایی ${savedPrice > 0 ? formatPrice(savedPrice) + " تومان" : "در انتظار قیمت معتبر بازار"}`;
 
-    alert(oldProduct ? "تغییرات محصول با موفقیت ذخیره شد." : "محصول با موفقیت ثبت شد.");
+    alert(oldProduct ? "تغییرات محصول با موفقیت در Supabase ذخیره شد." : "محصول با موفقیت در Supabase ثبت شد.");
+    if(window.szfWriteActivityLog)window.szfWriteActivityLog(oldProduct?"product.updated":"product.created","product",savedProduct.id,{code:savedProduct.code,name:savedProduct.name}).catch(()=>{});
 
   }catch(error){
 
@@ -4636,6 +5158,113 @@ function normalizeProductSearch(value){
 PRODUCT SEARCH + RENDER
 ========================================================= */
 
+function resetProductFilters(){
+  const search = document.getElementById("productSearch");
+  const stock = document.getElementById("productStockFilter");
+  const category = document.getElementById("productCategoryFilter");
+  if(search) search.value = "";
+  if(stock) stock.value = "all";
+  if(category) category.value = "all";
+  renderProducts();
+}
+
+function updateInventorySummary(products){
+  const list = Array.isArray(products) ? products : [];
+  const count = status => list.filter(p => String(p.stock || "موجود") === status).length;
+  const values = {
+    inventoryTotalCount: list.length,
+    inventoryAvailableCount: count("موجود"),
+    inventorySoldCount: count("فروخته شد"),
+    inventoryOutCount: count("ناموجود"),
+    inventoryCustomCount: count("سفارشی")
+  };
+  Object.entries(values).forEach(([id,value]) => {
+    const element = document.getElementById(id);
+    if(element) element.textContent = Number(value).toLocaleString("fa-IR");
+  });
+  renderInventoryWeightSummary(list);
+}
+
+function renderInventoryWeightSummary(products){
+  const box = document.getElementById("inventoryWeightSummary");
+  if(!box) return;
+  const list = Array.isArray(products) ? products : [];
+  const toNumber = value => {
+    const raw = String(value ?? "0")
+      .replace(/[۰-۹]/g, digit => String("۰۱۲۳۴۵۶۷۸۹".indexOf(digit)))
+      .replace(/[٠-٩]/g, digit => String("٠١٢٣٤٥٦٧٨٩".indexOf(digit)))
+      .replace(/[٬,]/g, "")
+      .replace(/٫/g, ".")
+      .trim();
+    const number = Number(raw);
+    return Number.isFinite(number) && number >= 0 ? number : 0;
+  };
+  const quantityOf = product => {
+    const raw = product.stockQuantity ?? product.stock_quantity ?? product.quantity;
+    if(raw === null || raw === undefined || raw === "") return 1;
+    return Math.max(0, Math.trunc(toNumber(raw)));
+  };
+  const weightOf = product => toNumber(product.weight ?? product.product_weight ?? 0);
+  const isAvailable = product => String(product.stock || product.stock_status || "موجود") === "موجود" && quantityOf(product) > 0;
+  // Totals cover all products; page filters do not affect these numbers.
+  const totalRegisteredWeight = list.reduce((sum,product) => sum + weightOf(product) * Math.max(1,quantityOf(product)), 0);
+  const availableWeight = list.reduce((sum,product) => sum + (isAvailable(product) ? weightOf(product) * quantityOf(product) : 0), 0);
+  const categories = Object.create(null);
+  list.forEach(product => {
+    const category = String(product.category || "سایر").trim() || "سایر";
+    const quantity = quantityOf(product);
+    const weight = weightOf(product);
+    if(!categories[category]) categories[category] = {models:0,units:0,registeredWeight:0,availableWeight:0};
+    const item = categories[category];
+    item.models += 1;
+    item.units += quantity;
+    item.registeredWeight += weight * Math.max(1,quantity);
+    if(isAvailable(product)) item.availableWeight += weight * quantity;
+  });
+  const globalCards = [
+    `<div class="weight-stat"><span>وزن کل محصولات ثبت‌شده</span><strong>${formatNumber(totalRegisteredWeight,3)} گرم</strong></div>`,
+    `<div class="weight-stat"><span>وزن موجودی فعلی قابل فروش</span><strong>${formatNumber(availableWeight,3)} گرم</strong></div>`,
+    `<div class="weight-stat"><span>تعداد دسته‌بندی‌ها</span><strong>${formatNumber(Object.keys(categories).length,0)} دسته</strong></div>`
+  ];
+  const categoryCards = Object.entries(categories)
+    .sort((a,b) => b[1].registeredWeight - a[1].registeredWeight)
+    .map(([category,item]) => `
+      <div class="weight-stat">
+        <span>دسته ${escapeHTML(category)} · ${formatNumber(item.models,0)} مدل · ${formatNumber(item.units,0)} واحد</span>
+        <strong>وزن کل: ${formatNumber(item.registeredWeight,3)} گرم
+          <small style="display:block;font-size:11px;font-weight:400;margin-top:5px">وزن موجودی قابل فروش: ${formatNumber(item.availableWeight,3)} گرم</small>
+        </strong>
+      </div>`);
+  if(!list.length) globalCards.push('<div class="weight-stat"><span>وزن دسته‌بندی‌ها</span><strong>پس از ثبت اولین محصول نمایش داده می‌شود.</strong></div>');
+  box.innerHTML = globalCards.concat(categoryCards).join("");
+}
+
+function syncProductCategoryFilterOptions(products){
+  const select = document.getElementById("productCategoryFilter");
+  if(!select) return;
+  const current = select.value || "all";
+  const defaults = ["انگشتر","گردنبند","دستبند","گوشواره","پلاک","سرویس","نیم‌ست","سایر"];
+  const custom = (Array.isArray(products) ? products : []).map(product => String(product.category || "").trim()).filter(Boolean);
+  const categories = [...new Set(defaults.concat(custom))];
+  select.innerHTML = '<option value="all">همه دسته‌بندی‌ها</option>' + categories.map(category => `<option value="${escapeAttribute(category)}">${escapeHTML(category)}</option>`).join("");
+  select.value = categories.includes(current) ? current : "all";
+}
+
+function getProductView(){
+  try{return localStorage.getItem("SZF_PRODUCT_VIEW")==="table"?"table":"cards";}catch(_){return "cards";}
+}
+function setProductView(mode){
+  const view=mode==="table"?"table":"cards";
+  try{localStorage.setItem("SZF_PRODUCT_VIEW",view);}catch(_){}
+  const grid=document.getElementById("productGrid"), table=document.getElementById("productTableWrap");
+  const cardsButton=document.getElementById("productCardsViewButton"), tableButton=document.getElementById("productTableViewButton");
+  if(grid)grid.classList.toggle("hidden",view!=="cards");
+  if(table)table.classList.toggle("hidden",view!=="table");
+  if(cardsButton){cardsButton.classList.toggle("active",view==="cards");cardsButton.setAttribute("aria-pressed",String(view==="cards"));}
+  if(tableButton){tableButton.classList.toggle("active",view==="table");tableButton.setAttribute("aria-pressed",String(view==="table"));}
+}
+window.setProductView=setProductView;
+
 function renderProducts(){
 
   const grid =
@@ -4648,9 +5277,15 @@ function renderProducts(){
     getProducts();
 
   updateProductCodeInfo();
+  syncProductCategoryFilterOptions(products);
+  updateInventorySummary(products);
 
   const searchInput =
     document.getElementById("productSearch");
+  const stockFilter = document.getElementById("productStockFilter");
+  const categoryFilter = document.getElementById("productCategoryFilter");
+  const selectedStock = stockFilter?.value || "all";
+  const selectedCategory = categoryFilter?.value || "all";
 
   /*
     جستجوی حرفه‌ای:
@@ -4668,6 +5303,12 @@ function renderProducts(){
 
   const filtered =
     products.filter(product => {
+
+      if(selectedStock !== "all" && String(product.stock || "موجود") !== selectedStock)
+        return false;
+
+      if(selectedCategory !== "all" && normalizeProductSearch(product.category || "") !== normalizeProductSearch(selectedCategory))
+        return false;
 
       if(!search)
         return true;
@@ -4708,19 +5349,26 @@ function renderProducts(){
       return searchableText.includes(search);
     });
 
+  const resultCount = document.getElementById("productResultCount");
+  if(resultCount){
+    resultCount.innerHTML = `نمایش <strong>${filtered.length.toLocaleString("fa-IR")}</strong> از <strong>${products.length.toLocaleString("fa-IR")}</strong> محصول`;
+  }
+
   if(products.length === 0){
 
-    grid.innerHTML =
-      '<div class="product-empty">هنوز محصولی ثبت نشده است.</div>';
-
+    grid.innerHTML = '<div class="product-empty">هنوز محصولی ثبت نشده است.</div>';
+    const emptyBody=document.getElementById("productTableBody");
+    if(emptyBody)emptyBody.innerHTML='<tr><td colspan="9">هنوز محصولی ثبت نشده است.</td></tr>';
+    setProductView(getProductView());
     return;
   }
 
   if(filtered.length === 0){
 
-    grid.innerHTML =
-      '<div class="product-empty">محصولی با این مشخصات پیدا نشد.</div>';
-
+    grid.innerHTML = '<div class="product-empty">محصولی با این مشخصات پیدا نشد.</div>';
+    const emptyBody=document.getElementById("productTableBody");
+    if(emptyBody)emptyBody.innerHTML='<tr><td colspan="9">محصولی با این مشخصات پیدا نشد.</td></tr>';
+    setProductView(getProductView());
     return;
   }
 
@@ -4742,11 +5390,6 @@ function renderProducts(){
       const purityText =
         Number(product.purity || 925)
           .toLocaleString("fa-IR");
-
-      const laborText =
-        product.laborType === "percent"
-          ? formatNumber(product.laborValue,2) + "٪"
-          : formatPrice(product.laborValue) + " تومان";
 
       const imageHTML =
         product.image
@@ -4819,32 +5462,11 @@ function renderProducts(){
               </div>
             </div>
 
-            <div class="meta-item">
-              <div class="meta-label">نوع اجرت</div>
-              <div class="meta-value">
-                ${product.laborType === "percent" ? "درصدی" : "هر گرم"}
-              </div>
-            </div>
-
-            <div class="meta-item">
-              <div class="meta-label">اجرت</div>
-              <div class="meta-value">
-                ${laborText}
-              </div>
-            </div>
-
-            <div class="meta-item">
-              <div class="meta-label">سایر هزینه</div>
-              <div class="meta-value">
-                ${formatPrice(product.otherCost)} تومان
-              </div>
-            </div>
-
           </div>
 
           <div class="product-current-price">
             <div class="product-current-price-label">
-              قیمت فروش بر اساس قیمت روز
+              قیمت نهایی فروش
             </div>
             <div class="product-current-price-value">
               ${
@@ -4891,6 +5513,19 @@ function renderProducts(){
       `;
 
     }).join("");
+
+  const tableBody=document.getElementById("productTableBody");
+  if(tableBody){
+    tableBody.innerHTML=filtered.map(product=>{
+      const currentPrice=calculateProductCurrentPrice(product);
+      const status=String(product.stock||"موجود");
+      const stockClass=status==="فروخته شد"?"stock-out":status==="سفارشی"?"stock-custom":status==="ناموجود"?"stock-out":"stock-in";
+      const image=product.image?`<img src="${escapeAttribute(product.image)}" alt="${escapeAttribute(product.name||"")}" loading="lazy" style="width:46px;height:46px;object-fit:cover;border-radius:8px">`:`<span class="product-table-no-image">—</span>`;
+      const id=encodeURIComponent(String(product.id));
+      return `<tr><td>${image}</td><td>${escapeHTML(product.code||"—")}</td><td>${escapeHTML(product.name||"—")}</td><td>${escapeHTML(product.category||"—")}</td><td>${formatNumber(product.weight,3)}</td><td>${formatNumber(Number(product.purity||925),0)}</td><td><span class="stock ${stockClass}">${escapeHTML(status)}</span> <small>(${formatNumber(Number(product.stockQuantity??(status==="موجود"?1:0)),0)} عدد)</small></td><td>${currentPrice>0?formatPrice(currentPrice)+" تومان":"—"}</td><td><div class="product-table-actions"><button type="button" class="blue-button" onclick="editProduct(decodeURIComponent('${id}'))">ویرایش</button><button type="button" class="danger-button" onclick="deleteProduct(decodeURIComponent('${id}'))">حذف</button><button type="button" class="secondary-button" onclick="useProductForInvoice(decodeURIComponent('${id}'))">فاکتور</button></div></td></tr>`;
+    }).join("");
+  }
+  setProductView(getProductView());
 }
 
 async function loadProducts(){
@@ -4918,7 +5553,9 @@ DELETE PRODUCT
 async function deleteProduct(id){
   if(!confirm("آیا از حذف این محصول از دیتابیس مطمئن هستید؟")) return;
   try{
+    const deletedProduct=getProducts().find(p=>String(p.id)===String(id));
     await supabaseRequest("/rest/v1/products?id=eq." + encodeURIComponent(id), {method:"DELETE"});
+    if(window.szfWriteActivityLog)window.szfWriteActivityLog("product.deleted","product",id,{code:deletedProduct?.code||"",name:deletedProduct?.name||""}).catch(()=>{});
     const products = getProducts().filter(p => String(p.id) !== String(id));
     saveProducts(products);
     if(String(editingProductId) === String(id)) clearProductForm();
@@ -4947,6 +5584,10 @@ function editProduct(id){
 
   setValue("productCode",product.code || "");
   setValue("productName",product.name || "");
+  if(product.category){
+    const categorySelect=document.getElementById("productCategory");
+    if(categorySelect && !Array.from(categorySelect.options).some(o=>(o.value||o.textContent)===product.category)){const opt=document.createElement("option");opt.value=product.category;opt.textContent=product.category;categorySelect.appendChild(opt);}
+  }
   setValue("productCategory",product.category || "انگشتر");
   setValue("productWeight",product.weight ?? "");
   setValue("productSize",product.size || "");
@@ -4956,7 +5597,19 @@ function editProduct(id){
   setValue("productLaborType",product.laborType || "gram");
   setValue("productLaborValue",product.laborValue ?? 0);
   setValue("productOtherCost",product.otherCost ?? 0);
+  setValue("productStoneCostType",product.stoneCostType || "fixed");
+  setValue("productStoneCost",product.stoneCost ?? 0);
+  setValue("productProfitPercent",product.profitPercent ?? 0);
+  setValue("productTaxPercent",product.taxPercent ?? 0);
+  setValue("productDiscountType",product.discountType || "percent");
+  setValue("productDiscountValue",product.discountValue ?? 0);
+  setValue("productPriceMode",product.priceMode || "market");
+  setValue("productFixedPrice",product.fixedPrice ?? 0);
+  setValue("productCostPrice",product.costPrice ?? 0);
+  setValue("productStockQuantity",product.stockQuantity ?? 1);
   setValue("productStock",product.stock || "موجود");
+  const publishBox=document.getElementById("productPublished");if(publishBox)publishBox.checked=product.is_published===true;
+  if(typeof toggleFixedProductPrice === "function") toggleFixedProductPrice();
 
   const imageInput = document.getElementById("productImage");
   if(imageInput)
@@ -4974,6 +5627,7 @@ function editProduct(id){
   }
 
   updateProductLaborLabel();
+  if(typeof window.setExistingProductImages === "function")window.setExistingProductImages(product.images||[product.image].filter(Boolean),product.image||"");
 
   const submitButton = document.getElementById("productSubmitButton");
   if(submitButton)
@@ -5067,7 +5721,13 @@ function clearProductForm(){
     "productStone",
     "productPlating",
     "productLaborValue",
-    "productOtherCost"
+    "productOtherCost",
+    "productStoneCost",
+    "productProfitPercent",
+    "productTaxPercent",
+    "productDiscountValue",
+    "productFixedPrice",
+    "productCostPrice"
   ].forEach(
     id => setValue(id,"")
   );
@@ -5082,10 +5742,18 @@ function clearProductForm(){
     "gram"
   );
 
-  setValue(
-    "productStock",
-    "موجود"
-  );
+  setValue("productStock", "موجود");
+  const publishBox=document.getElementById("productPublished");if(publishBox)publishBox.checked=false;
+  ["productImage","productImagesInput"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
+  const imagePreviewWrap=document.getElementById("productImagePreviewWrap");if(imagePreviewWrap)imagePreviewWrap.classList.add("hidden");
+  if(typeof window.setExistingProductImages === "function")window.setExistingProductImages([],"");
+  setValue("productStoneCostType", "fixed");
+  setValue("productDiscountType", "percent");
+  setValue("productPriceMode", "market");
+  setValue("productStockQuantity", 1);
+  const galleryInput = document.getElementById("productImagesInput");
+  if(galleryInput) galleryInput.value = "";
+  if(typeof toggleFixedProductPrice === "function") toggleFixedProductPrice();
 
   const imageInput =
     document.getElementById("productImage");
@@ -5944,6 +6612,900 @@ document.addEventListener(
   }
 );
 
+
+
+/* ======================================================================
+   SILVER ZARIN FAKHR — PHASE 3 COHERENT WORKFLOW LAYER
+   این لایه قیمت‌گذاری مشترک، جست‌وجوی کد، فاکتور چندمحصولی، آرشیو بازار
+   و مدیریت ظاهر را به کد قبلی اضافه می‌کند. ذخیره ابری بخش‌های جدید نیازمند
+   اجرای فایل supabase_phase3_setup.sql است.
+   ====================================================================== */
+(function SZFPhase3(){
+  "use strict";
+
+  const PRICE_HISTORY_TABLE = "szf_price_history";
+  const INVOICES_TABLE = "szf_invoices";
+  const PANEL_SETTINGS_TABLE = "szf_panel_settings";
+  const PANEL_ASSETS_BUCKET = "panel-assets";
+  const ADMIN_UID = "e35fddc0-211d-4909-807f-1a26a60e8536";
+  const v3State = {
+    calcProduct: null,
+    invoiceItems: [],
+    currentInvoice: null,
+    appearance: {theme:"dark",overlay:55,backgrounds:{},logo:"",colors:{primary:"#D4AF6A",secondary:"#B88A4A",surface:"#101010",text:"#E8E3DA"}},
+    lastDbHistorySlot: "",
+    remoteHistoryLoaded: false,
+    secondTimer: null,
+    appearanceLoaded: false,
+    customCategories: [],
+    editingImageUrls: [],
+    preferredMainImage: ""
+  };
+  // Do not override a theme or user appearance which was already saved in this browser.
+  try {
+    const priorTheme=localStorage.getItem("SZF_PANEL_THEME");
+    if(priorTheme==="light"||priorTheme==="dark")v3State.appearance.theme=priorTheme;
+    const priorAppearance=JSON.parse(localStorage.getItem("SZF_APPEARANCE_CACHE")||"null");
+    if(priorAppearance&&typeof priorAppearance==="object")v3State.appearance={...v3State.appearance,...priorAppearance,backgrounds:priorAppearance.backgrounds||{}};
+    const priorCategories=JSON.parse(localStorage.getItem("SZF_CUSTOM_CATEGORIES")||"[]");
+    if(Array.isArray(priorCategories))v3State.customCategories=priorCategories.filter(x=>typeof x==="string").slice(0,200);
+  } catch {}
+
+  const safeNum = (v, fallback=0) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : fallback;
+  };
+  const normalizeCode = (v) => String(v ?? "").trim().replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).toLocaleLowerCase();
+  const readSettings = () => {
+    try { return JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}") || {}; }
+    catch { return {}; }
+  };
+  const getProductByCode = (code) => {
+    const normalized = normalizeCode(code);
+    if(!normalized) return null;
+    return getProducts().find(p => normalizeCode(p.code) === normalized) || null;
+  };
+  const compactMoney = (value) => formatPrice(Math.round(safeNum(value)));
+  const showStatus = (id, message, isError=false) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.textContent = message;
+    el.classList.toggle("error", !!isError);
+    el.style.color = isError ? "var(--red)" : "var(--muted)";
+  };
+
+  // Unified price engine. Used by product cards, calculator and invoice snapshots.
+  function calculatePricingBreakdown(input){
+    const weight = safeNum(input.weight);
+    const purity = safeNum(input.purity,925);
+    if(weight <= 0) throw new Error("وزن محصول باید بیشتر از صفر باشد.");
+    const gramPrice = safeNum(input.gramPrice, safeNum(getGramPriceByPurity(purity)));
+    if(gramPrice <= 0) throw new Error("قیمت معتبر بازار هنوز در دسترس نیست.");
+    const silverValue = weight * gramPrice;
+    const laborType = input.laborType || "gram";
+    const laborValue = Math.max(0,safeNum(input.laborValue));
+    const labor = laborType === "percent" ? silverValue * laborValue/100 : laborType === "fixed" ? laborValue : weight * laborValue;
+    const stoneType = input.stoneCostType || "fixed";
+    const stoneValue = Math.max(0,safeNum(input.stoneCost));
+    const stone = stoneType === "percent" ? silverValue * stoneValue/100 : stoneValue;
+    const other = Math.max(0,safeNum(input.otherCost));
+    const base = silverValue + labor + stone + other;
+    const profitPct = Math.max(0,safeNum(input.profitPercent));
+    const profit = base * profitPct / 100;
+    const beforeTax = base + profit;
+    const taxPct = input.taxEnabled === false ? 0 : Math.max(0,safeNum(input.taxPercent));
+    const tax = beforeTax * taxPct/100;
+    const beforeDiscount = beforeTax + tax;
+    const discountValue = Math.max(0,safeNum(input.discountValue ?? input.discountPercent));
+    const discountType = input.discountType || "percent";
+    const discount = Math.min(beforeDiscount, discountType === "fixed" ? discountValue : beforeDiscount*discountValue/100);
+    const finalPrice = Math.max(0,beforeDiscount-discount);
+    return {weight,purity,gramPrice,silverValue,labor,stone,other,base,profit,tax,discount,finalPrice,beforeTax,beforeDiscount};
+  }
+  window.calculatePricingBreakdown = calculatePricingBreakdown;
+
+  // Price-buy indicator: (silver ounce × USD/Toman ÷ troy ounce grams) × 0.700 × mithqal grams.
+  const phase3OriginalCalculatePrice = window.calculatePrice;
+  window.calculatePrice = function(){
+    const ounce = safeNum(currentSilverOunce);
+    const usd = safeNum(currentUSD);
+    if(ounce > 0 && usd > 0){
+      currentMithqal17 = (ounce * usd / 31.1034768) * 0.700 * 4.608;
+    }
+    if(typeof phase3OriginalCalculatePrice === "function") phase3OriginalCalculatePrice();
+    setText("mithqal17", currentMithqal17 > 0 ? compactMoney(currentMithqal17) : "—");
+    setText("dashMithqal", currentMithqal17 > 0 ? compactMoney(currentMithqal17) : "—");
+    setText("marketTableMithqal", currentMithqal17 > 0 ? compactMoney(currentMithqal17) : "—");
+    setText("boardMithqal", currentMithqal17 > 0 ? compactMoney(currentMithqal17) : "—");
+  };
+
+  // Shared full sales price for market-linked products; fixed products stay fixed.
+  window.calculateProductCurrentPrice = function(product){
+    if(!product) return 0;
+    if(product.priceMode === "fixed" && safeNum(product.fixedPrice) > 0) return safeNum(product.fixedPrice);
+    const settings = readSettings();
+    const result = calculatePricingBreakdown({
+      weight: product.weight,
+      purity: product.purity || 925,
+      laborType: product.laborType || "gram",
+      laborValue: product.laborValue,
+      stoneCostType: product.stoneCostType || "fixed",
+      stoneCost: product.stoneCost,
+      otherCost: product.otherCost,
+      profitPercent: safeNum(product.profitPercent) > 0 ? product.profitPercent : safeNum(settings.profit),
+      taxPercent: safeNum(product.taxPercent) > 0 ? product.taxPercent : safeNum(settings.tax),
+      discountType: product.discountType || "percent",
+      discountValue: safeNum(product.discountValue) > 0 ? product.discountValue : safeNum(settings.discount),
+      taxEnabled: product.taxEnabled !== false
+    });
+    return result.finalPrice;
+  };
+
+  window.updateProductLaborLabel = function(){
+    const type = document.getElementById("productLaborType")?.value || "gram";
+    const label = document.getElementById("productLaborLabel");
+    if(label) label.textContent = type === "percent" ? "درصد اجرت از ارزش خام نقره" : type === "fixed" ? "اجرت ثابت کل محصول (تومان)" : "اجرت به‌ازای هر گرم (تومان)";
+  };
+  window.updateLaborLabel = function(){
+    const type = document.getElementById("laborType")?.value || "gram";
+    const label = document.getElementById("laborLabel");
+    if(label) label.textContent = type === "percent" ? "درصد اجرت از ارزش خام نقره" : type === "fixed" ? "اجرت ثابت کل محصول (تومان)" : "اجرت به‌ازای هر گرم (تومان)";
+  };
+  window.toggleFixedProductPrice = function(){
+    const mode = document.getElementById("productPriceMode")?.value || "market";
+    const wrap = document.getElementById("productFixedPriceWrap");
+    if(wrap) wrap.classList.toggle("hidden",mode !== "fixed");
+  };
+
+  // Calculator: code lookup only fills temporary fields; it never writes back to inventory.
+  window.lookupCalculatorProduct = function(){
+    const code = document.getElementById("calcProductCode")?.value || "";
+    const product = getProductByCode(code);
+    if(!product){
+      v3State.calcProduct = null;
+      showStatus("calcProductLookupStatus", code.trim() ? "محصولی با این کد در فهرست بارگذاری‌شده پیدا نشد. می‌توانی محاسبه دستی را ادامه بدهی." : "کد محصول را وارد کن؛ اطلاعات ثبت‌شده فقط برای پیش‌پرکردن فرم استفاده می‌شوند.", !!code.trim());
+      document.getElementById("calcProductLookupDetails")?.classList.add("hidden");
+      return false;
+    }
+    v3State.calcProduct = product;
+    const set = (id,value) => { const el=document.getElementById(id); if(el) el.value=value; };
+    set("productType",product.category || "سایر");
+    set("calcWeight",product.weight ?? "");
+    set("calcPurity",String(product.purity || 925));
+    set("laborType",product.laborType || "gram");
+    set("laborValue",product.laborValue ?? 0);
+    set("stoneCostType",product.stoneCostType || "fixed");
+    set("stoneCost",product.stoneCost ?? 0);
+    set("otherCost",product.otherCost ?? 0);
+    const settings=readSettings();
+    set("profitPercent",safeNum(product.profitPercent)>0?product.profitPercent:safeNum(settings.profit));
+    set("taxPercent",safeNum(product.taxPercent)>0?product.taxPercent:safeNum(settings.tax));
+    set("discountType",product.discountType || "percent");
+    set("discountPercent",product.discountValue ?? settings.discount ?? 0);
+    const details=document.getElementById("calcProductLookupDetails");
+    if(details){details.classList.remove("hidden");details.innerHTML=`<strong>${escapeHTML(product.name)}</strong> | کد: ${escapeHTML(product.code)}<br>وزن: ${formatNumber(product.weight,3)} گرم | عیار: ${formatNumber(product.purity,0)} | موجودی: ${formatNumber(product.stockQuantity ?? (product.stock==="موجود"?1:0),0)} عدد<br><span>تغییرات در این فرم فقط موقت است و محصول اصلی و انبار را ویرایش نمی‌کند.</span>`;}
+    showStatus("calcProductLookupStatus","اطلاعات محصول بارگذاری شد؛ مقادیر فرم قابل تغییر موقت هستند.");
+    window.updateLaborLabel(); window.calculateManualPrice();
+    return true;
+  };
+
+  window.calculateManualPrice = function(){
+    const settings=readSettings();
+    try{
+      const out=calculatePricingBreakdown({
+        weight:document.getElementById("calcWeight")?.value,
+        purity:document.getElementById("calcPurity")?.value,
+        laborType:document.getElementById("laborType")?.value,
+        laborValue:document.getElementById("laborValue")?.value,
+        stoneCostType:document.getElementById("stoneCostType")?.value || "fixed",
+        stoneCost:document.getElementById("stoneCost")?.value,
+        otherCost:document.getElementById("otherCost")?.value,
+        profitPercent:document.getElementById("profitPercent")?.value ?? settings.profit,
+        taxPercent:document.getElementById("taxPercent")?.value ?? settings.tax,
+        discountType:document.getElementById("discountType")?.value || "percent",
+        discountValue:document.getElementById("discountPercent")?.value ?? settings.discount,
+        taxEnabled:document.getElementById("calcTaxEnabled")?.checked !== false
+      });
+      document.getElementById("resultBox")?.classList.remove("hidden");
+      setText("resultProductType",document.getElementById("productType")?.value || (v3State.calcProduct?.name || "محاسبه دستی"));
+      setText("resultWeight",formatNumber(out.weight,3)+" گرم"); setText("resultPurity",formatNumber(out.purity,0));
+      setText("resultGramPrice",compactMoney(out.gramPrice)+" تومان"); setText("resultSilverValue",compactMoney(out.silverValue)+" تومان");
+      setText("resultLabor",compactMoney(out.labor)+" تومان"); setText("resultStone",compactMoney(out.stone)+" تومان");
+      setText("resultOther",compactMoney(out.other)+" تومان"); setText("resultBeforeProfit",compactMoney(out.base)+" تومان");
+      setText("resultProfit",compactMoney(out.profit)+" تومان"); setText("resultTax",compactMoney(out.tax)+" تومان");
+      setText("resultDiscount",compactMoney(out.discount)+" تومان"); setText("resultFinal",compactMoney(out.finalPrice)+" تومان");
+      setText("previewFinal",compactMoney(out.finalPrice)); setText("previewProduct",v3State.calcProduct?.name || document.getElementById("productType")?.value || "محاسبه دستی");
+      setText("previewWeight",formatNumber(out.weight,3)+" گرم"); setText("previewPurity",formatNumber(out.purity,0));
+      setText("previewSilver",compactMoney(out.silverValue)); setText("previewLabor",compactMoney(out.labor));
+      return out;
+    }catch(error){
+      showStatus("calcProductLookupStatus",error.message || "محاسبه انجام نشد.",true);
+      alert(error.message || "محاسبه انجام نشد.");
+      return null;
+    }
+  };
+
+  // Inventory summary counts physical units (not merely distinct product codes).
+  window.updateInventorySummary = function(products){
+    const list=Array.isArray(products)?products:[];
+    const units=p=>Math.max(0,Math.trunc(safeNum(p.stockQuantity ?? ((p.stock||"موجود")==="موجود"?1:0))));
+    const soldInvoices=getInvoices().filter(i=>i.status==="confirmed");
+    const soldFromInvoices=soldInvoices.reduce((sum,i)=>sum+(i.items||[]).reduce((n,item)=>n+Math.max(0,Math.trunc(safeNum(item.quantity,1))),0),0);
+    const soldIds=new Set(soldInvoices.flatMap(i=>(i.items||[]).flatMap(item=>[item.product_id,item.code].filter(Boolean).map(String))));
+    const manualSold=list.filter(p=>(p.stock||"")==="فروخته شد"&&!soldIds.has(String(p.id))&&!soldIds.has(String(p.code||""))).length;
+    const values={
+      inventoryTotalCount:list.length,
+      inventoryAvailableCount:list.filter(p=>(p.stock||"موجود")==="موجود").reduce((sum,p)=>sum+units(p),0),
+      inventorySoldCount:soldFromInvoices+manualSold,
+      inventoryOutCount:list.filter(p=>(p.stock||"")==="ناموجود"||((p.stock||"")==="موجود"&&units(p)===0)).length,
+      inventoryCustomCount:list.filter(p=>(p.stock||"")==="سفارشی").length
+    };
+    Object.entries(values).forEach(([id,value])=>setText(id,formatNumber(value,0)));
+    // Weight totals: show overall totals and a breakdown for every product category.
+    const weightBox=document.getElementById("inventoryWeightSummary");
+    if(weightBox){
+      const numWeight=value=>{let raw=String(value??0).replace(/[۰-۹]/g,d=>String("۰۱۲۳۴۵۶۷۸۹".indexOf(d))).replace(/[٠-٩]/g,d=>String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).replace(/,/g,"").trim();const n=Number(raw);return Number.isFinite(n)&&n>0?n:0;};
+      const quantity=p=>{const q=Number(p.stockQuantity);return Number.isFinite(q)?Math.max(0,q):1;};
+      const totalRegistered=list.reduce((sum,p)=>sum+numWeight(p.weight)*Math.max(1,quantity(p)),0);
+      const totalAvailable=list.filter(p=>(p.stock||"موجود")==="موجود").reduce((sum,p)=>sum+numWeight(p.weight)*quantity(p),0);
+      const categories={};
+      list.forEach(p=>{const name=String(p.category||"سایر").trim()||"سایر";if(!categories[name])categories[name]={models:0,units:0,registered:0,available:0};const q=quantity(p),w=numWeight(p.weight);categories[name].models++;categories[name].units+=q;categories[name].registered+=w*Math.max(1,q);if((p.stock||"موجود")==="موجود")categories[name].available+=w*q;});
+      const stats=[`<div class="weight-stat"><span>وزن کل محصولات ثبت‌شده</span><strong>${formatNumber(totalRegistered,3)} گرم</strong></div>`,`<div class="weight-stat"><span>وزن موجودی فعلی قابل فروش</span><strong>${formatNumber(totalAvailable,3)} گرم</strong></div>`,`<div class="weight-stat"><span>تعداد دسته‌بندی‌ها</span><strong>${formatNumber(Object.keys(categories).length,0)} دسته</strong></div>`];
+      const breakdown=Object.entries(categories).sort((a,b)=>b[1].registered-a[1].registered).map(([name,v])=>`<div class="weight-stat"><span>دسته ${esc(name)} · ${formatNumber(v.models,0)} مدل · ${formatNumber(v.units,0)} واحد</span><strong>کل: ${formatNumber(v.registered,3)} گرم <small style="display:block;font-size:11px;font-weight:400;margin-top:5px">موجودی فعلی: ${formatNumber(v.available,3)} گرم</small></strong></div>`);
+      weightBox.innerHTML=stats.concat(breakdown).join("");
+    }
+  };
+  // Keep card helpers separate from the single inventory-weight summary function.
+  const previousRenderProducts = window.renderProducts;
+  window.renderProducts = function(){
+    if(typeof previousRenderProducts === "function") previousRenderProducts();
+    document.querySelectorAll("#productGrid .product-card").forEach(card=>{
+      const code=card.querySelector(".product-code")?.textContent?.trim();
+      const product=getProductByCode(code);
+      const meta=card.querySelector(".product-meta");
+      if(product && meta){
+        let quantity=card.querySelector(".product-stock-quantity");
+        if(!quantity){quantity=document.createElement("div");quantity.className="product-stock-quantity";meta.insertAdjacentElement("afterend",quantity);}
+        quantity.textContent="تعداد در انبار: "+formatNumber(product.stockQuantity ?? (product.stock==="موجود"?1:0),0)+" عدد";
+      }
+      const priceLabel=card.querySelector(".product-current-price-label");
+      if(priceLabel) priceLabel.textContent=product?.priceMode==="fixed"?"قیمت نهایی فروش ثابت":"قیمت نهایی فروش";
+    });
+  };
+
+  // Multiple-product invoice draft, followed by explicit confirmation to reduce stock.
+  window.addInvoiceItemFromFields = function(){
+    const code=document.getElementById("invoiceProductCode")?.value?.trim() || "";
+    const saved=code ? getProductByCode(code) : null;
+    const name=document.getElementById("invoiceProductName")?.value?.trim() || saved?.name || "";
+    const weight=safeNum(document.getElementById("invoiceWeight")?.value ?? saved?.weight);
+    const purity=safeNum(document.getElementById("invoicePurity")?.value ?? saved?.purity,925);
+    const amount=safeNum(document.getElementById("invoiceAmount")?.value ?? (saved?calculateProductCurrentPrice(saved):0));
+    const quantity=Math.max(1,Math.trunc(safeNum(document.getElementById("invoiceQuantity")?.value,1)));
+    const profit=safeNum(document.getElementById("invoiceProfit")?.value);
+    if(!name || weight<=0 || amount<=0){alert("کد محصول معتبر یا نام، وزن و مبلغ محصول را وارد کنید. برای محصول ثبت‌شده، کد را وارد و از خواندن خودکار استفاده کن.");return false;}
+    if(saved && saved.stock==="فروخته شد"){alert("این محصول با وضعیت فروخته‌شده مشخص شده است.");return false;}
+    if(saved && Number.isFinite(Number(saved.stockQuantity)) && quantity>Number(saved.stockQuantity) && saved.stock!=="سفارشی") {alert("تعداد واردشده از موجودی فعلی بیشتر است.");return false;}
+    const price=amount;
+    v3State.invoiceItems.push({product_id:saved?.id || null,code:code || saved?.code || "",name,weight,purity,quantity,unit_price:price,profit:profit,images:saved?.images || (saved?.image?[saved.image]:[]),stock:saved?.stock || "سفارشی"});
+    renderInvoiceDraft();
+    showStatus("invoiceLookupStatus", "محصول به پیش‌نویس اضافه شد.");
+    return true;
+  };
+  window.removeInvoiceDraftItem = function(index){v3State.invoiceItems.splice(Number(index),1);renderInvoiceDraft();};
+  function calcInvoiceTotals(){
+    const subtotal=v3State.invoiceItems.reduce((s,i)=>s+safeNum(i.unit_price)*safeNum(i.quantity,1),0);
+    const discountType=document.getElementById("invoiceDiscountType")?.value || "percent";
+    const discountValue=safeNum(document.getElementById("invoiceDiscountValue")?.value);
+    const taxEnabled=document.getElementById("invoiceTaxEnabled")?.checked===true;
+    const taxPercent=taxEnabled?Math.max(0,safeNum(document.getElementById("invoiceTaxPercent")?.value)):0;
+    const tax=subtotal*taxPercent/100;
+    const beforeDiscount=subtotal+tax;
+    const discount=Math.min(beforeDiscount,discountType==="fixed"?discountValue:beforeDiscount*discountValue/100);
+    const total=Math.max(0,beforeDiscount-discount);
+    const rawProfit=v3State.invoiceItems.reduce((s,i)=>s+safeNum(i.profit)*safeNum(i.quantity,1),0);
+    const profit=Math.max(0,rawProfit-discount);
+    return {subtotal,tax,taxEnabled,discount,total,profit:Math.max(0,profit)};
+  }
+  function profitSafe(v){return safeNum(v);}
+  function renderInvoiceDraft(){
+    const tbody=document.getElementById("invoiceDraftItemsTable");
+    if(tbody){
+      tbody.innerHTML=v3State.invoiceItems.length?v3State.invoiceItems.map((i,n)=>`<tr><td>${escapeHTML(i.code||"—")}</td><td>${escapeHTML(i.name)}</td><td>${formatNumber(i.weight,3)} گرم</td><td>${formatNumber(i.quantity,0)}</td><td>${compactMoney(i.unit_price)}</td><td>${compactMoney(i.unit_price*i.quantity)}</td><td><button type="button" class="danger-button" onclick="removeInvoiceDraftItem(${n})">حذف</button></td></tr>`).join(""):'<tr><td colspan="7" class="history-empty">هنوز محصولی به فاکتور اضافه نشده است.</td></tr>';
+    }
+    const t=calcInvoiceTotals();
+    setText("invoiceDraftTotal",`جمع محصولات: ${compactMoney(t.subtotal)} تومان | مالیات: ${compactMoney(t.tax)} تومان | تخفیف: ${compactMoney(t.discount)} تومان | مبلغ نهایی: ${compactMoney(t.total)} تومان`);
+  }
+  window.createInvoice = async function(){
+    if(!v3State.invoiceItems.length){alert("حداقل یک محصول به فاکتور اضافه کن.");return;}
+    if(!supabaseAccessToken){alert("برای ذخیره واقعی فاکتور، ابتدا با حساب مدیریت وارد شو.");return;}
+    if(supabaseUserId && supabaseUserId !== ADMIN_UID){alert("این حساب برای ثبت فاکتور مدیریتی مجاز نیست.");return;}
+    const t=calcInvoiceTotals();
+    const customer=document.getElementById("customerName")?.value?.trim() || "";
+    const phone=document.getElementById("customerPhone")?.value?.trim() || "";
+    const now=new Date();
+    const payload={customer_name:customer,customer_phone:phone,status:"draft",subtotal:t.subtotal,tax_enabled:t.taxEnabled,tax_percent:safeNum(document.getElementById("invoiceTaxPercent")?.value),tax_amount:t.tax,discount_type:document.getElementById("invoiceDiscountType")?.value||"percent",discount_value:safeNum(document.getElementById("invoiceDiscountValue")?.value),discount_amount:t.discount,total_amount:t.total,total_profit:t.profit,currency:"TOMAN",notes:"",items:v3State.invoiceItems.map(i=>({product_id:i.product_id,product_code:i.code,product_name:i.name,weight:i.weight,purity:i.purity,quantity:i.quantity,unit_price:i.unit_price,line_total:i.unit_price*i.quantity,line_profit:i.profit}))};
+    try{
+      const result=await supabaseRequest("/rest/v1/rpc/szf_save_invoice",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({p_payload:payload,p_confirm:false})});
+      const invoice=result && (result.invoice || result);
+      if(!invoice || !invoice.id) throw new Error("سرور شناسه فاکتور را برنگرداند؛ ذخیره تأیید نشد.");
+      v3State.currentInvoice={...invoice,id:invoice.id,number:"SZF-"+String(invoice.invoice_number||0).padStart(5,"0"),customer,phone,items:[...v3State.invoiceItems],amount:t.total,profit:t.profit,subtotal:t.subtotal,discount:t.discount,status:"draft",date:formatDateTimeIran(now),timestamp:now.getTime()};
+      const cached=getInvoices().filter(x=>x.id!==invoice.id);cached.unshift(v3State.currentInvoice);saveInvoices(cached);
+      renderInvoicePreview(v3State.currentInvoice);await loadInvoiceHistory();
+      alert("پیش‌نویس فاکتور در Supabase ذخیره شد؛ موجودی هنوز کاهش نیافته است.");
+    }catch(error){console.error("Invoice draft save failed",error);alert("ذخیره ابری فاکتور انجام نشد. ابتدا فایل supabase_phase3_setup.sql را در SQL Editor اجرا کن.\nجزئیات: "+(error.message||"خطای نامشخص"));}
+  };
+  function renderInvoicePreview(invoice){
+    const preview=document.getElementById("invoicePreview");if(!preview)return;
+    preview.classList.remove("hidden");
+    setText("invoiceNumber",invoice.number||"در انتظار شماره");setText("invoiceDate",invoice.date||formatDateTimeIran(new Date(invoice.created_at||Date.now())));
+    setText("invoiceCustomer",invoice.customer||invoice.customer_name||"مشتری");
+    const codes=(invoice.items||[]).map(i=>i.code||i.product_code||"").filter(Boolean).join("، ");setText("invoiceCode",codes||"—");
+    const body=document.getElementById("invoiceItemsPreview");
+    if(body)body.innerHTML=(invoice.items||[]).map(i=>`<tr><td>${escapeHTML(i.name||i.product_name||"محصول")}<br><small>${escapeHTML(i.code||i.product_code||"")}</small></td><td>${formatNumber(i.weight,3)} گرم</td><td>${formatNumber(i.purity,0)}</td><td>${formatNumber(i.quantity||1,0)}</td><td>${compactMoney(i.unit_price*safeNum(i.quantity,1))} تومان</td></tr>`).join("")||'<tr><td colspan="5">موردی ثبت نشده است.</td></tr>';
+    setText("invoiceFinalShow",compactMoney(invoice.total_amount??invoice.amount)+" تومان");setText("invoiceStatusShow",invoice.status==="confirmed"?"فروش تأییدشده":invoice.status==="cancelled"?"لغوشده":"پیش‌نویس");
+    const invoiceTax= safeNum(invoice.tax_amount ?? invoice.tax);setText("invoiceTaxSummary","مالیات فاکتور: "+compactMoney(invoiceTax)+" تومان");
+  }
+  window.confirmInvoiceSale = async function(){
+    const inv=v3State.currentInvoice;
+    if(!inv?.id){alert("ابتدا فاکتور را ذخیره کن تا شماره و شناسه واقعی ایجاد شود.");return;}
+    if(inv.status==="confirmed"){alert("این فاکتور قبلاً تأیید شده است.");return;}
+    if(!confirm("با تأیید فروش، موجودی محصولات ثبت‌شده در انبار به‌صورت تراکنشی کاهش می‌یابد. ادامه می‌دهی؟"))return;
+    try{
+      const result=await supabaseRequest("/rest/v1/rpc/szf_confirm_invoice",{method:"POST",body:JSON.stringify({p_invoice_id:inv.id})});
+      inv.status="confirmed";v3State.currentInvoice=inv;
+      const rows=getInvoices().map(x=>x.id===inv.id?{...x,status:"confirmed"}:x);saveInvoices(rows);
+      renderInvoicePreview(inv);await loadProducts();await loadInvoiceHistory();updateDashboard();alert("فروش تأیید شد و موجودی در پایگاه داده به‌روزرسانی شد.");
+    }catch(error){console.error(error);alert("تأیید فروش انجام نشد و موجودی تغییر داده نشد. اگر موجودی کافی نباشد، عملیات کامل لغو می‌شود.\n"+(error.message||"خطای نامشخص"));}
+  };
+  window.printInvoice = function(){
+    const preview=document.getElementById("invoicePreview");
+    if(!preview||preview.classList.contains("hidden")){alert("ابتدا فاکتور را ذخیره کن تا پیش‌نمایش ساخته شود.");return;}
+    const invoiceSection=document.getElementById("invoiceSection");
+    if(invoiceSection)invoiceSection.classList.remove("hidden");
+    preview.classList.remove("hidden");
+    const oldTitle=document.title;document.title=(document.getElementById("invoiceNumber")?.textContent||"SZF-Invoice")+" - SILVER ZARIN FAKHR";
+    window.print();setTimeout(()=>document.title=oldTitle,1000);
+  };
+  window.clearInvoice = function(){
+    if(v3State.currentInvoice && v3State.currentInvoice.status==="draft" && !confirm("پاک‌کردن فقط فرم و فهرست فعلی است؛ پیش‌نویس ذخیره‌شده در پایگاه داده حذف نمی‌شود. ادامه می‌دهی؟"))return;
+    v3State.invoiceItems=[];v3State.currentInvoice=null;
+    ["customerName","customerPhone","invoiceProductCode","invoiceProductName","invoiceWeight","invoiceAmount","invoiceProfit","invoiceQuantity","invoiceDiscountValue"].forEach(id=>{const el=document.getElementById(id);if(el)el.value=id==="invoiceQuantity"?"1":"";});
+    document.getElementById("invoicePreview")?.classList.add("hidden");renderInvoiceDraft();
+  };
+  window.useProductForInvoice = function(id){
+    const p=getProducts().find(x=>String(x.id)===String(id));if(!p)return;
+    showSection("invoiceSection",document.querySelectorAll(".nav-button")[3]);
+    setValue("invoiceProductCode",p.code||"");setValue("invoiceProductName",p.name||"");setValue("invoiceWeight",p.weight||"");setValue("invoicePurity",String(p.purity||925));setValue("invoiceAmount",Math.round(calculateProductCurrentPrice(p)));setValue("invoiceProfit",0);setValue("invoiceQuantity",1);
+    showStatus("invoiceLookupStatus","محصول از فهرست محصولات انتخاب شد؛ برای افزودن به پیش‌نویس دکمه افزودن محصول را بزن.");
+  };
+
+  async function loadInvoiceHistory(){
+    if(!supabaseAccessToken)return;
+    const rows=await supabaseRequest("/rest/v1/"+INVOICES_TABLE+"?select=*,items:szf_invoice_items(*)&order=created_at.desc&limit=250",{method:"GET"});
+    const mapped=(Array.isArray(rows)?rows:[]).map(r=>({id:r.id,number:"SZF-"+String(r.invoice_number||0).padStart(5,"0"),customer:r.customer_name||"",phone:r.customer_phone||"",amount:safeNum(r.total_amount),profit:safeNum(r.total_profit),tax_amount:safeNum(r.tax_amount),status:r.status||"draft",date:r.created_at?formatDateTimeIran(new Date(r.created_at)):"",timestamp:r.created_at?new Date(r.created_at).getTime():0,items:(r.items||[]).map(i=>({product_id:i.product_id,code:i.product_code,name:i.product_name,weight:safeNum(i.weight),purity:safeNum(i.purity),quantity:safeNum(i.quantity,1),unit_price:safeNum(i.unit_price),profit:safeNum(i.line_profit)}))}));
+    saveInvoices(mapped);renderInvoiceHistory(mapped);
+  }
+  window.loadInvoiceHistory=async function(){try{await loadInvoiceHistory();return true;}catch(error){console.warn("Invoice history could not load",error);showStatus("appearanceStatus","خواندن فاکتورها ناموفق بود: "+(error.message||"خطا"),true);return false;}};
+  function renderInvoiceHistory(invoices=getInvoices()){
+    const tbody=document.getElementById("invoiceHistoryTable");if(!tbody)return;
+    tbody.innerHTML=invoices.length?invoices.slice(0,100).map(i=>`<tr><td>${escapeHTML(i.number||"—")}</td><td>${escapeHTML(i.date||"")}</td><td>${escapeHTML(i.customer||"")}</td><td>${formatNumber((i.items||[]).length,0)}</td><td>${compactMoney(i.amount)} تومان</td><td>${i.status==="confirmed"?"تأییدشده":i.status==="cancelled"?"لغوشده":"پیش‌نویس"}</td><td><button type="button" class="secondary-button" onclick="viewSavedInvoice('${encodeURIComponent(String(i.id||""))}')">نمایش</button>${i.status==="confirmed"?` <button type="button" class="secondary-button" onclick="cancelInvoiceSaleById('${encodeURIComponent(String(i.id||""))}')">لغو فروش</button>`:""}</td></tr>`).join(""):'<tr><td colspan="7">هنوز فاکتوری ثبت نشده است.</td></tr>';
+  }
+  window.viewSavedInvoice=function(encodedId){const id=decodeURIComponent(encodedId);const inv=getInvoices().find(i=>String(i.id)===id);if(!inv)return;v3State.currentInvoice=inv;v3State.invoiceItems=[...(inv.items||[])];renderInvoicePreview(inv);renderInvoiceDraft();};
+  window.cancelInvoiceSaleById=async function(encodedId){
+    const id=decodeURIComponent(encodedId||"");
+    if(!id||!confirm("فروش تأییدشده لغو شود؟ موجودی محصولات مرتبط به‌صورت تراکنشی به انبار برمی‌گردد."))return;
+    try{
+      await supabaseRequest("/rest/v1/rpc/szf_cancel_invoice",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({p_invoice_id:id})});
+      await loadInvoiceHistory();
+      if(typeof loadProducts==="function")await loadProducts();
+      if(typeof updateDashboard==="function")updateDashboard();
+      alert("فروش لغو شد و موجودی محصولات به‌روزرسانی شد.");
+    }catch(error){alert("لغو فروش انجام نشد: "+(error.message||"خطای نامشخص")+"\nفایل مهاجرت SQL مرحله چهار را اجرا کن.");}
+  };
+
+  // Price-history records are hourly, not every second; one upsert per hour is allowed.
+  window.getHistorySlot = function(date){
+    const parts=getIranParts(date);return getIranDateKey(date)+"-"+String(parts.hour).padStart(2,"0");
+  };
+  const originalSavePriceHistory=window.savePriceHistory;
+  window.savePriceHistory=function(){
+    if(!(currentSilver999>0&&currentUSD>0&&currentSilverOunce>0))return;
+    const now=getIranClockNow();const slot=window.getHistorySlot(now);
+    let doneBefore=false;try{doneBefore=localStorage.getItem(HISTORY_SLOT_KEY)===slot;}catch{}
+    if(typeof originalSavePriceHistory==="function")originalSavePriceHistory();
+    if(doneBefore || !supabaseAccessToken || v3State.lastDbHistorySlot===slot)return;
+    v3State.lastDbHistorySlot=slot;
+    const payload={slot,captured_at:now.toISOString(),ounce:safeNum(currentSilverOunce),usd:safeNum(currentUSD),silver999:safeNum(currentSilver999),silver925:safeNum(currentSilver925),buy_price:safeNum(currentMithqal17),created_by:supabaseUserId||null};
+    supabaseRequest("/rest/v1/"+PRICE_HISTORY_TABLE+"?on_conflict=slot",{method:"POST",headers:{"Prefer":"resolution=ignore-duplicates,return=minimal"},body:JSON.stringify(payload)}).catch(err=>{v3State.lastDbHistorySlot="";console.warn("Price history cloud sync is not available yet",err);});
+  };
+  window.loadRemotePriceHistory=async function(showMessage=false){
+    if(!supabaseAccessToken){if(showMessage)alert("ابتدا وارد پنل شو.");return false;}
+    try{
+      const rows=await supabaseRequest("/rest/v1/"+PRICE_HISTORY_TABLE+"?select=*&order=captured_at.desc&limit=2000",{method:"GET"});
+      const remote=(Array.isArray(rows)?rows:[]).map(r=>({slot:r.slot,time:r.captured_at?formatDateTimeIran(new Date(r.captured_at)):"",timestamp:r.captured_at?new Date(r.captured_at).getTime():0,ounce:safeNum(r.ounce),usd:safeNum(r.usd),silver999:safeNum(r.silver999),silver925:safeNum(r.silver925),mithqal:safeNum(r.buy_price)}));
+      const local= getHistory();const bySlot=new Map();[...local,...remote].forEach(r=>{if(r.slot)bySlot.set(r.slot,r);});
+      const merged=[...bySlot.values()].sort((a,b)=>safeNum(b.timestamp)-safeNum(a.timestamp)).slice(0,2000);
+      localStorage.setItem(HISTORY_KEY,JSON.stringify(merged));v3State.remoteHistoryLoaded=true;renderHistory();
+      if(showMessage)alert("آرشیو بازار از Supabase همگام شد. تعداد رکوردها: "+formatNumber(merged.length,0));
+      return true;
+    }catch(error){console.warn("Remote price history unavailable",error);if(showMessage)alert("آرشیو ابری خوانده نشد. اجرای SQL نسخه جدید لازم است.\n"+(error.message||"خطای نامشخص"));return false;}
+  };
+  window.renderHistory=function(){
+    const tbody=document.getElementById("historyTable");if(!tbody)return;
+    const all=getHistory().filter(x=>safeNum(x.timestamp)>0).sort((a,b)=>safeNum(b.timestamp)-safeNum(a.timestamp));
+    const period=document.getElementById("historyPeriod")?.value||"168";
+    const cutoff=period==="all"?0:Date.now()-safeNum(period,168)*60*60*1000;
+    const rows=all.filter(x=>safeNum(x.timestamp)>=cutoff);
+    tbody.innerHTML=rows.length?rows.map(item=>`<tr><td>${escapeHTML(item.time|| (item.timestamp?formatDateTimeIran(new Date(item.timestamp)):"—"))}</td><td>${formatNumber(item.ounce,3)}</td><td>${compactMoney(item.usd)}</td><td>${compactMoney(item.silver999)}</td><td>${compactMoney(item.silver925)}</td><td>${compactMoney(item.mithqal)}</td></tr>`).join(""):'<tr><td colspan="6" class="history-empty">در این بازه رکوردی وجود ندارد. برای آرشیو ساعتی، پنل باید حداقل یک‌بار قیمت را دریافت کند؛ ثبت پیوسته هنگام بسته بودن پنل نیازمند زمان‌بند سمت سرور است.</td></tr>';
+    const buyValues=rows.map(r=>safeNum(r.mithqal)).filter(v=>v>0);const min=buyValues.length?Math.min(...buyValues):0,max=buyValues.length?Math.max(...buyValues):0;
+    const change=buyValues.length>1?buyValues[0]-buyValues[buyValues.length-1]:0;
+    const stats=document.getElementById("historyStats");if(stats)stats.innerHTML=`<div class="history-stat"><span>کمترین قیمت خرید در بازه</span><strong>${min?compactMoney(min)+" تومان":"—"}</strong></div><div class="history-stat"><span>بیشترین قیمت خرید در بازه</span><strong>${max?compactMoney(max)+" تومان":"—"}</strong></div><div class="history-stat"><span>اختلاف اولین و آخرین رکورد نمایشی</span><strong>${buyValues.length>1?(change>0?"+":"")+compactMoney(change)+" تومان":"—"}</strong></div>`;
+    drawHistoryChart(rows.slice().reverse());
+  };
+  function drawHistoryChart(rows){
+    const canvas=document.getElementById("priceHistoryChart");if(!canvas)return;
+    const rect=canvas.getBoundingClientRect();const width=Math.max(280,rect.width||600);const height=220;const dpr=window.devicePixelRatio||1;
+    canvas.width=width*dpr;canvas.height=height*dpr;canvas.style.height=height+"px";const ctx=canvas.getContext("2d");ctx.scale(dpr,dpr);ctx.clearRect(0,0,width,height);
+    const values=rows.map(r=>safeNum(r.mithqal)).filter(v=>v>0);if(values.length<2){ctx.fillStyle=getComputedStyle(document.body).color||"#bbb";ctx.font="13px Tahoma";ctx.textAlign="center";ctx.fillText("برای نمایش نمودار، حداقل دو رکورد معتبر لازم است.",width/2,height/2);return;}
+    const min=Math.min(...values),max=Math.max(...values),range=max-min||1,pad={l:44,r:12,t:16,b:24};
+    ctx.strokeStyle="rgba(160,140,110,.28)";ctx.lineWidth=1;for(let g=0;g<4;g++){const y=pad.t+(height-pad.t-pad.b)*g/3;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(width-pad.r,y);ctx.stroke();}
+    ctx.strokeStyle="#d4af6a";ctx.lineWidth=2.5;ctx.beginPath();values.forEach((v,i)=>{const x=pad.l+(width-pad.l-pad.r)*(i/(values.length-1));const y=height-pad.b-(v-min)/range*(height-pad.t-pad.b);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();
+    ctx.fillStyle=getComputedStyle(document.body).color||"#bbb";ctx.font="10px Tahoma";ctx.textAlign="right";ctx.fillText(compactMoney(max),pad.l-6,pad.t+4);ctx.fillText(compactMoney(min),pad.l-6,height-pad.b+3);
+  }
+  window.exportHistory=function(){
+    const rows=getHistory().slice().sort((a,b)=>safeNum(b.timestamp)-safeNum(a.timestamp));
+    if(!rows.length){alert("تاریخچه‌ای برای خروجی وجود ندارد.");return;}
+    const header=["slot","time","timestamp","ounce_usd","usd_toman","silver999_toman","silver925_toman","buy_price_toman"];
+    const csv=[header.join(","),...rows.map(r=>[r.slot,r.time,r.timestamp,r.ounce,r.usd,r.silver999,r.silver925,r.mithqal].map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(","))].join("\r\n");
+    const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="SZF-price-history.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  };
+
+  // Price data: fetch at the safe API interval, freshness display ticks every second.
+  window.refreshMarketPricesNow=async function(){
+    const btn=document.querySelector("#priceFreshnessBar button");if(btn){btn.disabled=true;btn.textContent="در حال دریافت...";}
+    try{await fetchPrices();}finally{if(btn){btn.disabled=false;btn.textContent="به‌روزرسانی دستی";}updatePriceFreshness();}
+  };
+  function updatePriceFreshness(){
+    const last=lastPriceUpdateIranDate;
+    if(!last){setText("priceFreshnessStatus","منتظر اولین دریافت معتبر بازار");setText("priceLastSuccess","—");setText("priceElapsed","—");return;}
+    const sec=Math.max(0,Math.floor((Date.now()-last.getTime())/1000));
+    setText("priceLastSuccess",formatDateTimeIran(last));setText("priceElapsed",sec<60?formatNumber(sec,0)+" ثانیه":formatNumber(Math.floor(sec/60),0)+" دقیقه و "+formatNumber(sec%60,0)+" ثانیه");
+    const stale=sec>Math.ceil(PRICE_REFRESH_INTERVAL_MS/1000)*2;
+    setText("priceFreshnessStatus",stale?"هشدار: داده بازار قدیمی است؛ آخرین مقدار معتبر حفظ شده است.":"داده معتبر دریافت شده؛ وضعیت نمایش هر ثانیه به‌روزرسانی می‌شود.");
+  }
+
+  // Asset uploads: images remain in Supabase Storage; no base64 blobs are pushed into localStorage.
+  function fileAsDataURL(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result));reader.onerror=()=>reject(new Error("خواندن فایل تصویر ناموفق بود."));reader.readAsDataURL(file);});}
+  async function uploadPanelAsset(file,prefix){
+    if(!supabaseAccessToken)throw new Error("ابتدا با حساب مدیر وارد شو.");
+    if(!file||!file.type.startsWith("image/"))throw new Error("یک فایل تصویر معتبر انتخاب کن.");
+    if(file.size>5*1024*1024)throw new Error("حجم تصویر باید کمتر از ۵ مگابایت باشد.");
+    const ext=(file.type.split("/")[1]||"jpg").replace(/[^a-z0-9]/gi,"").slice(0,8)||"jpg";
+    const path=prefix+"-"+Date.now()+"."+ext;
+    const response=await fetch(SUPABASE_URL+"/storage/v1/object/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path),{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+supabaseAccessToken,"Content-Type":file.type,"x-upsert":"false"},body:file});
+    const text=await response.text();if(!response.ok){let msg=text;try{const j=JSON.parse(text);msg=j.message||j.error||j.msg||text;}catch{};throw new Error("ذخیره تصویر در Supabase انجام نشد: "+msg+" — فضای panel-assets و مجوزهای آن را بررسی کن.");}
+    return SUPABASE_URL+"/storage/v1/object/public/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path);
+  }
+  async function persistAppearance(){
+    if(!supabaseAccessToken)throw new Error("ابتدا با حساب مدیر وارد شو.");
+    const payload={id:1,settings:v3State.appearance,updated_at:new Date().toISOString(),updated_by:supabaseUserId||null};
+    await supabaseRequest("/rest/v1/"+PANEL_SETTINGS_TABLE+"?on_conflict=id",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(payload)});
+    localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));
+  }
+  const DEFAULT_PANEL_COLORS={primary:"#D4AF6A",secondary:"#B88A4A",surface:"#101010",text:"#E8E3DA"};
+  function cleanHexColor(value,fallback){return /^#[0-9a-f]{6}$/i.test(String(value||""))?String(value):fallback;}
+  function applyPanelColors(){
+    const saved={...DEFAULT_PANEL_COLORS,...(v3State.appearance.colors||{})};
+    const colors={primary:cleanHexColor(saved.primary,DEFAULT_PANEL_COLORS.primary),secondary:cleanHexColor(saved.secondary,DEFAULT_PANEL_COLORS.secondary),surface:cleanHexColor(saved.surface,DEFAULT_PANEL_COLORS.surface),text:cleanHexColor(saved.text,DEFAULT_PANEL_COLORS.text)};
+    v3State.appearance.colors=colors;
+    const root=document.documentElement;
+    const activeTheme=root.getAttribute("data-szf-theme") || v3State.appearance.theme || "dark";
+    const effectiveText=(activeTheme==="light" && colors.text.toLowerCase()==="#e8e3da")?"#292929":colors.text;
+    root.style.setProperty("--goldBright",colors.primary);
+    root.style.setProperty("--gold",colors.secondary);
+    root.style.setProperty("--panel",colors.surface);
+    root.style.setProperty("--text",effectiveText);
+    root.style.setProperty("--board-text",effectiveText);
+    const map={panelColorPrimary:colors.primary,panelColorSecondary:colors.secondary,panelColorSurface:colors.surface,panelColorText:colors.text};
+    Object.entries(map).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.value=value;});
+  }
+  window.savePanelColors=async function(){
+    const colors={primary:document.getElementById("panelColorPrimary")?.value||DEFAULT_PANEL_COLORS.primary,secondary:document.getElementById("panelColorSecondary")?.value||DEFAULT_PANEL_COLORS.secondary,surface:document.getElementById("panelColorSurface")?.value||DEFAULT_PANEL_COLORS.surface,text:document.getElementById("panelColorText")?.value||DEFAULT_PANEL_COLORS.text};
+    v3State.appearance.colors=colors;applyPanelColors();
+    try{localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));}catch(error){console.warn("رنگ‌ها در مرورگر ذخیره نشدند",error);}
+    const status=document.getElementById("panelColorsStatus");
+    if(supabaseAccessToken){try{await persistAppearance();if(status)status.textContent="رنگ‌ها ذخیره و با Supabase همگام شدند.";}catch(error){if(status)status.textContent="رنگ‌ها در همین مرورگر ذخیره شدند؛ همگام‌سازی ابری انجام نشد.";console.warn("Color cloud sync failed",error);}}
+    else if(status)status.textContent="رنگ‌ها در همین مرورگر ذخیره شدند. برای همگام‌سازی ابری با حساب مدیر وارد شو.";
+    if(status)setTimeout(()=>{if(status)status.textContent="";},5000);
+  };
+  window.resetPanelColors=function(){v3State.appearance.colors={...DEFAULT_PANEL_COLORS};applyPanelColors();try{localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));}catch{}const status=document.getElementById("panelColorsStatus");if(status)status.textContent="رنگ‌های پیش‌فرض اعمال شدند؛ برای ذخیره ابری، دکمه ذخیره رنگ‌ها را بزن.";};
+  function applyAppearance(){
+    const theme=v3State.appearance.theme==="light"?"light":"dark";
+    document.documentElement.setAttribute("data-szf-theme",theme);
+    applyPanelColors();
+    const lightButton=document.getElementById("lightThemeButton"),darkButton=document.getElementById("darkThemeButton");
+    if(lightButton)lightButton.classList.toggle("active",theme==="light");if(darkButton)darkButton.classList.toggle("active",theme==="dark");
+    const overlay=Math.min(.9,Math.max(.1,safeNum(v3State.appearance.overlay,55)/100));
+    const setBG=(id,key)=>{const el=document.getElementById(id);if(!el)return;const url=v3State.appearance.backgrounds?.[key];if(url){el.style.backgroundImage=`linear-gradient(rgba(3,3,3,${overlay}),rgba(3,3,3,${overlay})),url("${String(url).replace(/"/g,"%22")}")`;el.style.backgroundPosition="center";el.style.backgroundSize="cover";el.style.backgroundAttachment="fixed";}else{el.style.removeProperty("background-image");el.style.removeProperty("background-position");el.style.removeProperty("background-size");el.style.removeProperty("background-attachment");}};
+    ["loginPage","dashboardSection","marketSection","calculatorSection","invoiceSection","productsSection","historySection","settingsSection","businessSection","displayMode"].forEach(id=>setBG(id,id));
+    const logo=v3State.appearance.logo||"";
+    document.querySelectorAll(".logo-circle,.brand-logo").forEach(el=>{
+      if(logo){el.classList.add("has-image");el.innerHTML=`<img src="${String(logo).replace(/"/g,"%22")}" alt="SILVER ZARIN FAKHR">`;}
+      else if(el.classList.contains("logo-circle")){el.classList.remove("has-image");el.innerHTML='<span class="logo-text">SZF</span>';}
+      else {el.classList.remove("has-image");el.textContent="SZF";}
+    });
+    const page=document.getElementById("appearancePage")?.value||"loginPage";const preview=document.getElementById("appearancePreview");if(preview){const url=v3State.appearance.backgrounds?.[page];preview.style.backgroundImage=url?`linear-gradient(rgba(3,3,3,${overlay}),rgba(3,3,3,${overlay})),url("${String(url).replace(/"/g,"%22")}")`:"none";preview.textContent=url?"پس‌زمینه ذخیره‌شده برای این صفحه":"برای این صفحه تصویر اختصاصی ثبت نشده است.";}
+  }
+  window.savePageBackground=async function(){
+    const file=document.getElementById("appearanceBackgroundFile")?.files?.[0];if(!file){alert("ابتدا تصویر پس‌زمینه را انتخاب کن.");return;}
+    const page=document.getElementById("appearancePage")?.value||"loginPage";
+    try{showStatus("appearanceStatus","در حال بارگذاری تصویر و ذخیره تنظیمات در Supabase...");const url=await uploadPanelAsset(file,"background-"+page);v3State.appearance.backgrounds[page]=url;v3State.appearance.overlay=safeNum(document.getElementById("appearanceOverlay")?.value,55);await persistAppearance();applyAppearance();showStatus("appearanceStatus","پس‌زمینه این صفحه در Supabase ذخیره شد.");}catch(error){showStatus("appearanceStatus",error.message||"ذخیره انجام نشد.",true);alert(error.message||"ذخیره انجام نشد.");}
+  };
+  window.saveBrandLogo=async function(){
+    const file=document.getElementById("brandLogoFile")?.files?.[0];if(!file){alert("ابتدا تصویر لوگو را انتخاب کن.");return;}
+    try{showStatus("appearanceStatus","در حال بارگذاری لوگو...");v3State.appearance.logo=await uploadPanelAsset(file,"brand-logo");await persistAppearance();applyAppearance();showStatus("appearanceStatus","لوگو در Supabase ذخیره و در ورود و پنل اعمال شد.");}catch(error){showStatus("appearanceStatus",error.message||"ذخیره لوگو انجام نشد.",true);alert(error.message||"ذخیره لوگو انجام نشد.");}
+  };
+  window.resetPageBackground=async function(){const page=document.getElementById("appearancePage")?.value||"loginPage";delete v3State.appearance.backgrounds[page];try{await persistAppearance();applyAppearance();showStatus("appearanceStatus","پس‌زمینه این صفحه به پیش‌فرض بازگشت.");}catch(e){showStatus("appearanceStatus","تنظیم محلی بازنشانی شد، اما همگام‌سازی ابری انجام نشد: "+(e.message||"خطا"),true);applyAppearance();}};
+  window.resetBrandLogo=async function(){v3State.appearance.logo="";try{await persistAppearance();applyAppearance();showStatus("appearanceStatus","لوگو به SZF بازگشت.");}catch(e){showStatus("appearanceStatus","لوگو در همین صفحه بازنشانی شد؛ همگام‌سازی ابری انجام نشد.",true);applyAppearance();}};
+  function cleanProductImageUrl(value){const u=String(value||"").trim();return /^https:\/\//i.test(u)?u:"";}
+  function renderExistingProductImages(){
+    const box=document.getElementById("existingProductImages");if(!box)return;
+    box.replaceChildren();
+    const urls=v3State.editingImageUrls.filter(Boolean);
+    if(!urls.length){const note=document.createElement("div");note.className="form-help";note.textContent="در حالت ویرایش می‌توانی تصویر اصلی را انتخاب کنی یا تصویر را از گالری حذف کنی.";box.appendChild(note);return;}
+    urls.forEach((url,index)=>{
+      const card=document.createElement("div");card.className="existing-product-image";
+      const img=document.createElement("img");img.src=url;img.alt="تصویر محصول "+(index+1);img.loading="lazy";img.onerror=()=>{img.alt="تصویر بارگذاری نشد";img.style.opacity=".35";};
+      const tag=document.createElement("div");tag.className="image-main-tag";tag.textContent=url===v3State.preferredMainImage?"تصویر اصلی":"تصویر تکمیلی";
+      const main=document.createElement("button");main.type="button";main.className="secondary-button";main.textContent=url===v3State.preferredMainImage?"تصویر اصلی است":"انتخاب تصویر اصلی";main.disabled=url===v3State.preferredMainImage;main.addEventListener("click",()=>{v3State.preferredMainImage=url;renderExistingProductImages();});
+      const remove=document.createElement("button");remove.type="button";remove.className="danger-button";remove.textContent="حذف از گالری";remove.addEventListener("click",()=>{v3State.editingImageUrls=v3State.editingImageUrls.filter((_,i)=>i!==index);if(v3State.preferredMainImage===url)v3State.preferredMainImage=v3State.editingImageUrls[0]||"";renderExistingProductImages();});
+      card.append(img,tag,main,remove);box.appendChild(card);
+    });
+  }
+  window.setExistingProductImages=function(images=[],mainImage=""){
+    v3State.editingImageUrls=Array.from(new Set((Array.isArray(images)?images:[]).map(cleanProductImageUrl).filter(Boolean))).slice(0,9);
+    v3State.preferredMainImage=cleanProductImageUrl(mainImage)||v3State.editingImageUrls[0]||"";
+    if(v3State.preferredMainImage&&!v3State.editingImageUrls.includes(v3State.preferredMainImage))v3State.editingImageUrls.unshift(v3State.preferredMainImage);
+    renderExistingProductImages();
+  };
+  window.getExistingProductImages=function(){return [...v3State.editingImageUrls];};
+  window.getPreferredMainProductImage=function(){return v3State.preferredMainImage||v3State.editingImageUrls[0]||"";};
+  window.szfWriteActivityLog=async function(action,entityType,entityId,details={}){
+    if(!supabaseAccessToken)return false;
+    try{await supabaseRequest("/rest/v1/szf_activity_log",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify({actor_id:supabaseUserId||null,action:String(action||"activity").slice(0,100),entity_type:String(entityType||"").slice(0,60),entity_id:entityId==null?null:String(entityId).slice(0,100),details:details&&typeof details==="object"?details:{}})});return true;}
+    catch(error){console.warn("Activity log could not be saved",error);return false;}
+  };
+
+  function normalizeCategoryName(value){return String(value||"").trim().replace(/\s+/g," ").slice(0,50);}
+  function addCategoryOption(select,name){
+    if(!select||!name)return;
+    const exists=Array.from(select.options).some(o=>normalizeCategoryName(o.value||o.textContent).toLocaleLowerCase()===name.toLocaleLowerCase());
+    if(!exists){const option=document.createElement("option");option.value=name;option.textContent=name;select.appendChild(option);}
+  }
+  async function loadCustomProductCategories(){
+    const productSelect=document.getElementById("productCategory");
+    const filterSelect=document.getElementById("productCategoryFilter");
+    try{
+      if(supabaseAccessToken){
+        const rows=await supabaseRequest("/rest/v1/szf_categories?select=name&order=name.asc&limit=250",{method:"GET"});
+        if(Array.isArray(rows))v3State.customCategories=rows.map(r=>normalizeCategoryName(r.name)).filter(Boolean);
+        localStorage.setItem("SZF_CUSTOM_CATEGORIES",JSON.stringify(v3State.customCategories));
+      }
+    }catch(error){console.warn("Custom categories are not available; cached categories are used",error);}
+    v3State.customCategories.forEach(name=>{addCategoryOption(productSelect,name);addCategoryOption(filterSelect,name);});
+  }
+  window.addUserProductCategory=async function(){
+    const input=document.getElementById("newProductCategory");const name=normalizeCategoryName(input?.value);
+    if(!name){alert("نام دسته‌بندی جدید را وارد کن.");return;}
+    if(!supabaseAccessToken){alert("برای اینکه دسته‌بندی در همه دستگاه‌ها مشترک باشد، ابتدا با حساب مدیر وارد شو.");return;}
+    if(supabaseUserId&&supabaseUserId!==ADMIN_UID){alert("این حساب مجوز مدیریت دسته‌بندی‌ها را ندارد.");return;}
+    if(v3State.customCategories.some(x=>x.toLocaleLowerCase()===name.toLocaleLowerCase())){alert("این دسته‌بندی قبلاً ثبت شده است.");return;}
+    try{
+      await supabaseRequest("/rest/v1/szf_categories?on_conflict=name",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify({name,created_by:supabaseUserId||null})});
+      v3State.customCategories.push(name);v3State.customCategories=[...new Set(v3State.customCategories)].slice(0,250);
+      localStorage.setItem("SZF_CUSTOM_CATEGORIES",JSON.stringify(v3State.customCategories));
+      addCategoryOption(document.getElementById("productCategory"),name);addCategoryOption(document.getElementById("productCategoryFilter"),name);
+      const select=document.getElementById("productCategory");if(select)select.value=name;if(input)input.value="";
+      showStatus("categoryStatus","دسته‌بندی «"+name+"» در Supabase ثبت شد.");
+    }catch(error){alert("ذخیره دسته‌بندی انجام نشد. فایل SQL نسخه جدید را در Supabase اجرا کن.\n"+(error.message||"خطای نامشخص"));}
+  };
+
+  window.loadPanelAppearance=async function(){
+    try{
+      let row=null;
+      if(supabaseAccessToken){const rows=await supabaseRequest("/rest/v1/"+PANEL_SETTINGS_TABLE+"?select=settings&id=eq.1&limit=1",{method:"GET"});row=Array.isArray(rows)?rows[0]:null;}
+      if(row&&row.settings&&typeof row.settings==="object")v3State.appearance={...v3State.appearance,...row.settings,backgrounds:row.settings.backgrounds||{}};
+      else {const cached=JSON.parse(localStorage.getItem("SZF_APPEARANCE_CACHE")||"null");if(cached)v3State.appearance={...v3State.appearance,...cached,backgrounds:cached.backgrounds||{}};}
+      v3State.appearanceLoaded=true;v3State.appearance.overlay=safeNum(v3State.appearance.overlay,55);applyAppearance();
+    }catch(error){console.warn("Appearance cloud settings are not available",error);try{const cached=JSON.parse(localStorage.getItem("SZF_APPEARANCE_CACHE")||"null");if(cached)v3State.appearance={...v3State.appearance,...cached,backgrounds:cached.backgrounds||{}};}catch{}applyAppearance();}
+  };
+  const phase3OriginalSetTheme=window.setPanelTheme;
+  window.setPanelTheme=function(theme){
+    const selected=theme==="light"?"light":"dark";
+    if(typeof phase3OriginalSetTheme==="function")phase3OriginalSetTheme(selected);
+    v3State.appearance.theme=selected;
+    // Re-apply theme, colors and per-page backgrounds together, including display-board mode.
+    applyAppearance();
+    try{localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));}catch{}
+    if(v3State.appearanceLoaded&&supabaseAccessToken){persistAppearance().catch(e=>console.warn("Theme preference stays local until settings table is ready",e));}
+  };
+
+  // Publicly readable catalogue media; settings stay scoped to the authenticated manager.
+  async function loadRemotePriceHistorySilently(){try{await window.loadRemotePriceHistory(false);}catch{}}
+  const phase3OriginalLogin=window.login;
+  window.login=async function(){
+    if(typeof phase3OriginalLogin==="function")await phase3OriginalLogin();
+    if(supabaseAccessToken){
+      await window.loadPanelAppearance();
+      await loadCustomProductCategories();
+      try{await loadInvoiceHistory();}catch(error){console.warn("Cloud invoices require the phase 3 SQL migration",error);}
+      await loadRemotePriceHistorySilently();
+      renderInvoiceDraft();
+      renderInvoiceHistory(getInvoices());
+      updatePriceFreshness();
+    }
+  };
+
+  // Add lookup status nodes and safe event wiring after the original page markup is ready.
+  document.addEventListener("DOMContentLoaded",function(){
+    // Login placeholders/labels are deliberately generic.
+    const calcCode=document.getElementById("calcProductCode");
+    if(calcCode){calcCode.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lookupCalculatorProduct();}});calcCode.addEventListener("change",()=>{if(calcCode.value.trim())lookupCalculatorProduct();});}
+    const invoiceCode=document.getElementById("invoiceProductCode");
+    if(invoiceCode){
+      const status=document.createElement("div");status.id="invoiceLookupStatus";status.className="form-help";status.setAttribute("aria-live","polite");invoiceCode.insertAdjacentElement("afterend",status);
+      const lookup=()=>{
+        const p=getProductByCode(invoiceCode.value);if(!p){if(invoiceCode.value.trim())showStatus("invoiceLookupStatus","کدی با این مقدار پیدا نشد؛ می‌توانی مشخصات را دستی وارد کنی.",true);return;}
+        setValue("invoiceProductName",p.name);setValue("invoiceWeight",p.weight);setValue("invoicePurity",String(p.purity||925));setValue("invoiceAmount",Math.round(calculateProductCurrentPrice(p)));setValue("invoiceProfit",Math.max(0,safeNum(p.costPrice)>0?calculateProductCurrentPrice(p)-safeNum(p.costPrice):0));setValue("invoiceQuantity",1);
+        v3State.invoiceSelectedProduct=p;showStatus("invoiceLookupStatus",`شناخته شد: ${p.name} | ${formatNumber(p.weight,3)} گرم | قیمت نهایی ${compactMoney(calculateProductCurrentPrice(p))} تومان`);
+      };
+      invoiceCode.addEventListener("change",lookup);invoiceCode.addEventListener("blur",lookup);invoiceCode.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lookup();}});
+    }
+    const discountType=document.getElementById("discountType");const discountInput=document.getElementById("discountPercent");
+    if(discountType&&discountInput)discountType.addEventListener("change",()=>{discountInput.max=discountType.value==="percent"?"100":"";discountInput.step=discountType.value==="percent"?"0.1":"1000";});
+    ["panelColorPrimary","panelColorSecondary","panelColorSurface","panelColorText"].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener("input",()=>{v3State.appearance.colors={primary:document.getElementById("panelColorPrimary")?.value||DEFAULT_PANEL_COLORS.primary,secondary:document.getElementById("panelColorSecondary")?.value||DEFAULT_PANEL_COLORS.secondary,surface:document.getElementById("panelColorSurface")?.value||DEFAULT_PANEL_COLORS.surface,text:document.getElementById("panelColorText")?.value||DEFAULT_PANEL_COLORS.text};applyPanelColors();});});
+    const pageSelect=document.getElementById("appearancePage");if(pageSelect)pageSelect.addEventListener("change",()=>{const preview=document.getElementById("appearancePreview");if(preview){const url=v3State.appearance.backgrounds?.[pageSelect.value];preview.style.backgroundImage=url?`linear-gradient(rgba(3,3,3,${safeNum(v3State.appearance.overlay,55)/100}),rgba(3,3,3,${safeNum(v3State.appearance.overlay,55)/100})),url("${String(url).replace(/"/g,"%22")}")`:"none";preview.textContent=url?"پس‌زمینه ذخیره‌شده برای این صفحه":"برای این صفحه تصویر اختصاصی ثبت نشده است.";}});
+    const overlay=document.getElementById("appearanceOverlay");if(overlay)overlay.addEventListener("input",()=>{v3State.appearance.overlay=safeNum(overlay.value,55);applyAppearance();});
+    const orgClear=window.clearCalculator;
+    window.clearCalculator=function(){if(typeof orgClear==="function")orgClear();v3State.calcProduct=null;setValue("calcProductCode","");document.getElementById("calcProductLookupDetails")?.classList.add("hidden");showStatus("calcProductLookupStatus","فرم پاک شد. در صورت نیاز کد دیگری را وارد کن.");};
+    if(!v3State.secondTimer)v3State.secondTimer=setInterval(()=>{updatePriceFreshness();},1000);
+    renderInvoiceDraft();renderInvoiceHistory(getInvoices());updatePriceFreshness();toggleFixedProductPrice();updateProductLaborLabel();updateLaborLabel();
+    v3State.customCategories.forEach(name=>{addCategoryOption(document.getElementById("productCategory"),name);addCategoryOption(document.getElementById("productCategoryFilter"),name);});
+    // Make the standalone display board keep its own background setting.
+    applyAppearance();
+  });
+})();
+
+</script>
+
+
+<script>
+/* =========================================================
+   SILVER ZARIN FAKHR — PHASE 4 BUSINESS WORKSPACE
+   Supabase-backed operational records; no service-role key in browser.
+   ========================================================= */
+(function(){
+  "use strict";
+  const TABLE = "szf_business_records";
+  const $ = id => document.getElementById(id);
+  const esc = value => String(value == null ? "" : value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;", "'":"&#39;"}[ch]));
+  const money = value => { const n=Number(value||0); return Number.isFinite(n) ? new Intl.NumberFormat("fa-IR",{maximumFractionDigits:0}).format(n)+" تومان" : "—"; };
+  const number = value => { const n=Number(value||0); return Number.isFinite(n) ? new Intl.NumberFormat("fa-IR",{maximumFractionDigits:3}).format(n) : "۰"; };
+  const MODULES = {
+    customers:{title:"مشتریان",singular:"مشتری",fields:[{key:"first_name",label:"نام",required:true},{key:"last_name",label:"نام خانوادگی",required:true},{key:"phone",label:"شماره تماس",type:"tel",required:true},{key:"email",label:"ایمیل",type:"email"},{key:"province",label:"استان"},{key:"city",label:"شهر"},{key:"address",label:"آدرس کامل",full:true},{key:"postal_code",label:"کد پستی"},{key:"default_shipping_address",label:"آدرس پیش‌فرض ارسال",full:true},{key:"opening_balance",label:"مانده اولیه بدهی/بستانکاری (تومان)",type:"number"},{key:"notes",label:"یادداشت داخلی",type:"textarea",full:true}]},
+    suppliers:{title:"تأمین‌کنندگان",singular:"تأمین‌کننده",fields:[{key:"name",label:"نام / نام شرکت",required:true},{key:"phone",label:"شماره تماس",type:"tel"},{key:"email",label:"ایمیل",type:"email"},{key:"address",label:"نشانی",full:true},{key:"opening_balance",label:"مانده اولیه بدهی/بستانکاری (تومان)",type:"number"},{key:"notes",label:"یادداشت",type:"textarea",full:true}]},
+    purchases:{title:"خرید و تأمین موجودی",singular:"خرید",stock:true,fields:[{key:"product_code",label:"کد محصول ثبت‌شده",required:true},{key:"supplier",label:"تأمین‌کننده",required:true},{key:"invoice_number",label:"شماره فاکتور خرید"},{key:"quantity",label:"تعداد خرید",type:"number",required:true,min:1},{key:"weight",label:"وزن هر واحد (گرم)",type:"number",step:"0.001"},{key:"purity",label:"عیار",type:"select",options:[["999","۹۹۹"],["925","۹۲۵"],["900","۹۰۰"],["800","۸۰۰"],["700","۷۰۰"],["other","سایر"]]},{key:"amount",label:"مبلغ کل خرید (تومان)",type:"number",required:true},{key:"paid_amount",label:"مبلغ پرداخت‌شده (تومان)",type:"number"},{key:"date",label:"تاریخ خرید",type:"date"},{key:"notes",label:"توضیحات",type:"textarea",full:true}]},
+    expenses:{title:"هزینه‌ها",singular:"هزینه",fields:[{key:"name",label:"عنوان هزینه",required:true},{key:"category",label:"دسته هزینه",type:"select",options:[["اجاره","اجاره"],["حمل‌ونقل","حمل‌ونقل"],["بسته‌بندی","بسته‌بندی"],["تبلیغات","تبلیغات"],["کارمزد","کارمزد"],["سایر","سایر"]]},{key:"amount",label:"مبلغ (تومان)",type:"number",required:true},{key:"date",label:"تاریخ",type:"date"},{key:"payment_method",label:"روش پرداخت",type:"select",options:[["نقدی","نقدی"],["کارت‌به‌کارت","کارت‌به‌کارت"],["کارت‌خوان","کارت‌خوان"],["انتقال بانکی","انتقال بانکی"],["چک","چک"],["سایر","سایر"]]},{key:"notes",label:"توضیحات",type:"textarea",full:true}]},
+    customer_returns:{title:"مرجوعی مشتری",singular:"مرجوعی مشتری",stock:true,fields:[{key:"product_code",label:"کد محصول",required:true},{key:"customer",label:"نام مشتری",required:true},{key:"quantity",label:"تعداد برگشتی به انبار",type:"number",min:1,required:true},{key:"amount",label:"مبلغ مرجوعی (تومان)",type:"number",required:true},{key:"date",label:"تاریخ",type:"date"},{key:"reason",label:"علت مرجوعی",type:"textarea",full:true}]},
+    supplier_returns:{title:"مرجوعی به تأمین‌کننده",singular:"مرجوعی تأمین‌کننده",stock:true,fields:[{key:"product_code",label:"کد محصول",required:true},{key:"supplier",label:"نام تأمین‌کننده",required:true},{key:"quantity",label:"تعداد خروج از انبار",type:"number",min:1,required:true},{key:"amount",label:"مبلغ (تومان)",type:"number",required:true},{key:"date",label:"تاریخ",type:"date"},{key:"reason",label:"علت مرجوعی",type:"textarea",full:true}]},
+    orders:{title:"سفارش‌های مشتری",singular:"سفارش",fields:[{key:"name",label:"عنوان/شرح سفارش",required:true},{key:"customer",label:"نام مشتری",required:true},{key:"phone",label:"شماره تماس",type:"tel"},{key:"amount",label:"مبلغ توافق‌شده (تومان)",type:"number"},{key:"paid_amount",label:"پیش‌پرداخت (تومان)",type:"number"},{key:"due_date",label:"موعد تحویل",type:"date"},{key:"status",label:"وضعیت",type:"select",options:[["جدید","جدید"],["در حال انجام","در حال انجام"],["آماده تحویل","آماده تحویل"],["تحویل‌شده","تحویل‌شده"],["لغو شده","لغو شده"]]},{key:"notes",label:"جزئیات سفارش",type:"textarea",full:true}]},
+    repairs:{title:"تعمیرات",singular:"تعمیر",fields:[{key:"item_description",label:"شرح کالا",required:true},{key:"customer",label:"نام مشتری",required:true},{key:"phone",label:"شماره تماس",type:"tel"},{key:"repair_details",label:"شرح تعمیر",type:"textarea",full:true},{key:"amount",label:"هزینه تعمیر (تومان)",type:"number"},{key:"paid_amount",label:"مبلغ دریافتی (تومان)",type:"number"},{key:"due_date",label:"موعد تحویل",type:"date"},{key:"status",label:"وضعیت",type:"select",options:[["دریافت‌شده","دریافت‌شده"],["در حال تعمیر","در حال تعمیر"],["آماده تحویل","آماده تحویل"],["تحویل‌شده","تحویل‌شده"],["لغو شده","لغو شده"]]},{key:"notes",label:"یادداشت",type:"textarea",full:true}]},
+    cash_accounts:{title:"صندوق‌ها و حساب‌ها",singular:"حساب",fields:[{key:"name",label:"نام صندوق/حساب",required:true},{key:"account_type",label:"نوع حساب",type:"select",options:[["صندوق نقدی","صندوق نقدی"],["حساب بانکی","حساب بانکی"],["کارت‌خوان","کارت‌خوان"],["کیف پول","کیف پول"]]},{key:"opening_balance",label:"موجودی اولیه (تومان)",type:"number"},{key:"notes",label:"یادداشت",type:"textarea",full:true}]},
+    cash_transactions:{title:"گردش نقدی",singular:"تراکنش",fields:[{key:"direction",label:"نوع گردش",type:"select",options:[["دریافت","دریافت"],["پرداخت","پرداخت"],["انتقال","انتقال"]],required:true},{key:"account",label:"صندوق/حساب",required:true},{key:"amount",label:"مبلغ (تومان)",type:"number",required:true},{key:"date",label:"تاریخ",type:"date"},{key:"person",label:"طرف حساب"},{key:"related_invoice",label:"شماره فاکتور مرتبط"},{key:"notes",label:"توضیحات",type:"textarea",full:true}]},
+    checks:{title:"مدیریت چک‌ها",singular:"چک",fields:[{key:"check_type",label:"نوع چک",type:"select",options:[["دریافتی","دریافتی"],["پرداختی","پرداختی"]],required:true},{key:"number",label:"شماره چک",required:true},{key:"bank",label:"بانک"},{key:"amount",label:"مبلغ (تومان)",type:"number",required:true},{key:"due_date",label:"تاریخ سررسید",type:"date",required:true},{key:"status",label:"وضعیت",type:"select",options:[["در انتظار","در انتظار"],["وصول‌شده","وصول‌شده"],["پرداخت‌شده","پرداخت‌شده"],["برگشتی","برگشتی"]]},{key:"person",label:"مشتری/تأمین‌کننده"},{key:"invoice_number",label:"شماره فاکتور"},{key:"notes",label:"توضیحات",type:"textarea",full:true}]},
+    roles:{title:"پروفایل نقش‌ها",singular:"پروفایل نقش",fields:[{key:"name",label:"نام پروفایل",required:true},{key:"role",label:"نقش",type:"select",options:[["مدیر","مدیر"],["کارمند","کارمند"],["حسابدار","حسابدار"],["انباردار","انباردار"]]},{key:"email",label:"ایمیل کاربر"},{key:"permissions",label:"مجوزها (هر مورد در یک خط)",type:"textarea",full:true},{key:"active",label:"فعال؟",type:"select",options:[["بله","بله"],["خیر","خیر"]]},{key:"notes",label:"یادداشت",type:"textarea",full:true}]},
+    notifications:{title:"اعلان‌ها",singular:"اعلان",readonly:true},
+    reports:{title:"گزارش‌ها",singular:"گزارش",special:true},
+    backups:{title:"پشتیبان‌گیری و بازیابی",singular:"پشتیبان",special:true}
+  };
+  const tabs = Object.keys(MODULES);
+  let currentModule = "customers", records = [], editingId = null, loaded = false;
+  function getDefaultStatus(module){return ["purchases","customer_returns","supplier_returns"].includes(module)?"تأییدشده":"ثبت‌شده";}
+  function showStatus(message,error=false){const el=$("businessFormStatus");if(el){el.textContent=message||"";el.style.color=error?"#e99b9b":"var(--goldBright)";}}
+  function renderTabs(){const box=$("businessModuleTabs");if(!box)return;box.innerHTML=tabs.map(k=>`<button type="button" role="tab" aria-selected="${k===currentModule}" class="biz-module-tab ${k===currentModule?"active":""}" data-module="${k}">${esc(MODULES[k].title)}</button>`).join("");}
+  function fieldHtml(f,value=""){
+    const id="bizf_"+f.key, val=value==null?"":String(value), required=f.required?"required":"";
+    if(f.type==="textarea")return `<div class="biz-field ${f.full?"full":""}"><label for="${id}">${esc(f.label)}</label><textarea id="${id}" data-key="${f.key}" ${required}>${esc(val)}</textarea></div>`;
+    if(f.type==="select")return `<div class="biz-field ${f.full?"full":""}"><label for="${id}">${esc(f.label)}</label><select id="${id}" data-key="${f.key}" ${required}>${(f.options||[]).map(o=>`<option value="${esc(o[0])}" ${String(o[0])===val?"selected":""}>${esc(o[1])}</option>`).join("")}</select></div>`;
+    const type=["number","date","email","tel"].includes(f.type)?f.type:"text";
+    return `<div class="biz-field ${f.full?"full":""}"><label for="${id}">${esc(f.label)}</label><input id="${id}" data-key="${f.key}" type="${type}" value="${esc(val)}" ${f.step?`step="${esc(f.step)}"`:""} ${f.min!=null?`min="${esc(f.min)}"`:""} ${required}></div>`;
+  }
+  function renderForm(record=null){const m=MODULES[currentModule];const box=$("businessFormFields");if(!box)return;const d=record?.details||{};box.innerHTML=(m.fields||[]).map(f=>fieldHtml(f,d[f.key]??(f.key==="status"?getDefaultStatus(currentModule):f.key==="date"?new Date().toISOString().slice(0,10):f.key==="quantity"?1:f.key==="active"?"بله":""))).join("");$("businessEditorTitle").textContent=record?"ویرایش: "+m.singular:"ثبت "+m.singular+" جدید";$("businessSaveButton").textContent=record?"ذخیره تغییرات":"ذخیره در Supabase";}
+  function isCancelled(status){return ["لغو شده","لغوشده","لغو","cancelled"].includes(String(status||"").toLowerCase());}
+  function renderSummary(){const box=$("businessSummary");if(!box)return;const activeRecords=records.filter(r=>!isCancelled(r.status));const amount=activeRecords.reduce((a,r)=>a+Number(r.amount||0),0);const open=activeRecords.length;const overdue=activeRecords.filter(r=>r.due_date&&new Date(r.due_date+"T23:59:59")<new Date()&&!/(وصول‌شده|پرداخت‌شده|تحویل‌شده|لغو شده|لغوشده|تحویل شده)/.test(String(r.status||""))).length;box.innerHTML=`<div class="biz-summary-card"><span>تعداد رکوردهای این بخش</span><strong>${number(records.length)}</strong></div><div class="biz-summary-card"><span>رکوردهای فعال</span><strong>${number(open)}</strong></div><div class="biz-summary-card"><span>جمع مبالغ رکوردهای فعال</span><strong>${money(amount)}</strong></div>`;if(currentModule==="checks"||currentModule==="orders"||currentModule==="repairs")box.innerHTML+=`<div class="biz-summary-card"><span>موارد سررسیدگذشته</span><strong>${number(overdue)}</strong></div>`;}
+  function renderTable(){const body=$("businessRecordsTable");if(!body)return;const q=String($("businessSearch")?.value||"").trim().toLowerCase();const filtered=records.filter(r=>!q||[r.title,r.person_name,r.code,r.category,r.status,JSON.stringify(r.details||{})].join(" ").toLowerCase().includes(q));if(!filtered.length){body.innerHTML=`<tr><td colspan="6" class="biz-empty">${records.length?"رکوردی با این جست‌وجو پیدا نشد.":"هنوز رکوردی ثبت نشده است."}</td></tr>`;return;}body.innerHTML=filtered.map(r=>{const d=r.details||{};const who=r.person_name||([d.first_name,d.last_name].filter(Boolean).join(" "))||d.name||d.customer||d.supplier||d.person||d.account||r.code||"—";const date=r.due_date||d.date||d.due_date||r.created_at||"";const amt=Number(r.amount||0);return `<tr><td>${esc(r.title||"—")}</td><td>${esc(who)}</td><td>${amt?esc(money(amt)):"—"}</td><td>${esc(r.status||"ثبت‌شده")}</td><td>${esc(String(date).slice(0,10))}</td><td><button type="button" class="biz-action" data-edit="${esc(r.id)}">ویرایش</button><button type="button" class="biz-action danger" data-delete="${esc(r.id)}">حذف</button></td></tr>`;}).join("");}
+  function renderSpecial(){const m=MODULES[currentModule],p=$("businessSpecialPanel"),editor=$("businessEditorPanel"),toolbar=$("businessSearch")?.closest(".biz-toolbar"),tableWrap=$("businessRecordsTable")?.closest(".table-wrap"),summary=$("businessSummary"),note=$("businessModuleNote");if(summary)summary.classList.toggle("hidden",!!m.special||!!m.readonly);if(tableWrap)tableWrap.classList.toggle("hidden",!!m.special||!!m.readonly);if(note){note.classList.toggle("hidden",currentModule!=="roles");note.textContent=currentModule==="roles"?"محدودیت امنیتی مهم: این بخش فقط پروفایل‌های نقش/مجوز را به‌عنوان اطلاعات ثبت می‌کند و به‌تنهایی حساب کاربری Supabase ایجاد نمی‌کند یا دسترسی را تغییر نمی‌دهد. ایجاد امن کاربران و اجرای واقعی مجوزها نیازمند Edge Function و سیاست‌های RLS سمت سرور است؛ کلید service_role نباید داخل index.html قرار بگیرد.":"";}p.classList.toggle("hidden",!m.special&&!m.readonly);editor.classList.toggle("hidden",!!m.special||!!m.readonly);if(toolbar)toolbar.classList.toggle("hidden",currentModule==="backups");if(m.special&&currentModule==="reports"){p.innerHTML=`<h3 class="section-title" style="font-size:18px">گزارش خلاصه کسب‌وکار</h3><div class="action-row"><button type="button" class="secondary-button" id="bizLoadReport">محاسبه گزارش</button><button type="button" class="secondary-button" id="bizExportReport">دانلود گزارش JSON</button></div><div id="bizReportResult" class="biz-note">برای دریافت آمار، «محاسبه گزارش» را بزن.</div>`;$("bizLoadReport").onclick=loadReport;$("bizExportReport").onclick=()=>downloadJSON({generatedAt:new Date().toISOString(),businessRecords:records,products:(typeof getProducts==="function"?getProducts():[])},"szf-report.json");}else if(currentModule==="backups"){p.innerHTML=`<h3 class="section-title" style="font-size:18px">نسخه پشتیبان</h3><div class="biz-note">این ابزار نسخه JSON اطلاعات قابل‌دسترسی از Supabase را دانلود می‌کند. فایل‌های عکس به‌صورت باینری در فایل پشتیبان قرار نمی‌گیرند و فقط نشانی آن‌ها ذخیره می‌شود. زمان‌بندی مرورگر فقط هنگام فعال‌بودن پنل کار می‌کند؛ برای پشتیبان خودکار حتی در زمان بسته‌بودن پنل، زمان‌بندی سمت سرور/Edge Function لازم است.</div><div class="action-row"><button type="button" class="primary-button" id="bizCreateBackup">ساخت و دانلود پشتیبان</button><label class="secondary-button" style="display:inline-flex;align-items:center;cursor:pointer">بازیابی فایل JSON<input id="bizRestoreFile" type="file" accept="application/json,.json" style="display:none"></label></div><div id="bizBackupStatus" class="form-help" aria-live="polite"></div>`;$("bizCreateBackup").onclick=createBackup;$("bizRestoreFile").onchange=e=>restoreBackup(e.target.files?.[0]);}else if(currentModule==="notifications"){p.innerHTML=`<h3 class="section-title" style="font-size:18px">مرکز اعلان‌ها</h3><div class="biz-note">اعلان‌های قابل مشاهده از وضعیت قیمت بازار، موجودی کم، موعدهای نزدیک و رکوردهای ثبت‌شده ساخته می‌شوند. این نسخه اعلان‌ها را از وضعیت فعلی استخراج می‌کند؛ برای اعلان‌های پس‌زمینه و ارسال پیام در زمان بسته بودن پنل، سرویس زمان‌بندی سمت سرور لازم است.</div><div id="bizNotificationList" class="biz-note">در حال بررسی...</div>`;loadNotifications();}}
+  async function loadRecords(){if(!(typeof supabaseAccessToken!=="undefined" && supabaseAccessToken)){records=[];renderTable();renderSummary();showStatus("برای دریافت و ذخیره رکوردها ابتدا وارد حساب مدیر شو.",true);return;}if(MODULES[currentModule].special||MODULES[currentModule].readonly){renderSpecial();return;}try{showStatus("در حال دریافت اطلاعات از Supabase...");const rows=await supabaseRequest(`/rest/v1/${TABLE}?select=*&module=eq.${encodeURIComponent(currentModule)}&order=created_at.desc&limit=500`,{method:"GET"});records=Array.isArray(rows)?rows:[];renderTable();renderSummary();showStatus(`${number(records.length)} رکورد از Supabase دریافت شد.`);}catch(e){records=[];renderTable();renderSummary();showStatus("خواندن اطلاعات ناموفق بود: "+(e.message||"خطای نامشخص"),true);}}
+  async function loadModule(module){if(!MODULES[module])module="customers";currentModule=module;editingId=null;renderTabs();renderForm();renderSpecial();await loadRecords();}
+  function readForm(){const m=MODULES[currentModule],details={};for(const f of (m.fields||[])){const el=$("bizf_"+f.key);if(!el)continue;let v=el.value;if(f.type==="number")v=v===""?0:Number(v);details[f.key]=v;}return details;}
+  async function submitRecord(e){e.preventDefault();if(!(typeof supabaseAccessToken!=="undefined" && supabaseAccessToken)){showStatus("برای ذخیره‌سازی ابتدا وارد حساب مدیر شو.",true);return;}const m=MODULES[currentModule];if(m.special||m.readonly)return;const details=readForm();if(currentModule==="customers"){const phone=String(details.phone||"").replace(/[\s()-]/g,"");if(!phone){showStatus("شماره تماس مشتری الزامی است.",true);return;}try{const matches=await supabaseRequest(`/rest/v1/${TABLE}?select=id,details&module=eq.customers&details->>phone=eq.${encodeURIComponent(phone)}&limit=10`,{method:"GET"});const duplicate=(Array.isArray(matches)?matches:[]).find(r=>String(r.id)!==String(editingId||"")&&String((r.details||{}).phone||"").replace(/[\s()-]/g,"")===phone);if(duplicate){showStatus("این شماره تماس قبلاً برای مشتری دیگری ثبت شده است. برای جلوگیری از پرونده تکراری، مشتری قبلی را ویرایش کن.",true);return;}}catch(checkError){console.warn("Customer duplicate check unavailable",checkError);showStatus("بررسی تکراری‌بودن شماره تماس انجام نشد؛ ذخیره متوقف شد تا پرونده تکراری ساخته نشود.",true);return;}}if(m.stock){const p=((typeof getProducts==="function"?getProducts():[])).find(x=>String(x.code||"").trim().toLowerCase()===String(details.product_code||"").trim().toLowerCase());if(!p){showStatus("کد محصول در فهرست محصولات پیدا نشد. ابتدا محصول را ثبت کن.",true);return;}if(!Number.isInteger(Number(details.quantity))||Number(details.quantity)<1){showStatus("تعداد باید عدد صحیح و حداقل ۱ باشد.",true);return;}}
+    const customerFullName=[details.first_name,details.last_name].filter(Boolean).join(" ").trim();
+    const title=(currentModule==="customers"?customerFullName:"")||details.name||details.title||details.item_description||details.product_code||details.number||m.singular;
+    const person=(currentModule==="customers"?customerFullName:"")||details.customer||details.supplier||details.person||details.account||details.name||"";
+    const payload={module:currentModule,title:String(title).slice(0,250),status:String(details.status||getDefaultStatus(currentModule)),amount:Number(details.amount||details.opening_balance||0),due_date:details.due_date||details.date||null,person_name:String(person).slice(0,250),code:String(details.product_code||details.number||"").slice(0,120),category:String(details.category||details.account_type||"").slice(0,120),details,updated_at:new Date().toISOString()};
+    try{showStatus("در حال ذخیره امن در Supabase...");if(editingId){await supabaseRequest(`/rest/v1/${TABLE}?id=eq.${encodeURIComponent(editingId)}`,{method:"PATCH",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});}else{payload.created_by=supabaseUserId||null;await supabaseRequest(`/rest/v1/${TABLE}`,{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(payload)});}editingId=null;renderForm();await loadRecords();if(m.stock&&typeof loadProducts==="function"){await loadProducts();if(typeof updateDashboard==="function")updateDashboard();}showStatus("اطلاعات با موفقیت در Supabase ذخیره شد.");if(window.szfWriteActivityLog)window.szfWriteActivityLog("business_record.saved",currentModule,payload.code||payload.title,{module:currentModule,title:payload.title}).catch(()=>{});}catch(err){showStatus("ذخیره انجام نشد: "+(err.message||"خطای نامشخص"),true);}}
+  function editRecord(id){const r=records.find(x=>String(x.id)===String(id));if(!r)return;editingId=r.id;renderForm(r);showStatus("حالت ویرایش فعال است؛ با ذخیره، همان رکورد به‌روزرسانی می‌شود.");$("businessEditorPanel").scrollIntoView({behavior:"smooth",block:"start"});}
+  async function deleteRecord(id){const r=records.find(x=>String(x.id)===String(id));if(!r||!confirm("این رکورد حذف شود؟ اگر خرید یا مرجوعی موجودی را تغییر داده باشد، پایگاه داده تلاش می‌کند اثر انبار را به‌صورت تراکنشی برگرداند."))return;try{await supabaseRequest(`/rest/v1/${TABLE}?id=eq.${encodeURIComponent(id)}`,{method:"DELETE",headers:{"Prefer":"return=minimal"}});if(window.szfWriteActivityLog)window.szfWriteActivityLog("business_record.deleted",currentModule,id,{module:currentModule,title:r.title||""}).catch(()=>{});await loadRecords();if(MODULES[currentModule].stock&&typeof loadProducts==="function")await loadProducts();showStatus("رکورد حذف شد.");}catch(e){showStatus("حذف انجام نشد: "+(e.message||"خطای نامشخص"),true);}}
+  function csvCell(v){const s=String(v==null?"":v);return '"'+s.replace(/"/g,'""')+'"';}
+  function exportCSV(){const rows=records.map(r=>({id:r.id,module:r.module,title:r.title,person_name:r.person_name,code:r.code,category:r.category,amount:r.amount,status:r.status,due_date:r.due_date,details:JSON.stringify(r.details||{})}));if(!rows.length){alert("رکوردی برای خروجی وجود ندارد.");return;}const headers=Object.keys(rows[0]);const csv='\uFEFF'+[headers.map(csvCell).join(","),...rows.map(r=>headers.map(k=>csvCell(r[k])).join(","))].join("\r\n");downloadBlob(csv,`szf-${currentModule}-${new Date().toISOString().slice(0,10)}.csv`,"text/csv;charset=utf-8");}
+  function downloadBlob(content,name,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+  function downloadJSON(data,name){downloadBlob(JSON.stringify(data,null,2),name,"application/json;charset=utf-8");}
+  async function getAll(path){const base=path.replace(/&limit=\d+/i,"&limit=1000");const all=[];for(let offset=0;offset<100000;offset+=1000){const page=await supabaseRequest(base,{method:"GET",headers:{"Range":`${offset}-${offset+999}`}});const rows=Array.isArray(page)?page:[];all.push(...rows);if(rows.length<1000)break;}return all;}
+  async function loadReport(){const out=$("bizReportResult");if(!out)return;out.textContent="در حال جمع‌آوری گزارش...";try{const [invoices,expenses,purchases,checks,orders,repairs,customers,suppliers]=await Promise.all([getAll("/rest/v1/szf_invoices?select=*&limit=2000"),getAll(`/rest/v1/${TABLE}?select=amount,status,details,module&module=eq.expenses&limit=2000`),getAll(`/rest/v1/${TABLE}?select=amount,status,details,module&module=eq.purchases&limit=2000`),getAll(`/rest/v1/${TABLE}?select=amount,status,details,module&module=eq.checks&limit=2000`),getAll(`/rest/v1/${TABLE}?select=amount,status,details,module&module=eq.orders&limit=2000`),getAll(`/rest/v1/${TABLE}?select=amount,status,details,module&module=eq.repairs&limit=2000`),getAll(`/rest/v1/${TABLE}?select=id&module=eq.customers&limit=2000`),getAll(`/rest/v1/${TABLE}?select=id&module=eq.suppliers&limit=2000`)]);const confirmed=invoices.filter(i=>i.status==="confirmed");const sales=confirmed.reduce((a,i)=>a+Number(i.total_amount||0),0);const profit=confirmed.reduce((a,i)=>a+Number(i.total_profit||0),0);const activeRows=a=>a.filter(r=>!isCancelled(r.status));const sum=a=>activeRows(a).reduce((s,r)=>s+Number(r.amount||0),0);const outstandingOrders=activeRows(orders).reduce((s,r)=>s+Math.max(0,Number(r.amount||0)-Number((r.details||{}).paid_amount||0)),0);const dueChecks=activeRows(checks).filter(r=>!/(وصول‌شده|پرداخت‌شده|لغو شده|لغوشده)/.test(String(r.status||""))).reduce((s,r)=>s+Number(r.amount||0),0);out.innerHTML=`<div class="biz-summary"><div class="biz-summary-card"><span>فروش تأییدشده</span><strong>${esc(money(sales))}</strong></div><div class="biz-summary-card"><span>سود ثبت‌شده فاکتورها</span><strong>${esc(money(profit))}</strong></div><div class="biz-summary-card"><span>هزینه‌های فعال ثبت‌شده</span><strong>${esc(money(sum(expenses)))}</strong></div><div class="biz-summary-card"><span>خریدهای فعال ثبت‌شده</span><strong>${esc(money(sum(purchases)))}</strong></div><div class="biz-summary-card"><span>مانده سفارش‌های ثبت‌شده</span><strong>${esc(money(outstandingOrders))}</strong></div><div class="biz-summary-card"><span>چک‌های در انتظار</span><strong>${esc(money(dueChecks))}</strong></div><div class="biz-summary-card"><span>مشتریان / تأمین‌کنندگان</span><strong>${number(customers.length)} / ${number(suppliers.length)}</strong></div><div class="biz-summary-card"><span>سفارش‌ها / تعمیرات فعال</span><strong>${number(activeRows(orders).length)} / ${number(activeRows(repairs).length)}</strong></div></div><p>محدودیت محاسبه: این ارقام فقط از رکوردهای ثبت‌شده و قابل‌دسترسی جمع شده‌اند. سود فاکتورها لزوماً سود خالص نیست و مانده سفارش‌ها یا چک‌ها جایگزین دفترکل پرداخت‌ها نمی‌شود. برای سود خالص قطعی باید ثبت پرداخت‌ها، بهای تمام‌شده و هزینه‌ها در دفترکل یکپارچه شوند.</p>`;}catch(e){out.textContent="گزارش قابل دریافت نیست: "+(e.message||"خطا");}}
+  async function createBackup(){const out=$("bizBackupStatus");try{out.textContent="در حال ساخت نسخه پشتیبان...";const specs=[ ["products","/rest/v1/products?select=*&limit=10000"],["categories","/rest/v1/szf_categories?select=*&limit=2000"],["settings","/rest/v1/szf_panel_settings?select=*&limit=100"],["price_history","/rest/v1/szf_price_history?select=*&limit=10000"],["invoices","/rest/v1/szf_invoices?select=*&limit=10000"],["invoice_items","/rest/v1/szf_invoice_items?select=*&limit=30000"],["business_records",`/rest/v1/${TABLE}?select=*&limit=10000`] ];const data={format:"SZF_BACKUP_V1",generatedAt:new Date().toISOString(),tables:{}};for(const [k,path] of specs)data.tables[k]=await getAll(path);downloadJSON(data,`SZF-backup-${new Date().toISOString().slice(0,10)}.json`);out.textContent="فایل پشتیبان دانلود شد. فایل‌های تصویری داخل JSON نیستند؛ نشانی تصاویر حفظ می‌شود.";}catch(e){out.textContent="پشتیبان‌گیری ناموفق بود: "+(e.message||"خطا");}}
+  async function restoreBackup(file){if(!file)return;const out=$("bizBackupStatus");if(!confirm("بازیابی اطلاعات موجود در فایل را با همان شناسه‌ها به‌روزرسانی یا اضافه می‌کند؛ رکوردهای فعلی که در فایل نیستند حذف نمی‌شوند. فقط فایل پشتیبان معتبر SZF را انتخاب کن. ادامه می‌دهی؟")){return;}try{out.textContent="در حال خواندن فایل...";const data=JSON.parse(await file.text());if(data.format!=="SZF_BACKUP_V1"||!data.tables)throw new Error("ساختار فایل پشتیبان معتبر نیست.");const order=["products","categories","settings","price_history","invoices","invoice_items","business_records"];for(const key of order){const rows=data.tables[key];if(!Array.isArray(rows)||!rows.length)continue;if(key==="business_records"){for(let i=0;i<rows.length;i+=250){await supabaseRequest("/rest/v1/rpc/szf_restore_business_records",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({p_rows:rows.slice(i,i+250)})});}continue;}const table=({products:"products",categories:"szf_categories",settings:"szf_panel_settings",price_history:"szf_price_history",invoices:"szf_invoices",invoice_items:"szf_invoice_items"})[key];const conflict=key==="price_history"?"slot":"id";for(let i=0;i<rows.length;i+=250){await supabaseRequest(`/rest/v1/${table}?on_conflict=${conflict}`,{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(rows.slice(i,i+250))});}}await loadProducts();await loadRecords();out.textContent="بازیابی داده‌های موجود در فایل انجام شد. برای اطمینان، تعداد محصولات، فاکتورها، تاریخچه و موجودی را در Supabase بررسی کن؛ فایل‌های تصویری به‌صورت باینری پشتیبان‌گیری نمی‌شوند.";}catch(e){out.textContent="بازیابی کامل نشد: "+(e.message||"خطا");}}
+  async function loadNotifications(){const box=$("bizNotificationList");if(!box)return;if(!(typeof supabaseAccessToken!=="undefined"&&supabaseAccessToken)){box.textContent="برای دریافت اعلان‌ها ابتدا وارد حساب مدیر شو.";return;}const notes=[];const products=(typeof getProducts==="function"?getProducts():[]);products.forEach(p=>{const q=Number(p.stockQuantity??0);if(q<=1)notes.push({level:"هشدار موجودی",text:`${p.name||p.code||"محصول"}: موجودی ${number(q)} عدد`});});if(typeof lastPriceUpdateIranDate!=="undefined"&&lastPriceUpdateIranDate&&Date.now()-lastPriceUpdateIranDate.getTime()>120000)notes.push({level:"هشدار بازار",text:"قیمت بازار بیش از دو دقیقه به‌روزرسانی نشده است."});const due=await getAll(`/rest/v1/${TABLE}?select=*&module=in.(checks,orders,repairs)&limit=2000`);due.forEach(r=>{if(r.due_date&&new Date(r.due_date+"T23:59:59")<new Date()&&!/(وصول‌شده|پرداخت‌شده|تحویل‌شده|لغو شده)/.test(String(r.status||"")))notes.push({level:"سررسید گذشته",text:`${r.title||r.module}: ${String(r.due_date).slice(0,10)}`});});box.innerHTML=notes.length?notes.map(n=>`<p><strong>${esc(n.level)}:</strong> ${esc(n.text)}</p>`).join(""):`<p>در حال حاضر هشدار قابل‌تشخیصی پیدا نشد.</p>`;}
+  const PROFILE_KEY="SZF_BUSINESS_PROFILE_V1";
+  function loadBusinessProfile(){
+    const defaults={name:"SILVER ZARIN FAKHR",phone:"",email:"",province:"",city:"",postalCode:"",address:"",currency:"تومان"};
+    let saved={};try{saved=JSON.parse(localStorage.getItem(PROFILE_KEY)||"{}")||{};}catch{}
+    const profile={...defaults,...saved};
+    const map={name:"szfBusinessName",phone:"szfBusinessPhone",email:"szfBusinessEmail",province:"szfBusinessProvince",city:"szfBusinessCity",postalCode:"szfBusinessPostalCode",address:"szfBusinessAddress",currency:"szfBusinessCurrency"};
+    Object.entries(map).forEach(([key,id])=>{const el=$(id);if(el)el.value=String(profile[key]??"");});
+  }
+  function saveBusinessProfile(){
+    const map={name:"szfBusinessName",phone:"szfBusinessPhone",email:"szfBusinessEmail",province:"szfBusinessProvince",city:"szfBusinessCity",postalCode:"szfBusinessPostalCode",address:"szfBusinessAddress",currency:"szfBusinessCurrency"};
+    const profile={};Object.entries(map).forEach(([key,id])=>{const el=$(id);profile[key]=String(el?.value||"").trim();});
+    if(!profile.name){const out=$("szfBusinessProfileStatus");if(out)out.textContent="نام کسب‌وکار نمی‌تواند خالی باشد.";return;}
+    try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));const out=$("szfBusinessProfileStatus");if(out)out.textContent="اطلاعات پایه در همین مرورگر ذخیره شد. همگام‌سازی ابری هنوز فعال نشده است.";}catch(e){const out=$("szfBusinessProfileStatus");if(out)out.textContent="ذخیره انجام نشد؛ فضای ذخیره‌سازی مرورگر در دسترس نیست.";}
+  }
+  document.addEventListener("DOMContentLoaded",()=>{
+    loadBusinessProfile();
+    $("szfSaveBusinessProfile")?.addEventListener("click",saveBusinessProfile);
+    $("szfResetBusinessProfile")?.addEventListener("click",loadBusinessProfile);
+    $("businessModuleTabs")?.addEventListener("click",e=>{const b=e.target.closest("[data-module]");if(b)loadModule(b.dataset.module);});
+    $("businessRecordForm")?.addEventListener("submit",submitRecord);
+    $("businessCancelEdit")?.addEventListener("click",()=>{editingId=null;renderForm();showStatus("فرم پاک شد.");});
+    $("businessSearch")?.addEventListener("input",renderTable);
+    $("businessRecordsTable")?.addEventListener("click",e=>{const ed=e.target.closest("[data-edit]");const del=e.target.closest("[data-delete]");if(ed)editRecord(ed.dataset.edit);if(del)deleteRecord(del.dataset.delete);});
+    $("businessExportCsv")?.addEventListener("click",exportCSV);
+    $("businessRefresh")?.addEventListener("click",loadRecords);
+    renderTabs();renderForm();
+    window.szfLoadBusinessModule=loadModule;
+    window.szfRefreshBusiness=loadRecords;
+    // Keep the requested auto-refresh conservative; it is a best-effort browser timer, not a server scheduler.
+    setInterval(()=>{if(!document.getElementById("businessSection")?.classList.contains("hidden")&&currentModule==="notifications")loadNotifications();},60000);
+  });
+})();
+</script>
+
+<!-- SZF INVENTORY WEIGHT SUMMARY FIX v2 -->
+<style>
+#inventoryWeightSummary{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0 18px;width:100%;clear:both}
+#inventoryWeightSummary .weight-stat{display:flex;flex-direction:column;justify-content:space-between;gap:9px;min-height:82px;padding:14px;border:1px solid rgba(212,175,106,.42);border-radius:12px;background:var(--card-bg,rgba(212,175,106,.07));color:var(--text-color,inherit);box-sizing:border-box}
+#inventoryWeightSummary .weight-stat span{font-size:13px;line-height:1.8;opacity:.9}
+#inventoryWeightSummary .weight-stat strong{font-size:17px;line-height:1.7;color:var(--accent-color,#c6a15b);overflow-wrap:anywhere}
+#inventoryWeightSummary .weight-stat small{color:inherit;opacity:.85}
+@media(max-width:600px){#inventoryWeightSummary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#inventoryWeightSummary .weight-stat{padding:10px;min-height:76px}#inventoryWeightSummary .weight-stat strong{font-size:14px}}
+</style>
+<!-- Duplicate inventory weight renderer removed: one authoritative renderer is retained below. -->
+
+\n<!-- SZF PROFESSIONAL INVENTORY LAYOUT v3 -->
+<style>
+#productsSection .inventory-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 16px}
+#productsSection .inventory-mini-stat{min-height:90px;padding:14px;border-radius:14px;background:linear-gradient(145deg,rgba(212,175,106,.11),rgba(24,22,18,.92));border:1px solid rgba(212,175,106,.38);display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+#productsSection .inventory-mini-stat .mini-label{font-size:12px;line-height:1.8;color:var(--muted,#b8b0a1)}
+#productsSection .inventory-mini-stat .mini-value{font-size:22px;font-weight:900;color:var(--goldBright,#d9b86c);line-height:1.5;overflow-wrap:anywhere}
+#productsSection .inventory-weight-heading{grid-column:1/-1;margin:8px 0 0;padding:12px 14px;border-right:3px solid var(--goldBright,#d9b86c);background:rgba(212,175,106,.07);border-radius:8px;font-size:15px;font-weight:900;color:var(--goldBright,#d9b86c)}
+#productsSection #inventoryWeightSummary{display:block!important;margin:12px 0 20px}
+#productsSection .inventory-overall-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px}
+#productsSection .inventory-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#productsSection .weight-stat{box-sizing:border-box;min-width:0;min-height:108px;padding:13px;border:1px solid rgba(212,175,106,.38);border-radius:14px;background:linear-gradient(150deg,rgba(212,175,106,.09),rgba(20,19,17,.9));display:flex;flex-direction:column;justify-content:space-between;gap:9px;overflow-wrap:anywhere}
+#productsSection .weight-stat .weight-label{font-size:12px;line-height:1.8;color:var(--muted,#b8b0a1)}
+#productsSection .weight-stat .weight-value{font-size:18px;font-weight:900;line-height:1.65;color:var(--goldBright,#d9b86c)}
+#productsSection .weight-stat .weight-sub{font-size:11px;line-height:1.8;color:var(--muted,#b8b0a1)}
+#productsSection .weight-stat.category-stat{min-height:145px}
+#productsSection .weight-stat .category-title{font-size:14px;font-weight:900;color:var(--text-color,#eee);line-height:1.8}
+#productsSection .weight-stat .category-meta{font-size:11px;color:var(--muted,#b8b0a1);line-height:1.8}
+#productsSection .inventory-empty{padding:16px;border:1px dashed rgba(212,175,106,.4);border-radius:12px;color:var(--muted,#b8b0a1);text-align:center;line-height:2}
+@media(min-width:700px){#productsSection .inventory-toolbar{grid-template-columns:repeat(5,minmax(0,1fr))}#productsSection .inventory-overall-grid{grid-template-columns:repeat(4,minmax(0,1fr))}#productsSection .inventory-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:380px){#productsSection .inventory-overall-grid,#productsSection .inventory-category-grid{grid-template-columns:1fr}#productsSection .inventory-mini-stat .mini-value{font-size:20px}}
+</style>
+<script>
+(function(){
+  'use strict';
+  const fa='۰۱۲۳۴۵۶۷۸۹', ar='٠١٢٣٤٥٦٧٨٩';
+  const num=v=>{if(v===null||v===undefined||v==='')return 0;let s=String(v).trim().replace(/[۰-۹]/g,d=>String(fa.indexOf(d))).replace(/[٠-٩]/g,d=>String(ar.indexOf(d))).replace(/٫/g,'.').replace(/[٬,\s]/g,'').replace(/(گرم|عدد|g|gr)/gi,'');s=s.replace(/[^0-9.+-]/g,'');const n=Number(s);return Number.isFinite(n)&&n>=0?n:0;};
+  const fmt=(n,d=3)=>Number(n||0).toLocaleString('fa-IR',{maximumFractionDigits:d});
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function products(){try{const p=window.getProducts?.();if(Array.isArray(p))return p;}catch(e){}try{const p=typeof getProducts==='function'?getProducts():[];if(Array.isArray(p))return p;}catch(e){}return [];}
+  function refresh(input){
+    const box=document.getElementById('inventoryWeightSummary');if(!box)return;
+    const list=Array.isArray(input)?input:products();
+    const status=p=>String(p.stock??p.stock_status??'موجود').trim();
+    const qty=p=>{const raw=p.stockQuantity??p.stock_quantity??p.quantity??p.inventory_quantity;if(raw===null||raw===undefined||raw==='')return status(p)==='موجود'?1:0;return Math.max(0,Math.floor(num(raw)));};
+    const weight=p=>num(p.weight??p.product_weight??p.وزن??0);
+    const category=p=>String(p.category??p.category_name??p.product_category??'سایر').trim()||'سایر';
+    const groups=Object.create(null);let registered=0,available=0,availableUnits=0,weightMissing=0;
+    list.forEach(p=>{const q=qty(p),w=weight(p),cat=category(p),st=status(p);registered+=w*Math.max(1,q);if(w<=0)weightMissing++;if(st==='موجود'&&q>0){available+=w*q;availableUnits+=q;}if(!groups[cat])groups[cat]={models:0,units:0,registered:0,available:0,missing:0};const g=groups[cat];g.models++;g.units+=q;g.registered+=w*Math.max(1,q);if(st==='موجود'&&q>0)g.available+=w*q;if(w<=0)g.missing++;});
+    const overall=`<div class="inventory-weight-heading">⚖️ خلاصه وزن کل محصولات</div><div class="inventory-overall-grid"><div class="weight-stat"><span class="weight-label">وزن کل محصولات ثبت‌شده</span><strong class="weight-value">${fmt(registered)} گرم</strong><small class="weight-sub">بر اساس وزن ثبت‌شده و تعداد هر محصول</small></div><div class="weight-stat"><span class="weight-label">وزن موجودی قابل فروش</span><strong class="weight-value">${fmt(available)} گرم</strong><small class="weight-sub">فقط محصولات با وضعیت موجود</small></div><div class="weight-stat"><span class="weight-label">تعداد واحدهای قابل فروش</span><strong class="weight-value">${fmt(availableUnits,0)} عدد</strong></div><div class="weight-stat"><span class="weight-label">تعداد دسته‌بندی‌ها</span><strong class="weight-value">${fmt(Object.keys(groups).length,0)} دسته</strong></div></div>`;
+    box.innerHTML=overall;
+  }
+  window.szfRefreshInventoryWeightSummary=refresh;
+  function attach(){
+    if(typeof window.renderProducts==='function'&&!window.renderProducts.__szfProfessionalInventory){const old=window.renderProducts;const wrapped=function(){const r=old.apply(this,arguments);try{refresh(products());}catch(e){console.error(e)}return r;};wrapped.__szfProfessionalInventory=true;window.renderProducts=wrapped;}
+    refresh(products());
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach,{once:true});else attach();
+  let n=0;const timer=setInterval(()=>{refresh(products());if(++n>=30)clearInterval(timer);},1200);
+  window.addEventListener('storage',()=>refresh(products()));
+})();
+</script>
+
+<style>
+#productsSection .szf-category-folder{margin:18px 0 22px;border:1px solid rgba(212,175,106,.48);border-radius:16px;overflow:hidden;background:linear-gradient(145deg,rgba(212,175,106,.07),rgba(17,16,15,.96));box-shadow:0 8px 24px rgba(0,0,0,.14)}
+#productsSection .szf-folder-toggle{width:100%;display:flex;align-items:center;gap:10px;padding:15px 13px;text-align:right;color:inherit;background:transparent;border:0;cursor:pointer}
+#productsSection .szf-folder-icon{font-size:27px;flex:0 0 auto}
+#productsSection .szf-folder-heading{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+#productsSection .szf-folder-heading strong{font-size:15px;color:var(--goldBright,#d9b86c)}
+#productsSection .szf-folder-heading small,#productsSection .szf-folder-add-row small{font-size:11px;line-height:1.9;color:var(--muted,#b8b0a1)}
+#productsSection .szf-folder-count{white-space:nowrap;font-size:11px;border:1px solid rgba(212,175,106,.4);border-radius:20px;padding:5px 8px;color:var(--goldBright,#d9b86c)}
+#productsSection .szf-folder-chevron{font-size:23px;transition:transform .2s}
+#productsSection .szf-folder-toggle[aria-expanded="true"] .szf-folder-chevron{transform:rotate(180deg)}
+#productsSection .szf-folder-body{padding:0 12px 14px}
+#productsSection .szf-folder-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px}
+#productsSection .szf-folder-total{padding:11px;border:1px solid rgba(212,175,106,.28);border-radius:11px;background:rgba(212,175,106,.055)}
+#productsSection .szf-folder-total span{display:block;font-size:11px;line-height:1.8;color:var(--muted,#b8b0a1)}
+#productsSection .szf-folder-total strong{display:block;margin-top:4px;color:var(--goldBright,#d9b86c);font-size:17px;line-height:1.7;overflow-wrap:anywhere}
+#productsSection .szf-folder-add-row{padding:12px;margin-bottom:12px;border:1px dashed rgba(212,175,106,.35);border-radius:12px}
+#productsSection .szf-folder-add-row label{display:block;font-weight:800;font-size:13px;margin-bottom:8px}
+#productsSection .szf-folder-add-controls{display:flex;gap:8px;margin-bottom:7px}
+#productsSection .szf-folder-add-controls input{min-width:0;flex:1}
+#productsSection .szf-folder-add-controls button{white-space:nowrap;padding:10px}
+#productsSection .szf-folder-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#productsSection .szf-folder-category{min-width:0;padding:12px;border:1px solid rgba(212,175,106,.35);border-radius:12px;background:rgba(25,23,20,.8)}
+#productsSection .szf-folder-category h4{margin:0 0 8px;font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+#productsSection .szf-folder-category .szf-cat-count{font-size:11px;color:var(--muted,#b8b0a1);line-height:1.9}
+#productsSection .szf-folder-category .szf-cat-weight{font-size:17px;font-weight:900;color:var(--goldBright,#d9b86c);margin-top:7px;overflow-wrap:anywhere}
+#productsSection .szf-folder-category .szf-cat-sub{font-size:11px;color:var(--muted,#b8b0a1);line-height:1.9;margin-top:3px}
+#productsSection .szf-folder-empty{grid-column:1/-1;text-align:center;padding:16px;border:1px dashed rgba(212,175,106,.3);border-radius:10px;color:var(--muted,#b8b0a1);line-height:2}
+@media(min-width:700px){#productsSection .szf-folder-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:380px){#productsSection .szf-folder-grid{grid-template-columns:1fr}#productsSection .szf-folder-add-controls{flex-direction:column}#productsSection .szf-folder-count{display:none}}
+</style>
+<script>
+(function(){
+ 'use strict';
+ const $=id=>document.getElementById(id);
+ const fa='۰۱۲۳۴۵۶۷۸۹', ar='٠١٢٣٤٥٦٧٨٩';
+ const num=v=>{if(v===null||v===undefined||v==='')return 0;let s=String(v).trim().replace(/[۰-۹]/g,d=>String(fa.indexOf(d))).replace(/[٠-٩]/g,d=>String(ar.indexOf(d))).replace(/٫/g,'.').replace(/[٬,\s]/g,'').replace(/(گرم|عدد|g|gr)/gi,'').replace(/[^0-9.+-]/g,'');let n=Number(s);return Number.isFinite(n)&&n>=0?n:0;};
+ const fmt=(n,d=3)=>Number(n||0).toLocaleString('fa-IR',{maximumFractionDigits:d});
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function getProducts(){try{let p=window.getProducts?.();if(Array.isArray(p))return p;}catch(e){}try{if(typeof getProducts==='function'){let p=getProducts();if(Array.isArray(p))return p;}}catch(e){}return [];}
+ function category(p){return String(p.category??p.category_name??p.product_category??'سایر').trim()||'سایر';}
+ function status(p){return String(p.stock??p.stock_status??'موجود').trim();}
+ function qty(p){let raw=p.stockQuantity??p.stock_quantity??p.quantity??p.inventory_quantity;if(raw===null||raw===undefined||raw==='')return status(p)==='موجود'?1:0;return Math.floor(num(raw));}
+ function weight(p){return num(p.weight??p.product_weight??p.وزن??0);}
+ function getCategorySelect(){return $('productCategory');}
+ function addOption(name){const select=getCategorySelect();if(!select)return;const exists=[...select.options].some(o=>o.value.trim().toLocaleLowerCase()===name.toLocaleLowerCase()||o.text.trim().toLocaleLowerCase()===name.toLocaleLowerCase());if(!exists){const opt=document.createElement('option');opt.value=name;opt.textContent=name;select.appendChild(opt);}}
+ function knownCategories(list){const set=new Map();const select=getCategorySelect();if(select)[...select.options].forEach(o=>{const n=(o.value||o.textContent||'').trim();if(n&&!['all','همه دسته‌بندی‌ها'].includes(n.toLowerCase()))set.set(n.toLocaleLowerCase(),n);});list.forEach(p=>{const n=category(p);set.set(n.toLocaleLowerCase(),n);});try{const saved=JSON.parse(localStorage.getItem('szf_custom_product_categories')||'[]');if(Array.isArray(saved))saved.forEach(n=>{n=String(n).trim();if(n)set.set(n.toLocaleLowerCase(),n);});}catch(e){}return [...set.values()].sort((a,b)=>a.localeCompare(b,'fa'));}
+ function refresh(){const body=$('szfCategoryFolderBody');if(!body)return;const list=getProducts(),cats=knownCategories(list),groups=new Map();cats.forEach(n=>groups.set(n,{models:0,units:0,total:0,available:0,availableUnits:0,missing:0}));let totalWeight=0,availableWeight=0,totalUnits=0,availableUnits=0;
+ list.forEach(p=>{const n=category(p);if(!groups.has(n))groups.set(n,{models:0,units:0,total:0,available:0,availableUnits:0,missing:0});const g=groups.get(n),q=qty(p),w=weight(p),st=status(p);g.models++;g.units+=q;g.total+=w*Math.max(1,q);totalWeight+=w*Math.max(1,q);if(w<=0)g.missing++;totalUnits+=q;if(st==='موجود'&&q>0){g.available+=w*q;g.availableUnits+=q;availableWeight+=w*q;availableUnits+=q;}});
+ $('szfFolderCategoryCount').textContent=fmt(groups.size,0)+' دسته';
+ $('szfFolderOverview').innerHTML=`<div class="szf-folder-total"><span>تعداد کل مدل‌های ثبت‌شده</span><strong>${fmt(list.length,0)} مدل</strong></div><div class="szf-folder-total"><span>تعداد کل واحدها</span><strong>${fmt(totalUnits,0)} عدد</strong></div><div class="szf-folder-total"><span>وزن کل محصولات</span><strong>${fmt(totalWeight)} گرم</strong></div><div class="szf-folder-total"><span>وزن موجودی قابل فروش</span><strong>${fmt(availableWeight)} گرم</strong></div>`;
+ const cards=[...groups.entries()].map(([name,g])=>`<article class="szf-folder-category"><h4>📂 ${esc(name)}</h4><div class="szf-cat-count">${fmt(g.models,0)} مدل ثبت‌شده · ${fmt(g.units,0)} واحد</div><div class="szf-cat-weight">${fmt(g.total)} گرم</div><div class="szf-cat-sub">وزن کل دسته‌بندی</div><div class="szf-cat-sub">موجودی قابل فروش: ${fmt(g.available)} گرم (${fmt(g.availableUnits,0)} واحد)</div>${g.missing?`<div class="szf-cat-sub">⚠️ ${fmt(g.missing,0)} مدل بدون وزن معتبر</div>`:''}</article>`).join('');
+ $('szfCategoryFolderList').innerHTML=cards||'<div class="szf-folder-empty">هنوز دسته‌بندی‌ای ثبت نشده است.</div>';
+ }
+ function addCategory(){const input=$('szfNewCategoryName');const name=(input?.value||'').trim().replace(/\s+/g,' ');if(!name){alert('ابتدا نام دسته‌بندی را وارد کن.');input?.focus();return;}const select=getCategorySelect();const existing=knownCategories(getProducts()).find(n=>n.toLocaleLowerCase()===name.toLocaleLowerCase());if(existing){alert('این دسته‌بندی از قبل وجود دارد.');input.value='';addOption(existing);return;}let saved=[];try{saved=JSON.parse(localStorage.getItem('szf_custom_product_categories')||'[]');if(!Array.isArray(saved))saved=[];}catch(e){}saved.push(name);try{localStorage.setItem('szf_custom_product_categories',JSON.stringify([...new Set(saved)]));}catch(e){}addOption(name);if(select)select.value=name;input.value='';refresh();alert('دسته‌بندی «'+name+'» اضافه شد. اکنون می‌توانی در فرم محصول آن را انتخاب و محصول را ثبت کنی.');}
+ $('szfCategoryFolderToggle')?.addEventListener('click',()=>{const b=$('szfCategoryFolderBody'),btn=$('szfCategoryFolderToggle'),open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(open));b.hidden=!open;if(open)refresh();});
+ $('szfAddCategoryButton')?.addEventListener('click',addCategory);
+ $('szfNewCategoryName')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addCategory();}});
+ function syncSelect(){try{knownCategories(getProducts()).forEach(addOption);}catch(e){}}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{syncSelect();refresh();},{once:true});else{syncSelect();refresh();}
+ let tries=0;const timer=setInterval(()=>{syncSelect();refresh();if(++tries>=60)clearInterval(timer);},1500);
+ const oldRender=window.renderProducts;if(typeof oldRender==='function'&&!oldRender.__szfFolderRefresh){const wrapped=function(){const r=oldRender.apply(this,arguments);syncSelect();refresh();return r;};wrapped.__szfFolderRefresh=true;window.renderProducts=wrapped;}
+ window.szfRefreshCategoryFolder=refresh;
+})();
 </script>
 
 </body>
