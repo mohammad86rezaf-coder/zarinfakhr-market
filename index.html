@@ -5533,12 +5533,13 @@ async function loadProducts(){
     renderProducts();
     return;
   }
+
+  // Keep database errors separate from UI-rendering errors so the alert
+  // reports the real Supabase failure instead of masking it.
   try{
     const rows = await supabaseRequest("/rest/v1/products?select=*&order=created_at.desc", {method:"GET"});
     const products = (Array.isArray(rows) ? rows : []).map(mapDbProduct);
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
-    renderProducts();
-    updateDashboard();
   }catch(error){
     console.error("خواندن محصولات از Supabase ناموفق بود:", error);
     const message = error && error.message ? error.message : String(error || "خطای نامشخص");
@@ -5547,7 +5548,11 @@ async function loadProducts(){
       : message;
     alert("خواندن محصولات از دیتابیس انجام نشد. علت: " + detail);
     renderProducts();
+    return;
   }
+
+  renderProducts();
+  updateDashboard();
 }
 
 /* =========================================================
@@ -5801,6 +5806,12 @@ function escapeAttribute(value){
 
   return escapeHTML(value);
 
+}
+
+// Global compatibility helper used by later dashboard renderers.
+// Some dashboard extensions call esc() outside their own local scope.
+function esc(value){
+  return escapeHTML(value);
 }
 
 /* =========================================================
