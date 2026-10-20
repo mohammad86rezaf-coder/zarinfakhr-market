@@ -2067,12 +2067,13 @@ API
 ========================================================= */
 
 /* API مستقل روی Vercel؛ برای کارکرد صحیح از GitHub Pages نیز استفاده می‌شود. */
-const API = "https://jouaren.com/ons";
+const API = "/api/prices";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
 const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ تصمیم آگاهانه برای کاهش فشار روی API
 const PRICE_REQUEST_TIMEOUT_MS = 22000;
 let priceFetchInProgress = false;
+let marketLastError = "";
 
 /* =========================================================
 LOGIN - کاملاً ثابت
@@ -2410,24 +2411,9 @@ IRAN TIME HELPERS
 ========================================================= */
 
 function getIranFallbackDate(){
-
-  const now =
-    new Date();
-
-  /*
-    ایران در حال حاضر UTC+3:30 است.
-    این فقط زمانی استفاده می‌شود که Time API پاسخ معتبر ندهد.
-  */
-
-  const utc =
-    now.getTime() +
-    now.getTimezoneOffset() * 60000;
-
-  return new Date(
-    utc +
-    (3.5 * 60 * 60 * 1000)
-  );
-
+  // زمان را جابه‌جا نمی‌کنیم؛ formatDateTimeIran با Asia/Tehran نمایش می‌دهد.
+  // بنابراین ساعت ایران بدون وابستگی به API خارجی کار می‌کند.
+  return new Date();
 }
 
 function normalizeTimeApiValue(value){
@@ -2714,33 +2700,12 @@ CLOCK
 ========================================================= */
 
 function renderClock(){
-
-  if(!iranClockDate){
-
-    iranClockDate =
-      getIranFallbackDate();
-
-    iranClockSource =
-      "fallback";
-
-  }else{
-
-    iranClockDate =
-      new Date(
-        iranClockDate.getTime() + 1000
-      );
-
-  }
-
-  const clock =
-    document.getElementById("clock");
-
-  if(!clock)
-    return;
-
-  clock.textContent =
-    formatDateTimeIran(iranClockDate);
-
+  // هر بار زمان واقعی را می‌گیریم و فقط برای نمایش به ساعت تهران تبدیل می‌کنیم.
+  iranClockDate = new Date();
+  iranClockSource = "browser-timezone";
+  const clock = document.getElementById("clock");
+  if(!clock) return;
+  clock.textContent = formatDateTimeIran(iranClockDate);
 }
 
 async function fetchIranTime(){
@@ -2818,33 +2783,12 @@ async function fetchIranTime(){
 }
 
 function startClock(){
-
-  if(clockApiTimer)
-    clearInterval(clockApiTimer);
-
-  if(clockDisplayTimer)
-    clearInterval(clockDisplayTimer);
-
-  iranClockDate =
-    getIranFallbackDate();
-
-  iranClockSource =
-    "fallback";
-
-  fetchIranTime();
-
-  clockApiTimer =
-    setInterval(
-      fetchIranTime,
-      60000
-    );
-
-  clockDisplayTimer =
-    setInterval(
-      renderClock,
-      1000
-    );
-
+  if(clockApiTimer){ clearInterval(clockApiTimer); clockApiTimer = null; }
+  if(clockDisplayTimer) clearInterval(clockDisplayTimer);
+  iranClockDate = new Date();
+  iranClockSource = "browser-timezone";
+  renderClock();
+  clockDisplayTimer = setInterval(renderClock, 1000);
 }
 
 /* =========================================================
@@ -3557,6 +3501,7 @@ async function fetchPrices(){
 
     /* قیمت‌های ناقص هرگز به‌عنوان قیمت زنده معتبر پذیرفته نمی‌شوند. */
     processPrices(data);
+    marketLastError = "";
     setConnectionStatus(true);
 
   }catch(error){
@@ -3566,7 +3511,9 @@ async function fetchPrices(){
       error
     );
 
+    marketLastError = error && error.message ? error.message : "خطای نامشخص در دریافت بازار";
     setConnectionStatus(false);
+    setText("priceFreshnessStatus", "دریافت قیمت ناموفق: " + marketLastError);
 
   }finally{
 
@@ -7083,7 +7030,7 @@ document.addEventListener(
   };
   function updatePriceFreshness(){
     const last=lastPriceUpdateIranDate;
-    if(!last){setText("priceFreshnessStatus","منتظر اولین دریافت معتبر بازار");setText("priceLastSuccess","—");setText("priceElapsed","—");return;}
+    if(!last){setText("priceFreshnessStatus", marketLastError ? ("دریافت قیمت ناموفق: " + marketLastError) : "منتظر اولین دریافت معتبر بازار");setText("priceLastSuccess","—");setText("priceElapsed","—");return;}
     const sec=Math.max(0,Math.floor((Date.now()-last.getTime())/1000));
     setText("priceLastSuccess",formatDateTimeIran(last));setText("priceElapsed",sec<60?formatNumber(sec,0)+" ثانیه":formatNumber(Math.floor(sec/60),0)+" دقیقه و "+formatNumber(sec%60,0)+" ثانیه");
     const stale=sec>Math.ceil(PRICE_REFRESH_INTERVAL_MS/1000)*2;
