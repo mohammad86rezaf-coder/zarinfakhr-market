@@ -1,233 +1,104 @@
+/*
+ * SILVER ZARIN FAKHR — Vercel Serverless Function
+ * فایل را در مخزن GitHub با مسیر دقیق api/prices.js قرار بده.
+ * این تابع صفحه عمومی قیمت ژوآرن را سمت سرور می‌خواند تا مشکل CORS و HTML/JSON حل شود.
+ */
+
 const SOURCE_URL = "https://jouaren.com/ons";
 
 function normalizeDigits(value) {
-  const persian = "۰۱۲۳۴۵۶۷۸۹";
-  const arabic = "٠١٢٣٤٥٦٧٨٩";
-
-  return String(value)
-    .replace(/[۰-۹]/g, d => String(persian.indexOf(d)))
-    .replace(/[٠-٩]/g, d => String(arabic.indexOf(d)))
-    .replace(/[٬،]/g, ",")
-    .replace(/[\u00a0\u202f]/g, " ");
+  return String(value || "")
+    .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+    .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d));
 }
 
-function parseNumber(value) {
-  if (!value) return null;
-
-  const normalized = normalizeDigits(value)
-    .replace(/,/g, "")
-    .replace(/\s/g, "")
-    .replace(/[^\d.]/g, "");
-
-  const number = Number(normalized);
-
-  return Number.isFinite(number) && number > 0
-    ? number
-    : null;
+function toNumber(value) {
+  const cleaned = normalizeDigits(value)
+    .replace(/[٬،,\s]/g, "")
+    .replace(/[٫]/g, ".")
+    .replace(/[^0-9.\-]/g, "");
+  const n = Number(cleaned);
+  return Number.isFinite(n) && n > 0 ? n : NaN;
 }
 
-function extractNumber(text, patterns) {
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-
-    if (match && match[1]) {
-      const value = parseNumber(match[1]);
-
-      if (value !== null) return value;
-    }
-  }
-
-  return null;
+function pageText(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;|&#xA0;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-function calculatePrices(silverOunce, usdToman, silver999Toman) {
-  // قیمت هر گرم نقره ۹۲۵ بر اساس نقره ۹۹۹
-  const silver925Toman =
-    silver999Toman !== null
-      ? (silver999Toman * 925) / 999
-      : null;
-
-  // فرمول سفارشی قیمت مثقال ۱۷ عیار طبق دستور کاربر:
-  // انس نقره × دلار
-  // ÷ 31.103
-  // ÷ 1000
-  // × 700
-  // × 4.608
-
-  const mesghal17Toman =
-    silverOunce !== null && usdToman !== null
-      ? (
-          (silverOunce * usdToman / 31.103 / 1000)
-          * 700
-          * 4.608
-        )
-      : null;
-
-  const now = new Date().toISOString();
-
-  return {
-    silverOunce,
-    usdToman,
-    usdRial: usdToman !== null ? usdToman * 10 : null,
-
-    silver999Toman,
-    silver999Rial:
-      silver999Toman !== null ? silver999Toman * 10 : null,
-
-    silver925Toman,
-    silver925Rial:
-      silver925Toman !== null ? silver925Toman * 10 : null,
-
-    usdtToman: usdToman,
-
-    // قیمت نهایی مثقال ۱۷ عیار به تومان
-    mesghal17Toman:
-      mesghal17Toman !== null
-        ? Math.round(mesghal17Toman)
-        : null,
-
-    updatedAt: now,
-    serverTime: now,
-    source: SOURCE_URL
-  };
+function firstMatchNumber(text, regex) {
+  const match = regex.exec(text);
+  return match ? toNumber(match[1]) : NaN;
 }
 
-async function getPrices() {
-  const response = await fetch(SOURCE_URL, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; SILVER-ZARIN-FAKHR/1.0)",
-      "Accept": "text/html,application/xhtml+xml"
-    },
-    signal: AbortSignal.timeout(12000)
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `دریافت اطلاعات منبع ناموفق بود: HTTP ${response.status}`
-    );
-  }
-
-  const html = await response.text();
-
-  const text = normalizeDigits(
-    html
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
-      .replace(/<[^>]*>/g, " ")
-      .replace(/&nbsp;|&#160;/gi, " ")
-      .replace(/&amp;/gi, "&")
-      .replace(/&quot;/gi, '"')
-      .replace(/&#39;|&apos;/gi, "'")
-      .replace(/&lt;/gi, "<")
-      .replace(/&gt;/gi, ">")
-      .replace(/\s+/g, " ")
-  );
-
-  // قیمت انس جهانی نقره به دلار
-  let silverOunce = extractNumber(text, [
-    /قیمت\s*هر\s*انس\s*نقره[^$]{0,100}\$\s*([\d,]+(?:\.\d+)?)/i,
-    /انس\s*جهانی\s*\$?\s*([\d,]+(?:\.\d+)?)/i,
-    /XAG\/USD[\s\S]{0,300}?\$([\d,]+(?:\.\d+)?)/i
-  ]);
-
-  // قیمت دلار بازار ایران به تومان
-  const usdToman = extractNumber(text, [
-    /نرخ\s*دلار\s*بازار\s*([\d,]+)\s*تومان/i
-  ]);
-
-  // قیمت هر گرم نقره ۹۹۹ به تومان
-  const silver999Toman = extractNumber(text, [
-    /گرم\s*۹۹۹\s*\(\s*بازار\s*ایران\s*\)\s*([\d,]+)\s*تومان/i,
-    /گرم\s*999\s*\(\s*بازار\s*ایران\s*\)\s*([\d,]+)\s*تومان/i
-  ]);
-
-  const errors = [];
-
-  if (
-    silverOunce === null ||
-    silverOunce < 5 ||
-    silverOunce > 200
-  ) {
-    errors.push("قیمت معتبر انس نقره پیدا نشد.");
-    silverOunce = null;
-  }
-
-  if (
-    usdToman === null ||
-    usdToman < 1000 ||
-    usdToman > 10000000
-  ) {
-    errors.push("قیمت معتبر دلار به تومان پیدا نشد.");
-  }
-
-  if (
-    silver999Toman === null ||
-    silver999Toman < 1000 ||
-    silver999Toman > 100000000
-  ) {
-    errors.push("قیمت معتبر نقره ۹۹۹ پیدا نشد.");
-  }
-
-  const prices = calculatePrices(
-    silverOunce,
-    usdToman,
-    silver999Toman
-  );
-
-  return {
-    success: errors.length === 0,
-
-    ...prices,
-
-    // حفظ ساختار خروجی برای سازگاری با پنل فعلی
-    prices: {
-      silverOunce: prices.silverOunce,
-      silver999: prices.silver999Rial,
-      silver999Rial: prices.silver999Rial,
-      silver999Toman: prices.silver999Toman,
-      usd: prices.usdRial,
-      usdRial: prices.usdRial,
-      usdToman: prices.usdToman,
-      silver925Toman: prices.silver925Toman,
-      silver925Rial: prices.silver925Rial,
-      mesghal17Toman: prices.mesghal17Toman
-    },
-
-    partial: errors.length > 0,
-    errors
-  };
-}
-
-module.exports = async (req, res) => {
+module.exports = async function handler(req, res) {
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "no-store, max-age=0");
+  res.setHeader("X-Content-Type-Options", "nosniff");
 
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET");
-
-    return res.status(405).json({
-      success: false,
-      error: "فقط درخواست GET پشتیبانی می‌شود."
-    });
+    return res.status(405).json({ success: false, message: "فقط درخواست GET مجاز است." });
   }
 
   try {
-    const result = await getPrices();
+    const upstream = await fetch(SOURCE_URL, {
+      method: "GET",
+      headers: {
+        "Accept": "text/html,application/xhtml+xml",
+        "User-Agent": "Mozilla/5.0 (compatible; SZFMarketPanel/1.0)"
+      },
+      signal: AbortSignal.timeout(12000)
+    });
 
-    return res
-      .status(result.success ? 200 : 502)
-      .json(result);
+    if (!upstream.ok) {
+      throw new Error("منبع قیمت با کد HTTP " + upstream.status + " پاسخ داد.");
+    }
+
+    const html = await upstream.text();
+    const text = pageText(html);
+
+    const silverOunce = firstMatchNumber(text, /انس جهانی\s*\$?\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،]*)/g);
+    const usdToman = firstMatchNumber(text, /نرخ دلار بازار\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g);
+    const silver999Toman = firstMatchNumber(text, /گرم ۹۹۹\s*\(بازار ایران\)\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g);
+
+    if (!(silverOunce > 0) || !(usdToman > 0) || !(silver999Toman > 0)) {
+      throw new Error("ساختار صفحه قیمت تغییر کرده یا قیمت‌ها در دسترس نیستند.");
+    }
+
+    const silver925Toman = silver999Toman * 925 / 999;
+    // فرمول مورد استفاده پنل: انس × نرخ تومان دلار ÷ 31.1034768 × 0.700 × 4.608
+    const mesghal17Toman = (silverOunce * usdToman / 31.1034768) * 0.700 * 4.608;
+
+    return res.status(200).json({
+      success: true,
+      source: SOURCE_URL,
+      updatedAt: new Date().toISOString(),
+      silverOunce,
+      usdToman,
+      usdRial: usdToman * 10,
+      silver999Toman,
+      silver999Rial: silver999Toman * 10,
+      silver925Toman,
+      silver925Rial: silver925Toman * 10,
+      mesghal17Toman,
+      partial: false
+    });
   } catch (error) {
+    console.error("SZF market API error:", error);
     return res.status(502).json({
       success: false,
-      error: "دریافت قیمت‌ها با خطا مواجه شد.",
-      details: [
-        error && error.message
-          ? error.message
-          : "خطای نامشخص"
-      ],
-      source: SOURCE_URL,
-      updatedAt: new Date().toISOString()
+      message: error && error.message ? error.message : "دریافت اطلاعات بازار ناموفق بود."
     });
   }
 };
