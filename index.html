@@ -3070,7 +3070,7 @@ function calculatePrice(){
     قیمت خرید، قیمت طلاست نه نقره.
     فقط از قیمت هر گرم طلای ۱۸ عیار در API محاسبه می‌شود:
     قیمت هر گرم طلای ۱۷ عیار = طلای ۱۸ عیار × 17/18
-    قیمت قیمت خرید = قیمت هر گرم طلای ۱۷ عیار × 4.608
+    قیمت خرید = قیمت هر گرم طلای ۱۷ عیار (بدون ضریب 4.608)
     اگر API قیمت طلای ۱۸ عیار ندهد، عدد اشتباه نمایش داده نمی‌شود.
   */
   /*
@@ -3081,7 +3081,7 @@ function calculatePrice(){
   if(!(currentMithqal17 > 0)){
     currentMithqal17 =
       currentGold18 > 0
-        ? currentGold18 * (17 / 18) * 4.608
+        ? currentGold18 * (17 / 18)
         : 0;
   }
 
@@ -6677,7 +6677,7 @@ document.addEventListener(
     const ounce = safeNum(currentSilverOunce);
     const usd = safeNum(currentUSD);
     if(ounce > 0 && usd > 0){
-      currentMithqal17 = (ounce * usd / 31.1034768) * 0.700 * 4.608;
+      currentMithqal17 = (ounce * usd / 31.1034768) * 0.700;
     }
     if(typeof phase3OriginalCalculatePrice === "function") phase3OriginalCalculatePrice();
     setText("mithqal17", currentMithqal17 > 0 ? compactMoney(currentMithqal17) : "—");
