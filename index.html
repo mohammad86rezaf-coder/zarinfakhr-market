@@ -6567,6 +6567,11 @@ document.addEventListener(
     updateProductLaborLabel();
 
     loadSettings();
+
+    // بازار و ساعت تابلو عمومی‌اند و باید حتی قبل از ورود مدیر اجرا شوند.
+    startPriceUpdates();
+    startClock();
+
     // داده‌های محصولات فقط پس از ورود معتبر به Supabase خوانده می‌شوند.
     renderHistory();
     updateDashboard();
