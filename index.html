@@ -2067,7 +2067,7 @@ API
 ========================================================= */
 
 /* API مستقل روی Vercel؛ برای کارکرد صحیح از GitHub Pages نیز استفاده می‌شود. */
-const API = "https://zarinfakhr-market-v2.vercel.app/api/prices";
+const API = "https://jouaren.com/ons";
 
 /* تنظیمات ارتباط بازار: جلوگیری از درخواست‌های بی‌مورد و هم‌زمان */
 const PRICE_REFRESH_INTERVAL_MS = 30000; // هر ۳۰ ثانیه؛ تصمیم آگاهانه برای کاهش فشار روی API
@@ -5541,7 +5541,11 @@ async function loadProducts(){
     updateDashboard();
   }catch(error){
     console.error("خواندن محصولات از Supabase ناموفق بود:", error);
-    alert("خواندن محصولات از دیتابیس انجام نشد: " + (error.message || "خطای نامشخص"));
+    const message = error && error.message ? error.message : String(error || "خطای نامشخص");
+    const detail = /Failed to fetch|NetworkError|Load failed/i.test(message)
+      ? "ارتباط شبکه با Supabase برقرار نشد. اینترنت، آدرس پروژه و کلید عمومی را بررسی کن."
+      : message;
+    alert("خواندن محصولات از دیتابیس انجام نشد. علت: " + detail);
     renderProducts();
   }
 }
