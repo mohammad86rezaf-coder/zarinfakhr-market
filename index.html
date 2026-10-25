@@ -2126,6 +2126,12 @@ function mapDbProduct(row){
 }
 
 function mapProductToDb(product){
+  // مستقل از safeNum داخلی فاز سوم؛ این تابع در scope سراسری اجرا می‌شود.
+  // نبودن قیمت معتبر بازار یا انتخاب قیمت ثابت نباید مانع ثبت محصول شود.
+  const safeNum = (value, fallback = 0) => {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : fallback;
+  };
   return {
     code: product.code || null, name: product.name, category: product.category || "",
     description: product.description || "", price: (product.priceMode === "fixed" ? safeNum(product.fixedPrice, safeNum(product.price)) : (typeof calculateProductCurrentPrice === "function" ? (()=>{try{const v=calculateProductCurrentPrice(product);return v>0?v:safeNum(product.price);}catch{return safeNum(product.price);}})() : safeNum(product.price))),
