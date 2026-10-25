@@ -1711,7 +1711,7 @@ PRODUCTS
 </div>
 
 <div class="action-row">
-<button id="productSubmitButton" class="primary-button" onclick="addProduct()">ثبت محصول</button>
+<button id="productSubmitButton" type="button" class="primary-button">ثبت محصول</button>
 <button class="secondary-button" onclick="clearProductForm()">پاک کردن</button>
 </div>
 
@@ -7248,6 +7248,30 @@ document.addEventListener(
     // Make the standalone display board keep its own background setting.
     applyAppearance();
   });
+})();
+
+
+// تثبیت رویداد دکمه ثبت محصول؛ جلوگیری از وابستگی به onclick در HTML
+(function bindProductSubmitButton(){
+  const bind = () => {
+    const button = document.getElementById("productSubmitButton");
+    if (!button || button.dataset.productSubmitBound === "true") return;
+    button.dataset.productSubmitBound = "true";
+    button.type = "button";
+    button.addEventListener("click", function(event){
+      event.preventDefault();
+      if (typeof window.addProduct !== "function") {
+        alert("تابع ثبت محصول بارگذاری نشده است. صفحه را تازه‌سازی کنید و دوباره تلاش کنید.");
+        return;
+      }
+      window.addProduct();
+    });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bind, {once:true});
+  } else {
+    bind();
+  }
 })();
 
 </script>
