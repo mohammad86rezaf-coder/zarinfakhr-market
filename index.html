@@ -2083,7 +2083,9 @@ const SUPABASE_URL = "https://jndmstlpjlnygscizvow.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_mfVS1jxteUfqOLTJm8L16w_795_cviH";
 const SUPABASE_SESSION_KEY = "SZF_SUPABASE_SESSION";
 let supabaseAccessToken = "";
+let supabaseRefreshToken = "";
 let supabaseUserId = "";
+let supabaseRefreshPromise = null;
 
 function getSupabaseHeaders(extra = {}){
   const headers = {"apikey": SUPABASE_ANON_KEY, "Content-Type":"application/json", ...extra};
@@ -2092,17 +2094,62 @@ function getSupabaseHeaders(extra = {}){
   return headers;
 }
 
+async function refreshSupabaseSession(){
+  if(!supabaseRefreshToken) throw new Error("نشست ورود منقضی شده است؛ یک‌بار خارج شوید و دوباره وارد پنل شوید.");
+  if(supabaseRefreshPromise) return supabaseRefreshPromise;
+  supabaseRefreshPromise = (async()=>{
+    const response = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=refresh_token", {
+      method:"POST",
+      headers:{"apikey":SUPABASE_ANON_KEY,"Content-Type":"application/json"},
+      body:JSON.stringify({refresh_token:supabaseRefreshToken})
+    });
+    const body = await response.json().catch(()=>({}));
+    if(!response.ok || !body.access_token) {
+      supabaseAccessToken = "";
+      supabaseRefreshToken = "";
+      supabaseUserId = "";
+      try{sessionStorage.removeItem(SUPABASE_SESSION_KEY);}catch{}
+      throw new Error(body.msg || body.message || body.error_description || "نشست ورود منقضی شده است؛ دوباره وارد پنل شوید.");
+    }
+    supabaseAccessToken = body.access_token;
+    supabaseRefreshToken = body.refresh_token || supabaseRefreshToken;
+    supabaseUserId = body.user && body.user.id || supabaseUserId;
+    try{
+      sessionStorage.setItem(SUPABASE_SESSION_KEY, JSON.stringify({
+        access_token:supabaseAccessToken,
+        refresh_token:supabaseRefreshToken,
+        user_id:supabaseUserId
+      }));
+    }catch(storageError){console.warn("ذخیره نشست در sessionStorage ممکن نشد:",storageError);}
+    return supabaseAccessToken;
+  })();
+  try{return await supabaseRefreshPromise;}
+  finally{supabaseRefreshPromise=null;}
+}
+
 async function supabaseRequest(path, options = {}){
-  const response = await fetch(SUPABASE_URL + path, {
-    ...options,
-    headers: getSupabaseHeaders(options.headers || {})
+  const requestOptions = {...options};
+  const makeRequest = () => fetch(SUPABASE_URL + path, {
+    ...requestOptions,
+    headers:getSupabaseHeaders(requestOptions.headers || {})
   });
+  let response;
+  try{
+    response = await makeRequest();
+  }catch(networkError){
+    throw new Error("ارتباط با سرور Supabase برقرار نشد. اینترنت گوشی یا مرورگر را بررسی کنید و دوباره تلاش کنید. جزئیات: " + (networkError.message || networkError));
+  }
+  if(response.status === 401 && supabaseRefreshToken){
+    await refreshSupabaseSession();
+    try{response = await makeRequest();}
+    catch(networkError){throw new Error("پس از تمدید نشست، ارتباط با Supabase برقرار نشد: " + (networkError.message || networkError));}
+  }
   const text = await response.text();
   let data = null;
   try { data = text ? JSON.parse(text) : null; } catch { data = text; }
   if(!response.ok){
-    const message = data && (data.msg || data.message || data.error_description || data.error) || "خطای ارتباط با Supabase (" + response.status + ")";
-    throw new Error(message);
+    const message = data && (data.msg || data.message || data.error_description || data.error || data.details) || "خطای ارتباط با Supabase (" + response.status + ")";
+    throw new Error("Supabase " + response.status + ": " + message);
   }
   return data;
 }
@@ -2224,13 +2271,14 @@ async function login(){
     const result = await auth.json();
     if(!auth.ok) throw new Error(result.msg || result.message || result.error_description || "ورود ناموفق بود؛ ایمیل و رمز عبور را بررسی کنید.");
     supabaseAccessToken = result.access_token;
+    supabaseRefreshToken = result.refresh_token || "";
     supabaseUserId = result.user && result.user.id || "";
     if(supabaseUserId !== "e35fddc0-211d-4909-807f-1a26a60e8536"){
       try{await fetch(SUPABASE_URL + "/auth/v1/logout",{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+supabaseAccessToken}});}catch{}
-      supabaseAccessToken = ""; supabaseUserId = "";
+      supabaseAccessToken = ""; supabaseRefreshToken = ""; supabaseUserId = "";
       throw new Error("این حساب در فهرست مدیر مجاز پنل نیست.");
     }
-    sessionStorage.setItem(SUPABASE_SESSION_KEY, JSON.stringify({access_token:supabaseAccessToken,user_id:supabaseUserId}));
+    sessionStorage.setItem(SUPABASE_SESSION_KEY, JSON.stringify({access_token:supabaseAccessToken,refresh_token:supabaseRefreshToken,user_id:supabaseUserId}));
     if(loginError) loginError.textContent = "";
     document.getElementById("loginPage").classList.add("hidden");
     document.getElementById("appPage").classList.remove("hidden");
@@ -2279,8 +2327,9 @@ LOGOUT
 function logout(){
 
   supabaseAccessToken = "";
+  supabaseRefreshToken = "";
   supabaseUserId = "";
-  sessionStorage.removeItem(SUPABASE_SESSION_KEY);
+  try{sessionStorage.removeItem(SUPABASE_SESSION_KEY);}catch{}
 
   document
     .getElementById("appPage")
@@ -4375,17 +4424,25 @@ function showAlert(title,text){
 PRODUCT MANAGEMENT
 ========================================================= */
 
+let szfProductsMemoryCache = null;
+
 function getProducts(){
 
   try{
 
-    const products =
-      JSON.parse(
-        localStorage.getItem(PRODUCTS_KEY)
-      ) || [];
-
-    if(!Array.isArray(products))
-      return [];
+    let products;
+    try{
+      const stored = localStorage.getItem(PRODUCTS_KEY);
+      products = stored ? JSON.parse(stored) : null;
+    }catch(storageReadError){
+      console.warn("خواندن کش محصولات از حافظه مرورگر ممکن نشد؛ از کش حافظه استفاده می‌شود.", storageReadError);
+      products = null;
+    }
+    if(!Array.isArray(products)){
+      products = Array.isArray(szfProductsMemoryCache) ? szfProductsMemoryCache : [];
+    }else{
+      szfProductsMemoryCache = products;
+    }
 
     /*
       سازگاری با محصولات نسخه قبلی:
@@ -4428,36 +4485,15 @@ function getProducts(){
 }
 
 function saveProducts(products){
-
+  // کش حافظه همیشه به‌روز می‌شود؛ localStorage فقط کش پایدار اختیاری است.
+  szfProductsMemoryCache = Array.isArray(products) ? products : [];
   try{
-
-    localStorage.setItem(
-      PRODUCTS_KEY,
-      JSON.stringify(products)
-    );
-
+    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
     return true;
-
   }catch(error){
-
-    console.error("ذخیره محصولات ناموفق بود:", error);
-
-    const quotaError =
-      error && (
-        error.name === "QuotaExceededError" ||
-        error.name === "NS_ERROR_DOM_QUOTA_REACHED"
-      );
-
-    alert(
-      quotaError
-        ? "فضای ذخیره‌سازی مرورگر پر شده است. لطفاً عکس کوچک‌تری انتخاب کنید یا فضای ذخیره‌سازی سایت را بررسی کنید. اطلاعات قبلی حذف نشده است."
-        : "ذخیره محصول انجام نشد. دسترسی مرورگر به ذخیره‌سازی را بررسی کنید. اطلاعات قبلی حذف نشده است."
-    );
-
+    console.warn("محصول در دیتابیس ذخیره شده، اما کش محلی مرورگر به‌روزرسانی نشد:", error);
     return false;
-
   }
-
 }
 
 /* =========================================================
@@ -4654,7 +4690,7 @@ async function uploadProductImageDataURL(dataURL, productCode){
   const safeCode = String(productCode || "product").replace(/[^a-zA-Z0-9_-]/g,"-").slice(0,80) || "product";
   const objectPath = safeCode + "-" + Date.now() + ".jpg";
   const endpoint = SUPABASE_URL + "/storage/v1/object/" + PRODUCT_IMAGE_BUCKET + "/" + encodeURIComponent(objectPath);
-  const response = await fetch(endpoint, {
+  const uploadOptions = {
     method:"POST",
     headers:{
       "apikey":SUPABASE_ANON_KEY,
@@ -4663,7 +4699,13 @@ async function uploadProductImageDataURL(dataURL, productCode){
       "x-upsert":"true"
     },
     body:blob
-  });
+  };
+  let response = await fetch(endpoint, uploadOptions);
+  if(response.status === 401 && supabaseRefreshToken){
+    await refreshSupabaseSession();
+    uploadOptions.headers.Authorization = "Bearer " + supabaseAccessToken;
+    response = await fetch(endpoint, uploadOptions);
+  }
   const bodyText = await response.text();
   if(!response.ok){
     let detail = bodyText;
@@ -5049,7 +5091,10 @@ async function addProduct(){
     const savedProduct = mapDbProduct(savedRows[0]);
     if(oldProduct) products[editingIndex] = savedProduct;
     else products.unshift(savedProduct);
-    if(!saveProducts(products)) return;
+    const localCacheSaved = saveProducts(products);
+    if(!localCacheSaved){
+      console.warn("ثبت دیتابیس موفق بود؛ فقط کش محلی این دستگاه قابل به‌روزرسانی نبود.");
+    }
 
     clearProductForm();
     renderProducts();
@@ -5065,7 +5110,7 @@ async function addProduct(){
 
     console.error("خطا در ذخیره محصول:",error);
     const detail = error && error.message ? error.message : String(error || "خطای نامشخص");
-    alert("ذخیره محصول انجام نشد. علت دقیق: " + detail + "\\nاطلاعات در دیتابیس ثبت نشده است. از این پیام عکس بگیر؛ متن خطا مشخص می‌کند کدام تنظیم یا ستون دیتابیس مشکل دارد.");
+    alert("ذخیره محصول انجام نشد. علت دقیق: " + detail + "\nاطلاعات در دیتابیس ثبت نشده است. از این پیام عکس بگیر؛ متن خطا مشخص می‌کند کدام تنظیم یا ستون دیتابیس مشکل دارد.");
 
   }finally{
 
@@ -5506,7 +5551,9 @@ async function loadProducts(){
   try{
     const rows = await supabaseRequest("/rest/v1/products?select=*&order=created_at.desc", {method:"GET"});
     const products = (Array.isArray(rows) ? rows : []).map(mapDbProduct);
-    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+    szfProductsMemoryCache = products;
+    try{localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));}
+    catch(cacheError){console.warn("محصولات از دیتابیس خوانده شدند اما کش محلی گوشی به‌روزرسانی نشد:",cacheError);}
   }catch(error){
     console.error("خواندن محصولات از Supabase ناموفق بود:", error);
     const message = error && error.message ? error.message : String(error || "خطای نامشخص");
