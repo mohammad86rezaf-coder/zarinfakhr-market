@@ -1711,7 +1711,7 @@ PRODUCTS
 </div>
 
 <div class="action-row">
-<button id="productSubmitButton" type="button" class="primary-button">ثبت محصول</button>
+<button id="productSubmitButton" class="primary-button" onclick="addProduct()">ثبت محصول</button>
 <button class="secondary-button" onclick="clearProductForm()">پاک کردن</button>
 </div>
 
@@ -1834,14 +1834,8 @@ SETTINGS
 <div class="settings-grid">
 
 <div class="settings-item">
-<div class="settings-label">اجرت پیش‌فرض هر گرم (تومان)</div>
-<input id="defaultLabor" class="form-control" type="number" min="0" step="1000" value="0">
-</div>
-
-<div class="settings-item">
-<div class="settings-label">سایر هزینه پیش‌فرض هر محصول (تومان)</div>
-<input id="defaultOtherCost" class="form-control" type="number" min="0" step="1000" value="0">
-<div class="form-help">برای هر محصول جدید به‌صورت خودکار ثبت می‌شود و هنگام ویرایش محصول، مبلغ ذخیره‌شده همان محصول حفظ خواهد شد.</div>
+<div class="settings-label">اجرت پیش‌فرض هر گرم</div>
+<input id="defaultLabor" class="form-control" type="number" step="1000" value="0">
 </div>
 
 <div class="settings-item">
@@ -2363,10 +2357,8 @@ function formatPrice(value){
     return "—";
   }
 
-  return Math.round(Number(value)).toLocaleString("fa-IR", {
-    useGrouping: true,
-    maximumFractionDigits: 0
-  });
+  return Math.round(Number(value))
+    .toLocaleString("fa-IR");
 
 }
 
@@ -3899,14 +3891,9 @@ function saveSettings(){
   const settings = {
 
     labor:
-      Math.max(0, Number(
+      Number(
         document.getElementById("defaultLabor").value
-      ) || 0),
-
-    otherCost:
-      Math.max(0, Number(
-        document.getElementById("defaultOtherCost")?.value || 0
-      )),
+      ) || 0,
 
     profit:
       Number(
@@ -4003,7 +3990,6 @@ function applySettings(settings){
   const map = {
 
     defaultLabor: settings.labor ?? 0,
-    defaultOtherCost: Math.max(0, Number(settings.otherCost ?? 0)),
     defaultProfit: settings.profit ?? 0,
     defaultTax: settings.tax ?? 0,
     defaultDiscount: settings.discount ?? 0,
@@ -4841,6 +4827,19 @@ function updateProductCodeInfo(){
 ADD PRODUCT
 ========================================================= */
 
+function szfParseNumber(value, fallback = NaN){
+  if(value === null || value === undefined || String(value).trim() === "") return fallback;
+  const normalized = String(value)
+    .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+    .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d))
+    .replace(/[٬،]/g, "")
+    .replace(/٫/g, ".")
+    .replace(/\s+/g, "")
+    .trim();
+  const number = Number(normalized);
+  return Number.isFinite(number) ? number : fallback;
+}
+
 async function addProduct(){
 
   if(productSaveInProgress)
@@ -4871,7 +4870,7 @@ async function addProduct(){
     const weightText =
       document.getElementById("productWeight").value.trim();
 
-    const weight = Number(weightText);
+    const weight = szfParseNumber(weightText);
 
     const size =
       document.getElementById("productSize").value.trim();
@@ -4891,22 +4890,22 @@ async function addProduct(){
     const laborText =
       document.getElementById("productLaborValue").value.trim();
 
-    const laborValue = Number(laborText || 0);
+    const laborValue = szfParseNumber(laborText || 0, 0);
 
     const otherText =
       document.getElementById("productOtherCost").value.trim();
 
-    const otherCost = Number(otherText || 0);
+    const otherCost = szfParseNumber(otherText || 0, 0);
     const stoneCostType = document.getElementById("productStoneCostType")?.value || "fixed";
-    const stoneCost = Number(document.getElementById("productStoneCost")?.value || 0);
-    const profitPercent = Number(document.getElementById("productProfitPercent")?.value || 0);
-    const taxPercent = Number(document.getElementById("productTaxPercent")?.value || 0);
+    const stoneCost = szfParseNumber(document.getElementById("productStoneCost")?.value || 0, 0);
+    const profitPercent = szfParseNumber(document.getElementById("productProfitPercent")?.value || 0, 0);
+    const taxPercent = szfParseNumber(document.getElementById("productTaxPercent")?.value || 0, 0);
     const discountType = document.getElementById("productDiscountType")?.value || "percent";
-    const discountValue = Number(document.getElementById("productDiscountValue")?.value || 0);
+    const discountValue = szfParseNumber(document.getElementById("productDiscountValue")?.value || 0, 0);
     const priceMode = document.getElementById("productPriceMode")?.value || "market";
-    const fixedPrice = Number(document.getElementById("productFixedPrice")?.value || 0);
-    const costPrice = Number(document.getElementById("productCostPrice")?.value || 0);
-    const stockQuantity = Math.max(0, Math.trunc(Number(document.getElementById("productStockQuantity")?.value ?? 1)));
+    const fixedPrice = szfParseNumber(document.getElementById("productFixedPrice")?.value || 0, 0);
+    const costPrice = szfParseNumber(document.getElementById("productCostPrice")?.value || 0, 0);
+    const stockQuantity = Math.max(0, Math.trunc(szfParseNumber(document.getElementById("productStockQuantity")?.value ?? 1, 1)));
 
     const stock =
       document.getElementById("productStock").value;
@@ -5065,10 +5064,8 @@ async function addProduct(){
   }catch(error){
 
     console.error("خطا در ذخیره محصول:",error);
-    const errorMessage = error && error.message ? error.message : "خطای نامشخص";
-    const summary = document.getElementById("productSaveSummary");
-    if(summary) summary.textContent = "ثبت محصول ناموفق بود: " + errorMessage;
-    alert("ذخیره محصول در Supabase انجام نشد: " + errorMessage + "\nاطلاعات در دیتابیس ثبت نشده است.");
+    const detail = error && error.message ? error.message : String(error || "خطای نامشخص");
+    alert("ذخیره محصول انجام نشد. علت دقیق: " + detail + "\\nاطلاعات در دیتابیس ثبت نشده است. از این پیام عکس بگیر؛ متن خطا مشخص می‌کند کدام تنظیم یا ستون دیتابیس مشکل دارد.");
 
   }finally{
 
@@ -5079,37 +5076,6 @@ async function addProduct(){
   }
 
 }
-
-// اتصال صریح تابع به window برای اطمینان از دسترسی دکمه در HTML
-// listener با یک پرچم نصب می‌شود تا کلیک دوبار اجرا نشود.
-window.addProduct = addProduct;
-
-(function bindProductSubmitButton(){
-  const bind = () => {
-    const button = document.getElementById("productSubmitButton");
-    if (!button || button.dataset.szfBound === "1") return;
-    button.dataset.szfBound = "1";
-    button.type = "button";
-    button.addEventListener("click", function(event){
-      event.preventDefault();
-      event.stopPropagation();
-      if (typeof window.addProduct !== "function") {
-        const message = "تابع ثبت محصول بارگذاری نشده است. صفحه را تازه‌سازی کنید و خطای Console را بررسی کنید.";
-        const summary = document.getElementById("productSaveSummary");
-        if (summary) summary.textContent = message;
-        alert(message);
-        return;
-      }
-      window.addProduct();
-    });
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bind, {once:true});
-  } else {
-    bind();
-  }
-})();
 
 /* =========================================================
 UPDATE PRODUCT LABOR LABEL
@@ -5741,17 +5707,6 @@ function clearProductForm(){
   ].forEach(
     id => setValue(id,"")
   );
-
-  // سایر هزینه پیش‌فرض فقط برای محصول جدید اعمال می‌شود.
-  // تابع editProduct مقدار واقعی ذخیره‌شده محصول را جداگانه بارگذاری می‌کند.
-  let defaultOtherCost = 0;
-  try {
-    const savedSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}");
-    defaultOtherCost = Math.max(0, Number(savedSettings.otherCost || 0));
-  } catch (error) {
-    console.warn("خواندن سایر هزینه پیش‌فرض ناموفق بود:", error);
-  }
-  setValue("productOtherCost", String(defaultOtherCost));
 
   setValue(
     "productPurity",
@@ -7116,51 +7071,14 @@ document.addEventListener(
     const ext=(file.type.split("/")[1]||"jpg").replace(/[^a-z0-9]/gi,"").slice(0,8)||"jpg";
     const path=prefix+"-"+Date.now()+"."+ext;
     const response=await fetch(SUPABASE_URL+"/storage/v1/object/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path),{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+supabaseAccessToken,"Content-Type":file.type,"x-upsert":"false"},body:file});
-    const text=await response.text();
-    if(!response.ok){
-      let msg=text;
-      try{const j=JSON.parse(text);msg=j.message||j.error_description||j.error||j.msg||text;}catch{}
-      const hint = response.status===404
-        ? "Bucket با نام panel-assets پیدا نشد."
-        : response.status===401 || response.status===403
-          ? "نشست مدیر یا Policy بارگذاری در storage.objects اجازه این کار را نمی‌دهد."
-          : response.status===413
-            ? "حجم فایل از محدودیت مجاز بیشتر است."
-            : "تنظیمات Bucket و پاسخ Supabase را بررسی کن.";
-      throw new Error("ذخیره تصویر در Supabase انجام نشد (HTTP "+response.status+"): "+msg+" — "+hint);
-    }
+    const text=await response.text();if(!response.ok){let msg=text;try{const j=JSON.parse(text);msg=j.message||j.error||j.msg||text;}catch{};throw new Error("ذخیره تصویر در Supabase انجام نشد: "+msg+" — فضای panel-assets و مجوزهای آن را بررسی کن.");}
     return SUPABASE_URL+"/storage/v1/object/public/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path);
   }
   async function persistAppearance(){
-    if(!supabaseAccessToken) {
-      throw new Error("برای ذخیره ابری لوگو و پس‌زمینه، ابتدا با حساب مدیر وارد شو.");
-    }
-
-    const payload = {
-      id: 1,
-      settings: v3State.appearance,
-      updated_at: new Date().toISOString(),
-      updated_by: supabaseUserId || null
-    };
-
-    try {
-      await supabaseRequest(
-        "/rest/v1/" + PANEL_SETTINGS_TABLE + "?on_conflict=id",
-        {
-          method: "POST",
-          headers: {"Prefer":"resolution=merge-duplicates,return=minimal"},
-          body: JSON.stringify(payload)
-        }
-      );
-      localStorage.setItem("SZF_APPEARANCE_CACHE", JSON.stringify(v3State.appearance));
-    } catch (error) {
-      const detail = error && error.message ? error.message : "خطای نامشخص";
-      throw new Error(
-        "فایل تصویر بارگذاری شد، اما ذخیره تنظیمات در جدول " +
-        PANEL_SETTINGS_TABLE + " ناموفق بود. در Supabase وجود جدول، ستون‌های id و settings، " +
-        "کلید اصلی id و مجوز INSERT/UPDATE برای UID مدیر را بررسی کن. جزئیات: " + detail
-      );
-    }
+    if(!supabaseAccessToken)throw new Error("ابتدا با حساب مدیر وارد شو.");
+    const payload={id:1,settings:v3State.appearance,updated_at:new Date().toISOString(),updated_by:supabaseUserId||null};
+    await supabaseRequest("/rest/v1/"+PANEL_SETTINGS_TABLE+"?on_conflict=id",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(payload)});
+    localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));
   }
   const DEFAULT_PANEL_COLORS={primary:"#D4AF6A",secondary:"#B88A4A",surface:"#101010",text:"#E8E3DA"};
   function cleanHexColor(value,fallback){return /^#[0-9a-f]{6}$/i.test(String(value||""))?String(value):fallback;}
