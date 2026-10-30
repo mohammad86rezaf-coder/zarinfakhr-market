@@ -1711,7 +1711,7 @@ PRODUCTS
 </div>
 
 <div class="action-row">
-<button id="productSubmitButton" type="button" class="primary-button">ثبت محصول</button>
+<button id="productSubmitButton" class="primary-button" onclick="addProduct()">ثبت محصول</button>
 <button class="secondary-button" onclick="clearProductForm()">پاک کردن</button>
 </div>
 
@@ -1834,8 +1834,14 @@ SETTINGS
 <div class="settings-grid">
 
 <div class="settings-item">
-<div class="settings-label">اجرت پیش‌فرض هر گرم</div>
-<input id="defaultLabor" class="form-control" type="number" step="1000" value="0">
+<div class="settings-label">اجرت پیش‌فرض هر گرم (تومان)</div>
+<input id="defaultLabor" class="form-control" type="number" min="0" step="1000" value="0">
+</div>
+
+<div class="settings-item">
+<div class="settings-label">سایر هزینه پیش‌فرض هر محصول (تومان)</div>
+<input id="defaultOtherCost" class="form-control" type="number" min="0" step="1000" value="0">
+<div class="form-help">برای هر محصول جدید به‌صورت خودکار ثبت می‌شود و هنگام ویرایش محصول، مبلغ ذخیره‌شده همان محصول حفظ خواهد شد.</div>
 </div>
 
 <div class="settings-item">
@@ -2357,8 +2363,10 @@ function formatPrice(value){
     return "—";
   }
 
-  return Math.round(Number(value))
-    .toLocaleString("fa-IR");
+  return Math.round(Number(value)).toLocaleString("fa-IR", {
+    useGrouping: true,
+    maximumFractionDigits: 0
+  });
 
 }
 
@@ -3891,9 +3899,14 @@ function saveSettings(){
   const settings = {
 
     labor:
-      Number(
+      Math.max(0, Number(
         document.getElementById("defaultLabor").value
-      ) || 0,
+      ) || 0),
+
+    otherCost:
+      Math.max(0, Number(
+        document.getElementById("defaultOtherCost")?.value || 0
+      )),
 
     profit:
       Number(
@@ -3990,6 +4003,7 @@ function applySettings(settings){
   const map = {
 
     defaultLabor: settings.labor ?? 0,
+    defaultOtherCost: Math.max(0, Number(settings.otherCost ?? 0)),
     defaultProfit: settings.profit ?? 0,
     defaultTax: settings.tax ?? 0,
     defaultDiscount: settings.discount ?? 0,
@@ -5694,6 +5708,17 @@ function clearProductForm(){
     id => setValue(id,"")
   );
 
+  // سایر هزینه پیش‌فرض فقط برای محصول جدید اعمال می‌شود.
+  // تابع editProduct مقدار واقعی ذخیره‌شده محصول را جداگانه بارگذاری می‌کند.
+  let defaultOtherCost = 0;
+  try {
+    const savedSettings = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}");
+    defaultOtherCost = Math.max(0, Number(savedSettings.otherCost || 0));
+  } catch (error) {
+    console.warn("خواندن سایر هزینه پیش‌فرض ناموفق بود:", error);
+  }
+  setValue("productOtherCost", String(defaultOtherCost));
+
   setValue(
     "productPurity",
     "925"
@@ -7057,14 +7082,51 @@ document.addEventListener(
     const ext=(file.type.split("/")[1]||"jpg").replace(/[^a-z0-9]/gi,"").slice(0,8)||"jpg";
     const path=prefix+"-"+Date.now()+"."+ext;
     const response=await fetch(SUPABASE_URL+"/storage/v1/object/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path),{method:"POST",headers:{"apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+supabaseAccessToken,"Content-Type":file.type,"x-upsert":"false"},body:file});
-    const text=await response.text();if(!response.ok){let msg=text;try{const j=JSON.parse(text);msg=j.message||j.error||j.msg||text;}catch{};throw new Error("ذخیره تصویر در Supabase انجام نشد: "+msg+" — فضای panel-assets و مجوزهای آن را بررسی کن.");}
+    const text=await response.text();
+    if(!response.ok){
+      let msg=text;
+      try{const j=JSON.parse(text);msg=j.message||j.error_description||j.error||j.msg||text;}catch{}
+      const hint = response.status===404
+        ? "Bucket با نام panel-assets پیدا نشد."
+        : response.status===401 || response.status===403
+          ? "نشست مدیر یا Policy بارگذاری در storage.objects اجازه این کار را نمی‌دهد."
+          : response.status===413
+            ? "حجم فایل از محدودیت مجاز بیشتر است."
+            : "تنظیمات Bucket و پاسخ Supabase را بررسی کن.";
+      throw new Error("ذخیره تصویر در Supabase انجام نشد (HTTP "+response.status+"): "+msg+" — "+hint);
+    }
     return SUPABASE_URL+"/storage/v1/object/public/"+PANEL_ASSETS_BUCKET+"/"+encodeURIComponent(path);
   }
   async function persistAppearance(){
-    if(!supabaseAccessToken)throw new Error("ابتدا با حساب مدیر وارد شو.");
-    const payload={id:1,settings:v3State.appearance,updated_at:new Date().toISOString(),updated_by:supabaseUserId||null};
-    await supabaseRequest("/rest/v1/"+PANEL_SETTINGS_TABLE+"?on_conflict=id",{method:"POST",headers:{"Prefer":"resolution=merge-duplicates,return=minimal"},body:JSON.stringify(payload)});
-    localStorage.setItem("SZF_APPEARANCE_CACHE",JSON.stringify(v3State.appearance));
+    if(!supabaseAccessToken) {
+      throw new Error("برای ذخیره ابری لوگو و پس‌زمینه، ابتدا با حساب مدیر وارد شو.");
+    }
+
+    const payload = {
+      id: 1,
+      settings: v3State.appearance,
+      updated_at: new Date().toISOString(),
+      updated_by: supabaseUserId || null
+    };
+
+    try {
+      await supabaseRequest(
+        "/rest/v1/" + PANEL_SETTINGS_TABLE + "?on_conflict=id",
+        {
+          method: "POST",
+          headers: {"Prefer":"resolution=merge-duplicates,return=minimal"},
+          body: JSON.stringify(payload)
+        }
+      );
+      localStorage.setItem("SZF_APPEARANCE_CACHE", JSON.stringify(v3State.appearance));
+    } catch (error) {
+      const detail = error && error.message ? error.message : "خطای نامشخص";
+      throw new Error(
+        "فایل تصویر بارگذاری شد، اما ذخیره تنظیمات در جدول " +
+        PANEL_SETTINGS_TABLE + " ناموفق بود. در Supabase وجود جدول، ستون‌های id و settings، " +
+        "کلید اصلی id و مجوز INSERT/UPDATE برای UID مدیر را بررسی کن. جزئیات: " + detail
+      );
+    }
   }
   const DEFAULT_PANEL_COLORS={primary:"#D4AF6A",secondary:"#B88A4A",surface:"#101010",text:"#E8E3DA"};
   function cleanHexColor(value,fallback){return /^#[0-9a-f]{6}$/i.test(String(value||""))?String(value):fallback;}
@@ -7248,30 +7310,6 @@ document.addEventListener(
     // Make the standalone display board keep its own background setting.
     applyAppearance();
   });
-})();
-
-
-// تثبیت رویداد دکمه ثبت محصول؛ جلوگیری از وابستگی به onclick در HTML
-(function bindProductSubmitButton(){
-  const bind = () => {
-    const button = document.getElementById("productSubmitButton");
-    if (!button || button.dataset.productSubmitBound === "true") return;
-    button.dataset.productSubmitBound = "true";
-    button.type = "button";
-    button.addEventListener("click", function(event){
-      event.preventDefault();
-      if (typeof window.addProduct !== "function") {
-        alert("تابع ثبت محصول بارگذاری نشده است. صفحه را تازه‌سازی کنید و دوباره تلاش کنید.");
-        return;
-      }
-      window.addProduct();
-    });
-  };
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bind, {once:true});
-  } else {
-    bind();
-  }
 })();
 
 </script>
