@@ -1,13 +1,14 @@
 /*
  * SILVER ZARIN FAKHR — Vercel Serverless Function
- * فایل را در مخزن GitHub با مسیر دقیق api/prices.js قرار بده.
- * این تابع صفحه عمومی قیمت ژوآرن را سمت سرور می‌خواند تا مشکل CORS و HTML/JSON حل شود.
+ * مسیر استقرار: api/prices.js
+ * خروجی قیمت بازار به‌صورت JSON برای پنل index.html
  */
 
 const SOURCE_URL = "https://jouaren.com/ons";
+const REQUEST_TIMEOUT_MS = 12000;
 
 function normalizeDigits(value) {
-  return String(value || "")
+  return String(value ?? "")
     .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
     .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d));
 }
@@ -22,7 +23,7 @@ function toNumber(value) {
 }
 
 function pageText(html) {
-  return html
+  return String(html)
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
     .replace(/<[^>]+>/g, " ")
@@ -41,6 +42,13 @@ function firstMatchNumber(text, regex) {
   return match ? toNumber(match[1]) : NaN;
 }
 
+function jsonError(res, status, message) {
+  return res.status(status).json({
+    success: false,
+    message: String(message || "دریافت اطلاعات بازار ناموفق بود.")
+  });
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "no-store, max-age=0");
@@ -48,17 +56,20 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "GET") {
     res.setHeader("Allow", "GET");
-    return res.status(405).json({ success: false, message: "فقط درخواست GET مجاز است." });
+    return jsonError(res, 405, "فقط درخواست GET مجاز است.");
   }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
   try {
     const upstream = await fetch(SOURCE_URL, {
       method: "GET",
       headers: {
         "Accept": "text/html,application/xhtml+xml",
-        "User-Agent": "Mozilla/5.0 (compatible; SZFMarketPanel/1.0)"
+        "User-Agent": "Mozilla/5.0 (compatible; SZFMarketPanel/1.1)"
       },
-      signal: AbortSignal.timeout(12000)
+      signal: controller.signal
     });
 
     if (!upstream.ok) {
@@ -68,17 +79,27 @@ module.exports = async function handler(req, res) {
     const html = await upstream.text();
     const text = pageText(html);
 
-    const silverOunce = firstMatchNumber(text, /انس جهانی\s*\$?\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،]*)/g);
-    const usdToman = firstMatchNumber(text, /نرخ دلار بازار\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g);
-    const silver999Toman = firstMatchNumber(text, /گرم ۹۹۹\s*\(بازار ایران\)\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g);
+    const silverOunce = firstMatchNumber(
+      text,
+      /انس جهانی\s*\$?\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،]*)/g
+    );
+    const usdToman = firstMatchNumber(
+      text,
+      /نرخ دلار بازار\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g
+    );
+    const silver999Toman = firstMatchNumber(
+      text,
+      /گرم ۹۹۹\s*\(بازار ایران\)\s*([0-9۰-۹٠-٩][0-9۰-۹٠-٩.,٬،\s]*?)\s*تومان/g
+    );
 
     if (!(silverOunce > 0) || !(usdToman > 0) || !(silver999Toman > 0)) {
       throw new Error("ساختار صفحه قیمت تغییر کرده یا قیمت‌ها در دسترس نیستند.");
     }
 
     const silver925Toman = silver999Toman * 925 / 999;
-    // فرمول مورد استفاده پنل: انس × نرخ تومان دلار ÷ 31.1034768 × 0.700 × 4.608
-    const mesghal17Toman = (silverOunce * usdToman / 31.1034768) * 0.700 * 4.608;
+    // فرمول مورد استفاده پنل: انس × دلار تومان ÷ 31.1034768 × 0.700 × 4.608
+    const mesghal17Toman =
+      (silverOunce * usdToman / 31.1034768) * 0.700 * 4.608;
 
     return res.status(200).json({
       success: true,
@@ -95,10 +116,15 @@ module.exports = async function handler(req, res) {
       partial: false
     });
   } catch (error) {
+    const message = error && error.name === "AbortError"
+      ? "مهلت دریافت قیمت از منبع بازار تمام شد."
+      : error && error.message
+        ? error.message
+        : "دریافت اطلاعات بازار ناموفق بود.";
+
     console.error("SZF market API error:", error);
-    return res.status(502).json({
-      success: false,
-      message: error && error.message ? error.message : "دریافت اطلاعات بازار ناموفق بود."
-    });
+    return jsonError(res, 502, message);
+  } finally {
+    clearTimeout(timeout);
   }
 };
