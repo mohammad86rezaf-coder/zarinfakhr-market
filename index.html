@@ -1711,7 +1711,7 @@ PRODUCTS
 </div>
 
 <div class="action-row">
-<button id="productSubmitButton" class="primary-button" onclick="addProduct()">ثبت محصول</button>
+<button id="productSubmitButton" type="button" class="primary-button">ثبت محصول</button>
 <button class="secondary-button" onclick="clearProductForm()">پاک کردن</button>
 </div>
 
@@ -5065,7 +5065,10 @@ async function addProduct(){
   }catch(error){
 
     console.error("خطا در ذخیره محصول:",error);
-    alert("ذخیره محصول در Supabase انجام نشد: " + (error.message || "خطای نامشخص") + "\nاطلاعات در دیتابیس ثبت نشده است.");
+    const errorMessage = error && error.message ? error.message : "خطای نامشخص";
+    const summary = document.getElementById("productSaveSummary");
+    if(summary) summary.textContent = "ثبت محصول ناموفق بود: " + errorMessage;
+    alert("ذخیره محصول در Supabase انجام نشد: " + errorMessage + "\nاطلاعات در دیتابیس ثبت نشده است.");
 
   }finally{
 
@@ -5076,6 +5079,37 @@ async function addProduct(){
   }
 
 }
+
+// اتصال صریح تابع به window برای اطمینان از دسترسی دکمه در HTML
+// listener با یک پرچم نصب می‌شود تا کلیک دوبار اجرا نشود.
+window.addProduct = addProduct;
+
+(function bindProductSubmitButton(){
+  const bind = () => {
+    const button = document.getElementById("productSubmitButton");
+    if (!button || button.dataset.szfBound === "1") return;
+    button.dataset.szfBound = "1";
+    button.type = "button";
+    button.addEventListener("click", function(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof window.addProduct !== "function") {
+        const message = "تابع ثبت محصول بارگذاری نشده است. صفحه را تازه‌سازی کنید و خطای Console را بررسی کنید.";
+        const summary = document.getElementById("productSaveSummary");
+        if (summary) summary.textContent = message;
+        alert(message);
+        return;
+      }
+      window.addProduct();
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bind, {once:true});
+  } else {
+    bind();
+  }
+})();
 
 /* =========================================================
 UPDATE PRODUCT LABOR LABEL
